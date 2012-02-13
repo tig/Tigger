@@ -1,0 +1,68 @@
+procedure main ()
+  write ("every write (IdentSeq{1}):")
+  every write (IdentSeq{1})
+
+  write ()
+  write ("every write (IdentSeq{1 to 10}):")
+  every write (IdentSeq{1 to 10})
+
+  write ()
+  write ("every write (IdentSeq{1 to 10, 1 to 3}):")
+  every write (IdentSeq{1 to 10, 1 to 3})
+
+  write ()
+  write ("every write (IdentSeq{1 to 10, 1 to 3, |1, !&lcase}) (should fail):")
+  every write (IdentSeq{1 to 10, 1 to 3, |1, !&lcase})
+
+  write ()
+  write ("every write (IdentSeq{!&ucase, !(&lcase++&ucase), !\"ABCDEFG\"}):")
+  every write (IdentSeq{!&ucase, !(&lcase++&ucase), !"ABCDEFG"})
+
+  write ()
+  write ("every write (IdentSeq{IdentSeq{1 to 10, 1 to 10}, 1 to 10}):")
+  every write (IdentSeq{IdentSeq{1 to 10, 1 to 10}, 1 to 10}) 
+
+  write ()
+  write ("every write (IdentSeq{1 to 3, IdentSeq{1 to 5}, 1 to 3, 1 to 3, 1 to 3, 1 to 4, 1 to 5, 1 to 3}):")
+  every write (IdentSeq{1 to 3, IdentSeq{1 to 5}, 1 to 3, 1 to 3, 1 to 3, 1 to 4, 1 to 5, 1 to 3})
+end
+
+
+procedure IdentSeq (L)
+local C
+local x1
+local x2
+
+  C := create (Parallel(L))
+  repeat
+  {
+    writes ("")
+    if x1 := @C then
+    {  
+      every 2 to *L do
+        if x2 := @C then
+        {
+          if x1 ~=== x2 then
+            fail
+        }
+        else
+          fail
+      suspend x1
+    }
+    else
+      fail
+  }
+
+end
+
+procedure Parallel (L)
+local c
+local x
+
+  repeat
+    every c := !L do
+      if x := @c then 
+        suspend x 
+      else 
+        fail
+end

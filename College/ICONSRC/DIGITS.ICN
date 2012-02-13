@@ -1,0 +1,5 @@
+# copyright (c) 1989, Charles E. Kindel, Jr.
+procedure main()
+  while line := read() do
+    write (upto ('0123456789', line))
+end

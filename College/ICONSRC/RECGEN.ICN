@@ -1,0 +1,17 @@
+procedure main ()
+  while writes (line := read()) do
+    write (line ? (X() & pos(0)))
+end
+
+procedure X()
+  suspend ["X",T()] | ["X",T(),="+",X()]
+end
+
+procedure T()
+  suspend ["E",E()] | ["T",E(),="*",T()]
+end
+
+procedure E()
+  suspend ["E",=("x"|="y"|="z")] | ["E",="(",X(),=")"]
+end
+

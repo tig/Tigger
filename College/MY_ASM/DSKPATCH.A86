@@ -1,0 +1,108 @@
+;--------------------------------------------------------------------------;
+; DiskPatch                                                                ;
+;--------------------------------------------------------------------------;
+Code SEGMENT
+         ORG 100h
+         JMP MainProgram
+
+;--------------------------------------------------------------------------;
+; The following is all of the data delcarations for the program:           ;
+;--------------------------------------------------------------------------;
+; SECTOR_OFFSET is the offset to the half         ;
+; sector display into the full sector.  It must   ;
+; be a multiple of 16, and not greater than 256.  ;
+;-------------------------------------------------;
+Sector_Offset      DW  0
+Current_Sector_No  DW  0                 ;initially sector 0
+Disk_Drive_No      DB  0                 ;Initially drive A
+
+
+;-------------------------------------------------;
+; Lines_Before_Sector is the number of lines      ;
+; at the top of the screen before the half        ;
+; sector display.                                 ;
+;-------------------------------------------------;
+Lines_Before_Sector  DB  2
+Header_Line_No       DB  0
+Header_Part_1        DB  'Disk ',0
+Header_Part_2        DB  '         Sector ',0
+
+Prompt_Line_No       DB  21
+Editor_Prompt        DB  'Press function key, or enter'
+                     DB  ' character or hex byte: ',0
+
+;-------------------------------------------------;
+; Phantom and real cursor variables               ;
+;-------------------------------------------------;
+Real_Cursor_X      DB  0
+Real_Cursor_Y      DB  0
+Phantom_Cursor_X   DB  0
+Phantom_Cursor_Y   DB  0
+
+
+;-------------------------------------------------;
+; Graphics Characters for borders.                ;
+;-------------------------------------------------;
+Vertical_Bar    EQU 'º'
+Horizontal_Bar  EQU 'Í'
+Upper_Left      EQU 'É'
+Upper_Right     EQU '»'
+Lower_Left      EQU 'È'
+Lower_Right     EQU '¼'
+Top_T_Bar       EQU 'Ë'
+Bottom_T_Bar    EQU 'Ê'
+Top_Tick        EQU 'Ñ'
+Bottom_Tick     EQU 'Ï'
+
+Top_Line_Pattern       DB    ' ',7
+                       DB    Upper_Left,1
+                       DB    Horizontal_Bar,12
+                       DB    Top_Tick,1
+                       DB    Horizontal_Bar,11
+                       DB    Top_Tick,1
+                       DB    Horizontal_Bar,11
+                       DB    Top_Tick,1
+                       DB    Horizontal_Bar,12
+                       DB    Top_T_Bar,1
+                       DB    Horizontal_Bar,18
+                       DB    Upper_Right,1
+                       DB    0
+Bottom_Line_Pattern    DB    ' ',7
+                       DB    Lower_Left,1
+                       DB    Horizontal_Bar,12
+                       DB    Bottom_Tick,1
+                       DB    Horizontal_Bar,11
+                       DB    Bottom_Tick,1
+                       DB    Horizontal_Bar,11
+                       DB    Bottom_Tick,1
+                       DB    Horizontal_Bar,12
+                       DB    Bottom_T_Bar,1
+                       DB    Horizontal_Bar,18
+                       DB    Lower_Right,1
+                       DB    0
+
+;-------------------------------------------------;
+; The entire sector (up to 8192 bytes) is         ;
+; stored in this part of memory.                  ;
+;-------------------------------------------------;
+Sector   DB        8192 DUP (0)
+
+
+;--------------------------------------------------------------------------;
+    MainProgram:
+;--------------------------------------------------------------------------;
+Disk_Patch PROC NEAR
+         CALL      Clear_Screen
+         CALL      Write_Header
+         CALL      Read_Sector
+         CALL      Init_Sec_Disp
+         LEA       DX,Editor_Prompt
+         CALL      Write_Prompt_Line
+         CALL      Dispatcher
+         INT       20h
+Disk_Patch ENDP
+
+
+
+Code     ENDS
+

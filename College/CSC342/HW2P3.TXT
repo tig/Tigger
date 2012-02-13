@@ -1,0 +1,23 @@
+
+
+Queue Routines:
+
+Status = ClearQueue (Queue)
+Status = EnQueue (Queue, Element)
+Status = DeQueue (Queue, Element)
+Status = Empty (Queue)
+
+
+Algorithm for level ordered transversal of a binary tree:
+
+
+LevelOrder (Btree : binarytreetype)
+begin
+  if Btree exists
+    if Btree.right exists
+        EnQueue (Q, BTree)
+    LevelOrder (BTree.left)
+    LevelOrder (Btree.right)
+
+end
+

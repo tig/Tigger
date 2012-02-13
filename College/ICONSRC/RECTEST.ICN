@@ -1,0 +1,27 @@
+record X_(L)
+record T_(L)
+record E_(L)
+procedure main ()
+
+while writes (line := read()) do
+  { 
+    write (name ( line ? (X() & pos(0)))  )
+  }
+end
+
+procedure Output (R_)
+ write (name(R_))
+end
+
+procedure X()
+  suspend X_([T()] | [T(),="+",X()])
+end
+
+procedure T()
+  suspend T_([E()] | [E(),="*",T()])
+end
+
+procedure E()
+  suspend E_([=("x"|"y"|"z")] | [="(",X(),=")"])
+end
+

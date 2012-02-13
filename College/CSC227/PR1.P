@@ -1,0 +1,245 @@
+{---------------------------------------------------------------------------}
+{                          CSc 227, Spring 1987                             }
+{                       Programming Assignment # 1                          }
+{                                                                           }
+{INPUT:  One or more sets of data.                                          }
+{        - one line with the name of the set (character)                    }
+{        - one line with the number of entries (integer)                    }
+{        - one or more lines with the entries, several to a line (integer)  }
+{OUTPUT: For each set of data:                                              }
+{        - a scaled bar graph                                               }
+{        - the average score of the set                                     }
+{        - the median score of the set                                      }
+{        After the last set of data:                                        }
+{        - a scaled bar graph showing the totals for all the sets           }
+{        - the average of all the sets                                      }
+{---------------------------------------------------------------------------}
+
+Program CSc_227_1 (input, output);
+
+
+  Const  Max_String = 20;             {Maximum number of characters in a name}
+
+  Type   Graph_Array = array [0..9] of integer;  {Holds data for each graph}
+         Name_String = packed array [1..Max_String] of char; {string for name}
+
+  Var    TOTAL,               {Holds data for graph of all sets}
+         CURRENT              {Holds data for graph of current set}
+         : Graph_Array;
+
+         SET_NUM              {How many sets have we read in? (For average)}
+         : integer;
+
+         AVERAGE,             {The average of current set}
+         TOTAL_AVERAGE        {The average of all sets}
+         : real;
+
+
+  Procedure Init_Array (var BLANK_ARRAY : Graph_Array);
+  {initializes the array that holds the set to zeros}
+    var   i : integer;        {counter}
+
+    begin
+      For i := 0 to 9 do
+        BLANK_ARRAY [i] := 0;
+    end;
+
+
+  Procedure Read_Current (var CURRENT : Graph_Array;
+                          var NAME    : Name_String;
+                          var AVERAGE : real;
+                          var MEDIAN  : real);
+  {Calls sub procedure Read_Name which reads in the NAME into a packed array}
+  {Calls its own procedure Read_Grades which does the actual reading if the }
+  {number of entries in the set is legal, otherwise it skips those entries. }
+    var   DONE          {flag for testing to see if we've got a legal set}
+          : boolean;
+
+          SKIP,         {counter for skipping entries in an illegal set}
+          DUMMY,        {Values are read into this while skipping illegal sets}
+          NUM_ENTRIES,  {The number of entries in a set}
+          TOT_GRADES    {The sum of the entries in a set (for averaging)}
+          : integer;
+
+    Procedure Read_Name (var NAME : Name_String);
+    {Reads in a packed array of characters (string) and skips any chars. that}
+    {are beyond MAX_STRING.                                                  }
+      var   i,
+            NUM_LETTERS
+            : integer;
+
+            CHARACTER
+            : char;
+
+      begin
+        NUM_LETTERS := 1;
+        while (not EoLn) do
+          begin
+            read (CHARACTER);
+            if (NUM_LETTERS <= Max_String) then
+              NAME [NUM_LETTERS] := CHARACTER;
+             NUM_LETTERS := NUM_LETTERS + 1;
+           end;
+        readln;
+      end; {Read_Name}
+
+
+    Procedure Read_Grades (var CURRENT     : Graph_Array;
+                           var NUM_ENTRIES : integer;
+                           var TOT_GRADES  : integer);
+      var   i,
+            ADDR         {the "address" of the bars in the bargraph array}
+            : integer;
+
+            GRADE        {all the grades in the set for finding the median}
+            : array [1..100] of integer;
+
+      begin
+        For i := 1 to NUM_ENTRIES do
+        begin
+          Read (GRADE [i]);
+          if (GRADE [i] >= 0) and (GRADE [i] <= 100) then
+            begin
+              TOT_GRADES := TOT_GRADES + GRADE [i];
+              If (GRADE [i] = 100) then     {100 div 10 is 10, we want 9}
+                ADDR := 9
+              else
+                ADDR := (GRADE [i] div 10);
+              CURRENT [ADDR] := CURRENT [ADDR] + 1;
+            end;
+        end;
+        ReadLn;
+        if ((NUM_ENTRIES/2) = int (NUM_ENTRIES/2)) then   {even # of entries}
+          MEDIAN :=
+           (GRADE [(NUM_ENTRIES div 2) + 1] + GRADE [NUM_ENTRIES div 2]) / 2
+        else                                               {odd # of entries}
+          MEDIAN := (GRADE [(NUM_ENTRIES div 2) + 1]);
+      end;  {Read_Grades}
+
+
+    begin                 {Read_Current}
+      TOT_GRADES := 0;
+      NUM_ENTRIES := 0;
+      DONE := false;
+      While (not Done) do
+        begin
+          DONE := true;
+          Read_Name (NAME);
+          readln (NUM_ENTRIES);
+          if (NUM_ENTRIES > 100) or (NUM_ENTRIES < 1) then
+            begin
+              writeln ('-----------------------------------------------');
+              Writeln ('ERROR...illegal number of entries in ', NAME, '!');
+              Writeln ('Skipping ', NUM_ENTRIES, ' entries...');
+              for Skip := 1 to NUM_ENTRIES do
+                Read (DUMMY);
+              Readln;
+              DONE := false;
+            end
+          else
+            begin
+              Read_Grades (CURRENT, NUM_ENTRIES, TOT_GRADES);
+              writeln ('-----------------------------------------------');
+            end;
+          AVERAGE := TOT_GRADES / NUM_ENTRIES;
+        end;
+      end;
+
+
+  Procedure Graph (BAR : Graph_Array);
+  {graphs the data in the array BAR horizontaly as a bar graph}
+    var   i,
+          j,
+          BIGGEST, {The biggest bar in the graph (used for scaling)}
+          ADDR,    {The "address" of the bar in the graph}
+          HIGH,    {The high value of a range in the graph labels}
+          SCALE    {the scale of the graph}
+          : integer;
+
+    begin
+      for j := 0 to 9 do
+        if BAR [j] > BIGGEST then BIGGEST := BAR [j];
+      if (BIGGEST < 70) then SCALE := 1
+      else
+        if (BIGGEST < 140) then SCALE := 2
+        else
+          if (BIGGEST < 210) then SCALE := 3;
+      i := 100;
+      while (i >= 10) do
+        begin
+          ADDR := (i div 10);
+          if i = 100 then HIGH := i
+          else HIGH := i - 1;
+          write (i - 10 : 2, '-', HIGH : 3, '  ');
+          for j := 1 to (BAR[ADDR - 1] div SCALE) do
+            write ('*');
+          writeln (' ', BAR[ADDR - 1]);
+          i := i - 10;
+        end;
+        writeln ('Scale:  * = ', SCALE : 1, ' grade(s)');
+    end; {Graph}
+
+
+  Procedure Print_Current (AVERAGE : real;
+                           MEDIAN  : real);
+  {Prints out the average and the median for each set.                     }
+
+    begin
+      Writeln ('The average of this set of grades is ', AVERAGE :3:1);
+      Writeln ('The median of this set of grades is ', MEDIAN :3:1);
+      Writeln;
+    end; {Print_Current}
+
+
+  Procedure Add_To_Total (    CURRENT       : Graph_Array;
+                          var TOTAL         : Graph_Array;
+                              AVERAGE       : real;
+                          var TOTAL_AVERAGE : real);
+  {adds the values from CURRENT to the array TOTAL, including the averages.}
+     var    i
+            : integer;
+
+     begin
+       For i := 0 to 9 do
+         TOTAL [i] := TOTAL [i] + CURRENT [i];
+       TOTAL_AVERAGE := TOTAL_AVERAGE + AVERAGE;
+     end; {Add_To_Total}
+
+
+  Procedure Get_And_Graph (var CURRENT : Graph_Array;
+                           var AVERAGE : real);
+    var    MEDIAN               {The median score of the current set}
+           : real;
+
+           NAME                 {The name of the current set}
+           : Name_String;
+
+    begin
+      Init_Array (CURRENT);
+      Read_Current (CURRENT, NAME, AVERAGE, MEDIAN);
+      Write ('This is the graph of ', NAME);
+      Graph (CURRENT);
+      Print_Current (AVERAGE, MEDIAN);
+    end;  {Get_And_Graph}
+
+
+
+Begin   {Main}
+  SET_NUM := 0;
+  AVERAGE := 0;
+  TOTAL_AVERAGE := 0;
+  Init_Array (TOTAL);
+  Repeat
+    Get_And_Graph (CURRENT, AVERAGE);
+    SET_NUM := SET_NUM + 1;
+    Add_To_Total (CURRENT, TOTAL, AVERAGE, TOTAL_AVERAGE);
+  until (Eof);
+  writeln;
+  TOTAL_AVERAGE := TOTAL_AVERAGE / SET_NUM;
+  writeln ('========================================================');
+  writeln;
+  Writeln ('This is the graph of all sets');
+  Graph (TOTAL);
+  Writeln ('The average of all the sets is ', TOTAL_AVERAGE : 3 :2);
+End. {Main}
+

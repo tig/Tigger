@@ -1,0 +1,30 @@
+procedure main()
+  write ("every write (Odd{1}):")
+  every write (Odd {1})
+
+  write ()
+  write ("every write(Odd {2 to 10}):")
+  every write(Odd {2 to 10})
+
+  write ()
+  write ("every write(Odd {!&lcase}):")
+  every write(Odd {!&lcase})
+
+  write ()
+  write ("every write(Odd {Odd {2 to 10}}):")
+  every write(Odd {Odd {2 to 10}})
+end
+
+procedure Odd(ex)
+  local x
+  repeat
+  {
+    if x := @ex[1] then
+      suspend x
+    else
+      fail
+
+    x := @ex[1]
+  }
+end
+ 

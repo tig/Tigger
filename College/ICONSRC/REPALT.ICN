@@ -1,0 +1,40 @@
+procedure main ()
+
+  # Test #1 demonstrates that Repalt works correctly with an expression that
+  # fails at some point and cannot produce any more results.  
+  # An example of this would be |read().
+  write ("every write (Repalt {test()}) (should fail after 10 'Hello World's):")
+  every write (Repalt {test()})
+
+  write ()
+  write ("every write (Repalt {0 to 7} \\ 64):")
+  every write (Repalt {0 to 7} \ 64)
+
+  write ()
+  write ("every write (Repalt {!&lcase} \27):")
+  every write (Repalt {!&lcase} \27)
+end
+
+procedure test ()
+  static x
+  initial x := 0
+
+  while (x +:= 1) <= 10 do
+    suspend "Hello World"
+  fail
+end
+
+procedure Repalt (expr)
+ local x
+
+ repeat
+ {
+   while x := @expr[1] do 
+     suspend x 
+   expr[1] := ^expr[1]
+   if x := @expr[1] then
+     suspend x
+   else
+     fail
+ }
+end

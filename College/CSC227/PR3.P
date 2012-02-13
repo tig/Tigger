@@ -1,0 +1,543 @@
+{$U+}
+{======================================================================================================================}
+{ CSc 227, Spring 1987                                                                                                 }
+{ Programming Assignment #3                                                                                            }
+{ Charles E. Kindel, Jr.                                                                                               }
+{ S90498449                                                                                                            }
+{ March 9, 1987                                                                                                        }
+{----------------------------------------------------------------------------------------------------------------------}
+{ This program performs operations on polynomials.  It reads its commands from a data file and outputs the result to   }
+{ an output file.  These files are defined by the VAX VMS system input and output files.                               }
+{    Operations include:                                                                                               }
+{        Create a polynomial                                                                                           }
+{        Destroy a polynomial                                                                                          }
+{        Add two polynomials                                                                                           }
+{        Print a polynomial                                                                                            }
+{        Order and collect like terms in a polynomial                                                                  }
+{    Several assumptions have been made in the application of some commands, these are:                                }
+{        *  The first assumption is that the user knows what commands he is issuing and the                            }
+{           consequences of those commands.                                                                            }
+{        *  If a polynomial exists and an attempt is made to make an assignment to that polynomial                     }
+{           the old one will be destroyed.  The exception to this is when adding a polynomial to itself                }
+{              i.e. A B C B   or A B B B                                                                               }
+{        *  A polynomial that has not been created has a value of zero.                                                }
+{======================================================================================================================}
+Program CSc_227_3 (INPUT, OUTPUT);
+
+  Const    NUL     = 0;                                              {Nul Pointer}
+           MAXNAMES = 5;                                             {maximum number of names in the Name_List}
+           MAXLIST  = 20;                                            {maximum number of nodes in the LISTS}
+
+  Type     list_pointer   = 0..MAXLIST;
+           name_pointer   = 0..MAXNAMES;
+           list_type      = array [1..MAXLIST] of record             {linked list}
+                                                    COEFF : real;
+                                                    POWER : integer;
+                                                    NEXT  : list_pointer;
+                                                  end;
+           name_list_type = array [1..MAXNAMES] of record             {array of Names of Polys with locations}
+                                                     NAME     : char;
+                                                     LOCATION : name_pointer;
+                                                   end;
+           status_type    =  (full, not_full);                         {scalar type for testing for full lists}
+
+   Var     LISTS     : list_type;                                      {the linked list that holds the polys}
+           NAME_LIST : name_list_type;                                 {the array that holds the names of polys and the pointers}
+
+           NEXT_AVAIL                                                  {points to the next available node}
+           : list_pointer;
+
+           NUM,                                                        {the number of terms in the poly to be read}
+           NUM_POLYS                                                   {the number polynomials currently in NAME_LIST}
+           : integer;
+
+           COMMAND                                                     {the command character}
+           : char;
+
+
+{---------------------------------------------------------------------------------------------------------------------}
+{                                         Linked List Routines:                                                       }
+{---------------------------------------------------------------------------------------------------------------------}
+  Procedure Make_Avail (var NEW_LISTS  : list_type;        {The linked list to be initialized}
+                        var NEXT_AVAIL : list_pointer);    {The next available node, will be 1 after run}
+
+                                   {Initializes the array into a linked}
+                                   {list.                              }
+
+    var  i : integer;
+
+    begin
+      for i := 1 to MAXLIST do
+        with NEW_LISTS [i] do
+          NEXT  := i + 1;
+      NEW_LISTS [MAXLIST].NEXT := NUL;
+      NEXT_AVAIL := 1;
+    end;
+
+
+  Procedure New_Names (var NEW_NAME_LIST : name_list_type);  {The name list to be created}
+
+                                        {Initializes the namelist.}
+
+    var i : integer;
+
+    begin
+      for i := 1 to MAXNAMES do
+        with NEW_NAME_LIST [i] do
+            LOCATION := NUL;
+    end;
+
+
+  Procedure New_Node (var NODE   : list_pointer;  {The pointer to the new node}
+                      var LISTS  : list_type;     {The linked list}
+                      var AVAIL  : list_pointer;  {The next available node pointer}
+                      var STATUS : status_type);  {Is the list full?}
+
+                                      {Returns the pointer of the next node  }
+                                      {in lists.  Sets next_avail to the next}
+                                      {node.  If the list is full then it    }
+                                      {returns  a flag (Status)              }
+          begin
+            if (AVAIL = NUL) then
+              STATUS := full
+            else
+              begin
+                NODE := AVAIL;
+                AVAIL := LISTS [NODE].NEXT;
+                STATUS := not_full;
+              end;
+          end; {New_Node}
+
+  Procedure New_List (    NAME       : char;            {The name of the new polynomial}
+                          NEXT_AVAIL : list_pointer;    {The next available node pointer}
+                      var NAME_LIST  : name_list_type;  {The array of poly names}
+                      var NUM_NAMES  : integer);        {the number of names in the name list}
+
+                                                 {Puts a new name in the name list and  }
+     begin                                       {points it to the next available node. }
+        NUM_NAMES := NUM_NAMES + 1;
+        NAME_LIST [NUM_NAMES].NAME := NAME;
+        NAME_LIST [NUM_NAMES].LOCATION := NEXT_AVAIL;
+     end; {New_List}
+
+  Procedure Destroy_List (    LOCATION  : list_pointer;
+                              NEXT_AVAIL : list_pointer;
+                          var LISTS      : list_type);
+
+                                  {Removes a list from LISTS.}
+
+    var    TEMP : list_pointer;
+
+    begin
+      TEMP := LISTS [NEXT_AVAIL].NEXT;
+      LISTS [NEXT_AVAIL].NEXT := LOCATION;
+      while (LISTS [LOCATION].NEXT <> NUL) do
+        LOCATION := LISTS [LOCATION].NEXT;
+      LISTS [LOCATION].NEXT := TEMP;
+    end; {Destroy_List}
+
+
+  Function Search (SEARCH_NAME : char;                    {The name of the poly being searched for}
+                   NAME_LIST   : name_list_type;          {The list of names}
+                   NUM         : integer) : list_pointer; {The number of of names in the name lists}
+
+                       {Searches for a name in the name list  }
+                       {and returns the location of the first }
+                       {node of that names list.  If it does  }
+                       {not find the name, it returns a null  }
+
+    var   i
+          : integer;
+
+    begin
+      Search := NUL;
+      for i := 1 to NUM do
+        if SEARCH_NAME = NAME_LIST [i].NAME then
+            Search := NAME_LIST [i].LOCATION;
+    end; {Search}
+
+  Procedure Del_Name (    NAME_TO_DEL : char;           {The name of the poly to delete}
+                      var NAME_LIST   : name_list_type; {The list of names}
+                      var NUM         : integer);       {The number of names in the list}
+
+                         {Deletes a name and pointer from the name list.}
+
+    var i, j : integer;
+    begin
+      i := 0;
+      repeat
+        i := i + 1;
+        if (NAME_LIST [i].NAME = NAME_TO_DEL) then
+          begin
+            for j := i to NUM-1 do
+              NAME_LIST [j] := NAME_LIST [j+1];
+            NAME_LIST [NUM].LOCATION := NUL;
+          end;
+      until (i = NUM);
+      NUM := NUM -1;
+    end; {Del_Name}
+
+{---------------------------------------------------------------------------------------------------------------------}
+{                                            Polynomial Routines                                                      }
+{---------------------------------------------------------------------------------------------------------------------}
+  Procedure Del_Poly (    NAME       : char;           {The name of the poly}
+                      var LISTS      : list_type;      {The linked list}
+                      var NEXT_AVAIL : list_pointer;   {The pointer to the next available node.}
+                      var NAME_LIST  : name_list_type; {The list of names}
+                      var NUM_POLYS  : integer);       {The number of polys in the name list}
+
+                               {Deletes a polynomial from the name list and the linked list}
+    var LOCATION
+        : list_pointer;
+
+    begin
+      LOCATION := Search (NAME, NAME_LIST, NUM_POLYS);
+      if LOCATION = NUL then
+        writeln ('ERROR....The polynomial ', NAME, ' has not been created!')
+      else
+        begin
+          Destroy_List (LOCATION, NEXT_AVAIL, LISTS);
+          Del_Name (NAME, NAME_LIST, NUM_POLYS);
+        end;
+    end; {Del_Poly}
+
+
+  Procedure Create_Poly (    NAME       : char;           {Name of Poly}
+                             NUM_NEW    : integer;        {number of terms in poly}
+                         var LISTS      : list_type;      {linked list}
+                         var NEXT_AVAIL : list_pointer;   {next available pointer}
+                         var NAME_LIST  : name_list_type; {list of names}
+                         var NUM_NAMES  : integer);       {number of polys}
+
+                               {Creates a new polynomial using        }
+                               {"New_List" if it runs out of space    }
+                               {during a create it deletes what is has}
+                               {done up to that point...              }
+    var  i,
+         POWER
+         : integer;
+         COEFFICENT
+         : real;
+         NODE : list_pointer;
+         STATUS : status_type;
+         FLAG : boolean;
+
+    begin
+      if (Search (NAME, NAME_LIST, NUM_POLYS) <> NUL) then   {polynomial already exists, destroy it!}
+        begin
+          DEL_POLY (NAME, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+          writeln ('NOTE...Polynomial ', NAME, ' already existed, it will be replaced!');
+        end;
+      if NUM_NAMES < MAXNAMES then
+        begin
+          New_List (NAME, NEXT_AVAIL, NAME_LIST, NUM_NAMES);
+          i := 1;
+          Status := not_full;
+          FLAG := false;
+          while (i <= NUM_NEW) do
+            begin
+              read (COEFFICENT, POWER);
+              i := i + 1;
+              New_Node (NODE, LISTS, NEXT_AVAIL, STATUS);
+              if (STATUS = not_full) then
+                begin
+                  LISTS [NODE].COEFF := COEFFICENT;
+                  LISTS [NODE].POWER := POWER;
+                end
+              else
+                if not FLAG then
+                  begin
+                    writeln ('ERROR...out of space in LISTS, create aborted!');
+                    LISTS [NODE].NEXT := NUL;
+                    Del_Poly (NAME, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+                    FLAG := true;
+                  end;
+            end;
+            if Status = not_full then
+                LISTS [NODE].NEXT := NUL;
+          end
+        else
+          writeln ('ERROR...out of space in NAME_LIST, create aborted!');
+        readln;
+      end; {Create_Poly}
+
+  Procedure Add (    SUM       : char;          {SUM = POLY1 + POLY2}
+                     POLY1     : char;
+                     POLY2     : char;
+                 var LISTS     : list_type;     {Linked list}
+                 var NEXT_AVAIL: list_pointer;  {next available node pointer}
+                 var NAME_LIST : name_list_type;{list of names}
+                 var NUM_POLYS : integer);       {number of names in the name list}
+
+                     {Adds two polynomials.  If the object poly (SUM) exists it will be deleted}
+                     {If the object poly is in either POLY1 or POLY2 also then that is handeled}
+                     {appropriately.}
+
+    var    LOCATE_SUM,
+           LOCATE_POLY1,
+           LOCATE_POLY2,
+           NODE
+           : list_pointer;
+           STATUS
+           : status_type;
+
+
+                        Procedure Add_To_Sum (var LOCATE : list_pointer;      {Points to the beginning of the sum}
+                                              var LISTS : list_type;          {The linked list}
+                                              var NEXT_AVAIL : list_pointer); {The next available node pointer}
+
+                          var    NEWNODE
+                                 : list_pointer;
+                                 STATUS
+                                 : status_type;
+
+                            begin
+                               STATUS := not_full;
+                               while (LOCATE > NUL) and (STATUS = not_full) do
+                                   begin
+                                     New_Node (NEWNODE, LISTS, NEXT_AVAIL, STATUS);
+                                     if (STATUS = not_full) then
+                                        begin
+                                          LISTS [NEWNODE].COEFF := LISTS [LOCATE].COEFF;
+                                          LISTS [NEWNODE].POWER := LISTS [LOCATE].POWER;
+                                          LOCATE := LISTS [LOCATE].NEXT;
+                                        end
+                                     else {list is full!}
+                                        writeln ('ERROR...full!');
+                                   end {while (locate > 0)};
+                                 LOCATE := NEWNODE;
+                            end; {Add_to_Sum}
+
+                        Procedure Object_In_Source;
+
+                          begin
+                            repeat
+                              LOCATE_SUM := LISTS [LOCATE_SUM].NEXT;
+                            until  (LISTS [LOCATE_SUM].NEXT = NUL);
+                            if (SUM <> POLY1) then
+                              begin
+                                LISTS [LOCATE_SUM].NEXT := NEXT_AVAIL;
+                                Add_To_Sum (LOCATE_POLY1, LISTS, NEXT_AVAIL);
+                                LISTS [LOCATE_POLY1].NEXT := NUL;
+                              end
+                            else if (SUM <> POLY2) then
+                              begin
+                                LISTS [LOCATE_SUM].NEXT := NEXT_AVAIL;
+                                Add_To_Sum (LOCATE_POLY2, LISTS, NEXT_AVAIL);
+                                LISTS [LOCATE_POLY2].NEXT := NUL;
+                              end
+                            else
+                              begin
+                                NODE := NEXT_AVAIL;
+                                Add_To_Sum (LOCATE_POLY1, LISTS, NEXT_AVAIL);
+                                LISTS [LOCATE_POLY1].NEXT := NUL;
+                                LISTS [LOCATE_SUM].NEXT := NODE;
+                              end;
+                          end; {Object_In_Source}
+
+
+    begin {Add}
+      LOCATE_SUM := Search (SUM, NAME_LIST, NUM_POLYS);
+      LOCATE_POLY1 := Search (POLY1, NAME_LIST, NUM_POLYS);
+      LOCATE_POLY2 := Search (POLY2, NAME_LIST, NUM_POLYS);
+      if (SUM <> POLY1) and (SUM <> POLY2) and (LOCATE_SUM <> NUL) then
+        begin
+          Del_Poly (SUM, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+          writeln ('NOTE...Polynomial ', SUM, ' already existed, it will be replaced!');
+          LOCATE_SUM := NUL;
+        end;
+      if LOCATE_SUM = NUL then                                     {it doesn't exist yet}
+         begin
+            if NUM_POLYS < MAXNAMES then                         {there is room for more names in name_list}
+               begin
+                  New_List (SUM, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+                  Add_To_Sum (LOCATE_POLY1, LISTS, NEXT_AVAIL);
+                  Add_To_Sum (LOCATE_POLY2, LISTS, NEXT_AVAIL);
+                  LISTS [LOCATE_POLY2].NEXT := NUL;
+               end
+            else                                                 {num_polys = maxnames, there is no more room in name_list!}
+              writeln ('ERROR...Out of room in Name_List!');
+         end
+       else
+         Object_In_Source;
+    end;  {Add}
+
+  Procedure Order_Poly (    NAME      : char;           {name of poly to be ordered}
+                        var LISTS     : list_type;      {linked list containing poly}
+                        var NEXT_AVAIL: list_pointer;   {the next available node pointer}
+                            NAME_LIST : name_list_type; {the list of names}
+                            NUM_POLYS : integer);       {the number of name in name list}
+
+    var    swaps
+           : boolean;
+
+           LOCATION,
+           CURRENT,
+           TEMP,
+           LAST
+           : list_pointer;
+
+                        Procedure Swap (var LISTS : list_type;
+                                    LOC1  : list_pointer;
+                                    LOC2  : list_pointer);
+
+                          var    TEMP_COEFF : real;
+                                 TEMP_POWER : integer;
+
+                          begin
+                            TEMP_COEFF := LISTS [LOC1].COEFF;
+                            TEMP_POWER := LISTS [LOC1].POWER;
+                            LISTS [LOC1].COEFF := LISTS [LOC2].COEFF;
+                            LISTS [LOC1].POWER := LISTS [LOC2].POWER;
+                            LISTS [LOC2].COEFF := TEMP_COEFF;
+                            LISTS [LOC2].POWER := TEMP_POWER;
+                          end;  {Swap}
+
+
+    begin
+      LOCATION := Search (NAME, NAME_LIST, NUM_POLYS);
+      while (LISTS [LOCATION].NEXT <> NUL) do
+        begin
+          CURRENT := Search (NAME, NAME_LIST, NUM_POLYS);
+          LAST := CURRENT;
+          while (CURRENT <> NUL) do
+            begin
+              if (LISTS[LOCATION].POWER = LISTS[CURRENT].POWER)
+                 and (LOCATION <> CURRENT) then
+                begin
+                  LISTS[LOCATION].COEFF := LISTS [LOCATION].COEFF + LISTS [CURRENT].COEFF;
+                  LISTS [CURRENT].COEFF := 0;
+                  LISTS [CURRENT].POWER := 0;
+                  TEMP := LISTS [LAST].NEXT;
+                  LISTS [LAST].NEXT := LISTS [CURRENT].NEXT;
+                  LISTS [CURRENT].NEXT := NEXT_AVAIL;
+                  NEXT_AVAIL := TEMP;
+                  CURRENT := LAST;
+                end;
+              LAST := CURRENT;
+              CURRENT := LISTS [CURRENT].NEXT;
+            end;
+          LOCATION := LISTS [LOCATION].NEXT;
+        end;
+      LOCATION := Search (NAME, NAME_LIST, NUM_POLYS);
+      swaps := true;
+      While (LISTS [LOCATION].NEXT <> NUL) and (swaps) do
+        begin
+          CURRENT := LOCATION;
+          swaps := false;
+          repeat
+            if LISTS [CURRENT].POWER < LISTS [LISTS[CURRENT].NEXT].POWER then
+              begin
+                Swap (LISTS, CURRENT, LISTS [CURRENT].NEXT);
+                swaps := true;
+              end;
+            CURRENT := LISTS [CURRENT].NEXT
+          until (LISTS [CURRENT].NEXT = NUL);
+          if not swaps then
+            LOCATION := LISTS [LOCATION].NEXT;
+        end;
+end;  {Order}
+
+
+  Procedure Print_Poly (NAME      : char;
+                        LISTS     : list_type;
+                        NAME_LIST : name_list_type;
+                        NUM_POLYS : integer);
+    var    LOCATION
+           : list_pointer;
+
+    begin
+      LOCATION := Search (NAME, NAME_LIST, NUM_POLYS);
+      if LOCATION = NUL then
+         writeln ('Polynomial ', NAME, ' was not found, I assume its value is zero (0).')
+      else
+        begin
+          write ('Polynomial ', NAME, ' =');
+          repeat
+            with LISTS [LOCATION] do
+              begin
+                if COEFF >= 0 then
+                  write (' + ')
+                else
+                  write (' - ');
+                Write (abs (COEFF) : 0:2, NAME, '^', POWER : 0);
+              end;
+            LOCATION := LISTS [LOCATION].NEXT;
+          until LOCATION = NUL;
+        end;
+      writeln;
+    end;
+
+  Procedure Process_Commands (    COMMAND    : char;             {the command character}
+                              var LISTS      : list_type;        {the linked list}
+                              var NEXT_AVAIL : list_pointer;     {the next available node}
+                              var NAME_LIST  : name_list_type;   {the list of names}
+                              var NUM_POLYS  : integer);         {The number of names in namelist}
+
+    var  DUMMY,
+         BAD_COMMAND,
+         NAME,
+         SUM_POLY1,
+         SUM_POLY2
+         : char;
+
+         NUM
+         : integer;
+
+    begin
+      case COMMAND of
+        'C' : begin
+                readln (DUMMY, NAME, DUMMY, NUM);
+                writeln ('Creating poly ', NAME, '.');
+                Create_Poly (NAME, NUM, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+              end;
+        'D' : begin
+                readln (DUMMY, NAME, DUMMY);
+                writeln ('Deleting poly ', NAME, '.');
+                Del_Poly (NAME, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+              end;
+        'A' : begin
+                readln (DUMMY, NAME, DUMMY, SUM_POLY1, DUMMY, SUM_POLY2, DUMMY);
+                writeln ('Adding-> ', NAME, ' = ', SUM_POLY1, ' + ', SUM_POLY2, '.');
+                Add (NAME, SUM_POLY1, SUM_POLY2, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+              end;
+        'P' : begin
+                readln (DUMMY, NAME, DUMMY);
+                writeln ('Ordering poly ', NAME, ' for printing.');
+                Order_Poly (NAME, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+                Print_Poly  (NAME, LISTS, NAME_LIST, NUM_POLYS);
+              end;
+        'O' : begin
+                readln (DUMMY, NAME, DUMMY);
+                writeln ('Ordering and collecting like terms in poly ', NAME, '.');
+                Order_Poly (NAME, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+              end
+       else
+          begin
+            readln (BAD_COMMAND);
+            writeln (COMMAND, ' Bad Command:', BAD_COMMAND);
+          end;
+      end; {case}
+    end; {Process_Commands}
+
+{=====================================================================================================================}
+{                                                   Main Program!                                                     }
+{=====================================================================================================================}
+
+begin {main program}
+  NUM_POLYS := 0;
+  Make_Avail (LISTS, NEXT_AVAIL);
+  New_Names (NAME_LIST);
+  read (COMMAND);
+  while COMMAND <> 'E' do
+    begin
+      Process_Commands (COMMAND, LISTS, NEXT_AVAIL, NAME_LIST, NUM_POLYS);
+      read (COMMAND);
+      writeln;
+      writeln ('--------------------------------------------------------------');
+      writeln;
+    end;
+  writeln ('done!');
+  writeln;
+end.  {MAIN}
+

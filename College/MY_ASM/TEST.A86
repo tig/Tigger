@@ -1,0 +1,35 @@
+Code SEGMENT
+JMP MAIN
+
+enter_prompt      DB   'Enter characters: ',0
+character_Prompt  DB   'Character code: ',0
+characters_read_prompt Db 'Number of characters read: ',0
+
+header_line_no db 0
+disk_drive_no  db 0
+header_part_1  db 0
+header_part_2 db 0
+prompt_line_no db 0
+current_sector_no dw 0
+
+
+MAIN:
+         LEA       DX,enter_prompt
+         CALL      Write_String
+         CALL      Read_byte
+         CALL      SEND_CRLF
+         LEA       DX,CHARACTER_PROMPT
+         CALL      WRITE_STRING
+         MOV       DL,AL
+         CALL      WRITE_HEX
+         CALL      SEND_CRLF
+         LEA       DX,CHARACTERS_READ_PROMPT
+         CALL      WRITE_STRING
+         MOV       DL,AH
+         XOR       DH,DH
+         CALL      WRITE_DECIMAL
+         CALL      SEND_CRLF
+         INT       20h
+
+code ends
+

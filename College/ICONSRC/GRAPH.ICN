@@ -1,0 +1,89 @@
+# graph.icn
+#
+# CSc 450 - assgn10
+#
+# Assumptions:
+#  -  Vertex names are single characters.
+#  -  The closure is made starting on the vertex given 
+#     as the first vertex on an input line.
+#
+procedure main()
+  while write("Input: ", line := read ()) do
+  {
+    g1 := tgraph(line)
+    g2 := copygraph(g1)
+    write ("Closure of g1:")
+    every write (image(g1[!closure(g1[line[1]])]))
+    write ("Closure of g2:")
+    every write (image(g2[!closure(g2[line[1]])]))
+  }
+end
+
+
+procedure tgraph(sgraph)
+  g := table () 
+  every arc := genarcs(sgraph) do
+  {
+     /g[arc[1]] := set()
+     /g[g[arc[1]]] := arc[1]
+     /g[arc[4]] := set()
+     /g[g[arc[4]]] := arc[4]
+     insert(g[arc[1]], g[arc[4]])
+  }
+  return g
+end
+
+procedure genarcs(s)
+  s ?
+  {
+    while tab(upto(~';')) do
+    {
+      arc := tab(many(~';'))
+      suspend arc
+    }
+  }
+end
+
+procedure copygraph(g)
+  local g1
+
+  g1 := table()
+  every l := !g do
+    if type(l) == "string" then
+    {
+      /g1[l] := set()
+      /g1[g1[l]] := l
+      every l2 := g[(!g[l])] do
+      {
+        /g1[l2] := set()
+        /g1[g1[l2]] := l2
+        insert (g1[l], g1[l2]) 
+      }
+    }
+  return g1
+end
+
+
+procedure closure(n, S)
+  local n1
+
+  /S := set()
+  insert (S, n)
+  every n1 := !n do
+    member(S, n1) | closure(n1, S)
+  return S
+end
+
+# writegraph is for debugging
+
+procedure writegraph(g)
+  every l := !g do
+    if type(l) == "string" then
+    {
+      writes (image(l), " = ")
+      every writes(image(g[(!g[l])])) do
+        writes (", ")
+      write()
+    }
+end
+

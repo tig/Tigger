@@ -1,0 +1,61 @@
+# chaos.icn --------------------------------------------------------------
+#
+# Generates the chaotic seqence defined as:
+#       q(i) = 1                        i = 1,2
+#       q(i) = q(i-q(i-1))+q(i-q(i-2))  i > 2
+#       q(i)                            undefined otherwise
+#   
+procedure main ()
+  local maxline                 # maximum line length
+  local fieldsize               # size of field for output
+  local i
+
+  fieldsize := 5
+  maxline := 60
+
+  every (i := 1 to 500) do
+    output (q(i), fieldsize, maxline)
+
+  output ("", 0, 0)             # finish output
+end
+
+
+# q(i) -------------------------------------------------------------------
+# Tabulation of the chaotic sequence q(i)
+procedure q(i)
+  local  j
+  static qmem
+
+  initial
+  {  
+    qmem := table ()
+    qmem[1] := qmem[2] := 1
+  }
+
+  if j := \qmem[i] then 
+    return j
+  else
+    return qmem[i] := q(i - q(i - 1)) + q(i - q(i - 2))
+end
+
+
+# output (x, size, max) ---------------------------------------------------
+# Writes lines of x's if fields of size size separated by commas of length 
+# no longer than max.
+procedure output(x, size, max)
+  local  temp
+  static line
+
+  initial line := ""
+
+  temp := right(string(x), size) || ","
+
+  if *(line || temp) < max then
+    line ||:= temp
+  else
+  {
+    write (line)        # if you don't want commas at ends of lines use
+    line := temp        # write (line[1:*line])
+  }
+end
+    

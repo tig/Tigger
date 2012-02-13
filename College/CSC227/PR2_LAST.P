@@ -1,0 +1,448 @@
+{.PO7}
+
+{===========================================================================}
+{                     CSc 227 Programming Assignment #2                     }
+{                            Charles E. Kindel                              }
+{                                S90498449                                  }
+{                            Feburary 5, 1987                               }
+{---------------------------------------------------------------------------}
+{                                                                           }
+{                Infix to Postfix equation conversion program               }
+{                                                                           }
+{===========================================================================}
+
+
+Program CSc_227_2 (input, output);
+
+  Const   MaxStack  =   5;              Space     = ' ';
+          SemiColon = ';';              Exponent  = '$';
+          Multiply  = '*';              Division  = '/';
+          Addition  = '+';              Subtract  = '-';
+          OpenParn  = '(';              CloseParn = ')';
+          AmperSand = '&';
+
+  type    eletype    = char;                                       {the type of element in the STACK}
+          eqstring   = record                                      {String to hold either infix or postfix}
+                         LENGTH   : integer;
+                         CHARS    : packed array [1..51] of char;
+                       end;
+          stacktype  = record                                      {type of the stack}
+                         TOP      : 0..MaxStack;
+                         ELEMENTS : array [1..MaxStack] of eletype;
+                       end;
+          errortype  = (NoErr, StkErr, ParErr, AdjErr);  {Scalar ERROR type:  }
+                                                         { NoErr - no error   }
+                                                         { StkErr - stack overflow}
+                                                         { ParErr - mismatched parens}
+                                                         { AdjErr - adjacent opeators/ands}
+          opertype   = (neither, oper_and, oper_ator);
+
+   var    INFIX,                                         {the infix eqation}
+          POSTFIX                                        {the postfix equation}
+          : eqstring;
+
+          ERROR                                          {errors, if any}
+          : errortype;
+
+          i
+          : integer;
+
+          ENDOFFILE                                      {end of file flag}
+          : boolean;
+
+
+  {----------------------------------------------------------------------------}
+  {                              Stack Routines                                }
+  {                 These routines should be self explanitory                  }
+  {----------------------------------------------------------------------------}
+        Procedure Clear_Stack (var STACK : stacktype);
+          begin
+            STACK.TOP := 0;
+          end;
+
+        Function Empty (STACK : stacktype) : boolean;
+          begin
+            Empty := (STACK.TOP = 0);
+          end;
+
+        Function Full (STACK : stacktype) : boolean;
+          begin
+            Full := (STACK.TOP = MaxStack);
+          end;
+
+        Procedure Push (var STACK : stacktype;
+                            NEWELEMENT : eletype);
+          begin
+            STACK.TOP := STACK.TOP + 1;
+            STACK.ELEMENTS [STACK.TOP] := NEWELEMENT;
+          end;
+
+        Procedure Pop (var STACK         : stacktype;
+                       var POPPEDELEMENT : eletype);
+          begin
+            POPPEDELEMENT := STACK.ELEMENTS [STACK.TOP];
+            STACK.TOP := STACK.TOP - 1;
+          end;
+
+        Function Top_Stack (STACK : stacktype) : eletype;
+          begin
+            Top_Stack := STACK.ELEMENTS [STACK.TOP];
+          end;
+
+  {---------------------------------------------------------------------------}
+  {                          Infix/Postfix Routines                           }
+  {---------------------------------------------------------------------------}
+  { Get_Infix:                                                                }
+  {            Reads one line of the data file, returning an infix equation.  }
+  {             - strips all extra spaces and following semi-colon            }
+  {             - returns whether the end of file has been reached or not     }
+  {---------------------------------------------------------------------------}
+  Procedure Get_Infix (var INFIX     : eqstring; {equation as it is read from the input file}
+                       var ENDOFFILE : boolean); {flag for testing for end of file}
+
+    var   CHARACTER
+          : char;
+
+    begin {Get_Infix}
+      ENDOFFILE := false;                                        {assume we're not at the end.}
+      INFIX.LENGTH := 0;                                         {clear Infix}
+      repeat                                                     {repeat until we get a semicolon}
+        read (CHARACTER);
+        if CHARACTER <> Space then                               {strip spaces}
+          begin
+            INFIX.LENGTH := INFIX.LENGTH + 1;
+            INFIX.CHARS [INFIX.LENGTH] := CHARACTER;
+          end;
+      until CHARACTER = Semicolon;
+      readln;
+      INFIX.LENGTH := INFIX.LENGTH - 1;                          {Get rid of semicolon}
+      ENDOFFILE := (INFIX.CHARS [1] = Ampersand);                {check for end of file}
+    end; {Get_Infix}
+
+  {---------------------------------------------------------------------------}
+  { Convert_to_Postfix:                                                       }
+  {            Gets an infix equation from the calling routine and makes one  }
+  {            pass from left to right, examining each character and          }
+  {            performing pushes and pops of the stack (Assign).              }
+  {             - several sub procedures:                                     }
+  {                       Append : used to append a character to the end of   }
+  {                                the postfix.                               }
+  {                       Type of: function returns the type of character it  }
+  {                                is sent (ie. Operator or Operand)          }
+  {                       Assign : determines wheter the character should be  }
+  {                                pushed, popped, or appended to the postfix }
+  {                                Deals with the heirarchy of opeators       }
+  {                       Pop_Push : pops the stack, appends the popped       }
+  {                                  character to postfix, and the pushes the }
+  {                                  next operator onto the stack             }
+  {---------------------------------------------------------------------------}
+  Procedure Convert_to_Postfix (    INFIX   : eqstring;   {String to be converted to postfix}
+                                var POSTFIX : eqstring;   {Resultant string in POSTFIX form}
+                                var ERROR   : errortype); {error, if any}
+
+    var    i,
+           PARENS            {The number of open parens on the stack}
+           : integer;
+
+           OPSTACK           {Operator stack}
+           : stacktype;
+
+           CHARACTER,        {character being examined}
+           OLD_CHARACTER,    {last char...used to check for adjacent operators/ands}
+           TOPOSTFIX         {this character is going to be appended to postfix}
+           : char;
+
+
+            {==================================================}
+            {Append is a nested procedure of Convert_to_Postfix}
+            {==================================================}
+
+            Procedure Append (var APPEND_STRING   : eqstring; {String to have a character appended to}
+                                  TOAPPEND_STRING : char);    {character to be appended to APPEND_STRING}
+              begin {Append}
+                APPEND_STRING.LENGTH := APPEND_STRING.LENGTH + 1;
+                APPEND_STRING.CHARS [APPEND_STRING.LENGTH] := TOAPPEND_STRING;
+              end; {Append}
+
+
+            {==================================================}
+            {Type_of is a nested function of Convert_To_Postfix}
+            {  -Type_of determines wheter a char. is an operand}
+            {   or an operator or neither                      }
+            {==================================================}
+
+            Function Type_of (CHARACTER : char) : opertype;       {Character is the character to be tested}
+              begin
+                if CHARACTER in ['a'..'z'] then                   {its an operand}
+                  Type_of := Oper_and
+                else
+                  if CHARACTER in ['$', '*','/', '-', '+'] then   {its an operator}
+                    Type_of := Oper_ator
+                  else Type_of := Neither;                        {otherwise it's neither}
+              end;
+
+
+            {==================================================}
+            {Assign is a nested procedure of Convert_to_Postfix}
+            {   -Assign takes a character and assigns it to    }
+            {     1 - the stack of operators.                  }
+            {     2 - the end of the postfix string.           }
+            {  or 3 - pops the stack, appends to postfix, then }
+            {         pushes the original char. to the stack.  }
+            {    it uses operator heirarchy to determine what  }
+            {    needs to be DONE.                             }
+            {==================================================}
+
+            Procedure Assign (    CHARACTER : char;          {character to be assigned}
+                              var POSTFIX   : eqstring;      {postfix equation}
+                              var OPSTACK   : stacktype;     {the stack}
+                              var PARENS    : integer;       {how many parenthesis are on the stack?}
+                              var ERROR     : errortype);    {is there an error?}
+
+              var   TOPOSTFIX               {character to be appended to postfix}
+                    : char;
+
+                    DONE                    {utility flag}
+                    : boolean;
+
+
+                       {==================================================}
+                       {Pop_Push is a nested procedure within Assign.     }
+                       {  -Pop_Push pops the stack, appends the popped    }
+                       {   character to the Postfix string, then pushes   }
+                       {   a new character onto the stack.                }
+                       {==================================================}
+
+                       Procedure Pop_Push (var OPSTACK   : stacktype;  {the stack}
+                                               CHARACTER : char;       {character to be pushed}
+                                           var POSTFIX   : eqstring;   {the postfix string}
+                                           var ERROR     : errortype); {were there any errors?}
+
+                         var  TOPOSTFIX
+                              : char;
+
+                         begin {Pop_Push}
+                           Pop (OPSTACK, TOPOSTFIX);
+                           Append (POSTFIX, TOPOSTFIX);
+                           Push (OPSTACK, CHARACTER);
+                         end; {Pop_Push}
+
+                       {==================================================}
+                       {Open_Parn is a nested procedure within Assign.    }
+                       {   -Open_Parn handles open parenthesis.           }
+                       {==================================================}
+                       Procedure Open_Parn (var OPSTACK : stacktype;  {The stack}
+                                            var PARENS  : integer;    {number of open parenthisis on the stack}
+                                            var ERROR   : errortype); {were there any errors?}
+                         begin {Open_Parn}
+                           if (not Full (OPSTACK)) then
+                                begin
+                                  Push (OPSTACK, OpenParn);
+                                  PARENS := PARENS + 1;
+                                end
+                           else ERROR := StkErr;
+                         end; {Open_Parn}
+
+                       {==================================================}
+                       {Close_Parn is a nested procedure within Assign.   }
+                       {   -Close_Parn handels closed parenthesis.        }
+                       {==================================================}
+                       Procedure Close_Parn (var POSTFIX : eqstring;   {the postfix string}
+                                             var OPSTACK : stacktype;  {the stack}
+                                             var PARENS  : integer;    {the number of open parens on the stack}
+                                             var ERROR   : errortype); {were there any errors?}
+
+                         begin {Close_Parn}
+                           if PARENS = 0 then
+                                ERROR := ParErr
+                              else
+                                begin
+                                  DONE := false;
+                                  while (not Empty (OPSTACK)) and (not DONE) do
+                                    begin
+                                      Pop (OPSTACK, TOPOSTFIX);
+                                      if TOPOSTFIX = OpenParn then
+                                        begin
+                                          PARENS := PARENS - 1;
+                                          DONE := true
+                                        end {if TOPOSTFIX}
+                                      else Append (POSTFIX, TOPOSTFIX);
+                                    end {while}
+                                end;
+                         end; {Close_Parn}
+
+                       {==================================================}
+                       {Expone is a nested procedure within Assign.       }
+                       {    - Expone handles exponents                    }
+                       {==================================================}
+                       Procedure Expone (Var POSTFIX : eqstring;   {postfix equation}
+                                         Var OPSTACK : stacktype;  {The Stack}
+                                         Var ERROR   : errortype); {stack errors?}
+
+                         begin {Expone}
+                           if (not Empty (OPSTACK)) then
+                             if  (Top_Stack (OPSTACK) = Exponent) then
+                               Append (POSTFIX, Exponent)
+                             else  {the top of the stack is not an exponent}
+                               if (not Full (OPSTACK)) then
+                                 Push (OPSTACK, Exponent)
+                               else ERROR := StkErr
+                           else  {the stack is empty}
+                             Push (OPSTACK, Exponent);
+                         end; {Expone}
+
+
+                       {==================================================}
+                       {Mult_Div is a nested procedure within Assign      }
+                       {    - Mult_Div handles multiplication and division}
+                       {      operators.                                  }
+                       {==================================================}
+                       Procedure Mult_Div (    CHARACTER : char;       {either * or /}
+                                           var POSTFIX   : eqstring;   {the postfix equation}
+                                           var OPSTACK   : stacktype;  {the stack}
+                                           var ERROR     : errortype); {any errors?}
+
+                         begin {Mult_Div}
+                           if Empty (OPSTACK) then
+                             Push (OPSTACK, CHARACTER)
+                           else
+                             if (Top_Stack (OPSTACK) = Exponent) then
+                               Pop_Push (OPSTACK, CHARACTER, POSTFIX, ERROR)
+                             else
+                               if (not Full (OPSTACK)) then
+                                 Push (OPSTACK, CHARACTER)
+                               else
+                                 ERROR := StkErr;
+                         end; {Mult_Div}
+
+                       {==================================================}
+                       {Add_Sub is a nested procedure within Assign.      }
+                       {   -Add_Sub handles addition and subtraction      }
+                       {    operands.                                     }
+                       {==================================================}
+                       Procedure Add_Sub (    CHARACTER : char;       {either + or -}
+                                          var POSTFIX   : eqstring;   {postfix equation}
+                                          var OPSTACK   : stacktype;  {The stack}
+                                          var ERROR     : errortype); {errors?}
+
+                         begin {Add_Sub}
+                           if Empty (OPSTACK) then
+                              Push (OPSTACK, CHARACTER)
+                            else
+                              if (Top_Stack (OPSTACK) = Multiply) or
+                                 (Top_Stack (OPSTACK) = Division) or
+                                 (Top_Stack (OPSTACK) = Exponent) then
+                                Pop_Push (OPSTACK, CHARACTER, POSTFIX, ERROR)
+                              else
+                                if (not Full (OPSTACK)) then
+                                  Push (OPSTACK, CHARACTER)
+                                else
+                                  ERROR := StkErr;
+                         end; {Add_Sub}
+
+
+              begin {Assign}
+                case CHARACTER of
+
+                  OpenParn  : Open_Parn (OPSTACK, PARENS, ERROR);
+
+                  CloseParn : Close_Parn (POSTFIX, OPSTACK, PARENS, ERROR);
+
+                  Exponent  : Expone (POSTFIX, OPSTACK, ERROR);
+
+                  Multiply,
+                  Division  : Mult_Div (CHARACTER, POSTFIX, OPSTACK, ERROR);
+
+                  Addition,
+                  Subtract  : Add_Sub (CHARACTER, POSTFIX, OPSTACK, ERROR);
+
+                  'a'..'z'  : Append (POSTFIX, CHARACTER);
+
+                end {Case}
+              end; {assign}
+
+
+    begin {Convert_To_Postfix}
+      Clear_Stack (OPSTACK);
+      PARENS := 0;
+      ERROR := NoErr;
+      OLD_CHARACTER := ' ';
+      For i := 1 to INFIX.LENGTH do
+        if ERROR = NoErr then
+          begin
+            CHARACTER := INFIX.CHARS [i];
+            Assign (CHARACTER, POSTFIX, OPSTACK, PARENS, ERROR);
+            if (Type_of (CHARACTER) = Type_of (OLD_CHARACTER)) and (not (CHARACTER in [')', '(']))
+            then
+              ERROR := AdjErr;
+            OLD_CHARACTER := CHARACTER;
+          end;
+      while (not Empty (OPSTACK)) do
+        if ERROR = NoErr then
+          begin
+            Pop (OPSTACK, TOPOSTFIX);
+            Append (POSTFIX, TOPOSTFIX);
+            if (TOPOSTFIX = CloseParn) or (PARENS <> 0) then
+              ERROR := ParErr;
+          end
+        else
+          Clear_Stack (OPSTACK);
+    end;    {Convert_to_Postfix}
+
+
+  {---------------------------------------------------------------------------}
+  { Write_Postfix:                                                            }
+  {            Outputs Postfix if no errors were found, otherwise it outputs  }
+  {            the error according to ERROR.                                  }
+  {---------------------------------------------------------------------------}
+  Procedure Write_Postfix (PostFix : eqstring;    {postfix string to be outputed}
+                           ERROR   : errortype);  {if there is an error in the variable then dont print}
+
+    begin
+      if ERROR = NoErr then                   {if there were no errors then print the postfix}
+        begin
+          for i := 1 to POSTFIX.length do
+            write (POSTFIX.CHARS [i]);
+          writeln;
+        end
+      else                                    {there was an error}
+        begin
+          writeln;
+            case ERROR of
+              StkErr : Writeln ('ERROR...stack overflow!');
+              ParErr : Writeln ('ERROR...mismatched parentheses!');
+              AdjErr : Writeln ('ERROR...adjacent operands or operators!');
+            end; {case}
+          end {else}
+    end;
+
+
+{###########################################################################}
+{                             Main Program                                  }
+{###########################################################################}
+
+Begin  {Main Program}
+  Writeln ('==========  Infix to Postfix conversion program  =============');
+  Writeln ('                 By Charles E. Kindel                         ');
+  Writeln ('--------------------------------------------------------------');
+  Get_Infix (INFIX, ENDOFFILE);
+  While not ENDOFFILE do
+    begin
+      POSTFIX.LENGTH := 0;
+      writeln;
+      Write ('The Postfix equivalent of ');
+      for i := 1 to INFIX.LENGTH do
+        write (INFIX.CHARS [i]);
+      write (' is ');
+      Convert_to_Postfix (INFIX, POSTFIX, ERROR);
+      Write_Postfix (POSTFIX, ERROR);
+      Get_Infix (INFIX, ENDOFFILE);
+    end; {while not ENDOFFILE}
+  Writeln;
+  Writeln ('======================  End of Output  =======================');
+end.    {Main Program}
+
+{###########################################################################}
+{                              The End!                                     }
+{###########################################################################}
+

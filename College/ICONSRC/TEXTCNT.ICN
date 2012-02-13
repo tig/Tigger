@@ -1,0 +1,48 @@
+# textcnt.icn
+# Copyright (C) 1989, Charles E. Kindel, Jr.
+#
+# Counts number of lines, words, and characters.
+#   - Words are sequences of upper and lower case letters.
+#   - There is 1 invisible end of line character which is counted.
+#   - There is 1 invisible end of file character which is counted.
+# Finds shortest and longest lines.
+# 
+procedure main()
+{
+  letters := &ucase++&lcase
+  eoln    := 1    # Unix has one end of line character
+  eof     := 1    # MS-DOS has an end of file character
+  words   := 0
+  chars   := eof
+  lines   := 0
+  min     := 0
+  max     := 0
+
+  while line := read() do
+  {
+    line ? 
+      while tab(upto(letters)) do
+      {
+        if not (word := tab(upto(~letters))) then
+          word := tab(0)   # this handles words that end at end of line.
+        words +:= 1 
+      }
+
+    chars +:= (*line + eoln)
+
+    max <:= (*line + eoln)
+
+    if min = 0 then
+      min := (*line + eoln)
+    else
+      min >:= (*line + eoln)
+
+    lines +:= 1
+  }
+  write ("        Longest line: ", max)
+  write ("       Shortest line: ", min)
+  write ("Number of characters: ", chars)
+  write ("     Number of words: ", words)
+  write ("     Number of lines: ", lines)
+}
+end

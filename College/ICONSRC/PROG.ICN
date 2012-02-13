@@ -1,0 +1,6 @@
+# Copyright (c) 1989, Charles E. Kindel, Jr.
+procedure main ()
+  write ("procedure main ()\n  {\n  }\nend")
+end
+
+  

@@ -1,0 +1,15 @@
+procedure main()
+  while s1 := read() do
+  {
+    s2 := read()
+    s3 := read()
+    write (common (s1,s2,s3))
+  }
+end
+
+procedure common(s1,s2,s3)
+  return find (s1,s3) = find (s2,s3)
+end
+
+    
+

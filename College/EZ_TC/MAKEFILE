@@ -1,0 +1,34 @@
+i = c:\language\turboc\ez
+option = -c -G -ms- -i8 -ID: -LD:
+d = -DTURBOC -DMSDOS -DLINT_ARGS
+
+ez.exe: ez.obj cmnd.obj input.obj file.obj disp.obj buf.obj move.obj term.obj xsys.obj
+    d:tlink D:c0s ez cmnd input file disp buf move term xsys \
+    bios, ez,,D:cs
+
+ez.obj: ez.c $(i)\disp.h $(i)\buf.h $(i)\file.h $(i)\input.h
+    d:tcc $(d) $(option) ez.c
+
+cmnd.obj: cmnd.c $(i)\cmnd.h $(i)\move.h $(i)\buf.h $(i)\file.h $(i)\input.h $(i)\disp.h
+    d:tcc $(d) $(option) cmnd.c
+
+input.obj: input.c $(i)\input.h $(i)\xsys.h
+    d:tcc $(d) $(option) input.c
+
+file.obj: file.c $(i)\file.h $(i)\buf.h
+    d:tcc $(d) $(option) file.c
+
+disp.obj: disp.c $(i)\disp.h $(i)\buf.h $(i)\term.h
+    d:tcc $(d) $(option) disp.c
+
+buf.obj: buf.c $(i)\buf.h $(i)\move.h $(i)\xsys.h $(i)\disp.h
+    d:tcc $(d) $(option) buf.c
+
+move.obj: move.c
+    d:tcc $(d) $(option) move.c
+
+term.obj: term.c $(i)\term.h $(i)\xsys.h
+    d:tcc $(d) $(option) term.c
+
+xsys.obj: xsys.c $(i)\xsys.h d:bios.h
+    d:tcc $(d) $(option) xsys.c

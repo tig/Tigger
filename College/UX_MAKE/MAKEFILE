@@ -1,0 +1,48 @@
+#----------------------------------------------------------------------------#
+#                                                                            #
+#                         makefile for <MAKE>                                #
+#                                                                            #
+#          Charles E. Kindel, (c) KindelCo Software Systems 1987             #
+#                                                                            #
+#   macros: $(h) : include files                                             #
+#           $(option) : compiler options                                     #
+#                                 					     #
+#   utilities:   							     #
+#           clean : deletes all object files.                                #
+#									     #
+#----------------------------------------------------------------------------#
+
+h = include/make.h include/sym.h include/typedef.h include/input.h include/mac.h include/graph.h\
+ include/update.h include/xsys.h 
+option = -c -g 
+
+make: make.o input.o sym.o mac.o graph.o update.o xsys.o
+	cc -o make make.o input.o sym.o mac.o graph.o update.o xsys.o
+
+make.o: make.c $(h) 
+	cc $(option) make.c
+
+input.o: input.c $(h)
+	cc $(option) input.c
+
+sym.o: sym.c  $(h)
+	cc $(option) sym.c
+
+mac.o: mac.c $(h)
+	cc $(option) mac.c
+
+graph.o: graph.c $(h)
+	cc $(option) graph.c
+
+update.o: update.c $(h)
+	cc $(option) update.c
+
+xsys.o: xsys.c $(h)
+	cc $(option) xsys.c
+
+clean: 
+	rm *.o
+
+#----------------------------------------------------------------------------#
+# End of makefile for <make>						     #
+#----------------------------------------------------------------------------#

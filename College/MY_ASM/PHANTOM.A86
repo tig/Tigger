@@ -1,0 +1,182 @@
+;--------------------------------------------------------------------------;
+; Phantom                                                                  ;
+;--------------------------------------------------------------------------;
+Code SEGMENT
+
+;--------------------------------------------------------------------------;
+; This procedure moves the real cursor to the postition of the phantom     ;
+; cursor in the hex window                                                 ;
+;                                                                          ;
+; Uses:            Goto_XY                                                 ;
+; Reads:           Lines_Before_Sector, Phantom_Cursor_X, Phantom_CUrsor_Y ;
+;--------------------------------------------------------------------------;
+Mov_To_Hex_Position PROC NEAR
+         PUSH      AX,CX,DX
+         MOV       DH,Lines_Before_Sector  ;Find row of phantom (0,0)
+         ADD       DH,2                ;Plus row of hex and horizontal bar
+         ADD       DH,Phantom_Cursor_Y ;DH = Row of phantom cursor
+         MOV       DL,8                ;Indent on left side
+         MOV       CL,3                ;Each column uses 3 characters, so
+         MOV       AL,Phantom_Cursor_X ; wemust multiply cursor_X by 3
+         MUL       CL
+         ADD       DL,AL               ;And add to the indent, to get column
+         CALL      Goto_XY             ; for phantom cursor
+         POP       DX,CX,AX
+         RET
+Mov_To_Hex_Position ENDP
+
+;--------------------------------------------------------------------------;
+; This procedure moves the real cursor to the beginning of the phantom     ;
+; cursor in the ASCII window.                                              ;
+;                                                                          ;
+; Uses:            Goto_XY                                                 ;
+; Reads:           Lines_Before_Sector, Phantom_Cursor_X, Phantom_Cursor_Y ;
+;--------------------------------------------------------------------------;
+Mov_To_ASCII_Position PROC NEAR
+         PUSH      AX,DX
+         MOV       DH,Lines_before_Sector ;Find row of phantom
+         ADD       DH,2                ;Plus row of hex and horizontal bar
+         ADD       DH,Phantom_Cursor_Y ;DH = row of phantom cursor
+         MOV       DL,59               ;Indent on left side
+         ADD       DL,Phantom_Cursor_X ;Add CURSOR_X to get X postion
+         CALL      Goto_XY             ; for phantom cursor
+         POP       DX,AX
+         RET
+Mov_To_ASCII_Position ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure saves the position of the real cursor in the two          ;
+; variables REAL_CURSOR_Xand REAL_CUROSR_Y                                 ;
+;                                                                          ;
+; Writes:          REAL_CURSOR_X REAL_CURSOR_Y                             ;
+;--------------------------------------------------------------------------;
+Save_Real_Cursor PROC NEAR
+         PUSH      AX,BX,CX,DX
+         MOV       AH,3                ;Read cursor position
+         XOR       BH,BH               ; on page 0
+         INT       10h                 ;and return in DL,DH
+         MOV       Real_Cursor_Y,DL
+         MOV       Real_Cursor_X,DH
+         POP       DX,CX,BX,AX
+         RET
+Save_Real_Cursor ENDP
+
+
+
+;--------------------------------------------------------------------------;
+; This procedure restores the real cursor to its old position, saved in    ;
+; Real_Cursor_X, and Y.                                                    ;
+;                                                                          ;
+; Uses:            Goto_XY                                                 ;
+; Reads:           Real_Cursor_X, Real_Cursor_Y                            ;
+;--------------------------------------------------------------------------;
+Restore_Real_Cursor PROC NEAR
+         PUSH      DX
+         MOV       DL,Real_Cursor_Y
+         MOV       DH,Real_Cursor_X
+         CALL      Goto_XY
+         POP       DX
+         RET
+Restor_Real_Cursor ENDP
+
+;--------------------------------------------------------------------------;
+; This procedure usese Cursor_X and Cursor_Y, through MOV_TO_..., as the   ;
+; coordinates for the phantom cursor.  Write_Phantom writes this phantom   ;
+; cursor.                                                                  ;
+;                                                                          ;
+; Uses:            Write_Attribute_N_Times, Save_Real_Cursor               ;
+;                  Restor_Real_Cursor, Mov_To_Hex_Position                 ;
+;                  MOV_to_ASCII_Position                                   ;
+;--------------------------------------------------------------------------;
+Write_Phantom PROC NEAR
+         PUSH      CX,DX
+         CALL      Save_Real_Cursor
+         CALL      Mov_To_Hex_Position ;Coord. of cursor in hex wind.
+         MOV       CX,4                ;Make phantom cursor 4 chars. long
+         MOV       DL,70h
+         CALL      Write_Attribute_N_Times
+         CALL      MOV_To_ASCII_Position ;Coord. of cursor in ASCII window
+         MOV       CX,1                ;one char wide.
+         CALL      Write_Attribute_N_Times
+         CALL      Restore_Real_Cursor
+         POP       DX,CX
+         RET
+Write_Phantom ENDP
+
+
+;--------------------------------------------------------------------------;
+; THis procedure erases the phantom cursor, jsut the opposite of           ;
+; Write_Phantom                                                            ;
+;                                                                          ;
+; Uses:            Write_Attribute_N_Times, Save_Real_Cursor               ;
+;                  Restor_Real_Cursor, Mov_To_Hex_Position                 ;
+;                  MOV_to_ASCII_Position                                   ;
+;--------------------------------------------------------------------------;
+Erase_Phantom PROC NEAR
+         PUSH      CX,DX
+         CALL      Save_Real_Cursor
+         CALL      Mov_To_Hex_Position ;Coord. of cursor in hex wind.
+         MOV       CX,4                ;Make phantom cursor 4 chars. long
+         MOV       DL,7
+         CALL      Write_Attribute_N_Times
+         CALL      MOV_To_ASCII_Position ;Coord. of cursor in ASCII window
+         MOV       CX,1                ;one char wide.
+         CALL      Write_Attribute_N_Times
+         CALL      Restore_Real_Cursor
+         POP       DX,CX
+         RET
+
+;--------------------------------------------------------------------------;
+; Phantom Up                                                               ;
+;--------------------------------------------------------------------------;
+Phantom_Up PROC NEAR
+         CALL      Erase_Phantom
+         DEC       Phantom_Cursor_Y
+         JNS       WasntAtTop        ;was not at the top, write character
+         MOV       Phantom_Cursor_Y,0  ;was at the top, so leave it there
+WasntAtTop:
+         CALL      Write_Phantom       ;Write the phantom at new position
+         RET
+Phantom_UP ENDP
+
+;--------------------------------------------------------------------------;
+; Phantom Down                                                             ;
+;--------------------------------------------------------------------------;
+Phantom_Down PROC NEAR
+         CALL      Erase_Phantom
+         INC       Phantom_Cursor_Y
+         CMP       Phantom_Cursor_Y,16 ;Was it at the bottom
+         JB        WasntAtBottom       ;nope, we gotta move it
+         MOV       Phantom_Cursor_Y,15 ;was at bottom, so leave it there
+WasntAtBottom:
+         CALL      Write_Phantom
+         RET
+Phantom_Down ENDP
+
+;--------------------------------------------------------------------------;
+; Phantom Left                                                             ;
+;--------------------------------------------------------------------------;
+Phantom_Left PROC NEAR
+         CALL      Erase_Phantom
+         DEC       Phantom_Cursor_X    ;Move cursor left one column
+         JNS       WasntAtLeft         ;Was not at the left side
+         MOV       Phantom_Cursor_X,0  ;Was at left, leave it there
+WasntAtLeft:
+         CALL      Write_Phantom
+         RET
+Phantom_Left ENDP
+
+;--------------------------------------------------------------------------;
+; Phantom Right                                                            ;
+;--------------------------------------------------------------------------;
+Phantom_Right PROC NEAR
+         CALL      Erase_Phantom
+         INC       Phantom_Cursor_X
+         CMP       Phantom_Cursor_X,16
+         JB        WasntAtRight
+         MOV       Phantom_Cursor_X,15
+WasntAtRIght:
+         CALL      Write_Phantom
+         RET
+Phantom_Right ENDP

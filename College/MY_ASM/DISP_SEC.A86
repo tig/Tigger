@@ -1,0 +1,154 @@
+
+Code SEGMENT
+;--------------------------------------------------------------------------;
+; This Procedure initializes the half-sector dislpay.                      ;
+;                                                                          ;
+; Uses:            Write_Pattern, Send_CRLF, Disp_Half_Sector              ;
+;                  Write_Top_Hex_Numbers,Goto_XY, Write_Phantom            ;
+; Reads:           Top_Line_Pattern, Bottom_Line_Pattern                   ;
+;                  Lines_Before_Sector                                     ;
+; Writes:          Sector_Offset                                           ;
+;--------------------------------------------------------------------------;
+Init_Sec_Disp   PROC NEAR
+         PUSH      DX
+         XOR       DL,DL               ;Move cursor into position at beginning
+         MOV       DH,Lines_Before_Sector
+         CALL      Goto_XY
+         CALL      Write_Top_Hex_Numbers
+         LEA       DX,Top_Line_Pattern
+         CALL      Write_Pattern
+         CALL      Send_CRLF
+         XOR       DX,DX               ;Start at beginning of the sector
+         MOV       Sector_Offset,DX    ;Set sector offset to 0
+         CALL      Disp_Half_Sector
+         LEA       DX,Bottom_Line_Pattern
+         CALL      Write_Pattern
+         CALL      Write_Phantom       ;Write the panotom cursor
+         POP       DX
+         RET
+Init_Sec_Disp     ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure writes the index numbers (0 through F) at the top of      ;
+; the half-sector dislplay.                                                ;
+;                                                                          ;
+; Uses:            Write_Char_N_Times, Write_Hex, Write_Char               ;
+;                  Write_Hex_Digit, Send_CRLF                              ;
+;--------------------------------------------------------------------------;
+Write_Top_Hex_Numbers PROC NEAR
+         PUSH      CX,DX
+         MOV       DL,' '              ;Write 9 spaces for left side
+         MOV       CX,9
+         CALL      Write_CHAR_N_TIMES
+         XOR       DH,DH               ;Start with 0
+HexNumberLoop:
+         MOV       DL,DH
+         CALL      WRITE_HEX
+         MOV       DL,' '
+         CALL      WRITE_CHAR
+         INC       DH
+         CMP       DH,10h              ;Done yet?
+         JB        HexNumberLoop
+
+         MOV       DL,' '              ;Write hex numbers over ASCII window
+         MOV       CX,2
+         CALL      WRITE_CHAR_N_TIMES
+         XOR       DL,DL
+HexDigitLoop:
+         CALL      WRITE_HEX_DIGIT
+         INC       DL
+         CMP       DL,10h
+         JB        HexDigitLoop
+         CALL      SEND_CRLF
+         POP       DX,CX
+         RET
+Write_Top_Hex_Numbers ENDP
+
+
+;-------------------------------------------------------------------------;
+; This Procedure displays half a sector (256 bytes)                       ;
+;                                                                         ;
+;          DS:DX   Offset into sector, in bytes--should be multiple of 16 ;
+;                                                                         ;
+; Uses:            DispLine, SendCRLF                                     ;
+;-------------------------------------------------------------------------;
+Disp_Half_Sector   PROC NEAR
+         PUSH      CX,DX
+         MOV       CX,16               ;Display 16 lines
+HalfSector:
+         CALL      Disp_Line
+         CALL      Send_CRLF
+         ADD       DX,16
+         LOOP      HalfSector
+         POP       DX,CX
+         RET
+Disp_Half_Sector     ENDP
+
+;-------------------------------------------------------------------------;
+; This procedure displays one line of data, or 16 bytes, first in hex,    ;
+; then in ASCII.                                                          ;
+;                                                                         ;
+;        DS:DX    Offset into sector, in bytes                            ;
+;                                                                         ;
+; Uses:            WriteChar, WriteHex, write_char_n_times                ;
+; Reads:           Sector                                                 ;
+;-------------------------------------------------------------------------;
+Disp_Line          PROC NEAR
+         PUSH      BX,CX,DX
+         MOV       BX,DX               ;Offset is more useful in BX
+         MOV       DL,' '
+         MOV       CX,3                ;Write 3 spaces before line
+         CALL      Write_Char_N_Times
+                                       ;Write Offset in HEX
+         CMP       BX,0100             ;Is the first digit a 1?
+         JB        Write_One           ;No, white space already in DL
+         MOV       DL, '1'             ;Yes, then place '1' in DL for output
+Write_One:
+         CALL      Write_Char
+         MOV       DL,BL               ;Copy lower byte into DL for hex output
+         CALL      Write_Hex
+                                       ;Write separator
+         MOV       DL,' '
+         CALL      Write_Char
+         MOV       DL,Vertical_Bar     ;Draw Left side of box
+         CALL      Write_Char
+         MOV       DL, ' '
+         CALL      Write_Char
+                                       ;Now write out 16 bytes
+         MOV       CX,16               ;Dump 16 bytes
+         PUSH      BX                  ;Save the offset for AscIILoop
+HexLoop:
+         MOV       DL,Sector[BX]       ;Get 1 byte
+         CALL      Write_Hex           ;Dump this byte in hex
+         MOV       DL,' '              ;Write a space between numbers
+         CALL      Write_Char
+         INC       BX
+         LOOP      HexLoop
+
+         MOV       DL,Vertical_Bar     ;Write separator
+         CALL      Write_Char
+         MOV       DL,' '              ;Add another space before the characters
+         CALL      Write_Char
+
+         MOV       CX,16
+         POP       BX                  ;Get back offset into Sector
+AscIILoop:
+         MOV       DL,SECTOR[BX]
+         CALL      Write_Char
+         INC       BX
+         LOOP      AscIILoop
+
+         MOV       DL, ' '
+         CALL      Write_Char
+         MOV       DL, Vertical_Bar
+         Call      Write_Char
+
+         POP       DX,CX,BX
+         RET
+Disp_Line          ENDP
+
+
+Code               ENDS
+         END
+

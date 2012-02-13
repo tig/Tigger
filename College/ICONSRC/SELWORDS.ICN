@@ -1,0 +1,42 @@
+# selwords.icn
+# Copyright (C) 1989, Charles E. Kindel, Jr.
+#
+procedure main()
+{
+  every write (selwords (4, 'aeiou'))
+}
+end
+
+#
+# Generates all n-letter words in input that contain 
+# at least  one character in cset c
+#
+procedure selwords(n,c)
+{
+  letters := &lcase++&ucase
+  while line := read() do
+   line ? 
+      while tab(upto(letters)) do
+      {
+        if not (word := tab(upto(~letters))) then
+          word := tab(0)   # this handles words that end at end of line.
+        if upto(word,c) & (*word = n) then
+          suspend word
+     }
+  fail 
+}
+end
+
+#
+# NOTE:  The "if upto(word,c) ..." expression could be replaced by the 
+#        following:
+#
+#        word ?
+#          if (*&subject = n) & (upto(c)) then
+#            suspend (""||&subject) 
+#
+# which works, but I cannot figure out why &subject alone will not work.
+# if &subject is used without the ""|| suspend returns an
+# empty string.
+#
+

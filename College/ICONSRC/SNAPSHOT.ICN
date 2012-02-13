@@ -1,0 +1,33 @@
+procedure main()
+{
+  while line := read() do
+    line ? 
+    {  
+      while tab(upto(&lcase++&ucase)) do
+      { 
+        snapshot()
+        write(tab(many(&lcase++&ucase)))
+        snapshot()
+      }
+    }
+}
+end
+
+procedure snapshot()
+{
+  print := ''                # print is a cset with all printable chars
+  every i := 32 to 127 do    # unprintables will be replaced with a *
+    print ++:= char(i)
+  
+  s := &subject
+
+  while pos := upto (~print, s) do
+    s[pos:pos+1] := "*"
+
+  write(image(s))
+  write(repl(" ",&pos), "|")
+}
+end
+
+
+  

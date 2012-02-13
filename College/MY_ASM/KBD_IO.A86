@@ -1,0 +1,170 @@
+;--------------------------------------------------------------------------;
+; KBD_IO                                                                   ;
+;--------------------------------------------------------------------------;
+Code SEGMENT
+
+KeyBoard_Input LABEL BYTE
+Char_Num_Limit      DB    0
+Num_Chars_Read      DB    0
+Chars               DB    80 DUP (0)
+
+
+;--------------------------------------------------------------------------;
+; This procedure converts the string, using the DOS format for strings,    ;
+; to all uppercase letters.                                                ;
+;                                                                          ;
+;        DS:DX     Address of string buffer                                ;
+;--------------------------------------------------------------------------;
+String_To_Upper PROC NEAR
+         PUSH      AX,BX,CX
+         MOV       BX,DX
+         INC       BX                  ;Point to character count
+         MOV       CL,[BX]             ;Character count in 2nd byte of buffer
+         XOR       CH,CH               ;Clear upper byte of count
+UpperLoop:
+         INC       BX                  ;Point to next character in buffer
+         MOV       AL,[BX]
+         CMP       AL,'a'              ;See if it is a lower case letter
+         JB        NotLower            ;Nope
+         CMP       AL,'z'
+         JA        NotLower
+         ADD       Al,'A'-'a'          ;Convert to uppercase letter
+         MOV       [BX],AL
+NotLower:
+         Loop      UpperLoop
+         POP       CX,BX,AX
+         RET
+String_To_Upper ENDP
+
+;--------------------------------------------------------------------------;
+; This procedure converts a character from ASCII (Hex) to a nibble (4 bits);
+;                                                                          ;
+;        AL        Character to convert                                    ;
+; Returns: AL      Nibble                                                  ;
+;          CF      Set for error, cleared otherwise                        ;
+;--------------------------------------------------------------------------;
+Convert_Hex_Digit PROC NEAR
+         CMP       AL,'0'              ;Is it a legal digit?
+         JB        BadDigit            ;Nope
+         CMP       AL,'9'              ;Not sure yet
+         JA        TryHex              ;Might be a hex digit
+         SUB       AL,'0'              ;Is decimal, convert to nibble
+         CLC                           ;Clear the carry, no error
+         RET
+TryHex:
+         CMP       AL,'A'              ;Not sure yet
+         JB        BadDigit            ;Not HEX
+         CMP       AL,'F'              ;Not sure yet
+         JA        BadDigit            ;Not HEX
+         SUB       AL,'A'-10           ;Is hex, convert to nibble
+         CLC                           ;Clear the carry, no error
+         RET
+BadDigit:
+         STC                           ;Set carry, error
+         RET
+COnvert_Hex_Digit ENDP
+
+;--------------------------------------------------------------------------;
+; This procedure converts the two characters at DS:DX from hex to one byte ;
+;                                                                          ;
+;        DS:DX     Address of two characters for hex number                ;
+; Returns:                                                                 ;
+;        AL        Byte                                                    ;
+;        CF        Set for error, clear if no err.                         ;
+;                                                                          ;
+; Uses:            Convert_Hex_Digit                                       ;
+;--------------------------------------------------------------------------;
+Hex_To_Byte PROC NEAR
+         PUSH      BX,CX
+         MOV       BX,DX               ;Put address in BX for indirect addr
+         MOV       AL,[BX]             ;Get first digit
+         CALL      Convert_Hex_Digit
+         JC        BadHex              ;Bad hex digit if carry set
+         MOV       CX,4                ;Now multiply by 16
+         SHL       AL,CL
+         MOV       AH,AL               ;Retain a copy
+         INC       BX                  ;Get second digit
+         MOV       AL,[BX]
+         CALL      Convert_HEx_Digit
+         JC        BadHex
+         OR        AL,AH
+         CLC
+DoneHex:
+         POP       CX,BX
+         RET
+BadHex:
+         STC
+         JMP       DoneHex
+Hex_To_Byte ENDP
+
+;--------------------------------------------------------------------------;
+; This is a simple version                                                 ;
+;                                                                          ;
+;        DS:DX     Address of string area                                  ;
+;--------------------------------------------------------------------------;
+Read_String PROC NEAR
+         PUSH      AX
+         MOV       AH,0Ah              ;Call for buffered keyboard input
+         INT       21h                 ;Call DOS function
+         POP       AX
+         RET
+Read_String ENDP
+
+;--------------------------------------------------------------------------;
+; This procedure reads either a single ASCII character or a two-digit      ;
+; hex number.  This is jsut a test version   ;                             ;
+;                                                                          ;
+; Returns byte in       AL   Character code (unless AH = 0)                ;
+;                       AH   1 if read ASCII char                          ;
+;                            0 if no charcters read                        ;
+;                            -1 if read a special key                      ;
+;                                                                          ;
+; Uses:            Hex_To_Byte, String_To_Upper, Read_String               ;
+; Reads:           Keyboard_Input, etc...                                  ;
+; Writes:          Keyboard_Input, etc...                                  ;
+;--------------------------------------------------------------------------;
+Read_Byte PROC NEAR
+         PUSH      DX
+         MOV       Char_Num_Limit,3    ;Allow only two characters (plus enter)
+         LEA       DX,Keyboard_Input
+         CALL      Read_String
+         CMP       Num_Chars_Read,1    ;See how many chars
+         JE        ASCIIInput          ;Just one, treat as ASCII character
+         JB        NoCharacters        ;Only ENTER hit
+         CALL      String_To_Upper     ;No, convert string to upper case
+         LEA       DX,CHars            ;Address of string to convert
+         CALL      Hex_To_BYte         ;Convert string from hex to byte
+         JC        NoCharacters        ;Error, so return 'no characters read'
+         MOV       AH,1
+DoneRead:
+         POP       DX
+         RET
+NoCharacters:
+         XOR       AH,AH               ;Set to 'no characters read'
+         JMP       DoneRead
+AscIIInput:
+         MOV       AL,Chars            ;Load character read
+         MOV       AH,1                ;Signal read one character
+         JMP       DoneRead
+Read_Byte ENDP
+
+
+
+
+         MOV       AH,7                ;Read character without echo
+         INT       21h                 ; and place into AL
+         OR        AL,AL               ;Is it an extended code?
+         JZ        ExtendedCode        ;Yes
+NotExtended:
+         MOV       AH,1                ;Signal normal ASCII character
+DoneReading:
+         RET
+
+ExtendedCode:
+         INT       21h                 ;Read the extended code
+         MOV       AH,0FFh             ;Signal extended code
+         JMP       DoneReading
+Read_Byte ENDP
+
+Code ENDS
+

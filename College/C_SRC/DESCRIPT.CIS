@@ -1,0 +1,9 @@
+Tales from the Runtime #2 - Getting Your Feet Wet
+This article modifies the source code from Turbo C's runtime
+library in order to add a feature to expand wildcard characters
+('*' and '?'). This follows the Unix convention for expanding
+wildcards. Once the changes are made to the runtime source, this
+feature is available to all of your Turbo C programs.
+
+modify runtime library source code turbo C wildcard expansion
+expand wildcards 

@@ -1,0 +1,49 @@
+global linenum
+
+procedure main ()
+  linenum := 0
+  T := table("")
+  while line := read() do
+  {
+    linenum +:= 1
+    if line[1] == "." then
+    expand (line, T) ?         # expand definitions if needed
+    {
+       move(1)
+       name := tab(upto(' '))
+       move (1) # tab(upto(~' '))
+       if upto(name, ')(') then
+       {
+         error ("Macro names may not contain parentheses!")
+         next
+       }
+       else
+         T[name] := trim(tab(0))
+    }
+    else
+      write (expand (line, T))
+  }
+end
+
+
+procedure expand(s, T)
+  every find ("\\(", s) do
+  {
+    s ?
+    {
+      tab((p1 := find("\\(")) + 2)
+      if not (name := tab(p2 := find(")"))) then
+      {
+        error ("Cannot expand macro because of missing \")\"!")
+        fail
+      }
+    }
+    s := s[1:p1] || T[name] || s[p2+1:0]
+  }
+  return s
+end
+ 
+procedure error(s)
+  write ("Error, Line#", left(string(linenum), 5), ": ", s)
+end
+

@@ -1,0 +1,250 @@
+
+CODE SEGMENT public
+;--------------------------------------------------------------------------;
+; This procedure writes the prompt line to the screen and clears the end   ;
+; of the line.                                                             ;
+;                                                                          ;
+;        DS:DX     Address of the prompt-line message                      ;
+;                                                                          ;
+; Uses:            Write_String, Clear_To_End_Of_Line, Goto_XY             ;
+; Reads:           Prompt_Line_No                                          ;
+;--------------------------------------------------------------------------;
+Write_Prompt_Line  PROC NEAR
+         PUSH      DX
+         XOR       DL,DL               ;Write the prompt line and
+         MOV       DH,Prompt_Line_No   ; move the cursor there
+         CALL      Goto_XY
+         POP       DX
+         CALL      Write_String
+         CALL      Clear_To_End_of_Line
+         RET
+Write_Prompt_Line ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure writes the header with disk-drive and sector number.      ;
+;                                                                          ;
+; Uses:            Goto_XY, Write_String, Write_Char, Write_Decimal        ;
+; Reads:           Header_Line_No, Header_Part_1, Header_Part_2            ;
+;                  Disk_Drive_No, CUrrent_Sector_No                        ;
+;--------------------------------------------------------------------------;
+Write_Header  PROC NEAR
+         PUSH      DX
+         XOR       DL,DL               ;Move cursor to header line number
+         MOV       DH,Header_Line_No
+         CALL      Goto_XY
+         LEA       DX,Header_Part_1
+         CALL      Write_String
+         MOV       DL,DISK_DRIVE_No
+         ADD       DL,'A'              ;Print drives A,B,...
+         CALL      Write_Char
+         LEA       DX,Header_Part_2
+         CALL      Write_String
+         MOV       DX,Current_Sector_No
+         CALL      Write_Decimal
+         CALL      Clear_To_End_Of_Line  ;Clear rest of sector number
+         POP       DX
+         RET
+Write_Header ENDP
+
+;--------------------------------------------------------------------------;
+; This Procedure sets the attribute for N characters, starting at the      ;
+; current cursor postition                                                 ;
+;                                                                          ;
+;        CX  Number of characters to set attribute for                     ;
+;        DL  New attribute for characters                                  ;
+;                                                                          ;
+; Uses:            Cursor_Right                                            ;
+;--------------------------------------------------------------------------;
+Write_Attribute_N_Times PROC NEAR
+         PUSH      AX,BX,CX,DX
+         MOV       BL,DL               ;Set attribute to new attribute
+         XOR       BH,BH               ;Set display page to 0
+         MOV       DX,CX               ;CX is used by the BIOS routine
+         MOV       CX,1                ;Set attribute for one character
+AttrLoop:
+         MOV       AH,8                ;Read character under cursor
+         INT       10h
+         MOV       AH,9                ;Write attribute/character
+         INT       10h
+         CALL      Cursor_Right
+         DEC       DX                  ;Set attrib for N characters?
+         JNZ       AttrLoop            ;No, continue
+         POP       DX,CX,BX,AX
+         RET
+Write_Attribute_N_Times ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure writes a string of characters to the screen.  The         ;
+; string must end with  DB 0                                               ;
+;                                                                          ;
+;        DS:DX Address of the string                                       ;
+;                                                                          ;
+; Uses:            Write_Char                                              ;
+;--------------------------------------------------------------------------;
+Write_String PROC NEAR
+         PUSH      AX,DX,SI
+         PUSHF                         ;Save the direction flag
+         CLD                           ;Set direction forward
+         MOV       SI,DX               ;Place address into SI for LODSB
+StringLoop:
+         LODSB                         ;Get a character into the AL register
+         OR        AL,AL               ;Have we found the 0 yet?
+         JZ        EndOfString         ;Yes, we are done with the string
+         MOV       DL,AL               ;No, write character
+         CALL      Write_Char
+         JMP       StringLoop
+EndOfString:
+         POPF                          ;Restor direction flag
+         POP       SI,DX,AX
+         RET
+Write_String ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure outputs a charcter to the screen using the ROM BIOS       ;
+; routines, so characters such as the backspace are treated as             ;
+; any other character and are displayed.                                   ;
+;   This procedure must do a bit of work to update teh cursor position.    ;
+;                                                                          ;
+;        DL        Byte to print on screen                                 ;
+;                                                                          ;
+; Uses:            Cursor_Right                                            ;
+;--------------------------------------------------------------------------;
+Write_Char PROC NEAR
+         PUSH      AX,BX,CX,DX
+         MOV       AH,9                ;Call for output to character/attrib
+         MOV       BH,0                ;Set display page 0
+         MOV       CX,1                ;Write only one character
+         MOV       AL,DL               ;Charcater to write
+         MOV       BL,7                ;Normal attribute
+         INT       10h                 ;Write character and attribute
+         CALL      Cursor_Right        ;Now move to next cursor postion
+         POP       DX,CX,BX,AX
+         RET
+Write_Char ENDP
+
+;--------------------------------------------------------------------------;
+;  This procedure converts the byte in the DL register to hex and writes   ;
+;  the two hex digits at the current cursor postition.                     ;
+;                                                                          ;
+;         DL        Byte to be converted to hex.                           ;
+;                                                                          ;
+;  Uses:            WRITE_HEX_DIGIT                                        ;
+;--------------------------------------------------------------------------;
+WRITE_HEX         PROC NEAR            ;Entry point
+         PUSH     CX,DX                ;Save registers used in this proc
+         MOV      DH,DL                ;Make a copy of byte
+         MOV      CX,4                 ;Get the upper nibble in DL
+         SHR      DL,CL
+         CALL     WRITE_HEX_DIGIT      ;Display first hex digit
+         MOV      DL,DH                ;Get lower nibble into DL
+         AND      DL,0Fh               ;Remove the upper nibble
+         CALL     WRITE_HEX_DIGIT      ;Display second hex digit
+         POP      DX,CX
+         RET
+WRITE_HEX         ENDP
+
+;-------------------------------------------------------------------------;
+; This procedure converts the lower 4 bits of DL to a hex digit and       ;
+; writes it to the screen.                                                ;
+;                                                                         ;
+;        DL        Lower 4 bits contain number to be printed in hex.      ;
+;                                                                         ;
+; Uses:            WRITE_CHAR                                             ;
+;-------------------------------------------------------------------------;
+WRITE_HEX_DIGIT    PROC  NEAR
+         PUSH      DX                  ;Save registers used
+         CMP       DL,10               ;Is this nibble <10?
+         JAE       HEX_LETTER          ;No, convert to a letter
+         ADD       DL,'0'              ;Yes, convert to a digit
+         JMP       Short WRITE_DIGIT   ;Now write this character
+HEX_LETTER:
+         ADD       DL,'A' - 10         ;Convert to hex letter
+WRITE_DIGIT:
+         CALL      WRITE_CHAR          ;Display the letter on the screen
+         POP       DX                  ;Restore old value of AX
+         RET
+WRITE_HEX_DIGIT    ENDP
+
+
+;-------------------------------------------------------------------------;
+; This procedure writes a 16-bit, unsigned number in decimal notation.    ;
+;                                                                         ;
+;        DX        N : 16-bit, unsigned number.                           ;
+;                                                                         ;
+; Uses:            WRITE_HEX_DIGIT                                        ;
+;-------------------------------------------------------------------------;
+WRITE_DECIMAL      PROC NEAR
+         PUSH      AX,CX,DX,SI         ;Save registers used here
+         MOV       AX,DX
+         MOV       SI,10               ;Will divide by 10 using SI
+         XOR       CX,CX               ;Count of digits placed on stack
+NON_ZERO:
+         XOR       DX,DX               ;Set upper word of N to 0
+         DIV       SI                  ;Calculate N/10 and (N mod 10)
+         PUSH      DX                  ;push one digit onto the stack
+         INC       CX                  ;One more digit added
+         OR        AX,AX               ;N = 0 yet?
+         JNE       NON_ZERO            ;Nope, continue
+WRITE_DIGIT_LOOP:
+         POP       DX                  ;Get the digits in reverse order
+         CALL      WRITE_HEX_DIGIT
+         LOOP      WRITE_DIGIT_LOOP
+END_DECIMAL:
+         POP       SI,DX,CX,AX
+         RET
+WRITE_DECIMAL      ENDP
+
+;--------------------------------------------------------------------------;
+; This procedure writes more than one copy of a charactr                   ;
+;                                                                          ;
+;        DL        Character code                                          ;
+;        CX        Number of times to write the character                  ;
+;                                                                          ;
+; Uses:            WRITE_CHAR                                              ;
+;--------------------------------------------------------------------------;
+WRITE_CHAR_N_TIMES PROC NEAR
+         PUSH      CX
+N_TIMES:
+         CALL      WRITE_CHAR
+         LOOP      N_TIMES
+         POP       CX
+         RET
+WRITE_CHAR_N_TIMES ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure writes a line to the scree, based on data in the form     ;
+;                                                                          ;
+;        DB        {character, number of times to write character}, 0      ;
+; Where {x} means that x can be repeated any number of times               ;
+;        DS:DX      Address of above data statement                        ;
+;                                                                          ;
+; Uses:            Write_char_N_Times                                      ;
+;--------------------------------------------------------------------------;
+write_pattern      PROC NEAR
+         PUSH      AX,CX,DX,SI
+         PUSHF                         ;Save direction flag
+         CLD                           ;Set the direction flag for increment
+         MOV       SI,DX               ;Move offset into SI register for LODSB
+Pattern_Loop:
+         LODSB                         ;Get character data into AL
+         OR        AL,AL               ;Is it the end of data (0h)?
+         JZ        END_PATTERN         ;yes, return
+         MOV       DL,AL               ;No, set up to write character N times
+         LODSB                         ;Get the repeat count into AL
+         MOV       CL,AL               ;And put in CX for write_char_n_times
+         XOR       CH,CH               ;Zero upper byte of CX
+         CALL      Write_Char_N_Times
+         JMP       Pattern_Loop
+End_Pattern:
+         POPF
+         POP       SI,DX,CX,AX
+         RET
+Write_Pattern      ENDP
+
+
+         END
+CODE ENDS

@@ -1,0 +1,159 @@
+# rational.icn
+#
+# Program to read input lines describing arithmetic operations on rational
+# numbers, performs the operations, and writes out the result in rational
+# form.  Rational numbers are of the form [NUM/DEN].  Where NUM and DEM are
+# integers.  Possible operators are -, +, *, and /.
+#
+# -------------------------------------------------------------------------
+record rational (num, den)
+procedure main ()
+  local Line,
+        Result,
+        Term,
+        Operator,
+        Temp 
+  RATCHRS := '-/[]'++&digits    # characters that make up a rational number
+  
+  while Line := read() do
+  {
+    # Map - and / operators to = and % respectively, strip all blanks.
+    mapline(replace(Line," ","")) ?
+    {
+      Temp := tab(many(RATCHRS))
+      if not (Result := reduce(rational (numer(Temp), denom(Temp)))) then
+      { 
+         DivByZero (Temp)             # if denom(Temp) failed
+         next
+      }
+      Operator := tab(upto('['))
+      while Temp := tab(many(RATCHRS)) do
+      {
+        if not (Term := reduce(rational(numer(Temp), denom(Temp)))) then
+        {
+          DivByZero (Temp)
+          break next 
+        }
+        if not case Operator of
+        {
+          "+" : Result := add (Result, Term)
+          "=" : Result := sub (Result, Term)
+          "*" : Result := mul (Result, Term)
+          "%" : Result := div (Result, Term)
+        }
+        then
+        {  
+          DivByZero (rationalstring(Result) || "/" || rationalstring(Term))
+          break next
+        }
+        Operator := tab(upto('['))
+      }
+      write (rationalstring(Result))
+    }
+  }
+end
+
+# mapline (s) --------------------------------------------------------------
+# replaces the operators / and - with % and = in order
+# to simplify parsing.  Fails if s == "".
+procedure mapline (s)
+  if s == "" then fail
+  s := replace (s, "]/", "]%")
+  s := replace (s, "]-", "]=")
+  return s 
+end
+
+# replace (s1, s2, s3) -----------------------------------------------------
+# replaces all occcurances of s2 with s3 in s1
+procedure replace (s1, s2, s3)
+  s1 ?
+  {
+    s4 := ""
+    while s4 ||:= tab(find(s2)) do
+    {
+      move (*s2)
+      s4 ||:= s3
+    }
+  s4 ||:= tab(0)
+  }
+  return s4
+end
+
+# rationalstring (r) -------------------------------------------------------
+# returns a rational number in the form "[num/den]"
+procedure rationalstring (r)
+  return ("[" || string(r.num) || "/" || string(r.den) || "]")
+end
+
+# add (r1, r2) ------------------------------------------------------------
+procedure add(r1, r2)
+  return reduce(rational(r1.num * r2.den + r2.num * r1.den, r1.den * r2.den))
+end
+
+# sub (r1, r2) ------------------------------------------------------------
+procedure sub(r1, r2)
+  return reduce(rational(r1.num * r2.den - r2.num * r1.den, r1.den * r2.den))
+end
+
+# div (r1, r2) ------------------------------------------------------------
+procedure div(r1, r2)
+  return reduce(rational(r1.num * r2.den, r1.den * r2.num))
+end
+
+# mul (r1, r2) ------------------------------------------------------------
+procedure mul(r1, r2)
+  return reduce(rational(r1.num * r2.num, r1.den * r2.den))
+end
+
+# reduce (rat) --------------------------------------------------------
+# Returns a rational number (record rational (num,den)) reduced to the lowest term.
+procedure reduce(rat)
+  local remainder, temp 
+
+  if rat.den < 0 then              # always want minus sign on top
+  {  
+    rat.den := -rat.den
+    rat.num := -rat.num
+  }
+  temp := rational (abs(rat.num), abs(rat.den))
+  if temp.den = 0 then
+    fail 
+  remainder := temp.num % temp.den
+  while remainder > 0 do     # find gcd
+  {
+    temp := rational(temp.den, remainder)
+    remainder := temp.num % temp.den
+  }
+  return rational(rat.num / temp.den, rat.den / temp.den) 
+end
+
+# numer (r) ---------------------------------------------------------------
+# returns the numerator of a rational number (given as "[n/d]") as an integer
+procedure numer (r)
+  r ?
+  {
+    move(1)
+    return integer(tab(upto('/')))
+  }
+end
+
+# denom (r) ---------------------------------------------------------------
+# returns the denominator of a rational number (given as "[n/d]") as an integer
+procedure denom (r)
+  r ?
+  {
+    tab(upto('/'))
+    move(1)
+    d := integer(tab(upto(']')))
+    if d = 0 then
+      fail
+    else
+      return d 
+  }
+end
+
+# DivByZero (s) ------------------------------------------------------------
+# Writes an error string indicating an irrational number (ie [x/0])
+procedure DivByZero(s)
+  write ("ERROR: Division By Zero : ", image(s), ".  Skipping line.")
+end

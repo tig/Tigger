@@ -1,0 +1,359 @@
+{$U+}
+{----------------------------------------------------------------------------------------------------------------------}
+{     CHARLES E. KINDEL            S90498449            CSc 227     PROGRAMMING ASSIGNMENT NUMBER 4                    }
+{----------------------------------------------------------------------------------------------------------------------}
+{ This program simulates, in a rough way, a set of checkout stands in a store.  There are seven stands, and at least   }
+{ two are always open.  Each stand is represented by the computer as a queue.  The queues are implemented using dynamic}
+{ allocation.                                                                                                          }
+{----------------------------------------------------------------------------------------------------------------------}
+
+Program CSc_227_pr4 (input, output);
+
+  Const    NumStnds = 7;                          {Number of stands in the store}
+           MinOpen  = 2;                          {Minumum number of stands open at all times}
+
+  Type     open_close = (open, closed);                      {a scalar type for testing if a line is open or closed}
+           personpointer = ^person;
+           person = record                                   {record for each person in a queue}
+                       ID           : integer;                 {persons ID number}
+                       CHKOUT_TIME  : integer;                 {checkout time required by the person}
+                       TIME_IN      : integer;                 {the time that the person entered the queue}
+                       NEXT_IN_LINE : personpointer;           {pointer to the next person in line}
+                    end;
+           stand  = record                                   {record for each stand (queue)}
+                       STAND_STATUS : open_close;               {Open closed status of each stand}
+                       TIME_IN_FRNT : integer;                  {how long a cust has been at the front}
+                       FRONT        : personpointer;            {pointer to front of queue}
+                       REAR         : personpointer;            {pointer to the rear of the queue}
+                    end;
+           standarray = array [1..NumStnds] of stand;
+           store  = record                                   {record containing all the information about the simulation}
+                       STANDS   : standarray;                    {the array of queues}
+                       CUR_TIME : integer;                       {the current time in the simulation}
+                       NUM_OPEN : integer;                       {number of stands open at current time}
+                       OVERALL  : real;                          {the overall waiting ratio for the store}
+                       TOT_IN   : integer;                       {total number of customers that have entered the sim}
+                       TOT_OUT  : integer;                       {total number of customers who have exited the sim.}
+                       LAST10   : record                         {a record containing data for the "last ten minutes"}
+                                    NUM_IN    : integer;            {num of custs. who entered in last 10 min}
+                                    NUM_OUT   : integer;            {num of custs. who have exited in last 10 min}
+                                    AVE_RATIO : real;               {average ratio for last 10 min}
+                                  end;
+                    end;
+
+
+  Var      LINES   : store;                                  {contains the queues, status, time and overall ratio}
+           SIM_LEN,                                          {the length of the simulation as supplied by the user}
+           AFTR_CLOSE : integer;                             {the number of minutes after closing....}
+           COMMAND : char;                                   {the input command ($ or C)}
+           CUST    : person;                                 {a new CUST to be added}
+           DONE    : boolean;                                {lets the main loop continue even if the store is closed}
+
+
+Function EmptyQ (QUEUE : stand) : boolean;
+
+    {returns a true or false value signifying whether the QUEUE is empty}
+
+    begin
+      If (QUEUE.FRONT = nil)
+        then EmptyQ := true
+        else EmptyQ := false;
+    end; {EmptyQ}
+
+
+
+Procedure EnQ (var QUEUE    : stand;
+                   NEW_NODE : personpointer);
+
+   {adds NEW_NODE to the rear of the QUEUE}
+
+   begin
+     If EmptyQ (QUEUE)
+       then begin
+              QUEUE.FRONT := NEW_NODE;
+              QUEUE.REAR := NEW_NODE;
+            end
+       else begin
+              QUEUE.REAR^.NEXT_IN_LINE := NEW_NODE;
+              QUEUE.REAR := NEW_NODE;
+            end;
+   end; {EnQ}
+
+
+
+Procedure DeQ (var QUEUE        : stand;
+               var DEQUED_NODE : personpointer);
+
+    {removes the front of the QUEUE and returns it as DEQUED_NODE}
+
+    begin
+      DEQUED_NODE := QUEUE.FRONT;
+      QUEUE.FRONT := QUEUE.FRONT^.NEXT_IN_LINE;
+    end; {DeQ}
+
+
+
+Procedure Initialize (var CHECKOUT_STANDS : store);
+
+   {inititalizes all pertenent values for the simulation. CHECKOUT_STANDS is}
+   {a record containing all the information about the store}
+
+   var LINE : integer;
+   begin
+     with CHECKOUT_STANDS
+       do begin
+            CUR_TIME := 1;
+            OVERALL := 0;
+            NUM_OPEN := 2;
+            TOT_IN := 0;
+            TOT_OUT := 0;
+            with LAST10 do
+              begin
+                NUM_IN := 0;
+                NUM_OUT := 0;
+                AVE_RATIO := 0;
+              end;
+            for LINE := 1 to NumStnds
+              do with STANDS [LINE]
+                do begin
+                     if LINE in [1, 2]                      {open 2 lines, close the rest}
+                       then STAND_STATUS := open
+                       else STAND_STATUS := closed;
+                     TIME_IN_FRNT := 0;
+                     FRONT := nil;
+                     REAR := nil;
+                   end; {with stands[line]}
+          end; {with checkout_stands}
+  end;  {Initialize}
+
+
+
+Function All_Empty (CHECKOUT : store) : boolean;
+
+  {returns a boolean indicating whether all queues are empty.  This }
+  {is used to determine if the simulation needs to go beyond closing}
+  {time. CHECKOUT contains all store data.                          }
+
+  var i
+      : integer;
+
+  begin
+    All_Empty := true;
+    With CHECKOUT do
+      for i := 1 to NumStnds do
+        if not EmptyQ (STANDS [i]) then
+          All_Empty := false;
+  end;  {All_Empty}
+
+
+
+
+Function Short_Open (CHECKOUT : store) : integer;
+
+  {returns an integer indicating which stand has the smallest customer}
+  {checkout time at the end of the line and is open.                  }
+
+  var LINE, FRST, SHORTEST : integer;
+
+  begin
+    FRST := 1;
+    while (CHECKOUT.STANDS [FRST].STAND_STATUS = closed)
+      do FRST := FRST + 1;
+    Short_Open := FRST;
+    if not EmptyQ (CHECKOUT.STANDS [FRST])
+      then SHORTEST := CHECKOUT.STANDS [FRST].REAR^.CHKOUT_TIME;
+    for LINE := FRST to NumStnds
+      do if not EmptyQ (CHECKOUT.STANDS [LINE])
+        then begin
+               if (CHECKOUT.STANDS [LINE].REAR^.CHKOUT_TIME < SHORTEST)
+                  and (CHECKOUT.STANDS [LINE].STAND_STATUS = open)
+                 then begin
+                        SHORTEST := CHECKOUT.STANDS [LINE].REAR^.CHKOUT_TIME;
+                        Short_Open := LINE;
+                      end;
+             end
+         else  {Q is empty}
+           if (CHECKOUT.STANDS [LINE].STAND_STATUS = open)
+             then begin
+                    SHORTEST := 0;
+                    Short_Open := LINE;
+                  end;
+  end;  {Short_Open}
+
+
+
+Procedure NewCust (CUST : person; var CHECKOUT_STANDS : store);
+
+   {adds a new customer, CUST, to the queue determined by WHERETOGO}
+
+   var NODE : personpointer;
+       WHERETOGO : integer;    {what line to go to}
+
+   begin
+     WHERETOGO := Short_Open (CHECKOUT_STANDS);
+     new (NODE);
+     NODE^.ID := CUST.ID;
+     NODE^.CHKOUT_TIME := CUST.CHKOUT_TIME;
+     NODE^.TIME_IN := CHECKOUT_STANDS.CUR_TIME;
+     NODE^.NEXT_IN_LINE := nil;
+     EnQ (CHECKOUT_STANDS.STANDS [WHERETOGO], NODE);
+     CHECKOUT_STANDS.TOT_IN := CHECKOUT_STANDS.TOT_IN + 1;
+     CHECKOUT_STANDS.LAST10.NUM_IN := CHECKOUT_STANDS.LAST10.NUM_IN + 1;
+   end;
+
+
+
+Procedure End_of_Minute (var CHKOUT_STANDS : store);
+
+   {takes care of all end of minute stuff.                            }
+   {Uses these nested procedures:                                     }
+   {   See_if_finished, Ten_Minutes, and OpenClose                    }
+
+   var i
+       : integer;
+       WAIT_RATIO
+       : real;
+       DONE
+       : personpointer;
+
+
+       {nested} procedure See_if_Finished (var STNDS : store);
+
+                  var i : integer;
+
+                  begin
+                    with STNDS do
+                      for i := 1 to NumStnds do
+                        if not EmptyQ (STANDS [i]) then
+                          begin
+                            STANDS [i].TIME_IN_FRNT := STANDS [i].TIME_IN_FRNT + 1;
+                            if (STANDS [i].TIME_IN_FRNT = STANDS [i].FRONT^.CHKOUT_TIME) then
+                              begin
+                                DeQ (STANDS [i], DONE);
+                                writeln ('Customer ', DONE^.ID, ' is done, and has exited line #', i);
+                                WAIT_RATIO := (CUR_TIME - DONE^.TIME_IN) / DONE^.CHKOUT_TIME;
+                                writeln ('His waiting ratio was ', WAIT_RATIO : 2:2);
+                                OVERALL := (OVERALL + WAIT_RATIO) / 2;
+                                LAST10.AVE_RATIO := (LAST10.AVE_RATIO + WAIT_RATIO) / 2;
+                                STANDS [i].TIME_IN_FRNT := 0;
+                                TOT_OUT := TOT_OUT + 1;
+                                LAST10.NUM_OUT := LAST10.NUM_OUT + 1;
+                              end;
+                          end;
+                  end; {See_if_Finished}
+
+
+       {nested} procedure Ten_Minutes (var STNDS : store);
+                  var i : integer;
+                  begin
+                    writeln;
+                    writeln ('----------------------------------------------');
+                    writeln ('Ten minute summary:');
+                    with STNDS do
+                      begin
+                        writeln ('    The time is ', CUR_TIME);
+                        writeln ('    In the last 10 minutes:');
+                        with LAST10 do
+                          begin
+                            writeln ('       ', NUM_IN :0, ' customers have entered queues.');
+                            NUM_IN := 0;
+                            writeln ('       ', NUM_OUT :0, ' customers have exited queues.');
+                            NUM_OUT := 0;
+                            writeln ('        with an average ratio of ', AVE_RATIO :2:2, '.');
+                            AVE_RATIO := 0;
+                          end;
+                        writeln ('    Since the simulation began:');
+                        writeln ('        ', TOT_IN :0, ' customers have entered queues.');
+                        writeln ('        ', TOT_OUT:0, ' customers have exited queues.');
+                        writeln ('         with an average ratio of ', OVERALL :2:2);
+                        for i := 1 to NumStnds do
+                          if STANDS[i].STAND_STATUS = open then
+                            writeln ('    Stand ', i :0, ' is open.');
+                      end;
+                 end; {Ten_Minutes}
+
+
+       {nested} procedure OpenClose (var STNDS : store);
+                  var i : integer;
+                  begin
+                    with CHKOUT_STANDS do
+                      begin
+                        i := 0;
+                        if OVERALL > 5 then
+                          repeat
+                            i := i + 1;
+                            if (STANDS [i].STAND_STATUS = closed) then
+                              begin
+                                STANDS [i].STAND_STATUS := open;
+                                writeln ('Stand #', i:0,' has opened up.');
+                                i := NumStnds;
+                                NUM_OPEN := NUM_OPEN + 1;
+                              end;
+                          until (i = NumStnds);
+                          i := 0;
+                          if (OVERALL < 3) and (NUM_OPEN > 2) then
+                            repeat
+                              i := i + 1;
+                              if (STANDS [i].STAND_STATUS = open) then
+                                begin
+                                  STANDS [i].STAND_STATUS := closed;
+                                  writeln ('Stand #', i:0,' has just been closed.');
+                                  i := NumStnds;
+                                  NUM_OPEN := NUM_OPEN - 1;
+                                end;
+                            until (i = NumStnds);
+                        end;
+                  end; {OpenClose}
+
+
+   begin {End_of_Minute}
+     writeln ('-------------- End of Minute ', CHKOUT_STANDS.CUR_TIME :0, ' ------------');
+     CHKOUT_STANDS.CUR_TIME := CHKOUT_STANDS.CUR_TIME + 1;
+     See_if_Finished (CHKOUT_STANDS);                      {see if anyone is finished.}
+     OpenClose (CHKOUT_STANDS);                            {see if any stands need to be opened or closed.}
+     if (CHKOUT_STANDS.CUR_TIME mod 10) = 0 then
+       Ten_Minutes (CHKOUT_STANDS);                        {if we've gone 10 minutes then do a summary}
+   end; {End_of_Minute}
+
+
+
+
+Begin  { Main Program }
+  Initialize (LINES);                                           {initialize all data}
+  DONE := false;
+  writeln ('======================================================');
+  readln (SIM_LEN);
+  writeln ('This simulation will run for ', SIM_LEN :0, ' minutes.');
+  while (LINES.CUR_TIME < SIM_LEN)
+    do begin
+          read (COMMAND);
+          if (COMMAND = 'C')
+             then begin
+                    with CUST do
+                      read (ID, CHKOUT_TIME);
+                    NewCust (CUST, LINES); {Add a new customer to the appropriate line}
+                  end  {begin}
+             else {go on to a new minute}
+               End_of_Minute (LINES);
+               readln;
+       end {while};
+  writeln;
+  writeln ('The store is CLOSED!');
+  writeln;
+  AFTR_CLOSE := 0;
+  while not All_Empty (LINES) do
+    begin
+      End_of_Minute (LINES);
+      AFTR_CLOSE := AFTR_CLOSE + 1;
+    end;
+  writeln;
+  writeln ('End of simulation summary:');
+  writeln ('   The store was open ', AFTR_CLOSE:0,' minutes after closing time.');
+  writeln ('   ', LINES.TOT_OUT :0, ' customers were processed during this simulation');
+  writeln ('   The final average ratio was ', LINES.OVERALL :2:2);
+  writeln;
+  writeln ('=============================================');
+  writeln ('Program finished!');
+End.  { Main Program }
+
+

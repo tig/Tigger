@@ -1,0 +1,6 @@
+procedure snapshot ()
+  write (image(&subject))
+  write (repl(" ",*image(&subject[1:&pos]) - 1), "|")
+  return
+end
+

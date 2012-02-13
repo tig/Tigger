@@ -1,0 +1,18 @@
+procedure main()
+{
+  while line := read() do
+    if palin(line) then
+      write(line)
+}
+end
+
+procedure palin(string)
+{
+  string := map(string)
+  while pos := upto (~(&lcase++&digits), string) do
+    string[pos:pos+1] := ""
+  return (reverse(string) == string ~== "")
+}
+end
+  
+  

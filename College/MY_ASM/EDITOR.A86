@@ -1,0 +1,61 @@
+;--------------------------------------------------------------------------;
+; Editor                                                                   ;
+;--------------------------------------------------------------------------;
+Code SEGMENT
+
+;--------------------------------------------------------------------------;
+; This procedure writes one byte to SECTOR, at the memory location         ;
+; pointed to by the phantom cursor.                                        ;
+;                                                                          ;
+;        DL        Byt to write to sector                                  ;
+;                                                                          ;
+; The offset is calculated by                                              ;
+;   OFFSET = Sector_Offset + (16 * Phantom_Cursor_Y) + Phantom_Cursor_X    ;
+;                                                                          ;
+; Reads:           Phantom_Cursor_X, Phantom_Curosr_Y, Sector_Offset       ;
+; Writes:          SECTOR                                                  ;
+;--------------------------------------------------------------------------;
+write_To_Memory PROC NEAR
+         PUSH      AX,BX,CX
+         MOV       BX,Sector_Offset
+         MOV       AL,Phantom_Cursor_Y
+         XOR       AH,AH
+         MOV       CL,4                ;Multiply Phantom_Cursor_Y by 16
+         SHL       AX,CL
+         ADD       BX,AX               ;BX = Sector_Offset + (16*Y)
+         MOV       AL,Phantom_Cursor_X
+         XOR       AH,AH
+         ADD       BX,AX               ;That's the address!
+         MOV       Sector[BX],DL       ;Now, store the byte
+         POP       CX,BX,AX
+         RET
+Write_To_Memory ENDP
+
+;--------------------------------------------------------------------------;
+; This procedure changes a byt in memory and on the screen                 ;
+;                                                                          ;
+;        DL        Byte to write into SECTOR, and change on screen         ;
+;                                                                          ;
+; Uses:            Save_Real_Cursor, Restor_Real_Cursor                    ;
+;                  Mov_To_HEx_Position, Mov_To_ASCII_Postition             ;
+;                  Write_Phantom, Write_Prompt_Line, CURsor_Right          ;
+;                  Write_Hex, Write_Char, Write_To_Memory                  ;
+; Reads:           Editor_Prompt                                           ;
+;--------------------------------------------------------------------------;
+Edit_Byte PROC NEAR
+         PUSH      DX
+         CALL      Save_Real_Cursor    ;Move to the hex number in the
+         CALL      Mov_To_Hex_Position
+         CALL      Cursor_Right        ; hex window
+         CALL      Write_Hex           ;Write the new number
+         CALL      Mov_To_ASCII_Position ;Move to the char window
+         CALL      Write_Char          ;write the new character
+         CALL      Restore_Real_Cursor ;Move cursor back to where it belongs
+         CALL      Write_Phantom       ;Rewrite the phantom cursor
+         CALL      Write_To_Memory     ;Save this new byte in SECTOR
+         LEA       DX,Editor_Prompt
+         CALL      Write_Prompt_Line
+         POP       DX
+         RET
+Edit_Byte ENDP
+

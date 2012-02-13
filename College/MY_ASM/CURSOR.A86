@@ -1,0 +1,100 @@
+CR       EQU       13                  ;Carriage return
+LF       EQU       10                  ;Line Feed
+
+CODE SEGMENT
+
+;-------------------------------------------------------------------------;
+; This routine just sends a carriage return-line feed pair to the         ;
+; display, using the DOS routines so that scrolling will be handled       ;
+; correctly.                                                              ;
+;-------------------------------------------------------------------------;
+Send_CRLF          PROC NEAR
+         PUSH      AX,DX
+         MOV       AH,2
+         MOV       DL,CR
+         INT       21h
+         MOV       DL,LF
+         INT       21h
+         POP       DX,AX
+         RET
+Send_CRLF           ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure clears the entire screen                                  ;
+;--------------------------------------------------------------------------;
+Clear_Screen  PROC NEAR
+         PUSH      AX,BX,CX,DX
+         XOR       AL,AL               ;Blank entire window
+         XOR       CX,CX               ;Upper left corner is set at (0,0)
+         MOV       DH,24               ;Bottom line of screen is line 24
+         MOV       DL,79               ;Right side is at column 79
+         MOV       BH,7                ;Use normal attribute for blanks
+         MOV       AH,6                ;Call for SCROLL-UP function
+         INT       10h                 ;Clear the window
+         POP       DX,CX,BX,AX
+         RET
+Clear_Screen       ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure moves the cursor                                          ;
+;                                                                          ;
+;        DH        Row (Y)                                                 ;
+;        DL        Col (X)                                                 ;
+;--------------------------------------------------------------------------;
+Goto_XY PROC NEAR
+         PUSH      AX,BX
+         MOV       BH,0                ;Display page 0
+         MOV       AH,2                ;Call for SET CURSOR POSITION
+         INT       10h
+         POP       BX,AX
+         RET
+Goto_XY            ENDP
+
+;--------------------------------------------------------------------------;
+; This procedure moves the cursor one postion to the right or to the next  ;
+; line if the cursor was at the end of a line.                             ;
+;                                                                          ;
+; Uses:            Send_CRLF                                               ;
+;--------------------------------------------------------------------------;
+Cursor_Right PROC NEAR
+         PUSH      AX,BX,CX,DX
+         MOV       AH,3                ;Read the current cursor pos.
+         MOV       BH,0                ;on page 0
+         INT       10h                 ;Read cursor position
+         MOV       AH,2                ;Set new cursor postition
+         INC       DL
+         CMP       DL,79               ;Make sure column <= 79
+         JBE       OK
+         CALL      Send_CRLF           ;Go to next line
+         JMP       DONE
+OK:      INT       10h
+DONE:    POP       DX,CX,BX,AX
+         RET
+Cursor_Right ENDP
+
+
+;--------------------------------------------------------------------------;
+; This procedure clears the line from the current cursor position to       ;
+; the end of that line.                                                    ;
+;--------------------------------------------------------------------------;
+Clear_To_End_of_Line PROC NEAR
+         PUSH      AX,BX,CX,DX
+         MOV       AH,3                ;Read current cursor position
+         XOR       BH,BH               ; on page 0
+         INT       10h                 ;Now have (X,Y) in DL,DH
+         MOV       AH,6                ;Set up to clear to end of line
+         XOR       AL,AL               ;Clear window
+         MOV       CH,DH               ;All on same line
+         MOV       CL,DL               ;Start at the cursor postion
+         MOV       DL,79               ;And stop at the end of the line
+         MOV       BH,7                ;Use normal attriblute
+         INT       10h
+         POP       DX,CX,BX,AX
+         RET
+Clear_To_End_Of_Line ENDP
+
+CODE ENDS
+        END
+

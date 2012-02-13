@@ -1,0 +1,60 @@
+This diskette contains files for Version 7.5 of Icon for MS-DOS as follows:
+
+	pkxarc.com	dearchiving utility
+	icon.arc	executable binaries [470KB]
+	docs.arc	archived documents [102KB]
+	samples.arc	archived sample programs and data [3KB]
+
+The figures in brackets indicate the approximate amount of disk space
+needed for the unloaded files. It is not necessary to keep all the
+executable binary files; about 256KB will suffice for the minimum
+configuration.
+
+The executable files should be unloaded on a place on your PATH specification.
+For example, if this diskette is mounted in your A drive and you set
+your current directory to where you want the files, the following
+unloads the executable binary files:
+
+	a:pkxarc a:icon.arc
+
+There are two executors, one that is fast but has fixed memory regions and
+another that is slower, but has expandable memory regions. The faster executor
+can be given its standard name by
+
+	rename ficonx.exe iconx.exe
+
+More information about the executors is given in guide.doc in docs.arc.
+
+The documents and sample programs can be unloaded in a similar fashion
+to the executable files.
+
+See guide.doc for information about this implementation of Icon and for
+pointers to other documents.
+
+Current Status of Version 7:
+----------------------------
+There are a few minor changes in Version 7.5 of Icon that are not
+described in the Version 7 technical report:
+
++  Octal escape sequences for nonprintable characters in imaged strings
+   have been replaced by hexadecimal escape sequences. This change will
+   show up if you run the standard tests and compare the results with
+   former test output.
+
++  The initial size of &main is now 1 instead of 0 to reflect
+   its conceptual activation to initiate program execution.
+
++  An attempt to create a refreshed copy of &main now produces run-time
+   error 215 (formerly it caused a memory violation).
+
++  The function to force a garbage collection now has two arguments:
+   collect(i,j). The first argument is an integer that specifies
+   the region in which space is required: 0 for no region, 1 for the static
+   region, 2 for the string region, and 3 for the block region. The second
+   argument specifies how much space is required in the region following
+   collection. The function fails if the requested amount of space cannot be
+   obtained. The default values for i and j are 0. A garbage collection is
+   performed even if no space is required.
+
++  The environment variable BLOCKSIZE is now provided as a synonym
+   for HEAPSIZE.

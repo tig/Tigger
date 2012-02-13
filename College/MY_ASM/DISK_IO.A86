@@ -1,0 +1,79 @@
+;--------------------------------------------------------------------------;
+; DISK_IO                                                                  ;
+;--------------------------------------------------------------------------;
+
+Code SEGMENT
+
+
+;--------------------------------------------------------------------------;
+; This procedure reads the previous sector, if possible.                   ;
+;                                                                          ;
+; Uses:            Write_Header, Read_Sector, Init_Sec_Disp                ;
+;                  Write_Prompt_Line                                       ;
+; Reads:           Current_Sector_No, Editor_Prompt                        ;
+; Writes:          Current_Sector_No                                       ;
+;--------------------------------------------------------------------------;
+Previous_Sector PROC NEAR
+         PUSH      AX,DX
+         MOV       AX,Current_Sector_No  ;Get current sector number
+         OR        AX,AX               ;Don't decrement if already 0
+         JZ        DontDecrementSector
+         DEC       AX
+         MOV       CURRENT_SECTOR_NO,AX  ;Save new sector number
+         CALL      Write_Header
+         CALL      Read_Sector
+         CALL      Init_Sec_Disp       ;Display new sector
+         LEA       DX,Editor_Prompt
+         CALL      Write_Prompt_Line
+DontDecrementSector:
+         POP       DX,AX
+         RET
+Previous_Sector ENDP
+
+
+;--------------------------------------------------------------------------;
+; Reads the next sector                                                    ;
+;                                                                          ;
+; Uses:            Write_Header, Read_Sector, Init_Sec_Disp                ;
+;                  Write_Prompt_Line                                       ;
+; Reads:           Current_Sector_No, Editor_Prompt                        ;
+; Writes:          Current_Sector_No                                       ;
+;--------------------------------------------------------------------------;
+Next_Sector PROC NEAR
+         PUSH      AX,DX
+         MOV       AX,Current_Sector_No  ;Get current sector number
+         INC       AX
+         MOV       CURRENT_SECTOR_NO,AX  ;Save new sector number
+         CALL      Write_Header
+         CALL      Read_Sector
+         CALL      Init_Sec_Disp       ;Display new sector
+         LEA       DX,Editor_Prompt
+         CALL      Write_Prompt_Line
+         POP       DX,AX
+         RET
+Next_Sector ENDP
+
+
+;-------------------------------------------------------------------------;
+; This procedure reads one sector (512 bytes) into Sector.                ;
+;                                                                         ;
+; Reads:           Current_Sector_No, Disk_Drive_No                       ;
+; Writes:          Sector                                                 ;
+;-------------------------------------------------------------------------;
+Read_Sector PROC NEAR
+         PUSH      AX,BX,CX,DX
+         MOV       AL,Disk_Drive_No    ;Disk drive number
+         MOV       CX,1                ;Read only 1 sector
+         MOV       DX,Current_Sector_No ;Logical sector number
+         LEA       BX,Sector           ;Where to store this sector
+         INT       25h                 ;Read the sector
+         POPF                          ;Discard flags put on stack by DOS
+         XOR       DX,DX               ;Set offset to 0 within Sector
+         POP       DX,CX,BX,AX
+         RET
+Read_Sector         ENDP
+
+CODE SEGMENT ENDS
+
+         END
+

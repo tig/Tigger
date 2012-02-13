@@ -1,0 +1,29 @@
+ez: ez.o cmnd.o input.o file.o disp.o buf.o move.o term.o xsys.o 
+	cc -o ez ez.o cmnd.o input.o file.o disp.o buf.o move.o term.o xsys.o
+
+ez.o: ez.c ez.h disp.h buf.h file.h input.h
+	cc -c ez.c
+
+cmnd.o: cmnd.c ez.h cmnd.h move.h buf.h file.h input.h disp.h
+	cc -c cmnd.c
+
+input.o: input.c ez.h input.h xsys.h
+	cc -c input.c
+
+file.o: file.c ez.h file.h buf.h
+	cc -c file.c
+
+disp.o: disp.c ez.h disp.h buf.h term.h
+	cc -c disp.c
+
+buf.o: buf.c ez.h buf.h move.h xsys.h disp.h
+	cc -c buf.c
+
+move.o: move.c ez.h
+	cc -c move.c
+
+term.o: term.c term.h xsys.h
+	cc -c term.c
+
+xsys.o: xsys.c xsys.h 
+	cc -c xsys.c

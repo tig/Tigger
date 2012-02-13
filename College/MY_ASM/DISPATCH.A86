@@ -1,0 +1,79 @@
+;--------------------------------------------------------------------------;
+; Dispatch                                                                 ;
+;--------------------------------------------------------------------------;
+Code SEGMENT
+
+;--------------------------------------------------------------------------;
+; This table contains the legal extended ASCII keys and addresses          ;
+; of the procedures that should be called when each key is pressed.        ;
+;        The format of the table is                                        ;
+;                  DB      72          ;Extended code for cusor up         ;
+;                  DW      OFFSET Phantom_Up                               ;
+;--------------------------------------------------------------------------;
+Dispatch_Table  DB        59                  ;F1
+                DW        OFFSET Previous_Sector
+                DB        60                  ;F2
+                DW        OFFSET Next_Sector
+                DB        72                  ;Cursor up
+                DW        OFFSET Phantom_Up
+                DB        80                  ;Cursor down
+                DW        OFFSET Phantom_Down
+                DB        75                  ;Cursor Left
+                DW        OFFSET Phantom_Left
+                DB        77                  ;Cursor Right
+                DW        OFFSET Phantom_Right
+                DB        0                   ;End of table
+
+;--------------------------------------------------------------------------;
+; This is the central dispatcher.  During normal editing and viewing,      ;
+; this procedure reads characters from the keybard and, if the char        ;
+; is a command key (sucha s a cursor key), Dispatcher calls the            ;
+; procedures that do the actual work.  This dispatching is done for        ;
+; special keys listed in the table DISPATCH_TABLE, where the procedure     ;
+; addresses are stored jsut after the key names.                           ;
+;   IF the character is not a special key, then is should be placed        ;
+; directly into the sector buffer--this is the editing mode.               ;
+;                                                                          ;
+;  Uses:           Read_Byte,Edit_byte                                     ;
+;--------------------------------------------------------------------------;
+Dispatcher PROC NEAR
+         PUSH      AX,BX,DX
+DispatchLoop:
+         CALL      Read_Byte           ;Read charcter into AX
+         OR        AH,AH               ;AX = 0 if no charcter read, -1
+                                       ; for an extended code.
+         JZ        DispatchLoop        ;No character read, try again...
+         JS        SpecialKey          ;Read extended code
+         MOV       DL,AL
+         CALL      Edit_Byte           ;Was normal character, edit byte
+         JMP       DispatchLoop        ;Read another character
+SpecialKey:
+         CMP       AL,68               ;F10--exit?
+         JE        EndDispatch         ;Yes, leave
+                                       ;Use BX to look through table
+
+         LEA       BX,Dispatch_Table
+SpecialLoop:
+         CMP       BYTE PTR [BX],0     ;End of table?
+         JE        NotInTable          ;Yes, key was not in table
+         CMP       AL,[BX]             ;Is it this table entry?
+         JE        Dispatch            ;Yes, then dispatch
+         ADD       BX,3                ;No, try next entry
+         JMP       SpecialLoop        ;check next table entry
+
+Dispatch:
+         INC       BX                  ;Point to address of procedure
+         CALL      WORD PTR [BX]       ;Call procedure
+         JMP       DispatchLoop        ;Wait for another key
+
+NotInTable:
+         JMP       DispatchLoop        ;Do nothing, just read next char.
+
+EndDispatch:
+         POP       DX,BX,AX
+         RET
+Dispatcher   ENDP
+
+
+Code ENDS
+

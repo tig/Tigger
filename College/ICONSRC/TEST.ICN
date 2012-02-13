@@ -1,0 +1,13 @@
+procedure main ()
+  {
+    T := table(0)
+    T["one"] := 1
+    T["two"] := 2
+
+    write (T["one"], T["two"])
+
+    every x := key(T) do
+      write (x, ":", T[x])
+
+  }
+end

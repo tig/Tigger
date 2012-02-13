@@ -1,0 +1,4 @@
+set prompt line 'EDT> '
+SET SCREEN 80
+set term vt100
+Set Mode Change

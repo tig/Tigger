@@ -1,0 +1,26 @@
+procedure main()
+  letters := &ucase ++ &lcase
+  linenum := 0
+
+  T := table()
+  while line := read() do
+  {
+    write (right(string(linenum +:= 1), 5), "  ", line)
+    Escan(Bscan(map(line)), 
+       while tab(upto(letters)) do
+       {
+          word := tab(many(letters))
+          /T[word] := set()
+          insert (T[word], linenum)
+       })
+  }
+  write()
+
+#  L := sort (T) 
+  every word := (!sort(T))[1] do
+  {
+     line := word || repl(" ", 20 - *word)
+     every line ||:= string(!T[word]) || ", "
+     write (line[1:*line-1])
+  }
+end

@@ -1,0 +1,57 @@
+# Makefile for phase1 of the 452 project
+#
+# OS/0 - (c) Copyright 1990, Charles E. Kindel, Jr. and Sandra Smith
+#
+
+DEFS = typedefs.h
+CFLAGS = -g -ansi -I/usr/cs452/include
+# remove -Wall option to get rid of warnings.
+
+kernel:		queue.o kernel.o sandy.o  mbox.o libuser.o sandy2.o syscall.o term.o test.o disk.o filesys.o sandy3.o command.o mail.o
+		-rm kernel
+		gcc -o kernel queue.o kernel.o sandy.o mbox.o libuser.o /usr/452/lib/uslossg.o syscall.o term.o sandy2.o test.o disk.o	filesys.o sandy3.o command.o mail.o
+
+queue.o:	queue.c $(DEFS) queue.h
+		gcc -c $(CFLAGS) queue.c
+
+kernel.o:	kernel.c $(DEFS) typedefs.h
+		gcc -c $(CFLAGS) kernel.c
+
+sandy.o:	sandy.c $(DEFS) typedefs.h
+		gcc -c $(CFLAGS) sandy.c
+
+mbox.o:		mbox.c $(DEFS) mbox.h 
+		gcc -c $(CFLAGS) mbox.c
+
+sandy2.o:	sandy2.c $(DEFS) typedefs2.h
+		gcc -c $(CFLAGS) sandy2.c
+
+syscall.o:	syscall.c $(DEFS) typedefs2.h
+		gcc -c $(CFLAGS) syscall.c
+
+term.o:		term.c $(DEFS) typedefs.h term.h
+		gcc -c $(CFLAGS) term.c
+
+libuser.o:      libuser.c $(DEFS)
+		gcc -c $(CFLAGS) libuser.c
+
+disk.o:		disk.c $(DEFS)
+		gcc -c $(CFLAGS) disk.c
+
+filesys.o:	filesys.h filesys.c $(DEFS)
+		gcc -c $(CFLAGS) filesys.c
+
+command.o:	filesys.h $(DEFS) command.c command.h mail.h
+		gcc -c $(CFLAGS) command.c
+
+mail.o:		mail.h $(DEFS) command.h mail.c
+		gcc -c $(CFLAGS) mail.c
+
+sandy3.o:	sandy3.c $(DEFS)
+		gcc -c $(CFLAGS) sandy3.c
+
+test.o:         test.c $(DEFS)
+		gcc -c $(CFLAGS) test.c
+turnin:
+		turnin 452.phase3 queue.c queue.h kernel.c sandy.c sandy2.c mbox.c mbox.h libuser.c typedefs.h typedefs2.h term.c term.h disk.c syscall.c filesys.c filesys.h command.c command.h mail.c mail.h sandy3.c Makefile
+

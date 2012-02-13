@@ -1,0 +1,27 @@
+# vwords.icn 
+# Copyright (c) 1989, Charles E. Kindel, Jr.
+#
+# Writes words in input that have only one lower case vowel.
+# 
+procedure main()
+{
+  letters := &ucase ++ &lcase
+  lvowel := 'aeiou'
+
+  while line := read() do
+   line ? 
+      while tab(upto(letters)) do
+      {
+        if not (word := tab(upto(~letters))) then
+          word := tab(0)   # this handles words that end at end of line.
+        word ? 
+          if tab(upto(lvowel) + 1) then
+            if not (upto(lvowel)) then
+            {
+              tab(1)
+              write (tab(0))
+            }
+      }
+}
+end
+  

@@ -1,0 +1,16 @@
+.UA The University of Arizona
+.UA(cats) WildCats
+.cats WildCats (U of A)
+.NAME Kindel, Jr.
+.FIRST Charles
+.MI E.
+
+.A test \(x
+Using .A: "\(A)"
+
+.LAST Kindel, Jr.
+.NAME \(FIRST) \(MI) \(LAST)
+I'm \(FIRST) \(MI) \(LAST) and I go to
+\(UA).
+
+I'm \(NAME and I love the \(cats)

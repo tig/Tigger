@@ -1,0 +1,30 @@
+procedure main ()
+
+  T := table("")
+  while line := read() do
+    if line[1:2] == "." then
+    line ?
+    {
+       move(1)
+       name := tab(upto(' '))
+       tab(upto(&ucase++&lcase))
+       def := trim(tab(0))
+       T[name] := def
+    }
+    else
+    {
+       every find("\(", line) do
+       line ? 
+       {
+          tab(find("\("))
+          line := &subject[1:&pos-1] || T[&subject[&pos+1:find(")")]] || &subject[find(")")+1:0]
+       }
+       write (line)
+    }
+end
+
+procedure snapshot ()
+  write (image(&subject))
+  write (repl(" ",*image(&subject[1:&pos]) - 1), "|")
+  return
+end

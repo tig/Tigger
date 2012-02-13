@@ -1,0 +1,790 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                3D TRANSFORMS
+
+                          A Turbo C Function Library
+
+                                 Version 1.00
+
+
+
+
+                              Copyright (c) 1988
+
+                                 Gus O'Donnell
+                                8301 Mondon Way
+                             Orangevale, CA  95662
+
+                              All Rights Reserved
+
+                               February 29, 1988
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Introduction.
+
+        3D TRANSFORMS is a library of functions used to create, manipulate
+        and display objects in three dimensions.  The functions allow the
+        programmer to create representations of solid objects bounded by
+        polygons, rotate, translate, and scale the objects in three dimen-
+        sions, and (with Turbo C version 1.5) display the objects in color
+        with a given light source.
+
+        The functions may be classed into the following categories:
+
+
+        Initialization functions:
+
+            identity    new_face    new_obj
+
+        Vector and matrix math functions:
+
+            dot_prod    mat_mul     normal
+
+        Transformation functions:
+
+            scale       trans       xrot        yrot
+            zrot
+
+        Data structure manipulation functions:
+
+            add_corner  add_face    del_face    xform
+            max_z       min_z
+
+        Display functions:
+
+            disp_face   disp_object
+
+        Debug functions:
+
+            dump_mat    dump_face   dump_obj
+
+
+        This library may be used with Turbo C version 1.5, or, with the
+        exception of disp_face and disp_object, with version 1.0.
+
+        The routines in this library are based on techniques described in
+        the book "Principles of Interactive Computer Graphics", by Newman
+        and Sproull, McGraw-Hill, publishers.
+
+        Turbo C is a registered trademark of Borland International.
+
+
+
+
+
+
+
+
+
+
+                                     1
+
+
+
+
+
+
+
+
+        Using 3D TRANSFORMS.
+
+        Included in 3D TRANSFORMS is a header file, 3D.H, containing function
+        prototypes and data structure definitions.  3D TRANSFORMS supports
+        the following data structures:
+
+
+            MATRIX:  A 4 X 4 matrix is used to describe transformations
+                     in three dimensions, such as rotation, scaling, and
+                     translation.  Multiple transformations may be con-
+                     catenated.  A point in three dimensions is transformed
+                     by multiplying it by the transformation matrix.
+
+            VECTOR:  An array of three coordinates representing a direction.
+                     This is typically used to define the direction of a
+                     light source, or the normal to a face.
+
+            FACE:    A face describes a flat surface of an object.  It is
+                     defined by a list of corners.
+
+            OBJECT:  A solid object is defined by a list of faces. Objects
+                     are created by defining faces individually, then adding
+                     them to the object.
+
+
+        To create an object in a program:
+
+        1.  Include 3D.H in your program.
+
+        2.  Allocate memory for the object and its faces as follows:
+
+                    FACE *a;
+                    OBJECT *o;
+
+                    a = (FACE *)malloc(sizeof(FACE));
+                    o = (OBJECT *)malloc(sizeof(OBJECT));
+
+        3.  Initialize the data structures as follows:
+
+                    new_face (a);
+                    new_obj (o);
+
+        4.  Add corners to the face.  Corners are added in standard order,
+            i.e., in clockwise fashion as viewed from the outside of the
+            object:
+
+                    add_corner (x1,y1,z1,a);
+                    add_corner (x2,y2,z2,a);
+
+        5.  Add faces to the object:
+
+                    add_face (o,a);
+
+
+
+
+
+                                     2
+
+
+
+
+
+
+
+
+        6.  Create the transformation matrix.  In this example, the matrix
+            includes rotation followed by translation:
+
+                     MATRIX m;
+
+                     identity (m);
+                     xrot(3.14159/4,m);
+                     trans(10.0,20.0,30.0,m);
+
+        7.  Transform the object:
+
+                     xform (*o,m);
+
+
+        To display the object, the graphics system must be initialized, and
+        the graphics driver resident in the local directory, or in the path
+        specified by the initgraph function.  A light source is specified,
+        and the object may be transformed with a second matrix:
+
+
+                      VECTOR s;
+                      MATRIX id;
+
+                      identity (id);
+                      s[0] = 0.0;
+                      s[1] = 0.0;
+                      s[2] = 1.0;
+                      detectgraph (&g_driver,&g_mode);
+                      initgraph (&g_driver,&g_mode,"");
+                      disp_object (s,1,o,id);
+
+
+        For a complete example, see the demonstration program DEMO3D.C.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      3
+
+
+
+
+
+
+
+
+        3D TRANSFORMS Functions.
+
+        All function prototypes are in 3D.H.
+
+        Name            add_corner - adds a corner to a face.
+
+        Usage           int add_corner(double x, double y, double z,
+                                       FACE *this_face);
+
+        Related
+        functions usage int add_face(OBJECT *this_obj, FACE *this_face);
+                        int del_face(OBJECT *this_obj, FACE *this_face);
+
+        Description     add_corner adds a point defined by [x,y,z] to
+                        this_face.  Corners are added in standard order,
+                        i.e., clockwise as viewed from the outside of the
+                        object.
+
+                        add_face adds a face described by this_face to
+                        the object this_obj.
+
+                        del_face deletes the face pointed to by this_face
+                        from this_obj.
+
+        Return value    add_corner returns 0 if successful.  1 is returned
+                        if memory cannot be allocated for the new corner.
+                        2 is returned if the corner is colinear with the
+                        last two corners added.  In this case, the previous-
+                        ly added corner is replaced with the new corner.
+
+                        add_face returns 0 if successful.  1 is returned
+                        if the face has less than three corners.  In this
+                        case the face is not added to the object.
+
+                        del_face returns 0 if successful.  1 is returned
+                        if the face is not part of the object.
+
+        _____________________________________________________________________
+
+
+        Name            add_face - add a face to an object.
+
+        Usage           int add_face(OBJECT *this_obj, FACE *this_face);
+
+        Description     See add_corner
+
+        _____________________________________________________________________
+
+
+        Name            del_face - delete a face from an object.
+
+        Usage           int del_face(OBJECT *this_obj, FACE *this_face);
+
+        Description     See add_corner
+
+
+
+                                     4
+
+
+
+
+
+
+
+
+        Name            disp_face - display a face on the screen.
+
+        Usage           void disp_face(VECTOR lsource, int color,
+                                       FACE *this_face, MATRIX xfrm_mat);
+
+        Related
+        functions usage void disp_object(VECTOR lsource, int color,
+                                      OBJECT *this_obj, MATRIX xfrm_mat);
+
+        Description     disp_face displays a face on the screen.  The
+                        face is first transformed by xfrm_mat (the structure
+                        is unchanged).  The color is defined by color,
+                        and the intensity of the shading is proportional
+                        to the normalized dot product of the face normal
+                        and lsource.  If the normal to the face has a
+                        negative z component, it is not displayed.  The
+                        face also is not displayed if it has fewer than
+                        three corners.  The graphics system must be
+                        initialized prior to calling this function.
+
+                        disp_obj displays an object on the screen.  The
+                        function simply calls disp_face for each face in
+                        the object.
+
+                        Both of these functions require Turbo C version
+                        1.5.
+
+        Return value    Neither function returns a value.
+
+        _____________________________________________________________________
+
+
+        Name            disp_object - display an object on the screen.
+
+        Usage           void disp_object(VECTOR lsource, int color,
+                                      OBJECT *this_obj, MATRIX xfrm_mat);
+
+        Description     See disp_face
+
+        _____________________________________________________________________
+
+
+        Name            dot_prod - calculate the dot product of two
+                                   vectors.
+
+        Usage           double dot_prod(VECTOR vec1, VECTOR vec2);
+
+        Description     dot_prod returns the normalized inner product
+                        (dot product or scalar product) of two vectors.
+                        Prior to the calculation, both vectors are norm-
+                        alized, i.e., adjusted to unit length.  Thus,
+                        the value returned is equal to the cosine of the
+                        angle between the two vectors.
+
+
+
+
+                                      5
+
+
+
+
+
+
+
+
+        Return value    The function returns a double precision value
+                        equal to the cosine of the angle between the two
+                        vectors.
+
+        _______________________________________________________________________
+
+
+        Name            dump_face - dump the contents of the face data
+                                    structure to the screen.
+
+        Usage           void dump_face(FACE this_face);
+
+        Related
+        functions usage void dump_mat(MATRIX this_mat);
+                        void dump_obj(OBJECT this_obj);
+
+        Description     dump_face displays the contents of the data
+                        structure this_face to the screen.  This
+                        function is useful for debugging.
+
+                        dump_mat displays the elements of a matrix.
+
+                        dump_obj displays the contents of the data
+                        structure this_obj by calling dump_face for
+                        each face in the object.
+
+        Return value    None of these functions returns a value.
+
+        _____________________________________________________________________
+
+
+        Name            dump_mat - dump the contents of a matrix to
+                                   the screen.
+
+        Usage           void dump_mat(MATRIX this_mat);
+
+        Description     See dump_face
+
+        _____________________________________________________________________
+
+
+        Name            dump_obj - dump the contents of the object data
+                                   structure to the screen.
+
+        Usage           void dump_obj(OBJECT this_obj);
+
+        Description     See dump_face
+
+        _______________________________________________________________________
+
+
+        Name            identity - initialize a matrix.
+
+        Usage           void identity(MATRIX this_mat);
+
+
+
+                                      6
+
+
+
+
+
+
+
+
+        Description     identity assigns a value to each element of
+                        this_mat.  The diagonal elements are assigned
+                        a value of 1.0.  Off diagonal elements are
+                        assigned a value of 0.
+
+        Return value    This function does not return a value.
+
+        _______________________________________________________________________
+
+
+        Name            mat_mul - multiply two matrices.
+
+        Usage           void mat_mul(MATRIX mat1, MATRIX mat2,
+                                     MATRIX mat3);
+
+        Description     mat_mul multiplies two 4 X 4 matrices mat1 and
+                        mat2 and assigns the result to mat3.
+
+        Return value    This function does not return a value.
+
+        _______________________________________________________________________
+
+
+        Name            max_z - return the maximum z coordinate in the
+                                face.
+
+        Usage           double max_z(FACE *this_face);
+
+        Related
+        functions usage double min_z(FACE *this_face);
+
+        Description     max_z returns the value of the largest z
+                        coordinate of any corner in the face.
+
+                        min_z returns the value of the smallest z
+                        coordinate of any corner in the face.
+
+        Return value    max_z returns a double precision value equal
+                        to the maximum z coordinate of the face.
+
+                        min_z returns a double precision value equal
+                        to the minimum z coordinate of the face
+
+        _____________________________________________________________________
+
+
+        Name            min_z - return the minimum z coordinate in the
+                                face.
+
+        Usage           double min_z(FACE *this_face);
+
+        Description     See max_z
+
+
+
+
+
+                                      7
+
+
+
+
+
+
+
+
+        Name            new_face - initialize a face.
+
+        Usage           int new_face(FACE *this_face);
+
+        Related
+        functions usage int new_obj(OBJECT *this_obj);
+
+        Description     new_face initializes the data structure for a face.
+                        The data structure must be initialized before adding
+                        corners.
+
+                        new_obj initializes the data structure for an object.
+                        The data structure must be initialized before adding
+                        faces.
+
+        Return value    Either function returns a 0 if successful.  Either
+                        returns 1 if memory cannot be allocated.
+
+        _______________________________________________________________________
+
+
+        Name            new_obj - initialize an object.
+
+        Usage           int new_obj(OBJECT *this_obj);
+
+        Description     See new_face
+
+        _______________________________________________________________________
+
+
+        Name            normal - calculate the normal to a face.
+
+        Usage           int normal(FACE *this_face, VECTOR norm);
+
+        Description     normal calculates the normal vector of this_face
+                        and assigns it to norm.  The function assumes that
+                        the corners have been added in standard order, and
+                        that the polygon is convex.
+
+        Return value    The function returns 0 if the operation is successful.
+                        The function returns 1 if the face has fewer than
+                        three corners.
+
+        _______________________________________________________________________
+
+
+        Name            scale - add scaling to a transformation matrix.
+
+        Usage           void scale(double sx, double sy, double sz,
+                                   MATRIX this_mat);
+
+
+
+
+
+
+
+                                      8
+
+
+
+
+
+
+
+
+        Related
+        functions usage void trans(double tx, double ty, double tz,
+                                   MATRIX this_mat);
+                        void xrot(double theta, MATRIX this_mat);
+                        void yrot(double theta, MATRIX this_mat);
+                        void zrot(double theta, MATRIX this_mat);
+
+        Description     scale adds scaling to the transformation matrix.
+                        Each axis may be scaled differently.  When a point
+                        is scaled, the x coordinate is multiplied by sx, and
+                        so on.
+
+                        trans adds translation to the transformation matrix.
+                        When a point is translated, tx is added to the x
+                        coordinate, and so on.
+
+                        xrot adds rotation about the x axis to the trans-
+                        formation matrix.  Similarly, yrot and zrot add
+                        rotation about the y axis and z axis respectively.
+
+        Return value    None of these functions returns a value.
+
+        _______________________________________________________________________
+
+
+        Name            trans - add translation to the transformation
+                                matrix.
+
+        Usage           void trans(double tx, double ty, double tz,
+                                   MATRIX this_mat);
+
+        Description     See scale
+
+        _______________________________________________________________________
+
+
+        Name            xform - transform an object.
+
+        Usage           int xform(OBJECT this_obj, MATRIX transform);
+
+        Description     xform transforms an object by multiplying every
+                        vertex in the object by the transformation matrix.
+
+        Return value    The function always returns a 0.
+
+        _______________________________________________________________________
+
+
+        Name            xrot - add rotation about the x axis to the trans-
+                               formation matrix.
+
+        Usage           void xrot(double theta, MATRIX this_mat);
+
+        Description     See scale
+
+
+
+                                      9
+
+
+
+
+
+
+
+
+        Name            yrot - add rotation about the y axis to the trans-
+                               formation matrix.
+
+        Usage           void yrot(double theta, MATRIX this_mat);
+
+        Description     See scale
+
+        _______________________________________________________________________
+
+
+        Name            zrot - add rotation about the z axis to the trans-
+                               formation matrix.
+
+        Usage           void zrot(double theta, MATRIX this_mat);
+
+        Description     See scale
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      10
+
+
+
+
+
+
+
+
+                                   NOTICE
+
+        3D TRANSFORMS is protected by copyright.  The functions in this
+        library may be used for your own personal use, but may NOT be
+        resold or used for any other commercial purpose, or included in
+        any commercial product without written permission from the author.
+        You may copy and distribute this product freely, provided 1) it
+        is reproduced in its entirety, including documentation and exam-
+        ples, and 2) you do not charge for copies (other than a nominal
+        copying fee to cover materials).
+
+        You may obtain permission to use 3D TRANSFORMS commercially,
+        along with complete source code, by sending $25.00 U.S. to:
+
+
+                            Gus O'Donnell
+                            8301 Mondon Way
+                            Orangevale, CA  95662
+
+
+        Please send comments and suggestions to this same address, or
+        leave a message on Compuserve, user ID 76214,1554.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      11
+

@@ -1,0 +1,52 @@
+unset histchars
+biff y
+# setenv TERMCAP /usr/robert/.bin/termcap
+setenv EDITOR me
+
+stty crt new erase ^H kill ^U intr ^\? decctlq
+set noglob
+eval `tset -s -Q -m "=300:?dumb" -m "=1200:?vt100" -m "=9600:?wyse75"`
+unset noglob[B
+
+set path=(. /usr1/tigger/bin /usr/local /usr/ucb /usr/bin /bin \
+            /usr/robert/.bin /usr/tlw/bin )
+set ignoreeof
+set mail=(/usr/spool/mail/tigger)
+set noclobber
+
+umask 77
+
+set histchars = ",^"
+set history=20
+
+alias bell 'echo -n ""'
+alias cd 'chdir \,:*;set prompt="[1m`pwd`>[0m"'
+alias cl '/usr/ucb/clear'
+alias cp '/bin/cp -i'
+alias del '/bin/rm -i'
+alias f /usr/ucb/finger
+alias h 'history +20'
+alias pwdir 'echo -n "[4m";pwd;echo -n "[0m"'
+alias ll 'ls -lag'
+alias ls 'ls -F'
+alias dir 'ls -aFl'
+alias di 'ls -aF'
+alias bye 'clear;echo "";echo "[1mCatch you in the bit stream, mon...[0m";echo -n "";logout'
+alias type 'cat'
+alias more '/usr/ucb/more -f'
+alias move '/bin/mv - i'
+alias pe printenv
+alias psa '/bin/ps -ux'
+alias news 'readnews -u '
+alias up 'cd ..; pwdir'
+alias w '/usr/ucb/w | sort | more; echo "Nobody interesting there!!!"'
+alias what 'ps gau | sort | more'
+alias zap 'pr -l60 -i0'
+alias C 'cc -og'
+alias laser 'lpr -Pima'
+if (($TERM == Wyse-75) | ($TERM == wyse75)) then
+    stty erase ^\? intr ^H
+endif
+set prompt = "[1m`pwd`>[0m"
+clear
+date

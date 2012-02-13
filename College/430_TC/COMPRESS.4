@@ -1,0 +1,438 @@
+/*
+
+compress.c    (c) Charles E. Kindel, Jr., 1987
+
+                COMPRESS - An ASCII file compress program
+
+Author:   Charles E. Kindel, Jr. (tigger)
+
+Started:  June 14, 1987
+Version:  1.4
+
+SYNOPSIS
+   compress [-v] [-a]
+   uncompress [-v] [-a]
+   -v Write compress statistics to standard error.
+   -a Codes are written (read) in ASCII hex format.
+
+DESCRIPTION
+   Compress reduces the size of the standard input file using adaptive
+   Lempel-Ziv coding.  Standard input and output are used exclusively by
+   the program.  Compressed files can be restored to their original form
+   using uncompress.
+
+   Compress uses the modified Lempel-Ziv algorithm popularized in "A
+   Technique for High Performance Data Compression", Terry A. Welch, IEEE
+   Computer, vol. 17, no. 6 (June 1984), pp. 8-19.  Common substrings in
+   the file are first replaced by 12-bit codes 128 to 4094.
+
+   After the code limit is attained, compress automatically discards the
+   current table and starts from scratch.  The amount of compression
+   obtained depends on the size of the input, the number of bits per code,
+   and the distribution of common substrings.  Typically, text such as
+   source code or English is reduced by 50-60%.  Compression is generally
+   much better than that achieved by Huffman coding (as used in pack),
+   or adaptive Huffman coding (compact), and takes less time to compute.
+
+   A message is generated to standard error if the size of the original
+   file is not reduced.  Exit status is normally 0; if the last file is
+   larger after (attempted) compression, the status is 2; if an error
+   occurs, exit status is 1.
+
+   Code output is normally packed one code to every 1.5 bytes.  With the
+   -a option, codes are represented by three HEX bytes (ASCII) separated
+   by spaces.
+
+EXAMPLES
+   compress -av <infile.txt >outfile.lpz
+       Compresses infile.txt to outifile.lpz using ASCII code format.
+       Prints out a listing of diagnostics.
+   uncompress <infile.lpz >outfile.txt
+       Uncompresses infile.lpz to outfile.txt using normal code format.
+
+MESSAGES
+   On an invalid command line the above synopsis is printed to stderr.
+   infile: not in compressed format (file directed through standard input
+           has not been compressed).
+   infile: not an ASCII file. (Character codes greater than 127 were
+           encountered in the input.  File to be compressed already
+           compressed).
+
+LIMITATIONS
+   Output is not always smaller than the input.  Only one size code is
+   allowed (12 bits).  Only ASCII files may be compressed.
+
+FACILITY
+   Originally written on an IBM PC/XT using TurboC and Dos 3.1.  Adapted
+   to Unix System V, 4.2bsd.
+
+NOTES
+   To get this program to run on an IBM PC you must modify the main so
+   that you can fetch the options from the command line.  Also errors will
+   go to standard output with TurboC, so an error file might be helpful.
+
+REVISIONS
+     DATE            VERSION    NAME            CHANGE
+     June 14, 1987   1.0        C.E. Kindel     Original
+     June 15, 1987   1.1        C.E. Kindel     Incorperated getopt
+     June 18, 1987   1.2        C.E. Kindel     added find_or_insert,
+                                                compress, and clear_table.
+     June 22, 1987   1.3        C.E. Kindel     Added uncompress.
+     June 23, 1987   1.4        C.E. Kindel	Ported to UNIX.
+
+*/
+/* <FF>*/
+
+#define TURBOC
+/* IMPORTS */
+
+#include <stdio.h>               /* printf, fprintf */
+#include <ctype.h>               /* toupper */
+#ifdef TURBOC
+#include <conio.h>
+#include <process.h>
+#endif
+
+/* LOCAL DECLARATIONS */
+#ifdef TURBOC
+    void compress (void);
+    void uncompress (void);
+    short int find_or_insert (void);
+    void clear_table (void);
+    void putcode (short int);
+    short int getcode (void);
+    void verbose (void);
+#else
+#define void
+   static compress ();
+   static uncompress ();
+   static short int find_or_insert ();
+   static clear_table ();
+   static putcode ();
+   static short int getcode ();
+   static void verbose ();
+#endif
+
+/* LOCAL SYMBOLIC DEFINITIONS */
+/* flags */
+#define COMMAND       0                /* argv index for command */
+#define NORMAL        0                /* normal program exit */
+#define ERROR         1                /* error program exit */
+#define NOTCOMPRESSED 2                /* input bytes < output bytes */
+#define TRUE          1                /* true */
+#define FALSE         0                /* false */
+#define START         128              /* beginiing of the table */
+#define ASCIILIMIT    127              /* where ascii chars stop */
+#define NOT_FOUND     0xfff            /* not found flag */
+#define END           0xfff            /* end flag */
+#define CLEARED       0                /* table cleared flag */
+#define MAXTABLE      4094             /* max table entry */
+#define T_SIZE        4095             /* table size */
+#define CODE_SIZE     3                /* size of compact code in bytes */
+
+
+/* DATA DEFINITIONS */
+short int aflag;                /* flag for -a option (ASCII) */
+ short int status;               /* return status for program
+                                 0 = normal, 1 = error, 2 = notcompressed */
+ int   pair;                     /* has a pair been output yet */
+ short int prefix [T_SIZE];      /* prefix table */
+ char      suffix [T_SIZE];      /* suffix table */
+ short int link   [T_SIZE];      /* link table */
+ short int head   [T_SIZE];      /* headers for link table */
+ short int current;              /* current table entry */
+ char  next_c;                   /* next input character */
+ short int c_prefix;             /* current prefix */
+ short int in_bytes;             /* number of input bytes */
+ short int out_bytes;            /* number of output bytes */
+ char  pcode [CODE_SIZE];        /* output codes */
+ short int c_table_count;        /* #times table cleared */
+ short int largest_code;         /* largest code output since reset */
+
+
+/* FUNCTIONS */
+
+/*--------------------------------------------------------------------------*/
+/*                          main program                                    */
+/*--------------------------------------------------------------------------*/
+int main (argc, argv)
+int argc;
+char **argv;
+{
+ int comp;                       /* flag for compress or uncompress */
+ int vflag;                      /* flag for -v option (verbose) */
+ char c;                         /* option letter */
+
+    vflag = TRUE; aflag = TRUE;
+
+#ifdef TURBOC
+    vflag = TRUE; aflag = FALSE; comp = TRUE;
+
+#else
+    if (toupper (*argv[COMMAND]) == 'C')
+        comp = TRUE;                    /* to compress.             */
+    else
+        comp = FALSE;                   /* to uncompress */
+
+
+    while ((c = getopt (argc, argv, "av")) != EOF)
+       switch (c)
+       {   case 'a': aflag = TRUE; break;
+           case 'v': vflag = TRUE; break;
+           default:                     /* whoops! bad option. */
+              fprintf (stderr, "Usage:\n  compress [-v] [-a]\n");
+              fprintf (stderr, "  uncompress [-v] [-a]\n");
+              fprintf (stderr,
+              "  -v  Write compress statistics to standard error.\n");
+              fprintf (stderr,
+              "  -a  Codes are written (read) in ASCII hex format.\n");
+              exit (ERROR);              /* send a 1 to Unix */
+              break;
+       }
+#endif
+
+    if (comp)                  /* if were to compress */
+        compress ();
+    else                               /* else were to uncompress */
+        uncompress ();
+
+    if (vflag)                         /* if -v option then spit it out */
+        verbose ();
+
+    return (status);                   /* 0 = norm, 1 = err, 2 = in < out */
+}
+/*--------------------------------------------------------------------------*/
+/*                    End of main program                                   */
+/*==========================================================================*/
+/*                           compress                                       */
+/*--------------------------------------------------------------------------*/
+ void compress ()
+{   short int code;              /* code to be outputted */
+
+   clear_table ();                     /* clear the tables */
+   c_table_count = 0;
+   largest_code = START;               /* largest code since t. clear */
+   in_bytes = 0;                       /* number of input bytes */
+   out_bytes = 0;                      /* number of output bytes */
+   pair = FALSE;                       /* output a pair of codes? */
+
+   if ((next_c = getchar ()) != EOF)   /* if not End Of input */
+   {   in_bytes++;                     /* increment input bytes */
+       current = START;                /* point to first table entry (128) */
+       c_prefix = next_c;
+       while ((next_c = getchar ()) != EOF)   /* while not at EOF */
+       {   if (next_c > ASCIILIMIT)    /* if its not an ascii char */
+           {   fprintf (stderr, "infile: not an ASCII file.\n");
+               exit (ERROR);
+           }
+           in_bytes ++;                /* increment input byte count */
+           switch ((code = find_or_insert ()))  /* find or insert entry */
+           {   case NOT_FOUND:             /* entry was inserted */
+                              putcode (c_prefix);
+                              c_prefix = next_c;
+                              break;
+
+              case CLEARED:           /* table was cleared */
+                              c_table_count++;   /* ct. table clears */
+                              current = START;
+                              putcode (c_prefix);
+                              putcode (CLEARED);
+                              c_prefix = next_c;
+                              break;
+
+               default:                /* entry was found, keep looking */
+                              c_prefix = code;
+                              break;
+           }
+       }
+       putcode (c_prefix);
+       putcode (END);
+       putcode (END);
+       putcode (END);
+   }
+   return;
+}
+/*--------------------------------------------------------------------------*/
+/*                       end of compress                                    */
+/*==========================================================================*/
+/*                        find_or_insert                                    */
+/*--------------------------------------------------------------------------*/
+ short int find_or_insert ()
+{
+ int x;                          /* table index */
+
+    x = head [c_prefix];               /* first entry with this prefix */
+    while (x != END)
+       if (suffix [x] == next_c)       /* if suffix at entry is same as c */
+           return (x);                 /* it exists, so we keep looking */
+       else
+           x = link [x];               /* else we look at next link */
+
+    if (current < MAXTABLE)            /* if table isnt full */
+    {   prefix [current] = c_prefix;   /* install prefix */
+        suffix [current] = next_c;     /* and suffix */
+        if (head [c_prefix] != END)    /* another entry with this prefix? */
+        {   x = head [c_prefix];       /* yes, look for it */
+            while (link [x] != END)    /* while not the last one */
+                x = link [x];          /* look at the next */
+            link [x] = current;        /* point the last one to cur entry */
+        }
+        else                           /* otherwise point the head to */
+            head [c_prefix] = current; /* current entry */
+        largest_code = ++current;      /* increment current entry */
+        return (NOT_FOUND);            /* tell em we had to insert new one */
+    }
+    else
+    {   clear_table ();                /* if table is full clear it */
+        return (CLEARED);
+    }
+}
+/*--------------------------------------------------------------------------*/
+/*                           end of find_or_insert                          */
+/*==========================================================================*/
+/*                            uncompress                                    */
+/*--------------------------------------------------------------------------*/
+ void uncompress ()
+{
+   char string [T_SIZE];
+   short int code;
+   short int next_entry;
+   char *string_p;
+
+   pair = FALSE;
+   c_table_count = 0;                /* #times table was cleared */
+   in_bytes = 0;
+   out_bytes = 0;
+   clear_table ();
+   string [T_SIZE] = '\0';             /* put a null at the end of string */
+
+
+   next_entry = START;                 /* point to the beg. of the table */
+   code = getcode ();
+   while (code != END)  /* while code is not last one */
+   {   prefix [next_entry] = code;     /* add it to next entry */
+       current = next_entry;           /* point to this entry */
+       string_p = &string [T_SIZE];    /* init. string */
+       while (prefix [current] != END) /* while there are more chars left */
+       {   current = prefix [current]; /*   in string.... */
+           if ((current + 1) == next_entry)  /* if special case */
+              suffix [current] = suffix [current - 1];
+           string_p--;                 /* add char. to string */
+#ifdef TURBOC
+           if (suffix[current] == (char) 10)
+           {    *string_p = (char) 13;
+                string_p--;
+           }
+#endif
+           *string_p = suffix [current];
+           out_bytes++;
+       }
+       fputs (string_p, stdout);
+       if (next_entry > START)         /* if not first code */
+          suffix [next_entry - 1] = *string_p;
+       next_entry++;
+       code = getcode ();
+       if (code == CLEARED)
+       {   clear_table ();
+           c_table_count++;
+           next_entry = START;
+           code = getcode ();
+       }
+   }
+}
+/*--------------------------------------------------------------------------*/
+/*                         end of uncompress                                */
+/*==========================================================================*/
+/*                             clear_table                                  */
+/*--------------------------------------------------------------------------*/
+ void clear_table ()
+{
+ short int i;                       /* counter */
+
+    for (i = 0; i <= T_SIZE; i++)     /* for i = 0 to 4095  */
+    {   if (i <= ASCIILIMIT)          /* if < 127 then we can put an ASCII */
+           suffix [i] = i;            /* char in suffix */
+        else
+           suffix [i] = END;          /* otherwise suffix = fff */
+        prefix [i] = link [i] = head [i] = END;
+    }
+}
+/*--------------------------------------------------------------------------*/
+/*                          end of clear_table                              */
+/*==========================================================================*/
+/*                              putcode                                     */
+/*--------------------------------------------------------------------------*/
+ void putcode (outcode)
+short int outcode;
+{
+    if (aflag == TRUE)
+    {   printf ("%03x ", outcode);
+        out_bytes += CODE_SIZE;
+    }
+    else
+    {   if (pair == TRUE)
+        {    pcode[2] |= outcode << 4;
+             pcode[3] = outcode >> 4;
+             printf ("%c%c%c", pcode[1],pcode[2],pcode[3]);
+             out_bytes += CODE_SIZE;
+             pair = FALSE;
+        }
+        else
+        {    pcode[1] = outcode;
+             pcode[2] = outcode >> 8;
+             pair = TRUE;
+        }
+    }
+    return;
+}
+/*--------------------------------------------------------------------------*/
+/*                              end of putcode                              */
+/*==========================================================================*/
+/*                               getcode                                    */
+/*--------------------------------------------------------------------------*/
+ short int getcode ()
+{     short int incode;
+     if (aflag == TRUE)
+     {    fscanf (stdin, "%03x ", &incode);
+          in_bytes += CODE_SIZE;
+     }
+     else
+     {    if (pair == TRUE)           /* then were on the 2nd code */
+          {    incode = ((pcode[2] >> 4) & 0x000F) | (pcode[3] << 4) & END;
+               pair = FALSE;
+          }
+          else               /* we need to read in a packed code */
+          {    fscanf (stdin, "%c%c%c", &pcode[1],&pcode[2],&pcode[3]);
+               incode = ((pcode[2] << 8) | (pcode[1] & 0x00FF)) & END;
+               in_bytes += CODE_SIZE;
+               pair = TRUE;
+          }
+     }
+     return (incode);
+}
+/*--------------------------------------------------------------------------*/
+/*                           end of getcode                                 */
+/*==========================================================================*/
+/*                              verbose                                     */
+/*--------------------------------------------------------------------------*/
+ void verbose ()
+{    int ratio;
+
+    ratio = ((out_bytes/in_bytes));
+    fprintf (stderr, "\n\nCompression ratio = %d%%\n", ratio);
+    fprintf (stderr, "Input bytes = %d\n", in_bytes);
+    fprintf (stderr, "Output bytes = %d\n", out_bytes);
+    fprintf (stderr, "Cleared string table %d times.\n", c_table_count);
+    fprintf (stderr, "Elapsed time = \n");
+    fprintf (stderr, "\n\n");
+}
+/*--------------------------------------------------------------------------*/
+/*                              end of verbose                              */
+/*--------------------------------------------------------------------------*/
+
+
+
+/*==========================================================================*/
+/*    END OF COMPRESS / UNCOMPRESS      (C) KindelCo Software Systems, 1987 */
+/*==========================================================================*/
+
