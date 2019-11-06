@@ -1,0 +1,42 @@
+;
+; WinPrint 1.4 Help Project File
+
+;
+;Specify the files to be used in this project.
+;
+[Files]
+WINPRINT.rtf
+
+;[titles]
+;       winprint.doc/heading 1/first/
+
+[BuildTags]
+POOKER
+FOOBAR
+TEST1
+
+[Options]
+TITLE=WinPrint
+WARNING=3
+COMPRESS=FALSE
+INDEX=Contents_1_1
+
+
+[Alias]
+HLP_OVERVIEW=OVERVIEW_2_1
+HLP_CONTROLS=MAINWINDOWCONTR_22_1
+HLP_PROCEDURES=PROCEDURES_15_1
+HLP_MENU=MENUCOMMANDS_32_1
+HLP_HEADERS=HEADERSANDFOOTE_38_1
+HLP_TEXT=TEXT..._37_1
+HLP_PAGELAYOUT=PAGELAYOUT..._39_1
+HLP_OPEN=OPENCONFIGURATI_33_1
+HLP_SAVE=SAVECONFIGURATI_34_1
+HLP_SHAREWARE=REGISTRATIONINF_51_1
+
+[Map]
+#include <map.h>
+
+[BITMAPS]
+control.bmp
+world.bmp

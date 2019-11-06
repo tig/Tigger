@@ -1,0 +1,47 @@
+/*  iniedit.mnu
+ *
+ *  Copyright (c) 1990, Charles E. Kindel, Jr. (charlkin)
+*/
+
+1 ACCELERATORS
+BEGIN
+   VK_F1, IDM_HELP, VIRTKEY
+END
+
+
+INIedit MENU
+BEGIN
+   POPUP   "&File"
+   BEGIN
+      MENUITEM  "&Open...",              IDM_OTHERFILE
+      MENUITEM  "&Edit with Notepad",    IDM_NOTEPAD   
+      MENUITEM  "&Print",                IDM_PRINT      
+      MENUITEM  "P&rinter Setup...",     IDM_PRINTSETUP
+      MENUITEM  SEPARATOR
+      MENUITEM  "E&xit",                 IDM_EXIT
+   END
+
+/*
+   POPUP   "&Edit"
+   BEGIN
+      MENUITEM "&Undo\tAlt+BkSp",       IDM_UNDO        ,GRAYED
+      MENUITEM SEPARATOR
+      MENUITEM "Cu&t\tShift+Del",       IDM_CUT         ,GRAYED
+      MENUITEM "&Copy\tCtrl+Ins",       IDM_COPY        ,GRAYED
+      MENUITEM "&Paste\tShift+Ins",     IDM_PASTE       ,GRAYED
+   END
+*/
+
+   POPUP   "&Help"
+   BEGIN
+      MENUITEM "Help on INIedit",       IDM_HELP
+      MENUITEM SEPARATOR
+      MENUITEM "&About INIedit...",     IDM_ABOUT
+   END
+
+END
+
+
+
+
+

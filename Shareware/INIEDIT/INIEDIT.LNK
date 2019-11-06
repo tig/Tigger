@@ -1,0 +1,11 @@
+obj\iniedit+
+obj\ini_init+
+obj\ini_dlg+
+obj\ini_ctrl+
+obj\ini_add+
+obj\ini_io+
+obj\ini_prt
+iniedit.exe /align:16
+iniedit /map
+wdb ceklib mlibcew libw oldnames
+iniedit.def

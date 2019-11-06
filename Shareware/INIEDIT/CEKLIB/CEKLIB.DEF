@@ -1,0 +1,37 @@
+; ceklib.def
+;
+; Module Definition file for CEKLIB.DLL
+;
+; Copyright 1990 Charles E. Kindel, Jr.
+;
+LIBRARY         CEKLIB
+
+DESCRIPTION     'CEKLIB.DLL Copyright (c) 1990-92 Charles E. Kindel, Jr.'
+
+EXETYPE         WINDOWS
+
+SEGMENTS        _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+                CEKLIB       PRELOAD MOVEABLE DISCARDABLE
+
+CODE            MOVEABLE DISCARDABLE
+
+DATA            PRELOAD SINGLE
+
+HEAPSIZE        4096
+
+EXPORTS         WEP                     @1 RESIDENTNAME
+                PRINTSELPRNDIALOG       @4
+                PRINTGETDEFAULTPRN      @5
+                SELPRINTERDLGPROC       @6
+                DRAWSHADOW              @7                
+                ABOUTDIALOG             @8
+                ABOUTDLGPROC            @9
+                VERGETDLLVERSION        @10
+                VERMAKEVERSIONNUMBER    @11
+                ISREGISTEREDUSER        @13
+                REGISTRATIONDIALOG      @14
+                BUILDREGNUM             @15
+                REGISTERDLGPROC         @16
+                FILEOPENDIALOG          @17
+                FILEOPENDLGPROC         @18

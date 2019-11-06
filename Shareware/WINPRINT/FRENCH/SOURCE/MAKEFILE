@@ -1,0 +1,295 @@
+ #*****************************************************************************
+ #
+ #     Project:  WINPRINT 1.x
+ #
+ #      Module:  makefile
+ #
+ #   Author(s):  Charles E. Kindel, Jr. (cek)
+ #
+ #      System:  Microsoft Windows 3.x, MS-DOS 5.0, Compiled with Microsoft  
+ #               C 6.00A and Microsoft MASM 5.1.                             
+ #                                                                           
+ #*****************************************************************************
+MAINTARGET=WINPRINT
+
+#WIN32=TRUE
+
+!ifdef WIN32
+!include <ntwin32.mak>
+!endif
+
+# by commenting out the following line you can turn off silent mode
+#!CMDSWITCHES +s
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+# if PUTEXE is defined the dll/exe will be copied from the root to
+PUTEXE  = ..\BUILD\
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  = ..\LIB\
+
+# if pubinc is define the include file will be copied there
+PUTINC  = ..\INC\
+
+
+BANNER      = $(MAINTARGET): **** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) ****
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = SRC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = $(MYINC)VERSION.H $(MYRES)$(MAINTARGET).RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(VERINCS)\
+          $(MYINC)isz.h\
+          $(MYINC)DLGS.H\
+          $(MYRES)$(MAINTARGET).STR\
+          $(MYRES)$(MAINTARGET).rc\
+          $(MYRES)$(MAINTARGET).dlg\
+          $(MYRES)$(MAINTARGET).ico\
+          $(MYRES)ORDER.FRM
+
+# 
+# Library dependencies
+# 
+LMISC   =   MAKEFILE\
+!ifdef WIN32
+            $(MAINTARGET).D32
+!else
+            $(MAINTARGET).DEF
+!endif
+             
+
+LINCS   =   $(MYOBJ)PRECOMP.PCH $(MYINC)$(MAINTARGET).H
+
+LOBJS   =\
+            $(MYOBJ)PRECOMP.OBJ\
+            $(MYOBJ)$(MAINTARGET).OBJ\
+            $(MYOBJ)ws_dlg.obj\
+            $(MYOBJ)ws_lib.obj\
+            $(MYOBJ)ws_print.obj\
+            $(MYOBJ)ws_files.obj\
+            $(MYOBJ)ws_save.obj\
+            $(MYOBJ)ws_open.obj\
+            $(MYOBJ)ws_about.obj\
+            $(MYOBJ)ws_init.obj\
+            $(MYOBJ)ws_reg.obj
+
+LOBJS2  =\
+            $(MYOBJ)page.obj\
+            $(MYOBJ)fontutil.obj\
+            $(MYOBJ)text.obj\
+            $(MYOBJ)headfoot.obj\
+            $(MYOBJ)dlghelp.obj\
+            $(MYOBJ)config.obj\
+            $(MYOBJ)wintime.obj\
+            $(MYOBJ)selprn.obj\
+!ifndef WIN32
+            $(MYOBJ)dragdrop.obj\
+            $(MYOBJ)wsscanf.obj
+!endif
+
+#
+#   BUILD RULES
+#
+all : $(MAINTARGET).EXE $(MYHELP)$(MAINTARGET).hlp
+#all : $(MAINTARGET).EXE
+
+!IFDEF WIN32
+#
+#  Build tool macros.  These control how the tools build files.
+#
+!IFDEF DEBUG
+
+COPTS       =  $(cflags) $(cvars) -nologo -DDEBUG -D$(MAINTARGET)
+LINKOPTS    =  $(guiflags) -out:$(MAINTARGET).EXE $(MYRES)$(MAINTARGET).RES $(guilibs) tdutil.lib WDB.LIB
+RCOPTS      =  -r -DDEBUG -iSRC;INC;RES -DWIN32
+BUILDTYPE   =  DEBUG
+
+!ELSE # no DEBUG
+
+COPTS       =  $(cflags) $(cvars) -nologo -D$(MAINTARGET)
+LINKOPTS    =  $(guiflags) -out:$(MAINTARGET).EXE $(MYRES)$(MAINTARGET).RES $(guilibs) tdutil.lib
+RCOPTS      =   -r -iSRC;INC;RES -DWIN32
+BUILDTYPE   =   RELEASE
+
+!ENDIF #DEBUG
+
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+
+!ELSE  #WIN32
+
+!IFDEF DEBUG
+
+COPTS      =   -f -c -nologo -DDEBUG -AM -G2sw -Owd -W3 -Zip -D$(MAINTARGET)
+LINKOPTS    =   /NOLOGO/BATCH/NOD/NOE/A:16/CO/M
+RCOPTS      =   -r -DDEBUG -iSRC;INC;RES
+BUILDTYPE   =   DEBUG
+
+!ELSE # no DEBUG
+
+COPTS      =   -c -nologo -AM -G2sw -Owt -W3 -Zp -D$(MAINTARGET)
+LINKOPTS    =   /NOLOGO/BATCH/NOD/NOE/A:16/M
+RCOPTS      =   -r -iSRC;INC;RES
+BUILDTYPE   =   RELEASE
+
+!ENDIF #DEBUG
+
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+RESOPTS     =  -v -t -31
+
+
+!ENDIF  #WIN32
+
+#
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#
+!IFDEF WIN32
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   $(cc) $(COPTS) $(PCHFLAGS) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+!ELSE
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(COPTS) $(PCHFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+!ENDIF
+
+#   $(MAINTARGET).EXE build rules
+
+$(MAINTARGET).EXE  : $(LOBJS) $(LOBJS2) $(MYRES)$(MAINTARGET).res $(MAINTARGET).def
+   @echo *** Linking $(MAINTARGET) $(BUILDTYPE)
+!ifdef WIN32
+   link $(LINKOPTS) $(LOBJS) $(LOBJS2)
+!else
+   link @<<
+$(LOBJS)+
+$(LOBJS2)
+$(MAINTARGET).EXE
+$(MAINTARGET).MAP
+oldnames tdutil wdb commdlg ddeml ver mlibcew libw
+$(MAINTARGET).def $(LINKOPTS)
+<<
+                   rc $(RESOPTS) $(MYRES)$(MAINTARGET).res $(MAINTARGET).EXE
+                   @mapsym $(MAINTARGET).map
+!endif
+                   @type $(MYINC)version.h
+                   @echo.>$(OUTPUT)
+                   @echo $(BANNER)>$(OUTPUT)
+
+$(MYOBJ)PRECOMP.OBJ :  $(MYINC)PRECOMP.H
+    @echo *** $(MAINTARGET) $(BUILDTYPE) *** Pre-compiling $(@B).C... >$(OUTPUT)
+!ifdef WIN32
+    $(cc) $(COPTS) -YcPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH -Fo$(MYOBJ)PRECOMP.OBJ $(MYSRC)PRECOMP.C>$(MYSRC)$(@B).ERR
+!else
+    @SET CL=$(COPTS)
+    $(CC) -YcPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH -Fo$(MYOBJ)PRECOMP.OBJ -NT PRECOMP $(MYSRC)PRECOMP.C>$(MYSRC)$(@B).ERR
+    @SET CL=
+!endif
+    @type $(MYSRC)$(@B).ERR>$(OUTPUT)
+
+$(MYHELP)$(MAINTARGET).HLP: help\$(MAINTARGET).rtf help\map.h help\$(MAINTARGET).hpj
+   chdir HELP
+   $(MAKE)
+   copy $(MAINTARGET).HLP ..
+   chdir ..
+
+!ifndef WIN32
+$(MYOBJ)WINSTUB.EXE:  $(MYSRC)WINSTUB.ASM
+    masm -I.\  $(MYSRC)winstub.asm,$(MYOBJ)WINSTUB.OBJ;
+    link $(MYOBJ)WINSTUB.OBJ,$(MYOBJ)WINSTUB.EXE;
+!endif
+
+!ifdef WIN32
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS)
+    @echo *** $(MAINTARGET) $(BUILDTYPE) *** Building $(MYRES)$(MAINTARGET).RES
+    rc $(RCOPTS) -fo $(MYRES)$(MAINTARGET).TMP $(MYRES)$(MAINTARGET).rc 
+    cvtres -$(CPU) $(MYRES)$(MAINTARGET).TMP -o $(MYRES)$(MAINTARGET).RES
+    del $(MYRES)$(MAINTARGET).TMP
+!else
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS)
+    @echo *** $(MAINTARGET) $(BUILDTYPE) *** Building $(MYRES)$(MAINTARGET).RES
+    rc $(RCOPTS) $(MYRES)$(MAINTARGET).rc $(MYRES)$(MAINTARGET).RES
+!endif
+
+$(MYOBJ)$(MAINTARGET).OBJ:  $(MYSRC)$(MAINTARGET).C $(LINCS) $(VERINCS)
+
+$(MYOBJ)WS_DLG.OBJ:  $(MYSRC)WS_DLG.C $(MYINC)WS_DLG.H $(VERINCS)
+
+$(MYOBJ)WS_LIB.OBJ:  $(MYSRC)WS_LIB.C $(MYINC)WS_LIB.H $(VERINCS)
+
+$(MYOBJ)WS_PRINT.OBJ:  $(MYSRC)WS_PRINT.C $(MYINC)WS_PRINT.H $(VERINCS)
+
+$(MYOBJ)WS_FILES.OBJ:  $(MYSRC)WS_FILES.C $(MYINC)WS_FILES.H $(VERINCS)
+
+$(MYOBJ)WS_SAVE.OBJ:  $(MYSRC)WS_SAVE.C $(MYINC)WS_SAVE.H $(VERINCS)
+
+$(MYOBJ)WS_OPEN.OBJ:  $(MYSRC)WS_OPEN.C $(MYINC)WS_OPEN.H $(VERINCS)
+
+$(MYOBJ)WS_ABOUT.OBJ:  $(MYSRC)WS_ABOUT.C $(MYINC)WS_ABOUT.H $(VERINCS)
+
+$(MYOBJ)WS_INIT.OBJ:  $(MYSRC)WS_INIT.C $(MYINC)WS_INIT.H $(MYINC)ISZ.H $(VERINCS)
+
+$(MYOBJ)WS_REG.OBJ:  $(MYSRC)WS_REG.C $(MYINC)WS_REG.H $(VERINCS)
+
+$(MYOBJ)PAGE.OBJ:  $(MYSRC)PAGE.C $(MYINC)PAGE.H $(VERINCS)
+
+$(MYOBJ)fontutil.OBJ:  $(MYSRC)fontutil.C $(MYINC)fontutil.H $(VERINCS)
+
+$(MYOBJ)DLGHELP.OBJ:  $(MYSRC)DLGHELP.C $(MYINC)DLGHELP.H $(VERINCS)
+
+$(MYOBJ)TEXT.OBJ:  $(MYSRC)TEXT.C $(MYINC)TEXT.H $(MYINC)DLGS.H $(VERINCS)
+
+$(MYOBJ)HEADFOOT.OBJ:  $(MYSRC)HEADFOOT.C $(MYINC)HEADFOOT.H $(MYINC)DLGS.H $(VERINCS)
+
+$(MYOBJ)WSSCANF.OBJ:  $(MYSRC)WSSCANF.C $(MYINC)WSSCANF.H $(VERINCS)
+
+$(MYOBJ)CONFIG.OBJ:  $(MYSRC)CONFIG.C $(MYINC)CONFIG.H $(VERINCS)
+
+$(MYOBJ)WINTIME.OBJ:  $(MYSRC)WINTIME.C $(MYINC)WINTIME.H $(VERINCS)
+
+$(MYOBJ)SELPRN.OBJ:  $(MYSRC)SELPRN.C $(MYINC)SELPRN.H $(VERINCS)
+
+$(MYOBJ)DRAGDROP.OBJ:  $(MYSRC)DRAGDROP.C $(MYINC)DRAGDROP.H $(VERINCS)
+
+#   MISC. STUFF
+
+.ignore : 
+clean       :  
+                !del $(MYOBJ)*.obj
+                !del $(MYOBJ)*.exe
+                !del $(MYOBJ)*.pch
+                !del *.map
+                !del *.sym
+                !del $(MYRES)*.res
+                !del *.EXE
+                !del *.DLL
+                !del *.lib
+                !del $(MYSRC)*.err
+                @echo *** DONE ***
+
+        

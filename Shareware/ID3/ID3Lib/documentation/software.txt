@@ -1,0 +1,7 @@
+Here is a list of software which uses ID3Lib.  Current as at 2 Nov 1998.
+
+Apollo			Windows MP3 Player		apollo.grooveclub.com
+Easy CD-DA Extractor	Windows CD-Ripper/Tagger/CDDB 	www.saunalahti.fi/~poiko/cdda3
+MacAmp			Macintosh MP3 Player		www.macamp.com
+MATE			Macintosh Tag Editor		www.macamp.com/mate
+MP3 Collector		Windows MP3/ID3 Database

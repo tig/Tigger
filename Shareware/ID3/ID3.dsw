@@ -1,0 +1,53 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "ID3Filter"=.\ID3Filter\ID3Filter.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/MP3/ID3/ID3Filter", EAAAAAAA
+    .\id3filter
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TestPropSetID"=.\TestPropSetID\TestPropSetID.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/MP3/ID3/TestPropSetID", WAAAAAAA
+    .\testpropsetid
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/MP3/ID3", CAAAAAAA
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

@@ -1,0 +1,112 @@
+/************************************************************************
+ *
+ *     Project:  WinPrint 1.4
+ *
+ *      Module:  WINPRINT.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#include <windows.h>
+#include <wdb.h>
+
+/*
+ * String table defines
+ */
+
+/*
+ * Dialog box defines
+ */
+#include "..\src\dlgs.h"
+#include "..\src\ws_dlg.h"
+
+/*
+ * Version Stamping
+ */
+#include "WINPRINT.rcv"
+
+/*
+ * String table
+ */
+#include "WINPRINT.str"
+
+
+1 ACCELERATORS
+BEGIN
+   VK_F1, IDM_HELP, VIRTKEY
+END
+
+/*
+ * Icons
+ */
+#ifdef WIN32
+IDI_WINPRINT  ICON "WINPRT32.ico"
+#else
+IDI_WINPRINT  ICON "WINPRINT.ico"
+#endif
+IDI_LANDSCAPE ICON "LANDSCAP.ICO"
+IDI_PORTRAIT  ICON "PORTRAIT.ICO"
+IDI_NOORIENT  ICON "NOORIENT.ICO"
+
+/*
+ * Bitmaps
+ */
+
+/*
+ * Menus
+ */
+WINPRINT  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  POPUP  "&File"
+  BEGIN
+    MenuItem "&Open Configuration...",  IDM_OPEN
+    MenuItem "&Save Configuration...",  IDM_SAVE
+    MenuItem SEPARATOR
+    MenuItem "&Printer Setup...",  IDM_PRINTER
+    MenuItem SEPARATOR
+    MenuItem "E&xit",  IDM_EXIT
+  END
+  POPUP  "&Options"
+  BEGIN
+    MenuItem "&Text...",  IDM_OPTIONS
+    MenuItem "&Headers/Footers...",  IDM_HEADFOOT
+    MenuItem "&Page Layout...",  IDM_PAGELAYOUT
+    MenuItem SEPARATOR
+    MenuItem "&Minimize while printing", IDM_MINIMIZEONPRINT
+    MenuItem "&Exit when done printing", IDM_CLOSEWHENDONE
+    MenuItem "Print each file as a separate &job", IDM_SEPARATEJOBS
+  END
+
+  POPUP  "&Help"
+   BEGIN
+    MenuItem "&Contents...", IDM_HELP
+    MenuItem "&Help on Help", IDM_HELPONHELP
+    MenuItem SEPARATOR
+    MenuItem "&About...",  IDM_ABOUT
+   END
+
+#ifdef DEBUG
+        POPUP   "&Debug"
+        BEGIN
+            MENUITEM "&Configure...",       IDM_WDB_CONFIG
+        END
+#endif
+END
+
+/*
+ * Dialog boxes
+ */
+#include "winprint.dlg"
+
+/*
+ * RCDATA
+ */
+ID_RCDATA_ORDER_FRM TEXTFILE "ORDER.FRM"
+
+/************************************************************************
+ * End of File: WINPRINT.rc
+ ***********************************************************************/
+

@@ -1,0 +1,13 @@
+obj\ceklib+
+obj\libentry+
+obj\selprn+
+obj\fileopen+
+obj\shadow+
+obj\about+
+obj\register+
+obj\version
+ceklib.dll /align:16
+ceklib /map
+libw mdllcew oldnames
+ceklib.def
+

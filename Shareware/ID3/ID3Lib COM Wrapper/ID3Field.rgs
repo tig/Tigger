@@ -1,0 +1,26 @@
+HKCR
+{
+	Kindel.ID3Field.1 = s 'ID3Field Class'
+	{
+		CLSID = s '{A58AD321-829E-11D2-B7C7-00A0C9707B03}'
+	}
+	Kindel.ID3Field = s 'ID3Field Class'
+	{
+		CLSID = s '{A58AD321-829E-11D2-B7C7-00A0C9707B03}'
+		CurVer = s 'Kindel.ID3Field.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A58AD321-829E-11D2-B7C7-00A0C9707B03} = s 'ID3Field Class'
+		{
+			ProgID = s 'Kindel.ID3Field.1'
+			VersionIndependentProgID = s 'Kindel.ID3Field'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{B27D4F71-8293-11D2-B7C7-00A0C9707B03}'
+		}
+	}
+}

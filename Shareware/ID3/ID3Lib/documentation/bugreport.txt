@@ -1,0 +1,43 @@
+ID3Lib Bug Report Template v1.01
+2 Aug 1998
+
+General Details
+         Date of Report: 
+        Have read docs?: Yes/No
+    Have used debugger?: Yes/No
+ Done complete rebuild?: Yes/No
+   Sample tag attached?: Yes/No (only attach if less than 32k)
+
+Programmer Details
+	           Name: 
+	         E-Mail: 
+	          ICQ #: 
+
+Computer Details
+	      Processor: 
+	    Clock Speed: 
+		    RAM: 
+        Hard Disk Space: 
+       Operating System: 
+	     OS Version: 
+
+Compiler Details
+	       Compiler: 
+	        Version: 
+        C++ Lib Version: 
+	     Debug Mode: Off/Full/Level x
+
+ID3Lib Details
+	        Version: 
+ Compiled as Static Lib: 
+	     Error with: Tag/Frame/Error Handler
+      Specific Function: 
+	     Results in: Compilation error/Runtime error
+       Specific Results: Link Error/Computer crashes
+
+Compiler/Program Output...
+
+Code Snippet...
+
+Comments...
+

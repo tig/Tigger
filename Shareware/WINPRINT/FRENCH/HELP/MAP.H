@@ -1,0 +1,10 @@
+#define HLP_OVERVIEW     610
+#define HLP_CONTROLS     611
+#define HLP_PROCEDURES   612
+#define HLP_MENU         613
+#define HLP_HEADERS      614
+#define HLP_TEXT         615
+#define HLP_PAGELAYOUT   616
+#define HLP_OPEN         617
+#define HLP_SAVE         618
+#define HLP_SHAREWARE    619

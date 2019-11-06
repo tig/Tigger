@@ -1,0 +1,27 @@
+; module-definition file for generic -- used by LINK.EXE
+
+NAME            SHAREREG
+
+DESCRIPTION     'Shareware Registration System'
+
+EXETYPE         WINDOWS 
+
+STUB              'WINSTUB.EXE'
+
+CODE            PRELOAD MOVEABLE DISCARDABLE
+
+DATA            PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE        6192
+
+; All functions that will be called by any Windows routine
+; MUST be exported.
+
+EXPORTS
+        FNMAINWND            @1   ; name of window processing function
+         FNABOUT              @2
+         FNTOOLBAR            @3
+         FNCHILD              @4
+         FNENUMCHILDREN3D     @5
+         FNENUMCHILDRENHIDE   @6
+         FNENUMREALLY         @7

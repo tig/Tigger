@@ -1,0 +1,38 @@
+// ID3Filter.idl : IDL source for ID3Filter.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ID3Filter.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(4E97F498-7F85-11D2-8488-00C04F795209),
+	
+		helpstring("IID3Filter Interface"),
+		pointer_default(unique)
+	]
+	interface IID3Filter : IUnknown
+	{
+	};
+
+[
+	uuid(4E97F48C-7F85-11D2-8488-00C04F795209),
+	version(1.0),
+	helpstring("ID3Filter 1.0 Type Library")
+]
+library ID3FILTERLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(4E97F499-7F85-11D2-8488-00C04F795209),
+		helpstring("ID3 Filter")
+	]
+	coclass ID3Filter
+	{
+		[default] interface IID3Filter;
+	};
+};

@@ -1,0 +1,108 @@
+WinPrint Test Document.
+
+This document will be useful in determining how WinPrint and Windows 
+interact with your printer.
+
+The following 3 lines are 78, 79, and 80 characters long respectively:
+123456789012345678901234567890123456789012345678901234567890123456789012345678
+1234567890123456789012345678901234567890123456789012345678901234567890123456789
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+Biglines (120, 130, 132, and 150 characters respectively):
+123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
+123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+This line has no tabs.
+This	line	has	tabs.
+
+
+
+
+
+
+
+
+
+
+
+
+Line #31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+67
+68
+70
+71
+72
+73
+74
+line #75
+
+This line has a LF character following it (i.e. on the next line).
+
+This line comes immediately after the LF character
+
+Hello world
+
+Goodbye World.
+
+This line has a LF character as the last charcter:
+This line comes immediately after the line with a LF character at it's end
+
+
+Hello world
+
+Goodbye World.
+
+The next line has a LF character as the first charcter
+This line comes immediately after the LF character
+
+
+Hello world
+
+Goodbye World.
+
+
+This line has a LF right here -><- and more on the same line
+This line comes immediately after the LF character
+
+
+Hello world
+
+Goodbye World.
+
+End of File.

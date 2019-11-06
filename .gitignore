@@ -1,0 +1,51 @@
+# .gitignore
+###################
+# compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.cache
+*.suo
+
+bin/
+obj/
+TestResults/
+build/
+.vs/
+
+# its better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+######################
+# Logs and databases #
+######################
+App_Data/
+*.log
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Other stuff
+.cvsignore
+CVS/
+
+#Generated
+*.nsi
+*.settings

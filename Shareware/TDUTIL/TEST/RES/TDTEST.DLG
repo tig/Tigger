@@ -1,0 +1,69 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "TESTD.H\0"
+END
+
+TESTBOX DIALOG 27, 24, 352, 270
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Test 3D routines"
+FONT 8, "Helv"
+BEGIN
+    ICON            "TEST", ID_ICON, 317, 76, 20, 18
+    GROUPBOX        "These Edits have WS_BORDER", IDD_GROUP1, 5, 8, 148, 89
+    EDITTEXT        IDD_MLE1, 11, 22, 136, 50, ES_MULTILINE | WS_VSCROLL | 
+                    WS_HSCROLL
+    EDITTEXT        IDD_SINGLEEDIT1, 11, 78, 136, 13, ES_AUTOHSCROLL
+    GROUPBOX        "These Edits do not have WS_BORDER", 313, 157, 8, 148, 
+                    89, WS_DISABLED
+    EDITTEXT        314, 163, 22, 136, 50, ES_MULTILINE | NOT WS_BORDER | 
+                    WS_VSCROLL | WS_HSCROLL
+    EDITTEXT        315, 163, 78, 136, 13, ES_AUTOHSCROLL | NOT WS_BORDER
+    LTEXT           "Use this listbox to change the bg color:", 316, 5, 100, 
+                    76, 21
+    LISTBOX         IDD_LISTBOX, 6, 124, 71, 50, WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Simple Combo:", 317, 85, 107, 63, 8
+    COMBOBOX        IDD_SIMPLECOMBO, 85, 118, 50, 55, CBS_SIMPLE | 
+                    WS_VSCROLL
+    LTEXT           "Drop Down Combo:", 318, 145, 107, 63, 8
+    COMBOBOX        IDD_DROPDOWN, 145, 118, 62, 54, CBS_DROPDOWN | 
+                    WS_VSCROLL
+    LTEXT           "Drop Down List Combo:", -1, 216, 107, 86, 8
+    COMBOBOX        IDD_COMBO, 216, 118, 78, 54, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL
+    CONTROL         "&Radio Button 1", IDD_RADIO1, "Button", 
+                    BS_AUTORADIOBUTTON | WS_GROUP, 146, 142, 63, 12
+    CONTROL         "&Zzyzx and quick", IDD_RADIO2, "Button", 
+                    BS_AUTORADIOBUTTON, 146, 157, 67, 12
+    CONTROL         "&Checkbox 1", IDD_CHECKBOX1, "Button", BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP, 218, 134, 56, 12
+    CONTROL         "C&heckbox 2", IDD_CHECKBOX2, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 218, 149, 56, 12
+    CTEXT           "This is a Black Frame", -1, 56, 189, 97, 8
+    CONTROL         "Centered", ID_BLACKFRAME, "tdutil.static", TDSS_LEFT, 6, 
+                    182, 196, 22
+    CTEXT           "This is a Gray Frame", -1, 56, 219, 97, 8, NOT WS_GROUP
+    CONTROL         "Centered", ID_GRAYFRAME, "Static", SS_GRAYFRAME, 6, 212, 
+                    196, 22
+    CTEXT           "This is a White Frame", -1, 56, 248, 97, 8, NOT 
+                    WS_GROUP
+    CONTROL         "", ID_WHITEFRAME, "Static", SS_WHITEFRAME, 6, 241, 196, 
+                    22
+    LTEXT           "Black Rect:", -1, 207, 189, 41, 8
+    CONTROL         "", IDD_BLACKRECT, "Static", SS_BLACKRECT, 253, 182, 43, 
+                    22
+    LTEXT           "Gray Rect:", -1, 207, 219, 38, 8, NOT WS_GROUP
+    CONTROL         "", IDD_GRAYRECT, "Static", SS_GRAYRECT, 253, 212, 43, 
+                    22
+    LTEXT           "White Rect:", -1, 207, 248, 43, 8, NOT WS_GROUP
+    CONTROL         "", IDD_WHITERECT, "Static", SS_WHITERECT, 253, 241, 43, 
+                    22
+    DEFPUSHBUTTON   "OK", IDOK, 311, 13, 34, 14, WS_GROUP
+    SCROLLBAR       ID_HORZSCROLL, 297, 168, 48, 10
+    SCROLLBAR       325, 319, 182, 10, 79, SBS_VERT
+    CONTROL         "3 State &joke", 326, "Button", BS_AUTO3STATE | 
+                    WS_TABSTOP, 218, 164, 73, 12
+    CONTROL         "&Simple", 327, "Static", SS_SIMPLE | SS_NOPREFIX | 
+                    WS_GROUP, 295, 138, 48, 8
+    CONTROL         "&Simple", 328, "Static", SS_SIMPLE | WS_GROUP, 295, 149, 
+                    48, 8
+END

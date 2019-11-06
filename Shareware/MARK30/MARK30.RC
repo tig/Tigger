@@ -1,0 +1,32 @@
+#include <windows.h>
+#include "mark30d.h"
+#include "mark30.h"
+
+MARK30  ICON	mark30.ico     /* main icon		*/
+
+#include "mark30.dlg"
+
+
+/* menu */
+
+MARK30 MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  POPUP  "&File"
+  BEGIN
+    MenuItem "E&xit",  900
+    MenuItem SEPARATOR
+    MenuItem "A&bout Mark Three-Oh...",  901
+  END
+#ifdef USEADVANCED
+  POPUP  "&Advanced"
+  BEGIN
+    MenuItem "&Advanced Settings...",  902
+  END
+#endif
+END
+
+
+
+
+
+

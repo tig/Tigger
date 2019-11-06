@@ -1,0 +1,14 @@
+#include <windows.h>
+#include "ceklibd.h"
+
+#include "res\about.dlg"
+#include "res\bigabt.dlg"
+#include "res\fileopen.dlg"
+#include "res\regabt.dlg"
+#include "res\register.dlg"
+#include "res\regabt.dlg"
+#include "res\selprn.dlg"
+
+ceklib ICON "res\\ceklib.ico"
+
+#include "res\ceklib.rcv"

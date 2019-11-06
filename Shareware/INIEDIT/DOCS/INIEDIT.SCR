@@ -1,0 +1,87 @@
+; UPL.SCR -- upload a file to a forum
+;
+; Forum to receive the file:
+;S G WINADV^M
+; Wait for ! prompt
+;W um !
+;
+; Library:
+;S LIB 1^M
+;W !
+;
+; CompuServe File name:
+S UPL INIEDT.COM/PRO:B/TYP:BIN^M
+W ter:
+;
+; Filename on your computer
+S Y:\INIEDT.COM^M
+W :
+;
+; File Desc:
+S INIedit Version 1.20 - A Windows 3 initialization (.INI) file^M
+S editor.  Allows easy viewing, editing, and printing of Windows INI^M
+S files.  Shareware, $25.00.  Copyright (c) 1991 Charles E. Kindel, Jr.^M
+S Self extracting archive.^M
+;
+S /exit^M
+W :
+;
+; Keywords:
+S INIEDIT INI FILES WINDOWS 3.0 WINAPP KINDEL KINDLCO SHAREWARE^M
+W :
+;
+; Title
+S Win3.0 INI file editor^M
+W ?
+S Y^M
+;W !
+; ---------------------------------------------------------------------
+;S GO PCMAG^M
+;W !
+;S 4^M
+;W !
+;W !
+;S 2^M
+;W !
+;W !
+;
+; Library:
+;S LIB 0^M
+;W !
+;W !
+;
+; CompuServe File name:
+;S UPL WINPRT.EXE/PRO:B/TYP:BIN^M
+;W ter:
+;
+;; Filename on your computer
+;S D:\WINPRINT\WINPRT.EXE^M
+;W :
+;
+; File Desc:
+;S WINPRINT v1.32 - WinApp for printing text files from within Windows 3.0.^M
+;S Format text files with fonts, margins, headers/footers, page #s,^M
+;S and more!  Uses Print Manager to print in background.  Complete command^M
+;S line interface for use with shells like CmdPost plus easy to use^M
+;S user interface.  A Kindlco Software Systems Shareware ($20) offering.^M
+;S Uploaded by author.  Self Extracts^M
+;
+;S /exit^M
+;W :
+;
+;; Keywords:
+;S WINPRINT PRINT WINDOWS 3.0 WINAPP KINDLCO SPOOLER FONTS TEXT FILES^M
+;W :
+;;
+;; Title
+;S Win3.0 text file printing app^M
+;W ?
+;S Y^M
+;W !
+;; ---------------------------------------------------------------------
+; Logoff
+;S OFF^M
+
+
+
+

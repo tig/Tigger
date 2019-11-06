@@ -1,0 +1,49 @@
+# makefile for Mark30 (c) copyright 1990, Charles E. Kindel, Jr.
+#
+#
+# Executable name
+all: mark30.exe
+BASE=mark30
+
+# standard options for C compiler
+
+CLOPTS= -nologo -AM -c -FPa -D LINT_ARGS -Gsw -Os -W3 -Zp -I..\
+
+# object files
+
+# include files
+INCLUDE=mark30.h mark30d.h ..\dprintf.h markver.h
+
+# this is an inference statement, it makes MAKE infer how to compile
+
+.c.obj :
+     cl $(CLOPTS) $*.c >$*.err
+
+#-------------------------------------------------------------------------------
+# List all source names here:
+#------------------------------------------------------------------------------
+mark30.obj   :  $*.c $(INCLUDE)
+
+
+m_adv.obj    :  $*.c $(INCLUDE)
+
+
+m_main.obj   :  $*.c $(INCLUDE)
+
+
+m_dlgs.obj   :  $*.c $(INCLUDE)
+
+ 
+dprintf.obj     : ..\dprintf.h ..\dprintf.c
+        cl $(CLOPTS) ..\$*.c >$*.err
+
+
+mark30.res: mark30.rc mark30d.h mark30.ico mark30.dlg markver.h
+    rc -r mark30.rc
+
+mark30.exe  : mark30.obj m_adv.obj m_dlgs.obj m_main.obj ..\dprintf.obj $(BASE).def $(BASE).res
+        link @$(BASE).lnk
+        rc -v $(BASE).res $(BASE).exe
+
+        
+

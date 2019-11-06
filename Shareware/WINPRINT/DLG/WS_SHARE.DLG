@@ -1,0 +1,17 @@
+SHAREBOX DIALOG DISCARDABLE LOADONCALL PURE MOVEABLE 21, 33, 226, 194
+STYLE WS_POPUP | WS_DLGFRAME
+BEGIN
+  CONTROL "", 257, "EDIT", WS_CHILD | WS_VISIBLE | WS_BORDER | WS_GROUP | WS_TABSTOP, 26, 116, 171, 12
+  CONTROL "WinSpit V0.90 (BETA)", 500, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 54, 10, 114, 10
+  CONTROL "", 258, "EDIT", WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 26, 144, 83, 12
+  CONTROL "Copyright \xA9 1990, Charles E. Kindel, Jr.", 502, "STATIC", WS_CHILD | WS_VISIBLE | WS_GROUP | 0x1L, 5, 21, 212, 8
+  CONTROL "This copy of WinSpit has not been registered!", 503, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 15, 35, 195, 10
+  CONTROL "Enter", 1, "BUTTON", WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 39, 162, 52, 17
+  CONTROL "First and Last Name: ", -1, "STATIC", WS_CHILD | WS_VISIBLE, 19, 105, 83, 9
+  CONTROL "Registration Number:", -1, "STATIC", WS_CHILD | WS_VISIBLE, 19, 133, 84, 10
+  CONTROL "Ignore", 224, "BUTTON", WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 133, 163, 52, 17
+  CONTROL "Black Frame", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x7L, 4, 5, 215, 181
+  CONTROL "", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x4L, 7, 185, 214, 4
+  CONTROL "", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x4L, 219, 8, 2, 181
+  CONTROL "Once you pay your WinSpit registration fee you will receive a notice from KindlCo with your registration number.  Enter your name and registration number exactly as shown on the invoice.  Once you have done this, these startup windows will deactivate.", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 15, 51, 194, 51
+END

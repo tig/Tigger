@@ -1,0 +1,97 @@
+#----------------------------------------------------------------------------
+#
+# Makefile for CEKLIB.DLL
+#
+# Copyright (c)1990 Charles E. Kindel, Jr.
+#----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+# 10-28-90 CEK
+#----------------------------------------------------------------------------
+#all: ceklib.dll
+
+#DEBUG=TRUE
+
+# macros
+!IFDEF DEBUG
+CLOPTS=-AMw -c -Gsw -Oad -W3 -Zpei -DDEBUG
+LINKOPTS=/NOE/NOD/CO
+!ELSE
+CLOPTS=-AMw -c -Gw -Oas -W3 -Zpe
+LINKOPTS=/NOE/NOD
+!ENDIF
+
+MYOBJ = OBJ\ 
+MYRES = RES\ 
+MYINC = INC\ 
+
+# Update resources
+ceklib.dll: $(MYOBJ)ceklib.obj\
+            $(MYOBJ)libentry.obj\
+            $(MYOBJ)selprn.obj\
+            $(MYOBJ)shadow.obj\
+            $(MYOBJ)about.obj\
+            $(MYOBJ)fileopen.obj\
+            $(MYOBJ)register.obj\
+            $(MYOBJ)version.obj\
+            ceklib.def\
+            $(MYRES)ceklib.res
+    @echo Linkng... >con
+    link $(LINKOPTS) @ceklib.lnk
+    rc -v -30 $(MYRES)ceklib.res ceklib.dll
+    implib ceklib.lib ceklib.def
+    bumpver ceklib.ver
+    copy ceklib.dll test
+
+$(MYRES)ceklib.res: $(MYRES)ceklib.rc $(MYINC)ceklibd.h\
+                    $(MYRES)about.dlg\
+                    $(MYRES)bigabt.dlg\
+                    $(MYRES)fileopen.dlg\
+                    $(MYRES)regabt.dlg\
+                    $(MYRES)register.dlg\
+                    $(MYRES)selprn.dlg\
+                    $(MYRES)ceklib.ico
+    @echo Compiling resources in ceklib.rc... > con
+    rc -r $(MYRES)ceklib.rc
+
+$(MYOBJ)libentry.obj: libentry.asm
+    @echo Assembling $*.asm... >con
+    masm -Mx libentry, $(MYOBJ)libentry;
+
+$(MYOBJ)ceklib.obj:       $(MYINC)ceklib.h ceklib.c
+    @echo Compiling ceklib.c... >con
+    cl $(CLOPTS) -Fo$(MYOBJ)ceklib.obj -NTCEKLIB ceklib.c > ceklib.err
+    @type ceklib.err > con
+
+$(MYOBJ)selprn.obj: selprn\selprn.c
+    @echo Compiling selprn.c... >con
+    $(CC) -Fo$*.obj $(CLOPTS) -NTSELPRN selprn\selprn.c > selprn\selprn.err
+    @type selprn\selprn.err > con
+
+$(MYOBJ)fileopen.obj: fileopen\fileopen.c
+    @echo Compiling fileopen.c... >con
+    $(CC) -Fo$*.obj $(CLOPTS) -NTFILEOPEN fileopen\fileopen.c > fileopen\fileopen.err
+    @type fileopen\fileopen.err > con
+
+$(MYOBJ)shadow.obj:   shadow\shadow.c
+    @echo Compiling shadow.c... >con
+    $(CC) -Fo$*.obj $(CLOPTS) -NTSHADOW shadow\shadow.c > shadow\shadow.err
+    @type shadow\shadow.err > con
+
+$(MYOBJ)about.obj:   about\about.c
+    @echo Compiling about.c... >con
+    $(CC) -Fo$*.obj $(CLOPTS) -NTABOUT about\about.c > about\about.err
+    @type about\about.err > con
+
+$(MYOBJ)register.obj:   register\register.c
+    @echo Compiling register.c... >con
+    $(CC) -Fo$*.obj $(CLOPTS) -NTREGISTER register\register.c > register\register.err
+    @type register\register.err > con
+
+$(MYOBJ)version.obj:   version\version.c ceklib.ver
+    @echo Compiling version.c... >con
+    $(CC) -Fo$*.obj $(CLOPTS) -NTVERSION version\version.c > version\version.err
+    @type version\version.err > con
+
+
+ 

@@ -1,0 +1,22 @@
+ABOUTBOX DIALOG DISCARDABLE LOADONCALL PURE MOVEABLE 7, 13, 226, 194
+STYLE WS_POPUP | WS_DLGFRAME
+BEGIN
+  CONTROL "Windows application for Spitting text files out of the printer.", 501, "STATIC", WS_CHILD | WS_VISIBLE | WS_GROUP | 0x1L, 43, 31, 136, 17
+  CONTROL "WinSpit V0.91 (BETA)", 500, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 54, 10, 114, 10
+  CONTROL "Copyright \xA9 1990, Charles E. Kindel, Jr.", 502, "STATIC", WS_CHILD | WS_VISIBLE | WS_GROUP | 0x1L, 5, 23, 212, 8
+  CONTROL "This is a BETA TEST version of WinSpit.  You are authorized to use it for evaluation and testing purposes only.  Do not distribute! If you find any problems or have any comments please send them to:", 503, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 5, 86, 212, 34
+  CONTROL "KindlCo Software Systems", 504, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 56, 125, 110, 9
+  CONTROL "4225 N. First Avenue, Suite 1315", 505, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 42, 134, 139, 9
+  CONTROL "Tucson, AZ  85719", 506, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 43, 143, 137, 9
+  CONTROL "O&k", 1, "BUTTON", WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 90, 164, 42, 15
+  CONTROL "Black Frame", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x7L, 4, 5, 215, 181
+  CONTROL "", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x4L, 7, 185, 214, 4
+  CONTROL "", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x4L, 219, 8, 2, 181
+  CONTROL "CIS 71551,1455", 507, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 147, 167, 64, 9
+  CONTROL "WinSpit", 259, "STATIC", WS_CHILD | WS_VISIBLE | 0x3L, 16, 130, 16, 25
+  CONTROL "Kiss", 260, "STATIC", WS_CHILD | WS_VISIBLE | 0x3L, 193, 129, 16, 26
+  CONTROL "(602) 887-3359", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 14, 167, 60, 9
+  CONTROL "", 257, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 28, 61, 166, 10
+  CONTROL "", 258, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 50, 72, 122, 11
+  CONTROL "Registered to:", -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 50, 51, 122, 10
+END

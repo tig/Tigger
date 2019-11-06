@@ -1,0 +1,17 @@
+MEM      =-AM
+LIBS     =mlibcaw
+CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3 -FPa -nologo -D DEBUG
+#CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3 -FPa -nologo
+LINKOPTS =/NOD/NOE/CO
+
+all: test.exe
+
+test.res: test.rc test.ico gennum.dlg
+    rc -r test.rc
+
+test.obj: test.c test.h testd.h
+    cl $(CLOPTS) test.c > test.err
+
+test.exe: test.obj test.def test.res
+    link $(LINKOPTS) test,,, ..\ceklib libw $(LIBS), test.def
+    rc -v test.res

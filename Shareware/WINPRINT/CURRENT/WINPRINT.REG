@@ -1,0 +1,14 @@
+REGEDIT
+HKEY_CLASSES_ROOT\.ver = SourceCode
+HKEY_CLASSES_ROOT\.rcv = SourceCode
+HKEY_CLASSES_ROOT\.s = SourceCode
+HKEY_CLASSES_ROOT\.h = SourceCode
+HKEY_CLASSES_ROOT\.def = SourceCode
+HKEY_CLASSES_ROOT\.rc = SourceCode
+HKEY_CLASSES_ROOT\.dlg = SourceCode
+HKEY_CLASSES_ROOT\.lnk = SourceCode
+HKEY_CLASSES_ROOT\.c = SourceCode
+HKEY_CLASSES_ROOT\SourceCode = Source Code Files
+HKEY_CLASSES_ROOT\SourceCode\shell\open\command = b.pif %1
+HKEY_CLASSES_ROOT\SourceCode\shell\print\command = c:\winapps\winprint.exe /s:"Factory Defaults" /go /c+ /m+ %1
+HKEY_CLASSES_ROOT\txtfile\shell\print\command = c:\winapps\winprint.exe /s:"Factory Defaults" /go /c+ /m+ %1

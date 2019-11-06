@@ -1,0 +1,317 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "Y:\\!\\WINPRINT\\INC\\DLGS.H\0"
+END
+
+DLG_OPENCONFIG DIALOG 20, 30, 192, 98
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Open a Saved Configuration"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Sa&ved configurations:", -1, 5, 3, 93, 10
+    LISTBOX         IDD_CHOOSELIST, 4, 15, 130, 78, LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "Open", IDOK, 142, 4, 45, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 142, 21, 45, 14
+    PUSHBUTTON      "He&lp", psh15, 142, 38, 45, 14
+    PUSHBUTTON      "&Remove", IDD_REMOVE, 142, 79, 45, 14
+END
+
+DLG_TEXTOPTIONS DIALOG 10, 10, 275, 195
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Text Output Options"
+FONT 8, "Helv"
+BEGIN
+    GROUPBOX        "Margins", -1, 3, 2, 215, 60, WS_GROUP
+    RTEXT           "&Left:", -1, 8, 18, 18, 9, NOT WS_GROUP
+    EDITTEXT        IDD_LEFTMAR, 29, 16, 43, 12, ES_AUTOHSCROLL
+    RTEXT           "&Right:", -1, 82, 17, 24, 10, NOT WS_GROUP
+    EDITTEXT        IDD_RIGHTMAR, 108, 16, 43, 12, ES_AUTOHSCROLL
+    RTEXT           "&Top:", -1, 8, 32, 20, 10, NOT WS_GROUP
+    EDITTEXT        IDD_TOPMAR, 29, 31, 43, 12, ES_AUTOHSCROLL
+    RTEXT           "&Bottom:", -1, 78, 32, 28, 10, NOT WS_GROUP
+    EDITTEXT        IDD_BOTMAR, 108, 31, 43, 12, ES_AUTOHSCROLL
+    LTEXT           "Measurements:", -1, 158, 17, 53, 9
+    CONTROL         "&inch", IDD_INCH, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 158, 27, 27, 11
+    CONTROL         "c&m", IDD_CM, "Button", BS_AUTORADIOBUTTON, 189, 27, 24, 
+                    11
+    CONTROL         "Expand tabs to", IDD_TABS, "Button", BS_AUTOCHECKBOX | 
+                    WS_GROUP | WS_TABSTOP, 51, 46, 63, 13
+    LTEXT           "s&paces.", -1, 138, 49, 28, 9, NOT WS_GROUP
+    EDITTEXT        IDD_TABSIZE, 114, 47, 21, 13, ES_AUTOHSCROLL
+    GROUPBOX        "Font", -1, 3, 64, 215, 126, WS_GROUP
+    LTEXT           "&Font:", stc1, 7, 75, 40, 8, NOT WS_GROUP
+    COMBOBOX        cmb1, 7, 84, 94, 54, CBS_SIMPLE | CBS_OWNERDRAWFIXED | 
+                    CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Font St&yle:", stc2, 110, 75, 44, 8, NOT WS_GROUP
+    COMBOBOX        cmb2, 110, 84, 64, 54, CBS_SIMPLE | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "&Size:", stc3, 181, 75, 30, 8, NOT WS_GROUP
+    COMBOBOX        cmb3, 181, 84, 32, 54, CBS_SIMPLE | CBS_OWNERDRAWFIXED | 
+                    CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK", IDOK, 226, 6, 43, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 226, 23, 43, 14
+    PUSHBUTTON      "&Help", psh15, 226, 40, 43, 14
+    PUSHBUTTON      "&Headers...", IDM_HEADFOOT, 226, 158, 43, 14
+    PUSHBUTTON      "&Page...", IDM_PAGELAYOUT, 226, 175, 43, 14
+    GROUPBOX        "Sample", grp2, 7, 142, 206, 44, WS_GROUP
+    CTEXT           "AaBbYyZz", stc5, 14, 151, 194, 31, SS_NOPREFIX | NOT 
+                    WS_VISIBLE | NOT WS_GROUP
+    GROUPBOX        "Effects", grp1, 281, 40, 84, 61, NOT WS_VISIBLE | 
+                    WS_DISABLED | WS_GROUP
+    CONTROL         "Stri&keout", chx1, "Button", BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_DISABLED, 285, 50, 49, 10
+    CONTROL         "&Underline", chx2, "Button", BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_DISABLED, 285, 62, 51, 10
+    LTEXT           "&Color:", stc4, 285, 74, 30, 8, NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_GROUP
+    COMBOBOX        cmb4, 285, 84, 75, 50, CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | 
+                    NOT WS_VISIBLE | WS_DISABLED | WS_BORDER | WS_VSCROLL
+    CTEXT           "", stc6, 299, 138, 51, 44, SS_NOPREFIX | NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_GROUP
+    PUSHBUTTON      "&Apply", psh3, 281, 6, 40, 14, NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_TABSTOP
+END
+
+DLG_PRINTING DIALOG 40, 30, 149, 86
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "WinPrint"
+FONT 8, "Helv"
+BEGIN
+    CTEXT           "Printing", -1, 8, 8, 128, 10
+    CTEXT           "C:\\FOO\\BAR\\HELLO\\WORD.TXT", IDD_FNAME, 8, 18, 128, 
+                    10, NOT WS_GROUP
+    CTEXT           "Using the", -1, 8, 28, 128, 10, NOT WS_GROUP
+    CTEXT           "HP LaserJet IIID on \\\\DEVPLUS\\HPLJIIID", IDD_PRINTER, 
+                    8, 38, 128, 18, NOT WS_GROUP
+    DEFPUSHBUTTON   "Cancel", 224, 51, 64, 45, 15, WS_GROUP
+    CONTROL         "", IDD_TEXTFONT, "Static", SS_WHITEFRAME, 4, 3, 141, 80
+END
+
+DLG_SAVECONFIG DIALOG 20, 30, 194, 132
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Save Current Configuration"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Configuration &name:", -1, 6, 6, 123, 10
+    EDITTEXT        IDD_FNAME, 6, 17, 128, 12
+    LTEXT           "&Saved configurations:", -1, 6, 33, 123, 9
+    LISTBOX         IDD_CHOOSELIST, 6, 44, 128, 68, LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "S&ave Current Printer with Configuration.", 
+                    IDD_SAVEPRINTER, "Button", BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP, 6, 116, 170, 10
+    DEFPUSHBUTTON   "Save", IDOK, 143, 6, 45, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 143, 23, 45, 14
+    PUSHBUTTON      "He&lp", psh15, 143, 40, 45, 14
+    PUSHBUTTON      "&Remove", IDD_REMOVE, 143, 98, 45, 14
+END
+
+DLG_SHAREWARE DIALOG 21, 39, 255, 177
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "This copy of WinPrint has not been registered!"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "Black Frame", 300, "Static", SS_BLACKFRAME | WS_GROUP, 
+                    4, 3, 191, 104
+    LTEXT           "WinPrint is a commercial software application distributed as shareware.  You may use and evaluate it for 21 days.  After that time you must pay a registration fee of $25 to the author if you continue using it.", 
+                    STR_APPNAME, 9, 9, 180, 42, NOT WS_GROUP
+    LTEXT           "Once you pay your WinPrint registration fee you will receive an invoice with a registration number.  Enter your name and registration number exactly as shown on the invoice.  Once you have done this, these startup windows will deactivate.", 
+                    -1, 9, 56, 180, 49, NOT WS_GROUP
+    LTEXT           "Name WinPrint is Registered to:", -1, 11, 117, 127, 9, 
+                    NOT WS_GROUP
+    CONTROL         "Black Frame", -1, "Static", SS_BLACKFRAME, 4, 111, 247, 
+                    62
+    EDITTEXT        IDD_NAME, 19, 128, 125, 12, ES_AUTOHSCROLL | WS_GROUP
+    LTEXT           "Registration Number:", -1, 11, 144, 84, 10, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_REGNUMBER, 20, 155, 125, 12, ES_AUTOHSCROLL
+    CTEXT           "If you press the 'Print Reg. Form' Button WinPrint will print a registration form which you can send in.", 
+                    -1, 148, 117, 96, 34, NOT WS_GROUP
+    PUSHBUTTON      "&Print Reg. Form", IDD_PRINTREGFORM, 163, 154, 69, 14
+    DEFPUSHBUTTON   "OK", IDOK, 204, 6, 45, 14, WS_GROUP
+    PUSHBUTTON      "Ignore", IDD_CLOSE, 204, 23, 45, 14
+    PUSHBUTTON      "&Help", psh15, 204, 40, 45, 14
+END
+
+DLG_MAIN DIALOG 26, 22, 309, 220
+STYLE DS_LOCALEDIT | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "WinPrint"
+FONT 8, "Helv"
+CLASS "WinPrint"
+BEGIN
+    CONTROL         "", IDD_HELP, "Static", SS_BLACKFRAME | WS_GROUP, 3, 4, 
+                    301, 142
+    LTEXT           "S&elect file spec:", -1, 7, 6, 121, 8, NOT WS_GROUP
+    EDITTEXT        IDD_FNAME, 7, 16, 135, 12, ES_AUTOHSCROLL
+    EDITTEXT        IDD_FPATH, 12, 42, 129, 9, ES_AUTOHSCROLL | WS_DISABLED | 
+                    NOT WS_BORDER
+    LTEXT           "C&urrent Directory:", IDD_FPATH_LBL, 7, 30, 121, 8, NOT 
+                    WS_GROUP
+    LISTBOX         IDD_CHOOSELIST, 7, 58, 86, 83, LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | LBS_DISABLENOSCROLL | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "&List", IDOK, 102, 62, 42, 14
+    PUSHBUTTON      "&Select >>", IDD_SELECT, 102, 102, 42, 14
+    PUSHBUTTON      "&Remove", IDD_REMOVE, 102, 122, 42, 14
+    LISTBOX         IDD_SELECTLIST, 150, 35, 150, 106, LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | LBS_DISABLENOSCROLL | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "&Print Selected Files", IDD_PRINT, 185, 15, 81, 14
+    CONTROL         "", IDD_PRINTREGFORM, "Static", SS_BLACKFRAME | WS_GROUP, 
+                    3, 151, 301, 52
+    RTEXT           "Text Font:", IDD_TEXTFONT_LBL, 16, 154, 46, 9, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_TEXTFONT, 65, 154, 115, 9, WS_DISABLED | NOT 
+                    WS_BORDER
+    RTEXT           "Header Font:", IDD_HEADERFONT_LBL, 16, 166, 46, 9, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_HEADERFONT, 65, 166, 115, 9, WS_DISABLED | NOT 
+                    WS_BORDER
+    RTEXT           "Printer:", IDD_PRINTER_LBL, 24, 178, 38, 9, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_PRINTER, 65, 178, 115, 9, WS_DISABLED | NOT 
+                    WS_BORDER
+    RTEXT           "Other Info:", IDD_OTHERINFO_LBL, 18, 190, 44, 8, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_CHARSPERLINE, 65, 190, 232, 9, WS_DISABLED | NOT 
+                    WS_BORDER
+    RTEXT           "Orientation:", IDD_ORIENT_LBL, 196, 154, 46, 8, NOT 
+                    WS_GROUP
+    ICON            "IDI_WINPRINT", IDD_WINPRINT_ICO, 245, 153, 18, 20
+    LISTBOX         IDD_HIDDENLIST, 200, 80, 24, 9, NOT LBS_NOTIFY | 
+                    LBS_EXTENDEDSEL | NOT WS_VISIBLE | WS_GROUP
+    RTEXT           "Columns:", IDD_COLUMNS_LBL, 208, 178, 34, 9, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_COLUMNS, 245, 178, 52, 9, WS_DISABLED | NOT 
+                    WS_BORDER
+END
+
+DLG_HFOPTIONS DIALOG 10, 10, 275, 195
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Header/Footer Output Options"
+FONT 8, "Helv"
+BEGIN
+    GROUPBOX        "&Headers", -1, 2, 0, 105, 54, WS_GROUP
+    CONTROL         "Filename", IDD_HFNAME, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 9, 12, 44, 10
+    CONTROL         "Page #", IDD_HPAGENUM, "Button", BS_AUTOCHECKBOX, 9, 22, 
+                    40, 10
+    CONTROL         "Date:", IDD_HDATE, "Button", BS_AUTOCHECKBOX, 9, 32, 30, 
+                    10
+    CONTROL         "Revised", IDD_HRDATE, "Button", BS_AUTORADIOBUTTON, 43, 
+                    33, 38, 10
+    CONTROL         "Printed", IDD_HPDATE, "Button", BS_AUTORADIOBUTTON, 43, 
+                    43, 38, 10
+    GROUPBOX        "F&ooters", -1, 112, 0, 105, 54, WS_GROUP
+    CONTROL         "Filename", IDD_FFNAME, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 116, 12, 42, 10
+    CONTROL         "Page #", IDD_FPAGENUM, "Button", BS_AUTOCHECKBOX, 116, 
+                    22, 40, 10
+    CONTROL         "Date:", IDD_FDATE, "Button", BS_AUTOCHECKBOX, 116, 32, 
+                    30, 10
+    CONTROL         "Revised", IDD_FRDATE, "Button", BS_AUTORADIOBUTTON, 150, 
+                    33, 38, 10
+    CONTROL         "Printed", IDD_FPDATE, "Button", BS_AUTORADIOBUTTON, 150, 
+                    43, 38, 10
+    CONTROL         "Fi&t headers/footers to margins.", IDD_HFMARGINS, 
+                    "Button", BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP, 39, 
+                    57, 116, 10
+    GROUPBOX        "Font", -1, 3, 65, 215, 126, WS_GROUP
+    LTEXT           "&Font:", stc1, 7, 75, 40, 8, NOT WS_GROUP
+    COMBOBOX        cmb1, 7, 84, 94, 54, CBS_SIMPLE | CBS_OWNERDRAWFIXED | 
+                    CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Font St&yle:", stc2, 110, 75, 44, 8, NOT WS_GROUP
+    COMBOBOX        cmb2, 110, 84, 64, 54, CBS_SIMPLE | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "&Size:", stc3, 181, 75, 30, 8, NOT WS_GROUP
+    COMBOBOX        cmb3, 181, 84, 32, 54, CBS_SIMPLE | CBS_OWNERDRAWFIXED | 
+                    CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK", IDOK, 226, 6, 43, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 226, 23, 43, 14
+    PUSHBUTTON      "&Help", psh15, 226, 40, 43, 14
+    PUSHBUTTON      "&Text...", IDM_OPTIONS, 226, 159, 43, 14
+    PUSHBUTTON      "&Page...", IDM_PAGELAYOUT, 226, 176, 43, 14
+    GROUPBOX        "Sample", grp2, 7, 142, 206, 44, WS_GROUP
+    CTEXT           "AaBbYyZz", stc5, 14, 151, 194, 31, SS_NOPREFIX | NOT 
+                    WS_VISIBLE | NOT WS_GROUP
+    GROUPBOX        "Effects", grp1, 281, 40, 84, 61, NOT WS_VISIBLE | 
+                    WS_DISABLED | WS_GROUP
+    CONTROL         "Stri&keout", chx1, "Button", BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_DISABLED, 285, 50, 49, 10
+    CONTROL         "&Underline", chx2, "Button", BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_DISABLED, 285, 62, 51, 10
+    LTEXT           "&Color:", stc4, 285, 74, 30, 8, NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_GROUP
+    COMBOBOX        cmb4, 285, 84, 75, 50, CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | 
+                    NOT WS_VISIBLE | WS_DISABLED | WS_BORDER | WS_VSCROLL
+    CTEXT           "", stc6, 299, 138, 51, 44, SS_NOPREFIX | NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_GROUP
+    PUSHBUTTON      "&Apply", psh3, 281, 6, 40, 14, NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_TABSTOP
+END
+
+DLG_LAYOUT DIALOG 25, 20, 194, 128
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Page Layout"
+FONT 8, "Helv"
+BEGIN
+    GROUPBOX        "Columns", -1, 2, 1, 138, 77
+    RTEXT           "&Number of Columns:", -1, 8, 13, 92, 8
+    EDITTEXT        IDD_NUMCOLS, 102, 11, 32, 12, ES_AUTOHSCROLL
+    RTEXT           "&Space Between Columns:", -1, 6, 28, 94, 8
+    EDITTEXT        IDD_COLSPACE, 102, 26, 32, 12, ES_AUTOHSCROLL
+    CONTROL         "N&o Separator", IDD_NOSEPARATOR, "Button", 
+                    BS_AUTORADIOBUTTON | WS_GROUP, 14, 41, 84, 10
+    CONTROL         "&Graphical Separator", IDD_GRAPHSEPARATOR, "Button", 
+                    BS_AUTORADIOBUTTON, 14, 52, 84, 10
+    CONTROL         "&Text Separator", IDD_TEXTSEPARATOR, "Button", 
+                    BS_AUTORADIOBUTTON, 14, 63, 84, 10
+    GROUPBOX        "Orientation", IDD_TEXTFONT, 2, 80, 138, 44, WS_GROUP
+    ICON            4, IDD_ORIENT, 12, 94, 18, 20
+    CONTROL         "&Portrait", IDD_PORTRAIT, "Button", BS_AUTORADIOBUTTON, 
+                    52, 93, 58, 10
+    CONTROL         "&Landscape", IDD_LANDSCAPE, "Button", 
+                    BS_AUTORADIOBUTTON, 52, 105, 58, 10
+    PUSHBUTTON      "OK", IDOK, 145, 6, 43, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 145, 23, 43, 14
+    PUSHBUTTON      "&Help", psh15, 145, 40, 43, 14
+    PUSHBUTTON      "&Text...", IDM_OPTIONS, 145, 93, 43, 14
+    PUSHBUTTON      "&Headers...", IDM_HEADFOOT, 145, 110, 43, 14
+END
+
+DLG_ABOUTBOX DIALOG 20, 34, 250, 134
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About WinPrint"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "Black Frame", 8192, "Static", SS_BLACKFRAME, 2, 2, 245, 
+                    128
+    ICON            IDOK, IDOK, 8, 12, 21, 20
+    LTEXT           "WinPrint", 8193, 39, 6, 108, 10
+    LTEXT           "Version 1.4", IDD_VERSION, 39, 16, 155, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Copyright © 1990-1992 Charles E. Kindel, Jr.", 8194, 39, 
+                    26, 174, 10, NOT WS_GROUP
+    LTEXT           "Portions Copyright © 1985-1992 Microsoft Corporation", 
+                    8195, 39, 36, 198, 10, NOT WS_GROUP
+    LTEXT           "By Charles E. Kindel, Jr.", 8196, 40, 63, 174, 10
+    LTEXT           "22925 N.E 12th Place", 8197, 40, 73, 174, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Redmond, WA  98053", 8198, 40, 83, 174, 10, NOT 
+                    WS_GROUP
+    LTEXT           "CompuServe ID 71551,1455", 8199, 40, 93, 174, 10, NOT 
+                    WS_GROUP
+    CONTROL         "", 8200, "Static", SS_BLACKRECT | WS_GROUP, 9, 106, 233, 
+                    1
+    RTEXT           "This product is licenced to:", 8201, 6, 114, 101, 9, 
+                    NOT WS_GROUP
+    DEFPUSHBUTTON   "OK", IDCANCEL, 197, 7, 45, 14, WS_GROUP
+    EDITTEXT        IDD_USERNAME, 109, 114, 128, 9, ES_AUTOHSCROLL | 
+                    WS_DISABLED | NOT WS_BORDER
+END

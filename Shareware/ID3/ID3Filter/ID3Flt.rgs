@@ -1,0 +1,43 @@
+HKCR
+{
+	NoRemove .mp2
+	{
+		PersistentHandler = s '{9C0CCC80-86E7-11d2-B7C9-00A0C9707B03}'
+	}
+
+	NoRemove .mp3
+	{
+		PersistentHandler = s '{9C0CCC80-86E7-11d2-B7C9-00A0C9707B03}'
+	}
+
+	Kindel.ID3Filter.1 = s 'ID3 Filter'
+	{
+		CLSID = s '{4E97F499-7F85-11D2-8488-00C04F795209}'
+	}
+	Kindel.ID3Filter = s 'ID3 Filter'
+	{
+		CLSID = s '{4E97F499-7F85-11D2-8488-00C04F795209}'
+		CurVer = s 'Kindel.ID3Filter.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4E97F499-7F85-11D2-8488-00C04F795209} = s 'ID3 Filter'
+		{
+			ProgID = s 'Kindel.ID3Filter.1'
+			VersionIndependentProgID = s 'Kindel.ID3Filter'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{4E97F48C-7F85-11D2-8488-00C04F795209}'
+		}
+
+		ForceRemove {9C0CCC80-86E7-11d2-B7C9-00A0C9707B03} = s 'ID3 Persistent Handler'
+		{
+			PersistentAddinsRegistered 
+			{
+				{89BCB740-6119-101A-BCB7-00DD010655AF} = s '{4E97F499-7F85-11D2-8488-00C04F795209}'
+			}
+		}
+	}
+}

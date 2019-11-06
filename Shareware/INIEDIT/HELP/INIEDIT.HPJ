@@ -1,0 +1,10 @@
+[OPTIONS]
+title = INIedit 1.30
+index = Contents
+compress = 1
+warning = 3
+report = 1
+
+[FILES]
+iniedit.rtf
+

@@ -1,0 +1,374 @@
+cpp_quote("")
+cpp_quote("// ============================================================")
+cpp_quote("// ID3COM.H")
+cpp_quote("//")
+cpp_quote("// ID3Lib COM Wrapper interface definitions.")
+cpp_quote("// Copyright (c) 1999 Charles E. Kindel, Jr.")
+cpp_quote("// All Rights Reserved")
+cpp_quote("//")
+cpp_quote("// See http://www.kindel.com/mp3/id3com for more information.")
+cpp_quote("//")
+cpp_quote("// ============================================================")
+cpp_quote("")
+
+// ID3COM.idl : IDL source for ID3Lib COM Wrapper.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ID3COM.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+// ID3LibFieldID enum
+//
+// mirrors ID3Field_ID from ID3Lib
+//
+typedef enum ID3LibFieldID
+{
+	id3NOFIELD			= 0,
+	id3TEXTENC,
+	id3TEXT,
+	id3URL,
+	id3DATA,
+	id3DESCRIPTION,
+	id3OWNER,
+	id3EMAIL,
+	id3RATING,
+	id3FILENAME,
+	id3LANGUAGE,
+	id3PICTURETYPE,
+	id3IMAGEFORMAT,
+	id3MIMETYPE,
+	id3COUNTER,
+	id3SYMBOL,
+	id3VOLUMEADJ,
+	id3NUMBITS,
+	id3VOLCHGRIGHT,
+	id3VOLCHGLEFT,
+	id3PEAKVOLRIGHT,
+	id3PEAKVOLLEFT,
+
+	id3LASTFIELDID
+} ID3LibFieldID;
+
+/*
+// ID3FrameID enum
+//
+// mirrors ID3Frame_ID from ID3Lib
+//
+typedef enum tagID3FrameID
+{
+	id3fidNOFRAME			= 0,
+	id3fidORIGALBUM,
+	id3fidPUBLISHER,
+	id3fidENCODEDBY,
+	id3fidENCODERSETTINGS,
+	id3fidORIGFILENAME,
+	id3fidLANGUAGE,
+	id3fidPARTINSET,
+	id3fidDATE,
+	id3fidTIME,
+	id3fidRECORDINGDATES,
+	id3fidMEDIATYPE,
+	id3fidFILETYPE,
+	id3fidNETRADIOSTATION,
+	id3fidNETRADIOOWNER,
+	id3fidLYRICIST,
+	id3fidORIGARTIST,
+	id3fidORIGLYRICIST,
+	id3fidSUBTITLE,
+	id3fidMIXARTIST,
+	id3fidUSERTEXT,
+	id3fidCONTENTGROUP,
+	id3fidTITLE,
+	id3fidLEADARTIST,
+	id3fidBAND,
+	id3fidALBUM,
+	id3fidYEAR,
+	id3fidCONDUCTOR,
+	id3fidCOMPOSER,
+	id3fidCOPYRIGHT,
+	id3fidCONTENTTYPE,
+	id3fidTRACKNUM,
+	id3fidCOMMENT,
+	id3fidWWWAUDIOFILE,
+	id3fidWWWARTIST,
+	id3fidWWWAUDIOSOURCE,
+	id3fidWWWCOMMERCIALINFO,
+	id3fidWWWCOPYRIGHT,
+	id3fidWWWPUBLISHER,
+	id3fidWWWPAYMENT,
+	id3fidWWWRADIOPAGE,
+	id3fidWWWUSER,
+	id3fidINVOLVEDPEOPLE,
+	id3fidUNSYNCEDLYRICS,
+	id3fidPICTURE,
+	id3fidGENERALOBJECT,
+	id3fidUNIQUEFILEID,
+	id3fidPLAYCOUNTER,
+	id3fidPOPULARIMETER,
+	id3fidGROUPINGREG,
+	id3fidCRYPTOREG
+} ID3FrameID;
+*/
+
+// IID3TextItems Interface
+//
+// Represents a text item collection object
+//
+	[
+		object,
+		uuid(0002A523-0000-0000-C000-000000000046),
+		dual,
+		oleautomation,
+		helpstring("IID3TextItems Interface"),
+		pointer_default(unique)
+	]
+	interface IID3TextItems : IDispatch
+	{
+	    [id(0), helpstring("Retrieves a text item from the field.")] HRESULT Item([in] VARIANT Item, [out, retval] BSTR* pbstrReturnVal);
+		[propget, id(1), helpstring("Returns the number of text items in the field.")] HRESULT Count([out, retval] long* Count);
+		[id(2), helpstring("Adds a text item to the field.")] HRESULT Add([in] BSTR bstr);
+		[id(0xfffffffc)] HRESULT _NewEnum([out, retval] IUnknown** ppEnum);
+	}
+
+
+interface IID3Field; // forward
+interface IID3Frame; // forward
+
+// IID3Fields Interface
+//
+// Represents an ID3Field collection object
+//
+	[
+		object,
+		uuid(0002A521-0000-0000-C000-000000000046),
+		dual,
+		oleautomation,
+		helpstring("IID3Fields Interface"),
+		pointer_default(unique)
+	]
+	interface IID3Fields : IDispatch
+	{
+	    [id(0), helpstring("Retrieves a field from the tag by index.")] HRESULT Item([in] VARIANT Item, [out, retval] IID3Field** Object);
+		[propget, id(1), helpstring("Returns the number of fields in the frame.")] HRESULT Count([out, retval] long* Count);
+		[id(0xfffffffc)] HRESULT _NewEnum([out, retval] IUnknown** ppEnum);
+	}
+
+// IID3Field Interface
+//
+// Represents an ID3Field object
+//
+	[
+		object,
+		uuid(0002A515-0000-0000-C000-000000000046),
+		dual,
+		oleautomation,
+		helpstring("IID3Field Interface"),
+		pointer_default(unique)
+	]
+	interface IID3Field : IDispatch
+	{
+		[propget, id(0), helpstring("The value of the field.")] HRESULT Value([out, retval] VARIANT *pVal);
+		[propput, id(0), helpstring("The value of the field.")] HRESULT Value([in] VARIANT newVal);
+		[id(1), helpstring("Initializes the field.")] HRESULT Clear();
+		[propget, id(2), helpstring("The size (in bytes) of the field.")] HRESULT Size([out, retval] long *pVal);
+		[id(3), helpstring("Copies data from a file into the field.")] HRESULT FromFile([in] BSTR Filename);
+		[id(4), helpstring("Saves the data in the field to a file.")] HRESULT ToFile([in] BSTR Filename);
+		[propget, id(5), helpstring("ID3Lib Field ID.")] HRESULT ID([out, retval] ID3LibFieldID *pVal);
+		[propget, id(6), helpstring("Returns the text items collection for the field.")] HRESULT TextItems([out, retval] IID3TextItems** ppITextItems);
+	};
+
+// IID3Frames Interface
+//
+// Represents an ID3Frames collection object
+//
+	[
+		object,
+		uuid(0002A519-0000-0000-C000-000000000046),
+		dual,
+		oleautomation,
+		helpstring("IID3Frames Interface"),
+		pointer_default(unique)
+	]
+	interface IID3Frames : IDispatch
+	{
+	    [id(0), helpstring("Retrieves a frame from the tag by index or 4 character frame ID.")] HRESULT Item([in] VARIANT Item, [in, optional] VARIANT FieldID, [in, optional] VARIANT Data,[out, retval] IID3Frame** Object);
+		[propget, id(1), helpstring("Returns the number of frames in the tag.")] HRESULT Count([out, retval] long* Count);
+		[id(2), helpstring("Adds a frame to the tag.")] HRESULT Add([in] IID3Frame* frame);
+		[id(3), helpstring("Removes the specified frame from the tag.")] HRESULT Remove([in] IID3Frame* pFrame);
+		[id(0xfffffffc)] HRESULT _NewEnum([out, retval] IUnknown** ppEnum);
+	}
+
+// IID3Frame Interface
+//
+// Represents an ID3Frame object
+//
+	[
+		object,
+		uuid(0002A513-0000-0000-C000-000000000046),
+		dual,
+		oleautomation,
+		helpstring("IID3Frame Interface"),
+		pointer_default(unique)
+	]
+	interface IID3Frame : IDispatch
+	{
+		[propget, id(0), helpstring("Returns the ID3Fields collection for the frame.")] HRESULT Fields([out, retval] IID3Fields** ReturnVal);
+		[id(1), helpstring("Initializes the frame.")] HRESULT Clear();
+		[propget, id(2), helpstring("The ID3v2 frame ID.")] HRESULT ID([out, retval] BSTR *pbstr);
+		[propput, id(2), helpstring("The ID3v2 frame ID.")] HRESULT ID([in] BSTR ID);
+		[id(3), helpstring("Returns the ID3Field object using an ID3Lib field ID")] HRESULT GetFieldByID([in]ID3LibFieldID fieldID, [out, retval] IID3Field **ppField);
+	};
+
+// IID3VersInfo Interface
+//
+// Maps to the information returned by the ID3Tag_GetVersInfo method.
+//
+	[
+		object,
+		uuid(0002A517-0000-0000-C000-000000000046),
+		dual,
+		oleautomation,
+		helpstring("IID3VersInfo Interface"),
+		pointer_default(unique)
+	]
+	interface IID3VersInfo : IDispatch
+	{
+      [propget, helpstring("The name of ID3Lib.")] HRESULT Name([out, retval] BSTR* ReturnVal);       
+      [propget, helpstring("The version of ID3Lib.")] HRESULT Version([out, retval] long* ReturnVal);       
+      [propget, helpstring("The revision of ID3Lib.")] HRESULT Revision([out, retval] long* ReturnVal);       
+  
+	};
+
+
+// IID3Tag interface
+//
+// Represents an ID3Tag object
+//
+	[
+		object,
+		uuid(0002A511-0000-0000-C000-000000000046),
+		dual,
+		oleautomation,
+		helpstring("IID3Tag Interface"),
+		pointer_default(unique)
+	]
+	interface IID3Tag : IDispatch
+	{
+		[id(1), helpstring("Returns an ID3VersInfo object describing the version information the ID3Lib library ID3COM is based on.")] HRESULT GetVersionInfo([out,retval] IID3VersInfo** ReturnVal);
+		[id(2), helpstring("Initializes the ID3Tag object.")] HRESULT Clear();
+		[id(3), helpstring("Attaches the ID3Tag object to the file specified. Returns the offset (in bytes) in the file where the tag ends and the audio starts.")] HRESULT Attach([in] BSTR Filename, [in, defaultvalue(-1)]VARIANT_BOOL CreateFile, [out,retval]long *ulVal);
+		[id(4), helpstring("Saves the tag to the file that was specified with Link.")] HRESULT Update();
+		[propget, id(5), helpstring("Returns the ID3Frames collection for the tag.")] HRESULT Frames([out, retval] IID3Frames** ReturnVal);
+		[propget, id(6), helpstring("Indicates whether the object should create an extended header when rendering")] HRESULT ExtendedHeader([out, retval]VARIANT_BOOL *ext);
+		[propput, id(6), helpstring("Indicates whether the object should create an extended header when rendering")] HRESULT ExtendedHeader([in]VARIANT_BOOL ext);
+		[propget, id(7), helpstring("Indicates whether to compress frames or not")] HRESULT Compression([out, retval]VARIANT_BOOL *comp);
+		[propput, id(7), helpstring("Indicates whether to compress frames or not")] HRESULT Compression([in]VARIANT_BOOL comp);
+		[propget, id(8), helpstring("Indicates whether to create padding")] HRESULT Padding([out,retval]VARIANT_BOOL *pad);
+		[propput, id(8), helpstring("Indicates whether to create padding")] HRESULT Padding([in] VARIANT_BOOL pad);
+		[propget, id(9), helpstring("Tells the object to unsync the binary tag")] HRESULT Unsync([out, retval] VARIANT_BOOL *UnSync);
+		[propput, id(9), helpstring("Tells the object to unsync the binary tag")] HRESULT Unsync([in] VARIANT_BOOL UnSync);
+		[propget, id(10), helpstring("Indicates whether the tag has changed since the last parse.")] HRESULT HasChanged([out, retval] VARIANT_BOOL *changed);
+		[id(11), helpstring("Gets the number of extra bytes in the rest of the tag. Header is an array of bytes.")] HRESULT GetNumBytes([in] VARIANT Header, [out,retval] long* ReturnVal);
+		[id(12), helpstring("Parse binary data into ID3 frames. Header is an array of bytes containing the header and Buffer is an array of bytes containing the rest of the tag.")] HRESULT Parse([in] VARIANT Header, [in] VARIANT Buffer);
+		[id(13), helpstring("Strips ID3 tags from file. If the optional parameter v1Also is True any ID3v1 tags in the file will also be stripped.")] HRESULT Strip([in, defaultvalue(0)] VARIANT_BOOL v1Also);
+		[propget, id(14), helpstring("Returns an over-estimate of the number of bytes required to store a binary version of the tag.")] HRESULT Size([out, retval] long* plsize);
+		[id(15), helpstring("Renders the tag to the provided array of bytes.")] HRESULT Render([out, retval] VARIANT* pBuffer);
+		[propget, id(16), helpstring("Sets or retrieves the value of the Title (TIT2) frame from the tag.")] HRESULT Title([out, retval] BSTR *pVal);
+		[propput, id(16), helpstring("Sets or retrieves the value of the Title (TIT2) frame from the tag.")] HRESULT Title([in] BSTR newVal);
+		[propget, id(17), helpstring("Sets or retrieves the value of the Album (TALB) frame from the tag.")] HRESULT Album([out, retval] BSTR *pVal);
+		[propput, id(17), helpstring("Sets or retrieves the value of the Album (TALB) frame from the tag.")] HRESULT Album([in] BSTR newVal);
+		[propget, id(18), helpstring("Sets or retrieves the value of the Artist (TPE1) frame from the tag.")] HRESULT Artist([out, retval] BSTR *pVal);
+		[propput, id(18), helpstring("Sets or retrieves the value of the Artist (TPE1) frame from the tag.")] HRESULT Artist([in] BSTR newVal);
+		[propget, id(19), helpstring("Sets or retrieves the value of the Year (TYER) frame from the tag.")] HRESULT Year([out, retval] BSTR *pVal);
+		[propput, id(19), helpstring("Sets or retrieves the value of the Year (TYER) frame from the tag.")] HRESULT Year([in] BSTR newVal);
+		[propget, id(20), helpstring("Sets or retrieves the value of the Comment (COMM) frame from the tag.")] HRESULT Comment([out, retval] BSTR *pVal);
+		[propput, id(20), helpstring("Sets or retrieves the value of the Comment (COMM) frame from the tag.")] HRESULT Comment([in] BSTR newVal);
+		[propget, id(21), helpstring("Sets or retrieves the value of the Genre (TCON) frame from the tag.")] HRESULT Genre([out, retval] BSTR *pVal);
+		[propput, id(21), helpstring("Sets or retrieves the value of the Genre (TCON) frame from the tag.")] HRESULT Genre([in] BSTR newVal);
+	};
+	
+
+// ID3Lib Library
+//
+[
+	uuid(0002A524-0000-0000-C000-000000000046),
+	version(1.0),
+	helpstring("Kindel Systems ID3COM Library")
+]
+library ID3COM
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(0002A510-0000-0000-C000-000000000046),
+		helpstring("ID3Tag Class")
+	]
+	coclass ID3Tag
+	{
+		[default] interface IID3Tag;
+	};
+	[
+		uuid(0002A512-0000-0000-C000-000000000046),
+		helpstring("ID3Frame Class")
+	]
+	coclass ID3Frame
+	{
+		[default] interface IID3Frame;
+	};
+
+	[
+		uuid(0002A514-0000-0000-C000-000000000046),
+		helpstring("ID3Field Class"),
+		noncreatable
+	]
+	coclass ID3Field
+	{
+		[default] interface IID3Field;
+	};
+	
+	[
+		uuid(0002A516-0000-0000-C000-000000000046),
+		helpstring("ID3VersInfo Class"),
+		noncreatable
+	]
+	coclass ID3VersInfo
+	{
+		[default] interface IID3VersInfo;
+	};
+	
+	[
+		uuid(0002A518-0000-0000-C000-000000000046),
+		helpstring("ID3Frames Class"),
+		noncreatable
+	]
+	coclass ID3Frames
+	{
+		[default] interface IID3Frames;
+	};
+
+	[
+		uuid(0002A520-0000-0000-C000-000000000046),
+		helpstring("ID3Fields Class"),
+		noncreatable
+	]
+	coclass ID3Fields
+	{
+		[default] interface IID3Fields;
+	};
+
+	[
+		uuid(0002A522-0000-0000-C000-000000000046),
+		helpstring("ID3TextItems Class"),
+		noncreatable
+	]
+	coclass ID3TextItems
+	{
+		[default] interface IID3TextItems;
+	};
+
+};

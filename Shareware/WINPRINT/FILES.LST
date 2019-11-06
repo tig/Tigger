@@ -1,0 +1,153 @@
+
+ Volume in drive C is GATEWAY        Serial number is 18CC:A8F2
+ Directory of  c:\!\license\*.*
+
+.            <DIR>      1-26-93  23:55   ..           <DIR>      1-26-93  23:55
+DOCS         <DIR>      1-26-93  23:55   HELP         <DIR>      1-26-93  23:55
+OBJ          <DIR>      1-26-93  23:55   RELEASE      <DIR>      1-26-93  23:55
+RES          <DIR>      1-26-93  23:55   SRC          <DIR>      1-26-93  23:55
+TDUTIL       <DIR>      1-26-93  23:58   makefile         8501  12-26-92  16:33
+fromflop.bat      171  10-28-91  18:44   toflop.bat        170  10-28-91  18:44
+winprint.d32     1359   7-01-92  18:06   winprint.def     2770   5-20-92  14:17
+winprint.exe    88672  12-26-92  16:38   winprint.hlp    68747  12-26-92  16:34
+files.lst           0   1-27-93   0:01   
+     170,390 bytes in 17 file(s)           212,992 bytes allocated
+
+ Directory of  c:\!\license\docs\*.*
+
+.            <DIR>      1-26-93  23:55   ..           <DIR>      1-26-93  23:55
+readme.doc      16075  12-26-92  16:31   winprint.doc    44841  10-17-91  10:12
+      60,916 bytes in 4 file(s)             65,536 bytes allocated
+
+    Total for:  c:\!\license\docs\*.*
+      60,916 bytes in 4 file(s)             65,536 bytes allocated
+
+ Directory of  c:\!\license\help\*.*
+
+.            <DIR>      1-26-93  23:55   ..           <DIR>      1-26-93  23:55
+makefile          284  11-01-91  10:21   control.bmp       838   7-11-90   7:25
+world.bmp         858   7-11-90   7:30   winprint.doc    75855   5-20-92  15:29
+map.h             300  11-01-91  13:54   winprint.hlp    68747  12-26-92  16:34
+winprint.hpj      855  12-26-92  15:40   winprint.rtf   107669  12-26-92  16:17
+     255,406 bytes in 10 file(s)           311,296 bytes allocated
+
+    Total for:  c:\!\license\help\*.*
+     255,406 bytes in 10 file(s)           311,296 bytes allocated
+
+ Directory of  c:\!\license\obj\*.*
+
+.            <DIR>      1-26-93  23:55   ..           <DIR>      1-26-93  23:55
+           0 bytes in 2 file(s)                  0 bytes allocated
+
+    Total for:  c:\!\license\obj\*.*
+           0 bytes in 2 file(s)                  0 bytes allocated
+
+ Directory of  c:\!\license\release\*.*
+
+.            <DIR>      1-26-93  23:55   ..           <DIR>      1-26-93  23:55
+tdutil.dll      12880  12-26-92   1:50   winprint.exe    88672  12-26-92   1:50
+winprint.hlp    68747  12-26-92   1:50   readme.txt      14656  12-26-92   1:50
+     184,955 bytes in 6 file(s)            196,608 bytes allocated
+
+    Total for:  c:\!\license\release\*.*
+     184,955 bytes in 6 file(s)            196,608 bytes allocated
+
+ Directory of  c:\!\license\res\*.*
+
+.            <DIR>      1-26-93  23:55   ..           <DIR>      1-26-93  23:55
+winprint.dlg    16939  12-26-92  16:34   order.frm        1299  12-26-92  16:23
+landscap.ico     1846  11-15-90  14:35   noorient.ico     1846  10-14-91  13:32
+portrait.ico     1846  11-15-90  14:35   winprint.ico      766  10-03-91  15:19
+winprt32.ico      766   7-02-92  12:03   winprint.rc      2242   8-31-92  19:05
+winprint.rcv     2942   7-01-92  18:41   winprint.str    11454   8-31-92  18:33
+      41,946 bytes in 12 file(s)           106,496 bytes allocated
+
+    Total for:  c:\!\license\res\*.*
+      41,946 bytes in 12 file(s)           106,496 bytes allocated
+
+ Directory of  c:\!\license\src\*.*
+
+.            <DIR>      1-26-93  23:55   ..           <DIR>      1-26-93  23:55
+winstub.asm       956   2-05-92  12:31   config.c        17469   8-31-92  18:24
+dlghelp.c       17013   7-02-92  10:47   dragdrop.c       2469   7-01-92  19:34
+fontutil.c      32146   8-31-92  18:39   headfoot.c       6848   8-31-92  18:25
+page.c          10623   8-31-92  18:25   precomp.c          22   4-17-92  15:54
+selprn.c         7291   7-02-92  12:51   text.c           9936   8-31-92  18:23
+winprint.c      11253   8-31-92  19:29   wintime.c       40417   5-20-92  10:44
+wsscanf.c       16435   7-01-92  18:37   ws_about.c       6876   8-31-92  18:26
+ws_dlg.c        36269   8-31-92  19:14   ws_files.c       5307   7-01-92  18:45
+ws_init.c       14111   8-31-92  18:48   ws_lib.c        16657   8-31-92  18:28
+ws_open.c        9652   8-31-92  18:28   ws_print.c      24680   8-31-92  18:34
+ws_reg.c         8082   8-31-92  18:29   ws_save.c        9990   8-31-92  18:30
+config.h          629  10-27-91  14:42   dlghelp.h         950   5-20-92  11:36
+dlgs.h           9324   1-28-92  13:50   dragdrop.h        958   7-02-92  12:09
+fontutil.h       1518   4-27-92  11:31   headfoot.h        545  10-27-91  14:42
+isz.h             559   8-31-92  18:04   page.h            520   5-20-92  11:45
+precomp.h         466   8-21-92  19:38   selprn.h          536  10-27-91  14:42
+text.h            704   7-02-92  10:59   version.h          64  12-26-92  16:35
+winprint.h       4831   8-31-92  18:20   wintime.h        1230  10-27-91  14:42
+wsscanf.h        1781   7-01-92  18:38   wstdarg.h         780  10-27-91  14:42
+ws_about.h         90   5-20-92  11:30   ws_dlg.h          457   7-02-92  11:16
+ws_files.h        237   5-20-92  11:49   ws_init.h         237   5-20-92  11:04
+ws_lib.h          890  10-27-91  14:42   ws_open.h         211  10-27-91  14:42
+ws_print.h        279   5-20-92  11:11   ws_reg.h          121  10-27-91  14:42
+ws_save.h         189  10-27-91  14:42   ws_types.h       2990  10-27-91  14:42
+     335,598 bytes in 50 file(s)           630,784 bytes allocated
+
+    Total for:  c:\!\license\src\*.*
+     335,598 bytes in 50 file(s)           630,784 bytes allocated
+
+ Directory of  c:\!\license\tdutil\*.*
+
+.            <DIR>      1-26-93  23:58   ..           <DIR>      1-26-93  23:58
+RES          <DIR>      1-26-93  23:58   SRC          <DIR>      1-26-93  23:58
+TEST         <DIR>      1-26-93  23:58   makefile         4742   5-22-92  16:14
+tdutil.def       2568   5-22-92  19:33   tdutil.dll      60928   5-22-92  21:06
+tdutil.lib       3072   5-22-92  21:06   
+      71,310 bytes in 9 file(s)             90,112 bytes allocated
+
+ Directory of  c:\!\license\tdutil\src\*.*
+
+.            <DIR>      1-26-93  23:58   ..           <DIR>      1-26-93  23:58
+libentry.asm     2446   5-20-91  11:15   3dctrl.c        18516   5-22-92  21:06
+precomp.c          22   5-05-92  14:20   shadow.c        36793   5-26-92   9:28
+tdutil.c         4440   5-22-92  20:59   wep.c             855   5-19-92  22:52
+dlgs.h            571   5-22-92  19:49   isz.h             527   5-19-92  18:38
+itdutil.h        3147   5-22-92  21:01   precomp.h          98   5-19-92  18:36
+tdutil.h        14347   5-22-92  20:40   version.h          64   5-19-92  18:37
+      81,826 bytes in 14 file(s)           155,648 bytes allocated
+
+    Total for:  c:\!\license\tdutil\src\*.*
+      81,826 bytes in 14 file(s)           155,648 bytes allocated
+
+ Directory of  c:\!\license\tdutil\res\*.*
+
+.            <DIR>      1-26-93  23:58   ..           <DIR>      1-26-93  23:58
+3dbtn.bmp        1210   5-19-92  23:04   3dbtn1.bmp       1210  12-19-91   2:58
+3dbtns.bmp      17590   5-21-92  13:29   bkgnd.bmp         130   5-22-92  19:46
+new.bmp          1210   5-20-92  19:09   tdutil.ico        766   3-18-91  23:58
+tdutil.rc         941   5-22-92  19:50   tdutil.rcv       2898   5-19-92  18:57
+      25,955 bytes in 10 file(s)            81,920 bytes allocated
+
+    Total for:  c:\!\license\tdutil\res\*.*
+      25,955 bytes in 10 file(s)            81,920 bytes allocated
+
+ Directory of  c:\!\license\tdutil\test\*.*
+
+.            <DIR>      1-26-93  23:58   ..           <DIR>      1-26-93  23:58
+makefile          668   5-22-92  17:07   test.c          18788   5-19-92  20:47
+test.def          518   8-30-91   8:36   test.dlg         3623   5-22-92  20:58
+test.exe        14336   5-22-92  20:59   tdutil.h        14347   5-22-92  20:40
+testd.h          1272   5-19-92  21:44   test.ico          766   3-18-91  23:58
+test.rc           170   5-22-92  16:57   
+      54,488 bytes in 11 file(s)           106,496 bytes allocated
+
+    Total for:  c:\!\license\tdutil\test\*.*
+      54,488 bytes in 11 file(s)           106,496 bytes allocated
+
+    Total for:  c:\!\license\tdutil\*.*
+     233,579 bytes in 44 file(s)           434,176 bytes allocated
+
+    Total for:  c:\!\license\*.*
+   1,282,790 bytes in 145 file(s)        1,957,888 bytes allocated
+  47,185,920 bytes free

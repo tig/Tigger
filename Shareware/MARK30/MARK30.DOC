@@ -1,0 +1,155 @@
+
+                   Mark Three-Oh Version 1.50    7/22/90
+
+                 Copyright (c) 1990, Charles E. Kindel, Jr.
+                            All rights reserved.
+
+                          Kindlco Software Systems
+                         3000 118th Ave. SE, Suite A-203
+                             Bellvue, WA  98005
+
+                           CompuServe 71551,1455
+
+           Please read this document carefully before attempting
+           to run Mark30 on your system.
+
+
+           VERY IMPORTANT!  READ THIS!  DO NOT IGNORE!!!!!!
+
+                Mark 30 was designed to defeat the mechanism 
+                within Windows 3.0 that detects Windows 2.x 
+                applications.  
+
+                Use with EXTREME care!  Serious data loss 
+                could occur if an ill behaved Windows 2.x 
+                application crashes under Windows 3.0!!!!
+
+
+
+           USE THIS PROGRAM AT YOUR OWN RISK!  Kindlco Software
+           Systems and Charles E. Kindel, Jr. ARE NOT
+           responsible for any damages caused by the use of this
+           program.
+
+
+
+           Mark30 DISTRIBUTION FILES
+                Mark30.EXE  -  Mark Three-Oh v1.50 program.
+                Mark30.DOC  -  This Document.
+
+
+           COPYRIGHT INFORMATION
+
+           Mark30 is a commercial copyrighted program protected
+           by both U.S. and international copyright law.  You
+           are authorized to use and distribute it without
+           charge.
+
+           Mark30 is distributed as freeware.  Mark30 may be
+           freely copied and distributed as long as the
+           following three rules are followed:
+
+           1)  The program and this documentation are not
+               modified in any way, shape, or form.
+
+           2)  A copy of this documentation (Mark30.DOC)
+               accompanies each copy of the program (Mark30.EXE).
+
+           3)  No charge, other than a media and handling charge
+               (not to exceed $5.00), is made.
+
+
+           INTRODUCTION
+
+           Mark30 is a Windows 3.0 utility that marks old
+           Windows applications so that they will run under
+           Windows 3.0 without the Windows 3.0 warning message.
+           This utility does no checking of the application
+           being marked, except to verify that it is a Windows
+           application.
+
+           There are two flags in the header of a Windows
+           executable file (called the "new executable format").
+           The memory flag indicates that the application makes
+           clean use of memory, thus enabling it to run under
+           Windows 3.0 in protected mode.  The font flag
+           indicates whether the application can handle the
+           proportional system font in Windows 3.0.  Mark30
+           allows you to set and unset both of these flags.
+
+           Many Windows 2.x application work fine under Windows
+           3.0, but many do not.  If you have a Windows 2.x
+           application that works under Windows 3.0, and you are
+           tired of the annoying warning message Windows 3.0
+           gives you each time you run your program, Mark30 will
+           save you.
+
+           IMPORTANT!  IMPORTANT!  IMPORTANT!
+           Just because a Windows 2.x application APPEARS to
+           work under Windows 3.0 don't assume it is completely
+           compatible, there may be situations where the
+           application will fail!!!!
+
+
+           USAGE
+
+           To use Mark30, simply start it as you would any
+           Windows application.  When it starts up you are
+           presented with a file selection list box, two check
+           boxes, and several buttons.
+
+           Select a file either by typing a name in the edit
+           control, or by clicking on a name in the list box.
+           You may also change directories and drives as you
+           normally would in a Windows application.
+           Once you have a file selected, choose the flags you
+           want set.  The font flag can only be set if the
+           memory flag is set.
+
+           Press the "Mark File" button to mark the application.
+           If the application you choose is not a Windows
+           application a message box will appear informing you
+           of this.  If the application IS a Windows program a
+           warning dialog box will appear asking you to confirm
+           your choice.
+
+           Once a file is marked, it can be "unmarked" by
+           reversing the check boxes.
+
+           That's all there is to it!
+           Please send all problem reports, suggestions, and
+           multi-million dollar donations to:
+
+           Charles E. Kindel, Jr.
+           3000 118th Ave, SE, A-203
+           Bellvue, WA  98005
+
+           CIS PPN: 71551,1455
+
+           VERSION HISTORY
+           1.00   May 31, 1990   First version.
+           1.30   May 31, 1990   Much refined... Now a Windows
+                                 3.0 specific Application.  Will
+                                 NOT run under Windows 2.x!
+           1.32   June 1, 1990   More refinements.  Allows
+                                 marking of Windows 1.x apps and
+                                 apps with marked as 1.x apps.
+                                 It is VERY IMPORTANT that you
+                                 DO NOT USE any version of
+                                 Mark30 prior to 1.32!  It will
+                                 not harm anything now, but when
+                                 a new version of Windows comes
+                                 out (4.0?) there MAY be
+                                 trouble.
+           1.33   June 2, 1990   Minor refinements.  Does not
+                                 alter any info other than the
+                                 Memory and Font bits.
+           1.50   June 25, 1990  Fixed bugs in dialog box item
+                                 enabling and disabling.
+                                 Version 1.50a has an "Advanced"
+                                 dialog box, allowing the
+                                 setting of any of the 16
+                                 identification bits.  Version
+                                 1.50a is ONLY available via a
+                                 DIRECT request to Charles E.
+                                 Kindel; E-mail for more info.

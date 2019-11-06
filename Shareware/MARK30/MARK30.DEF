@@ -1,0 +1,31 @@
+NAME            Mark30
+
+DESCRIPTION     'Mark30 - Windows 3.0 Marking Utility, Copyright (C) Charles E. Kindel, Jr., 1990'
+
+STUB            'WINSTUB.EXE'
+
+EXETYPE         WINDOWS
+
+DATA            PRELOAD MOVEABLE MULTIPLE
+CODE            PRELOAD MOVEABLE
+
+SEGMENTS        _TEXT           PRELOAD MOVABLE 
+                MARK30_TEXT     PRELOAD MOVABLE 
+                M_MAIN_TEXT     LOADONCALL MOVABLE DISCARDABLE
+                M_DLGS_TEXT     LOADONCALL MOVABLE DISCARDABLE
+                M_ADV_TEXT      LOADONCALL MOVABLE DISCARDABLE
+                AUXW_TEXT       PRELOAD MOVABLE DISCARDABLE
+
+HEAPSIZE        4096
+STACKSIZE       5120
+
+EXPORTS         WndProc
+                AboutDlgProc
+                WarnDlgProc
+                AdvDlgProc
+
+
+
+
+
+

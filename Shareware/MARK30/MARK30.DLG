@@ -1,0 +1,82 @@
+WARNBOX DIALOG LOADONCALL MOVEABLE DISCARDABLE 4, 4, 177, 169
+STYLE WS_BORDER | WS_POPUP
+BEGIN
+    CONTROL "&Mark The File", IDD_MARK, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 13, 144, 59, 14
+    CONTROL "Black Frame", IDD_BOX0, "static", SS_BLACKFRAME | WS_CHILD, 4, 4, 168, 160
+    CONTROL "&Don't Mark The File", IDD_DONT, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 83, 143, 79, 15
+    CONTROL "WARNING! WARNING! WARNING! WARNING!", IDD_WARN, "static", SS_CENTER | WS_CHILD, 13, 13, 148, 9
+    CONTROL "The application you have selected XXXXXXXX.XXX, was designed for a previous version of Windows.", IDD_MSG1, "static", SS_CENTER | WS_CHILD, 8, 29, 157, 25
+    CONTROL "If you choose the \42Mark The File\42 button, XXXXXXX.XXX will be marked as a Windows 3.0 compatible application.  DO THIS AT YOUR OWN RISK!!!!", IDD_MSG2, "static", SS_CENTER | WS_CHILD, 8, 59, 155, 35
+    CONTROL "If you mark the application for Windows 3.0 and attempt to run it, you might encounter compatibility problems that could cause the application or Windows to terminate unexpectedly!", IDD_MSG3, "static", SS_CENTER | WS_CHILD, 9, 97, 160, 43
+    CONTROL "Left J", IDD_BOX1, "static", SS_BLACKFRAME | WS_CHILD, 8, 9, 157, 16
+END
+
+ADVBOX DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 34, 140, 146
+CAPTION "Advanced Settings"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_POPUP
+BEGIN
+    CONTROL "Bit 0", -1, "static", SS_LEFT | WS_CHILD, 8, 44, 20, 8
+    CONTROL "Bit 1", -1, "static", SS_LEFT | WS_CHILD, 8, 54, 20, 8
+    CONTROL "Bit 2", -1, "static", SS_LEFT | WS_CHILD, 8, 64, 20, 8
+    CONTROL "Bit 3", -1, "static", SS_LEFT | WS_CHILD, 8, 74, 20, 8
+    CONTROL "Bit 4", -1, "static", SS_LEFT | WS_CHILD, 8, 84, 20, 8
+    CONTROL "Bit 5", -1, "static", SS_LEFT | WS_CHILD, 8, 94, 20, 8
+    CONTROL "Bit 6", -1, "static", SS_LEFT | WS_CHILD, 8, 104, 20, 8
+    CONTROL "Bit 7", -1, "static", SS_LEFT | WS_CHILD, 8, 114, 20, 8
+    CONTROL "Byte &0", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 32, 32, 24, 8
+    CONTROL "Unknown", IDD_BIT0, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 32, 42, 46, 10
+    CONTROL "Win 2.x", IDD_BIT1, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 32, 52, 46, 10
+    CONTROL "Unknown", IDD_BIT2, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 32, 62, 46, 10
+    CONTROL "Unknown", IDD_BIT3, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 32, 72, 46, 10
+    CONTROL "Unknown", IDD_BIT4, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 32, 82, 46, 10
+    CONTROL "Unknown", IDD_BIT5, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 32, 92, 46, 10
+    CONTROL "Unknown", IDD_BIT6, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 32, 102, 46, 10
+    CONTROL "Unknown", IDD_BIT7, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 32, 112, 46, 10
+    CONTROL "Byte &1", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 82, 32, 24, 8
+    CONTROL "Unknown", IDD_BIT8, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 82, 42, 46, 10
+    CONTROL "Font", IDD_BIT9, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 82, 52, 46, 10
+    CONTROL "Memory", IDD_BIT10, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 82, 62, 46, 10
+    CONTROL "Win 3.0", IDD_BIT11, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 82, 72, 46, 10
+    CONTROL "Unknown", IDD_BIT12, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 82, 82, 46, 10
+    CONTROL "Unknown", IDD_BIT13, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 82, 92, 46, 10
+    CONTROL "Unknown", IDD_BIT14, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 82, 102, 46, 10
+    CONTROL "Unknown", IDD_BIT15, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 82, 112, 46, 10
+    CONTROL "", IDD_BOX0, "static", SS_BLACKFRAME | WS_CHILD, 2, 2, 134, 139
+    CONTROL "&OK", IDOK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 30, 124, 28, 14
+    CONTROL "&Cancel", IDD_CANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 74, 124, 30, 14
+    CONTROL "", IDD_BOX1, "static", SS_BLACKFRAME | WS_CHILD, 8, 8, 122, 22
+    CONTROL "WARNING! Changing bits labeled \42Unknown\42 is dangerous!", IDD_WARN, "static", SS_CENTER | WS_CHILD, 14, 10, 110, 18
+END
+
+MARK30 DIALOG PRELOAD MOVEABLE DISCARDABLE 47, 23, 146, 126
+CLASS "Mark30"
+CAPTION "Mark Three-Oh"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_GROUP | WS_SIZEBOX | DS_LOCALEDIT | WS_POPUP
+BEGIN
+    CONTROL "Fi&le to be marked:", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 6, 3, 83, 9
+    CONTROL "", IDD_FNAME, "edit", ES_LEFT | ES_AUTOHSCROLL | ES_LOWERCASE | WS_BORDER | WS_TABSTOP | WS_CHILD, 6, 13, 132, 12
+    CONTROL "Dir:", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 6, 30, 20, 8
+    CONTROL "012345678901234567890", IDD_CURPATH, "static", SS_LEFT | WS_CHILD, 22, 30, 114, 10
+    CONTROL "F&iles:", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 6, 41, 40, 8
+    CONTROL "", IDD_FILELIST, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 6, 52, 52, 57
+    CONTROL "&Mark File", IDD_MARK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 78, 86, 48, 14
+    CONTROL "&Clean Memory Use", IDD_MEMORY, "button", BS_CHECKBOX | WS_GROUP | WS_TABSTOP | WS_CHILD, 68, 54, 72, 11
+    CONTROL "&Proportional Font", IDD_FONT, "button", BS_CHECKBOX | WS_TABSTOP | WS_CHILD, 68, 66, 67, 10
+END
+
+ABOUTBOX DIALOG LOADONCALL MOVEABLE DISCARDABLE 9, 17, 189, 143
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_POPUP
+BEGIN
+    CONTROL "Mark Three-Oh Version 1.00", IDD_APPNAME, "static", SS_LEFT | WS_CHILD, 83, 15, 52, 17
+    CONTROL "Copyright © 1990, Charles E. Kindel, Jr.", IDD_BIT2, "static", SS_CENTER | WS_GROUP | WS_CHILD, 15, 40, 160, 10
+    CONTROL "Mark Three-Oh is a freeware application. It may be freely used and distributed.  Please send comments and donations to:", -1, "static", SS_CENTER | WS_CHILD, 13, 52, 165, 24
+    CONTROL "&OK", IDOK, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 78, 120, 35, 12
+    CONTROL "Black Frame", IDD_BOX0, "static", SS_BLACKFRAME | WS_CHILD, 4, 4, 180, 134
+    CONTROL "Mark30", -1, "static", SS_ICON | WS_CHILD, 55, 11, 16, 25
+    CONTROL "Kindlco Software Systems", -1, "static", SS_CENTER | WS_CHILD, 48, 80, 95, 9
+    CONTROL "CompuServe 71551,1455", IDD_BIT4, "static", SS_CENTER | WS_CHILD, 46, 108, 98, 10
+    CONTROL "3000 118th Ave. SE, A-203", -1, "static", SS_CENTER | WS_CHILD, 26, 88, 138, 9
+    CONTROL "Bellvue, WA  98005", -1, "static", SS_CENTER | WS_CHILD, 48, 96, 95, 8
+END
+
+

@@ -1,0 +1,26 @@
+HKCR
+{
+	Kindel.ID3Frame.1 = s 'Kindel Systems ID3Frame Class'
+	{
+		CLSID = s '{0002A512-0000-0000-C000-000000000046}'
+	}
+	Kindel.ID3Frame = s 'Kindel Systems ID3Frame Class'
+	{
+		CLSID = s '{0002A512-0000-0000-C000-000000000046}'
+		CurVer = s 'Kindel.ID3Frame.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0002A512-0000-0000-C000-000000000046} = s 'Kindel Systems ID3Frame Class'
+		{
+			ProgID = s 'Kindel.ID3Frame.1'
+			VersionIndependentProgID = s 'Kindel.ID3Frame'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{0002A524-0000-0000-C000-000000000046}'
+		}
+	}
+}

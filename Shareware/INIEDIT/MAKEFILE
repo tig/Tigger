@@ -1,0 +1,89 @@
+# 
+# Make file for INIEDIT (DEBUG VERSION!)
+#
+# Windows 3.0 INI editor
+#
+# Copyright (c) 1990, Charles E. Kindel, Jr.
+#
+
+# allow NMAKE to work
+all: iniedit.exe
+
+#DEBUG=TRUE
+OUTPUT= CON
+
+#BUMPVER=bumpver $(MYINC)ini_ver.h
+
+# macros
+MYOBJ=OBJ\ 
+MYRES=RES\ 
+MYSRC=SRC\ 
+MYINC=INC\ 
+
+OBJLIST =   $(MYOBJ)iniedit.obj\
+            $(MYOBJ)ini_init.obj\
+            $(MYOBJ)ini_dlg.obj\
+            $(MYOBJ)ini_ctrl.obj\
+            $(MYOBJ)ini_add.obj\
+            $(MYOBJ)ini_io.obj\
+            $(MYOBJ)ini_prt.obj\
+            $(MYOBJ)winstub.exe
+
+!IFDEF DEBUG
+CLOPTS=-AM -c -Gw -Owd -W3 -Zpei -DDEBUG
+LINKOPTS=/NOE/NOD/CO
+!ELSE
+CLOPTS=-c -nologo -AM -G2sw -Owt -W3 -Zp -DRELEASE
+LINKOPTS=/NOE/NOD
+!ENDIF
+
+iniedit.exe:  $(OBJLIST) iniedit.def iniedit.res $(MYOBJ)winstub.exe
+   link $(LINKOPTS) @iniedit.lnk
+   rc -v -30 $(MYRES)iniedit.res INIEDIT.EXE $(OUTPUT)
+   $(BUMPVER)
+
+$(MYOBJ)iniedit.obj : $(MYINC)iniedit.h $(MYSRC)iniedit.c $(MYINC)inieditd.h $(MYINC)ini_ver.h
+   @echo Compiling iniedit.c ($(CLOPTS) -NTiniedit)... $(OUTPUT)
+   $(CC) $(CLOPTS) -Fo$*.obj -NTiniedit $(MYSRC)iniedit.c > $(MYSRC)iniedit.err
+   @type $(MYSRC)iniedit.err $(OUTPUT)
+
+$(MYOBJ)ini_init.obj:    $(MYINC)iniedit.h $(MYINC)inieditd.h $(MYSRC)ini_init.c $(MYINC)ini_init.h
+   @echo Compiling INI_INIT.C ($(CLOPTS) -NTini_init)... $(OUTPUT)
+   $(CC) $(CLOPTS) -Fo$*.obj -NTini_init $(MYSRC)ini_init.c > $(MYSRC)ini_init.err
+   @type $(MYSRC)ini_init.err $(OUTPUT)
+
+$(MYOBJ)ini_dlg.obj:    $(MYINC)iniedit.h $(MYINC)inieditd.h $(MYSRC)ini_dlg.c $(MYINC)ini_dlg.h
+   @echo Compiling ini_dlg.c ($(CLOPTS) -NTini_dlg)... $(OUTPUT)
+   $(CC) $(CLOPTS) -Fo$*.obj -NTini_dlg $(MYSRC)ini_dlg.c > $(MYSRC)ini_dlg.err
+   @type $(MYSRC)ini_dlg.err $(OUTPUT)
+
+$(MYOBJ)ini_ctrl.obj:    $(MYINC)iniedit.h $(MYINC)inieditd.h $(MYSRC)ini_ctrl.c $(MYINC)ini_ctrl.h
+   @echo Compiling ini_ctrl.c ($(CLOPTS) -NTini_ctrl)... $(OUTPUT)
+   $(CC) $(CLOPTS) -Fo$*.obj -NTini_ctrl $(MYSRC)ini_ctrl.c > $(MYSRC)ini_ctrl.err
+   @type $(MYSRC)ini_ctrl.err $(OUTPUT)
+
+$(MYOBJ)ini_add.obj:  $(MYINC)iniedit.h $(MYINC)inieditd.h $(MYINC)ini_add.h $(MYSRC)ini_add.c
+   @echo Compiling ini_add.c ($(CLOPTS) -NTini_add)... $(OUTPUT)
+   $(CC) $(CLOPTS) -Fo$*.obj -NTini_add $(MYSRC)ini_add.c > $(MYSRC)ini_add.err
+   @type $(MYSRC)ini_add.err $(OUTPUT)
+
+$(MYOBJ)ini_io.obj: $(MYINC)iniedit.h $(MYINC)ini_io.h $(MYSRC)ini_io.c
+   @echo Compiling ini_io.c ($(CLOPTS) -NTini_io)... $(OUTPUT)
+   $(CC) $(CLOPTS) -Fo$*.obj -NTini_io $(MYSRC)ini_io.c > $(MYSRC)ini_io.err
+   @type $(MYSRC)ini_io.err $(OUTPUT)
+
+$(MYOBJ)ini_prt.obj: $(MYINC)ini_prt.h $(MYINC)iniedit.h $(MYSRC)ini_prt.c
+   @echo Compiling ini_prt.c ($(CLOPTS) -NTini_prt)... $(OUTPUT)
+   $(CC) $(CLOPTS) -Fo$*.obj -NTini_prt $(MYSRC)ini_prt.c > $(MYSRC)ini_prt.err
+   @type $(MYSRC)ini_prt.err $(OUTPUT)
+
+
+$(MYOBJ)WINSTUB.EXE:  $(MYSRC)WINSTUB.ASM
+    masm -I.\  $(MYSRC)winstub.asm,$(MYOBJ)WINSTUB.OBJ;
+    link $(MYOBJ)WINSTUB.OBJ,$(MYOBJ)WINSTUB.EXE;
+
+INIEDIT.RES: $(MYRES)iniedit.dlg\
+             $(MYRES)iniedit.mnu\
+              $(MYRES)iniedit.rc
+   rc -I INC;RES -r $(MYRES)iniedit.rc
+

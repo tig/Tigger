@@ -1,0 +1,31 @@
+/*  iniedit.rc
+ *
+ *      Copyright 1990 Microsoft
+ *
+ *      Author: Charles E. Kindel, Jr. (charlkin)
+ *
+*/
+
+#include <windows.h>
+#include "inieditd.h"
+
+#include "..\res\iniedit.rcv"
+
+/*INIedit ICON    INIEDIT.ICO*/
+INIedit ICON    INIEDIT2.ICO
+INIedit CURSOR  INIEDIT.CUR
+
+/**************************************************
+#include "addname.dlg"
+#include "editval.dlg"
+#include "addsect.dlg"
+#include "prtdlg.dlg"
+#include "main.dlg"
+***************************************************/
+
+#include "iniedit.dlg"
+
+#include "INIEDIT.MNU"          /* menu */
+
+
+

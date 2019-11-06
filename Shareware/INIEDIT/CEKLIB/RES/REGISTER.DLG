@@ -1,0 +1,17 @@
+REGISTERBOX DIALOG DISCARDABLE PRELOAD PURE MOVEABLE 16, 49, 223, 148
+STYLE WS_POPUP | WS_CAPTION | 0xC0L
+CAPTION "Enter Registration Information"
+FONT 8, "Helv"
+BEGIN
+  CONTROL "" 208, "EDIT", WS_CHILD | WS_VISIBLE | WS_BORDER | WS_GROUP | WS_TABSTOP, 19, 86, 171, 12
+  CONTROL "WinPrint" 105, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 51, 6, 116, 8
+  CONTROL "" 209, "EDIT", WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 19, 111, 83, 12
+  CONTROL "This shareware application has not been registered!" 503, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 18, 18, 182, 8
+  CONTROL "Register" 1, "BUTTON", WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 52, 127, 42, 12
+  CONTROL "Registered To (As it Appears on the Invoice):" -1, "STATIC", WS_CHILD | WS_VISIBLE, 8, 76, 194, 9
+  CONTROL "Registration Number:" -1, "STATIC", WS_CHILD | WS_VISIBLE, 8, 100, 71, 10
+  CONTROL "Ignore" 2, "BUTTON", WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 120, 127, 42, 12
+  CONTROL "Black Frame" 200, "STATIC", WS_CHILD | WS_VISIBLE | 0x7L, 2, 2, 216, 66
+  CONTROL "Once you pay your registration fee you will receive an invoice with a registration number.  Enter your name and registration number exactly as shown on the invoice.  Once you have done this, these startup windows will deactivate." -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x1L, 5, 31, 208, 33
+  CONTROL "Right J" 201, "STATIC", WS_CHILD | WS_VISIBLE | 0x7L, 2, 71, 216, 73
+END

@@ -1,0 +1,52 @@
+/************************************************************************
+ *
+ *     Project:  Project-42
+ *
+ *      Module:  reglib.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#define WIN31 1
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include "isz.h"
+
+/*
+ * Dialog box defines
+ */
+#include "dlgs.h"
+
+/*
+ * Version Stamping
+ */
+#include "reglib.rcv"
+
+/*
+ * Icons
+ */
+cmndll ICON "reglib.ico"
+
+/*
+ * Bitmaps
+ */
+
+/*
+ * Menus
+ */
+
+/*
+ * Dialog boxes
+ */
+
+
+/************************************************************************
+ * End of File: reglib.rc
+ ***********************************************************************/
+

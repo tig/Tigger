@@ -1,0 +1,35 @@
+NAME            INIEDIT
+
+DESCRIPTION     'Windows INI file editor, Copr. 1991-92 C.E. Kindel, Jr.'
+
+EXETYPE         WINDOWS
+
+STUB            'WINSTUB.EXE'
+
+
+SEGMENTS        _TEXT       PRELOAD MOVEABLE
+                INIEDIT     PRELOAD MOVEABLE
+                INI_INIT    PRELOAD MOVEABLE DISCARDABLE
+                INI_DLG     PRELOAD MOVEABLE DISCARDABLE
+                INI_CTRL    PRELOAD MOVEABLE DISCARDABLE
+                INI_ADD     LOADONCALL MOVEABLE DISCARDABLE
+                INI_IO      PRELOAD MOVEABLE DISCARDABLE
+                INI_PRT     LOADONCALL MOVEABLE DISCARDABLE
+
+CODE            MOVABLE
+
+DATA            PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE        8000
+
+STACKSIZE       12000
+
+EXPORTS
+        MainDlgProc        @1
+        ValueDlgProc       @2
+        AddNameDlgProc     @3
+        AddSectionDlgProc  @4
+        AbortProc          @5
+        PrintDlgProc       @6
+
+

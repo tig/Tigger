@@ -1,0 +1,11 @@
+The included ID3v2 logo (ID3v2.PNG) is copyright (c) 1998 Martin Nilsson.
+The included ID3v2 3D logo (ID3v2.GIF) was rendered by Chris Nunn.
+The included ID3v2 icon was (ID3v2.ICO) made by Chuck Zenkus.
+
+"You may freely use the ID3v2 logo on pages containing ID3v2 information
+and in programs supporting the ID3v2 standard.  A program that uses an
+unmodified ID3Lib is such a program.  A program that uses a modified
+ID3Lib might be such program."
+
+- Martin Nilsson
+

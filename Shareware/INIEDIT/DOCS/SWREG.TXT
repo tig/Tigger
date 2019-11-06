@@ -1,0 +1,14 @@
+INIedit Version 1.30 - A Windows 3 initialization (.INI) file
+editor.  Allows easy viewing, editing, and printing of Windows INI
+files.  V1.30 has online help and minor bug fixes.  
+.
+INIedit is a shareware application by Charles E. Kindel, Jr.
+Upon registering you will recieve a registration number that will 
+disable the shareware reminder windows that comes up when
+WinPrint starts via CompuServe mail..
+.
+Registration Fee: $25.00.
+Copyright (c) 1991 Charles E. Kindel, Jr.
+.
+INIedit can be found in INIEDT.COM (a self extracting archive) in
+the WINADV forum, Section 16.

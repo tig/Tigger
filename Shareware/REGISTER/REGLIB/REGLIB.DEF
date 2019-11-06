@@ -1,0 +1,48 @@
+;************************************************************************
+;*
+;*    Copyright (C) 1991 Charles E. Kindel, Jr. All Rights Reserved.
+;*
+;*-----------------------------------------------------------------------
+;*
+;*     Project:  REGLIB.DLL
+;*
+;*      Module:  REGLIB.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+LIBRARY           REGLIB
+
+DESCRIPTION       'REGLIB.DLL Copr. 1991 C.E. Kindel,Jr.'
+
+EXETYPE           WINDOWS
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  WEP          PRELOAD FIXED
+                  INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+                  REGLIB       PRELOAD MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD SINGLE
+
+HEAPSIZE          8192
+
+EXPORTS           WEP                     @2 RESIDENTNAME
+                    
+                  rlGetVersion            @3
+                  rlGethInst              @4
+                  rlCheckVersion          @5
+
+                  rlGetRegNumber          @6
+                
+;/***********************************************************************
+;* End of File: REGLIB.def
+;************************************************************************
+

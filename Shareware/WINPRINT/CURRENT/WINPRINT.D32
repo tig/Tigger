@@ -1,0 +1,42 @@
+;************************************************************************
+;*
+;*    Copyright (C) 1991 Charles E. Kindel, Jr. All Rights Reserved.
+;*
+;*-----------------------------------------------------------------------
+;*
+;*     Project:  WINPRINT.EXE
+;*
+;*      Module:  WINPRINT.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  Win32 Module Def file
+;*
+;*   Revisions:  
+;************************************************************************
+
+NAME              WINPRINT
+
+DESCRIPTION       'WinPrint Version 1.5'
+
+CODE              PRELOAD MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+EXPORTS           
+                  fnAbout              @1
+                  fnShareware          @2
+                  fnMain               @3
+                  fnOpen               @4
+                  fnPrintCancel        @5
+                  fnAbortProc          @6
+                  fnSave               @7
+                  fnEnumReallyEx       @8
+                  fnTextOptions        @9
+                  fnHFOptions          @10
+                  fnPageLayout         @11
+                
+;/***********************************************************************
+;* End of File: WINPRINT.def
+;************************************************************************
+
