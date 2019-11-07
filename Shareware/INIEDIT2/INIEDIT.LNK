@@ -1,0 +1,28 @@
+obj\iniedit+
+obj\config+
+obj\listbox+
+obj\init+
+obj\about+
+obj\wndmgr+
+obj\botstat+
+obj\cmd+
+obj\menu+
+obj\status+
+obj\toolbar+
+obj\input+
+obj\font+
+obj\wintime+
+obj\dlghelp+
+obj\subdlgs+
+obj\toolpal+
+obj\bmutil+
+obj\fileio+
+obj\file+
+obj\section+
+obj\keyvalue+
+obj\wsscanf
+iniedit /align:16 /NOE /NOD
+iniedit /map
+libw mlibcew commdlg wdb tdutil hlsqstr oldnames
+iniedit.def
+

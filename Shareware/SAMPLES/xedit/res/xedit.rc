@@ -1,0 +1,136 @@
+/************************************************************************
+ *
+ *     Project:  XEDIT 1.0
+ *
+ *      Module:  XEDIT.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#define WIN31 1
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include "..\inc\isz.h"
+
+/*
+ * Dialog box defines
+ */
+#include "..\inc\dlgs.h"
+#include "..\inc\cmd.h"
+#include "..\inc\res.h"
+
+/*
+ * Version Stamping
+ */
+#include "XEDIT.rcv"
+
+/*
+ * String table
+ */
+#include "XEDIT.str"
+
+/*
+ * Icons
+ */
+IDI_XEDIT  ICON "XEDIT.ico"
+
+/*
+ * Bitmaps
+ */
+IDB_LISTBOXICONS BITMAP "BITMAP.BMP"
+
+IDM_FILE_SAVE           BITMAP "commit1.bmp"
+
+IDM_FILE_OPEN            BITMAP "open1.bmp"
+
+IDM_FILE_EDIT            BITMAP "edit1.bmp"
+
+IDM_FILE_PRINT           BITMAP "print1.bmp"
+
+IDM_EDIT_UNDO            BITMAP "undo1.bmp"
+
+1 ACCELERATORS
+BEGIN
+   VK_F1, IDM_HELP_CONTENTS, VIRTKEY
+END
+
+/*
+ * Menus
+ */
+XEDIT  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  POPUP  "&File"
+  BEGIN
+    MenuItem "&Open...",      IDM_FILE_OPEN
+    MenuItem "&Save",         IDM_FILE_SAVE
+    MenuItem "Save &As...",   IDM_FILE_SAVEAS
+    MenuItem SEPARATOR
+    MenuItem "&Edit with editor...", IDM_FILE_EDIT
+    MenuItem SEPARATOR
+    MenuItem "&Printer Setup...",  IDM_FILE_PRINTSETUP
+    MenuItem "&Print",  IDM_FILE_PRINT
+    MenuItem SEPARATOR
+    MenuItem "E&xit",  IDM_FILE_EXIT
+  END
+
+
+  POPUP  "&Edit"
+   BEGIN
+    MenuItem "&Undo\tCtrl+Z", IDM_EDIT_UNDO
+
+    MenuItem SEPARATOR
+
+    MenuItem "Cu&t\tCtrl+X", IDM_EDIT_CUT
+    MenuItem "&Copy\tCtrl+C", IDM_EDIT_COPY
+    MenuItem "&Paste\tCtrl+V", IDM_EDIT_PASTE
+    MenuItem "De&lete\tDel", IDM_EDIT_DELETE
+   END
+
+   POPUP "&Search"
+      BEGIN
+         MenuItem "&Find...", IDM_SEARCH_FIND
+         MenuItem "&Find Next\tF3", IDM_SEARCH_FINDNEXT
+         MenuItem "&Replace...", IDM_SEARCH_REPLACE
+      END
+
+
+  POPUP  "&Options"
+  BEGIN
+    MenuItem "&Font...",  IDM_OPT_FONT
+    MenuItem "&Editor...",  IDM_OPT_EDITOR
+    MenuItem SEPARATOR
+    MenuItem "Show &Picture Menu", IDM_OPT_TOOLBAR
+    MenuItem "Show &Labels on Picture Menu", IDM_OPT_TOOLBARLABELS
+    MenuItem "Show &Status bar", IDM_OPT_STAT
+  END
+
+  POPUP  "&Help"
+   BEGIN
+    MenuItem "&Contents...", IDM_HELP_CONTENTS
+    MenuItem "&Search...", IDM_HELP_SEARCH
+    MenuItem "&Help on Help", IDM_HELP_ONHELP
+    MenuItem SEPARATOR
+    MenuItem "&About...",  IDM_HELP_ABOUT
+   END
+END
+
+/*
+ * Dialog boxes
+ */
+#include "XEDIT.dlg"
+
+/*
+ * RCDATA
+ */
+ID_RCDATA_ORDER_FRM TEXTFILE "..\\RES\\ORDER.FRM"
+
+/************************************************************************
+ * End of File: XEDIT.rc
+ ***********************************************************************/
+

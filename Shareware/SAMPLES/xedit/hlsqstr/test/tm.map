@@ -1,0 +1,354 @@
+
+ Generic
+
+ Start     Length     Name                   Class
+ 0001:0000 006BCH     _TEXT                  CODE
+ 0002:0000 00C59H     MAIN                   CODE
+ 0003:0000 0010AH     INIT                   CODE
+ 0004:0000 00010H     NULL                   BEGDATA
+ 0004:0010 00138H     _DATA                  DATA
+ 0004:0148 0000EH     CDATA                  DATA
+ 0004:0156 00000H     XIFB                   DATA
+ 0004:0156 00000H     XIF                    DATA
+ 0004:0156 00000H     XIFE                   DATA
+ 0004:0156 00000H     XIB                    DATA
+ 0004:0156 00000H     XI                     DATA
+ 0004:0156 00000H     XIE                    DATA
+ 0004:0156 00000H     XPB                    DATA
+ 0004:0156 00000H     XP                     DATA
+ 0004:0156 00000H     XPE                    DATA
+ 0004:0156 00000H     XCB                    DATA
+ 0004:0156 00000H     XC                     DATA
+ 0004:0156 00000H     XCE                    DATA
+ 0004:0156 00000H     XCFB                   DATA
+ 0004:0156 00000H     XCF                    DATA
+ 0004:0156 00000H     XCFE                   DATA
+ 0004:0156 0000CH     DBDATA                 DATA
+ 0004:0162 00002H     XIQC                   DATA
+ 0004:0164 00000H     CONST                  CONST
+ 0004:0164 00019H     HDR                    MSG
+ 0004:017D 000B1H     MSG                    MSG
+ 0004:022E 00002H     PAD                    MSG
+ 0004:0230 00001H     EPAD                   MSG
+ 0004:0240 00030H     _BSS                   BSS
+ 0004:0270 00000H     XOB                    BSS
+ 0004:0270 00000H     XO                     BSS
+ 0004:0270 00000H     XOE                    BSS
+ 0004:0270 00000H     c_common               BSS
+
+ Origin   Group
+ 0004:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0002:0152 About                   About
+ 0002:0C0C DumpProc                DumpProc
+ 0002:00A4 MainWndProc             MainWndProc
+
+  Address         Publics by Name
+
+ 0002:0152       About
+ 0000:0000  Imp  CREATEWINDOW         (USER.41)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  DISPATCHMESSAGE      (USER.114)
+ 0002:0C0C       DumpProc
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  FREEPROCINSTANCE     (KERNEL.52)
+ 0000:0000  Imp  GETMESSAGE           (USER.108)
+ 0000:0000  Imp  GETTICKCOUNT         (USER.13)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  HLSQHEAPALLOC        (HLSQSTR.102)
+ 0000:0000  Imp  HLSQHEAPALLOCLOCK    (HLSQSTR.107)
+ 0000:0000  Imp  HLSQHEAPCREATE       (HLSQSTR.100)
+ 0000:0000  Imp  HLSQHEAPDESTROY      (HLSQSTR.101)
+ 0000:0000  Imp  HLSQHEAPDUMPDEBUG    (HLSQSTR.117)
+ 0000:0000  Imp  HLSQHEAPFLAGS        (HLSQSTR.111)
+ 0000:0000  Imp  HLSQHEAPFREE         (HLSQSTR.104)
+ 0000:0000  Imp  HLSQHEAPHANDLE       (HLSQSTR.112)
+ 0000:0000  Imp  HLSQHEAPITEMS        (HLSQSTR.116)
+ 0000:0000  Imp  HLSQHEAPLOCK         (HLSQSTR.105)
+ 0000:0000  Imp  HLSQHEAPREALLOC      (HLSQSTR.103)
+ 0000:0000  Imp  HLSQHEAPSIZE         (HLSQSTR.114)
+ 0000:0000  Imp  HLSQHEAPUNLOCK       (HLSQSTR.106)
+ 0000:0000  Imp  HLSQLISTALLOCINSERTNODE (HLSQSTR.137)
+ 0000:0000  Imp  HLSQLISTCREATE       (HLSQSTR.130)
+ 0000:0000  Imp  HLSQLISTDESTROY      (HLSQSTR.131)
+ 0000:0000  Imp  HLSQLISTDUMPDEBUG    (HLSQSTR.148)
+ 0000:0000  Imp  HLSQLISTFIRSTNODE    (HLSQSTR.142)
+ 0000:0000  Imp  HLSQLISTFREELIST     (HLSQSTR.132)
+ 0000:0000  Imp  HLSQLISTNEXTNODE     (HLSQSTR.140)
+ 0000:0000  Imp  HLSQQUEUEALLOCINQ    (HLSQSTR.186)
+ 0000:0000  Imp  HLSQQUEUECREATE      (HLSQSTR.180)
+ 0000:0000  Imp  HLSQQUEUEDEQ         (HLSQSTR.187)
+ 0000:0000  Imp  HLSQQUEUEDESTROY     (HLSQSTR.181)
+ 0000:0000  Imp  HLSQQUEUEDUMPDEBUG   (HLSQSTR.191)
+ 0000:0000  Imp  HLSQQUEUEFREENODE    (HLSQSTR.184)
+ 0000:0000  Imp  HLSQQUEUEFREEQUEUE   (HLSQSTR.182)
+ 0000:0000  Imp  HLSQSTACKALLOCPUSH   (HLSQSTR.166)
+ 0000:0000  Imp  HLSQSTACKCREATE      (HLSQSTR.160)
+ 0000:0000  Imp  HLSQSTACKDESTROY     (HLSQSTR.161)
+ 0000:0000  Imp  HLSQSTACKDUMPDEBUG   (HLSQSTR.171)
+ 0000:0000  Imp  HLSQSTACKFREENODE    (HLSQSTR.164)
+ 0000:0000  Imp  HLSQSTACKFREESTACK   (HLSQSTR.162)
+ 0000:0000  Imp  HLSQSTACKPOP         (HLSQSTR.167)
+ 0000:0000  Imp  INITAPP              (USER.5)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  LOADICON             (USER.174)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0002:00A4       MainWndProc
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  PLOCALHEAP
+ 0000:0000  Imp  POSTQUITMESSAGE      (USER.6)
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0004:0004       rsrvptrs
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0004:00E0       STKHQQ
+ 0000:0000  Imp  TRANSLATEMESSAGE     (USER.113)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  UPDATEWINDOW         (USER.124)
+ 0000:0000  Imp  WAITEVENT            (KERNEL.30)
+ 0002:0000       WINMAIN
+ 0004:0240       _edata
+ 0004:0270       _end
+ 0004:012F       _environ
+ 0004:0108       _errno
+ 0001:01E3       _exit
+ 0004:0010       _ghInst
+ 0004:0012       _ghWndMain
+ 0002:01BC       _HeapTest
+ 0003:0000       _InitApplication
+ 0003:0091       _InitInstance
+ 0002:06D8       _ListTest
+ 0001:0590       _malloc
+ 0002:0A4C       _QueueTest
+ 0002:088C       _StackTest
+ 0004:001E       _szMainClass
+ 0004:0014       _szMainMenu
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0004:00EC       __acfinfo
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtused2
+ 0000:D6D6  Abs  __aDBdoswp
+ 0004:013E       __adbgmsg
+ 0004:015A       __aDBrterr
+ 0001:008A       __aFldiv
+ 0004:00FA       __aintdiv
+ 0004:0146       __amblksiz
+ 0001:04D9       __amsg_exit
+ 0001:0011       __astart
+ 0004:016C       __caption
+ 0001:0200       __cexit
+ 0004:0136       __child
+ 0001:0124       __cinit
+ 0001:04D4       __cintDIV
+ 0001:026F       __ctermsub
+ 0001:0211       __c_exit
+ 0004:0113       __doserrno
+ 0004:0110       __dosvermajor
+ 0004:0111       __dosverminor
+ 0001:01F1       __exit
+ 0004:00FE       __fac
+ 0001:0612       __ffree
+ 0001:05E6       __fmalloc
+ 0004:014A       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:04CE       __fptrap
+ 0001:0678       __frealloc
+ 0004:0139       __intno
+ 0001:0562       __myalloc
+ 0004:0115       __nfile
+ 0001:05D4       __nfree
+ 0001:0596       __nmalloc
+ 0001:04F6       __NMSG_TEXT
+ 0001:052D       __NMSG_WRITE
+ 0001:0624       __nrealloc
+ 0004:0113       __oserr
+ 0004:0117       __osfile
+ 0004:0110       __osmajor
+ 0004:0111       __osminor
+ 0004:0112       __osmode
+ 0004:0110       __osversion
+ 0004:0138       __ovlflag
+ 0004:013A       __ovlvec
+ 0004:0131       __pgmptr
+ 0004:010E       __psp
+ 0004:010C       __pspadr
+ 0001:02B0       __setargv
+ 0001:0442       __setenvp
+ 0004:010A       __umaskval
+ 0004:015C       ___aDBexit
+ 0004:0158       ___aDBswpchk
+ 0004:0156       ___aDBswpflg
+ 0004:012B       ___argc
+ 0004:012D       ___argv
+ 0004:0162       ___qczrinit
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  HLSQQUEUEDESTROY     (HLSQSTR.181)
+ 0000:0000  Imp  HLSQLISTNEXTNODE     (HLSQSTR.140)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  HLSQHEAPALLOCLOCK    (HLSQSTR.107)
+ 0000:0000  Imp  HLSQHEAPCREATE       (HLSQSTR.100)
+ 0000:0000  Imp  HLSQHEAPHANDLE       (HLSQSTR.112)
+ 0000:0000  Imp  HLSQQUEUEDUMPDEBUG   (HLSQSTR.191)
+ 0000:0000  Imp  HLSQQUEUEALLOCINQ    (HLSQSTR.186)
+ 0000:0000  Imp  HLSQHEAPREALLOC      (HLSQSTR.103)
+ 0000:0000  Imp  HLSQQUEUEDEQ         (HLSQSTR.187)
+ 0000:0000  Imp  HLSQLISTFIRSTNODE    (HLSQSTR.142)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  HLSQHEAPALLOC        (HLSQSTR.102)
+ 0000:0000  Imp  HLSQLISTALLOCINSERTNODE (HLSQSTR.137)
+ 0000:0000  Imp  CREATEWINDOW         (USER.41)
+ 0000:0000  Imp  HLSQQUEUECREATE      (HLSQSTR.180)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  POSTQUITMESSAGE      (USER.6)
+ 0000:0000  Imp  HLSQSTACKFREESTACK   (HLSQSTR.162)
+ 0000:0000  Imp  HLSQLISTDESTROY      (HLSQSTR.131)
+ 0000:0000  Imp  HLSQHEAPLOCK         (HLSQSTR.105)
+ 0000:0000  Imp  DISPATCHMESSAGE      (USER.114)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  HLSQSTACKCREATE      (HLSQSTR.160)
+ 0000:0000  Imp  UPDATEWINDOW         (USER.124)
+ 0000:0000  Imp  HLSQHEAPSIZE         (HLSQSTR.114)
+ 0000:0000  Imp  GETTICKCOUNT         (USER.13)
+ 0000:0000  Imp  HLSQLISTFREELIST     (HLSQSTR.132)
+ 0000:0000  Imp  HLSQSTACKPOP         (HLSQSTR.167)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0000  Imp  HLSQHEAPFREE         (HLSQSTR.104)
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  FREEPROCINSTANCE     (KERNEL.52)
+ 0000:0000  Imp  HLSQHEAPDUMPDEBUG    (HLSQSTR.117)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  HLSQHEAPFLAGS        (HLSQSTR.111)
+ 0000:0000  Imp  HLSQHEAPDESTROY      (HLSQSTR.101)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  HLSQLISTDUMPDEBUG    (HLSQSTR.148)
+ 0000:0000  Imp  HLSQSTACKFREENODE    (HLSQSTR.164)
+ 0000:0000  Imp  LOADICON             (USER.174)
+ 0000:0000  Imp  HLSQSTACKALLOCPUSH   (HLSQSTR.166)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  HLSQHEAPITEMS        (HLSQSTR.116)
+ 0000:0000  Imp  INITAPP              (USER.5)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  HLSQHEAPUNLOCK       (HLSQSTR.106)
+ 0000:0000  Imp  WAITEVENT            (KERNEL.30)
+ 0000:0000  Imp  HLSQSTACKDESTROY     (HLSQSTR.161)
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0000:0000  Imp  HLSQQUEUEFREEQUEUE   (HLSQSTR.182)
+ 0000:0000  Imp  HLSQQUEUEFREENODE    (HLSQSTR.184)
+ 0000:0000  Imp  GETMESSAGE           (USER.108)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  HLSQSTACKDUMPDEBUG   (HLSQSTR.171)
+ 0000:0000  Imp  TRANSLATEMESSAGE     (USER.113)
+ 0000:0000  Imp  HLSQLISTCREATE       (HLSQSTR.130)
+ 0000:0006  Abs  PLOCALHEAP
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtused2
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0011       __astart
+ 0001:008A       __aFldiv
+ 0001:0124       __cinit
+ 0001:01E3       _exit
+ 0001:01F1       __exit
+ 0001:0200       __cexit
+ 0001:0211       __c_exit
+ 0001:026F       __ctermsub
+ 0001:02B0       __setargv
+ 0001:0442       __setenvp
+ 0001:04CE       __fptrap
+ 0001:04D4       __cintDIV
+ 0001:04D9       __amsg_exit
+ 0001:04F6       __NMSG_TEXT
+ 0001:052D       __NMSG_WRITE
+ 0001:0562       __myalloc
+ 0001:0590       _malloc
+ 0001:0596       __nmalloc
+ 0001:05D4       __nfree
+ 0001:05E6       __fmalloc
+ 0001:0612       __ffree
+ 0001:0624       __nrealloc
+ 0001:0678       __frealloc
+ 0002:0000       WINMAIN
+ 0002:00A4       MainWndProc
+ 0002:0152       About
+ 0002:01BC       _HeapTest
+ 0002:06D8       _ListTest
+ 0002:088C       _StackTest
+ 0002:0A4C       _QueueTest
+ 0002:0C0C       DumpProc
+ 0003:0000       _InitApplication
+ 0003:0091       _InitInstance
+ 0004:0004       rsrvptrs
+ 0004:0010       _ghInst
+ 0004:0012       _ghWndMain
+ 0004:0014       _szMainMenu
+ 0004:001E       _szMainClass
+ 0004:00E0       STKHQQ
+ 0004:00EC       __acfinfo
+ 0004:00FA       __aintdiv
+ 0004:00FE       __fac
+ 0004:0108       _errno
+ 0004:010A       __umaskval
+ 0004:010C       __pspadr
+ 0004:010E       __psp
+ 0004:0110       __osmajor
+ 0004:0110       __osversion
+ 0004:0110       __dosvermajor
+ 0004:0111       __dosverminor
+ 0004:0111       __osminor
+ 0004:0112       __osmode
+ 0004:0113       __oserr
+ 0004:0113       __doserrno
+ 0004:0115       __nfile
+ 0004:0117       __osfile
+ 0004:012B       ___argc
+ 0004:012D       ___argv
+ 0004:012F       _environ
+ 0004:0131       __pgmptr
+ 0004:0136       __child
+ 0004:0138       __ovlflag
+ 0004:0139       __intno
+ 0004:013A       __ovlvec
+ 0004:013E       __adbgmsg
+ 0004:0146       __amblksiz
+ 0004:014A       __fpinit
+ 0004:0156       ___aDBswpflg
+ 0004:0158       ___aDBswpchk
+ 0004:015A       __aDBrterr
+ 0004:015C       ___aDBexit
+ 0004:0162       ___qczrinit
+ 0004:016C       __caption
+ 0004:0240       _edata
+ 0004:0270       _end
+
+Program entry point at 0001:0011

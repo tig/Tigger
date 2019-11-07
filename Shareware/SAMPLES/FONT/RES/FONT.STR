@@ -1,0 +1,101 @@
+/************************************************************************
+ *
+ *     Copyright (c) 1992 Charles E. Kindel, Jr..  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  Font
+ *
+ *      Module:  Font.str
+ *
+ *     Remarks:  String table definitions and resources.
+ *
+ *       This module utilizes the fact that RC contains a full blown
+ *       C pre-processor.  Several macros are defined that either
+ *       define IDS_* values or specify entries in a string table
+ *       depending on whether this file was included from an
+ *       RC file during resource compilation or by a C file during
+ *       normal compilation.
+ *
+ *   Revisions:  
+ *
+ ***********************************************************************/
+
+#include <ddeml.h>      // some DDE strings are defined
+
+#ifdef RC_INVOKED
+    #define DEFSTR(V,SID,S)   V     S
+    #define DECSTR(SID,S)     SID   S
+   
+   /* 
+    * Entries defined with DBGSTR get defined as empty strings
+    * if DEBUG is not defined.
+    */ 
+    #ifdef DEBUG
+      #define DBGSTR DEFSTR
+    #else
+      #define DBGSTR(V,SID,S)   V  " "    // an empty string
+    #endif
+#else
+    #define DEFSTR(V,SID,S)   enum {SID=V};
+    #define DECSTR(SID,S)     
+
+    #define DBGSTR DEFSTR
+#endif
+
+#ifdef RC_INVOKED
+STRINGTABLE PRELOAD MOVEABLE PURE DISCARDABLE
+BEGIN
+#endif
+
+   /***********************
+    * Misc useful strings that are preloaded unto rglpsz[]
+    ***********************/
+
+#define FIRST_IDS    0
+
+DEFSTR( 0x00, IDS_APPNAME,                "Font" )
+DEFSTR( 0x01, IDS_APPTITLE,               "Font App." )
+DEFSTR( 0x02, IDS_VERSION,                "Version" )
+
+DEFSTR( 0x03, IDS_INI_FILENAME,           "Font.INI" )
+DEFSTR( 0x04, IDS_INI_MAIN,               "Main" )
+DEFSTR( 0x05, IDS_INI_OPTIONS,            "Options" )
+DEFSTR( 0x06, IDS_INI_OPTIONS_SPEC,       "%d"        /* fStat */ )
+DEFSTR( 0x07, IDS_DEFAULTOPT,             "1"         /* fStat */ )
+DEFSTR( 0x08, IDS_INI_POS,                "Pos" )
+DEFSTR( 0x09, IDS_INI_POS_SPEC,           "%04X,%04X,%04X,%04X" /*x,y,w,h*/ )
+DEFSTR( 0x0a, IDS_INI_3, " " )
+DEFSTR( 0x0b, IDS_INI_4, " " )
+DEFSTR( 0x0c, IDS_INI_5, " " )
+DEFSTR( 0x0d, IDS_INI_6, " " )
+DEFSTR( 0x0e, IDS_INI_7, " " )
+DEFSTR( 0x0f, IDS_INI_8, " " )
+DEFSTR( 0x10, IDS_INI_9, " " )
+
+#define LAST_IDS   0x10
+
+   /*
+    * Strings below here are not preloaded!
+    */
+
+   DEFSTR( 0x1000, IDS_ERR_DUMMY,          "%s")
+   DEFSTR( 0x1001, IDS_ERR_NOMEMORY,       "Not enough memory to run Communications Server.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1002, IDS_ERR_COMMANDLINE,    "Error Processing Command Line.\nOffending String: \042%s\042" )
+   DEFSTR( 0x1003, IDS_ERR_BADDLLVER,      "The version of '%s' on this system is old.\nFont 1.0 requires version %d.00 or higher.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1004, IDS_ERR_CREATEWINDOW,   "Could not create the main window.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1006, IDS_ERR_STRINGLOAD,     "Could not access resources.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1007, IDS_ERR_INITCLASS,      "Could not register window classes.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497.")
+
+   DEFSTR( 0x1015, IDS_ERR_MEMORYALLOC,    "A memory allocation failed in module %s, line %d.\nPlease Contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1016, IDS_ERR_TIMER,          "Could not create a timer.\nClose other applications that may be using timers." )
+
+
+#ifdef RC_INVOKED
+END
+#endif
+
+/************************************************************************
+ * End of File: Font.str
+ ***********************************************************************/
+

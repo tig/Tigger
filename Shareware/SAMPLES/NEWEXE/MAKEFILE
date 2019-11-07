@@ -1,0 +1,35 @@
+#*************************************************************
+#  
+# MAKEFILE for the WinTime test application
+#
+#
+#*************************************************************
+
+MEM      =-AM
+LIBS     =mlibcaw
+
+CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3 -FPa -nologo -D DEBUG
+#CLOPTS   =$(MEM) -c -Gsw -Oad -Zp -W3 -FPa -nologo
+
+LINKOPTS =/NOD/NOE/CO
+#LINKOPTS =/NOD/NOE
+
+test.exe:       test.obj\
+                newexe.obj\
+                fileopen.obj\
+                test.def\
+                test.res 
+    link $(LINKOPTS) test newexe fileopen ,,, libw $(LIBS), test.def
+    rc -v test.res
+
+test.obj: test.c testd.h
+    cl $(CLOPTS) test.c > test.err
+
+newexe.obj: newexe.c newexe.h
+    cl $(CLOPTS) newexe.c > newexe.err
+
+fileopen.obj: fileopen.c fileopen.h
+    cl $(CLOPTS) fileopen.c > fileopen.err
+
+test.res: test.rc test.ico
+    rc -r test.rc

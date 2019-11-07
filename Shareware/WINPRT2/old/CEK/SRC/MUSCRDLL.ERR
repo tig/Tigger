@@ -1,0 +1,56 @@
+
+Microsoft (R) Program Maintenance Utility   Version 1.20
+Copyright (c) Microsoft Corp 1988-92. All rights reserved.
+
+src\cek.c
+Object Modules [.obj]: /NOD/NOE/A:16/CO/MAP/nologo OBJ\PRECOMP.OBJ OBJ\CEK.OBJ OBJ\LIBENTRY.OBJ OBJ\WEP.obj OBJ\STATUS.OBJ OBJ\LED.OBJ OBJ\FONTUTIL.OBJ OBJ\SLIDER.OBJ OBJ\TOOLBAR.OBJ OBJ\DLGHELP.OBJ+
+Object Modules [.obj]: OBJ\INI.OBJ OBJ\HEAP.OBJ OBJ\LIST.OBJ OBJ\QUEUE.OBJ OBJ\STACK.OBJ OBJ\STRING.OBJ OBJ\MUSCROLL.OBJ OBJ\ctldlg.obj OBJ\WSSCANF.OBJ
+Run File [PRECOMP.exe]: CEK.DLL
+List File [c:CEK.map]: CEK.MAP
+Libraries [.lib]: wdb tdutil libw mdllcew
+Definitions File [nul.def]: CEK.DEF
+Microsoft (R) Windows Resource Compiler  Version 3.10
+Copyright (C) Microsoft Corp. 1985-1992.  All rights reserved.
+
+
+Reading RES\CEK.RES
+
+RES\CEK.RES.....
+Sorting preload segments and resources into fast-load section
+Copying segment 1 (2480 bytes)
+Copying segment 2 (50 bytes)
+Copying segment 20 (2367 bytes)
+Writing resource 1.6 (275 bytes)
+Copying segment 3 (569 bytes)
+Copying segment 4 (32 bytes)
+Copying segment 5 (8123 bytes)
+Copying segment 6 (1317 bytes)
+Copying segment 7 (3773 bytes)
+Copying segment 8 (5858 bytes)
+Copying segment 9 (7401 bytes)
+Copying segment 10 (1154 bytes)
+Copying segment 11 (4523 bytes)
+Copying segment 12 (3078 bytes)
+Copying segment 13 (4741 bytes)
+Copying segment 14 (1269 bytes)
+Copying segment 15 (1269 bytes)
+Copying segment 16 (1148 bytes)
+Copying segment 17 (6461 bytes)
+Copying segment 18 (2031 bytes)
+Copying segment 19 (2613 bytes)
+Writing resource SPLITCURSOR.12 (20 bytes)
+Writing resource 1.5 (341 bytes)
+Writing resource 1.16 (392 bytes)
+Writing resource 1.1 (308 bytes)
+Fastload area is 7840 bytes at offset 0xBE0.
+c:\!\winprt2\cek\cek.lib => c:\!\winprt2\lib\cek.lib
+     1 file(s) copied
+c:\!\winprt2\cek\cek.dll => c:\!\winprt2\build\cek.dll
+     1 file(s) copied
+c:\!\winprt2\cek\cek.sym => c:\!\winprt2\build\cek.sym
+     1 file(s) copied
+c:\!\winprt2\cek\src\cek.h => c:\!\winprt2\inc\cek.h
+     1 file(s) copied
+#define VER_MAJOR 1
+#define VER_MINOR 0
+#define VER_BUILD 1

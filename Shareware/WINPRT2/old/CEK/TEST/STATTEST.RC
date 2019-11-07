@@ -1,0 +1,18 @@
+#include "windows.h"
+#include "resource.h"
+
+STATTEST ICON "stattest.ICO"
+
+STATTEST MENU
+BEGIN
+    POPUP        "&File"
+    BEGIN
+        MENUITEM "&About", IDM_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit", IDM_FILEEXIT
+    END
+    MENUITEM "&Next message!", IDM_NEXTMSG
+END
+
+#include "stattest.dlg"
+

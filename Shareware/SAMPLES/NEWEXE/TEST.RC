@@ -1,0 +1,27 @@
+#include "windows.h"
+#include "testd.h"
+#include "fileopen.h"
+
+TEST ICON "test.ICO"
+
+#include "fileopen.dlg"
+
+TEST MENU
+BEGIN
+    MENUITEM "&Select file!", IDM_FILE
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About", IDM_ABOUT
+    END
+END
+
+ABOUTBOX DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 32, 138, 72
+CAPTION "About"
+FONT 8, "Helv"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL "New EXE Header Demo", 101, "static", SS_CENTER | WS_CHILD, 0, 4, 138, 8
+    CONTROL "For Windows 3.0", 102, "static", SS_CENTER | WS_CHILD, 0, 14, 138, 8
+    CONTROL "TEST", 104, "static", SS_ICON | WS_CHILD, 58, 26, 20, 18
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 52, 50, 34, 14
+END

@@ -1,0 +1,15 @@
+; This help project requires hc 3.1
+[OPTIONS]
+errorlog = swreg.err
+title = GO SWREG Proposal
+contents = Contents
+compress = 0
+warning = 3
+report = 1
+
+[FILES]
+swreg.rtf
+
+[CONFIG]
+BrowseButtons()
+

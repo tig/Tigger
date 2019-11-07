@@ -1,0 +1,141 @@
+;************************************************************************
+;*
+;*     Project:  ENGINE.DLL
+;*
+;*      Module:  
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)                                                  
+;*
+;*     Remarks:  WinPrint 2.0 Print Engine
+;*
+;*   Revisions:  
+;*      9/3/92  cek     Wrote it
+;*
+;************************************************************************
+
+
+LIBRARY           ENGINE
+
+DESCRIPTION       'WinPrint 2.0 Print Engine'
+
+EXETYPE           WINDOWS
+
+SEGMENTS          
+                  _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  _WEP_TEXT    PRELOAD FIXED
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD SINGLE
+
+HEAPSIZE          8192
+
+EXPORTS       
+
+WEP                         @1 RESIDENTNAME
+
+; DEFFTD.C                  
+FTDD_Init                    @2
+FTDD_UnInit                  @3
+FTDD_FindFirstFTD            @4
+FTDD_FindNextFTD             @5
+FTDD_GetProcAddress          @6
+;FTDD_Reserved1               @7
+;FTDD_Reserved2               @8
+
+fnFTD_RawText               @500
+fnFTD_RawTextDlg            @501
+
+;BITMAP.C
+fnFTD_Bitmap                @502
+fnFTD_BitmapDlg             @503
+
+; ENGINE.C
+engGetLastError             @9
+engGetMeasureUnit           @10
+
+engJobCreate                @11
+engJobDestroy               @12
+engJobReCalc                @13
+engJobReset                 @14
+
+
+; PRINTER.C
+engPrinterCreateDC          @20
+engPrinterGetDefault        @21
+engPrinterChoose            @22
+fnPrintSetup                @23
+engPrinterGetDevMode        @24
+
+
+; PRINT.C
+engPrint                    @30
+fnDefaultAbortProc          @31
+fnDefaultStatusDlg          @32
+
+
+; CONFIG.C
+engConfigRead               @50
+engConfigWrite              @51
+engConfigAlloc              @52                   
+engConfigCopy               @53
+engConfigFree               @54
+engConfigSetDefaults        @55
+
+; HF.C
+fnHFConfigure               @70
+engHFCalcHeight             @71
+engHFConfigure              @72
+fnBtnSubClass               @73
+
+; PAGE.C    
+fnPageConfigure             @90
+engPageConfigure            @91
+
+
+; UTIL.C
+engDlgSetMeasure            @110
+engDlgGetMeasure            @111
+engStrToUINT                @112
+engInchToString             @113
+engMMToString               @114
+engMMToInch                 @115
+engInchToMM                 @116
+
+; PREVIEW.C
+fnPreview                   @130
+engPreviewCreate            @131
+engPreviewDestroy           @132
+engPreviewReDraw            @133
+engPagePaintPreview         @134
+engPreviewSetConfig         @135
+engPreviewGetConfig         @136
+
+; PAINT.C
+engPaintFrame               @150
+engPaintPage                @151
+engPaintHF                  @152
+
+; FTD.C
+GetDlgBoxRes                @170
+fnFTDChoose                 @171
+
+; ASSOCIAT.C
+fnAssociate                 @180
+engAssociate                @181
+fnFileType                  @182
+engFileTypeModify           @183
+engFileTypeCopy             @184
+
+; WINFILE.C                
+fnWinFileSubclass           @201
+FMExtensionProc             @202
+
+engWinFileInstall           @203
+engWinFileRemove            @204
+fnCBTProc                   @205
+
+;/***********************************************************************
+;* End of File: ENGINE.def
+;************************************************************************
+

@@ -1,0 +1,98 @@
+/************************************************************************
+ *
+ *     Project:  DBEDIT 1.0
+ *
+ *      Module:  DBEDIT.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#define WIN31 1
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include "isz.h"
+
+/*
+ * Dialog box defines
+ */
+#include "dlgs.h"
+#include "cmd.h"
+#include "res.h"
+
+/*
+ * Version Stamping
+ */
+#include "DBEDIT.rcv"
+
+/*
+ * String table
+ */
+#include "DBEDIT.str"
+
+/*
+ * Icons
+ */
+IDI_DBEDIT  ICON "DBEDIT.ico"
+
+/*
+ * Bitmaps
+ */
+
+
+1 ACCELERATORS
+BEGIN
+   VK_F1, IDM_HELP_CONTENTS, VIRTKEY
+END
+
+/*
+ * Menus
+ */
+DBEDIT  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  POPUP  "&File"
+  BEGIN
+    MenuItem "&New...",     IDM_FILE_NEW
+    MenuItem "&Open...",    IDM_FILE_OPEN
+    MenuItem "&Generate",       IDM_FILE_SAVE
+    MenuItem "G&enerate As...", IDM_FILE_SAVEAS
+    MenuItem SEPARATOR
+    MenuItem "E&xit",  IDM_FILE_EXIT
+  END
+
+
+  POPUP  "&Options"
+   BEGIN
+     MenuItem "&Listbox Font...", IDM_OPT_FONT
+     MenuItem "&Preferences...", IDM_OPT_PREFERENCES
+     MenuItem "Show &Status bar", IDM_OPT_STAT
+   END
+
+  POPUP  "&Help"
+   BEGIN
+    MenuItem "&Contents...", IDM_HELP_CONTENTS
+    MenuItem "&Search...", IDM_HELP_SEARCH
+    MenuItem "&Help on Help", IDM_HELP_ONHELP
+    MenuItem SEPARATOR
+    MenuItem "&About...",  IDM_HELP_ABOUT
+   END
+END
+
+/*
+ * Dialog boxes
+ */
+#include "DBEDIT.dlg"
+
+/*
+ * RCDATA
+ */
+
+/************************************************************************
+ * End of File: DBEDIT.rc
+ ***********************************************************************/
+

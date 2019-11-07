@@ -1,0 +1,103 @@
+/************************************************************************
+ *
+ *     Project:  TTVIEW 1.0
+ *
+ *      Module:  TTVIEW.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#define WIN31 1
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+/*
+ * Dialog box defines
+ */
+#include "dlgs.h"
+#include "cmd.h"
+#include "res.h"
+
+/*
+ * Version Stamping
+ */
+#include "TTVIEW.rcv"
+
+/*
+ * String table
+ */
+#include "TTVIEW.str"
+
+/*
+ * Icons
+ */
+IDI_TTVIEW        ICON "TTVIEW.ico"
+IDI_TTVIEWCHILD   ICON "TTVIEW2.ico"
+
+/*
+ * Bitmaps
+ */
+
+
+1 ACCELERATORS
+BEGIN
+   VK_F1, IDM_HELP_CONTENTS, VIRTKEY
+END
+
+/*
+ * Menus
+ */
+TTVIEW  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  POPUP  "&File"
+  BEGIN
+    MenuItem "&Printer Setup...",  IDM_FILE_PRINTSETUP
+    MenuItem "&Print",  IDM_FILE_PRINT
+    MenuItem SEPARATOR
+    MenuItem "E&xit",  IDM_FILE_EXIT
+  END
+
+
+  POPUP  "&Options"
+   BEGIN
+     MenuItem "&Choose Font...", IDM_OPT_FONT
+     MenuItem "&Preferences...", IDM_OPT_PREFERENCES
+     MenuItem "Show &Status bar", IDM_OPT_STAT
+   END
+
+  POPUP  "&Window"
+   BEGIN
+	   MENUITEM    "&Tile",		 IDM_WINDOW_TILE
+	   MENUITEM    "&Cascade", 	 IDM_WINDOW_CASCADE
+	   MENUITEM    "Arrange &Icons",	 IDM_WINDOW_ICONS
+	   MENUITEM    "Close &All",	 IDM_WINDOW_CLOSEALL
+   END
+
+  POPUP  "&Help"
+   BEGIN
+    MenuItem "&Contents...", IDM_HELP_CONTENTS
+    MenuItem "&Search...", IDM_HELP_SEARCH
+    MenuItem "&Help on Help", IDM_HELP_ONHELP
+    MenuItem SEPARATOR
+    MenuItem "&About...",  IDM_HELP_ABOUT
+   END
+END
+
+/*
+ * Dialog boxes
+ */
+#include "TTVIEW.dlg"
+
+/*
+ * RCDATA
+ */
+
+/************************************************************************
+ * End of File: TTVIEW.rc
+ ***********************************************************************/
+

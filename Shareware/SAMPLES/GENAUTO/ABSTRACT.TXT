@@ -1,0 +1,18 @@
+ABSTRACT
+
+GenAuto is my version of "GENERIC".   Like ColSamp, GenAuto is a Full Server that implements an automation object model.   Unlike ColSamp, GenAuto does not have any significant implemenation in it's C*Doc and C*View classes.
+
+The key thing that GenAuto demonstrates is the implementation of a Documents collection on the Applicaiton object.   Therefore from VBA you can do:
+
+    Dim a As Object
+    Dim d As Objects
+   
+    Set a = CreateObject("GenAuto.Application.1")
+
+    n = 1
+    For Each d in a.Documents
+         d.Title = "Doc #" + Str$(n)
+         n = n + 1
+    Next
+
+Someday I'll probably add a Windows collection that enumerates all the active CViews (given the implementation of CDocuments as a base this would be trivial).

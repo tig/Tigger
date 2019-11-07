@@ -1,0 +1,58 @@
+;************************************************************************
+;*
+;*     Project:  TTVIEW.EXE
+;*
+;*      Module:  TTVIEW.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              TTVIEW
+
+DESCRIPTION       'TrueType Font Viewer'
+
+EXETYPE           WINDOWS
+
+STUB              'OBJ\\WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  TTVIEW        PRELOAD MOVEABLE DISCARDABLE
+                  CONFIG       PRELOAD MOVEABLE DISCARDABLE
+                  INIT         PRELOAD MOVEABLE DISCARDABLE
+                  WNDMGR       PRELOAD MOVEABLE DISCARDABLE
+                  BOTSTAT      PRELOAD MOVEABLE DISCARDABLE
+                  CMD          PRELOAD MOVEABLE DISCARDABLE
+                  MENU         MOVEABLE DISCARDABLE
+                  STATUS       PRELOAD MOVEABLE DISCARDABLE
+                  FONT         PRELOAD MOVEABLE DISCARDABLE
+                  DLGHELP      PRELOAD MOVEABLE DISCARDABLE
+                  SUBDLGS      MOVEABLE DISCARDABLE
+                  WSSCANF      PRELOAD MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          16000
+
+STACKSIZE         8000
+
+EXPORTS           
+                  fnAbout              @100
+
+                  fnMainWnd            @102
+                  fnClientWnd            @103
+                  fnPaintEnum       @104
+                  fnEnumReallyEx       @105
+                  fnStatus             @106                  
+
+;/***********************************************************************
+;* End of File: TTVIEW.def
+;************************************************************************
+

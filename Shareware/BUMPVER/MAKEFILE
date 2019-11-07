@@ -1,0 +1,10 @@
+# makefile for BumpVer
+
+bumpver.exe : bumpver.obj
+        link bumpver.obj;
+        bind bumpver.exe
+        bumpver bumpver.ver
+
+bumpver.obj: bumpver.c bumpver.ver
+        cl -c bumpver.c
+       

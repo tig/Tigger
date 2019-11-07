@@ -1,0 +1,437 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\IViewers.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,0,0,31
+ PRODUCTVERSION 2,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Ole2View Interface Viewers DLL\0"
+            VALUE "CompanyName", "Microsoft Corporation\0"
+            VALUE "FileDescription", "Ole2View Interface Viewers DLL\0"
+            VALUE "FileVersion", "2.00.031\0"
+            VALUE "InternalName", "IVIEWERS\0"
+            VALUE "LegalCopyright", "Copyright © 1993-95 Microsoft Corporation.  All Rights Reserved.\0"
+            VALUE "LegalTrademarks", "By Charlie Kindel\0"
+            VALUE "OriginalFilename", "IVIEWERS.DLL\0"
+            VALUE "ProductName", "Ole2View Interface Viewers DLL\0"
+            VALUE "ProductVersion", "2.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DISPATCH DIALOG DISCARDABLE  0, 0, 209, 41
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "IDispatch Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Close",IDCANCEL,165,5,34,14
+    LTEXT           "GetTypeInfoCount:",IDC_STATIC,7,8,63,8
+    PUSHBUTTON      "&View TypeInfo...",IDC_VIEWTYPEINFO,7,23,66,14
+    LTEXT           "Static",IDC_TYPEINFOCOUNT,73,8,35,8
+END
+
+IDD_IDATAOBJDLG DIALOG DISCARDABLE  0, 0, 299, 236
+STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU | WS_THICKFRAME
+CAPTION "IDataObject Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&FORMATETC:",IDC_STATIC,5,4,47,8
+    LTEXT           "GetData and OnDataChange &results:",IDC_STATIC,5,130,
+                    120,8
+    CONTROL         "&Update Display on change",IDC_UPDATEDISPLAY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,62,4,97,10
+    EDITTEXT        IDC_ADVISEDATA,1,142,299,94,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_VSCROLL
+    LTEXT           "&Misc info and errors:",IDC_STATIC,5,76,73,9
+    LISTBOX         IDC_GETDATA,5,88,238,40,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&GetData",IDC_DOGETDATA,252,22,43,14
+    PUSHBUTTON      "&DAdvise",IDC_SETUPADVISE,252,39,43,14
+    CONTROL         "&ADVF_PRIMEFRIST",IDC_PRIMEFIRST,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,165,4,77,10
+    DEFPUSHBUTTON   "Close",IDCANCEL,252,6,43,14
+    PUSHBUTTON      "&Clear",IDC_CLEAROUTPUT,252,124,43,14
+    LISTBOX         IDC_FORMATETC,5,16,238,57,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | 
+                    LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_TYPELIB DIALOG DISCARDABLE  0, 0, 263, 180
+STYLE WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "ITypeLib Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+END
+
+IDD_IUNKNOWN DIALOG DISCARDABLE  0, 0, 289, 50
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Default Interface Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,238,7,44,14
+    LTEXT           "IID:",IDC_STATIC,7,17,12,8
+    LTEXT           "Interface Name:",IDC_STATIC,7,7,52,8
+    LTEXT           "Interface Name:",IDC_INTERFACENAME,63,7,160,8
+    LTEXT           "IID",IDC_IID,63,17,160,8
+    PUSHBUTTON      "&View Type Info",IDC_VIEWTYPEINFO,7,29,61,14,
+                    WS_DISABLED
+END
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  34, 22, 281, 74
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDI_INTERFACE,IDC_STATIC,5,8,21,20
+    LTEXT           "Ole2View Interface Viewers",IDC_APPNAME,35,9,176,8
+    LTEXT           "Copyright © 1993-95 Microsoft Corporation.",
+                    IDC_COPYRIGHT,35,29,176,8
+    DEFPUSHBUTTON   "OK",IDCANCEL,226,6,47,14,WS_GROUP
+    LTEXT           "All Rights Reserved.",IDC_ALLRIGHTSRESERVED,35,38,176,8
+    LTEXT           "Written by Charlie Kindel",IDC_WRITTENBY,35,49,176,8
+    LTEXT           "Microsoft Business Systems Division",IDC_GROUP,35,58,
+                    176,8
+    LTEXT           "Version 2",IDC_VERSION,35,18,176,8
+END
+
+IDD_DATAOBJECT DIALOG DISCARDABLE  0, 0, 351, 265
+STYLE DS_3DLOOK | DS_CENTER | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU | WS_THICKFRAME
+CAPTION "Uniform Data Object Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_DATAFORMATS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SORTASCENDING | WS_BORDER | 
+                    WS_TABSTOP,7,15,338,65
+    LTEXT           "Data &Formats:",IDC_STATIC,5,5,45,8
+    LTEXT           "&Display:",IDC_STATIC,7,85,26,8
+    LTEXT           "",IDC_DUMMY,7,96,337,162,SS_SUNKEN | NOT WS_VISIBLE
+END
+
+IDD_IPERSIST DIALOG DISCARDABLE  0, 0, 289, 28
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "IPersist Interface Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,232,7,50,14
+    LTEXT           "CLSID:",IDC_STATIC,5,15,24,8
+    LTEXT           "Class Name:",IDC_STATIC,5,5,40,8
+    LTEXT           "Class Name",IDC_CLASSNAME,63,5,160,8
+    LTEXT           "CLSID",IDC_CLSID,63,15,160,8
+END
+
+IDD_IPERSISTSTREAM DIALOG DISCARDABLE  0, 0, 289, 67
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "IPersistStream Interface Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,242,7,40,14
+    LTEXT           "CLSID:",IDC_STATIC,5,15,24,8
+    LTEXT           "Class Name:",IDC_STATIC,5,5,40,8
+    LTEXT           "Class Name",IDC_CLASSNAME,63,5,160,8
+    LTEXT           "CLSID",IDC_CLSID,63,15,160,8
+    PUSHBUTTON      "&IsDirty",IDC_ISDIRTY,7,28,50,14
+    LTEXT           "???",IDC_ISDIRTYTXT,63,31,212,8
+    PUSHBUTTON      "&GetSizeMax",IDC_GETSIZEMAX,7,47,50,14
+    LTEXT           "???",IDC_SIZEMAX,63,49,212,8
+END
+
+IDD_IPERSISTSTREAMINIT DIALOG DISCARDABLE  0, 0, 289, 88
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "IPersistStreamInit Interface Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,242,7,40,14
+    LTEXT           "CLSID:",IDC_STATIC,5,15,24,8
+    LTEXT           "Class Name:",IDC_STATIC,5,5,40,8
+    LTEXT           "Class Name",IDC_CLASSNAME,63,5,160,8
+    LTEXT           "CLSID",IDC_CLSID,63,15,160,8
+    PUSHBUTTON      "&IsDirty",IDC_ISDIRTY,7,50,50,14
+    LTEXT           "Result: ???",IDC_ISDIRTYTXT,63,53,212,8
+    PUSHBUTTON      "&GetSizeMax",IDC_GETSIZEMAX,7,68,50,14
+    LTEXT           "Result: ???",IDC_SIZEMAX,63,71,212,8
+    PUSHBUTTON      "&InitNew",IDC_INITNEW,7,33,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Group by type kind",         ID_VIEW_GROUPBYTYPEKIND
+        MENUITEM SEPARATOR
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About...",                   ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_IMAGELIST           BITMAP  DISCARDABLE     "res\\images.bmp"
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\toolbars.bmp"
+IDB_OLE2VIEW            BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_VIEW_GROUPBYTYPEKIND
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_INTERFACE           ICON    DISCARDABLE     "res\\ico00001.ico"
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Ole2View.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_IUNKNOWN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 282
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 43
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+    END
+
+    IDD_DATAOBJECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 344
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 258
+    END
+
+    IDD_IPERSIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 282
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 21
+    END
+
+    IDD_IPERSISTSTREAM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 282
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 61
+    END
+
+    IDD_IPERSISTSTREAMINIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 282
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 82
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Ole2View 2.0 Interface Viewers"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_CANT_RUN_STANDALONE "This program does not run stand alone.  It is meant only to be used as an automation server.  See the IPDRIVE sample for more information."
+    IDP_OLE_INIT_FAILED     "Failed to inialize the OLE libraries!"
+    IDS_REGISTRYKEY         "Microsoft"
+    IDS_REG_TYPELIB         "ITypeLib Viewer"
+    IDS_REG_WNDPOS          "WndPos"
+    IDS_REG_GROUPBYKIND     "GroupByKind"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDR_TYPELIBWND          "ITypeLib Viewer"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_GROUPBYTYPEKIND "Group typeinfos by kind\nGroup by kind"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_CLOSE           "Close window\nClose"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "About TypeLib Viewer\nAbout"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\IViewers.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

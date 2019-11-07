@@ -1,0 +1,85 @@
+/************************************************************************
+ *
+ *     Project:  DBEDIT 1.0
+ *
+ *      Module:  DBEDIT.rcv
+ *
+ *     Remarks:  Version stamping resource stuff.
+ *
+ *   Revisions:  
+ *
+ ***********************************************************************/
+
+#include <ver.h>
+
+#include "version.h"
+
+/*
+ * the following lines are specific to this file
+ */
+#define VER_PRODUCTVERSION          VER_MAJOR,VER_MINOR,0,0
+
+#define VER_FILEVERSION             VER_MAJOR,VER_MINOR,0,VER_BUILD
+#define VER_FILEFLAGS               VS_FF_PRERELEASE
+
+#define VER_FILETYPE                VFT_APP
+#define VER_FILESUBTYPE             VFT2_UNKNOWN
+
+#define VER_FILEDESCRIPTION_STR     "DBEDIT 1.0\0"
+#define VER_FILEVERSION_STR         "1.00\0"
+#define VER_INTERNALNAME_STR        "DBEDIT\0"
+
+#define VER_PRODUCTNAME_STR         "DBEDIT 1.0\0"
+#define VER_PRODUCTVERSION_STR      "1.0\0"
+#define VER_COMPANYNAME_STR         "Adonis Corporation\0"
+#define VER_LEGALCOPYRIGHT_STR      "Copyright \251 Adonis Corporation 1992\0"
+
+/*
+ *                                                              
+ * The following section actually creates the version structure.
+ * They are ignored if we are not being invoked by RC.          
+ *                                                              
+ * These lines should only be modified for localized versions   
+ * where indicated.                                              
+ *                                                              
+ */
+
+#ifdef RC_INVOKED
+ 
+VS_VERSION_INFO VERSIONINFO 
+FILEVERSION    VER_FILEVERSION
+PRODUCTVERSION VER_PRODUCTVERSION
+FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
+FILEFLAGS      VER_FILEFLAGS
+FILEOS         VOS_DOS_WINDOWS16
+FILETYPE       VER_FILETYPE
+FILESUBTYPE    VER_FILESUBTYPE
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN 
+            VALUE "CompanyName",     VER_COMPANYNAME_STR
+            VALUE "FileDescription", VER_FILEDESCRIPTION_STR
+            VALUE "FileVersion",     VER_FILEVERSION_STR
+            VALUE "InternalName",    VER_INTERNALNAME_STR
+            VALUE "LegalCopyright",  VER_LEGALCOPYRIGHT_STR
+            VALUE "ProductName",     VER_PRODUCTNAME_STR
+            VALUE "ProductVersion",  VER_PRODUCTVERSION_STR
+        END 
+        /* additional info should be added here for localized versions */
+    END 
+ 
+    BLOCK "VarFileInfo" 
+    BEGIN 
+        /* the following line should be extended for localized versions */
+        VALUE "Translation", 0x409, 1252
+    END 
+END 
+
+#endif
+
+/************************************************************************
+ * End of File: DBEDIT.rcv
+ ***********************************************************************/
+

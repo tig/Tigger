@@ -1,0 +1,78 @@
+/************************************************************************
+ *
+ *     Project:  GENERIC 1.0
+ *
+ *      Module:  GENERIC.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include <wdb.h>
+
+/*
+ * Dialog box defines
+ */
+#include "dlgs.h"
+#include "res.h"
+
+/*
+ * Version Stamping
+ */
+#include "GENERIC.rcv"
+
+/*
+ * String table
+ */
+#include "GENERIC.str"
+
+/*
+ * Icons
+ */
+IDI_GENERIC ICON "GENERIC.ico"
+
+/*
+ * Bitmaps
+ */
+
+/*
+ * Menus
+ */
+GENERIC  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  POPUP  "&File"
+  BEGIN
+     MenuItem "E&xit",  IDM_FILE_EXIT
+  END
+
+  MENUITEM "&About...",  IDM_HELP_ABOUT
+
+ #ifdef DEBUG
+   POPUP   "&Debug"
+   BEGIN
+      MENUITEM "&Configure...",       IDM_WDB_CONFIG
+   END
+ #endif
+
+END
+
+/*
+ * Dialog boxes
+ */
+#include "GENERIC.dlg"
+
+/*
+ * RCDATA
+ */
+
+/************************************************************************
+ * End of File: GENERIC.rc
+ ***********************************************************************/
+

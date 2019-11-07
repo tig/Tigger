@@ -1,0 +1,9 @@
+[MSVC Status File]
+Version=1.00
+ProjectType=10
+External=0
+BrkptCount=0
+WatchCount=3
+WatchExpr1=m_dwRegCO
+WatchExpr2=m_cObj
+WatchExpr3=theApp

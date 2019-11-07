@@ -1,0 +1,15 @@
+From: Craig Wittenberg
+To: Charlie Kindel
+Cc: Cy Cedar
+Subject: RE: OLE 2.0 GUIDs
+Date: Tuesday, July 20, 1993 03:39PM
+
+Your GUID range is:
+
+00023cxx-0000-0000-C000-000000000046
+
+In the future, please contact one of our program managers (Cy Cedar
+currently).
+
+Craig.
+

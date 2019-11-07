@@ -1,0 +1,13 @@
+REGEDIT
+; This .REG file may be used by your SETUP program.
+;   If a SETUP program is not available, the entries below will be
+;   registered in your InitInstance automatically with a call to
+;   CWinApp::RegisterShellFileTypes and COleObjectFactory::UpdateRegistryAll.
+
+
+HKEY_CLASSES_ROOT\Winpri.Document = Winpri Document
+HKEY_CLASSES_ROOT\Winpri.Document\CLSID = {7FFDD8A0-5543-101B-94B5-524153480001}
+
+HKEY_CLASSES_ROOT\CLSID\{7FFDD8A0-5543-101B-94B5-524153480001} = Winpri Document
+HKEY_CLASSES_ROOT\CLSID\{7FFDD8A0-5543-101B-94B5-524153480001}\LocalServer = WINPRINT.EXE
+HKEY_CLASSES_ROOT\CLSID\{7FFDD8A0-5543-101B-94B5-524153480001}\ProgId = Winpri.Document

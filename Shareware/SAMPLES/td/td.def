@@ -1,0 +1,68 @@
+;************************************************************************
+;*
+;*     Project:  TDUTIL.DLL
+;*
+;*      Module:  TDUTIL.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+LIBRARY           TD
+
+DESCRIPTION       'TD By C.E. Kindel,Jr.'
+
+EXETYPE           WINDOWS
+
+SEGMENTS          
+                  _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  WEP          PRELOAD FIXED
+                  INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+                  TDUTIL       PRELOAD MOVEABLE DISCARDABLE
+                  SHADOW       LOADONCALL MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD SINGLE
+
+HEAPSIZE          8192
+
+EXPORTS           WEP                     @2 RESIDENTNAME
+
+                  tdGetVersion            @3
+                  tdGethInst              @4
+                  tdCheckVersion          @5
+
+                  tdChildKind             @16  ; OBSOLETE : DO NOT CALL
+                  tdDrawFaceFrame         @17
+                  tdDraw3DRect            @18
+                  tdDraw3DLine            @19
+                  tdDrawDropShadow        @20
+                  tdTextOut3D             @21
+                  tdDraw3DLine1           @22  ; OBSOLETE : DO NOT CALL
+                  tdExtTextOut3D          @23
+                  tdGetChildRect          @24
+                  tdDrawChild3DRect       @25
+                  tdDrawChildren3D        @26
+                  tdHideSomeChildren      @27  ; OBSOLETE : DO NOT CALL
+                  tdGetHighlightColor     @28
+                  tdGetShadowColor        @29
+                  tdMapTextColor          @30
+                  tdShadowControl         @31
+                  tdDraw3DCrease          @32
+
+                  ; Call backs
+                  fnEnumChildrenHide      @112 ; OBSOLETE : just a stub
+                  fnEnumChildren3D        @113 ; OBSOLETE : just a stub
+                  fnNewButton             @114
+                  fn3DStatic              @115
+                
+;************************************************************************
+;* End of File: TDUTIL.def
+;************************************************************************
+

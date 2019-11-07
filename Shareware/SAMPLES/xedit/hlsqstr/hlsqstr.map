@@ -1,0 +1,446 @@
+
+ HLSQSTR
+
+ Start     Length     Name                   Class
+ 0001:0000 00263H     HLSQSTR                CODE
+ 0001:0264 009CDH     HEAP                   CODE
+ 0001:0C32 01091H     LIST                   CODE
+ 0001:1CC4 0048AH     STACK                  CODE
+ 0001:214E 00492H     QUEUE                  CODE
+ 0001:25E0 00A4BH     _TEXT                  CODE
+ 0001:302B 00074H     INIT_TEXT              CODE
+ 0002:0000 00010H     NULL                   BEGDATA
+ 0002:0010 0039CH     _DATA                  DATA
+ 0002:03AC 00000H     CDATA                  DATA
+ 0002:03AC 00000H     XIFB                   DATA
+ 0002:03AC 00000H     XIF                    DATA
+ 0002:03AC 00000H     XIFE                   DATA
+ 0002:03AC 00000H     XIB                    DATA
+ 0002:03AC 00000H     XI                     DATA
+ 0002:03AC 00000H     XIE                    DATA
+ 0002:03AC 00000H     XPB                    DATA
+ 0002:03AC 00000H     XP                     DATA
+ 0002:03AC 00000H     XPE                    DATA
+ 0002:03AC 00000H     XCB                    DATA
+ 0002:03AC 00000H     XC                     DATA
+ 0002:03AC 00000H     XCE                    DATA
+ 0002:03AC 00000H     XCFB                   DATA
+ 0002:03AC 00000H     XCF                    DATA
+ 0002:03AC 00000H     XCFE                   DATA
+ 0002:03AC 0000CH     DBDATA                 DATA
+ 0002:03B8 00000H     CONST                  CONST
+ 0002:03B8 00019H     HDR                    MSG
+ 0002:03D1 00082H     MSG                    MSG
+ 0002:0453 00002H     PAD                    MSG
+ 0002:0455 00001H     EPAD                   MSG
+ 0002:0460 00000H     _BSS                   BSS
+ 0002:0460 00000H     XOB                    BSS
+ 0002:0460 00000H     XO                     BSS
+ 0002:0460 00000H     XOE                    BSS
+
+ Origin   Group
+ 0002:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0001:040B hlsqHeapAlloc           hlsqHeapAlloc
+ 0001:071F hlsqHeapAllocLock       hlsqHeapAllocLock
+ 0001:07A3 hlsqHeapAllocString     hlsqHeapAllocString
+ 0001:0895 hlsqHeapCompact         hlsqHeapCompact
+ 0001:02BA hlsqHeapCreate          hlsqHeapCreate
+ 0001:03B7 hlsqHeapDestroy         hlsqHeapDestroy
+ 0001:09CE hlsqHeapDiscard         hlsqHeapDiscard
+ 0001:0B04 hlsqHeapDumpDebug       hlsqHeapDumpDebug
+ 0001:0905 hlsqHeapFlags           hlsqHeapFlags
+ 0001:05B8 hlsqHeapFree            hlsqHeapFree
+ 0001:095C hlsqHeapHandle          hlsqHeapHandle
+ 0001:0AA7 hlsqHeapItems           hlsqHeapItems
+ 0001:0668 hlsqHeapLock            hlsqHeapLock
+ 0001:0540 hlsqHeapReAlloc         hlsqHeapReAlloc
+ 0001:0A5E hlsqHeapSetDS           hlsqHeapSetDS
+ 0001:0A07 hlsqHeapSize            hlsqHeapSize
+ 0001:06C8 hlsqHeapUnlock          hlsqHeapUnlock
+ 0001:081B hlsqHeapUnlockFree      hlsqHeapUnlockFree
+ 0001:12E8 hlsqListAllocInsertNode  hlsqListAllocInsertNode
+ 0001:0DEC hlsqListAllocNode       hlsqListAllocNode
+ 0001:0C32 hlsqListCreate          hlsqListCreate
+ 0001:1473 hlsqListDeleteNode      hlsqListDeleteNode
+ 0001:0D0E hlsqListDestroy         hlsqListDestroy
+ 0001:1B71 hlsqListDumpDebug       hlsqListDumpDebug
+ 0001:15A3 hlsqListFirstNode       hlsqListFirstNode
+ 0001:0D78 hlsqListFreeList        hlsqListFreeList
+ 0001:0E9F hlsqListFreeNode        hlsqListFreeNode
+ 0001:0EE4 hlsqListInsertNode      hlsqListInsertNode
+ 0001:10BC hlsqListInsertSorted    hlsqListInsertSorted
+ 0001:1705 hlsqListItem2Node       hlsqListItem2Node
+ 0001:1882 hlsqListItems           hlsqListItems
+ 0001:1601 hlsqListLastNode        hlsqListLastNode
+ 0001:14CB hlsqListNextNode        hlsqListNextNode
+ 0001:165F hlsqListNode2Item       hlsqListNode2Item
+ 0001:1536 hlsqListPrevNode        hlsqListPrevNode
+ 0001:1385 hlsqListRemoveNode      hlsqListRemoveNode
+ 0001:18C1 hlsqListSwapNodes       hlsqListSwapNodes
+ 0001:238B hlsqQueueAllocInQ       hlsqQueueAllocInQ
+ 0001:2218 hlsqQueueAllocNode      hlsqQueueAllocNode
+ 0001:214E hlsqQueueCreate         hlsqQueueCreate
+ 0001:23C7 hlsqQueueDeQ            hlsqQueueDeQ
+ 0001:2179 hlsqQueueDestroy        hlsqQueueDestroy
+ 0001:248E hlsqQueueDumpDebug      hlsqQueueDumpDebug
+ 0001:22CB hlsqQueueFreeNode       hlsqQueueFreeNode
+ 0001:21A4 hlsqQueueFreeQueue      hlsqQueueFreeQueue
+ 0001:2352 hlsqQueueInQ            hlsqQueueInQ
+ 0001:2313 hlsqQueueItems          hlsqQueueItems
+ 0001:240F hlsqQueuePeek           hlsqQueuePeek
+ 0001:2440 hlsqQueueRemove         hlsqQueueRemove
+ 0001:1D8E hlsqStackAllocNode      hlsqStackAllocNode
+ 0001:1EFD hlsqStackAllocPush      hlsqStackAllocPush
+ 0001:1CC4 hlsqStackCreate         hlsqStackCreate
+ 0001:1CEF hlsqStackDestroy        hlsqStackDestroy
+ 0001:1FFC hlsqStackDumpDebug      hlsqStackDumpDebug
+ 0001:1E41 hlsqStackFreeNode       hlsqStackFreeNode
+ 0001:1D1A hlsqStackFreeStack      hlsqStackFreeStack
+ 0001:1E89 hlsqStackItems          hlsqStackItems
+ 0001:1F7D hlsqStackPeek           hlsqStackPeek
+ 0001:1F35 hlsqStackPop            hlsqStackPop
+ 0001:1EC8 hlsqStackPush           hlsqStackPush
+ 0001:1FAE hlsqStackRemove         hlsqStackRemove
+ 0001:0035 WEP                     WEP
+ 0001:262E _hlsq_fmemccpy          __fmemccpy
+ 0001:2694 _hlsq_fmemchr           __fmemchr
+ 0001:275C _hlsq_fmemcmp           __fmemcmp
+ 0001:27B8 _hlsq_fmemcpy           __fmemcpy
+ 0001:26D6 _hlsq_fmemicmp          __fmemicmp
+ 0001:2D58 _hlsq_fmemmove          __fmemmove
+ 0001:2AE8 _hlsq_fmemset           __fmemset
+ 0001:2AA2 _hlsq_fstrcat           __fstrcat
+ 0001:2816 _hlsq_fstrchr           __fstrchr
+ 0001:2A42 _hlsq_fstrcmp           __fstrcmp
+ 0001:2A6C _hlsq_fstrcpy           __fstrcpy
+ 0001:2B30 _hlsq_fstrcspn          __fstrcspn
+ 0001:25F2 _hlsq_fstrdup           __fstrdup
+ 0001:2844 _hlsq_fstricmp          __fstricmp
+ 0001:2A2A _hlsq_fstrlen           __fstrlen
+ 0001:29E2 _hlsq_fstrlwr           __fstrlwr
+ 0001:288A _hlsq_fstrncat          __fstrncat
+ 0001:28C6 _hlsq_fstrncmp          __fstrncmp
+ 0001:2902 _hlsq_fstrncpy          __fstrncpy
+ 0001:2E22 _hlsq_fstrnicmp         __fstrnicmp
+ 0001:292C _hlsq_fstrnset          __fstrnset
+ 0001:2B8C _hlsq_fstrpbrk          __fstrpbrk
+ 0001:2958 _hlsq_fstrrchr          __fstrrchr
+ 0001:2986 _hlsq_fstrrev           __fstrrev
+ 0001:29BE _hlsq_fstrset           __fstrset
+ 0001:2BEA _hlsq_fstrspn           __fstrspn
+ 0001:2CF0 _hlsq_fstrstr           __fstrstr
+ 0001:2C46 _hlsq_fstrtok           __fstrtok
+ 0001:2A06 _hlsq_fstrupr           __fstrupr
+
+  Address         Publics by Name
+
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0001:040B       hlsqHeapAlloc
+ 0001:071F       hlsqHeapAllocLock
+ 0001:07A3       hlsqHeapAllocString
+ 0001:0895       hlsqHeapCompact
+ 0001:02BA       hlsqHeapCreate
+ 0001:03B7       hlsqHeapDestroy
+ 0001:09CE       hlsqHeapDiscard
+ 0001:0B04       hlsqHeapDumpDebug
+ 0001:0905       hlsqHeapFlags
+ 0001:05B8       hlsqHeapFree
+ 0001:095C       hlsqHeapHandle
+ 0001:0AA7       hlsqHeapItems
+ 0001:0668       hlsqHeapLock
+ 0001:0540       hlsqHeapReAlloc
+ 0001:0A5E       hlsqHeapSetDS
+ 0001:0A07       hlsqHeapSize
+ 0001:06C8       hlsqHeapUnlock
+ 0001:081B       hlsqHeapUnlockFree
+ 0001:12E8       hlsqListAllocInsertNode
+ 0001:0DEC       hlsqListAllocNode
+ 0001:0C32       hlsqListCreate
+ 0001:1473       hlsqListDeleteNode
+ 0001:0D0E       hlsqListDestroy
+ 0001:1B71       hlsqListDumpDebug
+ 0001:15A3       hlsqListFirstNode
+ 0001:0D78       hlsqListFreeList
+ 0001:0E9F       hlsqListFreeNode
+ 0001:0EE4       hlsqListInsertNode
+ 0001:10BC       hlsqListInsertSorted
+ 0001:1705       hlsqListItem2Node
+ 0001:1882       hlsqListItems
+ 0001:1601       hlsqListLastNode
+ 0001:14CB       hlsqListNextNode
+ 0001:165F       hlsqListNode2Item
+ 0001:1536       hlsqListPrevNode
+ 0001:1385       hlsqListRemoveNode
+ 0001:1A5A       HLSQLISTSORT
+ 0001:18C1       hlsqListSwapNodes
+ 0001:238B       hlsqQueueAllocInQ
+ 0001:2218       hlsqQueueAllocNode
+ 0001:214E       hlsqQueueCreate
+ 0001:23C7       hlsqQueueDeQ
+ 0001:2179       hlsqQueueDestroy
+ 0001:248E       hlsqQueueDumpDebug
+ 0001:22CB       hlsqQueueFreeNode
+ 0001:21A4       hlsqQueueFreeQueue
+ 0001:2352       hlsqQueueInQ
+ 0001:2313       hlsqQueueItems
+ 0001:240F       hlsqQueuePeek
+ 0001:2440       hlsqQueueRemove
+ 0001:1D8E       hlsqStackAllocNode
+ 0001:1EFD       hlsqStackAllocPush
+ 0001:1CC4       hlsqStackCreate
+ 0001:1CEF       hlsqStackDestroy
+ 0001:1FFC       hlsqStackDumpDebug
+ 0001:1E41       hlsqStackFreeNode
+ 0001:1D1A       hlsqStackFreeStack
+ 0001:1E89       hlsqStackItems
+ 0001:1F7D       hlsqStackPeek
+ 0001:1F35       hlsqStackPop
+ 0001:1EC8       hlsqStackPush
+ 0001:1FAE       hlsqStackRemove
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0001:306D       LibEntry
+ 0001:0000       LIBMAIN
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALCOMPACT         (KERNEL.13)
+ 0000:0000  Imp  LOCALFLAGS           (KERNEL.12)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALHANDLE          (KERNEL.11)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  LOCALLOCK            (KERNEL.8)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  LOCALUNLOCK          (KERNEL.9)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  pLocalHeap
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0002:0004       rsrvptrs
+ 0002:03A0       STKHQQ
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0001:0035       WEP
+ 0001:0058       _dummy
+ 0002:0460       _edata
+ 0002:0460       _end
+ 0001:0264       _FindHeap
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtused2
+ 0000:D6D6  Abs  __aDBdoswp
+ 0002:03A6       __adbgmsg
+ 0002:03B0       __aDBrterr
+ 0001:2FA0       __aFahdiff
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0000:0000  Imp  __AHSHIFT            (KERNEL.113)
+ 0002:03AA       __amblksiz
+ 0002:03C0       __caption
+ 0001:2EF6       __ffree
+ 0001:2ECA       __fmalloc
+ 0001:262E       __fmemccpy
+ 0001:2694       __fmemchr
+ 0001:275C       __fmemcmp
+ 0001:27B8       __fmemcpy
+ 0001:26D6       __fmemicmp
+ 0001:2D58       __fmemmove
+ 0001:2AE8       __fmemset
+ 0000:9876  Abs  __fptaskdata
+ 0001:2F5C       __frealloc
+ 0001:2AA2       __fstrcat
+ 0001:2816       __fstrchr
+ 0001:2A42       __fstrcmp
+ 0001:2A6C       __fstrcpy
+ 0001:2B30       __fstrcspn
+ 0001:25F2       __fstrdup
+ 0001:2844       __fstricmp
+ 0001:2A2A       __fstrlen
+ 0001:29E2       __fstrlwr
+ 0001:288A       __fstrncat
+ 0001:28C6       __fstrncmp
+ 0001:2902       __fstrncpy
+ 0001:2E22       __fstrnicmp
+ 0001:292C       __fstrnset
+ 0001:2B8C       __fstrpbrk
+ 0001:2958       __fstrrchr
+ 0001:2986       __fstrrev
+ 0001:29BE       __fstrset
+ 0001:2BEA       __fstrspn
+ 0001:2CF0       __fstrstr
+ 0001:2C46       __fstrtok
+ 0001:2A06       __fstrupr
+ 0001:2EB8       __nfree
+ 0001:2E7A       __nmalloc
+ 0001:2FC0       __NMSG_TEXT
+ 0001:2FF7       __NMSG_WRITE
+ 0001:2F08       __nrealloc
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0002:03B2       ___aDBexit
+ 0002:03AE       ___aDBswpchk
+ 0002:03AC       ___aDBswpflg
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  __AHSHIFT            (KERNEL.113)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  LOCALLOCK            (KERNEL.8)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  LOCALFLAGS           (KERNEL.12)
+ 0000:0000  Imp  LOCALHANDLE          (KERNEL.11)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LOCALUNLOCK          (KERNEL.9)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  LOCALCOMPACT         (KERNEL.13)
+ 0000:0006  Abs  pLocalHeap
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __acrtused2
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __fptaskdata
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0000       LIBMAIN
+ 0001:0035       WEP
+ 0001:0058       _dummy
+ 0001:0264       _FindHeap
+ 0001:02BA       hlsqHeapCreate
+ 0001:03B7       hlsqHeapDestroy
+ 0001:040B       hlsqHeapAlloc
+ 0001:0540       hlsqHeapReAlloc
+ 0001:05B8       hlsqHeapFree
+ 0001:0668       hlsqHeapLock
+ 0001:06C8       hlsqHeapUnlock
+ 0001:071F       hlsqHeapAllocLock
+ 0001:07A3       hlsqHeapAllocString
+ 0001:081B       hlsqHeapUnlockFree
+ 0001:0895       hlsqHeapCompact
+ 0001:0905       hlsqHeapFlags
+ 0001:095C       hlsqHeapHandle
+ 0001:09CE       hlsqHeapDiscard
+ 0001:0A07       hlsqHeapSize
+ 0001:0A5E       hlsqHeapSetDS
+ 0001:0AA7       hlsqHeapItems
+ 0001:0B04       hlsqHeapDumpDebug
+ 0001:0C32       hlsqListCreate
+ 0001:0D0E       hlsqListDestroy
+ 0001:0D78       hlsqListFreeList
+ 0001:0DEC       hlsqListAllocNode
+ 0001:0E9F       hlsqListFreeNode
+ 0001:0EE4       hlsqListInsertNode
+ 0001:10BC       hlsqListInsertSorted
+ 0001:12E8       hlsqListAllocInsertNode
+ 0001:1385       hlsqListRemoveNode
+ 0001:1473       hlsqListDeleteNode
+ 0001:14CB       hlsqListNextNode
+ 0001:1536       hlsqListPrevNode
+ 0001:15A3       hlsqListFirstNode
+ 0001:1601       hlsqListLastNode
+ 0001:165F       hlsqListNode2Item
+ 0001:1705       hlsqListItem2Node
+ 0001:1882       hlsqListItems
+ 0001:18C1       hlsqListSwapNodes
+ 0001:1A5A       HLSQLISTSORT
+ 0001:1B71       hlsqListDumpDebug
+ 0001:1CC4       hlsqStackCreate
+ 0001:1CEF       hlsqStackDestroy
+ 0001:1D1A       hlsqStackFreeStack
+ 0001:1D8E       hlsqStackAllocNode
+ 0001:1E41       hlsqStackFreeNode
+ 0001:1E89       hlsqStackItems
+ 0001:1EC8       hlsqStackPush
+ 0001:1EFD       hlsqStackAllocPush
+ 0001:1F35       hlsqStackPop
+ 0001:1F7D       hlsqStackPeek
+ 0001:1FAE       hlsqStackRemove
+ 0001:1FFC       hlsqStackDumpDebug
+ 0001:214E       hlsqQueueCreate
+ 0001:2179       hlsqQueueDestroy
+ 0001:21A4       hlsqQueueFreeQueue
+ 0001:2218       hlsqQueueAllocNode
+ 0001:22CB       hlsqQueueFreeNode
+ 0001:2313       hlsqQueueItems
+ 0001:2352       hlsqQueueInQ
+ 0001:238B       hlsqQueueAllocInQ
+ 0001:23C7       hlsqQueueDeQ
+ 0001:240F       hlsqQueuePeek
+ 0001:2440       hlsqQueueRemove
+ 0001:248E       hlsqQueueDumpDebug
+ 0001:25F2       __fstrdup
+ 0001:262E       __fmemccpy
+ 0001:2694       __fmemchr
+ 0001:26D6       __fmemicmp
+ 0001:275C       __fmemcmp
+ 0001:27B8       __fmemcpy
+ 0001:2816       __fstrchr
+ 0001:2844       __fstricmp
+ 0001:288A       __fstrncat
+ 0001:28C6       __fstrncmp
+ 0001:2902       __fstrncpy
+ 0001:292C       __fstrnset
+ 0001:2958       __fstrrchr
+ 0001:2986       __fstrrev
+ 0001:29BE       __fstrset
+ 0001:29E2       __fstrlwr
+ 0001:2A06       __fstrupr
+ 0001:2A2A       __fstrlen
+ 0001:2A42       __fstrcmp
+ 0001:2A6C       __fstrcpy
+ 0001:2AA2       __fstrcat
+ 0001:2AE8       __fmemset
+ 0001:2B30       __fstrcspn
+ 0001:2B8C       __fstrpbrk
+ 0001:2BEA       __fstrspn
+ 0001:2C46       __fstrtok
+ 0001:2CF0       __fstrstr
+ 0001:2D58       __fmemmove
+ 0001:2E22       __fstrnicmp
+ 0001:2E7A       __nmalloc
+ 0001:2EB8       __nfree
+ 0001:2ECA       __fmalloc
+ 0001:2EF6       __ffree
+ 0001:2F08       __nrealloc
+ 0001:2F5C       __frealloc
+ 0001:2FA0       __aFahdiff
+ 0001:2FC0       __NMSG_TEXT
+ 0001:2FF7       __NMSG_WRITE
+ 0001:306D       LibEntry
+ 0002:0004       rsrvptrs
+ 0002:03A0       STKHQQ
+ 0002:03A6       __adbgmsg
+ 0002:03AA       __amblksiz
+ 0002:03AC       ___aDBswpflg
+ 0002:03AE       ___aDBswpchk
+ 0002:03B0       __aDBrterr
+ 0002:03B2       ___aDBexit
+ 0002:03C0       __caption
+ 0002:0460       _edata
+ 0002:0460       _end
+
+Program entry point at 0001:306D

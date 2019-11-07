@@ -1,0 +1,12 @@
+FRAMEWRK.OBJ +
+GENERIC.OBJ +
+
+XRT_XL4.XLL
+nul
+d:\msvc\lib\+
+d:\msvc\mfc\lib\+
+d:\ole2\rel\+
+d:\lib\+
+e:\xl4sdk\lib\+
+oldnames libw ldllcew xlcall commdlg.lib olecli.lib olesvr.lib shell.lib
+XRT_XL4.DEF;

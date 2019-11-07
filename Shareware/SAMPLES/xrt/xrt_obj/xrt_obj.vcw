@@ -1,0 +1,18 @@
+
+[MSVC Status File]
+Version=1.00
+ProjectType=10
+External=0
+BrkptCount=2
+BrkptType1=0
+BrkptActive1=1
+BrkptAmbig1=0
+BrkptIndex1=-1
+BrkptLoc1={,e:\source\xrt\xrt_obj\iperfile.cpp,} .80
+BrkptType2=0
+BrkptActive2=1
+BrkptAmbig2=0
+BrkptIndex2=-1
+BrkptLoc2={,e:\source\xrt\xrt_obj\iperfile.cpp,} .122
+WatchCount=1
+WatchExpr1=pFE

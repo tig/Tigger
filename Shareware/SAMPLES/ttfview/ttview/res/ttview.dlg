@@ -1,0 +1,23 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "C:\\!\\TTVIEW\\INC\\DLGS.H\0"
+END
+
+DLG_ABOUTBOX DIALOG 20, 33, 250, 80
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About TTView 1.0"
+FONT 8, "Helv"
+BEGIN
+    ICON            IDOK, IDOK, 8, 7, 21, 20
+    LTEXT           "TTView", IDD_APPNAME, 39, 6, 108, 10
+    LTEXT           "TrueType Font Viewer", 65, 39, 16, 148, 8
+    LTEXT           "Version 1.0", IDD_VERSION, 39, 32, 155, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Copyright © 1992 Charles E. Kindel, Jr..  All Rights Reserved.", 
+                    IDD_COPYRIGHT, 39, 42, 206, 10, NOT WS_GROUP
+    LTEXT           "Portions Copyright © 1985-1992 Microsoft Corporation", 
+                    IDD_MSCOPYRIGHT, 39, 52, 198, 10, NOT WS_GROUP
+    LTEXT           "By Charles E. Kindel, Jr.", IDD_BYCEK, 39, 61, 174, 10
+    DEFPUSHBUTTON   "OK", IDCANCEL, 197, 7, 45, 14, WS_GROUP
+END
+

@@ -1,0 +1,1019 @@
+
+ XRTXLL
+
+ Start     Length     Name                   Class
+ 0001:0000 0095AH     XRTXLL_TEXT            CODE 16-bit
+           at offset 00000H 0095AH bytes from XRTXLL.OBJ (e:\source\xrt\excel4\xrtxll.cpp)
+
+ 0001:095A 00F09H     FN_TEXT                CODE 16-bit
+           at offset 00000H 00F09H bytes from FN.OBJ (e:\source\xrt\excel4\fn.cpp)
+
+ 0001:1864 00435H     FRAMEWRK_TEXT          CODE 16-bit
+           at offset 00000H 00435H bytes from FRAMEWRK.OBJ (e:\source\xrt\excel4\framewrk.c)
+
+ 0001:1C9A 00010H     CLSID_TEXT             CODE 16-bit
+           at offset 00000H 00010H bytes from CLSID.OBJ (e:\source\xrt\excel4\clsid.c)
+
+ 0001:1CAA 002B7H     IADVSINK_TEXT          CODE 16-bit
+           at offset 00000H 002B7H bytes from IADVSINK.OBJ (e:\source\xrt\excel4\iadvsink.cpp)
+
+ 0001:1F62 0123BH     WRAPPER_TEXT           CODE 16-bit
+           at offset 00000H 0123BH bytes from WRAPPER.OBJ (e:\source\xrt\excel4\wrapper.c)
+
+ 0001:319E 00252H     DDESRV_TEXT            CODE 16-bit
+           at offset 00000H 00252H bytes from DDESRV.OBJ (e:\source\xrt\excel4\ddesrv.cpp)
+
+ 0001:33F0 01F47H     _TEXT                  CODE 16-bit
+           at offset 00000H 000EDH bytes from d:\msvc\lib\mdllcew.lib (windows\crt0.asm)
+           at offset 000EEH 0005AH bytes from d:\msvc\lib\mdllcew.lib (windows\wchkstk.asm)
+           at offset 00148H 00012H bytes from d:\msvc\lib\mdllcew.lib (delete.cxx)
+           at offset 0015AH 00010H bytes from d:\msvc\lib\mdllcew.lib (new.cxx)
+           at offset 0016AH 00006H bytes from d:\msvc\lib\mdllcew.lib (purevirt.asm)
+           at offset 00170H 0000BH bytes from d:\msvc\lib\mdllcew.lib (ulshr.asm)
+           at offset 0017CH 0005EH bytes from d:\msvc\lib\mdllcew.lib (hmemcpy.asm)
+           at offset 001DAH 0006BH bytes from d:\msvc\lib\mdllcew.lib (strstr.asm)
+           at offset 00246H 00054H bytes from d:\msvc\lib\mdllcew.lib (.\87fcmp.asm)
+           at offset 0029AH 00014H bytes from d:\msvc\lib\mdllcew.lib (.\fltusedc.asm)
+           at offset 002AEH 0002CH bytes from d:\msvc\lib\mdllcew.lib (windows\stubmain.asm)
+           at offset 002DAH 000E3H bytes from d:\msvc\lib\mdllcew.lib (dos\crt0dat.asm)
+           at offset 003BEH 00023H bytes from d:\msvc\lib\mdllcew.lib (dos\crt0msg.asm)
+           at offset 003E2H 00077H bytes from d:\msvc\lib\mdllcew.lib (dos\stdenvp.asm)
+           at offset 0045AH 0004CH bytes from d:\msvc\lib\mdllcew.lib (windows\fatal.asm)
+           at offset 004A6H 00010H bytes from d:\msvc\lib\mdllcew.lib (windows\windgrp.asm)
+           at offset 004B6H 000C8H bytes from d:\msvc\lib\mdllcew.lib (fmalloc.asm)
+           at offset 0057EH 0062AH bytes from d:\msvc\lib\mdllcew.lib (.\cvt.c)
+           at offset 00BA8H 00024H bytes from d:\msvc\lib\mdllcew.lib (.\cfpsig.asm)
+           at offset 00BCCH 0004EH bytes from d:\msvc\lib\mdllcew.lib (dos\nmsghdr.asm)
+           at offset 00C1AH 00081H bytes from d:\msvc\lib\mdllcew.lib (newseg.asm)
+           at offset 00C9CH 0000DH bytes from d:\msvc\lib\mdllcew.lib (fdata.asm)
+           at offset 00CAAH 00117H bytes from d:\msvc\lib\mdllcew.lib (growseg.asm)
+           at offset 00DC2H 00006H bytes from d:\msvc\lib\mdllcew.lib (crt0fp.asm)
+           at offset 00DC8H 0002DH bytes from d:\msvc\lib\mdllcew.lib (dos\stdalloc.asm)
+           at offset 00DF6H 00014H bytes from d:\msvc\lib\mdllcew.lib (windows\windgrpx.c)
+           at offset 00E0AH 00001H bytes from d:\msvc\lib\mdllcew.lib (nearstub.asm)
+           at offset 00E0CH 0007CH bytes from d:\msvc\lib\mdllcew.lib (searchsg.asm)
+           at offset 00E88H 0004CH bytes from d:\msvc\lib\mdllcew.lib (atof.c)
+           at offset 00ED4H 0009AH bytes from d:\msvc\lib\mdllcew.lib (_fptostr.c)
+           at offset 00F6EH 00019H bytes from d:\msvc\lib\mdllcew.lib (strlen.asm)
+           at offset 00F88H 0003CH bytes from d:\msvc\lib\mdllcew.lib (strcpy.asm)
+           at offset 00FC4H 00048H bytes from d:\msvc\lib\mdllcew.lib (hmemset.asm)
+           at offset 0100CH 000CAH bytes from d:\msvc\lib\mdllcew.lib (hmemcpy.asm)
+           at offset 010D6H 00050H bytes from d:\msvc\lib\mdllcew.lib (.\cfout.asm)
+           at offset 01126H 0002AH bytes from d:\msvc\lib\mdllcew.lib (freelist.asm)
+           at offset 01150H 00034H bytes from d:\msvc\lib\mdllcew.lib (initseg.asm)
+           at offset 01184H 00036H bytes from d:\msvc\lib\mdllcew.lib (linkseg.asm)
+           at offset 011BAH 0001BH bytes from d:\msvc\lib\mdllcew.lib (strlen.asm)
+           at offset 011D6H 00020H bytes from d:\msvc\lib\mdllcew.lib (os2\hdiff.asm)
+           at offset 011F6H 00193H bytes from d:\msvc\lib\mdllcew.lib (.\x8fout.asm)
+           at offset 0138AH 00060H bytes from d:\msvc\lib\mdllcew.lib (.\cfinn.c)
+           at offset 013EAH 000F8H bytes from d:\msvc\lib\mdllcew.lib (windows\nheap.c)
+           at offset 014E2H 001B9H bytes from d:\msvc\lib\mdllcew.lib (.\x8tmul.asm)
+           at offset 0169CH 00068H bytes from d:\msvc\lib\mdllcew.lib (.\strgtod.asm)
+           at offset 01704H 00268H bytes from d:\msvc\lib\mdllcew.lib (.\strgtold.asm)
+           at offset 0196CH 00511H bytes from d:\msvc\lib\mdllcew.lib (.\tenpow.asm)
+           at offset 01E7EH 000B9H bytes from d:\msvc\lib\mdllcew.lib (.\mantold.asm)
+
+ 0001:5340 000F0H     COMDAT_SEG1            CODE 16-bit
+           at offset 00000H 00035H bytes from IADVSINK.OBJ (e:\source\xrt\excel4\iadvsink.cpp)
+           at offset 00036H 00043H bytes from IADVSINK.OBJ (e:\source\xrt\excel4\iadvsink.cpp)
+           at offset 0007AH 0002AH bytes from IADVSINK.OBJ (e:\source\xrt\excel4\iadvsink.cpp)
+           at offset 000A4H 00020H bytes from IADVSINK.OBJ (e:\source\xrt\excel4\iadvsink.cpp)
+           at offset 000C4H 00020H bytes from IADVSINK.OBJ (e:\source\xrt\excel4\iadvsink.cpp)
+           at offset 000E4H 0000CH bytes from IADVSINK.OBJ (e:\source\xrt\excel4\iadvsink.cpp)
+
+ 0002:0000 00010H     NULL                   BEGDATA 16-bit
+           at offset 00000H 00010H bytes from d:\msvc\lib\mdllcew.lib (windows\crt0.asm)
+
+ 0002:0010 00B6EH     _DATA                  DATA 16-bit
+           at offset 00000H 003DCH bytes from XRTXLL.OBJ (e:\source\xrt\excel4\xrtxll.cpp)
+           at offset 003DCH 001BAH bytes from FN.OBJ (e:\source\xrt\excel4\fn.cpp)
+           at offset 00596H 00002H bytes from FRAMEWRK.OBJ (e:\source\xrt\excel4\framewrk.c)
+           at offset 00598H 001CBH bytes from WRAPPER.OBJ (e:\source\xrt\excel4\wrapper.c)
+           at offset 00764H 001D8H bytes from DDESRV.OBJ (e:\source\xrt\excel4\ddesrv.cpp)
+           at offset 0093CH 00015H bytes from d:\msvc\lib\mdllcew.lib (windows\crt0.asm)
+           at offset 00952H 00004H bytes from d:\msvc\lib\mdllcew.lib (windows\wchkstk.asm)
+           at offset 00956H 00101H bytes from d:\msvc\lib\mdllcew.lib (ctype.asm)
+           at offset 00A58H 00014H bytes from d:\msvc\lib\mdllcew.lib (.\fltusedc.asm)
+           at offset 00A6CH 00040H bytes from d:\msvc\lib\mdllcew.lib (dos\crt0dat.asm)
+           at offset 00AACH 00004H bytes from d:\msvc\lib\mdllcew.lib (dos\crt0msg.asm)
+           at offset 00AB0H 00004H bytes from d:\msvc\lib\mdllcew.lib (fmalloc.asm)
+           at offset 00AB4H 00022H bytes from d:\msvc\lib\mdllcew.lib (cmiscdat.asm)
+           at offset 00AD6H 0000BH bytes from d:\msvc\lib\mdllcew.lib (.\cvt.c)
+           at offset 00AE2H 0000EH bytes from d:\msvc\lib\mdllcew.lib (fdata.asm)
+           at offset 00AF0H 00002H bytes from d:\msvc\lib\mdllcew.lib (growseg.asm)
+           at offset 00AF2H 00023H bytes from d:\msvc\lib\mdllcew.lib (.\cfout.asm)
+           at offset 00B16H 00049H bytes from d:\msvc\lib\mdllcew.lib (.\x8fout.asm)
+           at offset 00B60H 00004H bytes from d:\msvc\lib\mdllcew.lib (windows\nheap.c)
+           at offset 00B64H 0000AH bytes from d:\msvc\lib\mdllcew.lib (.\strgtod.asm)
+
+ 0002:0B7E 0000EH     CDATA                  DATA 16-bit
+           at offset 00000H 0000EH bytes from d:\msvc\lib\mdllcew.lib (.\fixups.asm)
+           at offset 00000H 0000EH bytes from d:\msvc\lib\mdllcew.lib (dos\crt0dat.asm)
+
+ 0002:0B8C 00000H     XIB                    DATA 16-bit
+ 0002:0B8C 00004H     XI                     DATA 16-bit
+           at offset 00000H 00004H bytes from d:\msvc\lib\mdllcew.lib (.\fltusedc.asm)
+
+ 0002:0B90 00000H     XIE                    DATA 16-bit
+ 0002:0B90 00000H     XIFB                   DATA 16-bit
+ 0002:0B90 00000H     XIF                    DATA 16-bit
+ 0002:0B90 00000H     XIFE                   DATA 16-bit
+ 0002:0B90 00000H     XPB                    DATA 16-bit
+ 0002:0B90 00000H     XP                     DATA 16-bit
+ 0002:0B90 00000H     XPE                    DATA 16-bit
+ 0002:0B90 00000H     XCB                    DATA 16-bit
+ 0002:0B90 00000H     XC                     DATA 16-bit
+ 0002:0B90 00000H     XCE                    DATA 16-bit
+ 0002:0B90 00000H     XCFB                   DATA 16-bit
+ 0002:0B90 00000H     XCFCRT                 DATA 16-bit
+ 0002:0B90 00000H     XCF                    DATA 16-bit
+ 0002:0B90 00000H     XCFE                   DATA 16-bit
+ 0002:0B90 00000H     XIFCB                  DATA 16-bit
+ 0002:0B90 00000H     XIFU                   DATA 16-bit
+ 0002:0B90 00000H     XIFL                   DATA 16-bit
+ 0002:0B90 00000H     XIFM                   DATA 16-bit
+ 0002:0B90 00000H     XIFCE                  DATA 16-bit
+ 0002:0B90 00000H     DBDATA                 DATA 16-bit
+ 0002:0B90 00020H     CONST                  CONST 16-bit
+           at offset 00000H 00008H bytes from XRTXLL.OBJ (e:\source\xrt\excel4\xrtxll.cpp)
+           at offset 00008H 00010H bytes from FN.OBJ (e:\source\xrt\excel4\fn.cpp)
+           at offset 00018H 00008H bytes from d:\msvc\lib\mdllcew.lib (.\cvt.c)
+
+ 0002:0BB0 00008H     HDR                    MSG 16-bit
+           at offset 00000H 00008H bytes from d:\msvc\lib\mdllcew.lib (dos\nmsghdr.asm)
+
+ 0002:0BB8 0037CH     MSG                    MSG 16-bit
+           at offset 00000H 00028H bytes from d:\msvc\lib\mdllcew.lib (purevirt.asm)
+           at offset 00028H 000A5H bytes from d:\msvc\lib\mdllcew.lib (dos\crt0msg.asm)
+           at offset 000CDH 00280H bytes from d:\msvc\lib\mdllcew.lib (.\cfpsig.asm)
+           at offset 0034DH 0002FH bytes from d:\msvc\lib\mdllcew.lib (crt0fp.asm)
+
+ 0002:0F34 00002H     PAD                    MSG 16-bit
+           at offset 00000H 00002H bytes from d:\msvc\lib\mdllcew.lib (purevirt.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\mdllcew.lib (dos\crt0msg.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\mdllcew.lib (dos\nmsghdr.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\mdllcew.lib (crt0fp.asm)
+
+ 0002:0F36 00001H     EPAD                   MSG 16-bit
+           at offset 00000H 00001H bytes from d:\msvc\lib\mdllcew.lib (dos\nmsghdr.asm)
+
+ 0002:0F38 002EAH     _BSS                   BSS 16-bit
+           at offset 00000H 00048H bytes from XRTXLL.OBJ (e:\source\xrt\excel4\xrtxll.cpp)
+           at offset 00048H 00280H bytes from FN.OBJ (e:\source\xrt\excel4\fn.cpp)
+           at offset 002C8H 00010H bytes from WRAPPER.OBJ (e:\source\xrt\excel4\wrapper.c)
+           at offset 002D8H 00002H bytes from d:\msvc\lib\mdllcew.lib (.\cvt.c)
+           at offset 002DAH 00010H bytes from d:\msvc\lib\mdllcew.lib (.\cfinn.c)
+
+ 0002:1222 00000H     XOB                    BSS 16-bit
+ 0002:1222 00000H     XO                     BSS 16-bit
+ 0002:1222 00000H     XOE                    BSS 16-bit
+ 0002:1222 00000H     XOFB                   BSS 16-bit
+ 0002:1222 00000H     XOF                    BSS 16-bit
+ 0002:1222 00000H     XOFE                   BSS 16-bit
+ 0002:1230 00408H     c_common               BSS 16-bit
+
+ Origin   Group
+ 0002:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0001:1DB6 ?AddRef@CImpIAdviseSink@@VEAKXZ  ?AddRef@CImpIAdviseSink@@VEAKXZ
+ 0001:1F40 ?OnClose@CImpIAdviseSink@@VEAXXZ  ?OnClose@CImpIAdviseSink@@VEAXXZ
+ 0001:1E78 ?OnDataChange@CImpIAdviseSink@@VEAXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z  ?OnDataChange@CImpIAdviseSink@@VEAXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+ 0001:1EFC ?OnRename@CImpIAdviseSink@@VEAXPEUIMoniker@@@Z  ?OnRename@CImpIAdviseSink@@VEAXPEUIMoniker@@@Z
+ 0001:1F1E ?OnSave@CImpIAdviseSink@@VEAXXZ  ?OnSave@CImpIAdviseSink@@VEAXXZ
+ 0001:1EDA ?OnViewChange@CImpIAdviseSink@@VEAXKJ@Z  ?OnViewChange@CImpIAdviseSink@@VEAXKJ@Z
+ 0001:1D10 ?QueryInterface@CImpIAdviseSink@@VEAPEXAFUGUID@@PEPEX@Z  ?QueryInterface@CImpIAdviseSink@@VEAPEXAFUGUID@@PEPEX@Z
+ 0001:1DEA ?Release@CImpIAdviseSink@@VEAKXZ  ?Release@CImpIAdviseSink@@VEAKXZ
+ 0001:0A82 fnTimer                 fnTimer
+ 0001:2320 fnWrapperCallback       fnWrapperCallback
+ 0001:0104 WEP                     WEP
+ 0001:0826 xlAddInManagerInfo      xlAddInManagerInfo
+ 0001:0786 xlAutoAdd               xlAutoAdd
+ 0001:050E xlAutoClose             xlAutoClose
+ 0001:0242 xlAutoOpen              xlAutoOpen
+ 0001:0618 xlAutoRegister          xlAutoRegister
+ 0001:07D6 xlAutoRemove            xlAutoRemove
+ 0001:095A XRTCreateObject         XRTCreateObject
+ 0001:0A40 XRTDestroyObject        XRTDestroyObject
+ 0001:089E XRTExit                 XRTExit
+ 0001:181A XRTInfo                 XRTInfo
+ 0001:1682 XRTItemName             XRTItemName
+ 0001:1118 XRTOnData               XRTOnData
+ 0001:11E0 XRTQuote                XRTQuote
+ 0001:11AE XRTSetRange             XRTSetRange
+ 0001:41F6 ___ExportedStub         ___ExportedStub
+
+  Address         Publics by Name
+
+ 0001:4644       $i8_output
+ 0001:4A5E       $i8_tpwr10
+ 0001:1CAA       ??0CImpIAdviseSink@@REC@XZ
+                    public: __far __pascal CImpIAdviseSink::CImpIAdviseSink(void)__far
+
+ 0001:5340       ??0IAdviseSink@@REC@XZ
+                    public: __far __pascal IAdviseSink::IAdviseSink(void)__far
+
+ 0001:53BA       ??0IUnknown@@REC@XZ
+                    public: __far __pascal IUnknown::IUnknown(void)__far
+
+ 0001:1CE8       ??1CImpIAdviseSink@@REC@XZ
+                    public: __far __pascal CImpIAdviseSink::~CImpIAdviseSink(void)__far
+
+ 0001:355A       ??2@ZAPEXI@Z
+                    void __far* __far __cdecl operator new(unsigned int)
+
+ 0001:3548       ??3@ZAXPEX@Z
+                    void __far __cdecl operator delete(void __far*)
+
+ 0001:53E4       ??_7CImpIAdviseSink@@6B@
+                    const __near CImpIAdviseSink::`vftable'
+
+ 0001:5404       ??_7IAdviseSink@@6B@
+                    const __near IAdviseSink::`vftable'
+
+ 0001:5424       ??_7IUnknown@@6B@
+                    const __near IUnknown::`vftable'
+
+ 0001:5376       ??_GCImpIAdviseSink@@RECPEXI@Z
+                    public: void __far* __far __pascal CImpIAdviseSink::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:1DB6       ?AddRef@CImpIAdviseSink@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CImpIAdviseSink::AddRef(void)__far
+
+ 0002:07A8       ?DDEFormats@@3QAU_DDEFORMATTBL@@A
+                    struct _DDEFORMATTBL __near* __near DDEFormats
+
+ 0002:07DC       ?DDEItems@@3QAU_DDEITEMTBL@@A
+                    struct _DDEITEMTBL __near* __near DDEItems
+
+ 0002:07F6       ?DDETopics@@3QAU_DDETOPICTBL@@A
+                    struct _DDETOPICTBL __near* __near DDETopics
+
+ 0001:1434       ?GetQuoteInfo@@ZAPEUxloper@@HPEU1@PEUtagXRTSTOCKS@@@Z
+                    struct xloper __far* __far __cdecl GetQuoteInfo(int,struct xloper __far*,struct tagXRTSTOCKS __far*)
+
+ 0001:0F34       ?GotData@@ZAPEXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+                    void __far* __far __cdecl GotData(struct tagFORMATETC __far*,struct tagSTGMEDIUM __far*)
+
+ 0002:0412       ?g_dwAdvConn@@3KA
+                    unsigned long __near g_dwAdvConn
+
+ 0002:0416       ?g_dwUpdateCount@@3KA
+                    unsigned long __near g_dwUpdateCount
+
+ 0002:0822       ?g_fServerCreated@@3HA
+                    int __near g_fServerCreated
+
+ 0002:0F38       ?g_hinst@@3IA
+                    unsigned int __near g_hinst
+
+ 0002:0032       ?g_hinstXL@@3IA
+                    unsigned int __near g_hinstXL
+
+ 0002:0030       ?g_hwndXL@@3IA
+                    unsigned int __near g_hwndXL
+
+ 0002:081E       ?g_idInst@@3KA
+                    unsigned long __near g_idInst
+
+ 0002:041A       ?g_lpUpdateList@@3PEUtagXRTSTOCKS@@E
+                    struct tagXRTSTOCKS __far* __far g_lpUpdateList
+
+ 0002:040E       ?g_pAdviseSink@@3PEUIAdviseSink@@E
+                    struct IAdviseSink __far* __far g_pAdviseSink
+
+ 0002:040A       ?g_pDataObject@@3PEUIDataObject@@E
+                    struct IDataObject __far* __far g_pDataObject
+
+ 0002:0F8A       ?g_pxColumnList@@3PEUxloper@@E
+                    struct xloper __far* __far g_pxColumnList
+
+ 0002:0F8E       ?g_pxRowList@@3PEUxloper@@E
+                    struct xloper __far* __far g_pxRowList
+
+ 0002:041E       ?g_timerid@@3IA
+                    unsigned int __near g_timerid
+
+ 0002:0F92       ?g_xlmrefRange@@3Uxlmref@@A
+                    struct xlmref __near g_xlmrefRange
+
+ 0002:0408       ?g_xrtCF_XRTSTOCKS@@3IA
+                    unsigned int __near g_xrtCF_XRTSTOCKS
+
+ 0002:0F80       ?g_xUpdateTable@@3Uxloper@@A
+                    struct xloper __near g_xUpdateTable
+
+ 0001:0ADE       ?InitXRTObject@@ZAPEXPED@Z
+                    void __far* __far __cdecl InitXRTObject(char __far*)
+
+ 0001:3260       ?KillDDEServer@@ZCHXZ
+                    int __far __pascal KillDDEServer(void)
+
+ 0001:0138       ?lpstricmp@@ZCHPED0@Z
+                    int __far __pascal lpstricmp(char __far*,char __far*)
+
+ 0001:1F40       ?OnClose@CImpIAdviseSink@@VEAXXZ
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnClose(void)__far
+
+ 0001:1E78       ?OnDataChange@CImpIAdviseSink@@VEAXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnDataChange(struct tagFORMATETC __far*,struct tagSTGMEDIUM __far*)__far
+
+ 0001:1EFC       ?OnRename@CImpIAdviseSink@@VEAXPEUIMoniker@@@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnRename(struct IMoniker __far*)__far
+
+ 0001:1F1E       ?OnSave@CImpIAdviseSink@@VEAXXZ
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnSave(void)__far
+
+ 0001:1EDA       ?OnViewChange@CImpIAdviseSink@@VEAXKJ@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnViewChange(unsigned long,long)__far
+
+ 0001:32C2       ?PostDDEServer@@ZCXXZ
+                    void __far __pascal PostDDEServer(void)
+
+ 0001:1D10       ?QueryInterface@CImpIAdviseSink@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CImpIAdviseSink::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:1DEA       ?Release@CImpIAdviseSink@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CImpIAdviseSink::Release(void)__far
+
+ 0001:3352       ?RequestDDEData@@ZCKK@Z
+                    unsigned long __far __pascal RequestDDEData(unsigned long)
+
+ 0002:080E       ?ServiceInfo@@3QAU_DDESERVICETBL@@A
+                    struct _DDESERVICETBL __near* __near ServiceInfo
+
+ 0001:319E       ?SetupDDEServer@@ZCHXZ
+                    int __far __pascal SetupDDEServer(void)
+
+ 0001:0E26       ?UnInitXRTObject@@ZAPEXXZ
+                    void __far* __far __cdecl UnInitXRTObject(void)
+
+ 0000:0000  Imp  CLSIDFROMPROGID      (COMPOBJ.61)
+ 0000:0000  Imp  COGETCLASSOBJECT     (COMPOBJ.7)
+ 0000:0000  Imp  COINITIALIZE         (COMPOBJ.2)
+ 0000:0000  Imp  COUNINITIALIZE       (COMPOBJ.3)
+ 0000:0000  Imp  DDEACCESSDATA        (DDEML.17)
+ 0000:0000  Imp  DDEADDDATA           (DDEML.15)
+ 0000:0000  Imp  DDECMPSTRINGHANDLES  (DDEML.36)
+ 0000:0000  Imp  DDECREATEDATAHANDLE  (DDEML.14)
+ 0000:0000  Imp  DDECREATESTRINGHANDLE (DDEML.21)
+ 0000:0000  Imp  DDEFREEDATAHANDLE    (DDEML.19)
+ 0000:0000  Imp  DDEFREESTRINGHANDLE  (DDEML.22)
+ 0000:0000  Imp  DDEGETLASTERROR      (DDEML.20)
+ 0000:0000  Imp  DDEINITIALIZE        (DDEML.2)
+ 0000:0000  Imp  DDENAMESERVICE       (DDEML.27)
+ 0000:0000  Imp  DDEPOSTADVISE        (DDEML.13)
+ 0000:0000  Imp  DDEUNACCESSDATA      (DDEML.18)
+ 0000:0000  Imp  DDEUNINITIALIZE      (DDEML.3)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  EXCEL4V              (XLCALL.3)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:FE32  Abs  FIARQQ
+ 0000:0E32  Abs  FICRQQ
+ 0000:5C32  Abs  FIDRQQ
+ 0000:1632  Abs  FIERQQ
+ 0000:0632  Abs  FISRQQ
+ 0000:A23D  Abs  FIWRQQ
+ 0000:4000  Abs  FJARQQ
+ 0000:C000  Abs  FJCRQQ
+ 0000:8000  Abs  FJSRQQ
+ 0000:0000  Imp  FNASSERT             (COMPOBJ.75)
+ 0001:0A82       fnTimer
+ 0001:2320       fnWrapperCallback
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALHANDLE         (KERNEL.21)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0001:1F62       INITIALIZEDDE
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  ISEQUALGUID          (COMPOBJ.18)
+ 0001:0000       LIBMAIN
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  LSTRCPYN             (KERNEL.353)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  pLocalHeap
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0001:2220       REALLYUNINITIALIZEDDE
+ 0000:0000  Imp  REGISTERCLIPBOARDFORMAT (USER.145)
+ 0000:0000  Imp  RELEASESTGMEDIUM     (OLE2.32)
+ 0002:0004       rsrvptrs
+ 0001:2D24       SYSREQFORMATS
+ 0001:29E0       SYSREQSYSITEMS
+ 0001:28B8       SYSREQTOPICS
+ 0001:21D0       UNINITIALIZEDDE
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0001:0104       WEP
+ 0001:0826       xlAddInManagerInfo
+ 0001:0786       xlAutoAdd
+ 0001:050E       xlAutoClose
+ 0001:0242       xlAutoOpen
+ 0001:0618       xlAutoRegister
+ 0001:07D6       xlAutoRemove
+ 0001:095A       XRTCreateObject
+ 0001:0A40       XRTDestroyObject
+ 0001:089E       XRTExit
+ 0001:181A       XRTInfo
+ 0001:1682       XRTItemName
+ 0001:1118       XRTOnData
+ 0001:11E0       XRTQuote
+ 0001:11AE       XRTSetRange
+ 0001:2E3A       _AddReqFormat
+ 0002:095B       _aseghi
+ 0002:0959       _aseglo
+ 0001:4288       _atof
+ 0001:1C9A       _CLSID_XRTDataObject
+ 0001:24CC       _DoCallback
+ 0001:2FE6       _DoWildConnect
+ 0002:0F38       _edata
+ 0002:1638       _end
+ 0002:0A8A       _errno
+ 0001:18DC       _Excel
+ 0000:0000  Imp  _Excel4              (XLCALL.2)
+ 0001:18C4       _FreeAllTempMemory
+ 0001:224A       _FreeHszs
+ 0001:2168       _GetFormat
+ 0001:1864       _GetTempMemory
+ 0000:0000  Imp  _IID_IAdviseSink     (OLE2.135)
+ 0000:0000  Imp  _IID_IClassFactory   (COMPOBJ.39)
+ 0000:0000  Imp  _IID_IDataObject     (OLE2.134)
+ 0000:0000  Imp  _IID_IUnknown        (COMPOBJ.38)
+ 0001:1C82       _InitFramework
+ 0001:2002       _InitHszs
+ 0001:2F12       _ReqFormats
+ 0001:2A14       _ReqItems
+ 0002:06DA       _SSI
+ 0002:05E6       _StdFmts
+ 0002:06CA       _StdSvc
+ 0002:063C       _StdSvcSystopicFormatsFormats
+ 0002:0672       _StdSvcSystopicItems
+ 0002:0626       _StdSvcSystopicSysitemsFormats
+ 0002:0610       _StdSvcSystopicTopicsFormats
+ 0002:094C       _STKHQQ
+ 0001:45BA       _strlen
+ 0002:05A8       _tab
+ 0001:1BAC       _TempActiveCell
+ 0001:1C04       _TempActiveColumn
+ 0001:1AFE       _TempActiveRef
+ 0001:1BDC       _TempActiveRow
+ 0001:19E8       _TempBool
+ 0001:1AA6       _TempErr
+ 0001:1A4E       _TempInt
+ 0001:1C34       _TempMissing
+ 0001:1914       _TempNum
+ 0001:1972       _TempStr
+ 0002:1230       _vMemBlock
+ 0002:05A6       _vOffsetMemBlock
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0002:0962       __aaltstkovr
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0002:0ABC       __adbgmsg
+ 0000:D6D6  Abs  __aDBused
+ 0001:45D6       __aFahdiff
+ 0001:350E       __aFchkstk
+ 0001:3646       __aFfcmp
+ 0001:3675       __aFfcompp
+ 0001:3570       __aFulshr
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0000:0000  Imp  __AHSHIFT            (KERNEL.113)
+ 0002:0A7C       __aintdiv
+ 0002:0B00       __amblksiz
+ 0001:3864       __amsg_exit
+ 0001:34EE       __aNchkstk
+ 0002:0AE4       __asizeC
+ 0002:0AE5       __asizeD
+ 0001:3444       __astart
+ 0001:3722       __cexit
+ 0001:3F06       __cfltcvt
+ 0002:0AC4       __cfltcvt_tab
+ 0001:3AF8       __cftoe
+ 0001:3CAE       __cftof
+ 0001:3E30       __cftog
+ 0002:0AB9       __child
+ 0001:350E       __chkstk
+ 0001:36DA       __cinit
+ 0001:385A       __cintDIV
+ 0002:0A95       __cpumode
+ 0001:39F4       __cropzeros
+ 0001:3781       __ctermsub
+ 0002:0966       __ctype
+ 0002:0966       __ctype_
+ 0001:3733       __c_exit
+ 0002:0958       __dllinit
+ 0002:0A96       __doserrno
+ 0002:0F38       __edata
+ 0002:1638       __end
+ 0002:0AB2       __environ
+ 0002:0ABB       __exitflag
+ 0002:0A80       __fac
+ 0001:3AAE       __fassign
+ 0001:3646       __fcmp
+ 0001:3675       __fcompp
+ 0001:38B6       __ffree
+ 0001:37BE       __FF_MSGBANNER
+ 0002:0AF2       __fheap
+ 0001:41A1       __findlast
+ 0001:478A       __fltin
+ 0001:44D6       __fltout
+ 0000:9876  Abs  __fltused
+ 0001:38D7       __fmalloc
+ 0001:357C       __fmemcpy
+ 0001:440C       __fmemmove
+ 0001:43C4       __fmemset
+ 0001:397E       __forcdecpt
+ 0002:0B80       __fpinit
+ 0000:0000  Imp  __fpmath             (WIN87EM.1)
+ 0001:3FA8       __fpsignal
+ 0000:9876  Abs  __fptaskdata
+ 0001:42D4       __fptostr
+ 0001:41C2       __fptrap
+ 0001:356A       __fpurecall
+ 0001:409C       __freefarheap
+ 0001:4526       __freelist
+ 0001:4388       __fstrcpy
+ 0001:436E       __fstrlen
+ 0001:35DA       __fstrstr
+ 0001:38A6       __GetDGROUP
+ 0001:40AA       __growseg
+ 0002:094E       __hModule
+ 0001:413B       __incseg
+ 0001:4550       __initseg
+ 0001:50F9       __LD12MULT
+ 0001:5024       __LD12MULTTENPOWER
+ 0001:4584       __linkseg
+ 0002:0954       __lpszCmdLine
+ 0001:527E       __MANTOLD12
+ 0002:1630       __mbac
+ 0001:41C8       __myalloc
+ 0001:420A       __nearstub
+ 0001:401A       __newseg
+ 0002:0A98       __nfile
+ 0001:4846       __nfree
+ 0001:47EA       __nmalloc
+ 0001:3FCC       __NMSG_TEXT
+ 0001:4003       __NMSG_WRITE
+ 0001:48CE       __nmsize
+ 0001:34D5       __nomain
+ 0001:356A       __npurecall
+ 0001:4860       __nrealloc
+ 0002:0A96       __oserr
+ 0002:0A9A       __osfile
+ 0002:0A91       __osmajor
+ 0002:0A90       __osminor
+ 0002:0A94       __osmode
+ 0002:0A90       __osver
+ 0002:0A92       __osversion
+ 0002:0AB4       __pgmptr
+ 0002:0AC0       __pnhFarHeap
+ 0002:0B70       __pnhNearHeap
+ 0001:3A78       __positive
+ 0001:356A       __purecall
+ 0001:420C       __searchseg
+ 0001:37E2       __setenvp
+ 0002:0AE2       __sigintoff
+ 0002:0AE0       __sigintseg
+ 0000:0001  Abs  __sizec
+ 0000:0000  Abs  __sized
+ 0001:4A9C       __STRINGTOD
+ 0001:4B04       __STRINGTOLD
+ 0001:36AE       __stubmain
+ 0002:0A8C       __umaskval
+ 0002:0950       __wDataSeg
+ 0001:3400       __wflags
+ 0002:0952       __wHeapSize
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0002:0A8F       __winmajor
+ 0002:0A8E       __winminor
+ 0002:0A8E       __winver
+ 0002:095F       ___aDBrterr
+ 0002:095D       ___aDBswpflg
+ 0002:0AAE       ___argc
+ 0002:0AB0       ___argv
+ 0001:41F6       ___ExportedStub
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  CLSIDFROMPROGID      (COMPOBJ.61)
+ 0000:0000  Imp  DDECMPSTRINGHANDLES  (DDEML.36)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  REGISTERCLIPBOARDFORMAT (USER.145)
+ 0000:0000  Imp  RELEASESTGMEDIUM     (OLE2.32)
+ 0000:0000  Imp  _IID_IClassFactory   (COMPOBJ.39)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  DDECREATEDATAHANDLE  (DDEML.14)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  COUNINITIALIZE       (COMPOBJ.3)
+ 0000:0000  Imp  __fpmath             (WIN87EM.1)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  __AHSHIFT            (KERNEL.113)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  DDEFREEDATAHANDLE    (DDEML.19)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  _Excel4              (XLCALL.2)
+ 0000:0000  Imp  EXCEL4V              (XLCALL.3)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  DDEINITIALIZE        (DDEML.2)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  ISEQUALGUID          (COMPOBJ.18)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  DDEACCESSDATA        (DDEML.17)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  DDENAMESERVICE       (DDEML.27)
+ 0000:0000  Imp  _IID_IUnknown        (COMPOBJ.38)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0000  Imp  DDEGETLASTERROR      (DDEML.20)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  LSTRCPYN             (KERNEL.353)
+ 0000:0000  Imp  FNASSERT             (COMPOBJ.75)
+ 0000:0000  Imp  DDEUNINITIALIZE      (DDEML.3)
+ 0000:0000  Imp  DDECREATESTRINGHANDLE (DDEML.21)
+ 0000:0000  Imp  COINITIALIZE         (COMPOBJ.2)
+ 0000:0000  Imp  _IID_IAdviseSink     (OLE2.135)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  DDEFREESTRINGHANDLE  (DDEML.22)
+ 0000:0000  Imp  DDEADDDATA           (DDEML.15)
+ 0000:0000  Abs  __sized
+ 0000:0000  Imp  GLOBALHANDLE         (KERNEL.21)
+ 0000:0000  Imp  _IID_IDataObject     (OLE2.134)
+ 0000:0000  Imp  DDEPOSTADVISE        (DDEML.13)
+ 0000:0000  Imp  DDEUNACCESSDATA      (DDEML.18)
+ 0000:0000  Imp  COGETCLASSOBJECT     (COMPOBJ.7)
+ 0000:0001  Abs  __sizec
+ 0000:0006  Abs  pLocalHeap
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:0632  Abs  FISRQQ
+ 0000:0E32  Abs  FICRQQ
+ 0000:1632  Abs  FIERQQ
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __fltused
+ 0000:9876  Abs  __acrtmsg
+ 0000:D6D6  Abs  __aDBused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0000       LIBMAIN
+ 0001:0104       WEP
+ 0001:0138       ?lpstricmp@@ZCHPED0@Z
+                    int __far __pascal lpstricmp(char __far*,char __far*)
+
+ 0001:0242       xlAutoOpen
+ 0001:050E       xlAutoClose
+ 0001:0618       xlAutoRegister
+ 0001:0786       xlAutoAdd
+ 0001:07D6       xlAutoRemove
+ 0001:0826       xlAddInManagerInfo
+ 0001:089E       XRTExit
+ 0001:095A       XRTCreateObject
+ 0001:0A40       XRTDestroyObject
+ 0001:0A82       fnTimer
+ 0001:0ADE       ?InitXRTObject@@ZAPEXPED@Z
+                    void __far* __far __cdecl InitXRTObject(char __far*)
+
+ 0001:0E26       ?UnInitXRTObject@@ZAPEXXZ
+                    void __far* __far __cdecl UnInitXRTObject(void)
+
+ 0001:0F34       ?GotData@@ZAPEXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+                    void __far* __far __cdecl GotData(struct tagFORMATETC __far*,struct tagSTGMEDIUM __far*)
+
+ 0001:1118       XRTOnData
+ 0001:11AE       XRTSetRange
+ 0001:11E0       XRTQuote
+ 0001:1434       ?GetQuoteInfo@@ZAPEUxloper@@HPEU1@PEUtagXRTSTOCKS@@@Z
+                    struct xloper __far* __far __cdecl GetQuoteInfo(int,struct xloper __far*,struct tagXRTSTOCKS __far*)
+
+ 0001:1682       XRTItemName
+ 0001:181A       XRTInfo
+ 0001:1864       _GetTempMemory
+ 0001:18C4       _FreeAllTempMemory
+ 0001:18DC       _Excel
+ 0001:1914       _TempNum
+ 0001:1972       _TempStr
+ 0001:19E8       _TempBool
+ 0001:1A4E       _TempInt
+ 0001:1AA6       _TempErr
+ 0001:1AFE       _TempActiveRef
+ 0001:1BAC       _TempActiveCell
+ 0001:1BDC       _TempActiveRow
+ 0001:1C04       _TempActiveColumn
+ 0001:1C34       _TempMissing
+ 0001:1C82       _InitFramework
+ 0001:1C9A       _CLSID_XRTDataObject
+ 0001:1CAA       ??0CImpIAdviseSink@@REC@XZ
+                    public: __far __pascal CImpIAdviseSink::CImpIAdviseSink(void)__far
+
+ 0001:1CE8       ??1CImpIAdviseSink@@REC@XZ
+                    public: __far __pascal CImpIAdviseSink::~CImpIAdviseSink(void)__far
+
+ 0001:1D10       ?QueryInterface@CImpIAdviseSink@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CImpIAdviseSink::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:1DB6       ?AddRef@CImpIAdviseSink@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CImpIAdviseSink::AddRef(void)__far
+
+ 0001:1DEA       ?Release@CImpIAdviseSink@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CImpIAdviseSink::Release(void)__far
+
+ 0001:1E78       ?OnDataChange@CImpIAdviseSink@@VEAXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnDataChange(struct tagFORMATETC __far*,struct tagSTGMEDIUM __far*)__far
+
+ 0001:1EDA       ?OnViewChange@CImpIAdviseSink@@VEAXKJ@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnViewChange(unsigned long,long)__far
+
+ 0001:1EFC       ?OnRename@CImpIAdviseSink@@VEAXPEUIMoniker@@@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnRename(struct IMoniker __far*)__far
+
+ 0001:1F1E       ?OnSave@CImpIAdviseSink@@VEAXXZ
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnSave(void)__far
+
+ 0001:1F40       ?OnClose@CImpIAdviseSink@@VEAXXZ
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnClose(void)__far
+
+ 0001:1F62       INITIALIZEDDE
+ 0001:2002       _InitHszs
+ 0001:2168       _GetFormat
+ 0001:21D0       UNINITIALIZEDDE
+ 0001:2220       REALLYUNINITIALIZEDDE
+ 0001:224A       _FreeHszs
+ 0001:2320       fnWrapperCallback
+ 0001:24CC       _DoCallback
+ 0001:28B8       SYSREQTOPICS
+ 0001:29E0       SYSREQSYSITEMS
+ 0001:2A14       _ReqItems
+ 0001:2D24       SYSREQFORMATS
+ 0001:2E3A       _AddReqFormat
+ 0001:2F12       _ReqFormats
+ 0001:2FE6       _DoWildConnect
+ 0001:319E       ?SetupDDEServer@@ZCHXZ
+                    int __far __pascal SetupDDEServer(void)
+
+ 0001:3260       ?KillDDEServer@@ZCHXZ
+                    int __far __pascal KillDDEServer(void)
+
+ 0001:32C2       ?PostDDEServer@@ZCXXZ
+                    void __far __pascal PostDDEServer(void)
+
+ 0001:3352       ?RequestDDEData@@ZCKK@Z
+                    unsigned long __far __pascal RequestDDEData(unsigned long)
+
+ 0001:3400       __wflags
+ 0001:3444       __astart
+ 0001:34D5       __nomain
+ 0001:34EE       __aNchkstk
+ 0001:350E       __aFchkstk
+ 0001:350E       __chkstk
+ 0001:3548       ??3@ZAXPEX@Z
+                    void __far __cdecl operator delete(void __far*)
+
+ 0001:355A       ??2@ZAPEXI@Z
+                    void __far* __far __cdecl operator new(unsigned int)
+
+ 0001:356A       __npurecall
+ 0001:356A       __fpurecall
+ 0001:356A       __purecall
+ 0001:3570       __aFulshr
+ 0001:357C       __fmemcpy
+ 0001:35DA       __fstrstr
+ 0001:3646       __aFfcmp
+ 0001:3646       __fcmp
+ 0001:3675       __fcompp
+ 0001:3675       __aFfcompp
+ 0001:36AE       __stubmain
+ 0001:36DA       __cinit
+ 0001:3722       __cexit
+ 0001:3733       __c_exit
+ 0001:3781       __ctermsub
+ 0001:37BE       __FF_MSGBANNER
+ 0001:37E2       __setenvp
+ 0001:385A       __cintDIV
+ 0001:3864       __amsg_exit
+ 0001:38A6       __GetDGROUP
+ 0001:38B6       __ffree
+ 0001:38D7       __fmalloc
+ 0001:397E       __forcdecpt
+ 0001:39F4       __cropzeros
+ 0001:3A78       __positive
+ 0001:3AAE       __fassign
+ 0001:3AF8       __cftoe
+ 0001:3CAE       __cftof
+ 0001:3E30       __cftog
+ 0001:3F06       __cfltcvt
+ 0001:3FA8       __fpsignal
+ 0001:3FCC       __NMSG_TEXT
+ 0001:4003       __NMSG_WRITE
+ 0001:401A       __newseg
+ 0001:409C       __freefarheap
+ 0001:40AA       __growseg
+ 0001:413B       __incseg
+ 0001:41A1       __findlast
+ 0001:41C2       __fptrap
+ 0001:41C8       __myalloc
+ 0001:41F6       ___ExportedStub
+ 0001:420A       __nearstub
+ 0001:420C       __searchseg
+ 0001:4288       _atof
+ 0001:42D4       __fptostr
+ 0001:436E       __fstrlen
+ 0001:4388       __fstrcpy
+ 0001:43C4       __fmemset
+ 0001:440C       __fmemmove
+ 0001:44D6       __fltout
+ 0001:4526       __freelist
+ 0001:4550       __initseg
+ 0001:4584       __linkseg
+ 0001:45BA       _strlen
+ 0001:45D6       __aFahdiff
+ 0001:4644       $i8_output
+ 0001:478A       __fltin
+ 0001:47EA       __nmalloc
+ 0001:4846       __nfree
+ 0001:4860       __nrealloc
+ 0001:48CE       __nmsize
+ 0001:4A5E       $i8_tpwr10
+ 0001:4A9C       __STRINGTOD
+ 0001:4B04       __STRINGTOLD
+ 0001:5024       __LD12MULTTENPOWER
+ 0001:50F9       __LD12MULT
+ 0001:527E       __MANTOLD12
+ 0001:5340       ??0IAdviseSink@@REC@XZ
+                    public: __far __pascal IAdviseSink::IAdviseSink(void)__far
+
+ 0001:5376       ??_GCImpIAdviseSink@@RECPEXI@Z
+                    public: void __far* __far __pascal CImpIAdviseSink::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:53BA       ??0IUnknown@@REC@XZ
+                    public: __far __pascal IUnknown::IUnknown(void)__far
+
+ 0001:53E4       ??_7CImpIAdviseSink@@6B@
+                    const __near CImpIAdviseSink::`vftable'
+
+ 0001:5404       ??_7IAdviseSink@@6B@
+                    const __near IAdviseSink::`vftable'
+
+ 0001:5424       ??_7IUnknown@@6B@
+                    const __near IUnknown::`vftable'
+
+ 0002:0004       rsrvptrs
+ 0002:0030       ?g_hwndXL@@3IA
+                    unsigned int __near g_hwndXL
+
+ 0002:0032       ?g_hinstXL@@3IA
+                    unsigned int __near g_hinstXL
+
+ 0002:0408       ?g_xrtCF_XRTSTOCKS@@3IA
+                    unsigned int __near g_xrtCF_XRTSTOCKS
+
+ 0002:040A       ?g_pDataObject@@3PEUIDataObject@@E
+                    struct IDataObject __far* __far g_pDataObject
+
+ 0002:040E       ?g_pAdviseSink@@3PEUIAdviseSink@@E
+                    struct IAdviseSink __far* __far g_pAdviseSink
+
+ 0002:0412       ?g_dwAdvConn@@3KA
+                    unsigned long __near g_dwAdvConn
+
+ 0002:0416       ?g_dwUpdateCount@@3KA
+                    unsigned long __near g_dwUpdateCount
+
+ 0002:041A       ?g_lpUpdateList@@3PEUtagXRTSTOCKS@@E
+                    struct tagXRTSTOCKS __far* __far g_lpUpdateList
+
+ 0002:041E       ?g_timerid@@3IA
+                    unsigned int __near g_timerid
+
+ 0002:05A6       _vOffsetMemBlock
+ 0002:05A8       _tab
+ 0002:05E6       _StdFmts
+ 0002:0610       _StdSvcSystopicTopicsFormats
+ 0002:0626       _StdSvcSystopicSysitemsFormats
+ 0002:063C       _StdSvcSystopicFormatsFormats
+ 0002:0672       _StdSvcSystopicItems
+ 0002:06CA       _StdSvc
+ 0002:06DA       _SSI
+ 0002:07A8       ?DDEFormats@@3QAU_DDEFORMATTBL@@A
+                    struct _DDEFORMATTBL __near* __near DDEFormats
+
+ 0002:07DC       ?DDEItems@@3QAU_DDEITEMTBL@@A
+                    struct _DDEITEMTBL __near* __near DDEItems
+
+ 0002:07F6       ?DDETopics@@3QAU_DDETOPICTBL@@A
+                    struct _DDETOPICTBL __near* __near DDETopics
+
+ 0002:080E       ?ServiceInfo@@3QAU_DDESERVICETBL@@A
+                    struct _DDESERVICETBL __near* __near ServiceInfo
+
+ 0002:081E       ?g_idInst@@3KA
+                    unsigned long __near g_idInst
+
+ 0002:0822       ?g_fServerCreated@@3HA
+                    int __near g_fServerCreated
+
+ 0002:094C       _STKHQQ
+ 0002:094E       __hModule
+ 0002:0950       __wDataSeg
+ 0002:0952       __wHeapSize
+ 0002:0954       __lpszCmdLine
+ 0002:0958       __dllinit
+ 0002:0959       _aseglo
+ 0002:095B       _aseghi
+ 0002:095D       ___aDBswpflg
+ 0002:095F       ___aDBrterr
+ 0002:0962       __aaltstkovr
+ 0002:0966       __ctype
+ 0002:0966       __ctype_
+ 0002:0A7C       __aintdiv
+ 0002:0A80       __fac
+ 0002:0A8A       _errno
+ 0002:0A8C       __umaskval
+ 0002:0A8E       __winminor
+ 0002:0A8E       __winver
+ 0002:0A8F       __winmajor
+ 0002:0A90       __osver
+ 0002:0A90       __osminor
+ 0002:0A91       __osmajor
+ 0002:0A92       __osversion
+ 0002:0A94       __osmode
+ 0002:0A95       __cpumode
+ 0002:0A96       __doserrno
+ 0002:0A96       __oserr
+ 0002:0A98       __nfile
+ 0002:0A9A       __osfile
+ 0002:0AAE       ___argc
+ 0002:0AB0       ___argv
+ 0002:0AB2       __environ
+ 0002:0AB4       __pgmptr
+ 0002:0AB9       __child
+ 0002:0ABB       __exitflag
+ 0002:0ABC       __adbgmsg
+ 0002:0AC0       __pnhFarHeap
+ 0002:0AC4       __cfltcvt_tab
+ 0002:0AE0       __sigintseg
+ 0002:0AE2       __sigintoff
+ 0002:0AE4       __asizeC
+ 0002:0AE5       __asizeD
+ 0002:0AF2       __fheap
+ 0002:0B00       __amblksiz
+ 0002:0B70       __pnhNearHeap
+ 0002:0B80       __fpinit
+ 0002:0F38       ?g_hinst@@3IA
+                    unsigned int __near g_hinst
+
+ 0002:0F38       _edata
+ 0002:0F38       __edata
+ 0002:0F80       ?g_xUpdateTable@@3Uxloper@@A
+                    struct xloper __near g_xUpdateTable
+
+ 0002:0F8A       ?g_pxColumnList@@3PEUxloper@@E
+                    struct xloper __far* __far g_pxColumnList
+
+ 0002:0F8E       ?g_pxRowList@@3PEUxloper@@E
+                    struct xloper __far* __far g_pxRowList
+
+ 0002:0F92       ?g_xlmrefRange@@3Uxlmref@@A
+                    struct xlmref __near g_xlmrefRange
+
+ 0002:1230       _vMemBlock
+ 0002:1630       __mbac
+ 0002:1638       _end
+ 0002:1638       __end
+ 0000:4000  Abs  FJARQQ
+ 0000:5C32  Abs  FIDRQQ
+ 0000:8000  Abs  FJSRQQ
+ 0000:A23D  Abs  FIWRQQ
+ 0000:C000  Abs  FJCRQQ
+ 0000:FE32  Abs  FIARQQ
+
+Program entry point at 0001:3444

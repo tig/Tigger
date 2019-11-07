@@ -1,0 +1,22 @@
+; winprt20.def : Declares the module parameters for the OLE control DLL.
+
+LIBRARY      WINPRT20
+DESCRIPTION  'WINPRT20 OLE Control DLL'
+EXETYPE      WINDOWS
+
+CODE         PRELOAD MOVEABLE DISCARDABLE
+DATA         PRELOAD MOVEABLE SINGLE
+
+HEAPSIZE     1024   ; initial heap size
+
+
+EXPORTS
+    WEP @1  RESIDENTNAME
+    DLLGETCLASSOBJECT @2  RESIDENTNAME
+	DLLREGISTERSERVER @3  RESIDENTNAME
+	DLLUNREGISTERSERVER @4  RESIDENTNAME
+
+SEGMENTS
+    WEP_TEXT FIXED
+
+;----------------------------------------------------------------------------

@@ -1,0 +1,54 @@
+#include <windows.h>
+#include "Printd.H"
+
+printdemo ICON PRINT.ICO
+
+#include "print.dlg"
+
+printdemo MENU
+BEGIN
+    POPUP       "&File"
+    BEGIN
+        MENUITEM "Select Printer...", IDM_SELECTPRINTER
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",            IDM_EXIT
+    END
+
+    POPUP       "Dev&Caps"
+    BEGIN
+        MENUITEM "&DeviceCapabilities...", IDM_DEVCAPS
+        MENUITEM "&GetDeviceCaps...", IDM_GETDEVCAPS
+    END
+    
+    
+    POPUP       "&DeviceMode"
+    BEGIN
+        MENUITEM "E&xtDeviceMode...",  IDM_EXTDEVMODE
+        MENUITEM "Device&Mode...",     IDM_DEVICEMODE
+    END
+
+    POPUP       "&Escape()"
+    BEGIN
+        MENUITEM "&Query Escape Support", IDM_QUERY
+        MENUITEM "&Configure using Escape", IDM_ESCAPECONFIG
+        MENUITEM "&Increment Bin Number", IDM_INCBIN
+        MENUITEM "&Decrement Bin Number", IDM_DECBIN
+    END
+
+    
+    POPUP     "&Print"
+    BEGIN
+        MENUITEM "With&out Banding",  IDM_PRINTNOBANDING
+        MENUITEM "&Using PASSTHROUGH", IDM_PASSTHROUGH
+        MENUITEM "With Banding",     IDM_PRINTBANDING
+    END
+
+
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About print...", IDM_ABOUT
+    END
+END
+
+
+

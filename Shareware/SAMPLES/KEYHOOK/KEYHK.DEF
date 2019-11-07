@@ -1,0 +1,56 @@
+;************************************************************************
+;*
+;*     Project:  KEYHK.DLL
+;*
+;*      Module:  KEYHK.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+LIBRARY           KEYHK
+
+DESCRIPTION       'KEYHK.DLL By Charles E. Kindel, Jr.'
+
+EXETYPE           WINDOWS
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  WEP          PRELOAD FIXED
+                  KEYHOOK      PRELOAD FIXED
+                  INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+                  KEYHK        PRELOAD MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD SINGLE
+
+HEAPSIZE          8192
+
+EXPORTS           WEP                     @2 RESIDENTNAME
+
+                  khGetVersion            @3
+                  khGethInst              @4
+                  khCheckVersion          @5
+
+                  fnKeyBoardHook          @6
+
+                  khInstallKeyHook        @9
+                  khUnInstallKeyHook      @10
+                  khGetLastWindow         @11
+
+                  khSpawnApp              @12
+                  khSetCurrentDrive       @13
+                  khSetCurrentDirectory   @14
+                  khGetCurrentDrive       @15
+                  khGetCurrentDirectory   @16
+                
+
+;/***********************************************************************
+;* End of File: KEYHK.def
+;************************************************************************
+

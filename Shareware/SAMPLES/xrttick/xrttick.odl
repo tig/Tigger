@@ -1,0 +1,101 @@
+// WOSA/XRT XRTTick Sample OLE Control Version 1.00.001
+//
+// Copyright (c) 1993-94 Microsoft Corporation, All Rights Reserved.
+//
+//      This is a part of the Microsoft Source Code Samples. 
+//      This source code is only intended as a supplement to 
+//      Microsoft Development Tools and/or WinHelp documentation.
+//      See these sources for detailed information regarding the 
+//      Microsoft samples programs.
+//
+// xrttick.odl : type library source for OLE Custom Control project.
+//
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (xrttick.tlb) that will become a resource in
+// xrttick.ocx.
+
+#include <olectl.h>
+
+[ uuid(5AABE533-DAF0-11CD-8445-00AA00339710), version(1.0),
+  helpstring("WOSA/XRT XRTTick OLE Custom Control module") ]
+library XRTTickLib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CTickCtrl
+
+	[ uuid(5AABE531-DAF0-11CD-8445-00AA00339710),
+	  helpstring("Dispatch interface for XRT Ticker Control") ]
+	dispinterface _DXRTTicker
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CTickCtrl)
+			[id(DISPID_ENABLED), bindable, requestedit] boolean Enabled;
+			[id(1)] long ScrollSpeed;
+			[id(2)] long ScrollWidth;
+			[id(3)] long MaxCacheSize;
+			[id(4)] BSTR DataObjectName;
+			[id(5)] boolean DataObjectActive;
+            [id(6)] boolean DataObjectVisible;
+            [id(7)] boolean AutoStartDataObject;
+			[id(8)] boolean CacheOn;
+			[id(9)] boolean OffsetValues;
+			[id(10)] BSTR DataObjectNameProperty;
+			[id(11)] BSTR DataObjectValueProperty;
+			[id(12)] BSTR DataObjectRequest;
+			[id(13)] IDispatch* DataObject;
+			[id(DISPID_FONT), bindable] IFontDisp* Font;
+			[id(DISPID_FORECOLOR), bindable, requestedit] OLE_COLOR ForeColor;
+			[id(DISPID_BACKCOLOR), bindable, requestedit] OLE_COLOR BackColor;
+			[id(DISPID_TEXT), bindable, requestedit] BSTR Text;
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CTickCtrl)
+			[id(14)] void Clear();
+			[id(15)] boolean StartDataObject();
+			[id(16)] boolean StopDataObject();
+			[id(17)] boolean InitializeDataObject();
+			[id(18)] void Tick(long ID, VARIANT Name, VARIANT Value);
+			[id(19)] boolean DataObjectAdvise();
+			[id(20)] boolean DataObjectUnAdvise();
+			//}}AFX_ODL_METHOD
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Event dispatch interface for CTickCtrl
+
+	[ uuid(5AABE532-DAF0-11CD-8445-00AA00339710),
+	  helpstring("Event interface for XRT Ticker Control") ]
+	dispinterface _DXRTTickerEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CTickCtrl)
+			[id(1)] void CacheOverflow();
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CTickCtrl
+
+	[ uuid(5AABE530-DAF0-11CD-8445-00AA00339710),
+	  helpstring("XRT Ticker Control") ]
+	coclass XRTTicker
+	{
+		[default] dispinterface _DXRTTicker;
+		[default, source] dispinterface _DXRTTickerEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+};

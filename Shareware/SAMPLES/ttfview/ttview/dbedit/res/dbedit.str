@@ -1,0 +1,153 @@
+/* The following strings are loaded all the time */
+STRINGTABLE PRELOAD MOVEABLE PURE DISCARDABLE
+BEGIN
+
+   /***********************
+    * Misc useful strings that are preloaded
+    ***********************/
+   IDS_APPNAME,                  "DBEdit"
+   IDS_APPTITLE,                 "Font Shopper Database Editor"
+   IDS_VERSION,                  "Version"
+   IDS_INI_FILENAME,             "DBEdit.INI"
+   IDS_DEF_SPEC,                 "FST*.*"
+
+   IDS_HEXWORD,                  "%04X"
+   IDS_HEXDWORD,                 "%08lX"
+
+   /* INI file section names */
+   IDS_INI_MAIN,                 "Options"
+
+   /* MAIN section labels */
+   IDS_INI_OPTIONS,              "Options"
+   IDS_INI_OPTIONS_SPEC,         "%d"        /* fStat */
+   IDS_DEFAULTOPT                "1"         /* fStat */
+   IDS_INI_POS,                  "Pos"
+   IDS_INI_POS_SPEC,             "%04X,%04X,%04X,%04X" /*x,y,w,h*/
+   IDS_INI_FONT,                 "Font"
+   IDS_INI_FONT_SPEC,            "%d,%s,%s"   
+   IDS_DEFAULTFONT               "8,Arial,Regular"
+   IDS_INI_WSHOW                 "Show"
+   IDS_HELPFILE,                 "DBEdit.HLP"
+
+   IDS_SAMPLE_ALPHA              "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+   IDS_SAMPLE_DIGIT              "1234567890.,;:`'&!?$"
+   IDS_SAMPLE_PANOSE             "PANOSE abegmoqst"
+
+   IDS_STAT_READY                "DBEdit Copyright © 1992 Adonis Corporation."
+
+   IDS_MNU_FILE                  "File operations"
+   IDS_MNU_FILE_NEW              "Create a new DB file in a specified directory"
+   IDS_MNU_FILE_OPEN             "Open an existing DB file and set the direcotry"
+   IDS_MNU_FILE_SAVE             "Generate current DB file under the current name"
+   IDS_MNU_FILE_SAVEAS           "Generate current DB file under a new name in a different dir."
+   IDS_MNU_FILE_EXIT             "Quits DBEdit"
+
+   IDS_MNU_OPT                   "Configure DBEdit"
+   IDS_MNU_OPT_FONT              "Selects a font for the display"
+   IDS_MNU_OPT_PREFERENCES       "Configure DBEdit"
+   IDS_MNU_OPT_STAT              "Turns the status line on or off"
+
+   IDS_MNU_HELP                  "Help on DBEdit and copyright information"
+   IDS_MNU_HELP_CONTENTS         "Help table of contents"
+   IDS_MNU_HELP_SEARCH           "Searches for a help topic"
+   IDS_MNU_HELP_ONHELP           "Gives help on using help"
+   IDS_MNU_HELP_ABOUT            "About DBEdit and copyright information"
+
+   IDS_SMNU                      " "
+   IDS_SMNU_SIZE                 "Sizes the main window"
+   IDS_SMNU_MOVE                 "Moves the main window"
+   IDS_SMNU_MINIMIZE             "Minimizes the main window to an icon"
+   IDS_SMNU_MAXIMIZE             "Maximizes the main window to the full screen size"
+   IDS_SMNU_CLOSE                "Closes the window and exits DBEdit"
+   IDS_SMNU_RESTORE              "Restores main window to previous size and position"
+   IDS_SMNU_TASKLIST             "Switches applications with the Task Manager"
+
+   IDS_BOLD                      "Bold"
+   IDS_ITALIC                    "Italic"
+   IDS_BOLDITALIC                "Bold Italic"
+   IDS_REGULAR                   "Regular"
+
+
+
+   /*
+    * Strings below here are not preloaded!
+    */
+
+   IDS_MSG_WORKING               "(working...)"
+   IDS_MSG_PRINTERONPORT,        "%s on %s"
+   IDS_MSG_PRINTING,             "Printing %s"
+   /* ErrorResBox format strings */
+   IDS_ERR_PRINTERR,             "%s while printing the file \042%s\042.\nInsure that the printer driver is installed correctly and try again."
+   IDS_ERR_PRINTERR0,            "General Print Error"  /* SP_ERROR (-1) */
+   IDS_ERR_PRINTERR1,            "Job Canceled by User" /* SP_APPABORT (-2) */
+   IDS_ERR_PRINTERR2,            "Job Canceled from Print Manager" /* SP_USERABORT (-3)*/
+   IDS_ERR_PRINTERR3,            "Out of Disk Space" /* SP_OUTOFDISK (-4) */
+   IDS_ERR_PRINTERR4,            "Out of Memory"   /* SP_OUTOFMEMORY (-5) */
+   IDS_ERR_BADPRINTERDC,         "Could not access the Printer Driver.\nCheck printer settings in the Windows Control Panel."
+   IDS_ERR_NOMEMORY,             "Not enough memory to run"
+   IDS_ERR_COMMANDLINE,          "Error Processing Command Line.\nOffending String: \042%s\042"
+   IDS_ERR_BADDLLVER             "The version of '%s' on this system is old.  DBEdit 1.0 requires version %d.00 or higher."
+   IDS_ERR_SAVECHANGES,          "Save changes before exiting?"
+
+   /* COMMDLG.DLL Errors */
+   IDS_PDERR_PRINTERCODES        "PDERR_PRINTERCODES"
+   IDS_PDERR_SETUPFAILURE        "Could not open Printer Setup Dialog Box due to a resource load failure."
+   IDS_PDERR_PARSEFAILURE        "Could not parse the [devices] section of the WIN.INI file.\nPlease verify that your WIN.INI file is valid and try again."
+   IDS_PDERR_RETDEFFAILURE       "PDERR_RETDEFFAILURE"
+   IDS_PDERR_LOADDRVFAILURE      "Could not access printer driver"
+   IDS_PDERR_GETDEVMODEFAIL      "Failed to get DEVMODE structure"
+   IDS_PDERR_INITFAILURE         "Could not open Printer Setup Dialog Box due to an initalization failure."
+   IDS_PDERR_NODEVICES           "There are no printer drivers installed.  Run CONTROL.EXE to install printer drivers."
+   IDS_PDERR_NODEFAULTPRN        "There is no default printer.  Run CONTROL.EXE to setup a default printer."
+   IDS_PDERR_DNDMMISMATCH        "Internal device data does not match specified device."
+   IDS_PDERR_CREATEICFAILURE     "Could not create Device Context"
+   IDS_PDERR_PRINTERNOTFOUND     "The %s (%s) printer on %s was not found."
+
+   IDS_CDERR_GENERALCODES        "General COMMDLG.DLL Error.  Code 0x%04X"
+
+
+   /* the following are not loaded automatically into rglpsz[], but
+    * are used in WinTime.c
+    */
+  IDS_SUNDAY,  "Sunday"
+  IDS_MONDAY,  "Monday"
+  IDS_TUESDAY,  "Tuesday"
+  IDS_WEDNESDAY,  "Wednesday"
+  IDS_THURSDAY,  "Thursday"
+  IDS_FRIDAY,  "Friday"
+  IDS_SATURDAY,  "Saturday"
+  IDS_SUNDAY_SHORT,  "Sun"
+  IDS_MONDAY_SHORT,  "Mon"
+  IDS_TUESDAY_SHORT,  "Tue"
+  IDS_WEDNESDAY_SHORT,  "Wed"
+  IDS_THURSDAY_SHORT,  "Thu"
+  IDS_FRIDAY_SHORT,  "Fri"
+  IDS_SATURDAY_SHORT,  "Sat"
+  IDS_JANUARY,  "January"
+  IDS_FEBURARY,  "Feburary"
+  IDS_MARCH,  "March"
+  IDS_APRIL,  "April"
+  IDS_MAY,  "May"
+  IDS_JUNE,  "June"
+  IDS_JULY,  "July"
+  IDS_AUGUST,  "August"
+  IDS_SEPTEMBER,  "September"
+  IDS_OCTOBER,  "October"
+  IDS_NOVEMBER,  "November"
+  IDS_DECEMBER,  "December"
+  IDS_JANUARY_SHORT,  "Jan"
+  IDS_FEBURARY_SHORT,  "Feb"
+  IDS_MARCH_SHORT,  "Mar"
+  IDS_APRIL_SHORT,  "Apr"
+  IDS_MAY_SHORT,  "May"
+  IDS_JUNE_SHORT,  "Jun"
+  IDS_JULY_SHORT,  "Jul"
+  IDS_AUGUST_SHORT,  "Aug"
+  IDS_SEPTEMBER_SHORT,  "Sep"
+  IDS_OCTOBER_SHORT,  "Oct"
+  IDS_NOVEMBER_SHORT,  "Nov"
+  IDS_DECEMBER_SHORT,  "Dec"
+  IDS_LONGDATE,                 "ddd', 'MMMM' 'dd', 'yyyy"
+  IDS_SHORTDATE,                "MM/dd/yy"
+
+END

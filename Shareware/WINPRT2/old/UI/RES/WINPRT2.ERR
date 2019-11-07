@@ -1,0 +1,39 @@
+
+Microsoft (R) Program Maintenance Utility   Version 1.20
+Copyright (c) Microsoft Corp 1988-92. All rights reserved.
+
+*** WINPRT2 DEBUG WIN16 *** Building RES\WINPRT2.RES
+Microsoft (R) Windows Resource Compiler  Version 3.10
+Copyright (C) Microsoft Corp. 1985-1992.  All rights reserved.
+
+*** WINPRT2 DEBUG WIN16 *** Linking...
+Microsoft (R) Windows Resource Compiler  Version 3.10
+Copyright (C) Microsoft Corp. 1985-1992.  All rights reserved.
+
+
+Reading RES\WINPRT2.RES
+
+RES\WINPRT2.RES..........
+Sorting preload segments and resources into fast-load section
+Copying segment 1 (2026 bytes)
+Copying segment 3 (1509 bytes)
+Writing resource WINPRT2.4 (182 bytes)
+Writing resource 1.6 (95 bytes)
+Writing resource 2.6 (17 bytes)
+Writing resource 257.6 (680 bytes)
+Writing resource 258.6 (216 bytes)
+Copying segment 2 (4573 bytes)
+Writing resource 5000.14 (20 bytes)
+Writing resource 1000.5 (328 bytes)
+Writing resource DLGINCLUDE.10 (24 bytes)
+Writing resource 1.16 (408 bytes)
+Writing resource 1.3 (744 bytes)
+Fastload area is 5344 bytes at offset 0x5A0.
+Microsoft (R) Symbol File Generator  Version 4.11
+Copyright (C) Microsoft Corp 1984-1988.  All rights reserved.
+
+	Program entry point at 0001:001a
+c:\!\winprt2\ui\winprt2.exe => c:\!\winprt2\build\winprt2.exe
+     1 file(s) copied
+c:\!\winprt2\ui\winprt2.sym => c:\!\winprt2\build\winprt2.sym
+     1 file(s) copied

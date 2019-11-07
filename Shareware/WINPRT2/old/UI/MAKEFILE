@@ -1,0 +1,242 @@
+ #*****************************************************************************
+ #
+ #     Project:  WINPRT2 1.x
+ #
+ #      Module:  makefile
+ #
+ #   Author(s):  Charles E. Kindel, Jr. (cek)
+ #
+ #      System:  Microsoft Windows 3.x, MS-DOS 5.0, Compiled with Microsoft  
+ #               C 6.00A and Microsoft MASM 5.1.                             
+ #                                                                           
+ #
+ # NOTE:  This is a very WINPRT2 makefile.  Just define MAINTARGET and
+ #        specify your object files $(OBJS1) and $(OBJS2) and that's it.
+ #*****************************************************************************
+
+MAINTARGET=WINPRT2
+
+# $(WIN32) can be either WIN32 or WIN16
+WIN32=WIN16
+
+!IF "$(WIN32)"=="WIN32"
+CPU=i386
+!ENDIF
+
+# $(DEBUG) can be either DEBUG or NODEBUG
+!IFDEF DEBUG
+!   IF "$(DEBUG)"!="NODEBUG"
+DEBUG=DEBUG
+!   ELSE
+DEBUG=NODEBUG
+!   ENDIF
+!ELSE
+DEBUG=NODEBUG
+!ENDIF
+
+!IF "$(WIN32)"=="WIN32"
+DEF_EXT=D32
+!else 
+DEF_EXT=DEF
+!endif
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+# if PUTEXE is defined the dll/exe will be copied from the root to
+PUTEXE  = ..\BUILD\ 
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  = ..\LIB\ 
+
+# if pubinc is define the include file will be copied there
+PUTINC  = ..\INC\ 
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+
+#  $(CL2) is for API specific flags (i.e. Win16 v. Win32)
+!IF "$(WIN32)"=="WIN32"
+
+!IF "$(DEBUG)" == "DEBUG"
+
+CLFLAGS     = -c -G3d -DWIN32 -Di386=1 -Od -Zi -D$(DEBUG)
+LINKFLAGS   = -subsystem:windows -entry:WinMainCRTStartup -debug:full -debugtype:cv
+LIBS        = libcmt.lib $(LIB)\*.lib wdb32.lib
+
+!ELSE
+
+CLFLAGS     = -c -G3d -DWIN32 -Di386=1
+LINKFLAGS   = -subsystem:windows -entry:WinMainCRTStartup 
+LIBS        = libcmt.lib $(LIB)\*.lib
+
+!ENDIF
+
+CC          = cl386
+RCOPTS      = -r -DWIN32 -D$(DEBUG) -iSRC;INC;RES
+
+!ELSE
+
+!IF "$(DEBUG)" == "DEBUG"
+
+CLFLAGS     = -c -AM -G2sw -Owd -Zip -D$(DEBUG)
+LINKFLAGS   = /NOLOGO/BATCH/NOD/NOE/A:16/CO/M
+
+!ELSE
+
+CLFLAGS     = -c -AM -G2sw -Owt -Zp
+LINKFLAGS   = /NOLOGO/BATCH/NOD/NOE/A:16/M
+
+!ENDIF
+
+RCOPTS      = -r -D$(DEBUG) -iSRC;INC;RES
+RESOPTS     = -v -t
+LIBS        = libw mlibcew cek ..\lib\engine wdb 
+
+!ENDIF
+
+      
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+
+BANNER      = $(MAINTARGET): **** $(DEBUG) *** $(DEBUG) *** $(DEBUG) *** $(DEBUG) ****
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = SRC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = $(MYSRC)VERSION.H $(MYRES)$(MAINTARGET).RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(VERINCS)\
+          $(MYINC)dlgs.h\
+          $(MYRES)$(MAINTARGET).rc\
+          $(MYRES)$(MAINTARGET).dlg\
+          $(MYRES)$(MAINTARGET).str\
+          $(MYRES)$(MAINTARGET).ico
+
+# 
+# Library dependencies
+# 
+LMISC   =   MAKEFILE\
+            $(MAINTARGET).$(DEF_EXT)
+
+LINCS   =   $(MYOBJ)PRECOMP.PCH $(MYINC)$(MAINTARGET).H
+
+LOBJS   =\
+!IFNDEF WIN32
+#            $(MYOBJ)WINSTUB.EXE\
+!ENDIF
+            $(MYOBJ)PRECOMP.OBJ\
+            $(MYOBJ)$(MAINTARGET).OBJ
+
+LOBJS2  =
+
+#
+#   BUILD RULES
+#
+all : $(MAINTARGET).EXE 
+
+#
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CLFLAGS) $(PCHFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+
+$(MAINTARGET).EXE : $(LOBJS) $(LOBJS2) $(MYRES)$(MAINTARGET).res $(MAINTARGET).$(DEF_EXT)
+   @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Linking...
+!IF "$(WIN32)"=="WIN32"
+   link $(LINKFLAGS) -out:$(MAINTARGET).EXE $(LOBJS) $(LOBJS2) $(MYRES)$(MAINTARGET).RES $(LIBS)
+!ELSE
+   link @<<
+$(LINKFLAGS)+
+$(LOBJS)+
+$(LOBJS2)
+$(MAINTARGET)
+$(MAINTARGET).MAP
+$(LIBS)
+$(MAINTARGET).$(DEF_EXT)
+<<
+   rc $(RESOPTS) $(MYRES)$(MAINTARGET).res $(MAINTARGET).EXE
+   @mapsym $(MAINTARGET).map
+!ENDIF
+!IFDEF PUTEXE
+   @copy $(MAINTARGET).EXE $(PUTEXE)$(MAINTARGET).EXE
+   @copy $(MAINTARGET).SYM $(PUTEXE)
+!ENDIF
+   @echo.>$(OUTPUT)
+   @echo $(BANNER)>$(OUTPUT)
+
+$(MYOBJ)PRECOMP.OBJ :  $(MYINC)PRECOMP.H
+   @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Pre-compiling $(@B).C to $@ and $(MYOBJ)PRECOMP.PCH... >$(OUTPUT)
+   @SET CL=$(CLFLAGS)
+   $(CC) -YcPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH -Fo$(MYOBJ)PRECOMP.OBJ $(MYSRC)PRECOMP.C>$(MYSRC)$(@B).ERR
+   @SET CL=
+   @type $(MYSRC)$(@B).ERR>$(OUTPUT)
+
+$(MYHELP)$(MAINTARGET).HLP: help\$(MAINTARGET).rtf help\map.h help\$(MAINTARGET).hpj
+   chdir HELP
+   $(MAKE)
+   copy $(MAINTARGET).HLP ..
+   chdir ..
+
+!IFNDEF WIN32
+$(MYOBJ)WINSTUB.EXE:  $(MYSRC)WINSTUB.ASM
+   @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Assembling WINSTUB
+    masm -I.\  $(MYSRC)winstub.asm,$(MYOBJ)WINSTUB.OBJ;
+    link $(MYOBJ)WINSTUB.OBJ,$(MYOBJ)WINSTUB.EXE;
+!ENDIF
+
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS)
+    @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Building $(MYRES)$(MAINTARGET).RES
+!IF "$(WIN32)"=="WIN32"
+    rc $(RCOPTS) -fo $(MYRES)$(MAINTARGET).TMP $(MYRES)$(MAINTARGET).RC
+    cvtres -$(CPU) $(MYRES)$(MAINTARGET).tmp -o $(MYRES)$(MAINTARGET).res
+    del $(MYRES)$(MAINTARGET).TMP
+!ELSE
+    rc $(RCOPTS) $(MYRES)$(MAINTARGET).rc $(MYRES)$(MAINTARGET).RES
+!ENDIF
+
+
+#   MISC. STUFF
+
+.ignore : 
+clean       :  
+                !del $(MYOBJ)*.obj
+                !del $(MYOBJ)*.exe
+                !del $(MYOBJ)*.pch
+                !del *.map
+                !del *.sym
+                !del $(MYRES)*.res
+                !del $(MAINTARGET).EXE
+                !del $(MAINTARGET).LIB
+                !del $(MYSRC)*.err
+                @echo *** DONE ***
+
+        

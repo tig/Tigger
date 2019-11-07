@@ -1,0 +1,158 @@
+//Microsoft App Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#ifdef APSTUDIO_INVOKED
+//////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.rc""\r\n"
+    "#include ""winprt20.rc2""  // non-App Studio edited resources\r\n"
+    "#if 0\r\n"
+    "#include "".\\winprt20.tlb""  // force dependency on .TLB file\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // APSTUDIO_INVOKED
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+IDI_ABOUTDLL            ICON    DISCARDABLE     "WINPRT20.ICO"
+IDI_WINPRINT            ICON    DISCARDABLE     "WINPRINT.ICO"
+IDI_LANDSCAPE           ICON    DISCARDABLE     "LANDSCAP.ICO"
+IDI_NOORIENT            ICON    DISCARDABLE     "NOORIENT.ICO"
+IDI_PORTRAIT            ICON    DISCARDABLE     "PORTRAIT.ICO"
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_WINPRINTCONTROL     BITMAP  DISCARDABLE     "CONTROL.BMP"
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX_WINPRINTCONTROL DIALOG DISCARDABLE  34, 22, 255, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About WinPrint 2.0"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDI_ABOUTDLL,IDC_STATIC,11,17,20,20
+    LTEXT           "WinPrint OLE Custom Control Version 2.0",IDC_STATIC,40,
+                    10,170,8
+    LTEXT           "Copyright \251 1994 Charles E. Kindel, Jr.",IDC_STATIC,
+                    40,25,170,8
+    DEFPUSHBUTTON   "OK",IDOK,216,6,32,14,WS_GROUP
+END
+
+IDD_PROPPAGE_WINPRINTCONTROL DIALOG DISCARDABLE  0, 0, 267, 188
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Config Name:",IDC_STATIC,5,7,45,8
+    EDITTEXT        IDC_CONFIGNAME,52,4,133,13,ES_AUTOHSCROLL
+    LTEXT           "FileType Driver:",IDC_STATIC,5,22,53,8
+    LTEXT           "<<file type driver>>",IDC_FILETYPEDRV_TXT,60,22,125,8
+    GROUPBOX        "Printer",IDC_STATIC,5,33,238,41,WS_GROUP
+    LTEXT           "<<printer>>",IDC_PRINTER_TXT,9,44,183,8
+    LTEXT           "<<printer device>>",IDC_PRINTERDEV_TXT,9,52,183,8
+    LTEXT           "<<printer output>>",IDC_PRINTEROUT_TXT,9,60,183,8
+    PUSHBUTTON      "&Printer...",IDC_PRINTER,197,41,40,14
+    CONTROL         "&Default",IDC_DEFAULTPRN,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,197,59,35,10
+    GROUPBOX        "Orientation",IDC_STATIC,5,76,90,58,WS_GROUP
+    ICON            IDI_NOORIENT,IDC_STATIC,9,97,18,20
+    CONTROL         "Po&rtrait",IDC_PORTRAIT,"Button",BS_AUTORADIOBUTTON,34,
+                    96,35,10
+    CONTROL         "&Landscape",IDC_LANDSCAPE,"Button",BS_AUTORADIOBUTTON,
+                    34,110,47,10
+    GROUPBOX        "Margins",IDC_STATIC,99,76,145,58,WS_GROUP
+    RTEXT           "L&eft:",IDC_STATIC,107,103,16,8
+    EDITTEXT        IDC_LEFT,124,100,31,13,ES_AUTOHSCROLL
+    RTEXT           "&Top:",IDC_STATIC,140,86,16,8
+    EDITTEXT        IDC_TOP,162,85,31,13,ES_AUTOHSCROLL
+    RTEXT           "Ri&ght:",IDC_STATIC,180,103,21,8
+    EDITTEXT        IDC_RIGHT,202,100,31,13,ES_AUTOHSCROLL
+    RTEXT           "&Bottom:",IDC_STATIC,130,116,26,8
+    EDITTEXT        IDC_BOTTOM,163,116,31,13,ES_AUTOHSCROLL
+    GROUPBOX        "Borders",IDC_STATIC,5,137,90,28,WS_GROUP
+    CONTROL         "&Shade",IDC_SHADE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    9,151,32,10
+    CONTROL         "L&ines",IDC_BORDER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,48,151,29,10
+    PUSHBUTTON      "&Headers...",IDC_HEADERS,198,145,46,14
+END
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WINPRINTENGINE      "WinPrint 2.0 Engine"
+    IDS_WINPRINTCONTROL     "WinPrint 2.0 Control"
+    IDS_WINPRINTCONTROL_PPG "WinPrint 2.0 Control Property Page"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WINPRINTCONTROL_PPG_CAPTION "General"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROPERTIESVERB      "&Properties..."
+    IDS_CONFIGFILENAME      "WINPRT20.CFG"
+END
+
+
+#ifndef APSTUDIO_INVOKED
+////////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "afxres.rc"
+#include "winprt20.rc2"  // non-App Studio edited resources
+#if 0
+#include ".\winprt20.tlb"  // force dependency on .TLB file
+#endif
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

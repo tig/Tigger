@@ -1,0 +1,23 @@
+HKCR
+{
+	Microsoft.Pager.1 = s 'Pager Class'
+	{
+		CLSID = s '{23208899-15BF-11D0-97FB-00AA001F73C1}'
+	}
+	Microsoft.Pager = s 'Pager Class'
+	{
+		CLSID = s '{23208899-15BF-11D0-97FB-00AA001F73C1}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {23208899-15BF-11D0-97FB-00AA001F73C1} = s 'Pager Class'
+		{
+			ProgID = s 'Microsoft.Pager.1'
+			VersionIndependentProgID = s 'Microsoft.Pager'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+		}
+	}
+}

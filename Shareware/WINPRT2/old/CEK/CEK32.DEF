@@ -1,0 +1,176 @@
+;************************************************************************
+;*
+;*    Copyright (C) 1991 Charles E. Kindel, Jr. All Rights Reserved.
+;*
+;*-----------------------------------------------------------------------
+;*
+;*     Project:  CEK32.DLL
+;*
+;*      Module:  CEK32.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+LIBRARY           CEK32
+
+DESCRIPTION       'CEK32 Copr. 1991-92 C.E. Kindel,Jr.'
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD SINGLE
+
+HEAPSIZE          8192
+
+EXPORTS           WEP                     @1 RESIDENTNAME
+
+;    HCtlInfo           @2     ;Do Not Change
+;    FShowCtlStyleDlg   @3     ;Do Not Change
+;    WTranslateCtlFlags @4     ;Do Not Change
+    MicroScrollWndProc @5     ;Do Not Change
+;    FCtlStyleDlgProc   @6     ;Do Not Change
+    
+    cekGetVersion           @20
+    cekCheckVersion         @21
+
+;    _wsscanf                @50
+    
+    cekmmHeapCreate          @100
+    cekmmHeapDestroy         @101
+    
+    cekmmHeapAlloc           @102
+    cekmmHeapReAlloc         @103
+    cekmmHeapFree            @104
+    cekmmHeapLock            @105
+    cekmmHeapUnlock          @106 
+    
+    cekmmHeapAllocLock       @107
+    cekmmHeapAllocString     @108
+    cekmmHeapUnlockFree      @109
+    
+    cekmmHeapCompact         @110
+    cekmmHeapFlags           @111
+    cekmmHeapHandle          @112
+    cekmmHeapDiscard         @113
+    cekmmHeapSize            @114
+    cekmmHeapSetDS           @115
+    cekmmHeapItems           @116
+    cekmmHeapDumpDebug       @117
+    
+    cekmmListHeap            @129
+    cekmmListCreate          @130
+    cekmmListDestroy         @131
+    cekmmListFreeList        @132
+    cekmmListAllocNode       @133
+    cekmmListFreeNode        @134
+    cekmmListInsertNode      @135
+    cekmmListInsertSorted    @136
+    cekmmListAllocInsertNode @137
+    cekmmListRemoveNode      @138
+    cekmmListDeleteNode      @139
+    cekmmListNextNode        @140
+    cekmmListPrevNode        @141
+    cekmmListFirstNode       @142
+    cekmmListLastNode        @143
+    cekmmListNode2Item       @144
+    cekmmListItem2Node       @145
+    cekmmListItems           @146
+    cekmmListSwapNodes       @147
+    cekmmListDumpDebug       @148
+    
+    cekmmStackCreate         @160
+    cekmmStackDestroy        @161
+    cekmmStackFreeStack      @162
+    cekmmStackAllocNode      @163
+    cekmmStackFreeNode       @164
+    cekmmStackPush           @165
+    cekmmStackAllocPush      @166
+    cekmmStackPop            @167
+    cekmmStackPeek           @168
+    cekmmStackRemove         @169
+    cekmmStackItems          @170
+    cekmmStackDumpDebug      @171
+           
+    cekmmQueueCreate         @175
+    cekmmQueueDestroy        @176
+    cekmmQueueFreeQueue      @177
+    cekmmQueueAllocNode      @178
+    cekmmQueueFreeNode       @179
+    cekmmQueueInQ            @180
+    cekmmQueueAllocInQ       @181
+    cekmmQueueDeQ            @182
+    cekmmQueuePeek           @183
+    cekmmQueueRemove         @184
+    cekmmQueueItems          @185
+    cekmmQueueDumpDebug      @186
+    
+    cekmmIsUsefulString          @190
+    cekmmIsNumber                @191
+    cekmmSetExtension            @192
+    cekmmHackSpaces              @193
+    cekmmGetValue                @194
+    
+    fnStatus                @200
+;    fnSlider                @201
+;    fnToolbar               @202
+    fnLED                   @203
+    
+    ReallyCreateFontEx      @300
+    GetTextMetricsCorrectly @301
+    GetTextPointSize        @302
+    GetTextStyle            @303
+    GetTextFullName         @304
+    GetTextExtentABCPoint   @305
+    fnEnumReallyEx          @306
+    GetMatchingFont         @307
+    
+    
+    ParseOffNumber          @400
+    ParseOffString          @401
+    StripOffWhiteSpace      @402
+    WritePrivateProfileFont @403
+    WritePrivateProfileWndPos @404
+    GetPrivateProfileSections @405
+    GetPrivateProfileFont   @406
+    GetPrivateProfileWndPos @407
+    WritePrivateProfileWORD @408
+    WritePrivateProfileDWORD @409
+    GetPrivateProfileWORD   @410
+    GetPrivateProfileDWORD  @411
+    GetRCString             @412  
+    ExpandStringToPrintable @413
+    ShrinkStringFromPrintable @414
+    
+    DlgCenter               @500
+    DlgWhichRadioButton     @501
+    ErrorResBox             @502
+
+    TimeGetCurDate          @525
+    TimeGetCurTime          @526
+    TimeFormatDate          @527
+    TimeFormatTime          @528
+    TimeResetInternational  @529
+
+    MSHwndAssociateSet      @540
+    MSHwndAssociateGet      @541
+    MSDwRangeSet            @542
+    MSDwRangeGet            @543
+    MSWCurrentPosSet        @544
+    MSWCurrentPosGet        @545
+    MSFNoPegScrollSet       @546
+    MSFNoPegScrollGet       @547
+    MSFInvertRangeSet       @548
+    MSFInvertRangeGet       @549
+    MSCrColorSet            @550
+    MSCrColorGet            @551
+
+
+;************************************************************************
+;* End of File: CEK32.def
+;************************************************************************
+

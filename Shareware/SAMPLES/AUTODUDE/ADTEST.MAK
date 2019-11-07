@@ -1,0 +1,6 @@
+DRIVER.BAS
+ProjWinSize=1,628,196,224
+ProjWinShow=2
+Title="DRIVER"
+ExeName="DRIVER.EXE"
+Path="D:\OLE2\SAMP\DISPCALC"

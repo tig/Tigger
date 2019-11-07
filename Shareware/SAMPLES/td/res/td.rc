@@ -1,0 +1,62 @@
+/************************************************************************
+ *
+ *     Project:  Project-42
+ *
+ *      Module:  TDUTIL.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include "..\src\isz.h"
+
+/*
+ * Dialog box defines
+ */
+#include "..\src\dlgs.h"
+
+/*
+ * Version Stamping
+ */
+#include "TDUTIL.rcv"
+
+/*
+ * Icons
+ */
+TDUTIL ICON "TDUTIL.ico"
+
+/*
+ * Bitmaps
+ */
+#ifdef MULTICOLOR
+IDB_3DBTN   BITMAP   "3DBTNS.BMP"
+#else
+#ifdef COLOR
+IDB_3DBTN   BITMAP   "3DBTN.BMP"
+#else
+IDB_3DBTN   BITMAP   "3DMONO.BMP"
+#endif
+#endif
+
+IDB_3DBKGND BITMAP   "BKGND.BMP"
+
+/*
+ * Menus
+ */
+
+/*
+ * Dialog boxes
+ */
+
+
+/************************************************************************
+ * End of File: TDUTIL.rc
+ ***********************************************************************/
+

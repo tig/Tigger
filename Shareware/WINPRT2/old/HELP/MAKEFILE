@@ -1,0 +1,17 @@
+#   WinPrint 1.4 HelpFile
+#   Makefile
+#
+
+#Remove '#' from next line for "silent" operation
+!CMDSWITCHES +s
+
+
+goal:  winprint.hlp
+
+
+.SUFFIXES: .h .hpj .hlp .rtf
+
+winprint.hlp : winprint.rtf winprint.hpj
+    echo +++++++++
+    echo Building $*.hlp
+    hc $*.hpj

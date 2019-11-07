@@ -1,0 +1,179 @@
+/************************************************************************
+ *
+ *     Copyright (c) 1992 Charles E. Kindel, Jr..  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  ENGINE
+ *
+ *      Module:  ENGINE.str
+ *
+ *     Remarks:  String table definitions and resources.
+ *
+ *       This module utilizes the fact that RC contains a full blown
+ *       C pre-processor.  Several macros are defined that either
+ *       define IDS_* values or specify entries in a string table
+ *       depending on whether this file was included from an
+ *       RC file during resource compilation or by a C file during
+ *       normal compilation.
+ *
+ *   Revisions:  
+ *
+ ***********************************************************************/
+
+#include <ddeml.h>      // some DDE strings are defined
+
+#include "res.h"
+
+#ifdef RC_INVOKED
+    #define DEFSTR(V,SID,S)   V     S
+    #define DECSTR(SID,S)     SID   S
+   
+   /* 
+    * Entries defined with DBGSTR get defined as empty strings
+    * if DEBUG is not defined.
+    */ 
+    #ifdef DEBUG
+      #define DBGSTR DEFSTR
+    #else
+      #define DBGSTR(V,SID,S)   V  " "    // an empty string
+    #endif
+#else
+    #define DEFSTR(V,SID,S)   enum {SID=V};
+    #define DECSTR(SID,S)     
+
+    #define DBGSTR DEFSTR
+#endif
+
+#ifdef RC_INVOKED
+STRINGTABLE PRELOAD MOVEABLE PURE DISCARDABLE
+BEGIN
+#endif
+
+   /***********************
+    * Misc useful strings that are preloaded unto rglpsz[]
+    ***********************/
+
+DEFSTR( 0x0000, IDS_APPNAME,                "ENGINE" )
+DEFSTR( 0x0001, IDS_APPTITLE,               "WinPrint 2.0 Print Engine" )
+
+/* Original WinFile File.Print... menu item string
+ */
+DECSTR( IDM_WF_PRINT,                       "&Print..." )
+
+DECSTR( IDM_WP_PAGESETUP,                   "Pa&ge Setup..." )
+DECSTR( IDM_WP_PRINTERSETUP,                "Pr&inter Setup..." ) 
+
+/* Menu descriptions
+ */
+#define IDS_MNU         0x00F0
+DEFSTR( IDM_PRINT+IDS_MNU, IDS_MNU_PRINT,           "Prints selected documents using WinPrint 2.0" )
+DEFSTR( IDM_PAGESETUP+IDS_MNU, IDS_MNU_PAGESETUP,   "Changes page settings for selected file type" )
+DEFSTR( IDM_PRINTERSETUP+IDS_MNU, IDS_MNU_PRINTERSETUP, "Changes printer settings for selected file type" )
+
+DEFSTR( 0x0100, IDS_EXTENTSAMPLE,           "AaBbJj1230" )
+DEFSTR( 0x0110, IDS_WNDCLASS_PREVIEW,       "WINPRT2.PREVIEW" )
+
+DEFSTR( 0x0115, IDS_STATUSDLG_LINE1,        "%s" )
+DEFSTR( 0x0116, IDS_STATUSDLG_LINE2,        "on the %s on" )                                
+DEFSTR( 0x0117, IDS_STATUSDLG_LINE3,        "%s" )
+DEFSTR( 0x0118, IDS_STATUSDLG_LINE4,        "Page %d of %d" )
+DEFSTR( 0x0119, IDS_STATUSDLG_LINE5,        "Page %d" )
+
+/* Dialog box titles */
+DEFSTR( 0x0124, IDS_PAGESETUP,              "Page Setup - %s" )
+DEFSTR( 0x0125, IDS_PRINTERSETUP,           "Printer Setup - %s" )
+DEFSTR( 0x0126, IDS_HFCONFIG,               "Header/Footer Setup - %s" )
+DEFSTR( 0x0127, IDS_FILETYPEDRIVER,         "File Type Driver - %s" )
+DEFSTR( 0x0128, IDS_COPYFILETYPE,           "Copy File Type" )
+DEFSTR( 0x0129, IDS_MODIFYFILETYPE,         "Modify File Type" );
+
+DEFSTR( 0x0130, IDS_DEFAULT_FTD,            "Raw Text" )
+DEFSTR( 0x0131, IDS_DEFAULT_FTDD,           "ENGINE.DLL" )
+DEFSTR( 0x0132, IDS_DEFAULT_HEADER_LEFT,    "&f" )
+DEFSTR( 0x0133, IDS_DEFAULT_HEADER_CENTER,  "Revised &r &v" )
+DEFSTR( 0x0134, IDS_DEFAULT_HEADER_RIGHT,   "Page &n" )
+DEFSTR( 0x0135, IDS_DEFAULT_FOOTER_LEFT,    "" )
+DEFSTR( 0x0136, IDS_DEFAULT_FOOTER_CENTER,  "Printed &d &t" )
+DEFSTR( 0x0137, IDS_DEFAULT_FOOTER_RIGHT,   "" )
+
+DEFSTR( 0x0140, IDS_CLOSE,                  "Close" )
+/* Configuration File Strings */
+
+DEFSTR( 0x0500, IDS_INI_FILENAME,           "WINPRINT.INI" )
+
+/* Engine Configuration Strings */
+DEFSTR( 0x0501, IDS_SEC_ENGINEDASH,           "Engine - " )
+
+DEFSTR( 0x0502, IDS_KEY_FTD,                  "FTD" )
+DEFSTR( 0x0503, IDS_KEY_FLAGS,                "Flags" )
+DEFSTR( 0x0504, IDS_KEY_DRIVER,               "Driver" )
+DEFSTR( 0x0505, IDS_KEY_DEVMODE,              "DevMode" )
+DEFSTR( 0x0506, IDS_KEY_MULTIPAGESUP,         "MultiplePagesUp" )
+DEFSTR( 0x0507, IDS_KEY_MARGINS,              "Margins" )
+DEFSTR( 0x0508, IDS_KEY_HEADER,               "Header." )
+DEFSTR( 0x0509, IDS_KEY_FOOTER,               "Footer." )
+DEFSTR( 0x050a, IDS_KEY_LEFT,                 "L." )
+DEFSTR( 0x050b, IDS_KEY_CENTER,               "C." )
+DEFSTR( 0x050c, IDS_KEY_RIGHT,                "R." )
+DEFSTR( 0x050d, IDS_KEY_LPSZ,                 "Text" )
+DEFSTR( 0x050e, IDS_KEY_FONT,                 "Font" )
+
+DEFSTR( 0x0520, IDS_SEC_OPTIONS,              "WinPrint 2.0" )
+DEFSTR( 0x0521, IDS_KEY_DEFAULTCONFIG,        "DefaultConfig" )
+
+DEFSTR( 0x0540, IDS_KEY_RAWTEXTOPTS,          "RawTextOpts" )
+DEFSTR( 0x0541, IDS_KEY_BITMAPOPTS,           "BitmapOpts" )
+
+DEFSTR( 0x0542, IDS_RAWTEXT_DEFAULT_STYLE,    "Regular" )
+DEFSTR( 0x0543, IDS_RAWTEXT_DEFAULT_FACE,     "Courier New" )
+
+
+DEFSTR( 0x0550, IDS_WININI,                   "WIN.INI" )
+DEFSTR( 0x0551, IDS_EXTENSIONS,               "Extensions" )
+DEFSTR( 0x0552, IDS_NONE,                     "(None)" )
+
+DEFSTR( 0x1000, IDS_ERR_DUMMY,          "%s")
+DEFSTR( 0x1001, IDS_ERR_NOMEMORY,       "Not enough memory to run Communications Server.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+DEFSTR( 0x1002, IDS_ERR_COMMANDLINE,    "Error Processing Command Line.\nOffending String: \042%s\042" )
+DEFSTR( 0x1003, IDS_ERR_BADDLLVER,      "The version of '%s' on this system is old.\nENGINE 1.0 requires version %d.00 or higher.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+DEFSTR( 0x1004, IDS_ERR_CREATEWINDOW,   "Could not create the main window.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+DEFSTR( 0x1006, IDS_ERR_STRINGLOAD,     "Could not access resources.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+DEFSTR( 0x1007, IDS_ERR_INITCLASS,      "Could not register window classes.\n\nPlease contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497.")
+
+DEFSTR( 0x1015, IDS_ERR_MEMORYALLOC,    "A memory allocation failed in module %s, line %d.\nPlease Contact Charles E. Kindel, Jr. Technical Support at (800) 234-9497." )
+DEFSTR( 0x1016, IDS_ERR_TIMER,          "Could not create a timer.\nClose other applications that may be using timers." )
+DEFSTR( 0x1017, IDS_ERR_CONFIGNOTFOUND, "The configuration: '%s'\n\nwas not found.  Do you want to create it using default values?")
+DEFSTR( 0x1018, IDS_ERR_DELETEFILETYPE, "Are you sure you want to delete the '%s' File Type?" ) 
+DEFSTR( 0x1019, IDS_ERR_NOASSOCIATION,  "There is no file type associated with this file.\n\nChoose Associate from the File or WinPrint menus to create an association." ) 
+
+DEFSTR( 0x5000, IDS_PDERR_PRINTERCODES,     "PDERR_PRINTERCODES" )
+DEFSTR( 0x5001, IDS_PDERR_SETUPFAILURE,     "Could not open Printer Setup Dialog Box due to a resource load failure." )
+DEFSTR( 0x5002, IDS_PDERR_PARSEFAILURE,     "Could not parse the [devices] section of the WIN.INI file.\nPlease verify that your WIN.INI file is valid and try again." )
+DEFSTR( 0x5003, IDS_PDERR_RETDEFFAILURE,    "PDERR_RETDEFFAILURE" )
+DEFSTR( 0x5004, IDS_PDERR_LOADDRVFAILURE,   "Could not access printer driver" )
+DEFSTR( 0x5005, IDS_PDERR_GETDEVMODEFAIL,   "Failed to get DEVMODE structure" )
+DEFSTR( 0x5006, IDS_PDERR_INITFAILURE,      "Could not open Printer Setup Dialog Box due to an initalization failure." )
+DEFSTR( 0x5007, IDS_PDERR_NODEVICES,        "There are no printer drivers installed.  Run CONTROL.EXE to install printer drivers." )
+DEFSTR( 0x5008, IDS_PDERR_NODEFAULTPRN,     "There is no default printer.  Run Control Panel to setup a default printer and try again." )
+DEFSTR( 0x5009, IDS_PDERR_DNDMMISMATCH,     "Internal device data does not match specified device." )
+DEFSTR( 0x500a, IDS_PDERR_CREATEICFAILURE,  "Could not create Device Context" )
+DEFSTR( 0x500b, IDS_PDERR_PRINTERNOTFOUND,  "The %s printer on %s is no longer installed.  The default printer will be used." )
+DEFSTR( 0x500c, IDS_CDERR_GENERALCODES,     "General Common Dialog (COMMDLG.DLL) Error.  Verify printer settings are correct in Control Panel and try again." )
+
+
+DEFSTR( 0x7000, IDS_DEFFTD_RAWTEXT,         "Raw Text" )
+DEFSTR( 0x7001, IDS_DEFFTD_BITMAP,          "Bitmaps and DIBs" )
+DEFSTR( 0x7002, IDS_DEFFTD_DUMMY2,          "Pascal Source Code" )
+DEFSTR( 0x7003, IDS_DEFFTD_DUMMY3,          "Assembly Source Code" )
+DEFSTR( 0x7004, IDS_DEFFTD_DUMMY4,          "C/C++ Source Code" )
+DEFSTR( 0x7005, IDS_DEFFTD_DUMMY5,          "Metafiles" )
+
+#ifdef RC_INVOKED
+END
+#endif
+
+/************************************************************************
+ * End of File: ENGINE.str
+ ***********************************************************************/
+

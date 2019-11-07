@@ -1,0 +1,8 @@
+[MSVC Status File]
+Version=1.00
+ProjectType=10
+External=0
+BrkptCount=0
+WatchCount=2
+WatchExpr1=m_pValue
+WatchExpr2=0x0D67:0x0082

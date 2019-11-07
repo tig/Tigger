@@ -1,0 +1,7 @@
+README for the GenAuto sample application
+
+This sample is a "Generic Automaion" example.  It implements
+a complete object model suitable for an MDI applicaiton but there
+is no Document/View implmentation other than essentially what
+AppWizard generates.
+

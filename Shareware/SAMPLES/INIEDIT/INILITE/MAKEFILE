@@ -1,0 +1,95 @@
+ #*****************************************************************************
+ #
+ #     Project:  SAMPLE
+ #
+ #      Module:  makefile
+ #
+ #      System:  
+ #               Platforms: Microsoft Windows 3.x, Microsoft Windows NT
+ #                          C 7.00 and Microsoft MASM 6.1.
+ #                                                                           
+ #*****************************************************************************
+APPNAME     = MAIN
+MAINTARGET  = $(APPNAME).EXE
+PCH         = precomp
+OBJS        = $(PCH).obj $(APPNAME).obj init.obj inilite.obj
+WARN        = /W3
+MODEL       = M
+##############################################################################
+## For Win 16
+##############################################################################
+!ifdef WIN16
+CC          = cl
+CFLAGS      = /nologo /c /DWINVER=0300 /A$(MODEL) /Zp /GA /GEs /G2 
+LFLAGS      = /NOD /ONERROR:NOEXE
+LIBS        = libw.lib $(MODEL)libcew.lib olesvr.lib shell.lib
+
+!if "$(DEBUG)"=="1"
+CFLAGS      = $(CFLAGS) /D_DEBUG $(WARN) /Zi /Od /f /Fc
+LFLAGS      = $(LFLAGS) /COD
+!else
+CFLAGS      = $(CFLAGS) $(WARN) /Oselg /Gs
+LFLAGS      = $(LFLAGS) 
+!endif
+
+$(MAINTARGET):$(OBJS) $(APPNAME).def 
+    link $(LFLAGS) @<<
+$(OBJS), 
+$(APPNAME), 
+$(APPNAME), 
+$(LIBS), 
+$(APPNAME).def;
+<<
+    rc /t /k main.rc main.exe
+    
+##############################################################################
+## For Windows NT
+##############################################################################
+!else ifdef WINNT
+LFLAGS      =
+CFLAGS      =  /D_NTWIN /D_WINDOWS /DWINVER=0x030a /Di386=1
+WINFLAGS    = -subsystem:windows -entry:WinMainCRTStartup
+GUILIBS     = libc.lib ntdll.lib kernel32.lib user32.lib gdi32.lib \
+              winspool.lib comdlg32.lib advapi32.lib olecli32.lib \
+              olesvr32.lib shell32.lib
+NTLINK      = -out$(MAINTARGET) $(LFLAGS)
+
+!if "$(DEBUG)"=="1"
+DEBUGFLAGS  = /Zi /Od /D_DEBUG              
+LINK        = link -debug:full -debugtype:cv $(LFLAGS) 
+!else
+DEBUGFLAGS  = /Otx /Gs
+LINK        = link $(LFLAGS) 
+!endif
+
+CC          = cl386
+CFLAGS      = /nologo /c /G3d $(WARN) $(FLAGS) $(DEBUGFLAGS)
+
+.rc.res:
+    rc /r /fo $*.tmp $<
+    cvtres -i386 $*.tmp -o $*.res    
+    del $*.tmp
+
+$(MAINTARGET):$(OBJS) $(APPNAME).def $(APPNAME).res
+    $(LINK) $(WINFLAGS) $(NTLINK) $(OBJS) $(APPNAME).res $(GUILIBS)
+
+!endif
+
+#######################################################################################
+#      General  Inferences
+#######################################################################################
+$(PCH).obj: $(PCH).c $(PCH).h
+    $(CC) $(CFLAGS) /Yc$(PCH).h /c $(PCH).c
+    
+*.obj:$(PCH).h
+
+.c.obj:
+!ifdef INRAM
+    copy $*.h c:\dev\inilite\$*.h
+    copy $*.c c:\dev\inilite\$*.c
+!endif    
+    $(CC) $(CFLAGS) $(CVARS) /Yu$(PCH).h $*.c
+    
+.cpp.obj:
+    $(CC) $(CFLAGS) $(CVARS) /Yu$(PCH).h $*.cpp
+                                                  

@@ -1,0 +1,8 @@
+'$DEFINE TESTEVNT
+'$INCLUDE 'MSTEST.INC'
+'$INCLUDE 'FASTTEST.INC'
+
+XStartApp "z:\!\task\minitask.exe", ""
+
+END
+

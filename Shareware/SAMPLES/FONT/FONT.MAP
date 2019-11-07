@@ -1,0 +1,544 @@
+
+ Font
+
+ Start     Length     Name                   Class
+ 0001:0000 007F2H     _TEXT                  CODE
+ 0002:0000 00000H     Font                   CODE
+ 0002:0000 00000H     PRECOMP                CODE
+ 0002:0000 012CBH     FONT_TEXT              CODE
+ 0003:0000 01218H     FONTUTIL_TEXT          CODE
+ 0004:0000 00010H     NULL                   BEGDATA
+ 0004:0010 00590H     _DATA                  DATA
+ 0004:05A0 0000EH     CDATA                  DATA
+ 0004:05AE 00000H     XIFB                   DATA
+ 0004:05AE 00000H     XIF                    DATA
+ 0004:05AE 00000H     XIFE                   DATA
+ 0004:05AE 00000H     XIB                    DATA
+ 0004:05AE 00000H     XI                     DATA
+ 0004:05AE 00000H     XIE                    DATA
+ 0004:05AE 00000H     XPB                    DATA
+ 0004:05AE 00000H     XP                     DATA
+ 0004:05AE 00000H     XPE                    DATA
+ 0004:05AE 00000H     XCB                    DATA
+ 0004:05AE 00000H     XC                     DATA
+ 0004:05AE 00000H     XCE                    DATA
+ 0004:05AE 00000H     XCFB                   DATA
+ 0004:05AE 00000H     XCFCRT                 DATA
+ 0004:05AE 00000H     XCF                    DATA
+ 0004:05AE 00000H     XCFE                   DATA
+ 0004:05AE 00000H     XIFCB                  DATA
+ 0004:05AE 00000H     XIFU                   DATA
+ 0004:05AE 00000H     XIFL                   DATA
+ 0004:05AE 00000H     XIFM                   DATA
+ 0004:05AE 00000H     XIFCE                  DATA
+ 0004:05AE 00000H     DBDATA                 DATA
+ 0004:05AE 00000H     CONST                  CONST
+ 0004:05AE 00008H     HDR                    MSG
+ 0004:05B6 00146H     MSG                    MSG
+ 0004:06FC 00002H     PAD                    MSG
+ 0004:06FE 00001H     EPAD                   MSG
+ 0004:0700 0000AH     _BSS                   BSS
+ 0004:070A 00000H     XOB                    BSS
+ 0004:070A 00000H     XO                     BSS
+ 0004:070A 00000H     XOE                    BSS
+ 0004:070A 00000H     XOFB                   BSS
+ 0004:070A 00000H     XOF                    BSS
+ 0004:070A 00000H     XOFE                   BSS
+ 0004:0710 0009EH     c_common               BSS
+
+ Origin   Group
+ 0004:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0002:0970 fnAbout                 fnAbout
+ 0003:068A fnEnumReallyEx          fnEnumReallyEx
+ 0002:0000 fnMainWnd               fnMainWnd
+
+  Address         Publics by Name
+
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  BRINGWINDOWTOTOP     (USER.45)
+ 0000:0000  Imp  CHOOSEFONT           (COMMDLG.15)
+ 0000:0000  Imp  CREATECOMPATIBLEDC   (GDI.52)
+ 0000:0000  Imp  CREATEFONTINDIRECT   (GDI.57)
+ 0002:0E80       CREATEMAIN
+ 0000:0000  Imp  CREATEPEN            (GDI.61)
+ 0000:0000  Imp  CREATEWINDOW         (USER.41)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  DELETEDC             (GDI.68)
+ 0000:0000  Imp  DELETEOBJECT         (GDI.69)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  DISPATCHMESSAGE      (USER.114)
+ 0002:0918       DOABOUTBOX
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  EXTTEXTOUT           (GDI.351)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  FINDWINDOW           (USER.50)
+ 0002:0970       fnAbout
+ 0003:068A       fnEnumReallyEx
+ 0002:0000       fnMainWnd
+ 0000:0000  Imp  FREEPROCINSTANCE     (KERNEL.52)
+ 0000:0000  Imp  GETCHARABCWIDTHS     (GDI.307)
+ 0000:0000  Imp  GETDC                (USER.66)
+ 0000:0000  Imp  GETDEVICECAPS        (GDI.80)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GETLASTACTIVEPOPUP   (USER.287)
+ 0003:02F2       GETMATCHINGFONT
+ 0000:0000  Imp  GETMESSAGE           (USER.108)
+ 0000:0000  Imp  GETMODULEFILENAME    (KERNEL.49)
+ 0000:0000  Imp  GETMODULEHANDLE      (KERNEL.47)
+ 0000:0000  Imp  GETOBJECT            (GDI.82)
+ 0000:0000  Imp  GETOUTLINETEXTMETRICS (GDI.308)
+ 0000:0000  Imp  GETPROCADDRESS       (KERNEL.50)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0002:0ED2       GETSTRINGS
+ 0000:0000  Imp  GETSYSCOLOR          (USER.180)
+ 0000:0000  Imp  GETTEXTEXTENT        (GDI.91)
+ 0003:0FD8       GETTEXTEXTENTABCPOINT
+ 0000:0000  Imp  GETTEXTEXTENTPOINT   (GDI.471)
+ 0000:0000  Imp  GETTEXTFACE          (GDI.92)
+ 0003:0D90       GETTEXTFULLNAME
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0003:0844       GETTEXTMETRICSCORRECTLY
+ 0003:0F26       GETTEXTPOINTSIZE
+ 0003:092E       GETTEXTSTYLE
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GETWINDOWWORD        (USER.133)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALHANDLE         (KERNEL.21)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  INITAPP              (USER.5)
+ 0002:0DE2       INITCLASS
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  INVALIDATERECT       (USER.125)
+ 0003:0F6C       ISBOLDSIMULATED
+ 0000:0000  Imp  ISICONIC             (USER.31)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  LOADICON             (USER.174)
+ 0000:0000  Imp  LOADSTRING           (USER.176)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRCAT              (KERNEL.89)
+ 0000:0000  Imp  LSTRCMPI             (USER.471)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  MESSAGEBEEP          (USER.104)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0002:0B30       MESSAGELOOP
+ 0000:0000  Imp  MULDIV               (GDI.128)
+ 0000:0000  Imp  POSTQUITMESSAGE      (USER.6)
+ 0003:0000       REALLYCREATEFONT
+ 0003:0038       REALLYCREATEFONTEX
+ 0000:0000  Imp  RECTANGLE            (GDI.27)
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0000:0000  Imp  RELEASEDC            (USER.68)
+ 0004:0004       rsrvptrs
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  SETACTIVEWINDOW      (USER.59)
+ 0000:0000  Imp  SETBKCOLOR           (GDI.1)
+ 0000:0000  Imp  SETCURSOR            (USER.69)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0002:0ABA       SETNORMALCURSOR
+ 0000:0000  Imp  SETTEXTCOLOR         (GDI.9)
+ 0002:0A52       SETWAITCURSOR
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0000:0000  Imp  TEXTOUT              (GDI.33)
+ 0000:0000  Imp  TRANSLATEMESSAGE     (USER.113)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  UPDATEWINDOW         (USER.124)
+ 0000:0000  Imp  WAITEVENT            (KERNEL.30)
+ 0000:0000  Imp  WDBASSERTBOX         (WDB.25)
+ 0000:0000  Imp  WDBCONFIGDLG         (WDB.15)
+ 0000:0000  Imp  WDBOPENSESSION       (WDB.21)
+ 0002:0B98       WINMAIN
+ 0000:0000  Imp  WVSPRINTF            (USER.421)
+ 0004:0520       _aseghi
+ 0004:051E       _aseglo
+ 0004:0700       _edata
+ 0004:07AE       _end
+ 0004:0542       _errno
+ 0002:107E       _ErrorResBox
+ 0001:01DB       _exit
+ 0004:0766       _hmodApp
+ 0004:0710       _hWDB
+ 0004:07AC       _hwndApp
+ 0004:0714       _nCurCount
+ 0004:0768       _rglpsz
+ 0004:0512       _STKHQQ
+ 0004:0348       _szBold
+ 0004:0356       _szBoldItalic
+ 0004:034E       _szItalic
+ 0004:0362       _szRegular
+ 0004:0716       _szVerNum
+ 0000:0000  Imp  _wdbPrint            (WDB.80)
+ 0000:0000  Imp  _wdbPrint3           (WDB.83)
+ 0000:0000  Imp  _wdbPrint4           (WDB.84)
+ 0000:0000  Imp  _wdbPrint5           (WDB.85)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0004:0526       __acfinfo
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0004:0590       __adbgmsg
+ 0000:D6D6  Abs  __aDBused
+ 0001:00C4       __aFulshr
+ 0004:0534       __aintdiv
+ 0004:059A       __amblksiz
+ 0001:04F1       __amsg_exit
+ 0001:001A       __astart
+ 0001:01F8       __cexit
+ 0004:058D       __child
+ 0001:00FC       __cinit
+ 0001:04EC       __cintDIV
+ 0004:051C       __cmdShow
+ 0004:0551       __cpumode
+ 0001:0279       __ctermsub
+ 0001:0209       __c_exit
+ 0004:0552       __doserrno
+ 0004:0700       __edata
+ 0004:07AE       __end
+ 0004:0586       __environ
+ 0001:01E9       __exit
+ 0004:058F       __exitflag
+ 0004:0538       __fac
+ 0001:02B6       __FF_MSGBANNER
+ 0001:06DA       __findlast
+ 0004:05A2       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:0540       __fptrap
+ 0001:05E8       __growseg
+ 0004:0516       __hInstance
+ 0004:0514       __hPrevInstance
+ 0001:0674       __incseg
+ 0004:0518       __lpszCmdLine
+ 0001:05BA       __myalloc
+ 0004:0554       __nfile
+ 0001:0756       __nfree
+ 0001:06FA       __nmalloc
+ 0001:0546       __NMSG_TEXT
+ 0001:057D       __NMSG_WRITE
+ 0001:07DE       __nmsize
+ 0001:00BD       __nomain
+ 0001:0770       __nrealloc
+ 0004:0552       __oserr
+ 0004:055A       __osfile
+ 0004:054D       __osmajor
+ 0004:054C       __osminor
+ 0004:0550       __osmode
+ 0004:054C       __osver
+ 0004:054E       __osversion
+ 0004:0588       __pgmptr
+ 0004:059C       __pnhNearHeap
+ 0004:0548       __psp
+ 0004:0546       __pspadr
+ 0001:0539       __QWINClose
+ 0001:0539       __QWINExit
+ 0001:0539       __QWINGetBuffSize
+ 0001:0539       __QWINGetFocus
+ 0001:0539       __QWINGetSize
+ 0001:0539       __QWINInit
+ 0001:0539       __QWINIsQWINin
+ 0001:0539       __QWINMenuClick
+ 0001:0539       __QWINOpen
+ 0001:0539       __QWINRead
+ 0001:0539       __QWINSetAboutString
+ 0001:0539       __QWINSetBuffSize
+ 0001:0539       __QWINSetFocus
+ 0001:0539       __QWINSetSize
+ 0001:0539       __QWINTerm
+ 0004:0598       __qwinused
+ 0001:0539       __QWINWrite
+ 0001:0539       __QWINYield
+ 0001:02DA       __setargv
+ 0001:045C       __setenvp
+ 0000:0001  Abs  __sizec
+ 0000:0000  Abs  __sized
+ 0001:00D0       __stubmain
+ 0004:0544       __umaskval
+ 0001:0539       __wabout
+ 0001:0534       __wcexit
+ 0001:0534       __wcinit
+ 0001:0539       __wclose
+ 0004:0556       __wfile
+ 0001:0010       __wflags
+ 0001:0539       __wgetfocus
+ 0001:0539       __wgetscreenbuf
+ 0001:0539       __wgetsize
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0004:054B       __winmajor
+ 0004:054A       __winminor
+ 0004:054A       __winver
+ 0000:0000  Abs  __wiobused
+ 0001:0539       __wmenuclick
+ 0004:0558       __wnfile
+ 0001:0539       __wopen
+ 0001:0539       __wread
+ 0001:0539       __wsetfocus
+ 0001:0539       __wsetscreenbuf
+ 0001:0539       __wsetsize
+ 0004:056E       __wsfile
+ 0001:0539       __wterm
+ 0001:0539       __wwrite
+ 0004:0524       ___aDBrterr
+ 0004:0522       ___aDBswpflg
+ 0004:0582       ___argc
+ 0004:0584       ___argv
+ 0004:0712       ___wEval
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  DELETEOBJECT         (GDI.69)
+ 0000:0000  Imp  RELEASEDC            (USER.68)
+ 0000:0000  Imp  GETOUTLINETEXTMETRICS (GDI.308)
+ 0000:0000  Abs  __sized
+ 0000:0000  Imp  GETTEXTEXTENT        (GDI.91)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  UPDATEWINDOW         (USER.124)
+ 0000:0000  Imp  GETLASTACTIVEPOPUP   (USER.287)
+ 0000:0000  Imp  WDBOPENSESSION       (WDB.21)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  DISPATCHMESSAGE      (USER.114)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  POSTQUITMESSAGE      (USER.6)
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  FREEPROCINSTANCE     (KERNEL.52)
+ 0000:0000  Imp  MESSAGEBEEP          (USER.104)
+ 0000:0000  Imp  ISICONIC             (USER.31)
+ 0000:0000  Imp  LOADICON             (USER.174)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  WVSPRINTF            (USER.421)
+ 0000:0000  Imp  SETBKCOLOR           (GDI.1)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  EXTTEXTOUT           (GDI.351)
+ 0000:0000  Imp  SETCURSOR            (USER.69)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  _wdbPrint3           (WDB.83)
+ 0000:0000  Imp  _wdbPrint4           (WDB.84)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  _wdbPrint5           (WDB.85)
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  CREATEFONTINDIRECT   (GDI.57)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  SETACTIVEWINDOW      (USER.59)
+ 0000:0000  Imp  _wdbPrint            (WDB.80)
+ 0000:0000  Imp  BRINGWINDOWTOTOP     (USER.45)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GETCHARABCWIDTHS     (GDI.307)
+ 0000:0000  Imp  GETDEVICECAPS        (GDI.80)
+ 0000:0000  Imp  GETWINDOWWORD        (USER.133)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  CREATECOMPATIBLEDC   (GDI.52)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  TEXTOUT              (GDI.33)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  GETPROCADDRESS       (KERNEL.50)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  SETTEXTCOLOR         (GDI.9)
+ 0000:0000  Imp  WAITEVENT            (KERNEL.30)
+ 0000:0000  Imp  MULDIV               (GDI.128)
+ 0000:0000  Imp  DELETEDC             (GDI.68)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  INVALIDATERECT       (USER.125)
+ 0000:0000  Imp  TRANSLATEMESSAGE     (USER.113)
+ 0000:0000  Imp  INITAPP              (USER.5)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  GETTEXTFACE          (GDI.92)
+ 0000:0000  Imp  WDBCONFIGDLG         (WDB.15)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  LSTRCAT              (KERNEL.89)
+ 0000:0000  Imp  GETTEXTEXTENTPOINT   (GDI.471)
+ 0000:0000  Imp  GETMODULEHANDLE      (KERNEL.47)
+ 0000:0000  Imp  GETOBJECT            (GDI.82)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  CHOOSEFONT           (COMMDLG.15)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GETDC                (USER.66)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  CREATEWINDOW         (USER.41)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  GETMODULEFILENAME    (KERNEL.49)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  CREATEPEN            (GDI.61)
+ 0000:0000  Imp  GLOBALHANDLE         (KERNEL.21)
+ 0000:0000  Imp  LOADSTRING           (USER.176)
+ 0000:0000  Imp  RECTANGLE            (GDI.27)
+ 0000:0000  Imp  GETMESSAGE           (USER.108)
+ 0000:0000  Imp  FINDWINDOW           (USER.50)
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  WDBASSERTBOX         (WDB.25)
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0000:0000  Imp  GETSYSCOLOR          (USER.180)
+ 0000:0000  Imp  LSTRCMPI             (USER.471)
+ 0000:0000  Abs  __wiobused
+ 0000:0001  Abs  __sizec
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __fptaskdata
+ 0000:D6D6  Abs  __aDBdoswp
+ 0000:D6D6  Abs  __aDBused
+ 0001:0010       __wflags
+ 0001:001A       __astart
+ 0001:00BD       __nomain
+ 0001:00C4       __aFulshr
+ 0001:00D0       __stubmain
+ 0001:00FC       __cinit
+ 0001:01DB       _exit
+ 0001:01E9       __exit
+ 0001:01F8       __cexit
+ 0001:0209       __c_exit
+ 0001:0279       __ctermsub
+ 0001:02B6       __FF_MSGBANNER
+ 0001:02DA       __setargv
+ 0001:045C       __setenvp
+ 0001:04EC       __cintDIV
+ 0001:04F1       __amsg_exit
+ 0001:0534       __wcexit
+ 0001:0534       __wcinit
+ 0001:0539       __QWINOpen
+ 0001:0539       __wclose
+ 0001:0539       __QWINIsQWINin
+ 0001:0539       __wsetscreenbuf
+ 0001:0539       __wgetscreenbuf
+ 0001:0539       __QWINTerm
+ 0001:0539       __QWINSetAboutString
+ 0001:0539       __wsetfocus
+ 0001:0539       __QWINGetBuffSize
+ 0001:0539       __wwrite
+ 0001:0539       __wterm
+ 0001:0539       __QWINWrite
+ 0001:0539       __QWINGetSize
+ 0001:0539       __wread
+ 0001:0539       __QWINRead
+ 0001:0539       __wgetfocus
+ 0001:0539       __QWINMenuClick
+ 0001:0539       __QWINSetSize
+ 0001:0539       __wmenuclick
+ 0001:0539       __QWINSetFocus
+ 0001:0539       __wabout
+ 0001:0539       __QWINExit
+ 0001:0539       __wopen
+ 0001:0539       __QWINClose
+ 0001:0539       __wsetsize
+ 0001:0539       __QWINInit
+ 0001:0539       __QWINSetBuffSize
+ 0001:0539       __QWINGetFocus
+ 0001:0539       __wgetsize
+ 0001:0539       __QWINYield
+ 0001:0540       __fptrap
+ 0001:0546       __NMSG_TEXT
+ 0001:057D       __NMSG_WRITE
+ 0001:05BA       __myalloc
+ 0001:05E8       __growseg
+ 0001:0674       __incseg
+ 0001:06DA       __findlast
+ 0001:06FA       __nmalloc
+ 0001:0756       __nfree
+ 0001:0770       __nrealloc
+ 0001:07DE       __nmsize
+ 0002:0000       fnMainWnd
+ 0002:0918       DOABOUTBOX
+ 0002:0970       fnAbout
+ 0002:0A52       SETWAITCURSOR
+ 0002:0ABA       SETNORMALCURSOR
+ 0002:0B30       MESSAGELOOP
+ 0002:0B98       WINMAIN
+ 0002:0DE2       INITCLASS
+ 0002:0E80       CREATEMAIN
+ 0002:0ED2       GETSTRINGS
+ 0002:107E       _ErrorResBox
+ 0003:0000       REALLYCREATEFONT
+ 0003:0038       REALLYCREATEFONTEX
+ 0003:02F2       GETMATCHINGFONT
+ 0003:068A       fnEnumReallyEx
+ 0003:0844       GETTEXTMETRICSCORRECTLY
+ 0003:092E       GETTEXTSTYLE
+ 0003:0D90       GETTEXTFULLNAME
+ 0003:0F26       GETTEXTPOINTSIZE
+ 0003:0F6C       ISBOLDSIMULATED
+ 0003:0FD8       GETTEXTEXTENTABCPOINT
+ 0004:0004       rsrvptrs
+ 0004:0348       _szBold
+ 0004:034E       _szItalic
+ 0004:0356       _szBoldItalic
+ 0004:0362       _szRegular
+ 0004:0512       _STKHQQ
+ 0004:0514       __hPrevInstance
+ 0004:0516       __hInstance
+ 0004:0518       __lpszCmdLine
+ 0004:051C       __cmdShow
+ 0004:051E       _aseglo
+ 0004:0520       _aseghi
+ 0004:0522       ___aDBswpflg
+ 0004:0524       ___aDBrterr
+ 0004:0526       __acfinfo
+ 0004:0534       __aintdiv
+ 0004:0538       __fac
+ 0004:0542       _errno
+ 0004:0544       __umaskval
+ 0004:0546       __pspadr
+ 0004:0548       __psp
+ 0004:054A       __winver
+ 0004:054A       __winminor
+ 0004:054B       __winmajor
+ 0004:054C       __osver
+ 0004:054C       __osminor
+ 0004:054D       __osmajor
+ 0004:054E       __osversion
+ 0004:0550       __osmode
+ 0004:0551       __cpumode
+ 0004:0552       __oserr
+ 0004:0552       __doserrno
+ 0004:0554       __nfile
+ 0004:0556       __wfile
+ 0004:0558       __wnfile
+ 0004:055A       __osfile
+ 0004:056E       __wsfile
+ 0004:0582       ___argc
+ 0004:0584       ___argv
+ 0004:0586       __environ
+ 0004:0588       __pgmptr
+ 0004:058D       __child
+ 0004:058F       __exitflag
+ 0004:0590       __adbgmsg
+ 0004:0598       __qwinused
+ 0004:059A       __amblksiz
+ 0004:059C       __pnhNearHeap
+ 0004:05A2       __fpinit
+ 0004:0700       _edata
+ 0004:0700       __edata
+ 0004:0710       _hWDB
+ 0004:0712       ___wEval
+ 0004:0714       _nCurCount
+ 0004:0716       _szVerNum
+ 0004:0766       _hmodApp
+ 0004:0768       _rglpsz
+ 0004:07AC       _hwndApp
+ 0004:07AE       __end
+ 0004:07AE       _end
+
+Program entry point at 0001:001a

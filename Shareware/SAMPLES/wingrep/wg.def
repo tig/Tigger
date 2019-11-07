@@ -1,0 +1,19 @@
+NAME   WINGREP
+
+DESCRIPTION    'GREP: Windows 3.0 Style'
+
+EXETYPE    WINDOWS
+
+STUB   'WINSTUB.EXE'
+
+CODE   MOVEABLE
+DATA   MOVEABLE MULTIPLE
+
+HEAPSIZE   128
+STACKSIZE  4096
+
+EXPORTS
+   wgDlgProc   @1
+   wgWndProc   @2
+   BitClassWndProc @3
+   AboutDlgProc    @4

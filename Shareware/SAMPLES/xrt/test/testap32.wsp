@@ -1,0 +1,215 @@
+
+[Header]
+Version=1.10 .00000.0619
+WinVer=2563
+WorkspaceName0=&Edit
+WorkspaceName1=&Debug
+WorkspaceName2=&Custom
+Initial=3
+PromptWhenSave=1
+CloseWindow=1
+Status=5 -1 -1 7
+
+[Workspace3]
+Coord=0 7 953 896
+Style=382664704
+RibbonHidden=0
+StatusHidden=0
+WindowNumber=7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Workspace0]
+Coord=154 82 1107 971
+Style=382664704
+RibbonHidden=0
+StatusHidden=0
+WindowNumber=5
+
+[WindowWorkspace00]
+Type=4
+DuplicateNb=1
+Coord=363 10 932 703
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=1
+FileName=Output - Debug
+CursorPosition=0 3 8
+
+[WindowWorkspace01]
+Type=0
+DuplicateNb=1
+Coord=0 556 344 786
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Watch
+CursorPosition=0 1 15
+
+[WindowWorkspace02]
+Type=1
+DuplicateNb=1
+Coord=0 357 344 556
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Locals
+CursorPosition=0 8 10
+
+[WindowWorkspace03]
+Type=2
+DuplicateNb=1
+Coord=0 0 344 130
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Registers
+CursorPosition=0 3 34
+
+[WindowWorkspace04]
+Type=3
+DuplicateNb=1
+Coord=0 130 344 357
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Memory
+CursorPosition=0 0 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[WindowWorkspace30]
+Type=4
+DuplicateNb=1
+Coord=363 10 932 703
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=1
+FileName=Output - Build
+CursorPosition=0 5 0
+
+[WindowWorkspace31]
+Type=0
+DuplicateNb=1
+Coord=0 556 344 786
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Watch
+CursorPosition=0 1 23
+
+[WindowWorkspace32]
+Type=1
+DuplicateNb=1
+Coord=0 357 344 556
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Locals
+CursorPosition=0 0 0
+
+[WindowWorkspace33]
+Type=2
+DuplicateNb=1
+Coord=0 0 344 130
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Registers
+CursorPosition=0 0 0
+
+[WindowWorkspace34]
+Type=3
+DuplicateNb=1
+Coord=0 130 344 357
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Memory
+CursorPosition=0 0 0
+
+[WindowWorkspace35]
+Type=13
+DuplicateNb=1
+Coord=46 46 943 581
+Style=0
+Font=-12 0 0 0 400 0 0 0 255 1 2 1 49
+FaceName=Terminal
+Language=4
+TopMostWindow=0
+FileName=E:\SOURCE\XRT\TEST\IDATAOBJ.CPP
+CursorPosition=553 566 34
+
+[WindowWorkspace36]
+Type=13
+DuplicateNb=1
+Coord=69 69 943 604
+Style=0
+Font=-12 0 0 0 400 0 0 0 255 1 2 1 49
+FaceName=Terminal
+Language=4
+TopMostWindow=0
+FileName=E:\SOURCE\XRT\TEST\IADVSINK.CPP
+CursorPosition=40 40 0

@@ -1,0 +1,29 @@
+// iview.idl
+//
+// Interface definitions for Ole2View Interface Viewers
+//
+import "unknwn.idl";
+
+
+
+
+// DEFINE_GUID(IID_IInterfaceViewerr,0xfc37e5ba,0x4a8e,0x11ce, 0x87,0x0b,0x08,0x00,0x36,0x8d,0x23,0x02);
+//
+// IInterfaceViewer::View can return the following SCODEs
+//
+// S_OK
+// E_INVALIDARG	
+// E_UNEXPECTED
+// E_OUTOFMEMORY	
+// 
+[
+    uuid(fc37e5ba-4a8e-11ce-870b-0800368d2302),
+    object
+]
+interface IInterfaceViewer : IUnknown
+{
+    HRESULT View([in]HWND hwndParent, [in]REFIID riid, [in]IUnknown* punk);
+}
+
+
+

@@ -1,0 +1,44 @@
+;************************************************************************
+;*
+;*     Project:  WINPRT2.EXE
+;*
+;*      Module:  WINPRT2.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              WINPRT2
+
+DESCRIPTION       'Print Server'
+
+EXETYPE           WINDOWS
+
+STUB              'OBJ\\WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  WINPRT2      PRELOAD MOVEABLE DISCARDABLE
+                  PRECOMP      MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          16000
+
+STACKSIZE         12000
+
+EXPORTS           
+                  fnAbout              @100
+
+                  fnMainWnd            @102
+
+;/***********************************************************************
+;* End of File: WINPRT2.def
+;************************************************************************
+

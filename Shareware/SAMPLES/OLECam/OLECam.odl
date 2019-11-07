@@ -1,0 +1,39 @@
+// OLECam.odl : type library source for OLECam.exe
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (OLECam.tlb).
+
+[ uuid(C9A7CF6F-76CD-11CF-A51D-080036F12502), version(1.0) ]
+library OLECam
+{
+	importlib("stdole32.tlb");
+	
+	//  Primary dispatch interface for CDoc
+	
+	[ uuid(C9A7CF70-76CD-11CF-A51D-080036F12502) ]
+	dispinterface IW3bmps
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for CDoc
+	
+	[ uuid(C9A7CF6E-76CD-11CF-A51D-080036F12502) ]
+	coclass CDoc
+	{
+		[default] dispinterface IW3bmps;
+	};
+
+	//{{AFX_APPEND_ODL}}
+};

@@ -1,0 +1,20 @@
+#include "windows.h"
+#include "testd.h"
+
+#include "selprnd.h"
+
+#include "selprn.dlg"
+
+test ICON "test.ICO"
+
+test MENU
+BEGIN
+    POPUP        "&SelectPrinter"
+    BEGIN
+        MENUITEM "&Get Default", IDM_GETDEFAULT
+        MENUITEM "&Use Default...", IDM_USEDEFAULT
+        MENUITEM "&Standard...", IDM_STANDARD
+        MENUITEM "&Allow Setup", IDM_ALLOWSETUP, CHECKED
+    END
+END
+

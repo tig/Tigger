@@ -1,0 +1,42 @@
+// Pager.idl : IDL source for Pager.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Pager.tlb) and marshalling code.
+
+[
+	object,
+	uuid(23208895-15BF-11D0-97FB-00AA001F73C1),
+	helpstring("IPager Interface"),
+	pointer_default(unique),
+    dual,
+    oleautomation
+]
+interface IPager : IDispatch
+{
+	import "oaidl.idl";
+
+    [helpstring("Sends a page")]
+    HRESULT Page([in]BSTR PhoneNumber, [in]BSTR PIN, [in]BSTR Msg, [out,retval]VARIANT_BOOL* retval);
+};
+
+[
+	uuid(23208893-15BF-11D0-97FB-00AA001F73C1),
+	version(1.0),
+	helpstring("Pager 1.0 Type Library")
+]
+library PagerLib
+{
+    importlib("stdole32.tlb");
+
+	[
+		uuid(23208899-15BF-11D0-97FB-00AA001F73C1),
+        appobject,
+		helpstring("Pager Class (sends pages)")
+	]
+	coclass Pager 
+	{
+		[default] interface IPager;
+	};
+
+};

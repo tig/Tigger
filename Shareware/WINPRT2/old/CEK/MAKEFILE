@@ -1,0 +1,301 @@
+ #*****************************************************************************
+ #
+ #     Project:  
+ #
+ #      Module:  makefile
+ #
+ #   Author(s):  Charles E. Kindel, Jr. (cek)
+ #
+ #   This makefile uses the following environment variables to determine
+ #   the type of build:
+ #
+ #      WIN32       - If defined as WIN16 or not defined, build 16 bit version
+ #      Cpu         - Only valid if WIN32=WIN32.  Can be i386 or MIPS
+ #      DEBUG       - If defined build a debug version.
+ #
+ #*****************************************************************************
+
+MAINTARGET=CEK
+#MAINTARGET32=
+
+#----------------------------------------------------------------------
+# Is it a DLL or an EXE?
+#----------------------------------------------------------------------
+_EXT_  =    DLL
+
+!IF "$(WIN32)"=="WIN32"
+!INCLUDE <ntwin32.mak>
+!ENDIF
+
+#----------------------------------------------------------------------
+# if PUT??? is defined the .??? will be copied from the root to that dir
+#----------------------------------------------------------------------
+PUTEXE  =   ..\BUILD\ 
+!IF "$(_EXT_)"=="DLL"
+PUTLIB  =   ..\LIB\ 
+PUTINC  =   ..\INC\ 
+!ENDIF
+
+#----------------------------------------------------------------------
+# Directories (modify to suite your environment)
+#
+# _RES_ is where all resource source files are (.RC, .DLG, .ICO...)
+# _SRC_ is where all source code is (.C, .ASM...)
+# _INC_ is where the include files reside, by default this is same as _SRC_
+# _OBJ_ is where all intermediate files are put (.OBJ, .RES)
+#
+# NOTE:  MIPS\ will be appended to _OBJ_ if we are compiling for mips
+#----------------------------------------------------------------------
+_RES_ =     RES\ 
+_INC_ =     SRC\ 
+!IF "$(WIN32)"=="WIN32"
+_OBJ_ =     OBJ32\ 
+!  IF "$(CPU)"=="MIPS"
+_OBJ_ =     $(_OBJ_)MIPS\ 
+!  ENDIF
+!ELSE
+_OBJ_ =     OBJ\ 
+!ENDIF
+_SRC_ =     SRC\ 
+_HLP_ =     HELP\ 
+
+!IF "$(WIN32)"!="WIN32"
+### PCH is busted in 340
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(_OBJ_)PRECOMP.PCH
+!ENDIF
+
+#----------------------------------------------------------------------
+# List your LINK dependencies here.  Note that NMAKE under DOS
+# has a problem with long lines so we split it out to OBJS1 and OBJS2
+#----------------------------------------------------------------------
+OBJS1   = \
+!IFDEF PCHFLAGS
+            $(_OBJ_)PRECOMP.OBJ\
+!ENDIF
+            $(_OBJ_)CEK.OBJ\
+            $(_OBJ_)WEP.obj\
+            $(_OBJ_)STATUS.OBJ\
+            $(_OBJ_)LED.OBJ\
+            $(_OBJ_)FONTUTIL.OBJ\
+            $(_OBJ_)SLIDER.OBJ\
+            $(_OBJ_)TOOLBAR.OBJ\
+            $(_OBJ_)DLGHELP.OBJ
+
+OBJS2   =   \
+            $(_OBJ_)INI.OBJ\
+            $(_OBJ_)HEAP.OBJ\
+            $(_OBJ_)LIST.OBJ\
+            $(_OBJ_)QUEUE.OBJ\
+            $(_OBJ_)STACK.OBJ\
+            $(_OBJ_)STRING.OBJ\
+            $(_OBJ_)MUSCROLL.OBJ\
+            $(_OBJ_)ctldlg.obj\
+            $(_OBJ_)WINTIME.OBJ\
+!IF "$(WIN32)"!="WIN32"
+            $(_OBJ_)LIBENTRY.OBJ\
+            $(_OBJ_)WSSCANF.OBJ\
+!ENDIF
+
+
+#----------------------------------------------------------------------
+# Version stamping stuff
+#----------------------------------------------------------------------
+VERINCS =   $(_INC_)VERSION.H $(_RES_)$(MAINTARGET).RCV
+
+#----------------------------------------------------------------------
+# Resources.  Add your resource dependencies here.
+#----------------------------------------------------------------------
+RCINCS =    $(VERINCS)\
+            $(_RES_)$(MAINTARGET).rc\
+            $(_RES_)$(MAINTARGET).str
+
+!IF "$(WIN32)"=="WIN32"
+#----------------------------------------------------------------------
+# Build a 32 bit executable
+#----------------------------------------------------------------------
+
+PLATFORM = Win32 ($(CPU))
+
+### PCH is busted in 340
+!UNDEF PCHFLAGS
+
+!IF "$(MAINTARGET32)"==""
+MAINTARGET32 =    $(MAINTARGET)32
+!ENDIF
+
+!   IFDEF DEBUG
+_LIBS_      = wdb32.lib
+
+_CFLAGS_    = -nologo $(cflags) $(cdebug) $(cvtdebug) $(cvarsdll) -DDEBUG
+_LINKFLAGS_ = $(linkdebug) -dll $(guilibsdll) $(_LIBS_) -entry:LibMain$(DLLENTRY)
+_RCFLAGS_   = -r -i$(_SRC_);$(_RES_) $(cvarsdll) -DDEBUG 
+BUILDTYPE = Debug
+!   ELSE
+_LIBS_      = 
+
+_CFLAGS_    = -nologo $(cflags) $(cvarsdll)
+_LINKFLAGS_ = -dll $(guilibsdll) $(_LIBS_) -entry:LibMain$(DLLENTRY)
+_RCFLAGS_   = -r -i$(_SRC_);$(_RES_) $(cvarsdll)
+BUILDTYPE = NoDebug
+!   ENDIF
+
+all : $(MAINTARGET32).$(_EXT_)
+
+!ELSE
+#----------------------------------------------------------------------
+# Build a 16 bit executable
+#----------------------------------------------------------------------
+
+PLATFORM = Win16
+
+!   IFDEF DEBUG
+_LIBS_      =  wdb libw mdllcew
+
+_CFLAGS_    = -nologo -c -W3 -AMw -G2sw -Owd -Zip -DDEBUG
+_LINKFLAGS_ = /NOD/NOE/MAP/nologo/CO 
+_RCFLAGS_   = -r -i$(_SRC_);$(_RES_) -DDEBUG 
+BUILDTYPE = Debug
+!   ELSE
+_LIBS_      =  libw mdllcew
+
+_CFLAGS_    = -nologo -c -W3 -AMw -G2sw -Owt
+_LINKFLAGS_ = /NOD/NOE/MAP/nologo 
+_RCFLAGS_   = -r -i$(_SRC_);$(_RES_)
+BUILDTYPE = NoDebug
+!   ENDIF
+
+_RESFLAGS_  = -v -t -31
+
+all : $(MAINTARGET).$(_EXT_)
+
+!ENDIF
+
+BANNER = $(MAINTARGET) : *** $(PLATFORM) *** $(BUILDTYPE) *** $(PLATFORM) *** $(BUILDTYPE) ***
+
+#!CMDSWITCHES +s
+
+
+#----------------------------------------------------------------------
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#----------------------------------------------------------------------
+{$(_SRC_)}.c{$(_OBJ_)}.obj: 
+   @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Compiling $(@B).C... 
+!IF "$(WIN32)"=="WIN32"
+   $(cc) $(_CFLAGS_) $(PCHFLAGS) -Fo$@ $(_SRC_)$(@B).C >$(_SRC_)$(@B).ERR
+   @TYPE $(_SRC_)$(@B).ERR
+!ELSE
+   @SET CL=$(_CFLAGS_) $(PCHFLAGS)
+   $(CC) -Fo$@ $(_SRC_)$(@B).C >$(_SRC_)$(@B).ERR
+   @TYPE $(_SRC_)$(@B).ERR
+   @SET CL=
+!ENDIF
+
+#-----------------------------------------------------------------------
+# If PCHFLAGS is defined, this will build the pre-compiled headers
+#-----------------------------------------------------------------------
+$(_OBJ_)PRECOMP.OBJ:  $(_SRC_)PRECOMP.H
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Pre-compiling $(@B).C... 
+    @SET CL=$(_CFLAGS_)
+!IF "$(WIN32)"=="WIN32"
+    $(cc) -YcPRECOMP.H -Fp$(_OBJ_)PRECOMP.PCH -Fo$@ $(_SRC_)$(@B).C > $(_SRC_)$(@B).ERR
+!ELSE
+    $(CC) -YcPRECOMP.H -Fp$(_OBJ_)PRECOMP.PCH -Fo$@ $(_SRC_)$(@B).C > $(_SRC_)$(@B).ERR
+!ENDIF
+    @SET CL=
+
+#-----------------------------------------------------------------------
+# Compile resources
+#-----------------------------------------------------------------------
+$(_OBJ_)$(MAINTARGET).RES: $(RCINCS) 
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Building Resources : $(@B).RES... 
+!IF "$(WIN32)"=="WIN32"
+    rc $(_RCFLAGS_) -fo$(_OBJ_)$(MAINTARGET).tmp $(_RES_)$(MAINTARGET).rc
+    cvtres -$(CPU) $(_OBJ_)$(MAINTARGET).TMP -o $(_OBJ_)$(MAINTARGET).RES
+    del $(_OBJ_)$(MAINTARGET).TMP
+!ELSE
+    rc $(_RCFLAGS_) -fo$(_OBJ_)$(MAINTARGET).RES $(_RES_)$(MAINTARGET).rc $(_OBJ_)$(MAINTARGET).RES
+!ENDIF
+
+#-----------------------------------------------------------------------
+# Maintarget build rule
+#-----------------------------------------------------------------------
+$(MAINTARGET32).$(_EXT_) : $(MAINTARGET32).LIB $(OBJS1) $(OBJS2) $(_OBJ_)$(MAINTARGET).RES $(MAINTARGET32).DEF
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Linking $(@B).$(_EXT_)... 
+    $(link) $(_LINKFLAGS_) -out:$(MAINTARGET32).$(_EXT_) $(_OBJ_)$(MAINTARGET).RES $(MAINTARGET32).EXP $(OBJS1) $(OBJS2)
+!   IFDEF PUTLIB
+    @copy $(MAINTARGET32).lib $(PUTLIB)
+!   ENDIF
+!   IFDEF PUTEXE
+    @copy $(MAINTARGET32).$(_EXT_) $(PUTEXE)
+#    @copy $(MAINTARGET32).SYM $(PUTEXE)
+!   ENDIF
+!   IFDEF PUTINC
+    @copy $(_SRC_)$(MAINTARGET).H $(PUTINC) 
+!   ENDIF
+    @type $(_INC_)version.h 
+    @echo $(BANNER) 
+
+$(MAINTARGET32).LIB: $(OBJS1) $(OBJS2) $(MAINTARGET32).DEF
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Building Import Library for $(@B).$(_EXT_)... 
+    lib -machine:$(CPU) -def:$(MAINTARGET32).DEF $(OBJS1) $(OBJS2) -out:$(MAINTARGET32).LIB
+    
+$(MAINTARGET).$(_EXT_) : $(OBJS1) $(OBJS2) $(_OBJ_)$(MAINTARGET).RES $(MAINTARGET).DEF
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Linking $(@B).$(_EXT_)... 
+    LINK $(_LINKFLAGS_) @<<
+$(OBJS1)+
+$(OBJS2)
+$(MAINTARGET).$(_EXT_)
+$(MAINTARGET).MAP
+$(_LIBS_)
+$(MAINTARGET).DEF
+<<
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Adding Resources to $(@B).$(_EXT_)... 
+    rc $(_RESFLAGS_) $(_OBJ_)$(MAINTARGET).RES $(MAINTARGET).$(_EXT_)
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Building Import Library for $(@B).$(_EXT_)... 
+    implib $(MAINTARGET).LIB $(MAINTARGET).DEF
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Building symbol file $(@B).SYM... 
+    mapsym $(MAINTARGET).map
+!   IFDEF PUTLIB
+    @copy $(MAINTARGET).lib $(PUTLIB)
+!   ENDIF
+!   IFDEF PUTEXE
+    @copy $(MAINTARGET).$(_EXT_) $(PUTEXE)
+    @copy $(MAINTARGET).SYM $(PUTEXE)
+!   ENDIF
+!   IFDEF PUTINC
+    @copy $(_SRC_)$(MAINTARGET).H $(PUTINC) 
+!   ENDIF
+    @type $(_INC_)version.h 
+    @echo $(BANNER) 
+
+$(_OBJ_)LIBENTRY.OBJ: $(_SRC_)LIBENTRY.ASM
+    @echo *** $(BUILDTYPE) *** $(PLATFORM) *** Assembling $(@B).ASM... 
+    masm -Mx $(_SRC_)LIBENTRY, $(_OBJ_)LIBENTRY;
+
+#----------------------------------------------------------------------
+# Put .C targets here
+#----------------------------------------------------------------------
+$(_OBJ_)CEK.OBJ: $(_INC_)CEK.H $(_INC_)ICEK.H $(VERINCS)
+
+#-----------------------------------------------------------------------
+#   MISC. STUFF
+#-----------------------------------------------------------------------
+version     :   clean
+                bumpver $(_INC_)VERSION.H
+
+
+.ignore : 
+clean       :  
+                !del $(_OBJ_)*.obj
+                !del $(_OBJ_)*.res
+                !del *.map
+                !del *.sym
+                !del *.$(_EXT_)
+                !del *.lib
+                !del $(_SRC_)*.err
+                @echo *** DONE ***
+

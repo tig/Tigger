@@ -1,0 +1,180 @@
+/************************************************************************
+ *
+ *     Project:  INIedit 2.0
+ *
+ *      Module:  INIEDIT.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#define WIN31 1
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include "isz.h"
+
+/*
+ * Dialog box defines
+ */
+#include "dlgs.h"
+#include "cmd.h"
+#include "res.h"
+
+/*
+ * Version Stamping
+ */
+#include "INIEDIT.rcv"
+
+/*
+ * String table
+ */
+#include "INIEDIT.str"
+
+
+1 ACCELERATORS
+BEGIN
+   VK_F1, IDM_HELP_CURRENT, VIRTKEY
+END
+
+/*
+ * Icons
+ */
+IDI_INIEDIT  ICON "INIEDIT.ico"
+
+/*
+ * Bitmaps
+ */
+IDB_LISTBOXICONS BITMAP "BITMAP.BMP"
+
+IDM_FILE_COMMIT          BITMAP "commit1.bmp"
+IDM_FILE_COMMIT_DN       BITMAP "commit2.bmp"
+IDM_FILE_COMMIT_S        BITMAP "commit3.bmp"
+IDM_FILE_COMMIT_S_DN     BITMAP "commit4.bmp"
+
+IDM_FILE_OPEN            BITMAP "open1.bmp"
+IDM_FILE_OPEN_DN         BITMAP "open2.bmp"
+IDM_FILE_OPEN_S          BITMAP "open3.bmp"
+IDM_FILE_OPEN_S_DN       BITMAP "open4.bmp"
+
+IDM_EDIT_ADD_FILE        BITMAP "new1.bmp"
+IDM_EDIT_ADD_FILE_DN     BITMAP "new2.bmp"
+IDM_EDIT_ADD_FILE_S      BITMAP "new3.bmp"
+IDM_EDIT_ADD_FILE_S_DN   BITMAP "new4.bmp"
+
+IDM_FILE_EDIT            BITMAP "edit1.bmp"
+IDM_FILE_EDIT_DN         BITMAP "edit2.bmp"
+IDM_FILE_EDIT_S          BITMAP "edit3.bmp"
+IDM_FILE_EDIT_S_DN       BITMAP "edit4.bmp"
+
+IDM_FILE_PRINT           BITMAP "print1.bmp"
+IDM_FILE_PRINT_DN        BITMAP "print2.bmp"
+IDM_FILE_PRINT_S         BITMAP "print3.bmp"
+IDM_FILE_PRINT_S_DN      BITMAP "print4.bmp"
+
+IDM_EDIT_UNDO            BITMAP "undo1.bmp"
+IDM_EDIT_UNDO_DN         BITMAP "undo2.bmp"
+IDM_EDIT_UNDO_S          BITMAP "undo3.bmp"
+IDM_EDIT_UNDO_S_DN       BITMAP "undo4.bmp"
+
+
+
+/*
+ * Menus
+ */
+INIEDIT  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  POPUP  "&File"
+  BEGIN
+    MenuItem "&Open...",  IDM_FILE_OPEN
+    MenuItem "&Commit",   IDM_FILE_COMMIT
+    MenuItem SEPARATOR
+    MenuItem "&Edit with editor...", IDM_FILE_EDIT
+    MenuItem SEPARATOR
+    MenuItem "&Printer Setup...",  IDM_FILE_PRINTSETUP
+    MenuItem "&Print",  IDM_FILE_PRINT
+    MenuItem SEPARATOR
+    MenuItem "E&xit",  IDM_FILE_EXIT
+  END
+
+
+  POPUP  "&Edit"
+   BEGIN
+    MenuItem "&Undo", IDM_EDIT_UNDO, GRAYED
+
+    MenuItem SEPARATOR
+
+    POPUP "&Copy"
+      BEGIN
+       MenuItem "&File", IDM_EDIT_COPY_FILE, GRAYED
+       MenuItem "&Section", IDM_EDIT_COPY_SECTION, GRAYED
+       MenuItem "&Key and Value", IDM_EDIT_COPY_KEYVALUE, GRAYED
+       MenuItem "K&ey", IDM_EDIT_COPY_KEY, GRAYED
+       MenuItem "&Value", IDM_EDIT_COPY_VALUE, GRAYED
+      END
+    MenuItem "&Paste", IDM_EDIT_PASTE, GRAYED
+    MenuItem SEPARATOR
+    POPUP "&Add",
+    BEGIN
+      MenuItem "&File...",        IDM_EDIT_ADD_FILE        , GRAYED
+      MenuItem "&Section...",        IDM_EDIT_ADD_SECTION     , GRAYED
+      MenuItem "&Key and value...",        IDM_EDIT_ADD_KEY, GRAYED
+    END
+
+    POPUP "&Del",
+    BEGIN
+      MenuItem "&File",        IDM_EDIT_DEL_FILE        , GRAYED
+      MenuItem "&Section",        IDM_EDIT_DEL_SECTION     , GRAYED
+      MenuItem "&Key and value",        IDM_EDIT_DEL_KEY         , GRAYED
+    END
+   END
+
+   POPUP "&Search"
+      BEGIN
+         MenuItem "&Find...", IDM_SEARCH_FIND
+         MenuItem "&Find Next", IDM_SEARCH_FINDNEXT
+         MenuItem "&Replace...", IDM_SEARCH_REPLACE
+         MenuItem SEPARATOR
+         MenuItem "&Search all files", IDM_SEARCH_ALL, GRAYED
+      END
+
+
+  POPUP  "&Options"
+  BEGIN
+    MenuItem "&Font...",  IDM_OPT_FONT
+    MenuItem "&Editor...",  IDM_OPT_EDITOR
+    MenuItem SEPARATOR
+    MenuItem "Show &Picture Menu", IDM_OPT_TOOLBAR
+    MenuItem "Show &Labels on Picture Menu", IDM_OPT_TOOLBARLABELS
+    MenuItem "Show &Status bar", IDM_OPT_STAT
+  END
+
+  POPUP  "&Help"
+   BEGIN
+    MenuItem "C&urrent item...", IDM_HELP_CURRENT
+    MenuItem "&Contents...", IDM_HELP_CONTENTS
+    MenuItem "&Search...", IDM_HELP_SEARCH
+    MenuItem "&Help on Help", IDM_HELP_ONHELP
+    MenuItem SEPARATOR
+    MenuItem "&About...",  IDM_HELP_ABOUT
+   END
+END
+
+/*
+ * Dialog boxes
+ */
+#include "iniedit.dlg"
+
+/*
+ * RCDATA
+ */
+ID_RCDATA_ORDER_FRM TEXTFILE "..\\RES\\ORDER.FRM"
+
+/************************************************************************
+ * End of File: INIEDIT.rc
+ ***********************************************************************/
+

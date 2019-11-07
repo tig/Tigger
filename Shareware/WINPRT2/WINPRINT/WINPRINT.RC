@@ -1,0 +1,370 @@
+//Microsoft App Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#ifdef APSTUDIO_INVOKED
+//////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""res\\winprint.rc2""  // non-App Studio edited resources\r\n"
+    "\r\n"
+    "#include ""afxres.rc""  \011// Standard components\r\n"
+    "#include ""afxolecl.rc""\011// OLE container resources\r\n"
+    "\0"
+END
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // APSTUDIO_INVOKED
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+IDR_MAINFRAME           ICON    DISCARDABLE     "RES\\WINPRINT.ICO"
+IDR_CONFIGFRAME         ICON    PRELOAD DISCARDABLE "RES\\IDR_PRIN.ICO"
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "RES\\TOOLBAR.BMP"
+IDB_NA                  BITMAP  DISCARDABLE     "RES\\NA.BMP"
+IDB_QUESTION            BITMAP  DISCARDABLE     "RES\\QUESTION.BMP"
+IDB_PORTRAIT            BITMAP  DISCARDABLE     "RES\\PORTRAIT.BMP"
+IDB_LANDSCAPE           BITMAP  DISCARDABLE     "RES\\LANDSCAP.BMP"
+IDR_CONFIGFRAME         BITMAP  MOVEABLE PURE   "RES\\IDR_CONF.BMP"
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Print...",                   ID_FILE_PRINT
+        MENUITEM "Print Pre&view...",           ID_FILE_PRINTPREVIEW
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Configuration"
+    BEGIN
+        MENUITEM "&New...",                     ID_CONFIGURATION_CREATE
+        MENUITEM "&Properties...",              ID_CONFIGURATION_PROPS
+        MENUITEM "&Show DragDrop Icon",         ID_CONFIGURATION_SHOWICON
+        , CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "&Delete...",                  ID_CONFIGURATION_DELETE
+        MENUITEM "&Copy...",                    ID_CONFIGURATION_COPY
+    END
+    POPUP "&Queue"
+    BEGIN
+        MENUITEM "&Pause",                      ID_QUEUE_PAUSE, CHECKED
+        MENUITEM "Pause &Item",                 ID_QUEUE_PAUSEITEM, CHECKED
+        MENUITEM "&Delete",                     ID_QUEUE_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "&Move Up",                    ID_QUEUE_MOVEUP
+        MENUITEM "M&ove Down",                  ID_QUEUE_MOVEDOWN
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&Preferences...",             ID_OPTIONS_PREFERENCES
+        POPUP "&View"
+        BEGIN
+            MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+            MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        END
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Index",                      ID_HELP_INDEX
+        MENUITEM "&Using Help",                 ID_HELP_USING
+        MENUITEM SEPARATOR
+        MENUITEM "&About Winprint...",          ID_APP_ABOUT
+    END
+END
+
+IDR_CNTR_INPLACE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    MENUITEM SEPARATOR
+    MENUITEM SEPARATOR
+END
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    VK_F1,          ID_HELP,                VIRTKEY,NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY,SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY,NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY,SHIFT, NOINVERT
+END
+
+IDR_CNTR_INPLACE ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    VK_ESCAPE,      ID_CANCEL_EDIT,         VIRTKEY,NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY,NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY,SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY,NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY,SHIFT, NOINVERT
+END
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_SIZEHORZ            CURSOR  DISCARDABLE     "RES\\SIZEHORZ.CUR"
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SPLASH DIALOG DISCARDABLE  80, 40, 242, 105
+STYLE DS_MODALFRAME | WS_POPUP
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "",IDC_BIGICON,"Button",BS_OWNERDRAW | WS_DISABLED,6,6,
+                    38,40
+    LTEXT           "WinPrint 2.0",IDC_WINPRINT,53,6,182,8,NOT WS_GROUP
+    CONTROL         "",IDC_WINPRINT,"Static",SS_BLACKRECT,53,44,187,1
+    LTEXT           "Warning: This computer program is protected by",
+                    IDC_WINPRINT,53,50,185,8
+    LTEXT           "copyright law and international treaties.  Unauthorized",
+                    IDC_WINPRINT,53,58,185,8
+    LTEXT           "reproduction or distribution of this program, or any",
+                    IDC_WINPRINT,53,66,185,8
+    LTEXT           "portion of it, may result in severe civil and criminal",
+                    IDC_WINPRINT,53,74,185,8
+    LTEXT           "penalties, and will be prosecuted to the maximum",
+                    IDC_WINPRINT,53,82,185,8
+    LTEXT           "extent possible under law.",IDC_WINPRINT,53,90,182,8
+    LTEXT           "Copyright \251 1990-94 Charles E. Kindel, Jr.\nAll Rights Reserved.",
+                    IDC_WINPRINT,54,22,150,17,NOT WS_GROUP
+END
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  80, 40, 261, 112
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About WinPrint 2.0"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "",IDC_BIGICON,"Button",BS_OWNERDRAW | WS_DISABLED,6,6,
+                    38,40
+    LTEXT           "WinPrint 2.0",IDC_STATIC,54,8,151,8,NOT WS_GROUP
+    LTEXT           "Copyright \251 1990-94 Charles E. Kindel, Jr.\nAll Rights Reserved.",
+                    IDC_STATIC,54,20,150,17,NOT WS_GROUP
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKRECT,6,88,248,1
+    DEFPUSHBUTTON   "OK",IDCANCEL,215,6,40,14
+    LTEXT           "This product is registered to:",IDC_STATIC,8,97,95,8
+    EDITTEXT        IDC_REGISTEREDTO,105,95,146,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Kindel Systems\n22925 N.E. 12th Place\nRedmond, WA  98053\n(206)868-9591 (Voice/FAX)\nCIS: 71551,1455",
+                    IDC_STATIC,54,41,191,42
+END
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE 2.0 initialization failed.  Make sure that the OLE libraries are the correct version."
+    IDP_FAILED_TO_CREATE    "Failed to create object.  Make sure the object is entered in the system registry."
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "WinPrint 2.0"
+    IDS_INI_CONFIG          "Configuration"
+    IDS_INI_WNDPOS          "WindowPos"
+    IDR_CONFIGFRAME         "Configuration Frame"
+    IDS_INI_SHOWCMD         "ShowCmd"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Winprint 2.0"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document"
+    ID_FILE_OPEN            "Open an existing document"
+    ID_FILE_CLOSE           "Close the active document"
+    ID_FILE_SAVE            "Save the current state of all configurations."
+    ID_FILE_SAVE_AS         "Save the active document with a new name"
+    ID_FILE_PRINT           "Choose files to print."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright"
+    ID_APP_EXIT             "Quit the application; prompts to save documents"
+    ID_HELP_INDEX           "List Help topics"
+    ID_HELP_USING           "Display instructions about how to use help"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows"
+    ID_HELP                 "Display help for current task or command"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane"
+    ID_PREV_PANE            "Switch back to the previous window pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection"
+    ID_EDIT_CLEAR_ALL       "Erase everything"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard"
+    ID_EDIT_FIND            "Find the specified text"
+    ID_EDIT_PASTE           "Insert Clipboard contents"
+    ID_EDIT_PASTE_LINK      "Insert Clipboard contents and a link to its source"
+    ID_EDIT_PASTE_SPECIAL   "Insert Clipboard contents with options"
+    ID_EDIT_REPEAT          "Repeat the last action"
+    ID_EDIT_REPLACE         "Replace specific text with different text"
+    ID_EDIT_SELECT_ALL      "Select the entire document"
+    ID_EDIT_UNDO            "Undo the last action"
+    ID_EDIT_REDO            "Redo the previously undone action"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_INSERT_NEW       "Insert new embedded object"
+    ID_OLE_EDIT_LINKS       "Edit linked objects"
+    ID_OLE_EDIT_CONVERT     "Convert object to different type"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_VERB_FIRST       "Activate embedded or linked object"
+    57873                   "Activate embedded or linked object"
+    57874                   "Activate embedded or linked object"
+    57875                   "Activate embedded or linked object"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEWCONFIGURATION "Create a new configuration"
+    ID_FILE_NEWCONFIG       "Create a new configuration."
+    ID_CONFIGURATION_EDIT   "Edit selected configuration's properties"
+    ID_CONFIGURATION_PROPS  "Edit configuration's properties."
+    ID_CONFIGURATION_REMOVE "Delete selected configuration."
+    ID_CONFIGURATION_DELETE "Delete selected configuration."
+    ID_CONFIGURATION_COPY   "Copy selected configuration."
+    ID_CONFIGURATION_SHOWICON 
+                            "Show or hide drop target icon for selected configuration."
+    ID_CONFIGURATION_CREATE "Create a new configuration."
+    ID_QUEUE_PAUSE          "Pause queue processing."
+    ID_QUEUE_MOVEUP         "Move selected job up in the queue"
+    ID_QUEUE_MOVEDOWN       "Move selected job down in the queue"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_QUEUE_PAUSEITEM      "Pause selected job in queue"
+    ID_QUEUE_DELETE         "Delete selected job(s) from the queue."
+    ID_SYS_SAVEMINPOS       "If checked, the minimized position of the window will be saved and restored."
+    ID_SYS_ALWAYSONTOP      "Forces the window to always be on top of other windows."
+    ID_FILE_PRINTPREVIEW    "Choose a file to print preview."
+END
+
+
+#ifndef APSTUDIO_INVOKED
+////////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "res\winprint.rc2"  // non-App Studio edited resources
+
+#include "afxres.rc"    // Standard components
+#include "afxolecl.rc"  // OLE container resources
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

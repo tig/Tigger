@@ -1,0 +1,31 @@
+/* wg.rc */
+
+#include "windows.h"
+#include "wg.h"
+
+WINGREP    ICON    STALKER.ICO
+ABOUT      BITMAP  ABOUT.BMP
+
+
+WINGREPMENU MENU
+BEGIN
+   POPUP   "&File"
+   BEGIN
+       MENUITEM    "E&xit", ID_EXIT
+   END
+   POPUP   "&Help"
+   BEGIN
+       MENUITEM    "&Goober", ID_GOOBER
+       MENUITEM    SEPARATOR
+       MENUITEM    "&About STALKER!...", ID_ABOUT
+   END
+END
+
+
+#include "wg.dlg"
+
+ABOUT  DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 250, 80
+STYLE  WS_DLGFRAME | WS_POPUP
+BEGIN
+   CONTROL "WINGREP", IDOK, "BITCLASS", WS_CHILD, 0, 0, 230, 70
+END

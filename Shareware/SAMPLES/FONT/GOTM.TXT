@@ -1,0 +1,249 @@
+Knowledge Base Article:
+
+  "Retrieving font styles using GetOutlineTextMetrics()"
+
+Keywords:
+
+  GetOutlineTextMetrics, OUTLINETEXTMETRIC, TrueType, COMMDLG,
+StyleName, Fonts, GDI
+
+Windows version 3.1 uses the concept of a font style.  In
+previous versions of Windows a font could have bold, italic,
+underline, and strikeout properties which were supported through
+respective members in the LOGFONT and TEXTMETRIC structures.
+Windows 3.1 still supports these properties but also supports the
+concept of a sytle name for TrueType fonts.
+
+In terms of Windows 3.1 fonts, the term "style" refers to the
+weight and slant of a font.  Windows has always supported a wide
+range of weights through the LOGFONT lfWeight member (for example
+FW_BOLD which is defined as 700 and FW_THIN which is defined as
+100).  However, very few applications use anything but FW_BOLD
+and FW_DONTCARE (defined as 0).
+
+Windows 3.1 builds on the support presently in Windows for thes
+variations in weight and slant.  The style names are NOT used in
+the logfont directly (see the related article "Retrieving font
+styles uing EnumFontFamilies()").
+
+The use of style names can be demonstrated by looking at the
+ChooseFont (COMMDLG) dialog box.  This dialog box contains two
+list boxes: Font, and Font Style.  The Font list box contains a
+list of all face names and the Font Style list box contains a
+list of font styles for the currently selected face.  For example
+if any non TrueType font (such as MS Sans Serif) is selected, the
+following styles will appear in the style list box:
+
+  Regular
+  Bold
+  Italic
+  Bold Italic
+
+TrueType fonts may have these or more elaborate styles.  For
+example the 'Lucida Sans' face includes the following style
+names:
+
+  Regular
+  Italic
+  Demibold Roman
+  Demibold Italic
+
+In the case of 'Lucida Sans' with the style of 'Demibold Roman'
+or 'Demibold Italic' the lfWeight value is 600 (FW_DEMIBOLD).
+
+As part of the TrueType support in Windows 3.1, the
+GetOutlineTextMetrics() API can be used to retrieve metric
+information for TrueType fonts, including the style name.  This
+article describes using the GetOutlineTextMetrics() function to
+retrieve the style name of a font.  It is also possible to obtain
+the style name during font enumeration with the
+EnumFontFamilies() function.  See the related article "Retrieving
+font styles using EnumFontFamilies()" for more information.
+
+GetOutlineTextMetrics() is prototype as:
+
+  DWORD GetOutlineTextMetrics( HDC hdc, UINT cbData,
+                           LPOUTLINETEXTMETRIC lpotm ) ;
+
+The hdc parameter identifies the device context.
+GetOutlineTextMetrics() retrieves the metric information for the
+font currently selected into this device context.  In order for
+GetOutlineTextMetrics() to succeed, the font must be a TrueType
+font.  The sample code given below shows how to synthesize the
+style name for a non TrueType font.
+
+The cbData parameter specifies the size, in bytes, of the buffer
+to which information is returned.
+
+lpotm points to an OUTLINETEXTMETRIC structure. If this parameter
+is NULL, the function returns the size of the buffer required for
+the retrieved metric information.
+
+The OUTLINETEXTMETRIC structure contains most of the font metric
+information provided with the TrueType format.  The relative
+parts of the structure are given below:
+
+     typedef struct tagOUTLINETEXTMETRIC {
+       .
+       .
+       .
+         PSTR    otmpFamilyName;
+         PSTR    otmpFaceName;
+         PSTR    otmpStyleName;
+         PSTR    otmpFullName;
+     } OUTLINETEXTMETRIC;
+
+While these four members of the OUTLINETEXTMETRIC structure are
+defined as near pointers to strings (PSTR), they are really
+offsets into the structure from the beginning of the strucutre.
+Because the length of these strings is not defined, an
+application must allocate space for them above and beyond the
+space allocated for the OUTLINETEXTMETRIC structure itself.  The
+sample code below demonstrates this.  It also demonstrates using
+GetOutlineTextMetrics() in an application that will also work on
+Windows 3.0.
+
+  #include <windows.h>
+  #include <windowsx.h>
+  .
+  .
+  .
+  HFONT               hFont ;
+  LPOUTLINETEXTMETRIC  potm ;
+  TEXTMETRIC           tm ;
+  int                  cbBuffer ;
+
+  hFont = CreateFont( ..... ) ;
+
+  hFont = SelectObject( hDC, hFont  ) ;
+
+  /*
+   * Call GetTextMetrics() to determine whether the font is a
+   * TrueType font or not.
+   */
+  GetTextMetrics( hDC, &tm ) ;
+
+  /*
+  * GetOutlineTextMetrics() is a 3.1 and above API.  Assume
+fWin30
+  * was determined by calling GetVersion().
+  */
+  if (!fWin30 && tm.tmPitchAndFamily & TMPF_TRUETYPE)
+  {
+     WORD  (WINAPI *lpfnGOTM)(HDC, UINT, LPOUTLINETEXTMETRIC);
+
+     /*
+      * GOTM() is exported from GDI.EXE at ordinal # 308
+      */
+     lpfnGOTM = GetProcAddress( GetModuleHandle( "GDI" ),
+                                  MAKEINTRESOURCE( 308 ) ) ;
+
+     /*
+      * Call GOTM() with NULL to retrieve the size of the
+      * buffer.
+      */
+     cbBuffer = (*lpfnGOTM)( hDC, NULL, NULL ) ;
+
+     if (cbBuffer == 0)
+     {
+       /* GetOutlineTextMetrics() failed!  */
+       hFont = SelectObject( hDC, hFont ) ;
+       DeleteObject( hFont ) ;
+       return FALSE ;
+     }
+
+     /*
+      * Allocate the memory for the OUTLINETEXTMETRIC structure
+plus
+      * the strings.
+      */
+     potm = (LPOUTLINETEXTMETRIC)GlobalAllocPtr( GHND, cbBuffer )
+;
+
+     if (potm)
+     {
+       potm->otmSize = cbBuffer ;
+
+       /*
+        * Call GOTM() with the pointer to the buffer.  It will
+        * fill in the buffer.
+        */
+       if (!(*lpfnGOTM)( hDC, cbBuffer, potm ))
+       {
+          /* GetOutlineTextMetrics failed! */
+          hFont = SelectObject( hDC, hFont ) ;
+          DeleteObject( hFont ) ;
+          return FALSE ;
+       }
+
+       /*
+        * Do something useful with the string buffers.  Note that
+to
+        * access the string buffers, the otmp???Name members are
+used
+        * as OFFSETS into the buffer.  They *ARE NOT* pointers
+them-
+        * selves.
+        */
+       OutputDebugString((LPSTR)potm+(UINT)potm->otmpFamilyName )
+;
+       OutputDebugString((LPSTR)potm+(UINT)potm->otmpFaceName ) ;
+       OutputDebugString((LPSTR)potm+(UINT)potm->otmpStyleName )
+;
+       OutputDebugString((LPSTR)potm+(UINT)potm->otmpFullName ) ;
+
+       /* Don't forget to free the memory! */
+       GlobalFreePtr( potm ) ;
+     }
+     else
+     {
+       /* GlobalAllocPtr failed */
+       hFont = SelectObject( hDC, hFont ) ;
+       DeleteObject( hFont ) ;
+       return FALSE ;
+     }
+  }
+  else
+  {
+     /*
+      * It was not a true type font, or we're in Windows 3.0.
+      */
+     LOGFONT lf ;
+     char     szStyle[LF_FACESIZE] ;
+     LPSTR     p ;
+
+     GetObject( hFont, sizeof(LOGFONT), &lf ) ;
+
+     /*
+      * Fabricate a style string.  Important!:  The strings
+      * "Italic", "Bold", and "Regular" are only valid
+      * for English.  On versions of Windows localized for
+      * other countries these strings will differ.
+      */
+     szStyle[0] = '\0' ;
+
+     if (lf.lfWeight >= FW_BOLD)
+       lstrcpy( szStyle, "Bold " ) ;
+
+     /*
+      * If we have "Bold Italic" concatenate.
+      */
+      p = szStyle + lstrlen( szStyle ) ;
+
+      if (lf.lfItalic)
+        lstrcpy( p, "Italic" ) ;
+
+      if (!lstrlen( szStyle ))
+        lstrcpy( szStyle, "Regular" ) ;
+
+     /*
+      * szStyle now holds what is equivalent to the otmpStyleName
+      * member.
+      */
+     OutputDebugString( szStyle ) ;
+  }
+
+  hFont = SelectObject( hDC, hFont ) ;
+  DeleteObject( hFont ) ;
+}
+

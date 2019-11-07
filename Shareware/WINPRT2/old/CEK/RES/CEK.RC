@@ -1,0 +1,33 @@
+/************************************************************************
+ *
+ *     Project:  Project-42
+ *
+ *      Module:  CEK.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#define WIN31 1
+#include <windows.h>
+#include "..\src\muscrdll.h"
+
+/*
+ * Version Stamping
+ */
+#include "CEK.rcv"
+
+#include "CEK.str"
+
+SPLITCURSOR CURSOR "SPLIT.CUR"
+
+#include "ctlstyle.dlg"
+
+
+
+/************************************************************************
+ * End of File: CEK.rc
+ ***********************************************************************/
+

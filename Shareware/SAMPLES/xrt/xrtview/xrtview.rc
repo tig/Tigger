@@ -1,0 +1,89 @@
+//Microsoft App Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#ifdef APSTUDIO_INVOKED
+//////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""xrtview.rc2""  // non-App Studio edited resources\r\n"
+    "\r\n"
+    "\0"
+END
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // APSTUDIO_INVOKED
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_IDATAOBJDLG DIALOG DISCARDABLE  0, 0, 287, 236
+STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU | WS_THICKFRAME
+CAPTION "WOSA/XRT IDataObject Viewer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&FORMATETC:",IDC_STATIC,5,4,79,8
+    LTEXT           "GetData and OnDataChange &results:",IDC_STATIC,5,100,
+                    120,8
+    CONTROL         "&Update Display on change",IDC_UPDATEDISPLAY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,130,4,97,10
+    EDITTEXT        IDC_ADVISEDATA,0,112,288,124,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_VSCROLL
+    LTEXT           "&Misc info and errors:",IDC_STATIC,5,32,73,9
+    LISTBOX         IDD_IDATAOBJDLG,5,44,222,52,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&GetData",IDC_DOGETDATA,235,23,49,14
+    PUSHBUTTON      "&DAdvise",IDC_SETUPADVISE,235,40,49,14
+    CONTROL         "&ADVF_PRIMEFRIST",IDC_PRIMEFIRST,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,130,15,95,10
+    DEFPUSHBUTTON   "Close",IDCANCEL,235,6,49,14
+    COMBOBOX        IDC_FORMATETC,5,15,117,93,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWFIXED | CBS_HASSTRINGS | 
+                    CBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "D&ump to file",IDC_DUMPTOFILE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,130,28,90,10
+    PUSHBUTTON      "&Clear",IDC_CLEAROUTPUT,235,95,49,14
+END
+
+
+#ifndef APSTUDIO_INVOKED
+////////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "xrtview.rc2"  // non-App Studio edited resources
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

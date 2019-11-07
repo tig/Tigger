@@ -1,0 +1,10 @@
+#include <windows.h>
+#include "app.h"
+
+GenericIcon icon app.ico
+
+STRINGTABLE
+BEGIN
+   IDS_PROGNAME,       "Collection Sample"           // Application name
+END
+

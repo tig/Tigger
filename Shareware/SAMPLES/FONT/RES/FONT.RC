@@ -1,0 +1,76 @@
+/************************************************************************
+ *
+ *     Project:  Font 1.0
+ *
+ *      Module:  Font.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include <wdb.h>
+
+/*
+ * Dialog box defines
+ */
+#include "dlgs.h"
+#include "res.h"
+
+/*
+ * Version Stamping
+ */
+#include "Font.rcv"
+
+/*
+ * String table
+ */
+#include "Font.str"
+
+/*
+ * Icons
+ */
+IDI_Font ICON "Font.ico"
+
+/*
+ * Bitmaps
+ */
+
+/*
+ * Menus
+ */
+Font  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  MenuItem "E&xit!",  IDM_FILE_EXIT
+  MenuItem "&Choose Font!",  IDM_CHOOSEFONT
+
+  MENUITEM "&About...",  IDM_HELP_ABOUT
+
+ #ifdef DEBUG
+   POPUP   "&Debug"
+   BEGIN
+      MENUITEM "&Configure...",       IDM_WDB_CONFIG
+   END
+ #endif
+
+END
+
+/*
+ * Dialog boxes
+ */
+#include "Font.dlg"
+
+/*
+ * RCDATA
+ */
+
+/************************************************************************
+ * End of File: Font.rc
+ ***********************************************************************/
+

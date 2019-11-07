@@ -1,0 +1,97 @@
+DLG_ABOUTBOX DIALOG 24, 81, 277, 90
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ASYNCSRV 1.0"
+FONT 8, "Helv"
+BEGIN
+    ICON            IDOK, IDOK, 8, 7, 21, 20
+    LTEXT           "ASYNCSRV", IDD_APPNAME, 39, 5, 128, 10
+    LTEXT           "C.E. Kindel, Jr Asynchronous Communications Server", 
+                    -1, 39, 15, 187, 10
+    LTEXT           "Version 1.0", IDD_VERSION, 39, 25, 170, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Copyright © 1992-93 C.E. Kindel, Jr.", 
+                    IDD_COPYRIGHT, 39, 47, 224, 10, NOT WS_GROUP
+    LTEXT           "All Rights Reserved.", 1007, 39, 57, 224, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Portions Copyright © 1985-1992-93 Microsoft Corporation", 
+                    IDD_MSCOPYRIGHT, 39, 67, 224, 10, NOT WS_GROUP
+    LTEXT           "By Charles E. Kindel, Jr.", 
+                    IDD_BYCEK, 39, 77, 224, 10
+    DEFPUSHBUTTON   "OK", IDCANCEL, 235, 6, 36, 14, WS_GROUP
+END
+
+DLG_CONNECT DIALOG 27, 36, 216, 45
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Connecting to the C.E. Kindel, Jr Server"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Status:", -1, 8, 10, 28, 8
+    LTEXT           "Dialing...", IDD_STATUS, 38, 10, 132, 8, NOT WS_GROUP
+    CONTROL         "", IDD_LED1, "CEK.LED", 0x0100, 32, 27, 9, 9
+    CONTROL         "", IDD_LED2, "CEK.LED", 0x0100, 47, 27, 9, 9
+    CONTROL         "", IDD_LED3, "CEK.LED", 0x0100, 62, 27, 9, 9
+    CONTROL         "", IDD_LED4, "CEK.LED", 0x0100, 77, 27, 9, 9
+    CONTROL         "", IDD_LED5, "CEK.LED", 0x0100, 92, 27, 9, 9
+    CONTROL         "", IDD_LED6, "CEK.LED", 0x0100, 107, 27, 9, 9
+    CONTROL         "", IDD_LED7, "CEK.LED", 0x0100, 122, 27, 9, 9
+    CONTROL         "", IDD_LED8, "CEK.LED", 0x0100, 137, 27, 9, 9
+    CONTROL         "", IDD_LED9, "CEK.LED", 0x0100, 152, 27, 9, 9
+    CONTROL         "", IDD_LED10, "CEK.LED", 0x0100, 167, 27, 9, 9
+    PUSHBUTTON      "Abort", IDCANCEL, 178, 7, 33, 14, WS_GROUP
+END
+
+DLG_DISCONNECT DIALOG 79, 39, 170, 42
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Disconnecting"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Status:", -1, 5, 9, 28, 8
+    LTEXT           "", IDD_STATUS, 35, 9, 128, 8, NOT WS_GROUP
+    CONTROL         "", IDD_LED1, "CEK.LED", 0x0100, 13, 25, 9, 9
+    CONTROL         "", IDD_LED2, "CEK.LED", 0x0100, 28, 25, 9, 9
+    CONTROL         "", IDD_LED3, "CEK.LED", 0x0100, 43, 25, 9, 9
+    CONTROL         "", IDD_LED4, "CEK.LED", 0x0100, 58, 25, 9, 9
+    CONTROL         "", IDD_LED5, "CEK.LED", 0x0100, 73, 25, 9, 9
+    CONTROL         "", IDD_LED6, "CEK.LED", 0x0100, 88, 25, 9, 9
+    CONTROL         "", IDD_LED7, "CEK.LED", 0x0100, 103, 25, 9, 9
+    CONTROL         "", IDD_LED8, "CEK.LED", 0x0100, 118, 25, 9, 9
+    CONTROL         "", IDD_LED9, "CEK.LED", 0x0100, 133, 25, 9, 9
+    CONTROL         "", IDD_LED10, "CEK.LED", 0x0100, 148, 25, 9, 9
+END
+
+DLG_ONLINE DIALOG 34, 22, 215, 141
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Online Session Status"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Status:", -1, 7, 8, 28, 8
+    LTEXT           "", IDD_STATUS, 35, 8, 175, 8, NOT WS_GROUP
+    LTEXT           "Start Time:", -1, 7, 24, 62, 9
+    LTEXT           "Start Time", IDD_STARTTIME, 71, 24, 46, 9, NOT WS_GROUP
+    LTEXT           "Current Time:", -1, 7, 35, 62, 9
+    LTEXT           "Cur Time", IDD_CURRENTTIME, 71, 35, 46, 9, NOT WS_GROUP
+    LTEXT           "Number of Errors:", -1, 7, 46, 62, 9
+    LTEXT           "0", IDD_NUMERRORS, 71, 46, 15, 9, NOT WS_GROUP
+    LTEXT           "Last Error:", -1, 7, 57, 62, 9
+    LTEXT           "None", IDD_LASTERROR, 71, 57, 123, 9, NOT WS_GROUP
+    PUSHBUTTON      "Abort", IDCANCEL, 169, 31, 40, 14, WS_GROUP
+    GROUPBOX        "File Download", IDD_FILEDOWNLOAD_GRP, 2, 70, 210, 67, 
+                    WS_GROUP
+    LTEXT           "File name:", IDD_FILENAME_LBL, 13, 85, 38, 8, NOT 
+                    WS_GROUP
+    LTEXT           "", IDD_FILENAME, 53, 85, 151, 8, NOT WS_GROUP
+    LTEXT           "File size:", IDD_FILESIZE_LBL, 13, 96, 36, 8, NOT 
+                    WS_GROUP
+    LTEXT           "", IDD_FILESIZE, 53, 96, 62, 8, NOT WS_GROUP
+    LTEXT           "Received:", IDD_BYTECOUNT_LBL, 13, 107, 40, 8, NOT 
+                    WS_GROUP
+    LTEXT           "", IDD_BYTECOUNT, 53, 107, 62, 8, NOT WS_GROUP
+    LTEXT           "Estimated Time:", IDD_ESTTIME_LBL, 116, 96, 55, 8, NOT 
+                    WS_GROUP
+    LTEXT           "", IDD_ESTTIME, 171, 96, 36, 8, NOT WS_GROUP
+    LTEXT           "Throughput:", IDD_THROUGHPUT_LBL, 116, 107, 48, 8, NOT 
+                    WS_GROUP
+    LTEXT           "", IDD_THROUGHPUT, 171, 107, 36, 8, NOT WS_GROUP
+    CONTROL         "0%", IDD_GASGAUGE, "Button", BS_OWNERDRAW | WS_DISABLED | 
+                    WS_TABSTOP, 14, 121, 188, 12
+END

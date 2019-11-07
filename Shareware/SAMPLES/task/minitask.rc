@@ -1,0 +1,15 @@
+#include "windows.h"
+#include "resource.h"
+
+minitask ICON "minitask.ICO"
+
+minitask MENU
+BEGIN
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About", IDM_ABOUT
+    END
+END
+
+
+#include "about.dlg"

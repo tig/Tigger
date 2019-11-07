@@ -1,0 +1,67 @@
+/************************************************************************
+ *
+ *     Project:  dragnet 1.0
+ *
+ *      Module:  ENGINE.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#include <windows.h>
+
+#include <wdb.h>    
+#include <cek.h>
+
+/*
+ * String table
+ */
+#include "ENGINE.str"
+
+MNU_WINFILE MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+   MenuItem "&Associate...",                IDM_ASSOCIATE
+   MenuItem SEPARATOR
+   MenuItem "&Print...",                    IDM_PRINT
+   MenuItem "Page &Setup...",               IDM_PAGESETUP
+   MenuItem "P&rinter Setup...",            IDM_PRINTERSETUP
+   MenuItem SEPARATOR
+   MenuItem "&Options...",                  IDM_OPTIONS
+   MenuItem SEPARATOR
+   MenuItem "WinPrint &Help",               IDM_HELP
+#if 0
+   MenuItem "&How to use Help",             IDM_HELPONHELP
+   MenuItem SEPARATOR
+#endif
+   MenuItem "&About WinPrint...",           IDM_ABOUT
+END
+
+
+/*
+ * Version Stamping
+ */
+#include "ENGINE.rcv"
+
+
+IDD_WINPRINT  ICON "WINPRINT.ico"
+IDD_LANDSCAPE ICON "LANDSCAP.ICO"
+IDD_PORTRAIT  ICON "PORTRAIT.ICO"
+IDD_NOORIENT  ICON "NOORIENT.ICO"
+
+IDB_WINPRINT  BITMAP    "WINPRINT.BMP"
+
+/*
+ * Dialog boxes
+ */
+#include "ENGINE.dlg"
+
+/*
+ * RCDATA
+ */
+
+/************************************************************************
+ * End of File: ENGINE.rc
+ ***********************************************************************/
+

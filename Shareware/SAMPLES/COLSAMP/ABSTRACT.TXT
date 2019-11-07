@@ -1,0 +1,27 @@
+ABSTRACT
+This sample illustrates how to implement OLE Automation Collections using the Microsoft Foundation Classes version 2.5 (MFC 2.5).   The following techniques and features are demonstrated:
+
+ o  Complete application object model:
+      Application
+      Windows*
+      Window*
+      Documents*
+      Document
+      Items
+      Item      
+      
+      *Not implemented yet.
+
+o   Complete implementation of an Automation Collection, including support 
+      for the "NewEnum" property through IEnumVARIANT.   
+
+o   The implementation of IEnumVARIANT for the Items collection is a good 
+      example of using the MFC 2.5 INTERFACE_MAP macros to add an 
+      OLE 2 interface to a given class (as described in MFC 2.5 Technote 38).
+
+o    An MFC 2.5 "Full Server" that supports in-place editing etc... (linking not yet
+      implemented).
+
+Also included is the beginning of an article on implementing collections in MFC 2.5 (collect.doc).   This article and sample will someday be submitted to the MSND when complete.
+
+It should be noted that this sample is not completely finished.   It certainly demonstrates the things above, but I have plans to polish it further.   

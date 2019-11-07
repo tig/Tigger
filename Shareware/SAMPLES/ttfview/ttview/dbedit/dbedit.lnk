@@ -1,0 +1,17 @@
+obj\DBEDIT+
+obj\config+
+obj\init+
+obj\listbox+
+obj\file+
+obj\fileio+
+obj\wndmgr+
+obj\botstat+
+obj\cmd+
+obj\menu+
+obj\wintime+
+obj\subdlgs
+DBEDIT /align:16 /NOE /NOD
+DBEDIT /map
+commdlg wdb ..\lib\shoplib hlsqstr libw mlibcew 
+DBEDIT.def
+

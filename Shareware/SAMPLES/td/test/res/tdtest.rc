@@ -1,0 +1,13 @@
+#include "windows.h"
+#include "tdutil.h"
+#include "tdtestd.h"
+
+TEST ICON "tdtest.ICO"
+
+TEST MENU
+BEGIN
+    MENUITEM "&Test!", IDM_TEST
+
+END
+
+#include "tdtest.dlg"

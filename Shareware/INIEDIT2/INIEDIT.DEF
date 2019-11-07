@@ -1,0 +1,85 @@
+;************************************************************************
+;*
+;*    Copyright (C) 1991 Charles E. Kindel, Jr. All Rights Reserved.
+;*
+;*-----------------------------------------------------------------------
+;*
+;*     Project:  INIEDIT.EXE
+;*
+;*      Module:  INIEDIT.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              INIEDIT
+
+DESCRIPTION       'INIEDIT Copr. 1990-91 C.E. Kindel,Jr.'
+
+EXETYPE           WINDOWS
+
+STUB              'OBJ\\WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  INIEDIT      PRELOAD MOVEABLE DISCARDABLE
+                  CONFIG       PRELOAD MOVEABLE DISCARDABLE
+                  LISTBOX      PRELOAD MOVEABLE DISCARDABLE
+                  INIT         PRELOAD MOVEABLE DISCARDABLE
+                  ABOUT        PRELOAD MOVEABLE DISCARDABLE
+                  WNDMGR       PRELOAD MOVEABLE DISCARDABLE
+                  BOTSTAT      PRELOAD MOVEABLE DISCARDABLE
+                  CMD          PRELOAD MOVEABLE DISCARDABLE
+                  MENU         MOVEABLE DISCARDABLE
+                  STATUS       PRELOAD MOVEABLE DISCARDABLE
+                  TOOLBAR      PRELOAD MOVEABLE DISCARDABLE
+                  INPUT        PRELOAD MOVEABLE DISCARDABLE
+                  FONT         PRELOAD MOVEABLE DISCARDABLE
+                  WINTIME      PRELOAD MOVEABLE DISCARDABLE
+                  DLGHELP      PRELOAD MOVEABLE DISCARDABLE
+                  SUBDLGS      MOVEABLE DISCARDABLE
+                  TOOLPAL      PRELOAD MOVEABLE DISCARDABLE
+                  BMUTIL       PRELOAD MOVEABLE DISCARDABLE
+                  FILEIO       PRELOAD MOVEABLE DISCARDABLE
+                  FILE         PRELOAD MOVEABLE DISCARDABLE
+                  SECTION      PRELOAD MOVEABLE DISCARDABLE
+                  KEYVALUE     PRELOAD MOVEABLE DISCARDABLE
+                  WSSCANF      PRELOAD MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          32000
+
+STACKSIZE         12192
+
+EXPORTS           
+                  fnAbout              @100
+                  fnShareware          @101
+                  fnMainWnd            @102
+                  fnEnumReallyEx       @103
+                  fnStatus             @105                  
+                  fnToolBar            @106
+                  fnInput              @107
+                  fnEditor             @108
+                  fnToolPal            @109
+                  fnLBSub              @110
+                  fnEditSub            @111
+
+                  fnFileCompare        @500
+                  fnSectionCompare     @501
+                
+
+IMPORTS           
+                  RectVisible=gdi.104
+                  RectInRegion=gdi.181
+
+;/***********************************************************************
+;* End of File: INIEDIT.def
+;************************************************************************
+

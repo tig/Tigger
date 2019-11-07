@@ -1,0 +1,112 @@
+#ifdef RC_INVOKED
+    #define ADDSTR(SID,S)     SID   S
+    #define DEFSTR(V,SID,S)   V     S
+    #define DECSTR(SID,S)     SID   S
+#else
+    #define ADDSTR(SID,S)     
+    #define DEFSTR(V,SID,S)   enum {SID=V};
+    #define DECSTR(SID,S)     
+#endif
+
+#ifdef RC_INVOKED
+STRINGTABLE PRELOAD MOVEABLE PURE DISCARDABLE
+BEGIN
+#else
+#define FIRST_IDS    0x0000
+#endif
+
+   DEFSTR( 0x0000, IDS_APPNAME,              "TTView" )
+   DEFSTR( 0x0001, IDS_APPTITLE,             "TrueType Font Viewer" )
+   DEFSTR( 0x0002, IDS_VERSION,              "Version" )
+   DEFSTR( 0x0003, IDS_INI_FILENAME,         "TTView.INI" )
+   DEFSTR( 0x0004, IDS_BOLD,                 "Bold" )
+   DEFSTR( 0x0005, IDS_ITALIC,               "Italic" )
+   DEFSTR( 0x0006, IDS_BOLDITALIC,           "Bold Italic" )
+   DEFSTR( 0x0007, IDS_REGULAR,              "Regular" )
+   DEFSTR( 0x0008, IDS_HEXWORD,              "%04X" )
+   DEFSTR( 0x0009, IDS_HEXDWORD,             "%08lX" )
+   DEFSTR( 0x000a, IDS_INI_MAIN,             "Options" )
+   DEFSTR( 0x000b, IDS_INI_OPTIONS,          "Options" )
+   DEFSTR( 0x000c, IDS_INI_OPTIONS_SPEC,     "%d" )
+   DEFSTR( 0x000d, IDS_DEFAULTOPT,           "1" )
+   DEFSTR( 0x000e, IDS_INI_POS,              "Pos"  )
+   DEFSTR( 0x000f, IDS_INI_POS_SPEC,         "%04X,%04X,%04X,%04X" /*x,y,w,h*/ )
+   DEFSTR( 0x0010, IDS_INI_FONT,             "Font" )
+   DEFSTR( 0x0011, IDS_INI_FONT_SPEC,        "%d,%s,%s"    )
+   DEFSTR( 0x0012, IDS_DEFAULTFONT,          "8,Arial,Regular" )
+   DEFSTR( 0x0013, IDS_INI_WSHOW,            "Show" )
+   DEFSTR( 0x0014, IDS_HELPFILE,             "TTView.HLP" )
+   DEFSTR( 0x0015, IDS_SAMPLE_ALPHA,         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" )
+   DEFSTR( 0x0016, IDS_SAMPLE_DIGIT,         "1234567890.,;:`'&!?$" )
+   DEFSTR( 0x0017, IDS_SAMPLE_PANOSE,        "PANOSE abegmoqst" )
+   DEFSTR( 0x0018, IDS_STAT_READY,           "TTView Copyright © 1992 Charles E. Kindel, Jr." )
+                
+#ifndef RC_INVOKED
+#define LAST_IDS    0x0018
+#endif
+
+   /*
+    * Strings below here are not preloaded!
+    */
+
+   DEFSTR( 0x1000, IDS_MSG_PRINTERONPORT,       "%s on %s" )
+   DEFSTR( 0x1001, IDS_MSG_PRINTING,            "Printing %s" )
+   /* ErrorResBox format strings */
+   DEFSTR( 0x1002, IDS_ERR_PRINTERR,            "%s while printing the file \042%s\042.\nInsure that the printer driver is installed correctly and try again." )
+   DEFSTR( 0x1003, IDS_ERR_PRINTERR0,           "General Print Error"  /* SP_ERROR (-1) */ )
+   DEFSTR( 0x1004, IDS_ERR_PRINTERR1,           "Job Canceled by User" /* SP_APPABORT (-2) */ )
+   DEFSTR( 0x1005, IDS_ERR_PRINTERR2,           "Job Canceled from Print Manager" /* SP_USERABORT (-3)*/ )
+   DEFSTR( 0x1006, IDS_ERR_PRINTERR3,           "Out of Disk Space" /* SP_OUTOFDISK (-4) */ )
+   DEFSTR( 0x1007, IDS_ERR_PRINTERR4,           "Out of Memory"   /* SP_OUTOFMEMORY (-5) */ )
+   DEFSTR( 0x1008, IDS_ERR_BADPRINTERDC,        "Could not access the Printer Driver.\nCheck printer settings in the Windows Control Panel." )
+   DEFSTR( 0x1009, IDS_ERR_NOMEMORY,            "Not enough memory to run" )
+   DEFSTR( 0x100a, IDS_ERR_COMMANDLINE,         "Error Processing Command Line.\nOffending String: \042%s\042" )
+   DEFSTR( 0x100b, IDS_ERR_BADDLLVER,           "The version of '%s' on this system is old.  TTView 1.0 requires version %d.00 or higher." )
+
+   /* COMMDLG.DLL Errors */
+   DEFSTR( 0x100c, IDS_PDERR_PRINTERCODES,      "PDERR_PRINTERCODES" )
+   DEFSTR( 0x100d, IDS_PDERR_SETUPFAILURE,      "Could not open Printer Setup Dialog Box due to a resource load failure." )
+   DEFSTR( 0x100e, IDS_PDERR_PARSEFAILURE,      "Could not parse the [devices] section of the WIN.INI file.\nPlease verify that your WIN.INI file is valid and try again." )
+   DEFSTR( 0x100f, IDS_PDERR_RETDEFFAILURE,     "PDERR_RETDEFFAILURE" )
+   DEFSTR( 0x1010, IDS_PDERR_LOADDRVFAILURE,    "Could not access printer driver" )
+   DEFSTR( 0x1011, IDS_PDERR_GETDEVMODEFAIL,    "Failed to get DEVMODE structure" )
+   DEFSTR( 0x1012, IDS_PDERR_INITFAILURE,       "Could not open Printer Setup Dialog Box due to an initalization failure." )
+   DEFSTR( 0x1013, IDS_PDERR_NODEVICES,         "There are no printer drivers installed.  Run CONTROL.EXE to install printer drivers." )
+   DEFSTR( 0x1014, IDS_PDERR_NODEFAULTPRN,      "There is no default printer.  Run CONTROL.EXE to setup a default printer." )
+   DEFSTR( 0x1015, IDS_PDERR_DNDMMISMATCH,      "Internal device data does not match specified device." )
+   DEFSTR( 0x1016, IDS_PDERR_CREATEICFAILURE,   "Could not create Device Context" )
+   DEFSTR( 0x1017, IDS_PDERR_PRINTERNOTFOUND,   "The %s (%s) printer on %s was not found." )
+
+   DEFSTR( 0x1018, IDS_CDERR_GENERALCODES,      "General COMMDLG.DLL Error.  Code 0x%04X" )
+
+   DEFSTR( 0x5100, IDS_SMNU,                 " " )
+   DEFSTR( 0x5101, IDS_SMNU_SIZE,            "Sizes the main window" )
+   DEFSTR( 0x5102, IDS_SMNU_MOVE,            "Moves the main window" )
+   DEFSTR( 0x5103, IDS_SMNU_MINIMIZE,        "Minimizes the main window to an icon" )
+   DEFSTR( 0x5104, IDS_SMNU_MAXIMIZE,        "Maximizes the main window to the full screen size" )
+   DEFSTR( 0x5105, IDS_SMNU_CLOSE,           "Closes the window and exits TTView" )
+   DEFSTR( 0x5106, IDS_SMNU_RESTORE,         "Restores main window to previous size and position" )
+   DEFSTR( 0x5107, IDS_SMNU_TASKLIST,        "Switches applications with the Task Manager" )
+
+
+   ADDSTR( IDM_FILE,             "File operations" )
+   ADDSTR( IDM_FILE_PRINTSETUP,  "Changes the printer and printing options" )
+   ADDSTR( IDM_FILE_PRINT,       "Prints the current peice of mail" )
+   ADDSTR( IDM_FILE_EXIT,        "Quits TTView" )
+   ADDSTR( IDM_OPT,              "Configure TTView" )
+   ADDSTR( IDM_OPT_FONT,         "Selects a font for the display" )
+   ADDSTR( IDM_OPT_PREFERENCES,  "Configure TTView" )
+   ADDSTR( IDM_OPT_STAT,         "Turns the status line on or off" )
+   ADDSTR( IDM_WINDOW,           "Choose MDI Child Window optons" )
+
+   ADDSTR( IDM_HELP,             "Help on TTView and copyright information" )
+   ADDSTR( IDM_HELP_CONTENTS,    "Help table of contents" )
+   ADDSTR( IDM_HELP_SEARCH,      "Searches for a help topic" )
+   ADDSTR( IDM_HELP_ONHELP,      "Gives help on using help" )
+   ADDSTR( IDM_HELP_ABOUT,       "About TTView and copyright information" )
+   ADDSTR( IDM_WINDOW_CHILD,     "MDI Child" )
+
+#ifdef RC_INVOKED
+END         
+#endif      
+            

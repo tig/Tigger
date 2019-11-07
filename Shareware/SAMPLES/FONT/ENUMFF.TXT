@@ -1,0 +1,174 @@
+Knowledge Base Article:
+
+  "Retrieving font styles using EnumFontFamilies()"
+
+Keywords:
+
+  EnumFontFamilies, LOGFONT, NEWLOGFONT, TrueType, COMMDLG,
+StyleName, Fonts, GDI
+
+Abstract:
+
+Windows version 3.1 uses the concept of a font style.  In
+previous versions of Windows a font could have bold, italic,
+underline, and strikeout properties which were supported
+through respective members in the LOGFONT and TEXTMETRIC
+structures.  Windows 3.1 still supports these properties but
+also supports the concept of a sytle name for TrueType
+fonts.  This article describes a method of obtaining the
+font style name during font enumeration, using the
+EnumFontFamilies() function.  For information on obtaining
+style information without enumerating the fonts see the
+related article "Retrieving font styles using
+GetOutlineTextMetrics()."
+
+More information:
+
+In Windows 3.1, the term "style" refers to the weight and
+slant of a font.  Windows has always supported a wide range
+of weights through the LOGFONT lfWeight member (for example
+FW_BOLD which is defined as 700 and FW_THIN which is defined
+as 100).  However, very few applications use anything but
+FW_BOLD and FW_DONTCARE (defined as 0).
+
+Windows 3.1 builds on the support presently in Windows for
+thes variations in weight and slant.  The style names are
+NOT used in the logfont directly except when the fonts are
+being enumerated with the EnumFontFamilies().
+
+The use of style names can be demonstrated by looking at the
+ChooseFont (COMMDLG) dialog box.  This dialog box contains
+two list boxes: Font, and Font Style.  The Font list box
+contains a list of all face names and the Font Style list
+box contains a list of font styles for the currently
+selected face.  For example if any non TrueType font (such
+as MS Sans Serif) is selected, the following styles will
+appear in the style list box:
+
+  Regular
+  Bold
+  Italic
+  Bold Italic
+
+TrueType fonts may have these or more elaborate styles.  For
+example the 'Lucida Sans' face includes the following style
+names:
+
+  Regular
+  Italic
+  Demibold Roman
+  Demibold Italic
+
+In the case of 'Lucida Sans' with the style of 'Demibold
+Roman' or 'Demibold Italic' the lfWeight value is 600
+(FW_DEMIBOLD).
+
+In Windows 3.1 the EnumFontFamilies() function can be used
+to obtain the style name of a font during font enumeration.
+The EnumFontFamilies() function works in a manner very
+similar to the Windows 3.0 EnumFonts() function.
+
+EnumFontFamilies() is prototyped as:
+
+  int EnumFontFamilies( HDC hdc, LPCSTR lpszFamily,
+FONTENUMPROC
+                    lpfnEnumProc, LPARAM lpData)
+
+The lpszFamily parameter points to a null-terminated string
+that specifies the family name (or Typeface name) of the
+desired fonts. If this parameter is NULL, EnumFontFamilies
+selects and enumerates one font of each available font
+family.  For example to enumerate all fonts in the "Arial"
+family,  lpszFamily would point to a string buffer
+containing "Arial".
+
+The following table illustrates the meanings of the terms,
+"Typeface Name", "Font Name", and "Font Style":
+
+Typeface Name                         Font Name   Font Style
+
+Arial        Arial                    Regular
+             Arial Bold               Bold
+             Arial Italic             Italic
+             Arial Bold Italic        Bold Italic
+
+Courier New  Courier New              Regular
+             Courier New Bold         Bold
+             Courier New Italic       Italic
+             Courier New Bold Italic  Bold Italic
+
+Lucida Sans  Lucida Sans              Regular
+             Lucida Sans Italic       Italic
+             Lucida Sans Demibold Roman Demibold Roman
+             Lucida Sans Demibold Italic     Demibold Italic
+
+MS Sans Serif                         MS Sans Serif
+Regular
+             MS Sans Serif            Bold
+             MS Sans Serif            Italic
+             MS Sans Serif            Bold Italic
+
+The first three typefaces in the above table are TrueType,
+the remaining typeface is MS Sans Serif.  The "Typeface
+name" is also sometimes referred to as the "Family Name".
+
+When dealing with non-TrueType fonts "typeface name" and
+"font name" are the same, but it is important to recognize
+the distinction when dealing with a TrueType font.
+
+For example, CreateFont() takes a pointer to a string
+containing the "typeface name" of the font you want created.
+It is not valid to use "Arial Bold" as this string because
+Arial is a TrueType font and "Arial Bold" is a "Font Name",
+not a "Typeface name".
+
+If EnumFontFamilies() is called with the lpszFamily
+parameter pointing to a valid TrueType typeface name the
+callback function, which is specified in lpfnEnumproc, will
+be called once for each font name for that typeface name.
+For example, if EnumFontFamilies() were called with
+lpszFamily pointing to "Lucida Sans", the callback would be
+called four times; once for each font name.
+
+If the lpszFamily parameter were pointing to the typeface
+name of a non-TrueType font such as "MS Sans Serif" the
+callback would be called once for each face size supported
+by the font.  The number of face sizes supported by the font
+may vary from font to font and device to device.  Notice
+that the callback is being called because of different
+sizes, not because there are different styles.  This
+behavior is identical to that found when using the
+EnumFonts() function.
+
+Remember that TrueType fonts are continously scalable, so
+there is no reason for the callback to be called for each
+size.  If the callback *were* called for each size that a
+TrueType font supported it would be called an infinite
+number of times!
+
+The EnumFontFamilies() callback function should be
+prototyped as follows:
+
+int CALLBACK EnumFontFamProc(LPLOGFONT lplf, LPNEWTEXTMETRIC
+lpntm,
+                          int nFontType, LPARAM lpData)
+
+The lplf parameter points to a LOGFONT structure that
+contains information about the logical attributes of the
+font.  If the typeface being enumerated is a TrueType font
+((nFontType | TRUETYPE_FONTTYPE) is TRUE) this LOGFONT
+structure will have two additional members appended to the
+end [[[ NOTE:  There might be a "NEWLOGFONT" structure
+defined in WINDOWS.H by the time 3.1 ships.  These two
+fields will appear there.]]:
+
+     char   lfFullName[LF_FACESIZE*2] ;
+     char   lfStyleName[LF_FACESIZE] ;
+
+It is important to remember that these two additional fields
+are used *only* during enumeration with EnumFontFamilies()
+and nowhere else in Windows.  To get the style name and full
+name of a font without using enumeration use the
+GetOutlineTextMetrics() function.
+
+

@@ -1,0 +1,109 @@
+LIBRARY        HLSQSTR
+DESCRIPTION    'HEAP STORAGE DLL for Windows by Scott McCraw'
+EXETYPE        WINDOWS
+CODE           PRELOAD MOVEABLE DISCARDABLE
+DATA           PRELOAD MOVEABLE SINGLE
+HEAPSIZE       1024
+
+EXPORTS
+    WEP                     @2 RESIDENTNAME
+    
+    hlsqHeapCreate          @100
+    hlsqHeapDestroy         @101
+
+    hlsqHeapAlloc           @102
+    hlsqHeapReAlloc         @103
+    hlsqHeapFree            @104
+    hlsqHeapLock            @105
+    hlsqHeapUnlock          @106 
+
+    hlsqHeapAllocLock       @107
+    hlsqHeapAllocString     @108
+    hlsqHeapUnlockFree      @109
+
+    hlsqHeapCompact         @110
+    hlsqHeapFlags           @111
+    hlsqHeapHandle          @112
+    hlsqHeapDiscard         @113
+    hlsqHeapSize            @114
+    hlsqHeapSetDS           @115
+    hlsqHeapItems           @116
+    hlsqHeapDumpDebug       @117
+
+    hlsqListCreate          @130
+    hlsqListDestroy         @131
+    hlsqListFreeList        @132
+    hlsqListAllocNode       @133
+    hlsqListFreeNode        @134
+    hlsqListInsertNode      @135
+    hlsqListInsertSorted    @136
+    hlsqListAllocInsertNode @137
+    hlsqListRemoveNode      @138
+    hlsqListDeleteNode      @139
+    hlsqListNextNode        @140
+    hlsqListPrevNode        @141
+    hlsqListFirstNode       @142
+    hlsqListLastNode        @143
+    hlsqListNode2Item       @144
+    hlsqListItem2Node       @145
+    hlsqListItems           @146
+    hlsqListSwapNodes       @147
+    hlsqListDumpDebug       @148
+
+    hlsqStackCreate         @160
+    hlsqStackDestroy        @161
+    hlsqStackFreeStack      @162
+    hlsqStackAllocNode      @163
+    hlsqStackFreeNode       @164
+    hlsqStackPush           @165
+    hlsqStackAllocPush      @166
+    hlsqStackPop            @167
+    hlsqStackPeek           @168
+    hlsqStackRemove         @179
+    hlsqStackItems          @170
+    hlsqStackDumpDebug      @171
+                               
+    hlsqQueueCreate         @180
+    hlsqQueueDestroy        @181
+    hlsqQueueFreeQueue      @182
+    hlsqQueueAllocNode      @183
+    hlsqQueueFreeNode       @184
+    hlsqQueueInQ            @185
+    hlsqQueueAllocInQ       @186
+    hlsqQueueDeQ            @187
+    hlsqQueuePeek           @188
+    hlsqQueueRemove         @189
+    hlsqQueueItems          @190
+    hlsqQueueDumpDebug      @191
+
+
+; just alias all of these
+    _hlsq_fmemccpy=__fmemccpy   @200
+    _hlsq_fmemchr=__fmemchr     @201
+    _hlsq_fmemcmp=__fmemcmp     @202
+    _hlsq_fmemcpy=__fmemcpy     @203
+    _hlsq_fmemicmp=__fmemicmp   @204
+    _hlsq_fmemmove=__fmemmove   @205
+    _hlsq_fmemset=__fmemset     @206
+    _hlsq_fstrcat=__fstrcat     @207
+    _hlsq_fstrchr=__fstrchr     @208
+    _hlsq_fstrcmp=__fstrcmp     @209
+    _hlsq_fstricmp=__fstricmp   @210
+    _hlsq_fstrcpy=__fstrcpy     @211
+    _hlsq_fstrcspn=__fstrcspn   @212
+    _hlsq_fstrdup=__fstrdup     @213
+    _hlsq_fstrlen=__fstrlen     @214
+    _hlsq_fstrlwr=__fstrlwr     @215
+    _hlsq_fstrncat=__fstrncat   @216
+    _hlsq_fstrncmp=__fstrncmp   @217
+    _hlsq_fstrnicmp=__fstrnicmp @218
+    _hlsq_fstrncpy=__fstrncpy   @219
+    _hlsq_fstrnset=__fstrnset   @220
+    _hlsq_fstrpbrk=__fstrpbrk   @221
+    _hlsq_fstrrchr=__fstrrchr   @222
+    _hlsq_fstrrev=__fstrrev     @223
+    _hlsq_fstrset=__fstrset     @224
+    _hlsq_fstrspn=__fstrspn     @225
+    _hlsq_fstrstr=__fstrstr     @226
+    _hlsq_fstrtok=__fstrtok     @227
+    _hlsq_fstrupr=__fstrupr     @228

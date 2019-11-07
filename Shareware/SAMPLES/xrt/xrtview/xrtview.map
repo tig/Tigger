@@ -1,0 +1,3037 @@
+
+ XRTVIEW
+
+ Start     Length     Name                   Class
+ 0001:0000 00003H     WEP_SEG                CODE 16-bit
+           at offset 00000H 00003H bytes from XRTVIEW.OBJ (g:\xrtview\xrtview.cpp)
+
+ 0001:0004 00000H     IADVSINK_TEXT          CODE 16-bit
+ 0001:0004 00000H     IDATAOBJ_TEXT          CODE 16-bit
+ 0001:0004 00000H     PRECOMP_TEXT           CODE 16-bit
+ 0001:0004 00000H     UTIL_TEXT              CODE 16-bit
+ 0001:0004 004F0H     XRTVIEW_TEXT           CODE 16-bit
+           at offset 00000H 004F0H bytes from XRTVIEW.OBJ (g:\xrtview\xrtview.cpp)
+
+ 0001:04F4 00840H     _TEXT                  CODE 16-bit
+           at offset 00000H 000FEH bytes from d:\msvc\lib\ldllcew.lib (windows\crt0.asm)
+           at offset 000FEH 00012H bytes from d:\msvc\lib\ldllcew.lib (delete.cxx)
+           at offset 00110H 00010H bytes from d:\msvc\lib\ldllcew.lib (new.cxx)
+           at offset 00120H 00006H bytes from d:\msvc\lib\ldllcew.lib (purevirt.asm)
+           at offset 00126H 0005FH bytes from d:\msvc\lib\ldllcew.lib (uldiv.asm)
+           at offset 00186H 0006AH bytes from d:\msvc\lib\ldllcew.lib (ulrem.asm)
+           at offset 001F0H 0002CH bytes from d:\msvc\lib\ldllcew.lib (windows\stubmain.asm)
+           at offset 0021CH 000E3H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0dat.asm)
+           at offset 00300H 00023H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0msg.asm)
+           at offset 00324H 00097H bytes from d:\msvc\lib\ldllcew.lib (dos\stdenvp.asm)
+           at offset 003BCH 0004CH bytes from d:\msvc\lib\ldllcew.lib (windows\fatal.asm)
+           at offset 00408H 000C8H bytes from d:\msvc\lib\ldllcew.lib (fmalloc.asm)
+           at offset 004D0H 0004EH bytes from d:\msvc\lib\ldllcew.lib (dos\nmsghdr.asm)
+           at offset 0051EH 00081H bytes from d:\msvc\lib\ldllcew.lib (newseg.asm)
+           at offset 005A0H 0000DH bytes from d:\msvc\lib\ldllcew.lib (fdata.asm)
+           at offset 005AEH 00117H bytes from d:\msvc\lib\ldllcew.lib (growseg.asm)
+           at offset 006C6H 00006H bytes from d:\msvc\lib\ldllcew.lib (crt0fp.asm)
+           at offset 006CCH 0002DH bytes from d:\msvc\lib\ldllcew.lib (dos\stdalloc.asm)
+           at offset 006FAH 00010H bytes from d:\msvc\lib\ldllcew.lib (windows\windgrp.asm)
+           at offset 0070AH 00001H bytes from d:\msvc\lib\ldllcew.lib (nearstub.asm)
+           at offset 0070CH 0007CH bytes from d:\msvc\lib\ldllcew.lib (searchsg.asm)
+           at offset 00788H 0002AH bytes from d:\msvc\lib\ldllcew.lib (freelist.asm)
+           at offset 007B2H 00014H bytes from d:\msvc\lib\ldllcew.lib (windows\windgrpx.c)
+           at offset 007C6H 00034H bytes from d:\msvc\lib\ldllcew.lib (initseg.asm)
+           at offset 007FAH 00036H bytes from d:\msvc\lib\ldllcew.lib (linkseg.asm)
+
+ 0001:0D40 044D0H     COMDAT_SEG1            CODE 16-bit
+           at offset 00000H 0004AH bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 0004AH 00015H bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 00060H 00083H bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 000E4H 00021H bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 00106H 0005BH bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 00162H 0008AH bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 001ECH 0000CH bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 001F8H 0000CH bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 00204H 0000CH bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 00210H 0000CH bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 0021CH 00020H bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 0023CH 00020H bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 0025CH 0000CH bytes from IADVSINK.OBJ (g:\xrtview\iadvsink.cpp)
+           at offset 00268H 00098H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00300H 000ADH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 003AEH 00020H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 003CEH 00028H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 003F6H 0023BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00632H 002A9H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 008DCH 000FDH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 009DAH 0007FH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00A5AH 0029AH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00CF4H 00011H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00D06H 000E9H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00DF0H 00109H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00EFAH 00196H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01090H 0016EH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 011FEH 0024BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 0144AH 000BBH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01506H 001FAH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01700H 00089H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 0178AH 000A9H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01834H 00106H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 0193AH 00079H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 019B4H 0002AH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 019DEH 0022BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01C0AH 00088H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01C92H 00017H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01CAAH 00001H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01CACH 00008H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01CB4H 0000EH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01CC2H 00005H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01CC8H 00006H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01CCEH 0000AH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01CD8H 0000FH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01CE8H 0001BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01D04H 00016H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01D1AH 00020H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01D3AH 00025H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01D60H 0001FH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01D80H 00023H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01DA4H 0000DH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01DB2H 0002BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01DDEH 00012H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01DF0H 00016H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01E06H 00009H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01E10H 0003FH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01E50H 00030H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01E80H 0003EH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01EBEH 00034H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01EF2H 00017H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F0AH 00011H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F1CH 00008H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F24H 0000AH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F2EH 00010H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F3EH 00008H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F46H 00007H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F4EH 00008H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F56H 0000BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F62H 00007H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F6AH 0000BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F76H 0000BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F82H 00008H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F8AH 00008H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01F92H 00012H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01FA4H 00007H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01FACH 0001BH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 01FC8H 0006AH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 02032H 00029H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 0205CH 0001DH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 0207AH 0000DH bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 02088H 00003H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 0208CH 00003H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 02090H 00024H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 020B4H 001CFH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 02284H 000FAH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0237EH 0013CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 024BAH 0007AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 02534H 00158H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0268CH 00C3AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 032C6H 000F2H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 033B8H 00002H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 033BAH 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 033C0H 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 033C8H 0000DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 033D6H 0000AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 033E0H 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 033EEH 0000DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 033FCH 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0340AH 0000AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03414H 00009H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0341EH 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03426H 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0342EH 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0343EH 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03450H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03466H 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03472H 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03488H 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 034A0H 0001FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 034C0H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 034D2H 0001EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 034F0H 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 034FEH 0000BH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0350AH 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0351CH 00019H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03536H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0354AH 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0355CH 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0356AH 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03576H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03586H 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0359CH 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 035B4H 0000DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 035C2H 0001AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 035DCH 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 035EEH 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03602H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03614H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03628H 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03638H 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03646H 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03652H 0000BH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0365EH 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0366EH 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0367CH 00019H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03696H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 036AAH 0000DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 036B8H 0000DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 036C6H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 036DCH 0001AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 036F6H 0001AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03710H 0001AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0372AH 00024H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0374EH 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03762H 0001EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03780H 0001EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0379EH 0001CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 037BAH 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 037CEH 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 037E4H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 037F8H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0380CH 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03822H 00019H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0383CH 0001DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0385AH 00017H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03872H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03882H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03894H 0001DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 038B2H 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 038C4H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 038DAH 0001BH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 038F6H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0390CH 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03922H 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03938H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0394CH 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03962H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03976H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0398AH 00017H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 039A2H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 039B6H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 039CAH 00019H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 039E4H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 039FAH 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03A0CH 0001BH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03A28H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03A38H 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03A4AH 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03A5AH 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03A6EH 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03A86H 00017H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03A9EH 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03AB0H 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03AC6H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03ADAH 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03AECH 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03AFAH 0001CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B16H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B28H 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B34H 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B46H 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B56H 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B66H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B76H 0000DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B84H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03B98H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03BA8H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03BBCH 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03BD4H 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03BECH 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03BFEH 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C0EH 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C20H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C32H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C42H 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C54H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C64H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C78H 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C88H 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03C96H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03CACH 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03CBEH 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03CD4H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03CE6H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03CFAH 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03D0EH 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03D24H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03D38H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03D4AH 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03D56H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03D6AH 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03D7EH 0001AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03D98H 0001EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03DB6H 00021H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03DD8H 0001CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03DF4H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03E06H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03E18H 00019H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03E32H 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03E4AH 0001EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03E68H 00020H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03E88H 0001EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03EA6H 00020H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03EC6H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03EDAH 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03EF2H 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03F04H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03F1AH 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03F30H 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03F42H 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03F54H 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03F60H 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03F6EH 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03F84H 00027H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03FACH 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03FBEH 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03FCCH 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03FDEH 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 03FF2H 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04002H 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04012H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04028H 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04030H 00009H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0403AH 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04042H 0001EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04060H 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04078H 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0408EH 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 040A4H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 040B8H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 040CCH 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 040E0H 00012H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 040F2H 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04104H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04114H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04124H 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04138H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0414EH 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04164H 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0417CH 00011H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0418EH 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 041A4H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 041BAH 0000FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 041CAH 00019H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 041E4H 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 041FAH 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0420EH 00013H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04222H 00016H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04238H 00018H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04250H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04266H 0001FH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04286H 00014H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0429AH 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 042B0H 00017H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 042C8H 00015H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 042DEH 0001BH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 042FAH 00017H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04312H 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04320H 0000BH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0432CH 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04332H 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04338H 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04340H 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04346H 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0434EH 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04356H 00009H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04360H 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04366H 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0436EH 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04376H 00006H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0437CH 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04384H 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0438CH 0000AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04396H 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0439EH 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043A4H 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043AAH 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043B2H 00006H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043B8H 00006H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043BEH 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043C6H 00004H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043CAH 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043D0H 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043D6H 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043DEH 00004H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043E2H 0000AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043ECH 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 043F4H 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04400H 00006H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04406H 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0440EH 00009H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04418H 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0441EH 00007H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04426H 00008H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0442EH 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0443EH 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0444CH 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04458H 00003H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0445CH 00006H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04462H 0000DH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04470H 00010H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04480H 0000CH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0448CH 0000AH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 04496H 0000EH bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 044A4H 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 044AAH 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 044B0H 00005H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 044B6H 0001AH bytes from XRTVIEW.OBJ (g:\xrtview\xrtview.cpp)
+
+ 0002:0000 00010H     NULL                   BEGDATA 16-bit
+           at offset 00000H 00010H bytes from d:\msvc\lib\ldllcew.lib (windows\crt0.asm)
+
+ 0002:0010 001C2H     _DATA                  DATA 16-bit
+           at offset 00000H 00008H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00008H 00146H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+           at offset 0014EH 00002H bytes from XRTVIEW.OBJ (g:\xrtview\xrtview.cpp)
+           at offset 00150H 00015H bytes from d:\msvc\lib\ldllcew.lib (windows\crt0.asm)
+           at offset 00166H 00044H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0dat.asm)
+           at offset 001AAH 00004H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0msg.asm)
+           at offset 001AEH 00004H bytes from d:\msvc\lib\ldllcew.lib (fmalloc.asm)
+           at offset 001B2H 0000EH bytes from d:\msvc\lib\ldllcew.lib (fdata.asm)
+           at offset 001C0H 00002H bytes from d:\msvc\lib\ldllcew.lib (growseg.asm)
+
+ 0002:01D2 0000EH     CDATA                  DATA 16-bit
+           at offset 00000H 0000EH bytes from d:\msvc\lib\ldllcew.lib (dos\crt0dat.asm)
+
+ 0002:01E0 00000H     XIFB                   DATA 16-bit
+ 0002:01E0 00000H     XIF                    DATA 16-bit
+ 0002:01E0 00000H     XIFE                   DATA 16-bit
+ 0002:01E0 00000H     XIB                    DATA 16-bit
+ 0002:01E0 00000H     XI                     DATA 16-bit
+ 0002:01E0 00000H     XIE                    DATA 16-bit
+ 0002:01E0 00000H     XPB                    DATA 16-bit
+ 0002:01E0 00000H     XP                     DATA 16-bit
+ 0002:01E0 00000H     XPE                    DATA 16-bit
+ 0002:01E0 00000H     XCB                    DATA 16-bit
+ 0002:01E0 00000H     XC                     DATA 16-bit
+ 0002:01E0 00000H     XCE                    DATA 16-bit
+ 0002:01E0 00000H     XCFB                   DATA 16-bit
+ 0002:01E0 00000H     XCFCRT                 DATA 16-bit
+ 0002:01E0 00000H     XCF                    DATA 16-bit
+ 0002:01E0 00000H     XCFE                   DATA 16-bit
+ 0002:01E0 00000H     XIFCB                  DATA 16-bit
+ 0002:01E0 00000H     XIFU                   DATA 16-bit
+ 0002:01E0 00000H     XIFL                   DATA 16-bit
+ 0002:01E0 00000H     XIFM                   DATA 16-bit
+ 0002:01E0 00000H     XIFCE                  DATA 16-bit
+ 0002:01E0 00000H     DBDATA                 DATA 16-bit
+ 0002:01E0 00000H     CONST                  CONST 16-bit
+ 0002:01E0 00008H     HDR                    MSG 16-bit
+           at offset 00000H 00008H bytes from d:\msvc\lib\ldllcew.lib (dos\nmsghdr.asm)
+
+ 0002:01E8 000FCH     MSG                    MSG 16-bit
+           at offset 00000H 00028H bytes from d:\msvc\lib\ldllcew.lib (purevirt.asm)
+           at offset 00028H 000A5H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0msg.asm)
+           at offset 000CDH 0002FH bytes from d:\msvc\lib\ldllcew.lib (crt0fp.asm)
+
+ 0002:02E4 00002H     PAD                    MSG 16-bit
+           at offset 00000H 00002H bytes from d:\msvc\lib\ldllcew.lib (purevirt.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0msg.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\ldllcew.lib (dos\nmsghdr.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\ldllcew.lib (crt0fp.asm)
+
+ 0002:02E6 00001H     EPAD                   MSG 16-bit
+           at offset 00000H 00001H bytes from d:\msvc\lib\ldllcew.lib (dos\nmsghdr.asm)
+
+ 0002:02E8 001C6H     _BSS                   BSS 16-bit
+           at offset 00000H 00006H bytes from IDATAOBJ.OBJ (g:\xrtview\idataobj.cpp)
+           at offset 00006H 001C0H bytes from UTIL.OBJ (g:\xrtview\util.cpp)
+
+ 0002:04AE 00000H     XOB                    BSS 16-bit
+ 0002:04AE 00000H     XO                     BSS 16-bit
+ 0002:04AE 00000H     XOE                    BSS 16-bit
+ 0002:04AE 00000H     XOFB                   BSS 16-bit
+ 0002:04AE 00000H     XOF                    BSS 16-bit
+ 0002:04AE 00000H     XOFE                   BSS 16-bit
+
+ Origin   Group
+ 0002:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0001:0E24 ?AddRef@CImpIAdviseSink@@VEAKXZ  ?AddRef@CImpIAdviseSink@@VEAKXZ
+ 0001:0F50 ?OnClose@CImpIAdviseSink@@VEAXXZ  ?OnClose@CImpIAdviseSink@@VEAXXZ
+ 0001:0EA2 ?OnDataChange@CImpIAdviseSink@@VEAXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z  ?OnDataChange@CImpIAdviseSink@@VEAXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+ 0001:0F38 ?OnRename@CImpIAdviseSink@@VEAXPEUIMoniker@@@Z  ?OnRename@CImpIAdviseSink@@VEAXPEUIMoniker@@@Z
+ 0001:0F44 ?OnSave@CImpIAdviseSink@@VEAXXZ  ?OnSave@CImpIAdviseSink@@VEAXXZ
+ 0001:0F2C ?OnViewChange@CImpIAdviseSink@@VEAXKJ@Z  ?OnViewChange@CImpIAdviseSink@@VEAXKJ@Z
+ 0001:0DA0 ?QueryInterface@CImpIAdviseSink@@VEAPEXAFUGUID@@PEPEX@Z  ?QueryInterface@CImpIAdviseSink@@VEAPEXAFUGUID@@PEPEX@Z
+ 0001:0E46 ?Release@CImpIAdviseSink@@VEAKXZ  ?Release@CImpIAdviseSink@@VEAKXZ
+ 0001:0FA8 DisplayIDataObject      DisplayIDataObject
+ 0001:294A fnEditSubclass          fnEditSubclass
+ 0001:2FC4 fnEnumReallyEx          fnEnumReallyEx
+ 0001:1136 fnIDataObjDlg           fnIDataObjDlg
+ 0001:0000 WEP                     WEP
+ 0001:0CB6 ___ExportedStub         ___ExportedStub
+
+  Address         Publics by Name
+
+ 0001:0D40       ??0CImpIAdviseSink@@REC@PEVIDataObjDlg@@@Z
+                    public: __far __pascal CImpIAdviseSink::CImpIAdviseSink(class IDataObjDlg __far*)__far
+
+ 0001:1040       ??0IDataObjDlg@@REC@PBUHWND__@@PEUIDataObject@@PEUGUID@@PED@Z
+                    public: __far __pascal IDataObjDlg::IDataObjDlg(struct HWND__ const __near*,struct IDataObject __far*,struct GUID __far*,char __far*)__far
+
+ 0001:0D8A       ??1CImpIAdviseSink@@REC@XZ
+                    public: __far __pascal CImpIAdviseSink::~CImpIAdviseSink(void)__far
+
+ 0001:10EE       ??1IDataObjDlg@@REC@XZ
+                    public: __far __pascal IDataObjDlg::~IDataObjDlg(void)__far
+
+ 0001:0614       ??2@ZAPEXI@Z
+                    void __far* __far __cdecl operator new(unsigned int)
+
+ 0001:0602       ??3@ZAXPEX@Z
+                    void __far __cdecl operator delete(void __far*)
+
+ 0001:0F5C       ??_7CImpIAdviseSink@@6F@
+                    const __far CImpIAdviseSink::`vftable'
+
+ 0001:0F7C       ??_7IAdviseSink@@6F@
+                    const __far IAdviseSink::`vftable'
+
+ 0001:0F9C       ??_7IUnknown@@6F@
+                    const __far IUnknown::`vftable'
+
+ 0001:29EA       ??_C@_00A@?$AA@
+                    ??_C@_00A@?$AA@
+
+ 0001:40F8       ??_C@_01FCOA@?5?$AA@
+                    ??_C@_01FCOA@?5?$AA@
+
+ 0001:2DC8       ??_C@_02MEID@?0?7?$AA@
+                    ??_C@_02MEID@?0?7?$AA@
+
+ 0001:5198       ??_C@_02MLOI@CF?$AA@
+                    ??_C@_02MLOI@CF?$AA@
+
+ 0001:2DCC       ??_C@_02PIMC@?$AN?6?$AA@
+                    ??_C@_02PIMC@?$AN?6?$AA@
+
+ 0001:5106       ??_C@_03EMIM@int?$AA@
+                    ??_C@_03EMIM@int?$AA@
+
+ 0001:511E       ??_C@_03GHPI@PTR?$AA@
+                    ??_C@_03GHPI@PTR?$AA@
+
+ 0001:51EA       ??_C@_04BJAB@?5of?5?$AA@
+                    ??_C@_04BJAB@?5of?5?$AA@
+
+ 0001:5080       ??_C@_04BNGP@Long?$AA@
+                    ??_C@_04BNGP@Long?$AA@
+
+ 0001:51F0       ??_C@_04BNMG@?$FL?$CFu?$FN?$AA@
+                    ??_C@_04BNMG@?$FL?$CFu?$FN?$AA@
+
+ 0001:510A       ??_C@_04DIFF@UINT?$AA@
+                    ??_C@_04DIFF@UINT?$AA@
+
+ 0001:2A02       ??_C@_04DKPP@Bold?$AA@
+                    ??_C@_04DKPP@Bold?$AA@
+
+ 0001:50DE       ??_C@_04EHOP@BYTE?$AA@
+                    ??_C@_04EHOP@BYTE?$AA@
+
+ 0001:5110       ??_C@_04HDPB@VOID?$AA@
+                    ??_C@_04HDPB@VOID?$AA@
+
+ 0001:40FA       ??_C@_04JECD@S_OK?$AA@
+                    ??_C@_04JECD@S_OK?$AA@
+
+ 0001:50E4       ??_C@_04KENI@char?$AA@
+                    ??_C@_04KENI@char?$AA@
+
+ 0001:506C       ??_C@_04LGJG@Void?$AA@
+                    ??_C@_04LGJG@Void?$AA@
+
+ 0001:5072       ??_C@_04MEGN@Null?$AA@
+                    ??_C@_04MEGN@Null?$AA@
+
+ 0001:5158       ??_C@_04MNCO@BLOB?$AA@
+                    ??_C@_04MNCO@BLOB?$AA@
+
+ 0001:50A0       ??_C@_04OMLL@Date?$AA@
+                    ??_C@_04OMLL@Date?$AA@
+
+ 0001:51E4       ??_C@_04PNBL@?5to?5?$AA@
+                    ??_C@_04PNBL@?5to?5?$AA@
+
+ 0001:5140       ??_C@_05BIIM@LPSTR?$AA@
+                    ??_C@_05BIIM@LPSTR?$AA@
+
+ 0001:2A08       ??_C@_05CKBG@Error?$AA@
+                    ??_C@_05CKBG@Error?$AA@
+
+ 0001:50B6       ??_C@_05COGH@SCODE?$AA@
+                    ??_C@_05COGH@SCODE?$AA@
+
+ 0001:519C       ??_C@_05FGFK@CLSID?$AA@
+                    ??_C@_05FGFK@CLSID?$AA@
+
+ 0001:50F8       ??_C@_05JAMN@int64?$AA@
+                    ??_C@_05JAMN@int64?$AA@
+
+ 0001:50F2       ??_C@_05PDLJ@ULONG?$AA@
+                    ??_C@_05PDLJ@ULONG?$AA@
+
+ 0001:5086       ??_C@_06DFFN@Single?$AA@
+                    ??_C@_06DFFN@Single?$AA@
+
+ 0001:508E       ??_C@_06ENOL@Double?$AA@
+                    ??_C@_06ENOL@Double?$AA@
+
+ 0001:2C86       ??_C@_06FAPB@CF_DIF?$AA@
+                    ??_C@_06FAPB@CF_DIF?$AA@
+
+ 0001:2CE4       ??_C@_06FHIJ@?$CF?$CD08lX?$AA@
+                    ??_C@_06FHIJ@?$CF?$CD08lX?$AA@
+
+ 0001:512C       ??_C@_06HKOF@CARRAY?$AA@
+                    ??_C@_06HKOF@CARRAY?$AA@
+
+ 0001:50EA       ??_C@_06IEJL@USHORT?$AA@
+                    ??_C@_06IEJL@USHORT?$AA@
+
+ 0001:50AE       ??_C@_06JDBI@Object?$AA@
+                    ??_C@_06JDBI@Object?$AA@
+
+ 0001:515E       ??_C@_06JOCF@STREAM?$AA@
+                    ??_C@_06JOCF@STREAM?$AA@
+
+ 0001:4166       ??_C@_06MPFC@E_FAIL?$AA@
+                    ??_C@_06MPFC@E_FAIL?$AA@
+
+ 0001:50FE       ??_C@_06NFOC@uint64?$AA@
+                    ??_C@_06NFOC@uint64?$AA@
+
+ 0001:5146       ??_C@_06PCFA@LPWSTR?$AA@
+                    ??_C@_06PCFA@LPWSTR?$AA@
+
+ 0001:50A6       ??_C@_06PINC@String?$AA@
+                    ??_C@_06PINC@String?$AA@
+
+ 0001:2CA2       ??_C@_06PKKN@CF_DIB?$AA@
+                    ??_C@_06PKKN@CF_DIB?$AA@
+
+ 0001:415E       ??_C@_07BBFK@E_ABORT?$AA@
+                    ??_C@_07BBFK@E_ABORT?$AA@
+
+ 0001:2CC2       ??_C@_07CCCP@CF_RIFF?$AA@
+                    ??_C@_07CCCP@CF_RIFF?$AA@
+
+ 0001:4D68       ??_C@_07EGID@MK_S_ME?$AA@
+                    ??_C@_07EGID@MK_S_ME?$AA@
+
+ 0001:29EC       ??_C@_07FHP@Regular?$AA@
+                    ??_C@_07FHP@Regular?$AA@
+
+ 0001:2C5C       ??_C@_07HBHA@CF_TEXT?$AA@
+                    ??_C@_07HBHA@CF_TEXT?$AA@
+
+ 0001:5078       ??_C@_07HDOI@Integer?$AA@
+                    ??_C@_07HDOI@Integer?$AA@
+
+ 0001:50C4       ??_C@_07IADP@Variant?$AA@
+                    ??_C@_07IADP@Variant?$AA@
+
+ 0001:2CCA       ??_C@_07JHJA@CF_WAVE?$AA@
+                    ??_C@_07JHJA@CF_WAVE?$AA@
+
+ 0001:50BC       ??_C@_07KEJK@Boolean?$AA@
+                    ??_C@_07KEJK@Boolean?$AA@
+
+ 0001:5166       ??_C@_07MBME@STORAGE?$AA@
+                    ??_C@_07MBME@STORAGE?$AA@
+
+ 0001:4D7A       ??_C@_07MPHM@MK_S_US?$AA@
+                    ??_C@_07MPHM@MK_S_US?$AA@
+
+ 0001:5116       ??_C@_07NCAD@HRESULT?$AA@
+                    ??_C@_07NCAD@HRESULT?$AA@
+
+ 0001:50D6       ??_C@_07NCOA@Unicode?$AA@
+                    ??_C@_07NCOA@Unicode?$AA@
+
+ 0001:2C7E       ??_C@_07OKGF@CF_SYLK?$AA@
+                    ??_C@_07OKGF@CF_SYLK?$AA@
+
+ 0001:4100       ??_C@_07PDAH@S_FALSE?$AA@
+                    ??_C@_07PDAH@S_FALSE?$AA@
+
+ 0001:2C8E       ??_C@_07PNMD@CF_TIFF?$AA@
+                    ??_C@_07PNMD@CF_TIFF?$AA@
+
+ 0001:4D70       ??_C@_08CAEH@MK_S_HIM?$AA@
+                    ??_C@_08CAEH@MK_S_HIM?$AA@
+
+ 0001:5096       ??_C@_08CKCK@Currency?$AA@
+                    ??_C@_08CKCK@Currency?$AA@
+
+ 0001:2B46       ??_C@_08HCFF@?$CGDAdvise?$AA@
+                    ??_C@_08HCFF@?$CGDAdvise?$AA@
+
+ 0001:4154       ??_C@_08HCGG@E_HANDLE?$AA@
+                    ??_C@_08HCGG@E_HANDLE?$AA@
+
+ 0001:514E       ??_C@_08NLGB@FILETIME?$AA@
+                    ??_C@_08NLGB@FILETIME?$AA@
+
+ 0001:4116       ??_C@_09DGOK@E_NOTIMPL?$AA@
+                    ??_C@_09DGOK@E_NOTIMPL?$AA@
+
+ 0001:414A       ??_C@_09FCML@E_POINTER?$AA@
+                    ??_C@_09FCML@E_POINTER?$AA@
+
+ 0001:2C64       ??_C@_09FOPE@CF_BITMAP?$AA@
+                    ??_C@_09FOPE@CF_BITMAP?$AA@
+
+ 0001:2A0E       ??_C@_09KFGP@Wrong?5IID?$AA@
+                    ??_C@_09KFGP@Wrong?5IID?$AA@
+
+ 0001:51CC       ??_C@_09LGCP@?$CFs?5BYREF?5?$AA@
+                    ??_C@_09LGCP@?$CFs?5BYREF?5?$AA@
+
+ 0001:50CC       ??_C@_09PAE@pIUnknown?$AA@
+                    ??_C@_09PAE@pIUnknown?$AA@
+
+ 0001:5122       ??_C@_09PGOK@SAFEARRAY?$AA@
+                    ??_C@_09PGOK@SAFEARRAY?$AA@
+
+ 0001:516E       ??_C@_0BA@BGMN@STREAMED_OBJECT?$AA@
+                    ??_C@_0BA@BGMN@STREAMED_OBJECT?$AA@
+
+ 0001:4994       ??_C@_0BA@DCHM@CO_E_ERRORINDLL?$AA@
+                    ??_C@_0BA@DCHM@CO_E_ERRORINDLL?$AA@
+
+ 0001:4E54       ??_C@_0BA@DLMK@DISP_E_BADINDEX?$AA@
+                    ??_C@_0BA@DLMK@DISP_E_BADINDEX?$AA@
+
+ 0001:478A       ??_C@_0BA@ENNI@STG_E_READFAULT?$AA@
+                    ??_C@_0BA@ENNI@STG_E_READFAULT?$AA@
+
+ 0001:51B0       ??_C@_0BA@FGMG@?$DMUnknown?5?$CF08lX?$DO?$AA@
+                    ??_C@_0BA@FGMG@?$DMUnknown?5?$CF08lX?$DO?$AA@
+
+ 0001:4E44       ??_C@_0BA@GHFB@DISP_E_OVERFLOW?$AA@
+                    ??_C@_0BA@GHFB@DISP_E_OVERFLOW?$AA@
+
+ 0001:45B2       ??_C@_0BA@HKCB@DRAGDROP_S_DROP?$AA@
+                    ??_C@_0BA@HKCB@DRAGDROP_S_DROP?$AA@
+
+ 0001:2C6E       ??_C@_0BA@IKOM@CF_METAFILEPICT?$AA@
+                    ??_C@_0BA@IKOM@CF_METAFILEPICT?$AA@
+
+ 0001:42B6       ??_C@_0BA@IPMP@OLE_E_CLASSDIFF?$AA@
+                    ??_C@_0BA@IPMP@OLE_E_CLASSDIFF?$AA@
+
+ 0001:4768       ??_C@_0BA@NAPD@STG_E_SEEKERROR?$AA@
+                    ??_C@_0BA@NAPD@STG_E_SEEKERROR?$AA@
+
+ 0001:48A6       ??_C@_0BA@NFPJ@STG_E_OLDFORMAT?$AA@
+                    ??_C@_0BA@NFPJ@STG_E_OLDFORMAT?$AA@
+
+ 0001:48D8       ??_C@_0BA@ODMA@STG_S_CONVERTED?$AA@
+                    ??_C@_0BA@ODMA@STG_S_CONVERTED?$AA@
+
+ 0001:439E       ??_C@_0BA@OMEF@DV_E_CLIPFORMAT?$AA@
+                    ??_C@_0BA@OMEF@DV_E_CLIPFORMAT?$AA@
+
+ 0001:4972       ??_C@_0BA@PKPD@CO_E_ERRORINAPP?$AA@
+                    ??_C@_0BA@PKPD@CO_E_ERRORINAPP?$AA@
+
+ 0001:4CEC       ??_C@_0BB@CGPA@MK_E_NOTBINDABLE?$AA@
+                    ??_C@_0BB@CGPA@MK_E_NOTBINDABLE?$AA@
+
+ 0001:417E       ??_C@_0BB@CLFO@DATA_E_FORMATETC?$AA@
+                    ??_C@_0BB@CLFO@DATA_E_FORMATETC?$AA@
+
+ 0001:4982       ??_C@_0BB@DGAA@CO_E_DLLNOTFOUND?$AA@
+                    ??_C@_0BB@DGAA@CO_E_DLLNOTFOUND?$AA@
+
+ 0001:49EC       ??_C@_0BB@EGCE@CO_E_APPDIDNTREG?$AA@
+                    ??_C@_0BB@EGCE@CO_E_APPDIDNTREG?$AA@
+
+ 0001:4874       ??_C@_0BB@FHLH@STG_E_NOTCURRENT?$AA@
+                    ??_C@_0BB@FHLH@STG_E_NOTCURRENT?$AA@
+
+ 0001:4EBC       ??_C@_0BB@GP@DISP_E_BADCALLEE?$AA@
+                    ??_C@_0BB@GP@DISP_E_BADCALLEE?$AA@
+
+ 0001:45F2       ??_C@_0BB@ICH@OLEOBJ_E_NOVERBS?$AA@
+                    ??_C@_0BB@ICH@OLEOBJ_E_NOVERBS?$AA@
+
+ 0001:4E32       ??_C@_0BB@IEIB@DISP_E_EXCEPTION?$AA@
+                    ??_C@_0BB@IEIB@DISP_E_EXCEPTION?$AA@
+
+ 0001:4C32       ??_C@_0BB@IMFM@RPC_E_UNEXPECTED?$AA@
+                    ??_C@_0BB@IMFM@RPC_E_UNEXPECTED?$AA@
+
+ 0001:2C4A       ??_C@_0BB@JEGH@CF_METAFILEPICT_?$AA@
+                    ??_C@_0BB@JEGH@CF_METAFILEPICT_?$AA@
+
+ 0001:492C       ??_C@_0BB@JFMG@CO_E_CLASSSTRING?$AA@
+                    ??_C@_0BB@JFMG@CO_E_CLASSSTRING?$AA@
+
+ 0001:428A       ??_C@_0BB@JNNN@OLE_E_NOTRUNNING?$AA@
+                    ??_C@_0BB@JNNN@OLE_E_NOTRUNNING?$AA@
+
+ 0001:47DE       ??_C@_0BB@KIFE@STG_E_MEDIUMFULL?$AA@
+                    ??_C@_0BB@KIFE@STG_E_MEDIUMFULL?$AA@
+
+ 0001:4C82       ??_C@_0BB@LKHO@MK_E_UNAVAILABLE?$AA@
+                    ??_C@_0BB@LKHO@MK_E_UNAVAILABLE?$AA@
+
+ 0001:4778       ??_C@_0BB@MCHJ@STG_E_WRITEFAULT?$AA@
+                    ??_C@_0BB@MCHJ@STG_E_WRITEFAULT?$AA@
+
+ 0001:4C70       ??_C@_0BB@NHEK@MK_E_NEEDGENERIC?$AA@
+                    ??_C@_0BB@NHEK@MK_E_NEEDGENERIC?$AA@
+
+ 0001:494E       ??_C@_0BB@PEGM@CO_E_APPNOTFOUND?$AA@
+                    ??_C@_0BB@PEGM@CO_E_APPNOTFOUND?$AA@
+
+ 0001:424A       ??_C@_0BC@BFPC@OLE_E_ENUM_NOMORE?$AA@
+                    ??_C@_0BC@BFPC@OLE_E_ENUM_NOMORE?$AA@
+
+ 0001:4D0C       ??_C@_0BC@CLAA@MK_E_CANTOPENFILE?$AA@
+                    ??_C@_0BC@CLAA@MK_E_CANTOPENFILE?$AA@
+
+ 0001:2CD2       ??_C@_0BC@COBL@?$CCWildcard?5Advise?$CC?$AA@
+                    ??_C@_0BC@COBL@?$CCWildcard?5Advise?$CC?$AA@
+
+ 0001:4856       ??_C@_0BC@EMKL@STG_E_INVALIDFLAG?$AA@
+                    ??_C@_0BC@EMKL@STG_E_INVALIDFLAG?$AA@
+
+ 0001:4A78       ??_C@_0BC@EOK@REGDB_E_IIDNOTREG?$AA@
+                    ??_C@_0BC@EOK@REGDB_E_IIDNOTREG?$AA@
+
+ 0001:481A       ??_C@_0BC@FGBC@STG_E_INVALIDNAME?$AA@
+                    ??_C@_0BC@FGBC@STG_E_INVALIDNAME?$AA@
+
+ 0001:4E20       ??_C@_0BC@FHKP@DISP_E_BADVARTYPE?$AA@
+                    ??_C@_0BC@FHKP@DISP_E_BADVARTYPE?$AA@
+
+ 0001:2B1E       ??_C@_0BC@FIFP@Advise?5started?4?4?4?$AA@
+                    ??_C@_0BC@FIFP@Advise?5started?4?4?4?$AA@
+
+ 0001:4342       ??_C@_0BC@HBGB@OLE_E_INVALIDHWND?$AA@
+                    ??_C@_0BC@HBGB@OLE_E_INVALIDHWND?$AA@
+
+ 0001:4A14       ??_C@_0BC@HJEG@REGDB_E_READREGDB?$AA@
+                    ??_C@_0BC@HJEG@REGDB_E_READREGDB?$AA@
+
+ 0001:4B34       ??_C@_0BC@IEPI@RPC_E_SERVER_DIED?$AA@
+                    ??_C@_0BC@IEPI@RPC_E_SERVER_DIED?$AA@
+
+ 0001:4B46       ??_C@_0BC@INIG@RPC_E_CLIENT_DIED?$AA@
+                    ??_C@_0BC@INIG@RPC_E_CLIENT_DIED?$AA@
+
+ 0001:431C       ??_C@_0BC@JBBH@OLE_E_INVALIDRECT?$AA@
+                    ??_C@_0BC@JBBH@OLE_E_INVALIDRECT?$AA@
+
+ 0001:473A       ??_C@_0BC@JPKH@STG_E_NOMOREFILES?$AA@
+                    ??_C@_0BC@JPKH@STG_E_NOMOREFILES?$AA@
+
+ 0001:45C2       ??_C@_0BC@LMCE@DRAGDROP_S_CANCEL?$AA@
+                    ??_C@_0BC@LMCE@DRAGDROP_S_CANCEL?$AA@
+
+ 0001:4960       ??_C@_0BC@MIJJ@CO_E_APPSINGLEUSE?$AA@
+                    ??_C@_0BC@MIJJ@CO_E_APPSINGLEUSE?$AA@
+
+ 0001:4200       ??_C@_0BC@NMDD@CACHE_S_SAMECACHE?$AA@
+                    ??_C@_0BC@NMDD@CACHE_S_SAMECACHE?$AA@
+
+ 0001:4276       ??_C@_0BD@BCBD@OLE_E_NOCONNECTION?$AA@
+                    ??_C@_0BD@BCBD@OLE_E_NOCONNECTION?$AA@
+
+ 0001:4F3A       ??_C@_0BD@BDCM@TYPE_E_INVDATAREAD?$AA@
+                    ??_C@_0BD@BDCM@TYPE_E_INVDATAREAD?$AA@
+
+ 0001:4538       ??_C@_0BD@DHGF@CLIPBRD_E_BAD_DATA?$AA@
+                    ??_C@_0BD@DHGF@CLIPBRD_E_BAD_DATA?$AA@
+
+ 0001:4E64       ??_C@_0BD@EBLA@DISP_E_UNKNOWNLCID?$AA@
+                    ??_C@_0BD@EBLA@DISP_E_UNKNOWNLCID?$AA@
+
+ 0001:46E2       ??_C@_0BD@EICG@STG_E_ACCESSDENIED?$AA@
+                    ??_C@_0BD@EICG@STG_E_ACCESSDENIED?$AA@
+
+ 0001:4524       ??_C@_0BD@FIPH@CLIPBRD_E_CANT_SET?$AA@
+                    ??_C@_0BD@FIPH@CLIPBRD_E_CANT_SET?$AA@
+
+ 0001:4DF8       ??_C@_0BD@FPAE@DISP_E_UNKNOWNNAME?$AA@
+                    ??_C@_0BD@FPAE@DISP_E_UNKNOWNNAME?$AA@
+
+ 0001:4A26       ??_C@_0BD@GKF@REGDB_E_WRITEREGDB?$AA@
+                    ??_C@_0BD@GKF@REGDB_E_WRITEREGDB?$AA@
+
+ 0001:432E       ??_C@_0BD@HFND@OLE_E_WRONGCOMPOBJ?$AA@
+                    ??_C@_0BD@HFND@OLE_E_WRONGCOMPOBJ?$AA@
+
+ 0001:46A2       ??_C@_0BD@HNDG@STG_E_FILENOTFOUND?$AA@
+                    ??_C@_0BD@HNDG@STG_E_FILENOTFOUND?$AA@
+
+ 0001:43D6       ??_C@_0BD@IDLA@DV_E_NOIVIEWOBJECT?$AA@
+                    ??_C@_0BD@IDLA@DV_E_NOIVIEWOBJECT?$AA@
+
+ 0001:49A4       ??_C@_0BD@IGGN@CO_E_WRONGOSFORAPP?$AA@
+                    ??_C@_0BD@IGGN@CO_E_WRONGOSFORAPP?$AA@
+
+ 0001:4F4E       ??_C@_0BD@KID@TYPE_E_UNSUPFORMAT?$AA@
+                    ??_C@_0BD@KID@TYPE_E_UNSUPFORMAT?$AA@
+
+ 0001:46B6       ??_C@_0BD@MAIA@STG_E_PATHNOTFOUND?$AA@
+                    ??_C@_0BD@MAIA@STG_E_PATHNOTFOUND?$AA@
+
+ 0001:4E0C       ??_C@_0BD@MFHE@DISP_E_NONAMEDARGS?$AA@
+                    ??_C@_0BD@MFHE@DISP_E_NONAMEDARGS?$AA@
+
+ 0001:4A3A       ??_C@_0BD@NEAK@REGDB_E_KEYMISSING?$AA@
+                    ??_C@_0BD@NEAK@REGDB_E_KEYMISSING?$AA@
+
+ 0001:4C06       ??_C@_0BD@PO@RPC_E_INVALID_DATA?$AA@
+                    ??_C@_0BD@PO@RPC_E_INVALID_DATA?$AA@
+
+ 0001:4678       ??_C@_0BE@DPEC@INPLACE_S_TRUNCATED?$AA@
+                    ??_C@_0BE@DPEC@INPLACE_S_TRUNCATED?$AA@
+
+ 0001:48E8       ??_C@_0BE@EFPN@CO_E_NOTINITIALIZED?$AA@
+                    ??_C@_0BE@EFPN@CO_E_NOTINITIALIZED?$AA@
+
+ 0001:4A96       ??_C@_0BE@FCIF@RPC_E_CALL_REJECTED?$AA@
+                    ??_C@_0BE@FCIF@RPC_E_CALL_REJECTED?$AA@
+
+ 0001:4DE4       ??_C@_0BE@GINK@DISP_E_TYPEMISMATCH?$AA@
+                    ??_C@_0BE@GINK@DISP_E_TYPEMISMATCH?$AA@
+
+ 0001:4354       ??_C@_0BE@IMCM@DV_E_DVTARGETDEVICE?$AA@
+                    ??_C@_0BE@IMCM@DV_E_DVTARGETDEVICE?$AA@
+
+ 0001:4D1E       ??_C@_0BE@INIG@MK_E_MUSTBOTHERUSER?$AA@
+                    ??_C@_0BE@INIG@MK_E_MUSTBOTHERUSER?$AA@
+
+ 0001:4FC6       ??_C@_0BE@LHHL@TYPE_E_INVALIDSTATE?$AA@
+                    ??_C@_0BE@LHHL@TYPE_E_INVALIDSTATE?$AA@
+
+ 0001:44FA       ??_C@_0BE@MCIO@CLIPBRD_E_CANT_OPEN?$AA@
+                    ??_C@_0BE@MCIO@CLIPBRD_E_CANT_OPEN?$AA@
+
+ 0001:46F6       ??_C@_0BE@MFIL@STG_E_INVALIDHANDLE?$AA@
+                    ??_C@_0BE@MFIL@STG_E_INVALIDHANDLE?$AA@
+
+ 0001:4806       ??_C@_0BE@MKFL@STG_E_INVALIDHEADER?$AA@
+                    ??_C@_0BE@MKFL@STG_E_INVALIDHEADER?$AA@
+
+ 0001:448E       ??_C@_0BE@NF@CONVERT10_E_STG_FMT?$AA@
+                    ??_C@_0BE@NF@CONVERT10_E_STG_FMT?$AA@
+
+ 0001:4AAA       ??_C@_0BE@NKHI@RPC_E_CALL_CANCELED?$AA@
+                    ??_C@_0BE@NKHI@RPC_E_CALL_CANCELED?$AA@
+
+ 0001:4A64       ??_C@_0BE@PII@REGDB_E_CLASSNOTREG?$AA@
+                    ??_C@_0BE@PII@REGDB_E_CLASSNOTREG?$AA@
+
+ 0001:479A       ??_C@_0BE@PJLD@STG_E_LOCKVIOLATION?$AA@
+                    ??_C@_0BE@PJLD@STG_E_LOCKVIOLATION?$AA@
+
+ 0001:48C4       ??_C@_0BE@PMHE@STG_E_SHAREREQUIRED?$AA@
+                    ??_C@_0BE@PMHE@STG_E_SHAREREQUIRED?$AA@
+
+ 0001:4DCE       ??_C@_0BF@BKDN@DISP_E_PARAMNOTFOUND?$AA@
+                    ??_C@_0BF@BKDN@DISP_E_PARAMNOTFOUND?$AA@
+
+ 0001:5008       ??_C@_0BF@DCPG@TYPE_E_AMBIGUOUSNAME?$AA@
+                    ??_C@_0BF@DCPG@TYPE_E_AMBIGUOUSNAME?$AA@
+
+ 0001:454C       ??_C@_0BF@DMOK@CLIPBRD_E_CANT_CLOSE?$AA@
+                    ??_C@_0BF@DMOK@CLIPBRD_E_CANT_CLOSE?$AA@
+
+ 0001:4FDA       ??_C@_0BF@DOMI@TYPE_E_WRONGTYPEKIND?$AA@
+                    ??_C@_0BF@DOMI@TYPE_E_WRONGTYPEKIND?$AA@
+
+ 0001:4724       ??_C@_0BF@EEHM@STG_E_INVALIDPOINTER?$AA@
+                    ??_C@_0BF@EEHM@STG_E_INVALIDPOINTER?$AA@
+
+ 0001:4A4E       ??_C@_0BF@ENHM@REGDB_E_INVALIDVALUE?$AA@
+                    ??_C@_0BF@ENHM@REGDB_E_INVALIDVALUE?$AA@
+
+ 0001:4EE4       ??_C@_0BF@FACD@TYPE_E_BADMODULEKIND?$AA@
+                    ??_C@_0BF@FACD@TYPE_E_BADMODULEKIND?$AA@
+
+ 0001:4E8E       ??_C@_0BF@IKPH@DISP_E_BADPARAMCOUNT?$AA@
+                    ??_C@_0BF@IKPH@DISP_E_BADPARAMCOUNT?$AA@
+
+ 0001:4636       ??_C@_0BF@ILAM@OLEOBJ_S_INVALIDHWND?$AA@
+                    ??_C@_0BF@ILAM@OLEOBJ_S_INVALIDHWND?$AA@
+
+ 0001:4D52       ??_C@_0BF@JEJH@MK_S_REDUCED_TO_SELF?$AA@
+                    ??_C@_0BF@JEJH@MK_S_REDUCED_TO_SELF?$AA@
+
+ 0001:4190       ??_C@_0BF@LEIP@DATA_S_SAMEFORMATETC?$AA@
+                    ??_C@_0BF@LEIP@DATA_S_SAMEFORMATETC?$AA@
+
+ 0001:4F90       ??_C@_0BF@MJPL@TYPE_E_UNDEFINEDTYPE?$AA@
+                    ??_C@_0BF@MJPL@TYPE_E_UNDEFINEDTYPE?$AA@
+
+ 0001:4604       ??_C@_0BF@NEDD@OLEOBJ_S_INVALIDVERB?$AA@
+                    ??_C@_0BF@NEDD@OLEOBJ_S_INVALIDVERB?$AA@
+
+ 0001:4406       ??_C@_0BF@NFAK@OLE_S_MAC_CLIPFORMAT?$AA@
+                    ??_C@_0BF@NFAK@OLE_S_MAC_CLIPFORMAT?$AA@
+
+ 0001:4C44       ??_C@_0BF@NPHN@MK_E_CONNECTMANUALLY?$AA@
+                    ??_C@_0BF@NPHN@MK_E_CONNECTMANUALLY?$AA@
+
+ 0001:450E       ??_C@_0BF@OABI@CLIPBRD_E_CANT_EMPTY?$AA@
+                    ??_C@_0BF@OABI@CLIPBRD_E_CANT_EMPTY?$AA@
+
+ 0001:49D6       ??_C@_0BF@PKMO@CO_E_OBJNOTCONNECTED?$AA@
+                    ??_C@_0BF@PKMO@CO_E_OBJNOTCONNECTED?$AA@
+
+ 0001:4E78       ??_C@_0BF@PNAE@DISP_E_ARRAYISLOCKED?$AA@
+                    ??_C@_0BF@PNAE@DISP_E_ARRAYISLOCKED?$AA@
+
+ 0001:468C       ??_C@_0BG@BIHE@STG_E_INVALIDFUNCTION?$AA@
+                    ??_C@_0BG@BIHE@STG_E_INVALIDFUNCTION?$AA@
+
+ 0001:2A44       ??_C@_0BG@BOIL@GetData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+                    ??_C@_0BG@BOIL@GetData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+
+ 0001:4ECE       ??_C@_0BG@DJIC@DISP_E_NOTACOLLECTION?$AA@
+                    ??_C@_0BG@DJIC@DISP_E_NOTACOLLECTION?$AA@
+
+ 0001:4DB8       ??_C@_0BG@DMGK@DISP_E_MEMBERNOTFOUND?$AA@
+                    ??_C@_0BG@DMGK@DISP_E_MEMBERNOTFOUND?$AA@
+
+ 0001:4F62       ??_C@_0BG@FFPJ@TYPE_E_REGISTRYACCESS?$AA@
+                    ??_C@_0BG@FFPJ@TYPE_E_REGISTRYACCESS?$AA@
+
+ 0001:41B2       ??_C@_0BG@GHLI@VIEW_S_ALREADY_FROZEN?$AA@
+                    ??_C@_0BG@GHLI@VIEW_S_ALREADY_FROZEN?$AA@
+
+ 0001:4F24       ??_C@_0BG@HMOE@TYPE_E_BUFFERTOOSMALL?$AA@
+                    ??_C@_0BG@HMOE@TYPE_E_BUFFERTOOSMALL?$AA@
+
+ 0001:4CAE       ??_C@_0BG@ILAE@MK_E_INVALIDEXTENSION?$AA@
+                    ??_C@_0BG@ILAE@MK_E_INVALIDEXTENSION?$AA@
+
+ 0001:4C5A       ??_C@_0BG@JGDM@MK_E_EXCEEDEDDEADLINE?$AA@
+                    ??_C@_0BG@JGDM@MK_E_EXCEEDEDDEADLINE?$AA@
+
+ 0001:49FE       ??_C@_0BG@KBLK@CLASS_E_NOAGGREGATION?$AA@
+                    ??_C@_0BG@KBLK@CLASS_E_NOAGGREGATION?$AA@
+
+ 0001:2B30       ??_C@_0BG@LLMG@DAdvise?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+                    ??_C@_0BG@LLMG@DAdvise?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+
+ 0001:4662       ??_C@_0BG@NEEK@INPLACE_E_NOTOOLSPACE?$AA@
+                    ??_C@_0BG@NEEK@INPLACE_E_NOTOOLSPACE?$AA@
+
+ 0001:464C       ??_C@_0BG@NFLN@INPLACE_E_NOTUNDOABLE?$AA@
+                    ??_C@_0BG@NFLN@INPLACE_E_NOTUNDOABLE?$AA@
+
+ 0001:47F0       ??_C@_0BG@PCHB@STG_E_ABNORMALAPIEXIT?$AA@
+                    ??_C@_0BG@PCHB@STG_E_ABNORMALAPIEXIT?$AA@
+
+ 0001:42C6       ??_C@_0BG@PNJG@OLE_E_CANT_GETMONIKER?$AA@
+                    ??_C@_0BG@PNJG@OLE_E_CANT_GETMONIKER?$AA@
+
+ 0001:459A       ??_C@_0BH@CFBH@DRAGDROP_E_INVALIDHWND?$AA@
+                    ??_C@_0BH@CFBH@DRAGDROP_E_INVALIDHWND?$AA@
+
+ 0001:47C6       ??_C@_0BH@DEML@STG_E_INVALIDPARAMETER?$AA@
+                    ??_C@_0BH@DEML@STG_E_INVALIDPARAMETER?$AA@
+
+ 0001:2C32       ??_C@_0BH@HFPK@?$DM?$DMDATA_DIRGET?5failed?$DO?$DO?$AA@
+                    ??_C@_0BH@HFPK@?$DM?$DMDATA_DIRGET?5failed?$DO?$DO?$AA@
+
+ 0001:46CA       ??_C@_0BH@KKDE@STG_E_TOOMANYOPENFILES?$AA@
+                    ??_C@_0BH@KKDE@STG_E_TOOMANYOPENFILES?$AA@
+
+ 0001:29D2       ??_C@_0BH@NHIG@Market?5Data?5?$CIWOSA?1XRT?$CJ?$AA@
+                    ??_C@_0BH@NHIG@Market?5Data?5?$CIWOSA?1XRT?$CJ?$AA@
+
+ 0001:503A       ??_C@_0BH@OEOC@TYPE_E_CANTLOADLIBRARY?$AA@
+                    ??_C@_0BH@OEOC@TYPE_E_CANTLOADLIBRARY?$AA@
+
+ 0001:4FF0       ??_C@_0BH@PKEE@TYPE_E_ELEMENTNOTFOUND?$AA@
+                    ??_C@_0BH@PKEE@TYPE_E_ELEMENTNOTFOUND?$AA@
+
+ 0001:4DA0       ??_C@_0BI@BKFO@DISP_E_UNKNOWNINTERFACE?$AA@
+                    ??_C@_0BI@BKFO@DISP_E_UNKNOWNINTERFACE?$AA@
+
+ 0001:42DC       ??_C@_0BI@CFOJ@OLE_E_CANT_BINDTOSOURCE?$AA@
+                    ??_C@_0BI@CFOJ@OLE_E_CANT_BINDTOSOURCE?$AA@
+
+ 0001:4C1A       ??_C@_0BI@DDIP@RPC_E_INVALID_PARAMETER?$AA@
+                    ??_C@_0BI@DDIP@RPC_E_INVALID_PARAMETER?$AA@
+
+ 0001:47AE       ??_C@_0BI@GNCB@STG_E_FILEALREADYEXISTS?$AA@
+                    ??_C@_0BI@GNCB@STG_E_FILEALREADYEXISTS?$AA@
+
+ 0001:4B72       ??_C@_0BI@HEFH@RPC_E_CANTTRANSMIT_CALL?$AA@
+                    ??_C@_0BI@HEFH@RPC_E_CANTTRANSMIT_CALL?$AA@
+
+ 0001:4F78       ??_C@_0BI@IKOE@TYPE_E_LIBNOTREGISTERED?$AA@
+                    ??_C@_0BI@IKOE@TYPE_E_LIBNOTREGISTERED?$AA@
+
+ 0001:4914       ??_C@_0BI@KADN@CO_E_CANTDETERMINECLASS?$AA@
+                    ??_C@_0BI@KADN@CO_E_CANTDETERMINECLASS?$AA@
+
+ 0001:41C8       ??_C@_0BI@LGBI@CACHE_E_NOCACHE_UPDATED?$AA@
+                    ??_C@_0BI@LGBI@CACHE_E_NOCACHE_UPDATED?$AA@
+
+ 0001:48FC       ??_C@_0BI@LPFC@CO_E_ALREADYINITIALIZED?$AA@
+                    ??_C@_0BI@LPFC@CO_E_ALREADYINITIALIZED?$AA@
+
+ 0001:4EA4       ??_C@_0BI@ONEA@DISP_E_PARAMNOTOPTIONAL?$AA@
+                    ??_C@_0BI@ONEA@DISP_E_PARAMNOTOPTIONAL?$AA@
+
+ 0001:4B58       ??_C@_0BJ@DCAC@RPC_E_INVALID_DATAPACKET?$AA@
+                    ??_C@_0BJ@DCAC@RPC_E_INVALID_DATAPACKET?$AA@
+
+ 0001:425C       ??_C@_0BJ@KCME@OLE_E_ADVISENOTSUPPORTED?$AA@
+                    ??_C@_0BJ@KCME@OLE_E_ADVISENOTSUPPORTED?$AA@
+
+ 0001:4562       ??_C@_0BJ@KCOG@DRAGDROP_E_NOTREGISTERED?$AA@
+                    ??_C@_0BJ@KCOG@DRAGDROP_E_NOTREGISTERED?$AA@
+
+ 0001:43BC       ??_C@_0BJ@MFG@DV_E_DVTARGETDEVICE_SIZE?$AA@
+                    ??_C@_0BJ@MFG@DV_E_DVTARGETDEVICE_SIZE?$AA@
+
+ 0001:470A       ??_C@_0BJ@OANH@STG_E_INSUFFICIENTMEMORY?$AA@
+                    ??_C@_0BJ@OANH@STG_E_INSUFFICIENTMEMORY?$AA@
+
+ 0001:4F0A       ??_C@_0BJ@PDNG@TYPE_E_CANTCREATETMPFILE?$AA@
+                    ??_C@_0BJ@PDNG@TYPE_E_CANTCREATETMPFILE?$AA@
+
+ 0001:4ABE       ??_C@_0BK@BFAI@RPC_E_CANTPOST_INSENDCALL?$AA@
+                    ??_C@_0BK@BFAI@RPC_E_CANTPOST_INSENDCALL?$AA@
+
+ 0001:4302       ??_C@_0BK@GAIP@OLE_E_PROMPTSAVECANCELLED?$AA@
+                    ??_C@_0BK@GAIP@OLE_E_PROMPTSAVECANCELLED?$AA@
+
+ 0001:441C       ??_C@_0BK@IME@CONVERT10_E_OLESTREAM_GET?$AA@
+                    ??_C@_0BK@IME@CONVERT10_E_OLESTREAM_GET?$AA@
+
+ 0001:4450       ??_C@_0BK@OPIG@CONVERT10_E_OLESTREAM_FMT?$AA@
+                    ??_C@_0BK@OPIG@CONVERT10_E_OLESTREAM_FMT?$AA@
+
+ 0001:4436       ??_C@_0BK@PNGG@CONVERT10_E_OLESTREAM_PUT?$AA@
+                    ??_C@_0BK@PNGG@CONVERT10_E_OLESTREAM_PUT?$AA@
+
+ 0001:2CEC       ??_C@_0BL@GBBP@?$CK?$CK?$CK?$CK?$CK?$CK?$CK?$CK?$CK?5xrtDumpToDebug?$AN?6?$AA@
+                    ??_C@_0BL@GBBP@?$CK?$CK?$CK?$CK?$CK?$CK?$CK?$CK?$CK?5xrtDumpToDebug?$AN?6?$AA@
+
+ 0001:2A28       ??_C@_0BL@IBIO@QueryGetData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+                    ??_C@_0BL@IBIO@QueryGetData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+
+ 0001:501E       ??_C@_0BL@KFLM@TYPE_E_DLLFUNCTIONNOTFOUND?$AA@
+                    ??_C@_0BL@KFLM@TYPE_E_DLLFUNCTIONNOTFOUND?$AA@
+
+ 0001:474C       ??_C@_0BL@LBKA@STG_E_DISKISWRITEPROTECTED?$AA@
+                    ??_C@_0BL@LBKA@STG_E_DISKISWRITEPROTECTED?$AA@
+
+ 0001:461A       ??_C@_0BL@PKNP@OLEOBJ_S_CANNOT_DOVERB_NOW?$AA@
+                    ??_C@_0BL@PKNP@OLEOBJ_S_CANNOT_DOVERB_NOW?$AA@
+
+ 0001:4B18       ??_C@_0BM@KEOD@RPC_E_CONNECTION_TERMINATED?$AA@
+                    ??_C@_0BM@KEOD@RPC_E_CONNECTION_TERMINATED?$AA@
+
+ 0001:44DE       ??_C@_0BM@OOOI@CONVERT10_S_NO_PRESENTATION?$AA@
+                    ??_C@_0BM@OOOI@CONVERT10_S_NO_PRESENTATION?$AA@
+
+ 0001:483A       ??_C@_0BM@PNME@STG_E_UNIMPLEMENTEDFUNCTION?$AA@
+                    ??_C@_0BM@PNME@STG_E_UNIMPLEMENTEDFUNCTION?$AA@
+
+ 0001:45D4       ??_C@_0BN@CANI@DRAGDROP_S_USEDEFAULTCURSORS?$AA@
+                    ??_C@_0BN@CANI@DRAGDROP_S_USEDEFAULTCURSORS?$AA@
+
+ 0001:2D9C       ??_C@_0BN@EEBK@?$DM?$DMinvalid?5type?5?$CI?$DOVT_BOOL?$CJ?5?$DO?$DO?$AA@
+                    ??_C@_0BN@EEBK@?$DM?$DMinvalid?5type?5?$CI?$DOVT_BOOL?$CJ?5?$DO?$DO?$AA@
+
+ 0001:457C       ??_C@_0BN@GCLF@DRAGDROP_E_ALREADYREGISTERED?$AA@
+                    ??_C@_0BN@GCLF@DRAGDROP_E_ALREADYREGISTERED?$AA@
+
+ 0001:4AD8       ??_C@_0BO@FIAD@RPC_E_CANTCALLOUT_INASYNCCALL?$AA@
+                    ??_C@_0BO@FIAD@RPC_E_CANTCALLOUT_INASYNCCALL?$AA@
+
+ 0001:4212       ??_C@_0BO@HNEP@CACHE_S_SOMECACHES_NOTUPDATED?$AA@
+                    ??_C@_0BO@HNEP@CACHE_S_SOMECACHES_NOTUPDATED?$AA@
+
+ 0001:4B8A       ??_C@_0BO@IBCJ@RPC_E_CLIENT_CANTMARSHAL_DATA?$AA@
+                    ??_C@_0BO@IBCJ@RPC_E_CLIENT_CANTMARSHAL_DATA?$AA@
+
+ 0001:4D82       ??_C@_0BO@JADJ@MK_S_MONIKERALREADYREGISTERED?$AA@
+                    ??_C@_0BO@JADJ@MK_S_MONIKERALREADYREGISTERED?$AA@
+
+ 0001:44A2       ??_C@_0BO@LMOC@CONVERT10_E_STG_NO_STD_STREAM?$AA@
+                    ??_C@_0BO@LMOC@CONVERT10_E_STG_NO_STD_STREAM?$AA@
+
+ 0001:44C0       ??_C@_0BO@MDDA@CONVERT10_E_STG_DIB_TO_BITMAP?$AA@
+                    ??_C@_0BO@MDDA@CONVERT10_E_STG_DIB_TO_BITMAP?$AA@
+
+ 0001:4BC8       ??_C@_0BO@PBDM@RPC_E_SERVER_CANTMARSHAL_DATA?$AA@
+                    ??_C@_0BO@PBDM@RPC_E_SERVER_CANTMARSHAL_DATA?$AA@
+
+ 0001:41E0       ??_C@_0BP@BLBM@CACHE_S_FORMATETC_NOTSUPPORTED?$AA@
+                    ??_C@_0BP@BLBM@CACHE_S_FORMATETC_NOTSUPPORTED?$AA@
+
+ 0001:4FA6       ??_C@_0BP@GAEP@TYPE_E_QUALIFIEDNAMEDISALLOWED?$AA@
+                    ??_C@_0BP@GAEP@TYPE_E_QUALIFIEDNAMEDISALLOWED?$AA@
+
+ 0001:2AA0       ??_C@_0BP@MLJM@Got?5WOSA?1XRT?5representation?$CB?$AN?6?$AA@
+                    ??_C@_0BP@MLJM@Got?5WOSA?1XRT?5representation?$CB?$AN?6?$AA@
+
+ 0001:4BA8       ??_C@_0CA@EKFA@RPC_E_CLIENT_CANTUNMARSHAL_DATA?$AA@
+                    ??_C@_0CA@EKFA@RPC_E_CLIENT_CANTUNMARSHAL_DATA?$AA@
+
+ 0001:2A5A       ??_C@_0CA@KDCN@IDataDlg?3?3GotData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+                    ??_C@_0CA@KDCN@IDataDlg?3?3GotData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+
+ 0001:4BE6       ??_C@_0CA@NNPK@RPC_E_SERVER_CANTUNMARSHAL_DATA?$AA@
+                    ??_C@_0CA@NNPK@RPC_E_SERVER_CANTUNMARSHAL_DATA?$AA@
+
+ 0001:4AF6       ??_C@_0CB@IKHF@RPC_E_CANTCALLOUT_INEXTERNALCALL@
+                    ??_C@_0CB@IKHF@RPC_E_CANTCALLOUT_INEXTERNALCALL@
+
+ 0001:2AC0       ??_C@_0CD@NCGK@CImpIAdviseSink?5constructor?5fail@
+                    ??_C@_0CD@NCGK@CImpIAdviseSink?5constructor?5fail@
+
+ 0001:2DD0       ??_C@_0CE@DHDO@?$CK?$CK?$CK?$CK?5End?5of?5Dump?4?5?$CFd?5item?5change@
+                    ??_C@_0CE@DHDO@?$CK?$CK?$CK?$CK?5End?5of?5Dump?4?5?$CFd?5item?5change@
+
+ 0001:446A       ??_C@_0CE@NBMK@CONVERT10_E_OLESTREAM_BITMAP_TO_@
+                    ??_C@_0CE@NBMK@CONVERT10_E_OLESTREAM_BITMAP_TO_@
+
+ 0001:2A7A       ??_C@_0CF@JGIJ@hGlobal?5returned?5by?5GetData?5is?5N@
+                    ??_C@_0CF@JGIJ@hGlobal?5returned?5by?5GetData?5is?5N@
+
+ 0001:4CC4       ??_C@_0CH@PHBE@MK_E_INTERMEDIATEINTERFACENOTSUP@
+                    ??_C@_0CH@PHBE@MK_E_INTERMEDIATEINTERFACENOTSUP@
+
+ 0001:2D72       ??_C@_0CJ@BLKK@?$DM?$DMinvalid?5type?5?$CIVT_VARIANT?5?$HM?5VT_@
+                    ??_C@_0CJ@BLKK@?$DM?$DMinvalid?5type?5?$CIVT_VARIANT?5?$HM?5VT_@
+
+ 0001:2AF2       ??_C@_0CL@OLHH@Advise?5started?5with?5cfFormat?5of?5@
+                    ??_C@_0CL@OLHH@Advise?5started?5with?5cfFormat?5of?5@
+
+ 0001:2B90       ??_C@_0DA@FHOO@?5?5That?8s?5?$CFlu?4?$CFlu?5OnDataChange?5ca@
+                    ??_C@_0DA@FHOO@?5?5That?8s?5?$CFlu?4?$CFlu?5OnDataChange?5ca@
+
+ 0001:2BFE       ??_C@_0DE@BCPC@?5?5That?8s?5?$CFlu?4?$CFlu?5total?5DataItem?5@
+                    ??_C@_0DE@BCPC@?5?5That?8s?5?$CFlu?4?$CFlu?5total?5DataItem?5@
+
+ 0001:2BC0       ??_C@_0DO@BKCL@?5?5WOSA?1XRT?5Clipboard?5Format?5used@
+                    ??_C@_0DO@BKCL@?5?5WOSA?1XRT?5Clipboard?5Format?5used@
+
+ 0001:2B50       ??_C@_0DP@PPGH@?5?5Advise?5Killed?5after?5?$CFlu?5millis@
+                    ??_C@_0DP@PPGH@?5?5Advise?5Killed?5after?5?$CFlu?5millis@
+
+ 0001:2D08       ??_C@_0GK@MOHF@cbStream?5?$DN?5?$CFlu?0?5dwStatus?5?$DN?5?$CF?$CD08l@
+                    ??_C@_0GK@MOHF@cbStream?5?$DN?5?$CFlu?0?5dwStatus?5?$DN?5?$CF?$CD08l@
+
+ 0001:2CAA       ??_C@_0L@EBEG@CF_PALETTE?$AA@
+                    ??_C@_0L@EBEG@CF_PALETTE?$AA@
+
+ 0001:423E       ??_C@_0L@KKHN@OLE_E_ADVF?$AA@
+                    ??_C@_0L@KKHN@OLE_E_ADVF?$AA@
+
+ 0001:5060       ??_C@_0L@LLJH@?$CFs?5?$CI0x?$CFlx?$CJ?$AA@
+                    ??_C@_0L@LLJH@?$CFs?5?$CI0x?$CFlx?$CJ?$AA@
+
+ 0001:2C96       ??_C@_0L@MOK@CF_OEMTEXT?$AA@
+                    ??_C@_0L@MOK@CF_OEMTEXT?$AA@
+
+ 0001:4392       ??_C@_0L@OBAK@DV_E_TYMED?$AA@
+                    ??_C@_0L@OBAK@DV_E_TYMED?$AA@
+
+ 0001:2CB6       ??_C@_0L@ODKE@CF_PENDATA?$AA@
+                    ??_C@_0L@ODKE@CF_PENDATA?$AA@
+
+ 0001:4868       ??_C@_0M@EFDG@STG_E_INUSE?$AA@
+                    ??_C@_0M@EFDG@STG_E_INUSE?$AA@
+
+ 0001:41A6       ??_C@_0M@EJHN@VIEW_E_DRAW?$AA@
+                    ??_C@_0M@EJHN@VIEW_E_DRAW?$AA@
+
+ 0001:4C94       ??_C@_0M@FPAP@MK_E_SYNTAX?$AA@
+                    ??_C@_0M@FPAP@MK_E_SYNTAX?$AA@
+
+ 0001:518C       ??_C@_0M@JKMM@BLOB_OBJECT?$AA@
+                    ??_C@_0M@JKMM@BLOB_OBJECT?$AA@
+
+ 0001:5134       ??_C@_0M@KBLE@USERDEFINED?$AA@
+                    ??_C@_0M@KBLE@USERDEFINED?$AA@
+
+ 0001:4386       ??_C@_0M@LFPF@DV_E_LINDEX?$AA@
+                    ??_C@_0M@LFPF@DV_E_LINDEX?$AA@
+
+ 0001:4A8A       ??_C@_0M@LPHI@RPC_E_FIRST?$AA@
+                    ??_C@_0M@LPHI@RPC_E_FIRST?$AA@
+
+ 0001:51C0       ??_C@_0M@NIJA@Array?5of?5?$CFs?$AA@
+                    ??_C@_0M@NIJA@Array?5of?5?$CFs?$AA@
+
+ 0001:42AA       ??_C@_0M@OPML@OLE_E_BLANK?$AA@
+                    ??_C@_0M@OPML@OLE_E_BLANK?$AA@
+
+ 0001:48B6       ??_C@_0N@CCGN@STG_E_OLDDLL?$AA@
+                    ??_C@_0N@CCGN@STG_E_OLDDLL?$AA@
+
+ 0001:2AE4       ??_C@_0N@EFAH@?$CGKill?5Advise?$AA@
+                    ??_C@_0N@EFAH@?$CGKill?5Advise?$AA@
+
+ 0001:2DBA       ??_C@_0N@GLNG@?$DM?$DMbad?5type?$DO?$DO?$AA@
+                    ??_C@_0N@GLNG@?$DM?$DMbad?5type?$DO?$DO?$AA@
+
+ 0001:43F8       ??_C@_0N@ILOC@OLE_S_STATIC?$AA@
+                    ??_C@_0N@ILOC@OLE_S_STATIC?$AA@
+
+ 0001:4108       ??_C@_0N@KFCI@E_UNEXPECTED?$AA@
+                    ??_C@_0N@KFCI@E_UNEXPECTED?$AA@
+
+ 0001:43EA       ??_C@_0N@KKEF@OLE_S_USEREG?$AA@
+                    ??_C@_0N@KKEF@OLE_S_USEREG?$AA@
+
+ 0001:42F4       ??_C@_0N@LJOM@OLE_E_STATIC?$AA@
+                    ??_C@_0N@LJOM@OLE_E_STATIC?$AA@
+
+ 0001:51A2       ??_C@_0N@NECH@VECTOR?5of?5?$CFs?$AA@
+                    ??_C@_0N@NECH@VECTOR?5of?5?$CFs?$AA@
+
+ 0001:412E       ??_C@_0N@OEAO@E_INVALIDARG?$AA@
+                    ??_C@_0N@OEAO@E_INVALIDARG?$AA@
+
+ 0001:4CA0       ??_C@_0O@BMDP@MK_E_NOOBJECT?$AA@
+                    ??_C@_0O@BMDP@MK_E_NOOBJECT?$AA@
+
+ 0001:482C       ??_C@_0O@CGJ@STG_E_UNKNOWN?$AA@
+                    ??_C@_0O@CGJ@STG_E_UNKNOWN?$AA@
+
+ 0001:4120       ??_C@_0O@EBOJ@E_OUTOFMEMORY?$AA@
+                    ??_C@_0O@EBOJ@E_OUTOFMEMORY?$AA@
+
+ 0001:5052       ??_C@_0O@FEAJ@UNKNOWN?5SCODE?$AA@
+                    ??_C@_0O@FEAJ@UNKNOWN?5SCODE?$AA@
+
+ 0001:51D6       ??_C@_0O@GBEG@RESERVED?5?$CI?$CFs?$CJ?$AA@
+                    ??_C@_0O@GBEG@RESERVED?5?$CI?$CFs?$CJ?$AA@
+
+ 0001:4230       ??_C@_0O@GNCI@OLE_E_OLEVERB?$AA@
+                    ??_C@_0O@GNCI@OLE_E_OLEVERB?$AA@
+
+ 0001:43AE       ??_C@_0O@IIGO@DV_E_DVASPECT?$AA@
+                    ??_C@_0O@IIGO@DV_E_DVASPECT?$AA@
+
+ 0001:4CFE       ??_C@_0O@JEII@MK_E_NOTBOUND?$AA@
+                    ??_C@_0O@JEII@MK_E_NOTBOUND?$AA@
+
+ 0001:29F4       ??_C@_0O@JHLN@MS?5Sans?5Serif?$AA@
+                    ??_C@_0O@JHLN@MS?5Sans?5Serif?$AA@
+
+ 0001:517E       ??_C@_0O@KHDM@STORED_OBJECT?$AA@
+                    ??_C@_0O@KHDM@STORED_OBJECT?$AA@
+
+ 0001:49C8       ??_C@_0O@KJGN@CO_E_OBJISREG?$AA@
+                    ??_C@_0O@KJGN@CO_E_OBJISREG?$AA@
+
+ 0001:429C       ??_C@_0O@NJCH@OLE_E_NOCACHE?$AA@
+                    ??_C@_0O@NJCH@OLE_E_NOCACHE?$AA@
+
+ 0001:4378       ??_C@_0O@OFOL@DV_E_STATDATA?$AA@
+                    ??_C@_0O@OFOL@DV_E_STATDATA?$AA@
+
+ 0001:413C       ??_C@_0O@OKLN@E_NOINTERFACE?$AA@
+                    ??_C@_0O@OKLN@E_NOINTERFACE?$AA@
+
+ 0001:4896       ??_C@_0P@CDEO@STG_E_CANTSAVE?$AA@
+                    ??_C@_0P@CDEO@STG_E_CANTSAVE?$AA@
+
+ 0001:4368       ??_C@_0P@CKCH@DV_E_STGMEDIUM?$AA@
+                    ??_C@_0P@CKCH@DV_E_STGMEDIUM?$AA@
+
+ 0001:2A18       ??_C@_0P@FDCH@m_lpDO?5?$DN?$DN?5NULL?$AA@
+                    ??_C@_0P@FDCH@m_lpDO?5?$DN?$DN?5NULL?$AA@
+
+ 0001:4EFA       ??_C@_0P@GDJH@TYPE_E_IOERROR?$AA@
+                    ??_C@_0P@GDJH@TYPE_E_IOERROR?$AA@
+
+ 0001:4D32       ??_C@_0P@GJCI@MK_E_NOINVERSE?$AA@
+                    ??_C@_0P@GJCI@MK_E_NOINVERSE?$AA@
+
+ 0001:416E       ??_C@_0P@IBAM@E_ACCESSDENIED?$AA@
+                    ??_C@_0P@IBAM@E_ACCESSDENIED?$AA@
+
+ 0001:4D42       ??_C@_0P@JOCA@MK_E_NOSTORAGE?$AA@
+                    ??_C@_0P@JOCA@MK_E_NOSTORAGE?$AA@
+
+ 0001:493E       ??_C@_0P@KKED@CO_E_IIDSTRING?$AA@
+                    ??_C@_0P@KKED@CO_E_IIDSTRING?$AA@
+
+ 0001:4886       ??_C@_0P@ODBJ@STG_E_REVERTED?$AA@
+                    ??_C@_0P@ODBJ@STG_E_REVERTED?$AA@
+
+ 0001:49B8       ??_C@_0P@OMLE@CO_E_OBJNOTREG?$AA@
+                    ??_C@_0P@OMLE@CO_E_OBJNOTREG?$AA@
+
+ 0000:0000  Unr  ?AddItem@IDataObjDlg@@JECHIPEDPEX@Z
+                    protected: int __far __pascal IDataObjDlg::AddItem(unsigned int,char __far*,void __far*)__far
+
+ 0001:26F4       ?AddItem@IDataObjDlg@@JECHIPEDPEXI@Z
+                    protected: int __far __pascal IDataObjDlg::AddItem(unsigned int,char __far*,void __far*,unsigned int)__far
+
+ 0001:267A       ?AddItem@IDataObjDlg@@JECHIPEDPEXIHPEUtagCOLUMNSTRUCT@@@Z
+                    protected: int __far __pascal IDataObjDlg::AddItem(unsigned int,char __far*,void __far*,unsigned int,int,struct tagCOLUMNSTRUCT __far*)__far
+
+ 0001:0E24       ?AddRef@CImpIAdviseSink@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CImpIAdviseSink::AddRef(void)__far
+
+ 0001:3274       ?ColumnTextOut@@ZCXPBUHDC__@@HHPEDHPEUtagCOLUMNSTRUCT@@@Z
+                    void __far __pascal ColumnTextOut(struct HDC__ const __near*,int,int,char __far*,int,struct tagCOLUMNSTRUCT __far*)
+
+ 0001:24CA       ?DBStrCpy@@ZAIPEDPFDPEH@Z
+                    unsigned int __far __cdecl DBStrCpy(char __far*,char const __far*,int __far*)
+
+ 0001:30BE       ?DlgCenter@@ZCXPBUHWND__@@0H@Z
+                    void __far __pascal DlgCenter(struct HWND__ const __near*,struct HWND__ const __near*,int)
+
+ 0001:218A       ?DoIDataObject@IDataObjDlg@@JECHIPEUIDataObject@@@Z
+                    protected: int __far __pascal IDataObjDlg::DoIDataObject(unsigned int,struct IDataObject __far*)__far
+
+ 0001:2246       ?DoIEnumFormatEtc@IDataObjDlg@@JECHIPEUIEnumFORMATETC@@@Z
+                    protected: int __far __pascal IDataObjDlg::DoIEnumFormatEtc(unsigned int,struct IEnumFORMATETC __far*)__far
+
+ 0001:110E       ?DoModal@IDataObjDlg@@RECHXZ
+                    public: int __far __pascal IDataObjDlg::DoModal(void)__far
+
+ 0001:31FA       ?GetTextMetricsCorrectly@@ZCHPBUHDC__@@PEUtagTEXTMETRIC@@@Z
+                    int __far __pascal GetTextMetricsCorrectly(struct HDC__ const __near*,struct tagTEXTMETRIC __far*)
+
+ 0001:1C3A       ?GotData@IDataObjDlg@@JECPEXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+                    protected: void __far* __far __pascal IDataObjDlg::GotData(struct tagFORMATETC __far*,struct tagSTGMEDIUM __far*)__far
+
+ 0002:015E       ?g_hInst@@3PBUHINSTANCE__@@B
+                    struct HINSTANCE__ const __near* const __near g_hInst
+
+ 0002:0012       ?g_pfnEdit@@3P7CJPBUHWND__@@IIJ@ZE
+                    long (__far __pascal*__far g_pfnEdit)(struct HWND__ const __near*,unsigned int,unsigned int,long)
+
+ 0001:33CC       ?HRtoString@@ZAPEDPEX@Z
+                    char __far* __far __cdecl HRtoString(void __far*)
+
+ 0001:0F50       ?OnClose@CImpIAdviseSink@@VEAXXZ
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnClose(void)__far
+
+ 0001:0EA2       ?OnDataChange@CImpIAdviseSink@@VEAXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnDataChange(struct tagFORMATETC __far*,struct tagSTGMEDIUM __far*)__far
+
+ 0000:0000  Unr  ?OnDblClkFormatEtc@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnDblClkFormatEtc(void)__far
+
+ 0001:161C       ?OnDestroy@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnDestroy(void)__far
+
+ 0001:1B30       ?OnDoGetData@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnDoGetData(void)__far
+
+ 0001:179A       ?OnDrawItem@IDataObjDlg@@JECXHPEUtagDRAWITEMSTRUCT@@@Z
+                    protected: void __far __pascal IDataObjDlg::OnDrawItem(int,struct tagDRAWITEMSTRUCT __far*)__far
+
+ 0001:1372       ?OnInitDialog@IDataObjDlg@@JECHXZ
+                    protected: int __far __pascal IDataObjDlg::OnInitDialog(void)__far
+
+ 0001:1F3E       ?OnKillAdvise@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnKillAdvise(void)__far
+
+ 0001:1A34       ?OnMeasureItem@IDataObjDlg@@JECXHPEUtagMEASUREITEMSTRUCT@@@Z
+                    protected: void __far __pascal IDataObjDlg::OnMeasureItem(int,struct tagMEASUREITEMSTRUCT __far*)__far
+
+ 0001:2574       ?OnOutputBufferHasData@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnOutputBufferHasData(void)__far
+
+ 0001:0F38       ?OnRename@CImpIAdviseSink@@VEAXPEUIMoniker@@@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnRename(struct IMoniker __far*)__far
+
+ 0001:0F44       ?OnSave@CImpIAdviseSink@@VEAXXZ
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnSave(void)__far
+
+ 0001:1A46       ?OnSelChangeFormatEtc@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnSelChangeFormatEtc(void)__far
+
+ 0001:1DD0       ?OnSetupAdvise@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnSetupAdvise(void)__far
+
+ 0001:171A       ?OnSize@IDataObjDlg@@JECXIHH@Z
+                    protected: void __far __pascal IDataObjDlg::OnSize(unsigned int,int,int)__far
+
+ 0001:0F2C       ?OnViewChange@CImpIAdviseSink@@VEAXKJ@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnViewChange(unsigned long,long)__far
+
+ 0000:0000  Unr  ?OpenFileT@@ZCHPEDPEUtagOFSTRUCT@@I@Z
+                    int __far __pascal OpenFileT(char __far*,struct tagOFSTRUCT __far*,unsigned int)
+
+ 0001:0DA0       ?QueryInterface@CImpIAdviseSink@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CImpIAdviseSink::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:2DF4       ?ReallyCreateFont@@ZCPBUHFONT__@@PBUHDC__@@PED1II@Z
+                    struct HFONT__ const __near* __far __pascal ReallyCreateFont(struct HDC__ const __near*,char __far*,char __far*,unsigned int,unsigned int)
+
+ 0001:0E46       ?Release@CImpIAdviseSink@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CImpIAdviseSink::Release(void)__far
+
+ 0000:0000  Unr  ?TYPEDESCtoString@@ZAPEDPEUtagTYPEDESC@@@Z
+                    char __far* __far __cdecl TYPEDESCtoString(struct tagTYPEDESC __far*)
+
+ 0000:0000  Unr  ?VTtoString2@@ZAPEDG@Z
+                    char __far* __far __cdecl VTtoString2(unsigned short)
+
+ 0001:4006       ?VTtoString@@ZAPEDG@Z
+                    char __far* __far __cdecl VTtoString(unsigned short)
+
+ 0001:2440       ?WriteToOutput@IDataObjDlg@@JECHPED@Z
+                    protected: int __far __pascal IDataObjDlg::WriteToOutput(char __far*)__far
+
+ 0001:271E       ?xrtDumpToDebug@IDataObjDlg@@JECIPEUtagMARKETDATA@@@Z
+                    protected: unsigned int __far __pascal IDataObjDlg::xrtDumpToDebug(struct tagMARKETDATA __far*)__far
+
+ 0000:0000  Unr  ?_lwriteT@@ZAHHPEDI@Z
+                    int __far __cdecl _lwriteT(int,char __far*,unsigned int)
+
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  CALLWINDOWPROC       (USER.122)
+ 0000:0000  Imp  CLIENTTOSCREEN       (USER.28)
+ 0000:0000  Imp  COPYMETAFILE         (GDI.151)
+ 0000:0000  Imp  CREATEFONTINDIRECT   (GDI.57)
+ 0000:0000  Imp  DELETEMETAFILE       (GDI.127)
+ 0000:0000  Imp  DELETEOBJECT         (GDI.69)
+ 0000:0000  Imp  DIALOGBOXPARAM       (USER.239)
+ 0001:0FA8       DisplayIDataObject
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  DRAWFOCUSRECT        (USER.466)
+ 0000:0000  Imp  ENABLEWINDOW         (USER.34)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  ENUMFONTFAMILIES     (GDI.330)
+ 0000:0000  Imp  EXTTEXTOUT           (GDI.351)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0001:294A       fnEditSubclass
+ 0001:2FC4       fnEnumReallyEx
+ 0001:1136       fnIDataObjDlg
+ 0000:0000  Imp  GETCLIENTRECT        (USER.33)
+ 0000:0000  Imp  GETCLIPBOARDFORMATNAME (USER.146)
+ 0000:0000  Imp  GETDC                (USER.66)
+ 0000:0000  Imp  GETDEVICECAPS        (GDI.80)
+ 0000:0000  Imp  GETDLGITEM           (USER.91)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  GETOBJECT            (GDI.82)
+ 0000:0000  Imp  GETPARENT            (USER.46)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Imp  GETSYSCOLOR          (USER.180)
+ 0000:0000  Imp  GETSYSTEMMETRICS     (USER.179)
+ 0000:0000  Imp  GETTEXTCOLOR         (GDI.90)
+ 0000:0000  Imp  GETTEXTEXTENTPOINT   (GDI.471)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  GETTICKCOUNT         (USER.13)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GETWINDOWLONG        (USER.135)
+ 0000:0000  Imp  GETWINDOWRECT        (USER.32)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  INVALIDATERECT       (USER.125)
+ 0000:0000  Imp  ISEQUALGUID          (COMPOBJ.18)
+ 0000:0000  Imp  ISWINDOW             (USER.47)
+ 0001:51F6       LIBMAIN
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRCAT              (KERNEL.89)
+ 0000:0000  Imp  LSTRCMPI             (USER.471)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  MAPWINDOWPOINTS      (USER.258)
+ 0000:0000  Imp  MESSAGEBEEP          (USER.104)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  MULDIV               (GDI.128)
+ 0000:0000  Imp  OPENFILE             (KERNEL.74)
+ 0000:0000  Imp  PLAYMETAFILE         (GDI.123)
+ 0000:0000  Imp  POSTMESSAGE          (USER.110)
+ 0000:0000  Imp  REGISTERCLIPBOARDFORMAT (USER.145)
+ 0000:0000  Imp  RELEASEDC            (USER.68)
+ 0000:0000  Imp  RELEASESTGMEDIUM     (OLE2.32)
+ 0002:0004       rsrvptrs
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  SETBKCOLOR           (GDI.1)
+ 0000:0000  Imp  SETTEXTCOLOR         (GDI.9)
+ 0000:0000  Imp  SETWINDOWLONG        (USER.136)
+ 0000:0000  Imp  SETWINDOWPOS         (USER.232)
+ 0000:0000  Imp  SETWINDOWTEXT        (USER.37)
+ 0000:0000  Imp  TABBEDTEXTOUT        (USER.196)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  UPDATEWINDOW         (USER.124)
+ 0000:0000  Imp  VARIANTCHANGETYPE    (OLE2DISP.12)
+ 0000:0000  Imp  VARIANTCLEAR         (OLE2DISP.9)
+ 0000:0000  Imp  VARIANTINIT          (OLE2DISP.8)
+ 0001:0000       WEP
+ 0002:016F       _aseghi
+ 0002:016D       _aseglo
+ 0001:0004       _CLSID_Picture_Dib
+ 0001:0024       _CLSID_Picture_Metafile
+ 0001:0054       _CLSID_StdMarshal
+ 0002:02E8       _edata
+ 0002:04AE       _end
+ 0002:0184       _errno
+ 0001:03A4       _GUID_NULL
+ 0001:03F4       _IID_IAdviseSink
+ 0001:00C4       _IID_IAdviseSink2
+ 0001:0184       _IID_IBindCtx
+ 0001:0354       _IID_IClassFactory
+ 0001:0254       _IID_ICreateTypeInfo
+ 0001:0204       _IID_ICreateTypeLib
+ 0001:03E4       _IID_IDataAdviseHolder
+ 0001:0404       _IID_IDataObject
+ 0001:00F4       _IID_IDebug
+ 0001:00E4       _IID_IDebugStream
+ 0001:00D4       _IID_IDfReserved1
+ 0001:00B4       _IID_IDfReserved2
+ 0001:0094       _IID_IDfReserved3
+ 0001:03B4       _IID_IDispatch
+ 0001:0134       _IID_IDropSource
+ 0001:0114       _IID_IDropTarget
+ 0001:0464       _IID_IEnumCallback
+ 0001:04B4       _IID_IEnumFORMATETC
+ 0001:0484       _IID_IEnumGeneric
+ 0001:0474       _IID_IEnumHolder
+ 0001:04C4       _IID_IEnumMoniker
+ 0001:04A4       _IID_IEnumOLEVERB
+ 0001:0494       _IID_IEnumSTATDATA
+ 0001:01A4       _IID_IEnumSTATSTG
+ 0001:04D4       _IID_IEnumString
+ 0001:04E4       _IID_IEnumUnknown
+ 0001:0374       _IID_IEnumVARIANT
+ 0001:0014       _IID_IExternalConnection
+ 0001:0124       _IID_IInternalMoniker
+ 0001:0224       _IID_ILockBytes
+ 0001:0334       _IID_IMalloc
+ 0001:0314       _IID_IMarshal
+ 0001:0084       _IID_IMessageFilter
+ 0001:0164       _IID_IMoniker
+ 0001:03D4       _IID_IOleAdviseHolder
+ 0001:0194       _IID_IOleCache
+ 0001:0064       _IID_IOleCache2
+ 0001:0044       _IID_IOleCacheControl
+ 0001:02A4       _IID_IOleClientSite
+ 0001:0214       _IID_IOleContainer
+ 0001:02D4       _IID_IOleInPlaceActiveObject
+ 0001:0304       _IID_IOleInPlaceFrame
+ 0001:0394       _IID_IOleInPlaceObject
+ 0001:0274       _IID_IOleInPlaceSite
+ 0001:0344       _IID_IOleInPlaceUIWindow
+ 0001:01E4       _IID_IOleItemContainer
+ 0001:01B4       _IID_IOleLink
+ 0001:0174       _IID_IOleManager
+ 0001:03C4       _IID_IOleObject
+ 0001:0154       _IID_IOlePresObj
+ 0001:0364       _IID_IOleWindow
+ 0001:0244       _IID_IParseDisplayName
+ 0001:0424       _IID_IPersist
+ 0001:0434       _IID_IPersistFile
+ 0001:0444       _IID_IPersistStorage
+ 0001:0454       _IID_IPersistStream
+ 0001:0264       _IID_IProxyManager
+ 0001:0234       _IID_IPSFactory
+ 0001:0104       _IID_IRootStorage
+ 0001:02F4       _IID_IRpcChannel
+ 0001:0284       _IID_IRpcProxy
+ 0001:02C4       _IID_IRpcStub
+ 0001:00A4       _IID_IRunnableObject
+ 0001:0144       _IID_IRunningObjectTable
+ 0001:0034       _IID_IStdMarshalInfo
+ 0001:01F4       _IID_IStorage
+ 0001:01D4       _IID_IStream
+ 0001:02B4       _IID_IStubManager
+ 0001:0294       _IID_ITypeComp
+ 0001:0324       _IID_ITypeInfo
+ 0001:02E4       _IID_ITypeLib
+ 0001:0384       _IID_IUnknown
+ 0001:0414       _IID_IViewObject
+ 0001:0074       _IID_IViewObject2
+ 0001:01C4       _IID_StdOle
+ 0000:0000  Imp  _LWRITE              (KERNEL.86)
+ 0002:0160       _STKHQQ
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0002:01BA       __adbgmsg
+ 0000:D6D6  Abs  __aDBused
+ 0001:062A       __aFuldiv
+ 0001:068A       __aFulrem
+ 0002:0176       __aintdiv
+ 0002:01D0       __amblksiz
+ 0001:08CA       __amsg_exit
+ 0001:0548       __astart
+ 0001:0768       __cexit
+ 0002:01B7       __child
+ 0001:0720       __cinit
+ 0001:08C0       __cintDIV
+ 0002:018F       __cpumode
+ 0001:07C7       __ctermsub
+ 0001:0779       __c_exit
+ 0002:016C       __dllinit
+ 0002:0190       __doserrno
+ 0002:02E8       __edata
+ 0002:04AE       __end
+ 0002:01AE       __environ
+ 0002:01B9       __exitflag
+ 0002:017A       __fac
+ 0001:090C       __ffree
+ 0001:0804       __FF_MSGBANNER
+ 0002:01C2       __fheap
+ 0001:0BA9       __findlast
+ 0001:092D       __fmalloc
+ 0002:01D4       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:0BCA       __fptrap
+ 0001:0624       __fpurecall
+ 0001:0AA4       __freefarheap
+ 0001:0C8C       __freelist
+ 0001:0BFE       __GetDGROUP
+ 0001:0AB2       __growseg
+ 0002:0162       __hModule
+ 0001:0B43       __incseg
+ 0001:0CCA       __initseg
+ 0001:0CFE       __linkseg
+ 0002:0168       __lpszCmdLine
+ 0001:0BD0       __myalloc
+ 0001:0C0E       __nearstub
+ 0001:0A22       __newseg
+ 0002:0192       __nfile
+ 0001:09D4       __NMSG_TEXT
+ 0001:0A0B       __NMSG_WRITE
+ 0001:05EA       __nomain
+ 0001:0624       __npurecall
+ 0002:0190       __oserr
+ 0002:0194       __osfile
+ 0002:018B       __osmajor
+ 0002:018A       __osminor
+ 0002:018E       __osmode
+ 0002:018A       __osver
+ 0002:018C       __osversion
+ 0002:01B2       __pgmptr
+ 0002:01BE       __pnhFarHeap
+ 0001:0624       __purecall
+ 0001:0C10       __searchseg
+ 0001:0828       __setenvp
+ 0000:0001  Abs  __sizec
+ 0000:0001  Abs  __sized
+ 0001:06F4       __stubmain
+ 0002:0186       __umaskval
+ 0002:0164       __wDataSeg
+ 0001:0504       __wflags
+ 0002:0166       __wHeapSize
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0002:0189       __winmajor
+ 0002:0188       __winminor
+ 0002:0188       __winver
+ 0002:0173       ___aDBrterr
+ 0002:0171       ___aDBswpflg
+ 0002:01A8       ___argc
+ 0002:01AA       ___argv
+ 0001:0CB6       ___ExportedStub
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  RELEASEDC            (USER.68)
+ 0000:0000  Imp  SETWINDOWTEXT        (USER.37)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  LSTRCAT              (KERNEL.89)
+ 0000:0000  Imp  GETDEVICECAPS        (GDI.80)
+ 0000:0000  Imp  GETTEXTCOLOR         (GDI.90)
+ 0000:0000  Imp  ISWINDOW             (USER.47)
+ 0000:0000  Imp  DIALOGBOXPARAM       (USER.239)
+ 0000:0000  Imp  REGISTERCLIPBOARDFORMAT (USER.145)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  GETSYSTEMMETRICS     (USER.179)
+ 0000:0000  Imp  RELEASESTGMEDIUM     (OLE2.32)
+ 0000:0000  Imp  MESSAGEBEEP          (USER.104)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  GETDLGITEM           (USER.91)
+ 0000:0000  Imp  UPDATEWINDOW         (USER.124)
+ 0000:0000  Imp  SETBKCOLOR           (GDI.1)
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  VARIANTCLEAR         (OLE2DISP.9)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  VARIANTINIT          (OLE2DISP.8)
+ 0000:0000  Imp  _LWRITE              (KERNEL.86)
+ 0000:0000  Imp  CLIENTTOSCREEN       (USER.28)
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  GETWINDOWRECT        (USER.32)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  GETPARENT            (USER.46)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  CREATEFONTINDIRECT   (GDI.57)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Unr  ?OnDblClkFormatEtc@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnDblClkFormatEtc(void)__far
+
+ 0000:0000  Imp  DELETEOBJECT         (GDI.69)
+ 0000:0000  Imp  GETCLIENTRECT        (USER.33)
+ 0000:0000  Imp  SETTEXTCOLOR         (GDI.9)
+ 0000:0000  Imp  MULDIV               (GDI.128)
+ 0000:0000  Imp  DELETEMETAFILE       (GDI.127)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  DRAWFOCUSRECT        (USER.466)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Imp  CALLWINDOWPROC       (USER.122)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  OPENFILE             (KERNEL.74)
+ 0000:0000  Imp  GETCLIPBOARDFORMATNAME (USER.146)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Unr  ?AddItem@IDataObjDlg@@JECHIPEDPEX@Z
+                    protected: int __far __pascal IDataObjDlg::AddItem(unsigned int,char __far*,void __far*)__far
+
+ 0000:0000  Unr  ?TYPEDESCtoString@@ZAPEDPEUtagTYPEDESC@@@Z
+                    char __far* __far __cdecl TYPEDESCtoString(struct tagTYPEDESC __far*)
+
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  ISEQUALGUID          (COMPOBJ.18)
+ 0000:0000  Imp  INVALIDATERECT       (USER.125)
+ 0000:0000  Imp  TABBEDTEXTOUT        (USER.196)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  COPYMETAFILE         (GDI.151)
+ 0000:0000  Imp  VARIANTCHANGETYPE    (OLE2DISP.12)
+ 0000:0000  Imp  GETSYSCOLOR          (USER.180)
+ 0000:0000  Imp  SETWINDOWLONG        (USER.136)
+ 0000:0000  Imp  GETWINDOWLONG        (USER.135)
+ 0000:0000  Imp  POSTMESSAGE          (USER.110)
+ 0000:0000  Imp  EXTTEXTOUT           (GDI.351)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  LSTRCMPI             (USER.471)
+ 0000:0000  Imp  MAPWINDOWPOINTS      (USER.258)
+ 0000:0000  Imp  PLAYMETAFILE         (GDI.123)
+ 0000:0000  Unr  ?OpenFileT@@ZCHPEDPEUtagOFSTRUCT@@I@Z
+                    int __far __pascal OpenFileT(char __far*,struct tagOFSTRUCT __far*,unsigned int)
+
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  ENABLEWINDOW         (USER.34)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Unr  ?_lwriteT@@ZAHHPEDI@Z
+                    int __far __cdecl _lwriteT(int,char __far*,unsigned int)
+
+ 0000:0000  Imp  SETWINDOWPOS         (USER.232)
+ 0000:0000  Unr  ?VTtoString2@@ZAPEDG@Z
+                    char __far* __far __cdecl VTtoString2(unsigned short)
+
+ 0000:0000  Imp  GETDC                (USER.66)
+ 0000:0000  Imp  GETOBJECT            (GDI.82)
+ 0000:0000  Imp  ENUMFONTFAMILIES     (GDI.330)
+ 0000:0000  Imp  GETTICKCOUNT         (USER.13)
+ 0000:0000  Imp  GETTEXTEXTENTPOINT   (GDI.471)
+ 0000:0001  Abs  __sized
+ 0000:0001  Abs  __sizec
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __fptaskdata
+ 0000:D6D6  Abs  __aDBdoswp
+ 0000:D6D6  Abs  __aDBused
+ 0001:0000       WEP
+ 0001:0004       _CLSID_Picture_Dib
+ 0001:0014       _IID_IExternalConnection
+ 0001:0024       _CLSID_Picture_Metafile
+ 0001:0034       _IID_IStdMarshalInfo
+ 0001:0044       _IID_IOleCacheControl
+ 0001:0054       _CLSID_StdMarshal
+ 0001:0064       _IID_IOleCache2
+ 0001:0074       _IID_IViewObject2
+ 0001:0084       _IID_IMessageFilter
+ 0001:0094       _IID_IDfReserved3
+ 0001:00A4       _IID_IRunnableObject
+ 0001:00B4       _IID_IDfReserved2
+ 0001:00C4       _IID_IAdviseSink2
+ 0001:00D4       _IID_IDfReserved1
+ 0001:00E4       _IID_IDebugStream
+ 0001:00F4       _IID_IDebug
+ 0001:0104       _IID_IRootStorage
+ 0001:0114       _IID_IDropTarget
+ 0001:0124       _IID_IInternalMoniker
+ 0001:0134       _IID_IDropSource
+ 0001:0144       _IID_IRunningObjectTable
+ 0001:0154       _IID_IOlePresObj
+ 0001:0164       _IID_IMoniker
+ 0001:0174       _IID_IOleManager
+ 0001:0184       _IID_IBindCtx
+ 0001:0194       _IID_IOleCache
+ 0001:01A4       _IID_IEnumSTATSTG
+ 0001:01B4       _IID_IOleLink
+ 0001:01C4       _IID_StdOle
+ 0001:01D4       _IID_IStream
+ 0001:01E4       _IID_IOleItemContainer
+ 0001:01F4       _IID_IStorage
+ 0001:0204       _IID_ICreateTypeLib
+ 0001:0214       _IID_IOleContainer
+ 0001:0224       _IID_ILockBytes
+ 0001:0234       _IID_IPSFactory
+ 0001:0244       _IID_IParseDisplayName
+ 0001:0254       _IID_ICreateTypeInfo
+ 0001:0264       _IID_IProxyManager
+ 0001:0274       _IID_IOleInPlaceSite
+ 0001:0284       _IID_IRpcProxy
+ 0001:0294       _IID_ITypeComp
+ 0001:02A4       _IID_IOleClientSite
+ 0001:02B4       _IID_IStubManager
+ 0001:02C4       _IID_IRpcStub
+ 0001:02D4       _IID_IOleInPlaceActiveObject
+ 0001:02E4       _IID_ITypeLib
+ 0001:02F4       _IID_IRpcChannel
+ 0001:0304       _IID_IOleInPlaceFrame
+ 0001:0314       _IID_IMarshal
+ 0001:0324       _IID_ITypeInfo
+ 0001:0334       _IID_IMalloc
+ 0001:0344       _IID_IOleInPlaceUIWindow
+ 0001:0354       _IID_IClassFactory
+ 0001:0364       _IID_IOleWindow
+ 0001:0374       _IID_IEnumVARIANT
+ 0001:0384       _IID_IUnknown
+ 0001:0394       _IID_IOleInPlaceObject
+ 0001:03A4       _GUID_NULL
+ 0001:03B4       _IID_IDispatch
+ 0001:03C4       _IID_IOleObject
+ 0001:03D4       _IID_IOleAdviseHolder
+ 0001:03E4       _IID_IDataAdviseHolder
+ 0001:03F4       _IID_IAdviseSink
+ 0001:0404       _IID_IDataObject
+ 0001:0414       _IID_IViewObject
+ 0001:0424       _IID_IPersist
+ 0001:0434       _IID_IPersistFile
+ 0001:0444       _IID_IPersistStorage
+ 0001:0454       _IID_IPersistStream
+ 0001:0464       _IID_IEnumCallback
+ 0001:0474       _IID_IEnumHolder
+ 0001:0484       _IID_IEnumGeneric
+ 0001:0494       _IID_IEnumSTATDATA
+ 0001:04A4       _IID_IEnumOLEVERB
+ 0001:04B4       _IID_IEnumFORMATETC
+ 0001:04C4       _IID_IEnumMoniker
+ 0001:04D4       _IID_IEnumString
+ 0001:04E4       _IID_IEnumUnknown
+ 0001:0504       __wflags
+ 0001:0548       __astart
+ 0001:05EA       __nomain
+ 0001:0602       ??3@ZAXPEX@Z
+                    void __far __cdecl operator delete(void __far*)
+
+ 0001:0614       ??2@ZAPEXI@Z
+                    void __far* __far __cdecl operator new(unsigned int)
+
+ 0001:0624       __fpurecall
+ 0001:0624       __npurecall
+ 0001:0624       __purecall
+ 0001:062A       __aFuldiv
+ 0001:068A       __aFulrem
+ 0001:06F4       __stubmain
+ 0001:0720       __cinit
+ 0001:0768       __cexit
+ 0001:0779       __c_exit
+ 0001:07C7       __ctermsub
+ 0001:0804       __FF_MSGBANNER
+ 0001:0828       __setenvp
+ 0001:08C0       __cintDIV
+ 0001:08CA       __amsg_exit
+ 0001:090C       __ffree
+ 0001:092D       __fmalloc
+ 0001:09D4       __NMSG_TEXT
+ 0001:0A0B       __NMSG_WRITE
+ 0001:0A22       __newseg
+ 0001:0AA4       __freefarheap
+ 0001:0AB2       __growseg
+ 0001:0B43       __incseg
+ 0001:0BA9       __findlast
+ 0001:0BCA       __fptrap
+ 0001:0BD0       __myalloc
+ 0001:0BFE       __GetDGROUP
+ 0001:0C0E       __nearstub
+ 0001:0C10       __searchseg
+ 0001:0C8C       __freelist
+ 0001:0CB6       ___ExportedStub
+ 0001:0CCA       __initseg
+ 0001:0CFE       __linkseg
+ 0001:0D40       ??0CImpIAdviseSink@@REC@PEVIDataObjDlg@@@Z
+                    public: __far __pascal CImpIAdviseSink::CImpIAdviseSink(class IDataObjDlg __far*)__far
+
+ 0001:0D8A       ??1CImpIAdviseSink@@REC@XZ
+                    public: __far __pascal CImpIAdviseSink::~CImpIAdviseSink(void)__far
+
+ 0001:0DA0       ?QueryInterface@CImpIAdviseSink@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CImpIAdviseSink::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:0E24       ?AddRef@CImpIAdviseSink@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CImpIAdviseSink::AddRef(void)__far
+
+ 0001:0E46       ?Release@CImpIAdviseSink@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CImpIAdviseSink::Release(void)__far
+
+ 0001:0EA2       ?OnDataChange@CImpIAdviseSink@@VEAXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnDataChange(struct tagFORMATETC __far*,struct tagSTGMEDIUM __far*)__far
+
+ 0001:0F2C       ?OnViewChange@CImpIAdviseSink@@VEAXKJ@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnViewChange(unsigned long,long)__far
+
+ 0001:0F38       ?OnRename@CImpIAdviseSink@@VEAXPEUIMoniker@@@Z
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnRename(struct IMoniker __far*)__far
+
+ 0001:0F44       ?OnSave@CImpIAdviseSink@@VEAXXZ
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnSave(void)__far
+
+ 0001:0F50       ?OnClose@CImpIAdviseSink@@VEAXXZ
+                    public: virtual void __far __cdecl CImpIAdviseSink::OnClose(void)__far
+
+ 0001:0F5C       ??_7CImpIAdviseSink@@6F@
+                    const __far CImpIAdviseSink::`vftable'
+
+ 0001:0F7C       ??_7IAdviseSink@@6F@
+                    const __far IAdviseSink::`vftable'
+
+ 0001:0F9C       ??_7IUnknown@@6F@
+                    const __far IUnknown::`vftable'
+
+ 0001:0FA8       DisplayIDataObject
+ 0001:1040       ??0IDataObjDlg@@REC@PBUHWND__@@PEUIDataObject@@PEUGUID@@PED@Z
+                    public: __far __pascal IDataObjDlg::IDataObjDlg(struct HWND__ const __near*,struct IDataObject __far*,struct GUID __far*,char __far*)__far
+
+ 0001:10EE       ??1IDataObjDlg@@REC@XZ
+                    public: __far __pascal IDataObjDlg::~IDataObjDlg(void)__far
+
+ 0001:110E       ?DoModal@IDataObjDlg@@RECHXZ
+                    public: int __far __pascal IDataObjDlg::DoModal(void)__far
+
+ 0001:1136       fnIDataObjDlg
+ 0001:1372       ?OnInitDialog@IDataObjDlg@@JECHXZ
+                    protected: int __far __pascal IDataObjDlg::OnInitDialog(void)__far
+
+ 0001:161C       ?OnDestroy@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnDestroy(void)__far
+
+ 0001:171A       ?OnSize@IDataObjDlg@@JECXIHH@Z
+                    protected: void __far __pascal IDataObjDlg::OnSize(unsigned int,int,int)__far
+
+ 0001:179A       ?OnDrawItem@IDataObjDlg@@JECXHPEUtagDRAWITEMSTRUCT@@@Z
+                    protected: void __far __pascal IDataObjDlg::OnDrawItem(int,struct tagDRAWITEMSTRUCT __far*)__far
+
+ 0001:1A34       ?OnMeasureItem@IDataObjDlg@@JECXHPEUtagMEASUREITEMSTRUCT@@@Z
+                    protected: void __far __pascal IDataObjDlg::OnMeasureItem(int,struct tagMEASUREITEMSTRUCT __far*)__far
+
+ 0001:1A46       ?OnSelChangeFormatEtc@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnSelChangeFormatEtc(void)__far
+
+ 0001:1B30       ?OnDoGetData@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnDoGetData(void)__far
+
+ 0001:1C3A       ?GotData@IDataObjDlg@@JECPEXPEUtagFORMATETC@@PEUtagSTGMEDIUM@@@Z
+                    protected: void __far* __far __pascal IDataObjDlg::GotData(struct tagFORMATETC __far*,struct tagSTGMEDIUM __far*)__far
+
+ 0001:1DD0       ?OnSetupAdvise@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnSetupAdvise(void)__far
+
+ 0001:1F3E       ?OnKillAdvise@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnKillAdvise(void)__far
+
+ 0001:218A       ?DoIDataObject@IDataObjDlg@@JECHIPEUIDataObject@@@Z
+                    protected: int __far __pascal IDataObjDlg::DoIDataObject(unsigned int,struct IDataObject __far*)__far
+
+ 0001:2246       ?DoIEnumFormatEtc@IDataObjDlg@@JECHIPEUIEnumFORMATETC@@@Z
+                    protected: int __far __pascal IDataObjDlg::DoIEnumFormatEtc(unsigned int,struct IEnumFORMATETC __far*)__far
+
+ 0001:2440       ?WriteToOutput@IDataObjDlg@@JECHPED@Z
+                    protected: int __far __pascal IDataObjDlg::WriteToOutput(char __far*)__far
+
+ 0001:24CA       ?DBStrCpy@@ZAIPEDPFDPEH@Z
+                    unsigned int __far __cdecl DBStrCpy(char __far*,char const __far*,int __far*)
+
+ 0001:2574       ?OnOutputBufferHasData@IDataObjDlg@@JECXXZ
+                    protected: void __far __pascal IDataObjDlg::OnOutputBufferHasData(void)__far
+
+ 0001:267A       ?AddItem@IDataObjDlg@@JECHIPEDPEXIHPEUtagCOLUMNSTRUCT@@@Z
+                    protected: int __far __pascal IDataObjDlg::AddItem(unsigned int,char __far*,void __far*,unsigned int,int,struct tagCOLUMNSTRUCT __far*)__far
+
+ 0001:26F4       ?AddItem@IDataObjDlg@@JECHIPEDPEXI@Z
+                    protected: int __far __pascal IDataObjDlg::AddItem(unsigned int,char __far*,void __far*,unsigned int)__far
+
+ 0001:271E       ?xrtDumpToDebug@IDataObjDlg@@JECIPEUtagMARKETDATA@@@Z
+                    protected: unsigned int __far __pascal IDataObjDlg::xrtDumpToDebug(struct tagMARKETDATA __far*)__far
+
+ 0001:294A       fnEditSubclass
+ 0001:29D2       ??_C@_0BH@NHIG@Market?5Data?5?$CIWOSA?1XRT?$CJ?$AA@
+                    ??_C@_0BH@NHIG@Market?5Data?5?$CIWOSA?1XRT?$CJ?$AA@
+
+ 0001:29EA       ??_C@_00A@?$AA@
+                    ??_C@_00A@?$AA@
+
+ 0001:29EC       ??_C@_07FHP@Regular?$AA@
+                    ??_C@_07FHP@Regular?$AA@
+
+ 0001:29F4       ??_C@_0O@JHLN@MS?5Sans?5Serif?$AA@
+                    ??_C@_0O@JHLN@MS?5Sans?5Serif?$AA@
+
+ 0001:2A02       ??_C@_04DKPP@Bold?$AA@
+                    ??_C@_04DKPP@Bold?$AA@
+
+ 0001:2A08       ??_C@_05CKBG@Error?$AA@
+                    ??_C@_05CKBG@Error?$AA@
+
+ 0001:2A0E       ??_C@_09KFGP@Wrong?5IID?$AA@
+                    ??_C@_09KFGP@Wrong?5IID?$AA@
+
+ 0001:2A18       ??_C@_0P@FDCH@m_lpDO?5?$DN?$DN?5NULL?$AA@
+                    ??_C@_0P@FDCH@m_lpDO?5?$DN?$DN?5NULL?$AA@
+
+ 0001:2A28       ??_C@_0BL@IBIO@QueryGetData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+                    ??_C@_0BL@IBIO@QueryGetData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+
+ 0001:2A44       ??_C@_0BG@BOIL@GetData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+                    ??_C@_0BG@BOIL@GetData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+
+ 0001:2A5A       ??_C@_0CA@KDCN@IDataDlg?3?3GotData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+                    ??_C@_0CA@KDCN@IDataDlg?3?3GotData?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+
+ 0001:2A7A       ??_C@_0CF@JGIJ@hGlobal?5returned?5by?5GetData?5is?5N@
+                    ??_C@_0CF@JGIJ@hGlobal?5returned?5by?5GetData?5is?5N@
+
+ 0001:2AA0       ??_C@_0BP@MLJM@Got?5WOSA?1XRT?5representation?$CB?$AN?6?$AA@
+                    ??_C@_0BP@MLJM@Got?5WOSA?1XRT?5representation?$CB?$AN?6?$AA@
+
+ 0001:2AC0       ??_C@_0CD@NCGK@CImpIAdviseSink?5constructor?5fail@
+                    ??_C@_0CD@NCGK@CImpIAdviseSink?5constructor?5fail@
+
+ 0001:2AE4       ??_C@_0N@EFAH@?$CGKill?5Advise?$AA@
+                    ??_C@_0N@EFAH@?$CGKill?5Advise?$AA@
+
+ 0001:2AF2       ??_C@_0CL@OLHH@Advise?5started?5with?5cfFormat?5of?5@
+                    ??_C@_0CL@OLHH@Advise?5started?5with?5cfFormat?5of?5@
+
+ 0001:2B1E       ??_C@_0BC@FIFP@Advise?5started?4?4?4?$AA@
+                    ??_C@_0BC@FIFP@Advise?5started?4?4?4?$AA@
+
+ 0001:2B30       ??_C@_0BG@LLMG@DAdvise?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+                    ??_C@_0BG@LLMG@DAdvise?$CI?$CJ?5failed?3?5?5?$CFs?$AA@
+
+ 0001:2B46       ??_C@_08HCFF@?$CGDAdvise?$AA@
+                    ??_C@_08HCFF@?$CGDAdvise?$AA@
+
+ 0001:2B50       ??_C@_0DP@PPGH@?5?5Advise?5Killed?5after?5?$CFlu?5millis@
+                    ??_C@_0DP@PPGH@?5?5Advise?5Killed?5after?5?$CFlu?5millis@
+
+ 0001:2B90       ??_C@_0DA@FHOO@?5?5That?8s?5?$CFlu?4?$CFlu?5OnDataChange?5ca@
+                    ??_C@_0DA@FHOO@?5?5That?8s?5?$CFlu?4?$CFlu?5OnDataChange?5ca@
+
+ 0001:2BC0       ??_C@_0DO@BKCL@?5?5WOSA?1XRT?5Clipboard?5Format?5used@
+                    ??_C@_0DO@BKCL@?5?5WOSA?1XRT?5Clipboard?5Format?5used@
+
+ 0001:2BFE       ??_C@_0DE@BCPC@?5?5That?8s?5?$CFlu?4?$CFlu?5total?5DataItem?5@
+                    ??_C@_0DE@BCPC@?5?5That?8s?5?$CFlu?4?$CFlu?5total?5DataItem?5@
+
+ 0001:2C32       ??_C@_0BH@HFPK@?$DM?$DMDATA_DIRGET?5failed?$DO?$DO?$AA@
+                    ??_C@_0BH@HFPK@?$DM?$DMDATA_DIRGET?5failed?$DO?$DO?$AA@
+
+ 0001:2C4A       ??_C@_0BB@JEGH@CF_METAFILEPICT_?$AA@
+                    ??_C@_0BB@JEGH@CF_METAFILEPICT_?$AA@
+
+ 0001:2C5C       ??_C@_07HBHA@CF_TEXT?$AA@
+                    ??_C@_07HBHA@CF_TEXT?$AA@
+
+ 0001:2C64       ??_C@_09FOPE@CF_BITMAP?$AA@
+                    ??_C@_09FOPE@CF_BITMAP?$AA@
+
+ 0001:2C6E       ??_C@_0BA@IKOM@CF_METAFILEPICT?$AA@
+                    ??_C@_0BA@IKOM@CF_METAFILEPICT?$AA@
+
+ 0001:2C7E       ??_C@_07OKGF@CF_SYLK?$AA@
+                    ??_C@_07OKGF@CF_SYLK?$AA@
+
+ 0001:2C86       ??_C@_06FAPB@CF_DIF?$AA@
+                    ??_C@_06FAPB@CF_DIF?$AA@
+
+ 0001:2C8E       ??_C@_07PNMD@CF_TIFF?$AA@
+                    ??_C@_07PNMD@CF_TIFF?$AA@
+
+ 0001:2C96       ??_C@_0L@MOK@CF_OEMTEXT?$AA@
+                    ??_C@_0L@MOK@CF_OEMTEXT?$AA@
+
+ 0001:2CA2       ??_C@_06PKKN@CF_DIB?$AA@
+                    ??_C@_06PKKN@CF_DIB?$AA@
+
+ 0001:2CAA       ??_C@_0L@EBEG@CF_PALETTE?$AA@
+                    ??_C@_0L@EBEG@CF_PALETTE?$AA@
+
+ 0001:2CB6       ??_C@_0L@ODKE@CF_PENDATA?$AA@
+                    ??_C@_0L@ODKE@CF_PENDATA?$AA@
+
+ 0001:2CC2       ??_C@_07CCCP@CF_RIFF?$AA@
+                    ??_C@_07CCCP@CF_RIFF?$AA@
+
+ 0001:2CCA       ??_C@_07JHJA@CF_WAVE?$AA@
+                    ??_C@_07JHJA@CF_WAVE?$AA@
+
+ 0001:2CD2       ??_C@_0BC@COBL@?$CCWildcard?5Advise?$CC?$AA@
+                    ??_C@_0BC@COBL@?$CCWildcard?5Advise?$CC?$AA@
+
+ 0001:2CE4       ??_C@_06FHIJ@?$CF?$CD08lX?$AA@
+                    ??_C@_06FHIJ@?$CF?$CD08lX?$AA@
+
+ 0001:2CEC       ??_C@_0BL@GBBP@?$CK?$CK?$CK?$CK?$CK?$CK?$CK?$CK?$CK?5xrtDumpToDebug?$AN?6?$AA@
+                    ??_C@_0BL@GBBP@?$CK?$CK?$CK?$CK?$CK?$CK?$CK?$CK?$CK?5xrtDumpToDebug?$AN?6?$AA@
+
+ 0001:2D08       ??_C@_0GK@MOHF@cbStream?5?$DN?5?$CFlu?0?5dwStatus?5?$DN?5?$CF?$CD08l@
+                    ??_C@_0GK@MOHF@cbStream?5?$DN?5?$CFlu?0?5dwStatus?5?$DN?5?$CF?$CD08l@
+
+ 0001:2D72       ??_C@_0CJ@BLKK@?$DM?$DMinvalid?5type?5?$CIVT_VARIANT?5?$HM?5VT_@
+                    ??_C@_0CJ@BLKK@?$DM?$DMinvalid?5type?5?$CIVT_VARIANT?5?$HM?5VT_@
+
+ 0001:2D9C       ??_C@_0BN@EEBK@?$DM?$DMinvalid?5type?5?$CI?$DOVT_BOOL?$CJ?5?$DO?$DO?$AA@
+                    ??_C@_0BN@EEBK@?$DM?$DMinvalid?5type?5?$CI?$DOVT_BOOL?$CJ?5?$DO?$DO?$AA@
+
+ 0001:2DBA       ??_C@_0N@GLNG@?$DM?$DMbad?5type?$DO?$DO?$AA@
+                    ??_C@_0N@GLNG@?$DM?$DMbad?5type?$DO?$DO?$AA@
+
+ 0001:2DC8       ??_C@_02MEID@?0?7?$AA@
+                    ??_C@_02MEID@?0?7?$AA@
+
+ 0001:2DCC       ??_C@_02PIMC@?$AN?6?$AA@
+                    ??_C@_02PIMC@?$AN?6?$AA@
+
+ 0001:2DD0       ??_C@_0CE@DHDO@?$CK?$CK?$CK?$CK?5End?5of?5Dump?4?5?$CFd?5item?5change@
+                    ??_C@_0CE@DHDO@?$CK?$CK?$CK?$CK?5End?5of?5Dump?4?5?$CFd?5item?5change@
+
+ 0001:2DF4       ?ReallyCreateFont@@ZCPBUHFONT__@@PBUHDC__@@PED1II@Z
+                    struct HFONT__ const __near* __far __pascal ReallyCreateFont(struct HDC__ const __near*,char __far*,char __far*,unsigned int,unsigned int)
+
+ 0001:2FC4       fnEnumReallyEx
+ 0001:30BE       ?DlgCenter@@ZCXPBUHWND__@@0H@Z
+                    void __far __pascal DlgCenter(struct HWND__ const __near*,struct HWND__ const __near*,int)
+
+ 0001:31FA       ?GetTextMetricsCorrectly@@ZCHPBUHDC__@@PEUtagTEXTMETRIC@@@Z
+                    int __far __pascal GetTextMetricsCorrectly(struct HDC__ const __near*,struct tagTEXTMETRIC __far*)
+
+ 0001:3274       ?ColumnTextOut@@ZCXPBUHDC__@@HHPEDHPEUtagCOLUMNSTRUCT@@@Z
+                    void __far __pascal ColumnTextOut(struct HDC__ const __near*,int,int,char __far*,int,struct tagCOLUMNSTRUCT __far*)
+
+ 0001:33CC       ?HRtoString@@ZAPEDPEX@Z
+                    char __far* __far __cdecl HRtoString(void __far*)
+
+ 0001:4006       ?VTtoString@@ZAPEDG@Z
+                    char __far* __far __cdecl VTtoString(unsigned short)
+
+ 0001:40F8       ??_C@_01FCOA@?5?$AA@
+                    ??_C@_01FCOA@?5?$AA@
+
+ 0001:40FA       ??_C@_04JECD@S_OK?$AA@
+                    ??_C@_04JECD@S_OK?$AA@
+
+ 0001:4100       ??_C@_07PDAH@S_FALSE?$AA@
+                    ??_C@_07PDAH@S_FALSE?$AA@
+
+ 0001:4108       ??_C@_0N@KFCI@E_UNEXPECTED?$AA@
+                    ??_C@_0N@KFCI@E_UNEXPECTED?$AA@
+
+ 0001:4116       ??_C@_09DGOK@E_NOTIMPL?$AA@
+                    ??_C@_09DGOK@E_NOTIMPL?$AA@
+
+ 0001:4120       ??_C@_0O@EBOJ@E_OUTOFMEMORY?$AA@
+                    ??_C@_0O@EBOJ@E_OUTOFMEMORY?$AA@
+
+ 0001:412E       ??_C@_0N@OEAO@E_INVALIDARG?$AA@
+                    ??_C@_0N@OEAO@E_INVALIDARG?$AA@
+
+ 0001:413C       ??_C@_0O@OKLN@E_NOINTERFACE?$AA@
+                    ??_C@_0O@OKLN@E_NOINTERFACE?$AA@
+
+ 0001:414A       ??_C@_09FCML@E_POINTER?$AA@
+                    ??_C@_09FCML@E_POINTER?$AA@
+
+ 0001:4154       ??_C@_08HCGG@E_HANDLE?$AA@
+                    ??_C@_08HCGG@E_HANDLE?$AA@
+
+ 0001:415E       ??_C@_07BBFK@E_ABORT?$AA@
+                    ??_C@_07BBFK@E_ABORT?$AA@
+
+ 0001:4166       ??_C@_06MPFC@E_FAIL?$AA@
+                    ??_C@_06MPFC@E_FAIL?$AA@
+
+ 0001:416E       ??_C@_0P@IBAM@E_ACCESSDENIED?$AA@
+                    ??_C@_0P@IBAM@E_ACCESSDENIED?$AA@
+
+ 0001:417E       ??_C@_0BB@CLFO@DATA_E_FORMATETC?$AA@
+                    ??_C@_0BB@CLFO@DATA_E_FORMATETC?$AA@
+
+ 0001:4190       ??_C@_0BF@LEIP@DATA_S_SAMEFORMATETC?$AA@
+                    ??_C@_0BF@LEIP@DATA_S_SAMEFORMATETC?$AA@
+
+ 0001:41A6       ??_C@_0M@EJHN@VIEW_E_DRAW?$AA@
+                    ??_C@_0M@EJHN@VIEW_E_DRAW?$AA@
+
+ 0001:41B2       ??_C@_0BG@GHLI@VIEW_S_ALREADY_FROZEN?$AA@
+                    ??_C@_0BG@GHLI@VIEW_S_ALREADY_FROZEN?$AA@
+
+ 0001:41C8       ??_C@_0BI@LGBI@CACHE_E_NOCACHE_UPDATED?$AA@
+                    ??_C@_0BI@LGBI@CACHE_E_NOCACHE_UPDATED?$AA@
+
+ 0001:41E0       ??_C@_0BP@BLBM@CACHE_S_FORMATETC_NOTSUPPORTED?$AA@
+                    ??_C@_0BP@BLBM@CACHE_S_FORMATETC_NOTSUPPORTED?$AA@
+
+ 0001:4200       ??_C@_0BC@NMDD@CACHE_S_SAMECACHE?$AA@
+                    ??_C@_0BC@NMDD@CACHE_S_SAMECACHE?$AA@
+
+ 0001:4212       ??_C@_0BO@HNEP@CACHE_S_SOMECACHES_NOTUPDATED?$AA@
+                    ??_C@_0BO@HNEP@CACHE_S_SOMECACHES_NOTUPDATED?$AA@
+
+ 0001:4230       ??_C@_0O@GNCI@OLE_E_OLEVERB?$AA@
+                    ??_C@_0O@GNCI@OLE_E_OLEVERB?$AA@
+
+ 0001:423E       ??_C@_0L@KKHN@OLE_E_ADVF?$AA@
+                    ??_C@_0L@KKHN@OLE_E_ADVF?$AA@
+
+ 0001:424A       ??_C@_0BC@BFPC@OLE_E_ENUM_NOMORE?$AA@
+                    ??_C@_0BC@BFPC@OLE_E_ENUM_NOMORE?$AA@
+
+ 0001:425C       ??_C@_0BJ@KCME@OLE_E_ADVISENOTSUPPORTED?$AA@
+                    ??_C@_0BJ@KCME@OLE_E_ADVISENOTSUPPORTED?$AA@
+
+ 0001:4276       ??_C@_0BD@BCBD@OLE_E_NOCONNECTION?$AA@
+                    ??_C@_0BD@BCBD@OLE_E_NOCONNECTION?$AA@
+
+ 0001:428A       ??_C@_0BB@JNNN@OLE_E_NOTRUNNING?$AA@
+                    ??_C@_0BB@JNNN@OLE_E_NOTRUNNING?$AA@
+
+ 0001:429C       ??_C@_0O@NJCH@OLE_E_NOCACHE?$AA@
+                    ??_C@_0O@NJCH@OLE_E_NOCACHE?$AA@
+
+ 0001:42AA       ??_C@_0M@OPML@OLE_E_BLANK?$AA@
+                    ??_C@_0M@OPML@OLE_E_BLANK?$AA@
+
+ 0001:42B6       ??_C@_0BA@IPMP@OLE_E_CLASSDIFF?$AA@
+                    ??_C@_0BA@IPMP@OLE_E_CLASSDIFF?$AA@
+
+ 0001:42C6       ??_C@_0BG@PNJG@OLE_E_CANT_GETMONIKER?$AA@
+                    ??_C@_0BG@PNJG@OLE_E_CANT_GETMONIKER?$AA@
+
+ 0001:42DC       ??_C@_0BI@CFOJ@OLE_E_CANT_BINDTOSOURCE?$AA@
+                    ??_C@_0BI@CFOJ@OLE_E_CANT_BINDTOSOURCE?$AA@
+
+ 0001:42F4       ??_C@_0N@LJOM@OLE_E_STATIC?$AA@
+                    ??_C@_0N@LJOM@OLE_E_STATIC?$AA@
+
+ 0001:4302       ??_C@_0BK@GAIP@OLE_E_PROMPTSAVECANCELLED?$AA@
+                    ??_C@_0BK@GAIP@OLE_E_PROMPTSAVECANCELLED?$AA@
+
+ 0001:431C       ??_C@_0BC@JBBH@OLE_E_INVALIDRECT?$AA@
+                    ??_C@_0BC@JBBH@OLE_E_INVALIDRECT?$AA@
+
+ 0001:432E       ??_C@_0BD@HFND@OLE_E_WRONGCOMPOBJ?$AA@
+                    ??_C@_0BD@HFND@OLE_E_WRONGCOMPOBJ?$AA@
+
+ 0001:4342       ??_C@_0BC@HBGB@OLE_E_INVALIDHWND?$AA@
+                    ??_C@_0BC@HBGB@OLE_E_INVALIDHWND?$AA@
+
+ 0001:4354       ??_C@_0BE@IMCM@DV_E_DVTARGETDEVICE?$AA@
+                    ??_C@_0BE@IMCM@DV_E_DVTARGETDEVICE?$AA@
+
+ 0001:4368       ??_C@_0P@CKCH@DV_E_STGMEDIUM?$AA@
+                    ??_C@_0P@CKCH@DV_E_STGMEDIUM?$AA@
+
+ 0001:4378       ??_C@_0O@OFOL@DV_E_STATDATA?$AA@
+                    ??_C@_0O@OFOL@DV_E_STATDATA?$AA@
+
+ 0001:4386       ??_C@_0M@LFPF@DV_E_LINDEX?$AA@
+                    ??_C@_0M@LFPF@DV_E_LINDEX?$AA@
+
+ 0001:4392       ??_C@_0L@OBAK@DV_E_TYMED?$AA@
+                    ??_C@_0L@OBAK@DV_E_TYMED?$AA@
+
+ 0001:439E       ??_C@_0BA@OMEF@DV_E_CLIPFORMAT?$AA@
+                    ??_C@_0BA@OMEF@DV_E_CLIPFORMAT?$AA@
+
+ 0001:43AE       ??_C@_0O@IIGO@DV_E_DVASPECT?$AA@
+                    ??_C@_0O@IIGO@DV_E_DVASPECT?$AA@
+
+ 0001:43BC       ??_C@_0BJ@MFG@DV_E_DVTARGETDEVICE_SIZE?$AA@
+                    ??_C@_0BJ@MFG@DV_E_DVTARGETDEVICE_SIZE?$AA@
+
+ 0001:43D6       ??_C@_0BD@IDLA@DV_E_NOIVIEWOBJECT?$AA@
+                    ??_C@_0BD@IDLA@DV_E_NOIVIEWOBJECT?$AA@
+
+ 0001:43EA       ??_C@_0N@KKEF@OLE_S_USEREG?$AA@
+                    ??_C@_0N@KKEF@OLE_S_USEREG?$AA@
+
+ 0001:43F8       ??_C@_0N@ILOC@OLE_S_STATIC?$AA@
+                    ??_C@_0N@ILOC@OLE_S_STATIC?$AA@
+
+ 0001:4406       ??_C@_0BF@NFAK@OLE_S_MAC_CLIPFORMAT?$AA@
+                    ??_C@_0BF@NFAK@OLE_S_MAC_CLIPFORMAT?$AA@
+
+ 0001:441C       ??_C@_0BK@IME@CONVERT10_E_OLESTREAM_GET?$AA@
+                    ??_C@_0BK@IME@CONVERT10_E_OLESTREAM_GET?$AA@
+
+ 0001:4436       ??_C@_0BK@PNGG@CONVERT10_E_OLESTREAM_PUT?$AA@
+                    ??_C@_0BK@PNGG@CONVERT10_E_OLESTREAM_PUT?$AA@
+
+ 0001:4450       ??_C@_0BK@OPIG@CONVERT10_E_OLESTREAM_FMT?$AA@
+                    ??_C@_0BK@OPIG@CONVERT10_E_OLESTREAM_FMT?$AA@
+
+ 0001:446A       ??_C@_0CE@NBMK@CONVERT10_E_OLESTREAM_BITMAP_TO_@
+                    ??_C@_0CE@NBMK@CONVERT10_E_OLESTREAM_BITMAP_TO_@
+
+ 0001:448E       ??_C@_0BE@NF@CONVERT10_E_STG_FMT?$AA@
+                    ??_C@_0BE@NF@CONVERT10_E_STG_FMT?$AA@
+
+ 0001:44A2       ??_C@_0BO@LMOC@CONVERT10_E_STG_NO_STD_STREAM?$AA@
+                    ??_C@_0BO@LMOC@CONVERT10_E_STG_NO_STD_STREAM?$AA@
+
+ 0001:44C0       ??_C@_0BO@MDDA@CONVERT10_E_STG_DIB_TO_BITMAP?$AA@
+                    ??_C@_0BO@MDDA@CONVERT10_E_STG_DIB_TO_BITMAP?$AA@
+
+ 0001:44DE       ??_C@_0BM@OOOI@CONVERT10_S_NO_PRESENTATION?$AA@
+                    ??_C@_0BM@OOOI@CONVERT10_S_NO_PRESENTATION?$AA@
+
+ 0001:44FA       ??_C@_0BE@MCIO@CLIPBRD_E_CANT_OPEN?$AA@
+                    ??_C@_0BE@MCIO@CLIPBRD_E_CANT_OPEN?$AA@
+
+ 0001:450E       ??_C@_0BF@OABI@CLIPBRD_E_CANT_EMPTY?$AA@
+                    ??_C@_0BF@OABI@CLIPBRD_E_CANT_EMPTY?$AA@
+
+ 0001:4524       ??_C@_0BD@FIPH@CLIPBRD_E_CANT_SET?$AA@
+                    ??_C@_0BD@FIPH@CLIPBRD_E_CANT_SET?$AA@
+
+ 0001:4538       ??_C@_0BD@DHGF@CLIPBRD_E_BAD_DATA?$AA@
+                    ??_C@_0BD@DHGF@CLIPBRD_E_BAD_DATA?$AA@
+
+ 0001:454C       ??_C@_0BF@DMOK@CLIPBRD_E_CANT_CLOSE?$AA@
+                    ??_C@_0BF@DMOK@CLIPBRD_E_CANT_CLOSE?$AA@
+
+ 0001:4562       ??_C@_0BJ@KCOG@DRAGDROP_E_NOTREGISTERED?$AA@
+                    ??_C@_0BJ@KCOG@DRAGDROP_E_NOTREGISTERED?$AA@
+
+ 0001:457C       ??_C@_0BN@GCLF@DRAGDROP_E_ALREADYREGISTERED?$AA@
+                    ??_C@_0BN@GCLF@DRAGDROP_E_ALREADYREGISTERED?$AA@
+
+ 0001:459A       ??_C@_0BH@CFBH@DRAGDROP_E_INVALIDHWND?$AA@
+                    ??_C@_0BH@CFBH@DRAGDROP_E_INVALIDHWND?$AA@
+
+ 0001:45B2       ??_C@_0BA@HKCB@DRAGDROP_S_DROP?$AA@
+                    ??_C@_0BA@HKCB@DRAGDROP_S_DROP?$AA@
+
+ 0001:45C2       ??_C@_0BC@LMCE@DRAGDROP_S_CANCEL?$AA@
+                    ??_C@_0BC@LMCE@DRAGDROP_S_CANCEL?$AA@
+
+ 0001:45D4       ??_C@_0BN@CANI@DRAGDROP_S_USEDEFAULTCURSORS?$AA@
+                    ??_C@_0BN@CANI@DRAGDROP_S_USEDEFAULTCURSORS?$AA@
+
+ 0001:45F2       ??_C@_0BB@ICH@OLEOBJ_E_NOVERBS?$AA@
+                    ??_C@_0BB@ICH@OLEOBJ_E_NOVERBS?$AA@
+
+ 0001:4604       ??_C@_0BF@NEDD@OLEOBJ_S_INVALIDVERB?$AA@
+                    ??_C@_0BF@NEDD@OLEOBJ_S_INVALIDVERB?$AA@
+
+ 0001:461A       ??_C@_0BL@PKNP@OLEOBJ_S_CANNOT_DOVERB_NOW?$AA@
+                    ??_C@_0BL@PKNP@OLEOBJ_S_CANNOT_DOVERB_NOW?$AA@
+
+ 0001:4636       ??_C@_0BF@ILAM@OLEOBJ_S_INVALIDHWND?$AA@
+                    ??_C@_0BF@ILAM@OLEOBJ_S_INVALIDHWND?$AA@
+
+ 0001:464C       ??_C@_0BG@NFLN@INPLACE_E_NOTUNDOABLE?$AA@
+                    ??_C@_0BG@NFLN@INPLACE_E_NOTUNDOABLE?$AA@
+
+ 0001:4662       ??_C@_0BG@NEEK@INPLACE_E_NOTOOLSPACE?$AA@
+                    ??_C@_0BG@NEEK@INPLACE_E_NOTOOLSPACE?$AA@
+
+ 0001:4678       ??_C@_0BE@DPEC@INPLACE_S_TRUNCATED?$AA@
+                    ??_C@_0BE@DPEC@INPLACE_S_TRUNCATED?$AA@
+
+ 0001:468C       ??_C@_0BG@BIHE@STG_E_INVALIDFUNCTION?$AA@
+                    ??_C@_0BG@BIHE@STG_E_INVALIDFUNCTION?$AA@
+
+ 0001:46A2       ??_C@_0BD@HNDG@STG_E_FILENOTFOUND?$AA@
+                    ??_C@_0BD@HNDG@STG_E_FILENOTFOUND?$AA@
+
+ 0001:46B6       ??_C@_0BD@MAIA@STG_E_PATHNOTFOUND?$AA@
+                    ??_C@_0BD@MAIA@STG_E_PATHNOTFOUND?$AA@
+
+ 0001:46CA       ??_C@_0BH@KKDE@STG_E_TOOMANYOPENFILES?$AA@
+                    ??_C@_0BH@KKDE@STG_E_TOOMANYOPENFILES?$AA@
+
+ 0001:46E2       ??_C@_0BD@EICG@STG_E_ACCESSDENIED?$AA@
+                    ??_C@_0BD@EICG@STG_E_ACCESSDENIED?$AA@
+
+ 0001:46F6       ??_C@_0BE@MFIL@STG_E_INVALIDHANDLE?$AA@
+                    ??_C@_0BE@MFIL@STG_E_INVALIDHANDLE?$AA@
+
+ 0001:470A       ??_C@_0BJ@OANH@STG_E_INSUFFICIENTMEMORY?$AA@
+                    ??_C@_0BJ@OANH@STG_E_INSUFFICIENTMEMORY?$AA@
+
+ 0001:4724       ??_C@_0BF@EEHM@STG_E_INVALIDPOINTER?$AA@
+                    ??_C@_0BF@EEHM@STG_E_INVALIDPOINTER?$AA@
+
+ 0001:473A       ??_C@_0BC@JPKH@STG_E_NOMOREFILES?$AA@
+                    ??_C@_0BC@JPKH@STG_E_NOMOREFILES?$AA@
+
+ 0001:474C       ??_C@_0BL@LBKA@STG_E_DISKISWRITEPROTECTED?$AA@
+                    ??_C@_0BL@LBKA@STG_E_DISKISWRITEPROTECTED?$AA@
+
+ 0001:4768       ??_C@_0BA@NAPD@STG_E_SEEKERROR?$AA@
+                    ??_C@_0BA@NAPD@STG_E_SEEKERROR?$AA@
+
+ 0001:4778       ??_C@_0BB@MCHJ@STG_E_WRITEFAULT?$AA@
+                    ??_C@_0BB@MCHJ@STG_E_WRITEFAULT?$AA@
+
+ 0001:478A       ??_C@_0BA@ENNI@STG_E_READFAULT?$AA@
+                    ??_C@_0BA@ENNI@STG_E_READFAULT?$AA@
+
+ 0001:479A       ??_C@_0BE@PJLD@STG_E_LOCKVIOLATION?$AA@
+                    ??_C@_0BE@PJLD@STG_E_LOCKVIOLATION?$AA@
+
+ 0001:47AE       ??_C@_0BI@GNCB@STG_E_FILEALREADYEXISTS?$AA@
+                    ??_C@_0BI@GNCB@STG_E_FILEALREADYEXISTS?$AA@
+
+ 0001:47C6       ??_C@_0BH@DEML@STG_E_INVALIDPARAMETER?$AA@
+                    ??_C@_0BH@DEML@STG_E_INVALIDPARAMETER?$AA@
+
+ 0001:47DE       ??_C@_0BB@KIFE@STG_E_MEDIUMFULL?$AA@
+                    ??_C@_0BB@KIFE@STG_E_MEDIUMFULL?$AA@
+
+ 0001:47F0       ??_C@_0BG@PCHB@STG_E_ABNORMALAPIEXIT?$AA@
+                    ??_C@_0BG@PCHB@STG_E_ABNORMALAPIEXIT?$AA@
+
+ 0001:4806       ??_C@_0BE@MKFL@STG_E_INVALIDHEADER?$AA@
+                    ??_C@_0BE@MKFL@STG_E_INVALIDHEADER?$AA@
+
+ 0001:481A       ??_C@_0BC@FGBC@STG_E_INVALIDNAME?$AA@
+                    ??_C@_0BC@FGBC@STG_E_INVALIDNAME?$AA@
+
+ 0001:482C       ??_C@_0O@CGJ@STG_E_UNKNOWN?$AA@
+                    ??_C@_0O@CGJ@STG_E_UNKNOWN?$AA@
+
+ 0001:483A       ??_C@_0BM@PNME@STG_E_UNIMPLEMENTEDFUNCTION?$AA@
+                    ??_C@_0BM@PNME@STG_E_UNIMPLEMENTEDFUNCTION?$AA@
+
+ 0001:4856       ??_C@_0BC@EMKL@STG_E_INVALIDFLAG?$AA@
+                    ??_C@_0BC@EMKL@STG_E_INVALIDFLAG?$AA@
+
+ 0001:4868       ??_C@_0M@EFDG@STG_E_INUSE?$AA@
+                    ??_C@_0M@EFDG@STG_E_INUSE?$AA@
+
+ 0001:4874       ??_C@_0BB@FHLH@STG_E_NOTCURRENT?$AA@
+                    ??_C@_0BB@FHLH@STG_E_NOTCURRENT?$AA@
+
+ 0001:4886       ??_C@_0P@ODBJ@STG_E_REVERTED?$AA@
+                    ??_C@_0P@ODBJ@STG_E_REVERTED?$AA@
+
+ 0001:4896       ??_C@_0P@CDEO@STG_E_CANTSAVE?$AA@
+                    ??_C@_0P@CDEO@STG_E_CANTSAVE?$AA@
+
+ 0001:48A6       ??_C@_0BA@NFPJ@STG_E_OLDFORMAT?$AA@
+                    ??_C@_0BA@NFPJ@STG_E_OLDFORMAT?$AA@
+
+ 0001:48B6       ??_C@_0N@CCGN@STG_E_OLDDLL?$AA@
+                    ??_C@_0N@CCGN@STG_E_OLDDLL?$AA@
+
+ 0001:48C4       ??_C@_0BE@PMHE@STG_E_SHAREREQUIRED?$AA@
+                    ??_C@_0BE@PMHE@STG_E_SHAREREQUIRED?$AA@
+
+ 0001:48D8       ??_C@_0BA@ODMA@STG_S_CONVERTED?$AA@
+                    ??_C@_0BA@ODMA@STG_S_CONVERTED?$AA@
+
+ 0001:48E8       ??_C@_0BE@EFPN@CO_E_NOTINITIALIZED?$AA@
+                    ??_C@_0BE@EFPN@CO_E_NOTINITIALIZED?$AA@
+
+ 0001:48FC       ??_C@_0BI@LPFC@CO_E_ALREADYINITIALIZED?$AA@
+                    ??_C@_0BI@LPFC@CO_E_ALREADYINITIALIZED?$AA@
+
+ 0001:4914       ??_C@_0BI@KADN@CO_E_CANTDETERMINECLASS?$AA@
+                    ??_C@_0BI@KADN@CO_E_CANTDETERMINECLASS?$AA@
+
+ 0001:492C       ??_C@_0BB@JFMG@CO_E_CLASSSTRING?$AA@
+                    ??_C@_0BB@JFMG@CO_E_CLASSSTRING?$AA@
+
+ 0001:493E       ??_C@_0P@KKED@CO_E_IIDSTRING?$AA@
+                    ??_C@_0P@KKED@CO_E_IIDSTRING?$AA@
+
+ 0001:494E       ??_C@_0BB@PEGM@CO_E_APPNOTFOUND?$AA@
+                    ??_C@_0BB@PEGM@CO_E_APPNOTFOUND?$AA@
+
+ 0001:4960       ??_C@_0BC@MIJJ@CO_E_APPSINGLEUSE?$AA@
+                    ??_C@_0BC@MIJJ@CO_E_APPSINGLEUSE?$AA@
+
+ 0001:4972       ??_C@_0BA@PKPD@CO_E_ERRORINAPP?$AA@
+                    ??_C@_0BA@PKPD@CO_E_ERRORINAPP?$AA@
+
+ 0001:4982       ??_C@_0BB@DGAA@CO_E_DLLNOTFOUND?$AA@
+                    ??_C@_0BB@DGAA@CO_E_DLLNOTFOUND?$AA@
+
+ 0001:4994       ??_C@_0BA@DCHM@CO_E_ERRORINDLL?$AA@
+                    ??_C@_0BA@DCHM@CO_E_ERRORINDLL?$AA@
+
+ 0001:49A4       ??_C@_0BD@IGGN@CO_E_WRONGOSFORAPP?$AA@
+                    ??_C@_0BD@IGGN@CO_E_WRONGOSFORAPP?$AA@
+
+ 0001:49B8       ??_C@_0P@OMLE@CO_E_OBJNOTREG?$AA@
+                    ??_C@_0P@OMLE@CO_E_OBJNOTREG?$AA@
+
+ 0001:49C8       ??_C@_0O@KJGN@CO_E_OBJISREG?$AA@
+                    ??_C@_0O@KJGN@CO_E_OBJISREG?$AA@
+
+ 0001:49D6       ??_C@_0BF@PKMO@CO_E_OBJNOTCONNECTED?$AA@
+                    ??_C@_0BF@PKMO@CO_E_OBJNOTCONNECTED?$AA@
+
+ 0001:49EC       ??_C@_0BB@EGCE@CO_E_APPDIDNTREG?$AA@
+                    ??_C@_0BB@EGCE@CO_E_APPDIDNTREG?$AA@
+
+ 0001:49FE       ??_C@_0BG@KBLK@CLASS_E_NOAGGREGATION?$AA@
+                    ??_C@_0BG@KBLK@CLASS_E_NOAGGREGATION?$AA@
+
+ 0001:4A14       ??_C@_0BC@HJEG@REGDB_E_READREGDB?$AA@
+                    ??_C@_0BC@HJEG@REGDB_E_READREGDB?$AA@
+
+ 0001:4A26       ??_C@_0BD@GKF@REGDB_E_WRITEREGDB?$AA@
+                    ??_C@_0BD@GKF@REGDB_E_WRITEREGDB?$AA@
+
+ 0001:4A3A       ??_C@_0BD@NEAK@REGDB_E_KEYMISSING?$AA@
+                    ??_C@_0BD@NEAK@REGDB_E_KEYMISSING?$AA@
+
+ 0001:4A4E       ??_C@_0BF@ENHM@REGDB_E_INVALIDVALUE?$AA@
+                    ??_C@_0BF@ENHM@REGDB_E_INVALIDVALUE?$AA@
+
+ 0001:4A64       ??_C@_0BE@PII@REGDB_E_CLASSNOTREG?$AA@
+                    ??_C@_0BE@PII@REGDB_E_CLASSNOTREG?$AA@
+
+ 0001:4A78       ??_C@_0BC@EOK@REGDB_E_IIDNOTREG?$AA@
+                    ??_C@_0BC@EOK@REGDB_E_IIDNOTREG?$AA@
+
+ 0001:4A8A       ??_C@_0M@LPHI@RPC_E_FIRST?$AA@
+                    ??_C@_0M@LPHI@RPC_E_FIRST?$AA@
+
+ 0001:4A96       ??_C@_0BE@FCIF@RPC_E_CALL_REJECTED?$AA@
+                    ??_C@_0BE@FCIF@RPC_E_CALL_REJECTED?$AA@
+
+ 0001:4AAA       ??_C@_0BE@NKHI@RPC_E_CALL_CANCELED?$AA@
+                    ??_C@_0BE@NKHI@RPC_E_CALL_CANCELED?$AA@
+
+ 0001:4ABE       ??_C@_0BK@BFAI@RPC_E_CANTPOST_INSENDCALL?$AA@
+                    ??_C@_0BK@BFAI@RPC_E_CANTPOST_INSENDCALL?$AA@
+
+ 0001:4AD8       ??_C@_0BO@FIAD@RPC_E_CANTCALLOUT_INASYNCCALL?$AA@
+                    ??_C@_0BO@FIAD@RPC_E_CANTCALLOUT_INASYNCCALL?$AA@
+
+ 0001:4AF6       ??_C@_0CB@IKHF@RPC_E_CANTCALLOUT_INEXTERNALCALL@
+                    ??_C@_0CB@IKHF@RPC_E_CANTCALLOUT_INEXTERNALCALL@
+
+ 0001:4B18       ??_C@_0BM@KEOD@RPC_E_CONNECTION_TERMINATED?$AA@
+                    ??_C@_0BM@KEOD@RPC_E_CONNECTION_TERMINATED?$AA@
+
+ 0001:4B34       ??_C@_0BC@IEPI@RPC_E_SERVER_DIED?$AA@
+                    ??_C@_0BC@IEPI@RPC_E_SERVER_DIED?$AA@
+
+ 0001:4B46       ??_C@_0BC@INIG@RPC_E_CLIENT_DIED?$AA@
+                    ??_C@_0BC@INIG@RPC_E_CLIENT_DIED?$AA@
+
+ 0001:4B58       ??_C@_0BJ@DCAC@RPC_E_INVALID_DATAPACKET?$AA@
+                    ??_C@_0BJ@DCAC@RPC_E_INVALID_DATAPACKET?$AA@
+
+ 0001:4B72       ??_C@_0BI@HEFH@RPC_E_CANTTRANSMIT_CALL?$AA@
+                    ??_C@_0BI@HEFH@RPC_E_CANTTRANSMIT_CALL?$AA@
+
+ 0001:4B8A       ??_C@_0BO@IBCJ@RPC_E_CLIENT_CANTMARSHAL_DATA?$AA@
+                    ??_C@_0BO@IBCJ@RPC_E_CLIENT_CANTMARSHAL_DATA?$AA@
+
+ 0001:4BA8       ??_C@_0CA@EKFA@RPC_E_CLIENT_CANTUNMARSHAL_DATA?$AA@
+                    ??_C@_0CA@EKFA@RPC_E_CLIENT_CANTUNMARSHAL_DATA?$AA@
+
+ 0001:4BC8       ??_C@_0BO@PBDM@RPC_E_SERVER_CANTMARSHAL_DATA?$AA@
+                    ??_C@_0BO@PBDM@RPC_E_SERVER_CANTMARSHAL_DATA?$AA@
+
+ 0001:4BE6       ??_C@_0CA@NNPK@RPC_E_SERVER_CANTUNMARSHAL_DATA?$AA@
+                    ??_C@_0CA@NNPK@RPC_E_SERVER_CANTUNMARSHAL_DATA?$AA@
+
+ 0001:4C06       ??_C@_0BD@PO@RPC_E_INVALID_DATA?$AA@
+                    ??_C@_0BD@PO@RPC_E_INVALID_DATA?$AA@
+
+ 0001:4C1A       ??_C@_0BI@DDIP@RPC_E_INVALID_PARAMETER?$AA@
+                    ??_C@_0BI@DDIP@RPC_E_INVALID_PARAMETER?$AA@
+
+ 0001:4C32       ??_C@_0BB@IMFM@RPC_E_UNEXPECTED?$AA@
+                    ??_C@_0BB@IMFM@RPC_E_UNEXPECTED?$AA@
+
+ 0001:4C44       ??_C@_0BF@NPHN@MK_E_CONNECTMANUALLY?$AA@
+                    ??_C@_0BF@NPHN@MK_E_CONNECTMANUALLY?$AA@
+
+ 0001:4C5A       ??_C@_0BG@JGDM@MK_E_EXCEEDEDDEADLINE?$AA@
+                    ??_C@_0BG@JGDM@MK_E_EXCEEDEDDEADLINE?$AA@
+
+ 0001:4C70       ??_C@_0BB@NHEK@MK_E_NEEDGENERIC?$AA@
+                    ??_C@_0BB@NHEK@MK_E_NEEDGENERIC?$AA@
+
+ 0001:4C82       ??_C@_0BB@LKHO@MK_E_UNAVAILABLE?$AA@
+                    ??_C@_0BB@LKHO@MK_E_UNAVAILABLE?$AA@
+
+ 0001:4C94       ??_C@_0M@FPAP@MK_E_SYNTAX?$AA@
+                    ??_C@_0M@FPAP@MK_E_SYNTAX?$AA@
+
+ 0001:4CA0       ??_C@_0O@BMDP@MK_E_NOOBJECT?$AA@
+                    ??_C@_0O@BMDP@MK_E_NOOBJECT?$AA@
+
+ 0001:4CAE       ??_C@_0BG@ILAE@MK_E_INVALIDEXTENSION?$AA@
+                    ??_C@_0BG@ILAE@MK_E_INVALIDEXTENSION?$AA@
+
+ 0001:4CC4       ??_C@_0CH@PHBE@MK_E_INTERMEDIATEINTERFACENOTSUP@
+                    ??_C@_0CH@PHBE@MK_E_INTERMEDIATEINTERFACENOTSUP@
+
+ 0001:4CEC       ??_C@_0BB@CGPA@MK_E_NOTBINDABLE?$AA@
+                    ??_C@_0BB@CGPA@MK_E_NOTBINDABLE?$AA@
+
+ 0001:4CFE       ??_C@_0O@JEII@MK_E_NOTBOUND?$AA@
+                    ??_C@_0O@JEII@MK_E_NOTBOUND?$AA@
+
+ 0001:4D0C       ??_C@_0BC@CLAA@MK_E_CANTOPENFILE?$AA@
+                    ??_C@_0BC@CLAA@MK_E_CANTOPENFILE?$AA@
+
+ 0001:4D1E       ??_C@_0BE@INIG@MK_E_MUSTBOTHERUSER?$AA@
+                    ??_C@_0BE@INIG@MK_E_MUSTBOTHERUSER?$AA@
+
+ 0001:4D32       ??_C@_0P@GJCI@MK_E_NOINVERSE?$AA@
+                    ??_C@_0P@GJCI@MK_E_NOINVERSE?$AA@
+
+ 0001:4D42       ??_C@_0P@JOCA@MK_E_NOSTORAGE?$AA@
+                    ??_C@_0P@JOCA@MK_E_NOSTORAGE?$AA@
+
+ 0001:4D52       ??_C@_0BF@JEJH@MK_S_REDUCED_TO_SELF?$AA@
+                    ??_C@_0BF@JEJH@MK_S_REDUCED_TO_SELF?$AA@
+
+ 0001:4D68       ??_C@_07EGID@MK_S_ME?$AA@
+                    ??_C@_07EGID@MK_S_ME?$AA@
+
+ 0001:4D70       ??_C@_08CAEH@MK_S_HIM?$AA@
+                    ??_C@_08CAEH@MK_S_HIM?$AA@
+
+ 0001:4D7A       ??_C@_07MPHM@MK_S_US?$AA@
+                    ??_C@_07MPHM@MK_S_US?$AA@
+
+ 0001:4D82       ??_C@_0BO@JADJ@MK_S_MONIKERALREADYREGISTERED?$AA@
+                    ??_C@_0BO@JADJ@MK_S_MONIKERALREADYREGISTERED?$AA@
+
+ 0001:4DA0       ??_C@_0BI@BKFO@DISP_E_UNKNOWNINTERFACE?$AA@
+                    ??_C@_0BI@BKFO@DISP_E_UNKNOWNINTERFACE?$AA@
+
+ 0001:4DB8       ??_C@_0BG@DMGK@DISP_E_MEMBERNOTFOUND?$AA@
+                    ??_C@_0BG@DMGK@DISP_E_MEMBERNOTFOUND?$AA@
+
+ 0001:4DCE       ??_C@_0BF@BKDN@DISP_E_PARAMNOTFOUND?$AA@
+                    ??_C@_0BF@BKDN@DISP_E_PARAMNOTFOUND?$AA@
+
+ 0001:4DE4       ??_C@_0BE@GINK@DISP_E_TYPEMISMATCH?$AA@
+                    ??_C@_0BE@GINK@DISP_E_TYPEMISMATCH?$AA@
+
+ 0001:4DF8       ??_C@_0BD@FPAE@DISP_E_UNKNOWNNAME?$AA@
+                    ??_C@_0BD@FPAE@DISP_E_UNKNOWNNAME?$AA@
+
+ 0001:4E0C       ??_C@_0BD@MFHE@DISP_E_NONAMEDARGS?$AA@
+                    ??_C@_0BD@MFHE@DISP_E_NONAMEDARGS?$AA@
+
+ 0001:4E20       ??_C@_0BC@FHKP@DISP_E_BADVARTYPE?$AA@
+                    ??_C@_0BC@FHKP@DISP_E_BADVARTYPE?$AA@
+
+ 0001:4E32       ??_C@_0BB@IEIB@DISP_E_EXCEPTION?$AA@
+                    ??_C@_0BB@IEIB@DISP_E_EXCEPTION?$AA@
+
+ 0001:4E44       ??_C@_0BA@GHFB@DISP_E_OVERFLOW?$AA@
+                    ??_C@_0BA@GHFB@DISP_E_OVERFLOW?$AA@
+
+ 0001:4E54       ??_C@_0BA@DLMK@DISP_E_BADINDEX?$AA@
+                    ??_C@_0BA@DLMK@DISP_E_BADINDEX?$AA@
+
+ 0001:4E64       ??_C@_0BD@EBLA@DISP_E_UNKNOWNLCID?$AA@
+                    ??_C@_0BD@EBLA@DISP_E_UNKNOWNLCID?$AA@
+
+ 0001:4E78       ??_C@_0BF@PNAE@DISP_E_ARRAYISLOCKED?$AA@
+                    ??_C@_0BF@PNAE@DISP_E_ARRAYISLOCKED?$AA@
+
+ 0001:4E8E       ??_C@_0BF@IKPH@DISP_E_BADPARAMCOUNT?$AA@
+                    ??_C@_0BF@IKPH@DISP_E_BADPARAMCOUNT?$AA@
+
+ 0001:4EA4       ??_C@_0BI@ONEA@DISP_E_PARAMNOTOPTIONAL?$AA@
+                    ??_C@_0BI@ONEA@DISP_E_PARAMNOTOPTIONAL?$AA@
+
+ 0001:4EBC       ??_C@_0BB@GP@DISP_E_BADCALLEE?$AA@
+                    ??_C@_0BB@GP@DISP_E_BADCALLEE?$AA@
+
+ 0001:4ECE       ??_C@_0BG@DJIC@DISP_E_NOTACOLLECTION?$AA@
+                    ??_C@_0BG@DJIC@DISP_E_NOTACOLLECTION?$AA@
+
+ 0001:4EE4       ??_C@_0BF@FACD@TYPE_E_BADMODULEKIND?$AA@
+                    ??_C@_0BF@FACD@TYPE_E_BADMODULEKIND?$AA@
+
+ 0001:4EFA       ??_C@_0P@GDJH@TYPE_E_IOERROR?$AA@
+                    ??_C@_0P@GDJH@TYPE_E_IOERROR?$AA@
+
+ 0001:4F0A       ??_C@_0BJ@PDNG@TYPE_E_CANTCREATETMPFILE?$AA@
+                    ??_C@_0BJ@PDNG@TYPE_E_CANTCREATETMPFILE?$AA@
+
+ 0001:4F24       ??_C@_0BG@HMOE@TYPE_E_BUFFERTOOSMALL?$AA@
+                    ??_C@_0BG@HMOE@TYPE_E_BUFFERTOOSMALL?$AA@
+
+ 0001:4F3A       ??_C@_0BD@BDCM@TYPE_E_INVDATAREAD?$AA@
+                    ??_C@_0BD@BDCM@TYPE_E_INVDATAREAD?$AA@
+
+ 0001:4F4E       ??_C@_0BD@KID@TYPE_E_UNSUPFORMAT?$AA@
+                    ??_C@_0BD@KID@TYPE_E_UNSUPFORMAT?$AA@
+
+ 0001:4F62       ??_C@_0BG@FFPJ@TYPE_E_REGISTRYACCESS?$AA@
+                    ??_C@_0BG@FFPJ@TYPE_E_REGISTRYACCESS?$AA@
+
+ 0001:4F78       ??_C@_0BI@IKOE@TYPE_E_LIBNOTREGISTERED?$AA@
+                    ??_C@_0BI@IKOE@TYPE_E_LIBNOTREGISTERED?$AA@
+
+ 0001:4F90       ??_C@_0BF@MJPL@TYPE_E_UNDEFINEDTYPE?$AA@
+                    ??_C@_0BF@MJPL@TYPE_E_UNDEFINEDTYPE?$AA@
+
+ 0001:4FA6       ??_C@_0BP@GAEP@TYPE_E_QUALIFIEDNAMEDISALLOWED?$AA@
+                    ??_C@_0BP@GAEP@TYPE_E_QUALIFIEDNAMEDISALLOWED?$AA@
+
+ 0001:4FC6       ??_C@_0BE@LHHL@TYPE_E_INVALIDSTATE?$AA@
+                    ??_C@_0BE@LHHL@TYPE_E_INVALIDSTATE?$AA@
+
+ 0001:4FDA       ??_C@_0BF@DOMI@TYPE_E_WRONGTYPEKIND?$AA@
+                    ??_C@_0BF@DOMI@TYPE_E_WRONGTYPEKIND?$AA@
+
+ 0001:4FF0       ??_C@_0BH@PKEE@TYPE_E_ELEMENTNOTFOUND?$AA@
+                    ??_C@_0BH@PKEE@TYPE_E_ELEMENTNOTFOUND?$AA@
+
+ 0001:5008       ??_C@_0BF@DCPG@TYPE_E_AMBIGUOUSNAME?$AA@
+                    ??_C@_0BF@DCPG@TYPE_E_AMBIGUOUSNAME?$AA@
+
+ 0001:501E       ??_C@_0BL@KFLM@TYPE_E_DLLFUNCTIONNOTFOUND?$AA@
+                    ??_C@_0BL@KFLM@TYPE_E_DLLFUNCTIONNOTFOUND?$AA@
+
+ 0001:503A       ??_C@_0BH@OEOC@TYPE_E_CANTLOADLIBRARY?$AA@
+                    ??_C@_0BH@OEOC@TYPE_E_CANTLOADLIBRARY?$AA@
+
+ 0001:5052       ??_C@_0O@FEAJ@UNKNOWN?5SCODE?$AA@
+                    ??_C@_0O@FEAJ@UNKNOWN?5SCODE?$AA@
+
+ 0001:5060       ??_C@_0L@LLJH@?$CFs?5?$CI0x?$CFlx?$CJ?$AA@
+                    ??_C@_0L@LLJH@?$CFs?5?$CI0x?$CFlx?$CJ?$AA@
+
+ 0001:506C       ??_C@_04LGJG@Void?$AA@
+                    ??_C@_04LGJG@Void?$AA@
+
+ 0001:5072       ??_C@_04MEGN@Null?$AA@
+                    ??_C@_04MEGN@Null?$AA@
+
+ 0001:5078       ??_C@_07HDOI@Integer?$AA@
+                    ??_C@_07HDOI@Integer?$AA@
+
+ 0001:5080       ??_C@_04BNGP@Long?$AA@
+                    ??_C@_04BNGP@Long?$AA@
+
+ 0001:5086       ??_C@_06DFFN@Single?$AA@
+                    ??_C@_06DFFN@Single?$AA@
+
+ 0001:508E       ??_C@_06ENOL@Double?$AA@
+                    ??_C@_06ENOL@Double?$AA@
+
+ 0001:5096       ??_C@_08CKCK@Currency?$AA@
+                    ??_C@_08CKCK@Currency?$AA@
+
+ 0001:50A0       ??_C@_04OMLL@Date?$AA@
+                    ??_C@_04OMLL@Date?$AA@
+
+ 0001:50A6       ??_C@_06PINC@String?$AA@
+                    ??_C@_06PINC@String?$AA@
+
+ 0001:50AE       ??_C@_06JDBI@Object?$AA@
+                    ??_C@_06JDBI@Object?$AA@
+
+ 0001:50B6       ??_C@_05COGH@SCODE?$AA@
+                    ??_C@_05COGH@SCODE?$AA@
+
+ 0001:50BC       ??_C@_07KEJK@Boolean?$AA@
+                    ??_C@_07KEJK@Boolean?$AA@
+
+ 0001:50C4       ??_C@_07IADP@Variant?$AA@
+                    ??_C@_07IADP@Variant?$AA@
+
+ 0001:50CC       ??_C@_09PAE@pIUnknown?$AA@
+                    ??_C@_09PAE@pIUnknown?$AA@
+
+ 0001:50D6       ??_C@_07NCOA@Unicode?$AA@
+                    ??_C@_07NCOA@Unicode?$AA@
+
+ 0001:50DE       ??_C@_04EHOP@BYTE?$AA@
+                    ??_C@_04EHOP@BYTE?$AA@
+
+ 0001:50E4       ??_C@_04KENI@char?$AA@
+                    ??_C@_04KENI@char?$AA@
+
+ 0001:50EA       ??_C@_06IEJL@USHORT?$AA@
+                    ??_C@_06IEJL@USHORT?$AA@
+
+ 0001:50F2       ??_C@_05PDLJ@ULONG?$AA@
+                    ??_C@_05PDLJ@ULONG?$AA@
+
+ 0001:50F8       ??_C@_05JAMN@int64?$AA@
+                    ??_C@_05JAMN@int64?$AA@
+
+ 0001:50FE       ??_C@_06NFOC@uint64?$AA@
+                    ??_C@_06NFOC@uint64?$AA@
+
+ 0001:5106       ??_C@_03EMIM@int?$AA@
+                    ??_C@_03EMIM@int?$AA@
+
+ 0001:510A       ??_C@_04DIFF@UINT?$AA@
+                    ??_C@_04DIFF@UINT?$AA@
+
+ 0001:5110       ??_C@_04HDPB@VOID?$AA@
+                    ??_C@_04HDPB@VOID?$AA@
+
+ 0001:5116       ??_C@_07NCAD@HRESULT?$AA@
+                    ??_C@_07NCAD@HRESULT?$AA@
+
+ 0001:511E       ??_C@_03GHPI@PTR?$AA@
+                    ??_C@_03GHPI@PTR?$AA@
+
+ 0001:5122       ??_C@_09PGOK@SAFEARRAY?$AA@
+                    ??_C@_09PGOK@SAFEARRAY?$AA@
+
+ 0001:512C       ??_C@_06HKOF@CARRAY?$AA@
+                    ??_C@_06HKOF@CARRAY?$AA@
+
+ 0001:5134       ??_C@_0M@KBLE@USERDEFINED?$AA@
+                    ??_C@_0M@KBLE@USERDEFINED?$AA@
+
+ 0001:5140       ??_C@_05BIIM@LPSTR?$AA@
+                    ??_C@_05BIIM@LPSTR?$AA@
+
+ 0001:5146       ??_C@_06PCFA@LPWSTR?$AA@
+                    ??_C@_06PCFA@LPWSTR?$AA@
+
+ 0001:514E       ??_C@_08NLGB@FILETIME?$AA@
+                    ??_C@_08NLGB@FILETIME?$AA@
+
+ 0001:5158       ??_C@_04MNCO@BLOB?$AA@
+                    ??_C@_04MNCO@BLOB?$AA@
+
+ 0001:515E       ??_C@_06JOCF@STREAM?$AA@
+                    ??_C@_06JOCF@STREAM?$AA@
+
+ 0001:5166       ??_C@_07MBME@STORAGE?$AA@
+                    ??_C@_07MBME@STORAGE?$AA@
+
+ 0001:516E       ??_C@_0BA@BGMN@STREAMED_OBJECT?$AA@
+                    ??_C@_0BA@BGMN@STREAMED_OBJECT?$AA@
+
+ 0001:517E       ??_C@_0O@KHDM@STORED_OBJECT?$AA@
+                    ??_C@_0O@KHDM@STORED_OBJECT?$AA@
+
+ 0001:518C       ??_C@_0M@JKMM@BLOB_OBJECT?$AA@
+                    ??_C@_0M@JKMM@BLOB_OBJECT?$AA@
+
+ 0001:5198       ??_C@_02MLOI@CF?$AA@
+                    ??_C@_02MLOI@CF?$AA@
+
+ 0001:519C       ??_C@_05FGFK@CLSID?$AA@
+                    ??_C@_05FGFK@CLSID?$AA@
+
+ 0001:51A2       ??_C@_0N@NECH@VECTOR?5of?5?$CFs?$AA@
+                    ??_C@_0N@NECH@VECTOR?5of?5?$CFs?$AA@
+
+ 0001:51B0       ??_C@_0BA@FGMG@?$DMUnknown?5?$CF08lX?$DO?$AA@
+                    ??_C@_0BA@FGMG@?$DMUnknown?5?$CF08lX?$DO?$AA@
+
+ 0001:51C0       ??_C@_0M@NIJA@Array?5of?5?$CFs?$AA@
+                    ??_C@_0M@NIJA@Array?5of?5?$CFs?$AA@
+
+ 0001:51CC       ??_C@_09LGCP@?$CFs?5BYREF?5?$AA@
+                    ??_C@_09LGCP@?$CFs?5BYREF?5?$AA@
+
+ 0001:51D6       ??_C@_0O@GBEG@RESERVED?5?$CI?$CFs?$CJ?$AA@
+                    ??_C@_0O@GBEG@RESERVED?5?$CI?$CFs?$CJ?$AA@
+
+ 0001:51E4       ??_C@_04PNBL@?5to?5?$AA@
+                    ??_C@_04PNBL@?5to?5?$AA@
+
+ 0001:51EA       ??_C@_04BJAB@?5of?5?$AA@
+                    ??_C@_04BJAB@?5of?5?$AA@
+
+ 0001:51F0       ??_C@_04BNMG@?$FL?$CFu?$FN?$AA@
+                    ??_C@_04BNMG@?$FL?$CFu?$FN?$AA@
+
+ 0001:51F6       LIBMAIN
+ 0002:0004       rsrvptrs
+ 0002:0012       ?g_pfnEdit@@3P7CJPBUHWND__@@IIJ@ZE
+                    long (__far __pascal*__far g_pfnEdit)(struct HWND__ const __near*,unsigned int,unsigned int,long)
+
+ 0002:015E       ?g_hInst@@3PBUHINSTANCE__@@B
+                    struct HINSTANCE__ const __near* const __near g_hInst
+
+ 0002:0160       _STKHQQ
+ 0002:0162       __hModule
+ 0002:0164       __wDataSeg
+ 0002:0166       __wHeapSize
+ 0002:0168       __lpszCmdLine
+ 0002:016C       __dllinit
+ 0002:016D       _aseglo
+ 0002:016F       _aseghi
+ 0002:0171       ___aDBswpflg
+ 0002:0173       ___aDBrterr
+ 0002:0176       __aintdiv
+ 0002:017A       __fac
+ 0002:0184       _errno
+ 0002:0186       __umaskval
+ 0002:0188       __winver
+ 0002:0188       __winminor
+ 0002:0189       __winmajor
+ 0002:018A       __osver
+ 0002:018A       __osminor
+ 0002:018B       __osmajor
+ 0002:018C       __osversion
+ 0002:018E       __osmode
+ 0002:018F       __cpumode
+ 0002:0190       __oserr
+ 0002:0190       __doserrno
+ 0002:0192       __nfile
+ 0002:0194       __osfile
+ 0002:01A8       ___argc
+ 0002:01AA       ___argv
+ 0002:01AE       __environ
+ 0002:01B2       __pgmptr
+ 0002:01B7       __child
+ 0002:01B9       __exitflag
+ 0002:01BA       __adbgmsg
+ 0002:01BE       __pnhFarHeap
+ 0002:01C2       __fheap
+ 0002:01D0       __amblksiz
+ 0002:01D4       __fpinit
+ 0002:02E8       _edata
+ 0002:02E8       __edata
+ 0002:04AE       __end
+ 0002:04AE       _end
+
+Program entry point at 0001:0548

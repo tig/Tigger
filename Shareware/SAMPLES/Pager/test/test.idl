@@ -1,0 +1,80 @@
+// Generated .ODL file (by OLEViewer)
+// 
+// typelib filename: Pager.dll
+[
+  uuid(23208897-15BF-11D0-97FB-00AA001F73C1),
+  version(1.0),
+  helpstring("Pager 1.0 Type Library")
+]
+library PagerLib
+{
+    // LIBID:  {00020430-0000-0000-C000-000000000046}
+    importlib("STDOLE2.TLB");
+
+    interface IPager2;
+    dispinterface IPager;
+
+    [
+      uuid(23208899-15BF-11D0-97FB-00AA001F73C1),
+      helpstring("Pager Class (sends pages)"),
+      appobject,
+      licensed
+    ]
+    coclass Pager {
+        [default] dispinterface IPager;
+        interface IPager2;
+    };
+
+    [
+      odl,
+      uuid(23208895-15BF-11D0-97FB-00AA001F73C1),
+      helpstring("IPager Interface"),
+      dual,
+      oleautomation,
+      nonextensible
+    ]
+    interface IPager : IDispatch {
+        [id(0x60020000), helpstring("Sends a page")]
+        HRESULT _stdcall Page(
+                        [in] IPager2* pPager2, 
+                        [in] BSTR PIN, 
+                        [in] BSTR Msg, 
+                        [out, retval] VARIANT_BOOL* retval);
+        [propput, bindable, immediatebind]
+        HRESULT _stdcall A([in] BSTR a);
+        [propget, bindable, immediatebind]
+        HRESULT _stdcall A([out, retval] BSTR* a);
+
+        [vararg] HRESULT Button([in,optional]SAFEARRAY(VARIANT) psa);
+
+    };
+
+
+    [
+      uuid(23208896-15BF-11D0-97FB-00AA001F73C1),
+      helpstring("IPager2 Interface"),
+      oleautomation
+    ]
+    interface IPager2 : IUnknown {
+        [id(0x60020001), helpstring("Sends a page")]
+        HRESULT _stdcall Page2(
+                        [in] BSTR PhoneNumber, 
+                        [in] BSTR PIN, 
+                        [in] BSTR Msg, 
+                        [out, retval] VARIANT_BOOL* retval);
+
+        //HRESULT B([in,readonly] long l);
+
+    };
+
+    [
+        uuid(23208898-15BF-11D0-97FB-00AA001F73C1),  
+        helpstring("This is not GDI.EXE"), 
+        helpcontext(190), 
+        dllname("MATH.DLL")
+    ] 
+    module somemodule{ 
+        [helpstring("Color for the frame")] unsigned long const COLOR_FRAME = 0x80000006; 
+        [helpstring("Not a rectangle but a square"), entry(1)] double _pascal square([in] double x); 
+    }; 
+};

@@ -1,0 +1,3 @@
+	cl /c /D_DOS /AM /W3 /Zp /Oselg /Gs /FoCHAR\person.OBJ person.cpp
+person.cpp
+person.cpp(50) : error C2039: 'm_FristName' : is not a member of 'CPerson'

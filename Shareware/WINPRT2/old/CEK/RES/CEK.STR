@@ -1,0 +1,88 @@
+/************************************************************************
+ *
+ *      Module:  cek.str
+ *
+ *
+ ***********************************************************************/
+
+#ifdef RC_INVOKED
+    #define DEFSTR(V,SID,S)   V     S
+    #define DECSTR(SID,S)     SID   S
+#else
+    #define DEFSTR(V,SID,S)   enum {SID=V};
+    #define DECSTR(SID,S)     
+#endif
+
+#ifdef RC_INVOKED
+STRINGTABLE PRELOAD MOVEABLE PURE DISCARDABLE
+BEGIN
+#endif
+
+    DEFSTR( 0x0000, IDS_APPNAME,        "CEK's Library o' Shit" )
+    DEFSTR( 0x0001, IDS_BOLD,           "Bold"  )
+    DEFSTR( 0x0002, IDS_ITALIC,         "Italic" )
+    DEFSTR( 0x0003, IDS_BOLDITALIC,     "Bold Italic" )
+    DEFSTR( 0x0004, IDS_REGULAR,        "Regular" )
+
+    DEFSTR( 0x0005, IDS_CLASSNAME,        "MicroScroll" )
+    DEFSTR( 0x0006, IDS_FULLNAME,         "MicroScroll Custom Control" )
+    DEFSTR( 0x0007, IDS_CREDITS,          "Written by Kraig Brockschmidt" )
+    DEFSTR( 0x0008, IDS_VERTICAL,         "Vertical" )
+    DEFSTR( 0x0009, IDS_HORIZONTAL,       "Horizontal" )
+    DEFSTR( 0x000a, IDS_MSS_VERTICAL,     "MSS_VERTICAL | " )
+    DEFSTR( 0x000b, IDS_MSS_HORIZONTAL,   "MSS_HORIZONTAL | " )
+    DEFSTR( 0x000c, IDS_MSS_TEXTHASRANGE, "MSS_TEXTHASRANGE | " )
+    DEFSTR( 0x000d, IDS_MSS_NOPEGSCROLL,  "MSS_NOPEGSCROLL | " )
+    DEFSTR( 0x000e, IDS_MSS_INVERTRANGE,  "MSS_INVERTRANGE | " )
+    DEFSTR( 0x000f, IDS_RANGEERROR,       "Specified position is out of the range." )
+
+
+DEFSTR( 0x3000, IDS_SUNDAY,            "Sunday" )
+DEFSTR( 0x3001, IDS_MONDAY,            "Monday" )
+DEFSTR( 0x3002, IDS_TUESDAY,           "Tuesday" )
+DEFSTR( 0x3003, IDS_WEDNESDAY,         "Wednesday" )
+DEFSTR( 0x3004, IDS_THURSDAY,          "Thursday" )
+DEFSTR( 0x3005, IDS_FRIDAY,            "Friday" )
+DEFSTR( 0x3006, IDS_SATURDAY,          "Saturday" )
+DEFSTR( 0x3007, IDS_SUNDAY_SHORT,      "Sun" )
+DEFSTR( 0x3008, IDS_MONDAY_SHORT,      "Mon" )
+DEFSTR( 0x3009, IDS_TUESDAY_SHORT,     "Tue" )
+DEFSTR( 0x300a, IDS_WEDNESDAY_SHORT,   "Wed" )
+DEFSTR( 0x300b, IDS_THURSDAY_SHORT,    "Thu" )
+DEFSTR( 0x300c, IDS_FRIDAY_SHORT,      "Fri" )
+DEFSTR( 0x300d, IDS_SATURDAY_SHORT,    "Sat" )
+DEFSTR( 0x300e, IDS_JANUARY,           "January" )
+DEFSTR( 0x300f, IDS_FEBRUARY,          "February" )
+DEFSTR( 0x3010, IDS_MARCH,             "March" )
+DEFSTR( 0x3011, IDS_APRIL,             "April" )
+DEFSTR( 0x3012, IDS_MAY,               "May" )
+DEFSTR( 0x3013, IDS_JUNE,              "June" )
+DEFSTR( 0x3014, IDS_JULY,              "July" )
+DEFSTR( 0x3015, IDS_AUGUST,            "August" )
+DEFSTR( 0x3016, IDS_SEPTEMBER,         "September" )
+DEFSTR( 0x3017, IDS_OCTOBER,           "October" )
+DEFSTR( 0x3018, IDS_NOVEMBER,          "November" )
+DEFSTR( 0x3019, IDS_DECEMBER,          "December" )
+DEFSTR( 0x301a, IDS_JANUARY_SHORT,     "Jan" )
+DEFSTR( 0x301b, IDS_FEBRUARY_SHORT,    "Feb" )
+DEFSTR( 0x301c, IDS_MARCH_SHORT,       "Mar" )
+DEFSTR( 0x301d, IDS_APRIL_SHORT,       "Apr" )
+DEFSTR( 0x301e, IDS_MAY_SHORT,         "May" )
+DEFSTR( 0x301f, IDS_JUNE_SHORT,        "Jun" )
+DEFSTR( 0x3020, IDS_JULY_SHORT,        "Jul" )
+DEFSTR( 0x3021, IDS_AUGUST_SHORT,      "Aug" )
+DEFSTR( 0x3022, IDS_SEPTEMBER_SHORT,   "Sep" )
+DEFSTR( 0x3023, IDS_OCTOBER_SHORT	,  "Oct" )
+DEFSTR( 0x3024, IDS_NOVEMBER_SHORT	,  "Nov" )
+DEFSTR( 0x3025, IDS_DECEMBER_SHORT	,  "Dec" )
+DEFSTR( 0x3026, IDS_LONGDATE         , "ddd', 'MMMM' 'dd', 'yyyy" )
+DEFSTR( 0x3027, IDS_SHORTDATE        , "MM/dd/yy" )
+            
+#ifdef RC_INVOKED
+END         
+#endif      
+            
+/************************************************************************
+ * End of File: cek.str
+ ***********************************************************************/
+

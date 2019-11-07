@@ -1,0 +1,6 @@
+#include <windows.h>
+#include "ITSYTEST.rcv"
+
+IDI_ITSYTEST ICON "ITSYTEST.ico"
+
+

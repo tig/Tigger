@@ -1,0 +1,448 @@
+/************************************************************************
+ *
+ *     Copyright (c) 1992-93 C.E. Kindel, Jr.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  ASYNCSRV
+ *
+ *      Module:  ASYNCSRV.str
+ *
+ *     Remarks:  String table definitions and resources.
+ *
+ *       This module utilizes the fact that RC contains a full blown
+ *       C pre-processor.  Several macros are defined that either
+ *       define IDS_* values or specify entries in a string table
+ *       depending on whether this file was included from an
+ *       RC file during resource compilation or by a C file during
+ *       normal compilation.
+ *
+ *   Revisions:  
+ *       3/3/92   msm   Thought it up.
+ *       3/18/92  cek   Added it to shopsrv.
+ *       6/2/92   cek   Added new phone numbers.  #define USE_REAL_BBS
+ *                      to have it call the real BBS numbers.
+ *       6/5/92   cek   Renamed to ASYNCSRV
+ *
+ ***********************************************************************/
+
+#include <ddeml.h>      // some DDE strings are defined
+
+#define USE_REAL_BBS
+
+#ifdef RC_INVOKED
+    #define DEFSTR(V,SID,S)   V     S
+    #define DECSTR(SID,S)     SID   S
+   
+   /* 
+    * Entries defined with DBGSTR get defined as empty strings
+    * if DEBUG is not defined.
+    */ 
+    #ifdef DEBUG
+      #define DBGSTR DEFSTR
+    #else
+      #define DBGSTR(V,SID,S)   V  " "    // an empty string
+    #endif
+#else
+    #define DEFSTR(V,SID,S)   enum {SID=V};
+    #define DECSTR(SID,S)     
+
+    #define DBGSTR DEFSTR
+#endif
+
+#ifdef RC_INVOKED
+STRINGTABLE PRELOAD MOVEABLE PURE DISCARDABLE
+BEGIN
+#endif
+
+   /***********************
+    * Misc useful strings that are preloaded unto rglpsz[]
+    ***********************/
+
+#define FIRST_IDS    0
+
+DEFSTR( 0x00, IDS_APPNAME,                "ASYNCSRV" )
+DEFSTR( 0x01, IDS_APPTITLE,               "C.E. Kindel, Jr Async Communications Server" )
+DEFSTR( 0x02, IDS_VERSION,                "Version" )
+DEFSTR( 0x03, IDS_BOLD,                   "Bold" )
+DEFSTR( 0x04, IDS_ITALIC,                 "Italic" )
+DEFSTR( 0x05, IDS_BOLDITALIC,             "Bold Italic" )
+DEFSTR( 0x06, IDS_REGULAR,                "Regular" )
+DEFSTR( 0x07, IDS_ADONISPHONEPREFIX,      "(206)" ) 
+
+#ifdef USE_REAL_BBS
+DEFSTR( 0x08, IDS_PHONE2400,              "881-6973" )    
+DEFSTR( 0x09, IDS_PHONE9600,              "885-9757" )    
+DEFSTR( 0x0a, IDS_PHONE14K,               "881-9757" )    
+#else
+DEFSTR( 0x08, IDS_PHONE2400,              "881-6690" )    
+DEFSTR( 0x09, IDS_PHONE9600,              "881-6715" )    
+DEFSTR( 0x0a, IDS_PHONE14K,               "881-6715" )    
+#endif
+
+DEFSTR( 0x0b, IDS_INI_FILENAME,           "CONXTION.INI" )
+DEFSTR( 0x0c, IDS_INI_WAITACK,            "AckTimeout" )
+DEFSTR( 0x0d, IDS_INI_WAITRECEIVE,        "ReceiveTimeout" )
+DEFSTR( 0x0e, IDS_INI_MAIN,               "Comm Settings" )
+DEFSTR( 0x0f, IDS_INI_OPTIONS,            "Options" )
+DEFSTR( 0x10, IDS_INI_OPTIONS_SPEC,       "%d"        /* fStat */ )
+DEFSTR( 0x11, IDS_DEFAULTOPT,             "1"         /* fStat */ )
+DEFSTR( 0x12, IDS_INI_POS,                "Pos" )
+DEFSTR( 0x13, IDS_INI_POS_SPEC,           "%04X,%04X,%04X,%04X" /*x,y,w,h*/ )
+DEFSTR( 0x14, IDS_INI_FONT,               "Font" )
+DEFSTR( 0x15, IDS_INI_FONT_SPEC,          "%d,%s,%s"    )
+DEFSTR( 0x16, IDS_DEFAULTFONT,            "8,Courier New,Regular" )
+DEFSTR( 0x17, IDS_INI_ONLINEDRIVERSPEED,  "OnlineDriverSpeed")
+DEFSTR( 0x18, IDS_INI_RESYNCATTEMPTS,     "MaxReSyncs" )
+DEFSTR( 0x19, IDS_INI_RESENDATTEMPTS,     "MaxReSends" )
+DEFSTR( 0x1a, IDS_INI_RESYNCWAITACK,      "ReSyncAckTimeout")
+DEFSTR( 0x1b, IDS_INI_SAYHIWAITACK,       "SayHiAckTimeout" )
+DEFSTR( 0x1c, IDS_FILETRANSFERFAILED,     "File transfer attempt failed")
+DEFSTR( 0x1d, IDS_CONXPRORECEIVE,         "Receiving file..." )
+DEFSTR( 0x1e, IDS_CONXPROABORTING,         "File transfer aborting..." ) 
+DEFSTR( 0x1f, IDS_INI_COMMSETTINGS,       "Comm Settings" ) 
+DEFSTR( 0x20, IDS_INI_MODEM,              "Modem" ) 
+DEFSTR( 0x21, IDS_INI_BAUD,               "Baud" ) 
+DEFSTR( 0x22, IDS_INI_LOCATION,           "206" ) 
+DEFSTR( 0x23, IDS_INI_PREFIX,             "Prefix" ) 
+DEFSTR( 0x24, IDS_INI_SUFFIX,             "Suffix" ) 
+DEFSTR( 0x25, IDS_INI_DIALTYPE,           "DialType" ) 
+DEFSTR( 0x26, IDS_INI_PHONENUMBER,        "PhoneNumber" )   
+DEFSTR( 0x27, IDS_INI_INTERNAL,           "Internal" )
+DEFSTR( 0x28, IDS_INI_CONNECTDRIVERSPEED, "ConnectDriverSpeed")
+DEFSTR( 0x29, IDS_INI_POSTAQUIREPAUSE,    "PostAquirePause")
+DEFSTR( 0x2a, IDS_INI_MODEMDIALPAUSE,     "ModemDialPause")
+DEFSTR( 0x2b, IDS_INI_CONNECTWAITDIALTIMEOUT, "ConnectWaitDialTimeout")
+DEFSTR( 0x2c, IDS_INI_RXQUEUE,            "RXQueueSize" )
+DEFSTR( 0x2d, IDS_INI_TXQUEUE,            "TXQueueSize" )
+DEFSTR( 0x2e, IDS_INI_USE_CN_RECEIVE,     "UseCN_RECEIVE" )
+DEFSTR( 0x2f, IDS_INI_MAXBLOCK,           "MaxBlockSize" )
+DEFSTR( 0x30, IDS_INI_NOYIELDONSLOWMACHINES, "NoYield" )
+DEFSTR( 0x31, IDS_INI_3, " " )
+DEFSTR( 0x32, IDS_INI_4, " " )
+DEFSTR( 0x33, IDS_INI_5, " " )
+DEFSTR( 0x34, IDS_INI_6, " " )
+DEFSTR( 0x35, IDS_INI_7, " " )
+DEFSTR( 0x36, IDS_INI_8, " " )
+DEFSTR( 0x37, IDS_INI_9, " " )
+DEFSTR( 0x38, IDS_MODEMINI,               "MODEM.INI" ) 
+DEFSTR( 0x39, IDS_MODEMINI_INIT,          "Init" ) 
+DEFSTR( 0x3a, IDS_MODEMINI_DEF_INIT,      "ATE0Q0V1X4&C1&D2 S7=60 S11=55 S0=0^M" ) 
+DEFSTR( 0x3b, IDS_MODEMINI_DIALT,         "ToneDial" ) 
+DEFSTR( 0x3c, IDS_MODEMINI_DEF_DIALT,     "ATDT " ) 
+DEFSTR( 0x3d, IDS_MODEMINI_DIALP,         "PulseDial" ) 
+DEFSTR( 0x3e, IDS_MODEMINI_DEF_DIALP,     "ATDP " ) 
+DEFSTR( 0x3f, IDS_MODEMINI_HANGUP,        "HangUp" ) 
+DEFSTR( 0x40, IDS_MODEMINI_DEF_HANGUP,    "~~~+++~~~ATH^M") 
+DEFSTR( 0x41, IDS_MODEMINI_CONN,          "Connect" ) 
+DEFSTR( 0x42, IDS_MODEMINI_DEF_CONN,      "CONNECT^M" ) 
+DEFSTR( 0x43, IDS_MODEMINI_CONN300,       "Connect300" ) 
+DEFSTR( 0x44, IDS_MODEMINI_DEF_CONN300,   "CONNECT 300" ) 
+DEFSTR( 0x45, IDS_MODEMINI_CONN1200,      "Connect1200" ) 
+DEFSTR( 0x46, IDS_MODEMINI_DEF_CONN1200,  "CONNECT 1200" ) 
+DEFSTR( 0x47, IDS_MODEMINI_CONN2400,      "Connect2400" ) 
+DEFSTR( 0x48, IDS_MODEMINI_DEF_CONN2400,  "CONNECT 2400" ) 
+DEFSTR( 0x49, IDS_MODEMINI_CONN4800,      "Connect4800" ) 
+DEFSTR( 0x4a, IDS_MODEMINI_DEF_CONN4800,  "CONNECT 4800" ) 
+DEFSTR( 0x4b, IDS_MODEMINI_CONN9600,      "Connect9600" ) 
+DEFSTR( 0x4c, IDS_MODEMINI_DEF_CONN9600,  "CONNECT 9600" ) 
+DEFSTR( 0x4d, IDS_MODEMINI_BUSY,          "Busy" ) 
+DEFSTR( 0x4e, IDS_MODEMINI_DEF_BUSY,      "BUSY" ) 
+DEFSTR( 0x4f, IDS_MODEMINI_NOTONE,        "NoDialTone" ) 
+DEFSTR( 0x50, IDS_MODEMINI_DEF_NOTONE,    "NO DIALTONE" ) 
+DEFSTR( 0x51, IDS_MODEMINI_NOCARRIER,     "NoCarrier" ) 
+DEFSTR( 0x52, IDS_MODEMINI_DEF_NOCARRIER, "NO CARRIER" ) 
+DEFSTR( 0x53, IDS_MODEMINI_ERROR,         "Error" ) 
+DEFSTR( 0x54, IDS_MODEMINI_DEF_ERROR,     "ERROR" ) 
+DEFSTR( 0x55, IDS_MODEMINI_OK,            "Ok" ) 
+DEFSTR( 0x56, IDS_MODEMINI_DEF_OK,        "OK" )
+DEFSTR( 0x57, IDS_MODEM_INI_IGNORECD,     "IgnoreCD" )
+DEFSTR( 0x58, IDS_MODEM_INI_0, " " )
+DEFSTR( 0x59, IDS_MODEM_INI_1, " " )
+DEFSTR( 0x5a, IDS_MODEM_INI_2, " " )
+DEFSTR( 0x5b, IDS_MODEM_INI_3, " " )
+DEFSTR( 0x5c, IDS_MODEM_INI_4, " " )
+DEFSTR( 0x5d, IDS_MODEM_INI_5, " " )
+DEFSTR( 0x5e, IDS_MODEM_INI_6, " " )
+DEFSTR( 0x5f, IDS_SEND,                   "Bytes Sent:" )
+DEFSTR( 0x60, IDS_RECEIVE,                "Bytes Rec:" )
+DEFSTR( 0x61, IDS_CONNECT,                "On-line" )
+DEFSTR( 0x62, IDS_NOTCONNECT,             "Off-line" )
+DEFSTR( 0x63, IDS_DDE_CONNECT,            "DDE Connected" )
+DEFSTR( 0x64, IDS_DDE_NOTCONNECT,         "DDE Not Connected" )
+DEFSTR( 0x65, IDS_INITIALIZING,           "Initializing..." )
+DEFSTR( 0x66, IDS_AQUIRING,               "Acquiring communications port..." )
+DEFSTR( 0x67, IDS_INITMODEM,              "Initializing modem..." ) 
+DEFSTR( 0x68, IDS_DIALINGMODEM,           "Dialing modem..." ) 
+DEFSTR( 0x69, IDS_DIALTIMEDOUT,           "Dialing attempt timed out. Aborting..." ) 
+DEFSTR( 0x6a, IDS_WAITINGFORANSWER,       "Waiting for connection..." ) 
+DEFSTR( 0x6b, IDS_BUSY,                   "The line was busy.  Trying again..." ) 
+DEFSTR( 0x6c, IDS_NODIALTONE,             "No dial tone detected.  Aborting..." ) 
+DEFSTR( 0x6d, IDS_MODEMERR,               "Modem Error.  Aborting..." ) 
+DEFSTR( 0x6e, IDS_LOGIN,                  "Waiting for connection..." ) 
+DEFSTR( 0x6f, IDS_RELEASE,                "Releasing communications port..." ) 
+DEFSTR( 0x70, IDS_HANGUP,                 "Hanging up modem..." ) 
+DEFSTR( 0x71, IDS_ABORTING,               "Aborting..." ) 
+DEFSTR( 0x72, IDS_SENDINGMSG,             "Sending data..." )
+DEFSTR( 0x73, IDS_WAITINGFORRESPONSE,     "Waiting for response..." )
+DEFSTR( 0x74, IDS_RECEIVINGDATA,          "Receiving data..." )
+DEFSTR( 0x75, IDS_COMMERROR,              "Communications error detected." )
+DEFSTR( 0x76, IDS_RESYNCING,              "Re-establishing communications protocol..." )
+DEFSTR( 0x77, IDS_RESENDING,              "Resending data..." )
+DEFSTR( 0x78, IDS_INVALIDSEND,            "Transmission Error" )
+DEFSTR( 0x79, IDS_INVALIDRECEIVE,         "Reception Error" )
+DEFSTR( 0x7a, IDS_LOGGINGON,              "Connected at %ld baud, establishing protocol...")   
+DEFSTR( 0x7b, IDS_IDLE,                   "Idle and ready")   
+DEFSTR( 0x7c, IDS_CD,                     "CD" ) 
+DEFSTR( 0x7d, IDS_DSR,                    "DSR" ) 
+DEFSTR( 0x7e, IDS_CTS,                    "CTS" )
+DEFSTR( 0x7f, IDS_ONLINECAPTION,          "Online Session Status (%ld baud)" )
+DEFSTR( 0x80, IDS_DUMMY1,                 " " )
+DEFSTR( 0x81, IDS_DUMMY2,                 " " )
+DEFSTR( 0x82, IDS_DUMMY3,                 " " )
+DEFSTR( 0x83, IDS_DUMMY4,                 " " )
+DEFSTR( 0x84, IDS_DUMMY5,                 " " )
+DEFSTR( 0x85, IDS_DUMMY6,                 " " )
+DEFSTR( 0x86, IDS_ASCII_NUL,              "NUL" )
+DEFSTR( 0x87, IDS_ASCII_SOH,              "01" )   //"SOH" )
+DEFSTR( 0x88, IDS_ASCII_STX,              "02" )   //"STX" )
+DEFSTR( 0x89, IDS_ASCII_ETX,              "03" )   //"ETX" )
+DEFSTR( 0x8a, IDS_ASCII_EOT,              "04" )   //"EOT" )
+DEFSTR( 0x8b, IDS_ASCII_ENQ,              "05" )   //"ENQ" )
+DEFSTR( 0x8c, IDS_ASCII_ACK  ,            "ACK" )
+DEFSTR( 0x8d, IDS_ASCII_BEL  ,            "07" )   //"BEL" )
+DEFSTR( 0x8e, IDS_ASCII_BS   ,            "08" )   //"BS" ) 
+DEFSTR( 0x8f, IDS_ASCII_TAB  ,            "09" )   //"TAB" )
+DEFSTR( 0x90, IDS_ASCII_LF   ,            "0A" )   //"LF" ) 
+DEFSTR( 0x91, IDS_ASCII_VT   ,            "0B" )   //"VT" ) 
+DEFSTR( 0x92, IDS_ASCII_NP,               "0C" )   //"NP" )
+DEFSTR( 0x93, IDS_ASCII_CR   ,            "0D" )   //"CR" )
+DEFSTR( 0x94, IDS_ASCII_SO   ,            "0E" )   //"SO" )
+DEFSTR( 0x95, IDS_ASCII_SI   ,            "0F" )   //"SI" )
+DEFSTR( 0x96, IDS_ASCII_DLE   ,           "10" )   //"DLE" )
+DEFSTR( 0x97, IDS_ASCII_XON  ,            "XON" )
+DEFSTR( 0x98, IDS_ASCII_DC2   ,           "12" )   //"DC2" )
+DEFSTR( 0x99, IDS_ASCII_XOFF ,            "XOFF" )
+DEFSTR( 0x9a, IDS_ASCII_DC4   ,           "14" )   //"DC4" )
+DEFSTR( 0x9b, IDS_ASCII_NAK  ,            "NAK" ) 
+DEFSTR( 0x9c, IDS_ASCII_SYN ,             "16" )   //"SYN" )
+DEFSTR( 0x9d, IDS_ASCII_ETB ,             "17" )   //"ETB" )
+DEFSTR( 0x9e, IDS_ASCII_CAN ,             "CAN" )  // ctrl-x
+DEFSTR( 0x9f, IDS_ASCII_EM ,              "19" )   //"EM" )
+DEFSTR( 0xa0, IDS_ASCII_EOF ,             "1A" )   //"EOF" )
+DEFSTR( 0xa1, IDS_ASCII_ESC ,             "1B" )   //"ESC" )
+DEFSTR( 0xa2, IDS_ASCII_FS ,              "1C" )   //"FS" )
+DEFSTR( 0xa3, IDS_ASCII_GS ,              "1D" )   //"GS" )
+DEFSTR( 0xa4, IDS_ASCII_RS ,              "1E" )   //"RS" )
+DEFSTR( 0xa5, IDS_ASCII_US ,              "1F" )   //"US" )
+DEFSTR( 0xa6, IDS_CE_RXOVER,              "RXOVER" )
+DEFSTR( 0xa7, IDS_CE_OVERRUN,             "OVERRUN" )
+DEFSTR( 0xa8, IDS_CE_RXPARITY,            "RXPARITY" )
+DEFSTR( 0xa9, IDS_CE_FRAME,               "FRAME" )
+DEFSTR( 0xaa, IDS_CE_BREAK,               "BREAK" )
+DEFSTR( 0xab, IDS_CE_CTSTO,               "CTSTO" )
+DEFSTR( 0xac, IDS_CE_DSRTO,               "DSRTO" )
+DEFSTR( 0xad, IDS_CE_RLSDTO,              "RLSDTO" )
+DEFSTR( 0xae, IDS_CE_TXFULL,              "TXFULL" )
+DEFSTR( 0xaf, IDS_CE_PTO,                 "PTO" )
+DEFSTR( 0xb0, IDS_CE_IOE,                 "IOE" )
+DEFSTR( 0xb1, IDS_CE_DNS,                 "DNS" )
+DEFSTR( 0xb2, IDS_CE_OOP,                 "OOP" )
+DEFSTR( 0xb3, IDS_CE_MODE,                "MODE" )
+DBGSTR( 0xb4, IDS_MSG_NUL,                "MSG_NUL" )
+DBGSTR( 0xb5, IDS_MSG_RECEIVE_FILE,       "MSG_RECEIVE_FILE" )
+DBGSTR( 0xb6, IDS_MSG_LATEST_VERSION,     "MSG_LATEST_VERSION" )
+DBGSTR( 0xb7, IDS_MSG_LATEST_EXE,         "MSG_LATEST_EXE" )
+DBGSTR( 0xb8, IDS_MSG_EOT,                "MSG_EOT" )
+DBGSTR( 0xb9, IDS_MSG_QUERY_CUR_FILESIZE, "MSG_QUERY_CUR_FILESIZE" )
+DBGSTR( 0xba, IDS_MSG_ACK,                "MSG_ACK" )
+DBGSTR( 0xbb, IDS_MSG_QUERY_DEST_FILENAME,"MSG_QUERY_DEST_FILENAME" )
+DBGSTR( 0xbc, IDS_MSG_SAY_HI,             "MSG_SAY_HI" )
+DBGSTR( 0xbd, IDS_MSG_SET_CUR_FILENAME,   "MSG_SET_CUR_FILENAME" )
+DBGSTR( 0xbe, IDS_MSG_QUERY_UNCOMPRESSED_FILESIZE,  "MSG_QUERY_UNCOMPRESSED_FILESIZE" )
+DBGSTR( 0xbf, IDS_MSG_HANGING_UP,         "MSG_HANGING_UP" )
+DBGSTR( 0xc0, IDS_MSG_SET_CUR_LIB_ORDER,  "MSG_SET_CUR_LIB_ORDER" )
+DBGSTR( 0xc1, IDS_MSG_QUERY_LIB_ORDER_OK, "MSG_QUERY_LIB_ORDER_OK" )
+DBGSTR( 0xc2, IDS_MSG_COMMIT_LIB_ORDER,   "MSG_COMMIT_LIB_ORDER" )
+DBGSTR( 0xc3, IDS_MSG_SET_CUR_CLIP_DLD,   "MSG_SET_CUR_CLIP_DLD" )
+DBGSTR( 0xc4, IDS_MSG_QUERY_CLIP_DLD_OK,  "MSG_QUERY_CLIP_DLD_OK" )
+DBGSTR( 0xc5, IDS_MSG_COMMIT_CLIP_DLD,    "MSG_COMMIT_CLIP_DLD" )
+DBGSTR( 0xc6, IDS_MSG_SET_CUST_INFO,      "MSG_SET_CUST_INFO" )
+DBGSTR( 0xc7, IDS_MSG_SET_USER_ID,        "MSG_SET_USER_ID" )
+DBGSTR( 0xc8, IDS_MSG_GET_NEW_USER_ID,    "MSG_GET_NEW_USER_ID" )
+DBGSTR( 0xc9, IDS_MSG_NAK,                "MSG_NAK" )
+DBGSTR( 0xca, IDS_MSG_SET_PASSWD,         "MSG_SET_PASSWD" )
+DBGSTR( 0xcb, IDS_MSG_QUERY_PASSWD,       "MSG_QUERY_PASSWD" )
+DBGSTR( 0xcc, IDS_MSG_CTRLX,              "MSG_CTRLX" )
+DBGSTR( 0xcd, IDS_MSG_QUERY_NEWUSER_OK,   "MSG_QUERY_NEWUSER_OK" )
+DBGSTR( 0xce, IDS_MSG_COMMIT_NEWUSER,     "MSG_COMMIT_NEWUSER" )
+DBGSTR( 0xcf, IDS_MSG_SET_NEW_USER_ORDER, "MSG_SET_NEW_USER_ORDER" )
+DBGSTR( 0xd0, IDS_MSG_QUERY_NEW_USERID_OK,"MSG_QUERY_NEW_USERID_OK" )
+DBGSTR( 0xd1, IDS_MSG_BEGIN_SESSION,      "MSG_BEGIN_SESSION" )
+DBGSTR( 0xd2, IDS_MSG_COMMIT_PASSWD,      "MSG_COMMIT_PASSWD" )
+DBGSTR( 0xd3, IDS_MSG_SEND_WINVER,        "MSG_SEND_WINVER" )
+DBGSTR( 0xd4, IDS_MSG_COMMIT_CUST_INFO,   "MSG_COMMIT_CUST_INFO" )
+DBGSTR( 0xd5, IDS_MSG_QUERY_SHIPPING_COSTS,"MSG_QUERY_SHIPPING_COSTS" )
+DBGSTR( 0xd6, IDS_MSG_SEND_EXETYPE,       "MSG_SEND_EXETYPE" )
+DBGSTR( 0xd7, IDS_MSG_QUERY_USERID_OK,    "MSG_QUERY_USERID_OK" )
+DBGSTR( 0xd8, IDS_MSG_QUERY_SUBSCRIPTION_PRICE, "MSG_QUERY_SUBSCRIPTION_PRICE" )
+DBGSTR( 0xd9, IDS_MSG_DOWNLOAD_EXE,       "MSG_DOWNLOAD_EXE" )
+DBGSTR( 0xda, IDS_MSG_QUERY_INSTOCK,      "MSG_QUERY_INSTOCK" )
+DBGSTR( 0xdb, IDS_MSG_COMMIT_RENEWAL,     "MSG_COMMIT_RENEWAL" )
+DBGSTR( 0xdc, IDS_MSG_QUERY_RENEWAL_PRICE,"MSG_QUERY_RENEWAL_PRICE" )
+DBGSTR( 0xdd, IDS_MSG_QUERY_RENEWAL_OK,   "MSG_QUERY_RENEWAL_OK" )
+DBGSTR( 0xde, IDS_MSG_QUERY_SUBTYPE,      "MSG_QUERY_SUBTYPE" )
+DBGSTR( 0xdf, IDS_MSG_QUERY_SHIP_RENEWAL, "MSG_QUERY_SHIP_RENEWAL" )
+DBGSTR( 0xe0, IDS_MSG_QUERY_DATA_LRC,     "MSG_QUERY_DATA_LRC" )
+DBGSTR( 0xe1, IDS_MSG_NEW_GET_NEW_USER_ID,"MSG_NEW_GET_NEW_USER_ID" )
+DBGSTR( 0xe2, IDS_MSG_QUERY_SUBSCR_PRICES,"MSG_QUERY_SUBSCR_PRICES" )
+DBGSTR( 0xe3, IDS_MSG_COMMIT_SUBSCRIPTION,"MSG_COMMIT_SUBSCRIPTION" )
+DBGSTR( 0xe4, IDS_MSG_QUERY_EXEVERSIONS,  "MSG_QUERY_EXEVERSIONS" )
+DBGSTR( 0xe5, IDS_MSG_QUERY_ORDERID,      "MSG_QUERY_ORDERID" )
+DBGSTR( 0xe6, IDS_MSG_SET_ORDER,          "MSG_SET_ORDER" )
+DBGSTR( 0xe7, IDS_MSG_DOWNLOAD_FCDBLST,   "MSG_DOWNLOAD_FCDBLST" )
+DBGSTR( 0xe8, IDS_MSG_DOWNLOAD_FCDBFILE,  "MSG_DOWNLOAD_FCDBFILE" )
+            
+#ifndef RC_INVOKED         
+#define LAST_IDS     (FIRST_IDS + 0xe8)
+#endif
+
+
+#if 0
+DEFSTR( 0x46, IDS_MNU_FILE,               "File operations" )
+DEFSTR( 0x47, IDS_MNU_RESETDDE,           "Resets the DDE server" )
+DEFSTR( 0x48, IDS_MNU_OPT_FONT,           "Selects a font for the display" )
+DEFSTR( 0x49, IDS_MNU_FILE_EXIT,          "Quits ASYNCSRV" )
+DEFSTR( 0x4a, IDS_MNU_HELP,               "Help on ASYNCSRV and copyright information" )
+DEFSTR( 0x4b, IDS_MNU_HELP_CONTENTS,      "Help table of contents" )
+DEFSTR( 0x4c, IDS_MNU_HELP_SEARCH,        "Searches for a help topic" )
+DEFSTR( 0x4d, IDS_MNU_HELP_ONHELP,        "Gives help on using help" )
+DEFSTR( 0x4e, IDS_MNU_HELP_ABOUT,         "About ASYNCSRV and copyright information" )
+DEFSTR( 0x4f, IDS_SMNU,                   " " )
+DEFSTR( 0x50, IDS_SMNU_SIZE,              "Sizes the main window" )
+DEFSTR( 0x51, IDS_SMNU_MOVE,              "Moves the main window" )
+DEFSTR( 0x52, IDS_SMNU_MINIMIZE,          "Minimizes the main window to an icon" )
+DEFSTR( 0x53, IDS_SMNU_MAXIMIZE,          "Maximizes the main window to the full screen size" )
+DEFSTR( 0x54, IDS_SMNU_CLOSE,             "Closes the window and exits ASYNCSRV" )
+DEFSTR( 0x55, IDS_SMNU_RESTORE,           "Restores main window to previous size and position" )
+DEFSTR( 0x56, IDS_SMNU_TASKLIST,          "Switches applications with the Task Manager" )
+#endif 
+
+   /*
+    * Strings below here are not preloaded!
+    */
+
+   DEFSTR( 0x1000, IDS_ERR_DUMMY,          "%s")
+   DEFSTR( 0x1001, IDS_ERR_NOMEMORY,       "Not enough memory to run Communications Server.\n\nPlease contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1002, IDS_ERR_COMMANDLINE,    "Error Processing Command Line.\nOffending String: \042%s\042" )
+   DEFSTR( 0x1003, IDS_ERR_BADDLLVER,      "The version of '%s' on this system is old.\nASYNCSRV 1.0 requires version %d.00 or higher.\n\nPlease contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1004, IDS_ERR_CREATEWINDOW,   "Could not create the main window.\n\nPlease contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1005, IDS_ERR_DDESERVERINIT,  "Could not initialize the DDE server.\n\nPlease contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1006, IDS_ERR_STRINGLOAD,     "Could not access resources.\n\nPlease contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1007, IDS_ERR_INITCLASS,      "Could not register window classes.\n\nPlease contact C.E. Kindel, Jr Technical Support at (800) 234-9497.")
+
+   DEFSTR( 0x1010, IDS_ERR_COMMUNICATIONS, "Communications Error" )
+   DEFSTR( 0x1011, IDS_ERR_TECHSUPPORT,    "\n\nFor more information please consult the manual or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." ) ;
+   DEFSTR( 0x1012, IDS_ERR_DISCONNECTED,   "Communications with the C.E. Kindel, Jr Server has been unexpectedly interrupted.\nThis is often due to phone-line noise.%s" )
+   DEFSTR( 0x1013, IDS_ERR_COMMSETTINGS,   "Cannot connect due to invalid communications settings.\nUse the \042Communications Settings...\042 menu item.%s")
+   DEFSTR( 0x1014, IDS_ERR_MODEMSETTINGS,  "Cannot connect due to invalid modem settings.\nUse the \042Communications Settings...\042 menu item to select a valid modem.%s")
+   DEFSTR( 0x1015, IDS_ERR_MEMORYALLOC,    "A memory allocation failed in module %s, line %d.\nPlease contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1016, IDS_ERR_TIMER,          "Could not create a timer.\nClose other applications that may be using timers." )
+   DEFSTR( 0x1017, IDS_ERR_CONNECTFAILURE, "Could not connect to the C.E. Kindel, Jr Server.\nPlease try again.%s" )
+   DEFSTR( 0x1018, IDS_ERR_INITMODEM,      "Could not initialize the modem.\nMake sure the modem is connected and turned on.\nPlease try again.%s")
+   DEFSTR( 0x1019, IDS_ERR_NODIALTONE,     "The modem could not detect a dial tone.\nMake sure the modem is connected to the phone line.\nPlease try again.%s")
+   DEFSTR( 0x101a, IDS_ERR_COMMPORT,       "Could not open the communications port.\nPlease check the settings and try again.%s" )
+   DEFSTR( 0x101b, IDS_ERR_MODEMERR,       "The modem responded with an error code.\nMake sure the modem settings are correct and try again.%s" )
+   DEFSTR( 0x101c, IDS_ERR_BUSY_TRYAGAIN,  "All C.E. Kindel, Jr server phone lines are busy.  Would you like to try again now?" )
+   DEFSTR( 0x101d, IDS_ERR_NOCARRIER,      "The C.E. Kindel, Jr server is not answering the phone.  Please try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+
+   /* the order of the following errors (form _EC_OK through all of the 
+    * _EC_* errors) is IMPORTANT!  Do not reorder.
+    * These errors match the EXITCODE_ defines in bbs.h
+    */
+   DEFSTR( 0x1030, IDS_ERR_EC_OK,               " " )
+   DEFSTR( 0x1031, IDS_ERR_EC_ACK_BAD,          "Phone-line noise has disrupted the communications session.  The communications session will be aborted.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1032, IDS_ERR_EC_ACK_TIMEOUT,      "The Server is not acknowledging.  The communications session will be aborted.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." ) 
+   DEFSTR( 0x1033, IDS_ERR_EC_LOSTCONNECTION,   "Communications with the C.E. Kindel, Jr Server have been unexpectedly interrupted.  This is often due to phone-line noise.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1034, IDS_ERR_EC_RECEIVE_TIMEOUT,  "The Server has stopped sending data unexpectedly.  The communications session will be aborted.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1035, IDS_ERR_EC_RECEIVE_CRC,      "Phone-line noise has disrupted the communications session.  The communications session will be aborted.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1036, IDS_ERR_EC_GENERALFAILURE,   "There has been a general failure in communicating with the Server.  The communications session will be aborted.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1037, IDS_ERR_EC_FILE_RECEIVE,     "The file transfer failed.  The communications session will be aborted.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1038, IDS_ERR_EC_NAK,              "The C.E. Kindel, Jr Server has aborted the communications session.  This is often due to phone-line noise.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x1039, IDS_ERR_EC_DISKSPACE,        "The file transfer failed.  Not enough disk space.  The communications session will be aborted.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+   DEFSTR( 0x103a, IDS_ERR_EC_HOSTCANCEL,       "The file transfer was aborted by the server.  The communications session will be aborted.\n\nPlease try again or contact C.E. Kindel, Jr Technical Support at (800) 234-9497." )
+
+   /* COMMDLG.DLL Errors */
+
+   DEFSTR( 0x10FF, IDS_CDERR_GENERALCODES,    "General COMMDLG.DLL Error.  Code 0x%04X" )
+
+
+   /* Strings for COMM stuff (yanked from TTY) */
+
+   DEFSTR( 0x1100, IDS_COMPREFIX,         "COM" )
+
+   DEFSTR( 0x1101, IDS_BAUD110,           "110" )
+   DEFSTR( 0x1102, IDS_BAUD300,           "300" )
+   DEFSTR( 0x1103, IDS_BAUD600,           "600" )
+   DEFSTR( 0x1104, IDS_BAUD1200,          "1200" )
+   DEFSTR( 0x1105, IDS_BAUD2400,          "2400" )
+   DEFSTR( 0x1106, IDS_BAUD4800,          "4800" )
+   DEFSTR( 0x1107, IDS_BAUD9600,          "9600" )
+   DEFSTR( 0x1108, IDS_BAUD14400,         "14.4k" )
+   DEFSTR( 0x1109, IDS_BAUD19200,         "19.2k" )
+   DEFSTR( 0x110a, IDS_BAUD38400,         "38.4k" )
+   DEFSTR( 0x110b, IDS_BAUD56000,         "56k" )
+   DEFSTR( 0x110c, IDS_BAUD128000,        "128k" )
+   DEFSTR( 0x110d, IDS_BAUD256000,        "256k" )
+
+   DEFSTR( 0x110e, IDS_PARITYNONE,        "None" )
+   DEFSTR( 0x110f, IDS_PARITYEVEN,        "Even" )
+   DEFSTR( 0x1110, IDS_PARITYODD,         "Odd" )
+   DEFSTR( 0x111a, IDS_PARITYMARK,        "Mark" )
+   DEFSTR( 0x111b, IDS_PARITYSPACE,       "Space" )
+
+   DEFSTR( 0x111c, IDS_ONESTOPBIT,        "1" )
+   DEFSTR( 0x111d, IDS_ONE5STOPBITS,      "1.5" )
+   DEFSTR( 0x111e, IDS_TWOSTOPBITS,       "2" )
+
+/*
+ * DDE strings
+ */
+   DEFSTR( 0x1200, IDS_DDE_STATUS_READY,         "READY" )
+   DEFSTR( 0x1201, IDS_DDE_STATUS_BUSY,          "BUSY" )
+   DEFSTR( 0x1202, IDS_DDE_STATUS_ABORT,         "ABORT" )
+   DEFSTR( 0x1203, IDS_DDE_STATUS_CONNECTED,     "CONNECTED" )
+
+   DEFSTR( 0x1210, IDS_DDE_TOPIC_MAIN,           "ASYNCSRV" )
+
+   DEFSTR( 0x1220, IDS_DDE_ITEM_TOPICS,          SZDDESYS_ITEM_TOPICS )
+   DEFSTR( 0x1221, IDS_DDE_ITEM_SYSITEMS,        SZDDESYS_ITEM_SYSITEMS )
+   DEFSTR( 0x1222, IDS_DDE_ITEM_FORMATS,         SZDDESYS_ITEM_FORMATS )
+   DEFSTR( 0x1223, IDS_DDE_ITEM_HELP,            SZDDESYS_ITEM_HELP )
+   DEFSTR( 0x1224, IDS_DDE_ITEM_STATUS,          SZDDESYS_ITEM_STATUS )
+   DEFSTR( 0x1225, IDS_DDE_ITEM_LASTERR,         "LastError" )
+   DEFSTR( 0x1226, IDS_DDE_ITEM_ITEMS,           "ITEMS"  )
+   DEFSTR( 0x1227, IDS_DDE_ITEM_CLIENTHWND,      "CLIENTHWND" )
+   DEFSTR( 0x1228, IDS_DDE_ITEM_SD,              "SENDDATA" )
+   DEFSTR( 0x1229, IDS_DDE_ITEM_RD,              "RECDATA" )
+   DEFSTR( 0x122a, IDS_DDE_ITEM_MSGSENDBUF,      "MSGSENDBUF" ) 
+   DEFSTR( 0x122b, IDS_DDE_ITEM_MSGSENDSIZE,     "MSGSENDSIZE" ) 
+   DEFSTR( 0x122c, IDS_DDE_ITEM_MSGRECEIVEBUF,   "MSGRECEIVEBUF" ) 
+   DEFSTR( 0x122d, IDS_DDE_ITEM_MSGRECEIVESIZE,  "MSGRECEIVESIZE" ) 
+   DEFSTR( 0x122e, IDS_DDE_ITEM_MSGFLAGS,        "MSGFLAGS" ) 
+   DEFSTR( 0x122f, IDS_DDE_ITEM_MSG,             "MSG" ) 
+               
+   DEFSTR( 0x1241, IDS_DDE_CMD_CONNECT,          "Connect"  )
+   DEFSTR( 0x1242, IDS_DDE_CMD_DISCONNECT,       "DisConnect" )
+
+   DEFSTR( 0x1243, IDS_DDE_CMD_SENDMSG,          "SendBBSMsg" )
+
+
+#ifdef RC_INVOKED
+END
+#endif
+
+/************************************************************************
+ * End of File: ASYNCSRV.str
+ ***********************************************************************/
+

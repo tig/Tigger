@@ -1,0 +1,88 @@
+
+Microsoft (R) Program Maintenance Utility   Version 1.20
+Copyright (c) Microsoft Corp 1988-92. All rights reserved.
+
+*** ENGINE DEBUG WIN16 *** Building RES\ENGINE.RES
+Microsoft (R) Windows Resource Compiler  Version 3.10
+Copyright (C) Microsoft Corp. 1985-1992.  All rights reserved.
+
+*** ENGINE DEBUG WIN16 *** Linking...
+Microsoft (R) Windows Resource Compiler  Version 3.10
+Copyright (C) Microsoft Corp. 1985-1992.  All rights reserved.
+
+
+Reading RES\ENGINE.RES
+
+RES\ENGINE.RES...........................................
+Sorting preload segments and resources into fast-load section
+Copying segment 1 (5194 bytes)
+Copying segment 15 (6687 bytes)
+Writing resource 75.4 (150 bytes)
+Writing resource 1.6 (47 bytes)
+Writing resource 7.6 (25 bytes)
+Writing resource 8.6 (30 bytes)
+Writing resource 9.6 (33 bytes)
+Writing resource 17.6 (161 bytes)
+Writing resource 18.6 (31 bytes)
+Writing resource 19.6 (162 bytes)
+Writing resource 20.6 (69 bytes)
+Writing resource 21.6 (21 bytes)
+Writing resource 81.6 (108 bytes)
+Writing resource 83.6 (41 bytes)
+Writing resource 85.6 (27 bytes)
+Writing resource 257.6 (679 bytes)
+Writing resource 258.6 (350 bytes)
+Writing resource 1281.6 (824 bytes)
+Writing resource 1793.6 (93 bytes)
+Copying segment 2 (3019 bytes)
+Copying segment 3 (292 bytes)
+Copying segment 4 (7811 bytes)
+Copying segment 5 (6834 bytes)
+Copying segment 6 (6338 bytes)
+Copying segment 7 (4694 bytes)
+Copying segment 8 (3502 bytes)
+Copying segment 9 (2621 bytes)
+Copying segment 10 (3789 bytes)
+Copying segment 11 (4317 bytes)
+Copying segment 12 (1968 bytes)
+Copying segment 13 (10486 bytes)
+Copying segment 14 (3317 bytes)
+Writing resource 342.14 (20 bytes)
+Writing resource 324.14 (48 bytes)
+Writing resource 323.14 (48 bytes)
+Writing resource 341.14 (48 bytes)
+Writing resource 21.2 (224 bytes)
+Writing resource 200.5 (947 bytes)
+Writing resource 201.5 (1099 bytes)
+Writing resource 202.5 (505 bytes)
+Writing resource 203.5 (474 bytes)
+Writing resource 204.5 (207 bytes)
+Writing resource 206.5 (273 bytes)
+Writing resource 205.5 (182 bytes)
+Writing resource 207.5 (351 bytes)
+Writing resource 208.5 (873 bytes)
+Writing resource DLGINCLUDE.10 (30 bytes)
+Writing resource 1.16 (412 bytes)
+Writing resource 1.3 (744 bytes)
+Writing resource 2.3 (304 bytes)
+Writing resource 3.3 (744 bytes)
+Writing resource 4.3 (744 bytes)
+Writing resource 5.3 (304 bytes)
+Writing resource 6.3 (744 bytes)
+Writing resource 7.3 (744 bytes)
+Writing resource 8.3 (304 bytes)
+Writing resource 9.3 (744 bytes)
+Writing resource 10.3 (744 bytes)
+Fastload area is 18560 bytes at offset 0x940.
+Microsoft (R) Symbol File Generator  Version 4.11
+Copyright (C) Microsoft Corp 1984-1988.  All rights reserved.
+
+	Program entry point at 0001:0054
+c:\!\winprt2\engine\engine.dll => c:\!\winprt2\build\engine.dll
+     1 file(s) copied
+c:\!\winprt2\engine\engine.sym => c:\!\winprt2\build\engine.sym
+     1 file(s) copied
+c:\!\winprt2\engine\engine.lib => c:\!\winprt2\lib\engine.lib
+     1 file(s) copied
+c:\!\winprt2\engine\src\engine.h => c:\!\winprt2\inc\engine.h
+     1 file(s) copied

@@ -1,0 +1,16 @@
+#include "windows.h"
+#include "testd.h"
+
+LBTEST ICON "test.ICO"
+
+ICONS  BITMAP "bitmap.bmp"
+
+LBTEST MENU
+BEGIN
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About", IDM_ABOUT
+    END
+END
+
+#include "about.dlg"

@@ -1,0 +1,16 @@
+MEM      =-AS
+LIB      =slibcew
+CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3
+LINKOPTS =/NOD/NOE/CO
+
+all: status.exe
+
+status.res: status.rc statusd.h status.dlg status.ico
+    rc -r status.rc
+
+status.obj: status.c status.h statusd.h
+    cl $(CLOPTS) status.c > status.err
+
+status.exe: status.obj status.def status.res
+    link $(LINKOPTS) status,,, libw $(LIB), status.def
+    rc -v status.res

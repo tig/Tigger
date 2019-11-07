@@ -1,0 +1,6 @@
+filename.cpp
+filename.cpp(20) : error C2511: 'Set' : overloaded member function not found in 'CFilename'
+filename.cpp(134) : error C2065: 'n' : undeclared identifier
+filename.cpp(205) : error C2061: syntax error : identifier 'n'
+filename.cpp(208) : error C2061: syntax error : identifier 'm'
+filename.cpp(213) : error C2065: 'm' : undeclared identifier

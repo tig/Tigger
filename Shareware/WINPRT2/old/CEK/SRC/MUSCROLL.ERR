@@ -1,0 +1,5 @@
+src\muscroll.c
+src\muscroll.c(886) : warning C4047: 'initializing' : different levels of indirection
+src\muscroll.c(1271) : warning C4047: '=' : different levels of indirection
+src\muscroll.c(1332) : warning C4047: 'argument' : different levels of indirection
+src\muscroll.c(1332) : warning C4024: 'SetWindowWord' : different types for formal and actual parameter 3

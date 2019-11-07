@@ -1,0 +1,17 @@
+; This help project requires hc 3.1
+;This help file documents both the user interface and the API for AsyncSrv, The Kindel Async Comm Server for Windows.
+[OPTIONS]
+errorlog = asyncsrv.err
+title = Kindel Async Comm Server
+contents = Contents
+compress = 0
+warning = 3
+report = 1
+
+[FILES]
+asyncsrv.rtf
+api.rtf
+
+[CONFIG]
+BrowseButtons()
+

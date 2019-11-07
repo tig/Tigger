@@ -1,0 +1,30 @@
+MEM      =-AM
+MYLIB      =mlibcew
+#CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3 -DDEBUG
+CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3
+LINKOPTS =/NOD/NOE/CO
+
+all: print.exe
+
+print.exe: print.def print.res print.obj prt.obj passthrw.obj extdev.obj selprn\selprn.obj dprintf.obj
+    link $(LINKOPTS) @print.lnk
+    rc -v print.res
+
+print.res: print.rc printd.h print.dlg print.ico
+    rc -r print.rc
+
+.c.obj  :   
+        @echo Compiling $*.c ($(CLOPTS) -NT $*)... >aux
+        $(CC) $(CLOPTS) -NT $* $*.c > $*.err
+        @type $*.err > aux
+
+
+print.obj: print.c print.h printd.h selprn.h
+
+prt.obj: prt.h print.h printd.h prt.c
+
+passthrw.obj: passthrw.c prt.h print.h
+
+extdev.obj: extdev.c extdev.h printd.h
+
+dprintf.obj: dprintf.c

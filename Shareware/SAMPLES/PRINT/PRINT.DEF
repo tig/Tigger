@@ -1,0 +1,29 @@
+; module-definition file for print -- used by LINK.EXE
+
+NAME            printdemo
+
+DESCRIPTION     'Sample Microsoft Windows Application'
+
+EXETYPE         WINDOWS	
+
+STUB	        'WINSTUB.EXE'
+		
+
+CODE            PRELOAD MOVEABLE DISCARDABLE
+
+DATA            PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE        2048
+STACKSIZE       5120
+
+; All functions that will be called by any Windows routine
+; MUST be exported.
+
+EXPORTS
+	MainWndProc   @1   ; name of window processing function
+	About	      @2   ; name of "About" processing function
+        AbortProc     @3
+        PrintDlgProc  @4
+        ExtDevModeDlgProc @5
+        SelPrinterDlgProc @6
+        

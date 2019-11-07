@@ -1,0 +1,43 @@
+;************************************************************************
+;*
+;*     Project:  ITSYTEST.EXE
+;*
+;*      Module:  ITSYTEST.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              ITSYTEST
+
+DESCRIPTION       'Print Server'
+
+EXETYPE           WINDOWS
+
+STUB              'WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  ITSYTEST      PRELOAD MOVEABLE DISCARDABLE
+                  PRECOMP      MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          16000
+
+STACKSIZE         8192
+
+EXPORTS           
+                  fnItsyWnd            @100
+                  fnMainWnd            @102
+
+;/***********************************************************************
+;* End of File: ITSYTEST.def
+;************************************************************************
+

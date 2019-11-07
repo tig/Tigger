@@ -1,0 +1,62 @@
+// MAKEHELP.BAT generated Help Map file.  Used by OLE2VIEW.HPJ. 
+ 
+// Commands (ID_* and IDM_*) 
+HID_OBJECTVIEW                          0x10065
+HID_IFACEVIEW                           0x10066
+HID_TREEVIEW                            0x10067
+HIDM_OBJECT                             0x10082
+HIDM_INTERFACE                          0x10084
+HID_VIEW_CLASSIDS                       0x18000
+HID_VIEW_SHOWALLINTERFACES              0x18001
+HID_FILE_SHOWVERSION                    0x18002
+HID_FILE_RUNREGEDIT                     0x18003
+HID_IFACEVIEW_IFACEVIEWER               0x18004
+HID_VIEW_REFRESH                        0x18005
+HID_IFACEVIEW_GETINTERFACES             0x18006
+HID_INTERFACES_USECLSCTXINPROCSERVER    0x18007
+HID_INTERFACES_USECLSCTXINPROCHANDLER   0x18008
+HID_IFACES_USEINPROCSERVER              0x18009
+HID_IFACES_USEINPROCHANDLER             0x1800A
+HID_IFACES_USELOCALSERVER               0x1800B
+HID_OBJECTS_SHOWINTERNAL                0x1800C
+HID_FILE_VIEWTYPELIB                    0x1800D
+HID_INTERFACES_SHOWCLASSFACTORYOBJECTINTERFACES	0x1800E
+HID_INTERFACES_SHOWCFI                  0x1800F
+HID_FILE_BINDTOAFILE                    0x18010
+HID_VIEW_TEST                           0x18011
+HID_OBJECTS_SHOWOLE10OBJECTS            0x18012
+HID_OBJECTS_SHOWNOTINSERTABLEOBJECTS    0x18013
+HID_OBJECTS_SHOWCONTAINERS              0x18014
+HID_OBJECTS_SHOWCONTROLS                0x18015
+HID_OBJECTS_SHOWTYPELIBS                0x18016
+HID_OBJECT_VERIFY                       0x18018
+HID_OBJECT_DELETE                       0x18019
+HID_OBJECTS_SHOWINSERTABLE              0x1801A
+HID_OBJECT_RELEASE                      0x18029
+HID_OBJECT_CREATE                       0x1802C
+HID_OBJECT_VIEWTYPELIB                  0x1802D
+HID_OBJECT_VIEWINTERFACE                0x1802F
+HID_OBJECT_VIEW                         0x18032
+HID_VIEW_HIDDENCOMPONENTCATEGORIES      0x18033
+HID_VIEW_HIDDENCOMCATS                  0x18034
+HID_OBJECT_CREATE_ON                    0x18035
+HID_OBJECT_ATSTORAGE                    0x18036
+HID_INDICATOR_CF                        0x1E706
+HID_INDICATOR_UNK                       0x1E707
+ 
+// Prompts (IDP_*) 
+ 
+// Resources (IDR_*) 
+HIDR_MAINFRAME                          0x20002
+HIDR_MAINFRAME_U                        0x20072
+HIDR_MAINFRAME_A                        0x20073
+HIDR_VERSION1                           0x20078
+ 
+// Dialogs (IDD_*) 
+HIDD_ABOUTBOX                           0x20064
+HIDD_IFACEDIALOG                        0x20067
+HIDD_VERSIONINFO                        0x20076
+HIDD_REGVIEW                            0x2007A
+HIDD_SERVERINFO                         0x20083
+ 
+// Frame Controls (IDW_*) 

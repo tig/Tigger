@@ -1,0 +1,30 @@
+/* wg.rc */
+
+#include "windows.h"
+#include "wg.h"
+
+wingrep    ICON    wg.ico
+about      BITMAP  about.bmp
+
+WINGREP    DIALOG LOADONCALL MOVEABLE DISCARDABLE 0, 0, 175, 175
+CAPTION    "WinGrep! -- V0.1 Alpha"
+STYLE      WS_CHILD | WS_VISIBLE
+BEGIN
+   CONTROL "Search for:", -1, "static", SS_LEFT | WS_CHILD, 2, 4, 47, 9
+   CONTROL "Search on:", -1, "static", SS_LEFT | WS_CHILD, 96, 4, 44, 9
+   CONTROL "Found at:", -1, "static", SS_LEFT | WS_CHILD, 2, 58, 45, 8
+   CONTROL "", IDName, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 2, 15, 83, 12
+   CONTROL "", IDPath, "listbox", LBS_NOTIFY | LBS_SORT | LBS_MULTIPLESEL | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 108, 15, 30, 40
+   CONTROL "Go", IDOK, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 144, 33, 24, 14
+   CONTROL "Exit", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 144, 51, 24, 14
+   CONTROL "", IDFound, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 2, 69, 170, 104
+   CONTROL "About", IDAbout, "button", BS_USERBUTTON | WS_TABSTOP | WS_CHILD, 148, 4, 16, 17
+   CONTROL "Searching:", -1, "static", SS_LEFT | WS_CHILD, 2, 36, 40, 8
+   CONTROL "",IDStatus, "static", SS_LEFT | WS_CHILD, 2, 44, 100, 8
+END
+
+ABOUT      DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 240, 80
+STYLE      WS_DLGFRAME | WS_POPUP
+BEGIN
+   CONTROL "WinGrep", IDOK, "BitClass", WS_CHILD, 0, 0, 230, 70
+END

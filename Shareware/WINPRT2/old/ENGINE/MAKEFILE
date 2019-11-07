@@ -1,0 +1,263 @@
+ #*****************************************************************************
+ #
+ #     Project:  ENGINE.DLL 1.x
+ #
+ #      Module:  makefile
+ #
+ #   Author(s):  Charles E. Kindel, Jr. (cek)
+ #
+ #*****************************************************************************
+
+MAINTARGET=ENGINE
+
+# $(WIN32) can be either WIN32 or WIN16
+WIN32=WIN16
+
+!IF "$(WIN32)"=="WIN32"
+CPU=i386
+!ENDIF
+
+#
+# Directories.  Modify to suit your directory structure.
+#
+MYRES = RES\ 
+MYINC = SRC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+# if PUTEXE is defined the dll/exe will be copied from the root to
+PUTEXE  = ..\BUILD\
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  = ..\LIB\
+
+# if pubinc is define the include file will be copied there
+PUTINC  = ..\INC\
+
+
+#
+# List of object files.
+#
+OBJ_FILES =     $(MYOBJ)CONFIG.OBJ\
+                $(MYOBJ)PRINTER.OBJ\
+                $(MYOBJ)HF.OBJ\
+                $(MYOBJ)PAGE.OBJ\
+                $(MYOBJ)UTIL.OBJ\
+                $(MYOBJ)PREVIEW.OBJ\
+                $(MYOBJ)PAINT.OBJ\
+                $(MYOBJ)FTD.OBJ\
+                $(MYOBJ)DEFFTD.OBJ\
+                $(MYOBJ)BITMAP.OBJ\
+                $(MYOBJ)ASSOCIAT.OBJ\
+                $(MYOBJ)WINFILE.OBJ
+
+# $(DEBUG) can be either DEBUG or NODEBUG
+!IFDEF DEBUG
+!   IF "$(DEBUG)"!="NODEBUG"
+DEBUG=DEBUG
+!   ELSE
+DEBUG=NODEBUG
+!   ENDIF
+!ELSE
+DEBUG=NODEBUG
+!ENDIF
+
+!IF "$(WIN32)"=="WIN32"
+DEF_EXT=D32
+!else 
+DEF_EXT=DEF
+!endif
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+ERR_OUTPUT=$(MYSRC)$(@B).ERR
+#ERR_OUTPUT=CON
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+
+#  $(CL2) is for API specific flags (i.e. Win16 v. Win32)
+!IF "$(WIN32)"=="WIN32"
+
+!IF "$(DEBUG)" == "DEBUG"
+
+CLFLAGS     = -W3 -WX -c -G3d -DWIN32 -Di386=1 -Od -Zi -D$(DEBUG)
+LINKFLAGS   = -subsystem:windows -entry:WinMainCRTStartup -debug:full -debugtype:cv
+LIBS        = libcmt.lib $(LIB)\*.lib wdb32.lib
+
+!ELSE
+
+CLFLAGS     = -W3 -WX -c -G3d -DWIN32 -Di386=1
+LINKFLAGS   = -subsystem:windows -entry:WinMainCRTStartup 
+LIBS        = libcmt.lib $(LIB)\*.lib
+
+!ENDIF
+
+CC          = cl386
+RCOPTS      = -r -DWIN32 -D$(DEBUG) -iSRC;INC;RES
+
+!ELSE
+
+!IF "$(DEBUG)" == "DEBUG"
+
+CLFLAGS     = -W3 -WX -nologo -c -AMw -G2sw -Owd -Zip -D$(DEBUG)
+LINKFLAGS   = /NOLOGO/BATCH/NOD/NOE/A:16/CO/M
+
+!ELSE
+
+CLFLAGS     = -W3 -WX -nologo -c -AMw -G2sw -Owt -Zp 
+LINKFLAGS   = /NOLOGO/BATCH/NOD/NOE/A:16/M
+
+!ENDIF
+
+RCOPTS      = -r -D$(DEBUG) -iSRC;INC;RES
+RESOPTS     = -v -t
+LIBS        = libw mdllcew commdlg shell wdb cek ctl3d
+
+!ENDIF
+
+      
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+
+BANNER      = $(MAINTARGET): **** $(DEBUG) *** $(DEBUG) *** $(DEBUG) *** $(DEBUG) ****
+
+
+#
+# Version stamping stuff
+#
+VERINCS = $(MYSRC)VERSION.H $(MYRES)$(MAINTARGET).RCV MAKEFILE
+
+#
+# Resources
+#
+
+LRCINCS = $(VERINCS)\
+          $(MYINC)res.h\
+          $(MYRES)$(MAINTARGET).rc\
+          $(MYRES)$(MAINTARGET).dlg\
+          $(MYRES)$(MAINTARGET).str\
+          $(MYRES)$(MAINTARGET).ico
+
+# 
+# Library dependencies
+# 
+LMISC   =   MAKEFILE\
+            $(MAINTARGET).$(DEF_EXT)
+
+LINCS   =   $(MYOBJ)PRECOMP.PCH $(MYINC)$(MAINTARGET).H $(MYRES)$(MAINTARGET).STR
+
+LOBJS   =\
+!IFNDEF WIN32
+            $(MYOBJ)LIBENTRY.OBJ\
+!ENDIF
+            $(MYOBJ)PRECOMP.OBJ\
+            $(MYOBJ)$(MAINTARGET).OBJ\
+            $(MYOBJ)WEP.obj
+
+LOBJS2  =   $(OBJ_FILES)
+
+#
+#   BUILD RULES
+#
+all : $(MAINTARGET).DLL
+
+#
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CLFLAGS) $(PCHFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C > $(ERR_OUTPUT)
+   @SET CL=
+   TYPE $(MYSRC)$(@B).ERR >$(OUTPUT)
+
+
+$(MAINTARGET).DLL : $(LOBJS) $(LOBJS2) $(MYRES)$(MAINTARGET).res $(MAINTARGET).$(DEF_EXT)
+   @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Linking...
+!IF "$(WIN32)"=="WIN32"
+   link $(LINKFLAGS) -out:$(MAINTARGET).DLL $(LOBJS) $(LOBJS2) $(MYRES)$(MAINTARGET).RES $(LIBS)
+!ELSE
+   link @<<
+$(LINKFLAGS)+
+$(LOBJS)+
+$(LOBJS2)
+$(MAINTARGET).DLL
+$(MAINTARGET).MAP
+$(LIBS)
+$(MAINTARGET).$(DEF_EXT)
+<<
+   rc $(RESOPTS) $(MYRES)$(MAINTARGET).res $(MAINTARGET).DLL
+   @mapsym $(MAINTARGET).map
+   @implib /nologo $(MAINTARGET).LIB $(MAINTARGET).DEF
+!ENDIF
+!IFDEF PUTEXE
+   @copy $(MAINTARGET).DLL $(PUTEXE)
+   @copy $(MAINTARGET).SYM $(PUTEXE)
+!ENDIF
+!IFDEF PUTLIB
+   @copy $(MAINTARGET).LIB $(PUTLIB)
+!ENDIF
+!IFDEF PUTLIB
+   @copy $(MYSRC)$(MAINTARGET).H $(PUTINC)
+!ENDIF
+   @echo.>$(OUTPUT)
+   @echo $(BANNER)>$(OUTPUT)
+
+$(MYOBJ)PRECOMP.OBJ :  $(MYINC)PRECOMP.H
+   @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Pre-compiling $(@B)... >$(OUTPUT)
+   @SET CL=$(CLFLAGS)
+   $(CC) -YcPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH -Fo$(MYOBJ)PRECOMP.OBJ $(MYSRC)PRECOMP.C > $(ERR_OUTPUT)
+   @SET CL=
+
+$(MYHELP)$(MAINTARGET).HLP: help\$(MAINTARGET).rtf help\map.h help\$(MAINTARGET).hpj
+   chdir HELP
+   $(MAKE)
+   copy $(MAINTARGET).HLP ..
+   chdir ..
+
+!IFNDEF WIN32
+$(MYOBJ)LIBENTRY.OBJ:  $(MYSRC)LIBENTRY.ASM
+    @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Assembling $(@B)
+    masm -I.\  $(MYSRC)LIBENTRY.asm,$(MYOBJ)LIBENTRY.OBJ;
+!ENDIF
+
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS)
+    @echo *** $(MAINTARGET) $(DEBUG) $(WIN32) *** Building $(MYRES)$(MAINTARGET).RES
+!IF "$(WIN32)"=="WIN32"
+    rc $(RCOPTS) -fo $(MYRES)$(MAINTARGET).TMP $(MYRES)$(MAINTARGET).RC
+    cvtres -$(CPU) $(MYRES)$(MAINTARGET).tmp -o $(MYRES)$(MAINTARGET).res
+    del $(MYRES)$(MAINTARGET).TMP
+!ELSE
+    rc $(RCOPTS) $(MYRES)$(MAINTARGET).rc $(MYRES)$(MAINTARGET).RES
+!ENDIF
+
+
+#   MISC. STUFF
+
+.ignore : 
+clean       :  
+                !del $(MYOBJ)*.obj
+                !del $(MYOBJ)*.exe
+                !del $(MYOBJ)*.pch
+                !del *.map
+                !del *.sym
+                !del $(MYRES)*.res
+                !del $(MAINTARGET).DLL
+                !del $(MAINTARGET).LIB
+                !del $(MYSRC)*.err
+                @echo *** DONE ***
+
+        

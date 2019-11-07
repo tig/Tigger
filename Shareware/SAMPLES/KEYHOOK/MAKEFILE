@@ -1,0 +1,168 @@
+ #***********************************************************************
+ #
+ #     Project:  keyhk.DLL
+ #
+ #      Module:  makefile
+ #
+ #   Author(s):  Charles E. Kindel, Jr. (cek)
+ #
+ #      System:  Microsoft Windows 3.x, MS-DOS 5.0, Compiled with Microsoft  
+ #               C 6.00A and Microsoft MASM 5.1.                             
+ #                                                                           
+ #***********************************************************************
+
+
+MAINTARGET=KEYHK.DLL
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+
+# comment the following macros out if this is a RELEASE make.
+#DEBUG   =   TRUE
+
+
+# set these macros to control where stuff is placed/redirected
+
+OUTPUT  =   con
+
+# if putdll is defined the dll/exe will be copied from the root to
+# PUTDLL
+PUTDLL  =   TEST
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  =   OBJ
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+#
+#   keyhk.DLL
+#
+
+!IFDEF DEBUG
+
+LAS =   masm /Zi
+LCC =   cl -c -DDEBUG -Alnw -G2sw -Owd -W3 -Ziped
+LLN =   link /NOD/NOE/A:16/CO
+LRC1=   rc -r -DDEBUG -iINC;RES
+LRC2=   rc -v -t -30
+LXX =   DEBUG
+
+!ELSE
+
+LAS =   masm
+LCC =   cl -c -Alnw -G2sw -Ows -W3 -Zpe
+LLN =   link /NOD/NOE/A:16
+LRC1=   rc -r -iINC;RES
+LRC2=   rc -v -t -30
+LXX =   RELEASE
+
+!ENDIF
+
+LZZ =   keyhk: **** $(LXX) *** $(LXX) *** $(LXX) *** $(LXX) ****
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = INC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = $(MYINC)VERSION.H $(MYRES)keyhk.RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(VERINCS)\
+          $(MYINC)isz.h\
+          $(MYINC)dlgs.h
+
+# 
+# Library dependencies
+# 
+LMISC   =   makefile\
+            keyhk.lnk\
+            keyhk.def
+
+LINCS   =   $(MYINC)keyhk.h
+
+LOBJS   =   $(MYOBJ)LIBENTRY.OBJ\
+            $(MYOBJ)WEP.OBJ\
+            $(MYOBJ)keyhk.OBJ\
+            $(MYOBJ)KEYHOOK.OBJ
+
+
+#
+#   BUILD RULES
+#
+all : $(MAINTARGET)
+
+#   keyhk.DLL build rules
+
+$(MAINTARGET)  :   $(LOBJS) $(MYRES)keyhk.res keyhk.def
+                   $(LLN) @keyhk.lnk
+                   $(LRC2) $(MYRES)keyhk.res keyhk.dll
+                   implib keyhk.lib keyhk.def
+                   copy keyhk.dll test
+                   @echo. >$(OUTPUT)
+                   @echo $(LZZ) >$(OUTPUT)
+                   @echo. >$(OUTPUT)
+
+$(MYRES)keyhk.res:   $(MYRES)keyhk.rc $(LINCS) $(LRCINCS)
+    @echo. >$(OUTPUT)
+    @echo *** Building $(MYRES)keyhk.RES
+    $(LRC1) $(MYRES)keyhk.rc $(MYRES)keyhk.RES
+
+$(MYOBJ)LIBENTRY.OBJ: $(MYSRC)LIBENTRY.asm
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Assembling $(@B).ASM to $@... >$(OUTPUT)
+    $(LAS) $(MYSRC)$(@B), $@;
+
+$(MYOBJ)WEP.OBJ:   $(MYSRC)WEP.C
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Compiling $(@B).C to $@... >$(OUTPUT)
+    $(LCC) -Fo$@ -NT$(@B) $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @type $(MYSRC)$(@B).ERR > $(OUTPUT)
+
+$(MYOBJ)keyhk.OBJ:  $(MYSRC)keyhk.C $(MYINC)keyhk.H $(VERINCS)
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Compiling $(@B).C to $@... >$(OUTPUT)
+    $(LCC) -Fo$@ -NT$(@B) $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @type $(MYSRC)$(@B).ERR > $(OUTPUT)
+
+$(MYOBJ)KEYHOOK.OBJ:   $(MYSRC)KEYHOOK.C
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Compiling $(@B).C to $@... >$(OUTPUT)
+    $(LCC) -Fo$@ -NT$(@B) $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @type $(MYSRC)$(@B).ERR > $(OUTPUT)
+
+
+#   MISC. STUFF
+
+zip         :   clean
+                pkzip -psr keyhk.zip *.*
+
+.ignore : 
+clean       :  
+                del $(MYOBJ)*.obj
+                del *.map
+                del $(MYRES)*.res
+                del *.dll
+                del $(MYOBJ)*.lib
+                del $(MYSRC)*.err
+                del *.zip
+                @echo *** DONE ***
+
+ship        :   all
+                !del $(MYOBJ)*.obj
+                !del *.map
+                !del $(MYRES)*.res
+                !del $(MYSRC)*.err
+                !del *.zip
+                touch *.*
+                pkzip -prs keyhk.zip *.*

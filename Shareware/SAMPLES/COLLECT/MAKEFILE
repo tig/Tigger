@@ -1,0 +1,39 @@
+#------------------------
+# make file
+#------------------------
+
+all : app.exe
+
+OBJS = main.obj app.obj appcf.obj collect.obj item.obj enumvar.obj
+COMPILE_OPTS = -c -GA -GEs -Od -W3 -Zipe -AM 
+LINK_OPTS = /CO /MAP /NOD /align:16
+LIBS =  mlibcew libw ole2 compobj ole2disp typelib
+
+app.res : app.rc app.ico app.h
+     rc  -r app.rc
+     
+app.tlb :: app.odl 
+     wx /w mktyplib /nocpp /h tlb.h /o app.log /tlb app.tlb app.odl 
+     type app.log
+
+main.obj : main.cpp app.h tlb.h
+     cl $(COMPILE_OPTS) main.cpp     
+app.obj : app.cpp app.h tlb.h
+     cl $(COMPILE_OPTS) app.cpp
+collect.obj : collect.cpp app.h tlb.h
+     cl $(COMPILE_OPTS) collect.cpp   
+enumvar.obj : enumvar.cpp app.h tlb.h
+     cl $(COMPILE_OPTS) enumvar.cpp       
+item.obj : item.cpp app.h tlb.h
+     cl $(COMPILE_OPTS) item.cpp            
+appcf.obj : appcf.cpp app.h tlb.h
+     cl $(COMPILE_OPTS) appcf.cpp
+
+app.exe :: app.tlb $(OBJS) app.def app.res 
+     link $(LINK_OPTS) $(OBJS), app, app, $(LIBS), app
+     mapsym app
+     rc  app.res
+     
+app.exe ::  app.res
+     rc app.res
+

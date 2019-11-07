@@ -1,0 +1,60 @@
+;************************************************************************
+;*
+;*     Project:  DBEDIT.EXE
+;*
+;*      Module:  DBEDIT.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              DBEDIT
+
+DESCRIPTION       'Font Shopper Database Editor'
+
+EXETYPE           WINDOWS
+
+STUB              'OBJ\\WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  DBEDIT        PRELOAD MOVEABLE DISCARDABLE
+                  CONFIG       PRELOAD MOVEABLE DISCARDABLE
+                  INIT         PRELOAD MOVEABLE DISCARDABLE
+                  WNDMGR       PRELOAD MOVEABLE DISCARDABLE
+                  BOTSTAT      PRELOAD MOVEABLE DISCARDABLE
+                  CMD          PRELOAD MOVEABLE DISCARDABLE
+                  LISTBOX      PRELOAD MOVEABLE DISCARDABLE
+                  FILE        PRELOAD MOVEABLE DISCARDABLE
+                  FILEIO       PRELOAD MOVEABLE DISCARDABLE
+                  MENU         MOVEABLE DISCARDABLE
+                  SUBDLGS      MOVEABLE DISCARDABLE
+                  WINTIME      MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          16000
+
+STACKSIZE         8000
+
+EXPORTS           
+                  fnAbout              @100
+
+                  fnMainWnd            @102
+                  fnlbWnd              @103
+                  fnPaintEnum          @104
+                  fnGetFontListEnum    @105
+                  fnLBSub              @110
+
+                  
+
+;/***********************************************************************
+;* End of File: DBEDIT.def
+;************************************************************************
+

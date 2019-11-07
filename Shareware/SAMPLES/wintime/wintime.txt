@@ -1,0 +1,227 @@
+*********************************************************************
+
+                   WINTIME - Windows Time Functions
+                         By ckindel 12/02/91
+
+History
+
+03/13/91 - Minor changes and some documentation.
+
+03/15/91 - Previous version would gp fault if sLongDate did not have
+           single quotes around the separator strings.  Control Panel
+           always writes with the quotes, but some other application
+           appears to be modifying this string and does not add the
+           quotes.  The WININI2.TXT documents sLongDate as not having
+           quotes, so this should have been done in the first place
+           anyway.
+
+12/02/91 - Re-wrote LongDate formatting code after discovering major
+           bugs in previous version.  Some contries simply were not
+           being formatted correctly.  
+
+*********************************************************************
+
+This article describes a set of functions that are available in
+the Software Library for formatting time and date strings using
+the international settings in the Windows 3.0 Control Panel.
+
+Windows 3.0 allows the user to specify, via the Control Panel, 
+the format of the date and time.  The Windows SDK provides no
+functionality for formatting strings according to the Control
+Panel's settings.  The 'C' module WINTIME.C provides five 
+functions that an application developer can use to format the
+date and time.
+
+WINTIME.C was developed to be as flexible and portable as 
+possible.  The module can be plugged into an application or
+DLL with no modification.
+
+Included with the WINTIME.C file is a sample application that
+demonstrates how to use the functions.
+
+The functions provided by WINTIME are documented below:
+
+
+LPSTR FAR PASCAL TimeGetCurDate( LPSTR lpszDate, WORD wFlags )
+
+  Description:
+    Function returns the current date, formatted the way windows
+    wants it!
+  
+  Arguments:
+    Type/Name
+             Description
+  
+    LPSTR lpszDate
+             Points to a buffer that is to recieve the date.  Must be
+             large enough to hold the longest date possible (64 bytes
+             should do it).
+  
+    struct tm *lpTM
+             Pointer to a "tm" structure (from time.h) that contains
+             the time and date you want formatted.
+  
+    WORD  wFlags
+             Specifies flags that modify the behavior of the function.
+             May be any of the following.
+  
+          Flag              Meaning
+          0                 The date will be formatted exactly the way
+                            Control Panel does it, using Windows'
+                            international settings.  The date will be in
+                            the Long Date format (Sunday, January 1, 
+                            1991).
+  
+          DATE_SHORTDATE    Forces the date to be formatted using the
+                            Short Date Format (1/01/91).
+  
+          DATE_NODAYOFWEEK  The date will be formatted without the
+                            day of week.  This flag may not be used 
+                            with the DATE_SHORTDATE flag.
+                            (i.e. January 1, 1991)
+
+
+LPSTR FAR PASCAL TimeGetCurTime( LPSTR lpszTime, WORD wFlags )
+
+  Description: 
+    Function returns the current time, formatted the way windows
+    wants it!
+
+  Arguments:
+    Type/Name
+             Description
+
+    LPSTR lpszTime
+             Points to a buffer that is to recieve the formatted time.
+             Must be large enough to hold the longest date possible
+             (64 bytes should do it).
+
+    WORD  wFlags
+             Specifies flags that modify the behavior of the function.
+             May be any of the following.
+
+          Flag              Meaning
+          0                 The time will be formatted exactly the way
+                            Control Panel does it, using Windows'
+                            international settings. (i.e. 1:00:00 AM)
+
+          TIME_12HOUR       The time will be formatted in 12 hour format
+                            regardless of the WIN.INI internationalization
+                            settings.  This flag may not be used with the
+                            TIME_24HOUR flag. (i.e. 2:32:10 PM)
+                            
+          TIME_24HOUR       The time will be formatted in 24 hour format
+                            regardless of the WIN.INI internationalization
+                            settings.  This flag may not be used with the
+                            TIME_12HOUR flag. (i.e. 14:32:10)
+
+          TIME_NOSECONDS    The time will be formatted without seconds.
+                            (i.e. 2:32 PM)
+
+
+LPSTR FAR PASCAL TimeFormatDate( LPSTR lpszDate,
+                                   struct tm FAR *lpTM,
+                                   WORD wFlags )
+
+  Description:
+    Function returns the date, specified in the tm structure,
+    formatted the way windows
+    wants it!
+
+  Arguments:
+    Type/Name
+             Description
+
+    LPSTR lpszDate
+             Points to a buffer that is to recieve the date.  Must be
+             large enough to hold the longest date possible (64 bytes
+             should do it).
+
+    struct tm *lpTM
+             Pointer to a "tm" structure (from time.h) that contains
+             the time and date you want formatted.
+
+    WORD  wFlags
+             Specifies flags that modify the behavior of the function.
+             May be any of the following.
+
+          Flag              Meaning
+          0                 The date will be formatted exactly the way
+                            Control Panel does it, using Windows'
+                            international settings.  The date will be in
+                            the Long Date format 
+                            (Sunday, January 1, 1991).
+
+          DATE_SHORTDATE    Forces the date to be formatted using the
+                            Short Date Format (1/01/91).
+
+          DATE_NODAYOFWEEK  The date will be formatted without the
+                            day of week.  This flag may not be used with
+                            the DATE_SHORTDATE flag.
+                            (i.e. January 1, 1991)
+
+
+LPSTR FAR PASCAL TimeFormatTime( LPSTR lpszTime,
+                                   struct tm FAR *lpTM,
+                                   WORD wFlags )
+
+  Description:
+    Function returns the time, specified in the tm structure,
+    formatted the way windows
+    wants it!
+
+  Arguments:
+    Type/Name
+             Description
+
+    LPSTR lpszTime
+             Points to a buffer that is to recieve the formatted time.
+             Must be large enough to hold the longest date possible
+             (64 bytes should do it).
+
+    struct tm *lpTM
+             Pointer to a "tm" structure (from time.h) that contains
+             the time and date you want formatted.
+
+    WORD  wFlags
+             Specifies flags that modify the behavior of the function.
+             May be any of the following.
+
+          Flag              Meaning
+          0                 The time will be formatted exactly the way
+                            Control Panel does it, using Windows'
+                            international settings. (i.e. 1:00:00 AM)
+
+          TIME_12HOUR       The time will be formatted in 12 hour format
+                            regardless of the WIN.INI internationalization
+                            settings.  This flag may not be used with the
+                            TIME_24HOUR flag. (i.e. 2:32:10 PM)
+                            
+          TIME_24HOUR       The time will be formatted in 24 hour format
+                            regardless of the WIN.INI internationalization
+                            settings.  This flag may not be used with the
+                            TIME_12HOUR flag. (i.e. 14:32:10)
+
+          TIME_NOSECONDS    The time will be formatted without seconds.
+                            (i.e. 2:32 PM)
+
+
+
+void FAR PASCAL TimeResetInternational( void ) 
+
+  Description:
+    This function sets some local static variables to Windows' current
+    time and date settings.
+
+    It should be called everytime a WM_WININICHANGE is sent for the
+    intl section and when the DLL or application using these functions
+    starts up.
+
+    The variables here are in the DLLs data segment so if one app
+    changes the stuff, the others will see it.
+
+
+
+*********************************************************************
+                             End of File
+*********************************************************************

@@ -1,0 +1,9 @@
+                  obj\wep+
+                  obj\libentry+
+                  obj\keyhk+
+                  obj\KEYHOOK
+keyhk.dll /align:16
+keyhk /map
+wdb mdllcew libw
+keyhk.def
+

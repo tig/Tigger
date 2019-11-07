@@ -1,0 +1,27 @@
+LIBRARY XRT_XL4
+
+DESCRIPTION 'WOSA/XRT XL4 Addin'
+
+EXETYPE WINDOWS
+
+CODE    PRELOAD MOVEABLE DISCARDABLE
+DATA    PRELOAD MOVEABLE SINGLE
+
+HEAPSIZE  8192
+
+EXPORTS
+    WEP                 @1 RESIDENTNAME
+    xlAutoOpen          @2
+    xlAutoClose         @3
+    xlAutoRegister      @4
+    xlAutoRemove        @5
+    xlAutoAdd           @6
+    xlAddInManagerInfo  @7
+    Func1               @8
+    FuncSum             @9
+    fDialog             @10
+    fExit               @11
+    fDance              @12
+    fShowDialog         @13
+    DIALOGMsgProc       @14
+    ExcelCursorProc     @15

@@ -1,0 +1,15 @@
+NAME            Register
+DESCRIPTION     'Register - Windows Registration system, Copyright (C) Charles E. Kindel, Jr., 1990'
+STUB            'WINSTUB.EXE'
+DATA            MOVEABLE MULTIPLE
+CODE            MOVEABLE 
+HEAPSIZE        4096
+STACKSIZE       4096
+EXPORTS         WndProc
+                DlgProc
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "ASYNCSRV.C": "cpp",
+        "DRAW3D.C": "cpp",
+        "SAMPLE3D.C": "cpp",
+        "WS_REG.C": "cpp",
+        "AUXW.C": "cpp"
+    }
+}

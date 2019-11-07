@@ -1,0 +1,1013 @@
+
+ COLDLL
+
+ Start     Length     Name                   Class
+ 0001:0000 003E1H     WEP_SEG                CODE 16-bit
+           at offset 00000H 003E1H bytes from MAIN.OBJ (e:\source\research\collect\main.cpp)
+
+ 0001:03E2 00678H     APP_TEXT               CODE 16-bit
+           at offset 00000H 00678H bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+
+ 0001:0A5A 003D6H     APPCF_TEXT             CODE 16-bit
+           at offset 00000H 003D6H bytes from APPCF.OBJ (e:\source\research\collect\appcf.cpp)
+
+ 0001:0E30 013D1H     COLLECT_TEXT           CODE 16-bit
+           at offset 00000H 013D1H bytes from COLLECT.OBJ (e:\source\research\collect\collect.cpp)
+
+ 0001:2202 007B6H     ENUMVAR_TEXT           CODE 16-bit
+           at offset 00000H 007B6H bytes from ENUMVAR.OBJ (e:\source\research\collect\enumvar.cpp)
+
+ 0001:29B8 004FCH     ITEM_TEXT              CODE 16-bit
+           at offset 00000H 004FCH bytes from ITEM.OBJ (e:\source\research\collect\item.cpp)
+
+ 0001:2EB4 001A0H     MAIN_TEXT              CODE 16-bit
+           at offset 00000H 001A0H bytes from MAIN.OBJ (e:\source\research\collect\main.cpp)
+
+ 0001:3054 00838H     _TEXT                  CODE 16-bit
+           at offset 00000H 000FEH bytes from d:\msvc\lib\ldllcew.lib (windows\crt0.asm)
+           at offset 000FEH 0005AH bytes from d:\msvc\lib\ldllcew.lib (windows\wchkstk.asm)
+           at offset 00158H 00012H bytes from d:\msvc\lib\ldllcew.lib (delete.cxx)
+           at offset 0016AH 00010H bytes from d:\msvc\lib\ldllcew.lib (new.cxx)
+           at offset 0017AH 00006H bytes from d:\msvc\lib\ldllcew.lib (purevirt.asm)
+           at offset 00180H 0000BH bytes from d:\msvc\lib\ldllcew.lib (lshl.asm)
+           at offset 0018CH 0005BH bytes from d:\msvc\lib\ldllcew.lib (hmemcmp.asm)
+           at offset 001E8H 0002CH bytes from d:\msvc\lib\ldllcew.lib (windows\stubmain.asm)
+           at offset 00214H 000E3H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0dat.asm)
+           at offset 002F8H 00023H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0msg.asm)
+           at offset 0031CH 00097H bytes from d:\msvc\lib\ldllcew.lib (dos\stdenvp.asm)
+           at offset 003B4H 0004CH bytes from d:\msvc\lib\ldllcew.lib (windows\fatal.asm)
+           at offset 00400H 00010H bytes from d:\msvc\lib\ldllcew.lib (windows\windgrp.asm)
+           at offset 00410H 000C8H bytes from d:\msvc\lib\ldllcew.lib (fmalloc.asm)
+           at offset 004D8H 0004EH bytes from d:\msvc\lib\ldllcew.lib (dos\nmsghdr.asm)
+           at offset 00526H 00081H bytes from d:\msvc\lib\ldllcew.lib (newseg.asm)
+           at offset 005A8H 0000DH bytes from d:\msvc\lib\ldllcew.lib (fdata.asm)
+           at offset 005B6H 00117H bytes from d:\msvc\lib\ldllcew.lib (growseg.asm)
+           at offset 006CEH 00006H bytes from d:\msvc\lib\ldllcew.lib (crt0fp.asm)
+           at offset 006D4H 0002DH bytes from d:\msvc\lib\ldllcew.lib (dos\stdalloc.asm)
+           at offset 00702H 00014H bytes from d:\msvc\lib\ldllcew.lib (windows\windgrpx.c)
+           at offset 00716H 00001H bytes from d:\msvc\lib\ldllcew.lib (nearstub.asm)
+           at offset 00718H 0007CH bytes from d:\msvc\lib\ldllcew.lib (searchsg.asm)
+           at offset 00794H 0002AH bytes from d:\msvc\lib\ldllcew.lib (freelist.asm)
+           at offset 007BEH 00034H bytes from d:\msvc\lib\ldllcew.lib (initseg.asm)
+           at offset 007F2H 00036H bytes from d:\msvc\lib\ldllcew.lib (linkseg.asm)
+
+ 0001:3890 003F4H     COMDAT_SEG1            CODE 16-bit
+           at offset 00000H 00043H bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 00044H 00035H bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 0007AH 00043H bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 000BEH 00043H bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 00102H 0002AH bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 0012CH 0000CH bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 00138H 00014H bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 0014CH 00014H bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 00160H 0003DH bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 0019EH 00035H bytes from APPCF.OBJ (e:\source\research\collect\appcf.cpp)
+           at offset 001D4H 00014H bytes from APPCF.OBJ (e:\source\research\collect\appcf.cpp)
+           at offset 001E8H 00014H bytes from APPCF.OBJ (e:\source\research\collect\appcf.cpp)
+           at offset 001FCH 00035H bytes from COLLECT.OBJ (e:\source\research\collect\collect.cpp)
+           at offset 00232H 00043H bytes from COLLECT.OBJ (e:\source\research\collect\collect.cpp)
+           at offset 00276H 00035H bytes from COLLECT.OBJ (e:\source\research\collect\collect.cpp)
+           at offset 002ACH 0001CH bytes from COLLECT.OBJ (e:\source\research\collect\collect.cpp)
+           at offset 002C8H 00030H bytes from COLLECT.OBJ (e:\source\research\collect\collect.cpp)
+           at offset 002F8H 00030H bytes from COLLECT.OBJ (e:\source\research\collect\collect.cpp)
+           at offset 00328H 00035H bytes from ENUMVAR.OBJ (e:\source\research\collect\enumvar.cpp)
+           at offset 0035EH 0001CH bytes from ENUMVAR.OBJ (e:\source\research\collect\enumvar.cpp)
+           at offset 0037AH 0001CH bytes from ENUMVAR.OBJ (e:\source\research\collect\enumvar.cpp)
+           at offset 00396H 00035H bytes from ITEM.OBJ (e:\source\research\collect\item.cpp)
+           at offset 003CCH 00014H bytes from ITEM.OBJ (e:\source\research\collect\item.cpp)
+           at offset 003E0H 00014H bytes from ITEM.OBJ (e:\source\research\collect\item.cpp)
+
+ 0002:0000 00010H     NULL                   BEGDATA 16-bit
+           at offset 00000H 00010H bytes from d:\msvc\lib\ldllcew.lib (windows\crt0.asm)
+
+ 0002:0010 0022CH     _DATA                  DATA 16-bit
+           at offset 00000H 0001BH bytes from APP.OBJ (e:\source\research\collect\app.cpp)
+           at offset 0001CH 00174H bytes from COLLECT.OBJ (e:\source\research\collect\collect.cpp)
+           at offset 00190H 00025H bytes from MAIN.OBJ (e:\source\research\collect\main.cpp)
+           at offset 001B6H 00015H bytes from d:\msvc\lib\ldllcew.lib (windows\crt0.asm)
+           at offset 001CCH 00004H bytes from d:\msvc\lib\ldllcew.lib (windows\wchkstk.asm)
+           at offset 001D0H 00044H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0dat.asm)
+           at offset 00214H 00004H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0msg.asm)
+           at offset 00218H 00004H bytes from d:\msvc\lib\ldllcew.lib (fmalloc.asm)
+           at offset 0021CH 0000EH bytes from d:\msvc\lib\ldllcew.lib (fdata.asm)
+           at offset 0022AH 00002H bytes from d:\msvc\lib\ldllcew.lib (growseg.asm)
+
+ 0002:023C 0000EH     CDATA                  DATA 16-bit
+           at offset 00000H 0000EH bytes from d:\msvc\lib\ldllcew.lib (dos\crt0dat.asm)
+
+ 0002:024A 00000H     XIFB                   DATA 16-bit
+ 0002:024A 00000H     XIF                    DATA 16-bit
+ 0002:024A 00000H     XIFE                   DATA 16-bit
+ 0002:024A 00000H     XIB                    DATA 16-bit
+ 0002:024A 00000H     XI                     DATA 16-bit
+ 0002:024A 00000H     XIE                    DATA 16-bit
+ 0002:024A 00000H     XPB                    DATA 16-bit
+ 0002:024A 00000H     XP                     DATA 16-bit
+ 0002:024A 00000H     XPE                    DATA 16-bit
+ 0002:024A 00000H     XCB                    DATA 16-bit
+ 0002:024A 00000H     XC                     DATA 16-bit
+ 0002:024A 00000H     XCE                    DATA 16-bit
+ 0002:024A 00000H     XCFB                   DATA 16-bit
+ 0002:024A 00000H     XCFCRT                 DATA 16-bit
+ 0002:024A 00000H     XCF                    DATA 16-bit
+ 0002:024A 00000H     XCFE                   DATA 16-bit
+ 0002:024A 00000H     XIFCB                  DATA 16-bit
+ 0002:024A 00000H     XIFU                   DATA 16-bit
+ 0002:024A 00000H     XIFL                   DATA 16-bit
+ 0002:024A 00000H     XIFM                   DATA 16-bit
+ 0002:024A 00000H     XIFCE                  DATA 16-bit
+ 0002:024A 00000H     DBDATA                 DATA 16-bit
+ 0002:024A 00000H     CONST                  CONST 16-bit
+ 0002:024A 00008H     HDR                    MSG 16-bit
+           at offset 00000H 00008H bytes from d:\msvc\lib\ldllcew.lib (dos\nmsghdr.asm)
+
+ 0002:0252 000FCH     MSG                    MSG 16-bit
+           at offset 00000H 00028H bytes from d:\msvc\lib\ldllcew.lib (purevirt.asm)
+           at offset 00028H 000A5H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0msg.asm)
+           at offset 000CDH 0002FH bytes from d:\msvc\lib\ldllcew.lib (crt0fp.asm)
+
+ 0002:034E 00002H     PAD                    MSG 16-bit
+           at offset 00000H 00002H bytes from d:\msvc\lib\ldllcew.lib (purevirt.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\ldllcew.lib (dos\crt0msg.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\ldllcew.lib (dos\nmsghdr.asm)
+           at offset 00000H 00002H bytes from d:\msvc\lib\ldllcew.lib (crt0fp.asm)
+
+ 0002:0350 00001H     EPAD                   MSG 16-bit
+           at offset 00000H 00001H bytes from d:\msvc\lib\ldllcew.lib (dos\nmsghdr.asm)
+
+ 0002:0352 00038H     _BSS                   BSS 16-bit
+           at offset 00000H 00038H bytes from MAIN.OBJ (e:\source\research\collect\main.cpp)
+
+ 0002:038A 00000H     XOB                    BSS 16-bit
+ 0002:038A 00000H     XO                     BSS 16-bit
+ 0002:038A 00000H     XOE                    BSS 16-bit
+ 0002:038A 00000H     XOFB                   BSS 16-bit
+ 0002:038A 00000H     XOF                    BSS 16-bit
+ 0002:038A 00000H     XOFE                   BSS 16-bit
+
+ Origin   Group
+ 0002:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0001:1570 ?Add@CCollection@@VEAXPEUIDispatch@@@Z  ?Add@CCollection@@VEAXPEUIDispatch@@@Z
+ 0001:0826 ?AddRef@CApp@@VEAKXZ    ?AddRef@CApp@@VEAKXZ
+ 0001:0B48 ?AddRef@CAppCF@@VEAKXZ  ?AddRef@CAppCF@@VEAKXZ
+ 0001:12CA ?AddRef@CCollection@@VEAKXZ  ?AddRef@CCollection@@VEAKXZ
+ 0001:251A ?AddRef@CEnumVariant@@VEAKXZ  ?AddRef@CEnumVariant@@VEAKXZ
+ 0001:2D88 ?AddRef@CItem@@VEAKXZ   ?AddRef@CItem@@VEAKXZ
+ 0001:28CE ?Clone@CEnumVariant@@VEAPEXPEPEUIEnumVARIANT@@@Z  ?Clone@CEnumVariant@@VEAPEXPEPEUIEnumVARIANT@@@Z
+ 0001:0E30 ?Create@CCollection@@TAPEXKJPEPEV1@I@Z  ?Create@CCollection@@TAPEXKJPEPEV1@I@Z
+ 0001:2202 ?Create@CEnumVariant@@TAPEXPEUtagSAFEARRAY@@KPEPEV1@@Z  ?Create@CEnumVariant@@TAPEXPEUtagSAFEARRAY@@KPEPEV1@@Z
+ 0001:29B8 ?Create@CItem@@TAPEXPEDPEPEV1@@Z  ?Create@CItem@@TAPEXPEDPEPEV1@@Z
+ 0001:0C10 ?CreateInstance@CAppCF@@VEAPEXPEUIUnknown@@AFUGUID@@PEPEX@Z  ?CreateInstance@CAppCF@@VEAPEXPEUIUnknown@@AFUGUID@@PEPEX@Z
+ 0001:142A ?GetIDsOfNames@CCollection@@VEAPEXAFUGUID@@PEPEDIKPEJ@Z  ?GetIDsOfNames@CCollection@@VEAPEXAFUGUID@@PEPEDIKPEJ@Z
+ 0001:13BE ?GetTypeInfo@CCollection@@VEAPEXIKPEPEUITypeInfo@@@Z  ?GetTypeInfo@CCollection@@VEAPEXIKPEPEUITypeInfo@@@Z
+ 0001:1392 ?GetTypeInfoCount@CCollection@@VEAPEXPEI@Z  ?GetTypeInfoCount@CCollection@@VEAPEXPEI@Z
+ 0001:08FC ?get_Collection@CApp@@VEAPEUIDispatch@@XZ  ?get_Collection@CApp@@VEAPEUIDispatch@@XZ
+ 0001:1764 ?get_Count@CCollection@@VEAJXZ  ?get_Count@CCollection@@VEAJXZ
+ 0001:178E ?get_Item@CCollection@@VEAPEUIDispatch@@UtagVARIANT@@@Z  ?get_Item@CCollection@@VEAPEUIDispatch@@UtagVARIANT@@@Z
+ 0001:2E86 ?get_Text@CItem@@VEAPEDXZ  ?get_Text@CItem@@VEAPEDXZ
+ 0001:1B68 ?get__NewEnum@CCollection@@VEAPEUIUnknown@@XZ  ?get__NewEnum@CCollection@@VEAPEUIUnknown@@XZ
+ 0001:03E2 ?Init@CApp@@REAPEXXZ    ?Init@CApp@@REAPEXXZ
+ 0001:1468 ?Invoke@CCollection@@VEAPEXJAFUGUID@@KGPEUtagDISPPARAMS@@PEUtagVARIANT@@PEUtagEXCEPINFO@@PEI@Z  ?Invoke@CCollection@@VEAPEXJAFUGUID@@KGPEUtagDISPPARAMS@@PEUtagVARIANT@@PEUtagEXCEPINFO@@PEI@Z
+ 0001:0E0C ?LockServer@CAppCF@@VEAPEXH@Z  ?LockServer@CAppCF@@VEAPEXH@Z
+ 0001:0938 ?NewItem@CApp@@VEAPEUIDispatch@@PED@Z  ?NewItem@CApp@@VEAPEUIDispatch@@PED@Z
+ 0001:25E2 ?Next@CEnumVariant@@VEAPEXKPEUtagVARIANT@@PEK@Z  ?Next@CEnumVariant@@VEAPEXKPEUtagVARIANT@@PEK@Z
+ 0001:2E50 ?put_Text@CItem@@VEAXPED@Z  ?put_Text@CItem@@VEAXPED@Z
+ 0001:070A ?QueryInterface@CApp@@VEAPEXAFUGUID@@PEPEX@Z  ?QueryInterface@CApp@@VEAPEXAFUGUID@@PEPEX@Z
+ 0001:0AAC ?QueryInterface@CAppCF@@VEAPEXAFUGUID@@PEPEX@Z  ?QueryInterface@CAppCF@@VEAPEXAFUGUID@@PEPEX@Z
+ 0001:11E2 ?QueryInterface@CCollection@@VEAPEXAFUGUID@@PEPEX@Z  ?QueryInterface@CCollection@@VEAPEXAFUGUID@@PEPEX@Z
+ 0001:248A ?QueryInterface@CEnumVariant@@VEAPEXAFUGUID@@PEPEX@Z  ?QueryInterface@CEnumVariant@@VEAPEXAFUGUID@@PEPEX@Z
+ 0001:2C90 ?QueryInterface@CItem@@VEAPEXAFUGUID@@PEPEX@Z  ?QueryInterface@CItem@@VEAPEXAFUGUID@@PEPEX@Z
+ 0001:085A ?Release@CApp@@VEAKXZ   ?Release@CApp@@VEAKXZ
+ 0001:0B7C ?Release@CAppCF@@VEAKXZ  ?Release@CAppCF@@VEAKXZ
+ 0001:12FE ?Release@CCollection@@VEAKXZ  ?Release@CCollection@@VEAKXZ
+ 0001:254E ?Release@CEnumVariant@@VEAKXZ  ?Release@CEnumVariant@@VEAKXZ
+ 0001:2DBC ?Release@CItem@@VEAKXZ  ?Release@CItem@@VEAKXZ
+ 0001:1CD2 ?Remove@CCollection@@VEAXUtagVARIANT@@@Z  ?Remove@CCollection@@VEAXUtagVARIANT@@@Z
+ 0001:2894 ?Reset@CEnumVariant@@VEAPEXXZ  ?Reset@CEnumVariant@@VEAPEXXZ
+ 0001:2802 ?Skip@CEnumVariant@@VEAPEXK@Z  ?Skip@CEnumVariant@@VEAPEXK@Z
+ 0001:0110 DllCanUnloadNow         DllCanUnloadNow
+ 0001:001A DllGetClassObject       DllGetClassObject
+ 0001:2FAE MainWndProc             MainWndProc
+ 0001:0000 WEP                     WEP
+ 0001:3766 ___ExportedStub         ___ExportedStub
+
+  Address         Publics by Name
+
+ 0001:0608       ??0CApp@@REC@XZ
+                    public: __far __pascal CApp::CApp(void)__far
+
+ 0001:0A5A       ??0CAppCF@@REC@XZ
+                    public: __far __pascal CAppCF::CAppCF(void)__far
+
+ 0001:10F8       ??0CCollection@@REC@XZ
+                    public: __far __pascal CCollection::CCollection(void)__far
+
+ 0001:23FA       ??0CEnumVariant@@REC@XZ
+                    public: __far __pascal CEnumVariant::CEnumVariant(void)__far
+
+ 0001:2BC6       ??0CItem@@REC@XZ
+                    public: __far __pascal CItem::CItem(void)__far
+
+ 0001:3A2E       ??0IClassFactory@@REC@XZ
+                    public: __far __pascal IClassFactory::IClassFactory(void)__far
+
+ 0001:3B06       ??0IDispatch@@REC@XZ
+                    public: __far __pascal IDispatch::IDispatch(void)__far
+
+ 0001:3BB8       ??0IEnumVARIANT@@REC@XZ
+                    public: __far __pascal IEnumVARIANT::IEnumVARIANT(void)__far
+
+ 0001:3992       ??0IUnknown@@REC@XZ
+                    public: __far __pascal IUnknown::IUnknown(void)__far
+
+ 0001:38D4       ??0_IApp@@REC@XZ
+                    public: __far __pascal _IApp::_IApp(void)__far
+
+ 0001:3A8C       ??0_ICollection@@REC@XZ
+                    public: __far __pascal _ICollection::_ICollection(void)__far
+
+ 0001:3C26       ??0_IItem@@REC@XZ
+                    public: __far __pascal _IItem::_IItem(void)__far
+
+ 0001:0664       ??1CApp@@REC@XZ
+                    public: __far __pascal CApp::~CApp(void)__far
+
+ 0001:1154       ??1CCollection@@REC@XZ
+                    public: __far __pascal CCollection::~CCollection(void)__far
+
+ 0001:243E       ??1CEnumVariant@@REC@XZ
+                    public: __far __pascal CEnumVariant::~CEnumVariant(void)__far
+
+ 0001:2C1A       ??1CItem@@REC@XZ
+                    public: __far __pascal CItem::~CItem(void)__far
+
+ 0001:31CE       ??2@ZAPEXI@Z
+                    void __far* __far __cdecl operator new(unsigned int)
+
+ 0001:31BC       ??3@ZAXPEX@Z
+                    void __far __cdecl operator delete(void __far*)
+
+ 0001:39F0       ??8GUID@@RFCHAFU0@@Z
+                    public: int __far __pascal GUID::operator==(struct GUID const __far&)const __far
+
+ 0001:39DC       ??_7CApp@@6F@
+                    const __far CApp::`vftable'
+
+ 0001:3A78       ??_7CAppCF@@6F@
+                    const __far CAppCF::`vftable'
+
+ 0001:3B88       ??_7CCollection@@6F@
+                    const __far CCollection::`vftable'
+
+ 0001:3BEE       ??_7CEnumVariant@@6F@
+                    const __far CEnumVariant::`vftable'
+
+ 0001:3C70       ??_7CItem@@6F@
+                    const __far CItem::`vftable'
+
+ 0001:3A64       ??_7IClassFactory@@6F@
+                    const __far IClassFactory::`vftable'
+
+ 0001:3B3C       ??_7IDispatch@@6F@
+                    const __far IDispatch::`vftable'
+
+ 0001:3C0A       ??_7IEnumVARIANT@@6F@
+                    const __far IEnumVARIANT::`vftable'
+
+ 0001:39BC       ??_7IUnknown@@6F@
+                    const __far IUnknown::`vftable'
+
+ 0001:39C8       ??_7_IApp@@6F@
+                    const __far _IApp::`vftable'
+
+ 0001:3B58       ??_7_ICollection@@6F@
+                    const __far _ICollection::`vftable'
+
+ 0001:3C5C       ??_7_IItem@@6F@
+                    const __far _IItem::`vftable'
+
+ 0001:390A       ??_GCApp@@RECPEXI@Z
+                    public: void __far* __far __pascal CApp::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:3890       ??_GCCollection@@RECPEXI@Z
+                    public: void __far* __far __pascal CCollection::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:3AC2       ??_GCEnumVariant@@RECPEXI@Z
+                    public: void __far* __far __pascal CEnumVariant::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:394E       ??_GCItem@@RECPEXI@Z
+                    public: void __far* __far __pascal CItem::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:1570       ?Add@CCollection@@VEAXPEUIDispatch@@@Z
+                    public: virtual void __far __cdecl CCollection::Add(struct IDispatch __far*)__far
+
+ 0001:0826       ?AddRef@CApp@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CApp::AddRef(void)__far
+
+ 0001:0B48       ?AddRef@CAppCF@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CAppCF::AddRef(void)__far
+
+ 0001:12CA       ?AddRef@CCollection@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CCollection::AddRef(void)__far
+
+ 0001:251A       ?AddRef@CEnumVariant@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CEnumVariant::AddRef(void)__far
+
+ 0001:2D88       ?AddRef@CItem@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CItem::AddRef(void)__far
+
+ 0001:0DA4       ?AppObjectCreated@CAppCF@@RECHH@Z
+                    public: int __far __pascal CAppCF::AppObjectCreated(int)__far
+
+ 0001:28CE       ?Clone@CEnumVariant@@VEAPEXPEPEUIEnumVARIANT@@@Z
+                    public: virtual void __far* __far __cdecl CEnumVariant::Clone(struct IEnumVARIANT __far* __far*)__far
+
+ 0001:0E30       ?Create@CCollection@@TAPEXKJPEPEV1@I@Z
+                    public: static void __far* __far __cdecl CCollection::Create(unsigned long,long,class CCollection __far* __far*,unsigned int)
+
+ 0001:2202       ?Create@CEnumVariant@@TAPEXPEUtagSAFEARRAY@@KPEPEV1@@Z
+                    public: static void __far* __far __cdecl CEnumVariant::Create(struct tagSAFEARRAY __far*,unsigned long,class CEnumVariant __far* __far*)
+
+ 0001:29B8       ?Create@CItem@@TAPEXPEDPEPEV1@@Z
+                    public: static void __far* __far __cdecl CItem::Create(char __far*,class CItem __far* __far*)
+
+ 0001:0178       ?CreateDispatchInterface@@ZAPEXPEUIUnknown@@PEXPEPEU1@AFUGUID@@@Z
+                    void __far* __far __cdecl CreateDispatchInterface(struct IUnknown __far*,void __far*,struct IUnknown __far* __far*,struct GUID const __far&)
+
+ 0001:0C10       ?CreateInstance@CAppCF@@VEAPEXPEUIUnknown@@AFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CAppCF::CreateInstance(struct IUnknown __far*,struct GUID const __far&,void __far* __far*)__far
+
+ 0001:142A       ?GetIDsOfNames@CCollection@@VEAPEXAFUGUID@@PEPEDIKPEJ@Z
+                    public: virtual void __far* __far __cdecl CCollection::GetIDsOfNames(struct GUID const __far&,char __far* __far*,unsigned int,unsigned long,long __far*)__far
+
+ 0001:13BE       ?GetTypeInfo@CCollection@@VEAPEXIKPEPEUITypeInfo@@@Z
+                    public: virtual void __far* __far __cdecl CCollection::GetTypeInfo(unsigned int,unsigned long,struct ITypeInfo __far* __far*)__far
+
+ 0001:1392       ?GetTypeInfoCount@CCollection@@VEAPEXPEI@Z
+                    public: virtual void __far* __far __cdecl CCollection::GetTypeInfoCount(unsigned int __far*)__far
+
+ 0001:08FC       ?get_Collection@CApp@@VEAPEUIDispatch@@XZ
+                    public: virtual struct IDispatch __far* __far __cdecl CApp::get_Collection(void)__far
+
+ 0001:1764       ?get_Count@CCollection@@VEAJXZ
+                    public: virtual long __far __cdecl CCollection::get_Count(void)__far
+
+ 0001:178E       ?get_Item@CCollection@@VEAPEUIDispatch@@UtagVARIANT@@@Z
+                    public: virtual struct IDispatch __far* __far __cdecl CCollection::get_Item(struct tagVARIANT)__far
+
+ 0001:2E86       ?get_Text@CItem@@VEAPEDXZ
+                    public: virtual char __far* __far __cdecl CItem::get_Text(void)__far
+
+ 0001:1B68       ?get__NewEnum@CCollection@@VEAPEUIUnknown@@XZ
+                    public: virtual struct IUnknown __far* __far __cdecl CCollection::get__NewEnum(void)__far
+
+ 0002:01A8       ?g_cLock@@3KE
+                    unsigned long __far g_cLock
+
+ 0002:01A4       ?g_cObj@@3KE
+                    unsigned long __far g_cObj
+
+ 0002:0354       ?g_dwRegisterCF@@3KE
+                    unsigned long __far g_dwRegisterCF
+
+ 0002:0352       ?g_hinst@@3IE
+                    unsigned int __far g_hinst
+
+ 0002:01A0       ?g_pAppCF@@3PEVCAppCF@@E
+                    class CAppCF __far* __far g_pAppCF
+
+ 0002:0358       ?g_szTitle@@3QEDE
+                    char __far* __far g_szTitle
+
+ 0001:03E2       ?Init@CApp@@REAPEXXZ
+                    public: void __far* __far __cdecl CApp::Init(void)__far
+
+ 0001:2F34       ?InitApplication@@ZAHI@Z
+                    int __far __cdecl InitApplication(unsigned int)
+
+ 0001:1468       ?Invoke@CCollection@@VEAPEXJAFUGUID@@KGPEUtagDISPPARAMS@@PEUtagVARIANT@@PEUtagEXCEPINFO@@PEI@Z
+                    public: virtual void __far* __far __cdecl CCollection::Invoke(long,struct GUID const __far&,unsigned long,unsigned short,struct tagDISPPARAMS __far*,struct tagVARIANT __far*,struct tagEXCEPINFO __far*,unsigned int __far*)__far
+
+ 0001:02EC       ?LoadTypeInfo@@ZAPEXPEPEUITypeInfo@@AFUGUID@@@Z
+                    void __far* __far __cdecl LoadTypeInfo(struct ITypeInfo __far* __far*,struct GUID const __far&)
+
+ 0001:0E0C       ?LockServer@CAppCF@@VEAPEXH@Z
+                    public: virtual void __far* __far __cdecl CAppCF::LockServer(int)__far
+
+ 0001:0938       ?NewItem@CApp@@VEAPEUIDispatch@@PED@Z
+                    public: virtual struct IDispatch __far* __far __cdecl CApp::NewItem(char __far*)__far
+
+ 0001:25E2       ?Next@CEnumVariant@@VEAPEXKPEUtagVARIANT@@PEK@Z
+                    public: virtual void __far* __far __cdecl CEnumVariant::Next(unsigned long,struct tagVARIANT __far*,unsigned long __far*)__far
+
+ 0001:2E50       ?put_Text@CItem@@VEAXPED@Z
+                    public: virtual void __far __cdecl CItem::put_Text(char __far*)__far
+
+ 0001:070A       ?QueryInterface@CApp@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CApp::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:0AAC       ?QueryInterface@CAppCF@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CAppCF::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:11E2       ?QueryInterface@CCollection@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CCollection::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:248A       ?QueryInterface@CEnumVariant@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CEnumVariant::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:2C90       ?QueryInterface@CItem@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CItem::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:085A       ?Release@CApp@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CApp::Release(void)__far
+
+ 0001:0B7C       ?Release@CAppCF@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CAppCF::Release(void)__far
+
+ 0001:12FE       ?Release@CCollection@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CCollection::Release(void)__far
+
+ 0001:254E       ?Release@CEnumVariant@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CEnumVariant::Release(void)__far
+
+ 0001:2DBC       ?Release@CItem@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CItem::Release(void)__far
+
+ 0001:1CD2       ?Remove@CCollection@@VEAXUtagVARIANT@@@Z
+                    public: virtual void __far __cdecl CCollection::Remove(struct tagVARIANT)__far
+
+ 0001:2894       ?Reset@CEnumVariant@@VEAPEXXZ
+                    public: virtual void __far* __far __cdecl CEnumVariant::Reset(void)__far
+
+ 0001:2802       ?Skip@CEnumVariant@@VEAPEXK@Z
+                    public: virtual void __far* __far __cdecl CEnumVariant::Skip(unsigned long)__far
+
+ 0000:0000  Imp  CREATESTDDISPATCH    (OLE2DISP.32)
+ 0000:0000  Imp  CREATEWINDOW         (USER.41)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  DESTROYWINDOW        (USER.53)
+ 0000:0000  Imp  DISPGETIDSOFNAMES    (OLE2DISP.29)
+ 0000:0000  Imp  DISPINVOKE           (OLE2DISP.30)
+ 0001:0110       DllCanUnloadNow
+ 0001:001A       DllGetClassObject
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  ISEQUALGUID          (COMPOBJ.18)
+ 0000:0000  Imp  ISWINDOW             (USER.47)
+ 0001:2FF8       LIBMAIN
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  LOADICON             (USER.174)
+ 0000:0000  Imp  LOADREGTYPELIB       (TYPELIB.11)
+ 0000:0000  Imp  LOADSTRING           (USER.176)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0001:2FAE       MainWndProc
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  pLocalHeap
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0002:0004       rsrvptrs
+ 0000:0000  Imp  SAFEARRAYCOPY        (OLE2DISP.27)
+ 0000:0000  Imp  SAFEARRAYCREATE      (OLE2DISP.15)
+ 0000:0000  Imp  SAFEARRAYDESTROY     (OLE2DISP.16)
+ 0000:0000  Imp  SAFEARRAYGETELEMENT  (OLE2DISP.25)
+ 0000:0000  Imp  SAFEARRAYGETLBOUND   (OLE2DISP.20)
+ 0000:0000  Imp  SAFEARRAYPUTELEMENT  (OLE2DISP.26)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  SYSALLOCSTRING       (OLE2DISP.2)
+ 0000:0000  Imp  SYSFREESTRING        (OLE2DISP.6)
+ 0000:0000  Imp  SYSREALLOCSTRING     (OLE2DISP.3)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  VARIANTCLEAR         (OLE2DISP.9)
+ 0000:0000  Imp  VARIANTCOPYIND       (OLE2DISP.11)
+ 0000:0000  Imp  VARIANTINIT          (OLE2DISP.8)
+ 0001:0000       WEP
+ 0002:01D5       _aseghi
+ 0002:01D3       _aseglo
+ 0001:2EB4       _CLSID_App
+ 0002:0352       _edata
+ 0002:038A       _end
+ 0002:01EE       _errno
+ 0001:2EE4       _IID_DApp
+ 0001:2F04       _IID_DCollection
+ 0001:2F24       _IID_DItem
+ 0001:2ED4       _IID_IApp
+ 0000:0000  Imp  _IID_IClassFactory   (COMPOBJ.39)
+ 0001:2EF4       _IID_ICollection
+ 0000:0000  Imp  _IID_IDispatch       (OLE2DISP.33)
+ 0000:0000  Imp  _IID_IEnumVARIANT    (OLE2DISP.34)
+ 0001:2F14       _IID_IItem
+ 0000:0000  Imp  _IID_IUnknown        (COMPOBJ.38)
+ 0001:2EC4       _LIBID_App
+ 0002:01C6       _STKHQQ
+ 0002:01DC       __aaltstkovr
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0002:0224       __adbgmsg
+ 0000:D6D6  Abs  __aDBused
+ 0001:3182       __aFchkstk
+ 0001:31E4       __aFlshl
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0002:01E0       __aintdiv
+ 0002:023A       __amblksiz
+ 0001:3422       __amsg_exit
+ 0001:3162       __aNchkstk
+ 0001:30A8       __astart
+ 0001:32C0       __cexit
+ 0002:0221       __child
+ 0001:3182       __chkstk
+ 0001:3278       __cinit
+ 0001:3418       __cintDIV
+ 0002:01F9       __cpumode
+ 0001:331F       __ctermsub
+ 0001:32D1       __c_exit
+ 0002:01D2       __dllinit
+ 0002:01FA       __doserrno
+ 0002:0352       __edata
+ 0002:038A       __end
+ 0002:0218       __environ
+ 0002:0223       __exitflag
+ 0002:01E4       __fac
+ 0001:3474       __ffree
+ 0001:335C       __FF_MSGBANNER
+ 0002:022C       __fheap
+ 0001:3711       __findlast
+ 0001:3495       __fmalloc
+ 0001:31F0       __fmemcmp
+ 0002:023E       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:3732       __fptrap
+ 0001:31DE       __fpurecall
+ 0001:360C       __freefarheap
+ 0001:37F8       __freelist
+ 0001:3464       __GetDGROUP
+ 0001:361A       __growseg
+ 0002:01C8       __hModule
+ 0001:36AB       __incseg
+ 0001:3822       __initseg
+ 0001:3856       __linkseg
+ 0002:01CE       __lpszCmdLine
+ 0001:3738       __myalloc
+ 0001:377A       __nearstub
+ 0001:358A       __newseg
+ 0002:01FC       __nfile
+ 0001:353C       __NMSG_TEXT
+ 0001:3573       __NMSG_WRITE
+ 0001:314A       __nomain
+ 0001:31DE       __npurecall
+ 0002:01FA       __oserr
+ 0002:01FE       __osfile
+ 0002:01F5       __osmajor
+ 0002:01F4       __osminor
+ 0002:01F8       __osmode
+ 0002:01F4       __osver
+ 0002:01F6       __osversion
+ 0002:021C       __pgmptr
+ 0002:0228       __pnhFarHeap
+ 0001:31DE       __purecall
+ 0001:377C       __searchseg
+ 0001:3380       __setenvp
+ 0000:0001  Abs  __sizec
+ 0000:0001  Abs  __sized
+ 0001:324C       __stubmain
+ 0002:01F0       __umaskval
+ 0002:01CA       __wDataSeg
+ 0001:3064       __wflags
+ 0002:01CC       __wHeapSize
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0002:01F3       __winmajor
+ 0002:01F2       __winminor
+ 0002:01F2       __winver
+ 0002:01D9       ___aDBrterr
+ 0002:01D7       ___aDBswpflg
+ 0002:0212       ___argc
+ 0002:0214       ___argv
+ 0001:3766       ___ExportedStub
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  _IID_IEnumVARIANT    (OLE2DISP.34)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  SAFEARRAYGETELEMENT  (OLE2DISP.25)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  VARIANTCLEAR         (OLE2DISP.9)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  _IID_IUnknown        (COMPOBJ.38)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  ISWINDOW             (USER.47)
+ 0000:0000  Imp  LSTRCMP              (USER.430)
+ 0000:0000  Imp  SAFEARRAYGETLBOUND   (OLE2DISP.20)
+ 0000:0000  Imp  SAFEARRAYDESTROY     (OLE2DISP.16)
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  LOADREGTYPELIB       (TYPELIB.11)
+ 0000:0000  Imp  ISEQUALGUID          (COMPOBJ.18)
+ 0000:0000  Imp  __AHINCR             (KERNEL.114)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LOCALINIT            (KERNEL.4)
+ 0000:0000  Imp  DISPINVOKE           (OLE2DISP.30)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  _IID_IDispatch       (OLE2DISP.33)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  SAFEARRAYCOPY        (OLE2DISP.27)
+ 0000:0000  Imp  SAFEARRAYCREATE      (OLE2DISP.15)
+ 0000:0000  Imp  DESTROYWINDOW        (USER.53)
+ 0000:0000  Imp  LOADSTRING           (USER.176)
+ 0000:0000  Imp  CREATESTDDISPATCH    (OLE2DISP.32)
+ 0000:0000  Imp  VARIANTCOPYIND       (OLE2DISP.11)
+ 0000:0000  Imp  SYSREALLOCSTRING     (OLE2DISP.3)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  LOADICON             (USER.174)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  SYSALLOCSTRING       (OLE2DISP.2)
+ 0000:0000  Imp  _IID_IClassFactory   (COMPOBJ.39)
+ 0000:0000  Imp  SYSFREESTRING        (OLE2DISP.6)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  DISPGETIDSOFNAMES    (OLE2DISP.29)
+ 0000:0000  Imp  SAFEARRAYPUTELEMENT  (OLE2DISP.26)
+ 0000:0000  Imp  VARIANTINIT          (OLE2DISP.8)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  CREATEWINDOW         (USER.41)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0001  Abs  __sized
+ 0000:0001  Abs  __sizec
+ 0000:0006  Abs  pLocalHeap
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtmsg
+ 0000:D6D6  Abs  __aDBused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0000       WEP
+ 0001:001A       DllGetClassObject
+ 0001:0110       DllCanUnloadNow
+ 0001:0178       ?CreateDispatchInterface@@ZAPEXPEUIUnknown@@PEXPEPEU1@AFUGUID@@@Z
+                    void __far* __far __cdecl CreateDispatchInterface(struct IUnknown __far*,void __far*,struct IUnknown __far* __far*,struct GUID const __far&)
+
+ 0001:02EC       ?LoadTypeInfo@@ZAPEXPEPEUITypeInfo@@AFUGUID@@@Z
+                    void __far* __far __cdecl LoadTypeInfo(struct ITypeInfo __far* __far*,struct GUID const __far&)
+
+ 0001:03E2       ?Init@CApp@@REAPEXXZ
+                    public: void __far* __far __cdecl CApp::Init(void)__far
+
+ 0001:0608       ??0CApp@@REC@XZ
+                    public: __far __pascal CApp::CApp(void)__far
+
+ 0001:0664       ??1CApp@@REC@XZ
+                    public: __far __pascal CApp::~CApp(void)__far
+
+ 0001:070A       ?QueryInterface@CApp@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CApp::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:0826       ?AddRef@CApp@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CApp::AddRef(void)__far
+
+ 0001:085A       ?Release@CApp@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CApp::Release(void)__far
+
+ 0001:08FC       ?get_Collection@CApp@@VEAPEUIDispatch@@XZ
+                    public: virtual struct IDispatch __far* __far __cdecl CApp::get_Collection(void)__far
+
+ 0001:0938       ?NewItem@CApp@@VEAPEUIDispatch@@PED@Z
+                    public: virtual struct IDispatch __far* __far __cdecl CApp::NewItem(char __far*)__far
+
+ 0001:0A5A       ??0CAppCF@@REC@XZ
+                    public: __far __pascal CAppCF::CAppCF(void)__far
+
+ 0001:0AAC       ?QueryInterface@CAppCF@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CAppCF::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:0B48       ?AddRef@CAppCF@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CAppCF::AddRef(void)__far
+
+ 0001:0B7C       ?Release@CAppCF@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CAppCF::Release(void)__far
+
+ 0001:0C10       ?CreateInstance@CAppCF@@VEAPEXPEUIUnknown@@AFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CAppCF::CreateInstance(struct IUnknown __far*,struct GUID const __far&,void __far* __far*)__far
+
+ 0001:0DA4       ?AppObjectCreated@CAppCF@@RECHH@Z
+                    public: int __far __pascal CAppCF::AppObjectCreated(int)__far
+
+ 0001:0E0C       ?LockServer@CAppCF@@VEAPEXH@Z
+                    public: virtual void __far* __far __cdecl CAppCF::LockServer(int)__far
+
+ 0001:0E30       ?Create@CCollection@@TAPEXKJPEPEV1@I@Z
+                    public: static void __far* __far __cdecl CCollection::Create(unsigned long,long,class CCollection __far* __far*,unsigned int)
+
+ 0001:10F8       ??0CCollection@@REC@XZ
+                    public: __far __pascal CCollection::CCollection(void)__far
+
+ 0001:1154       ??1CCollection@@REC@XZ
+                    public: __far __pascal CCollection::~CCollection(void)__far
+
+ 0001:11E2       ?QueryInterface@CCollection@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CCollection::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:12CA       ?AddRef@CCollection@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CCollection::AddRef(void)__far
+
+ 0001:12FE       ?Release@CCollection@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CCollection::Release(void)__far
+
+ 0001:1392       ?GetTypeInfoCount@CCollection@@VEAPEXPEI@Z
+                    public: virtual void __far* __far __cdecl CCollection::GetTypeInfoCount(unsigned int __far*)__far
+
+ 0001:13BE       ?GetTypeInfo@CCollection@@VEAPEXIKPEPEUITypeInfo@@@Z
+                    public: virtual void __far* __far __cdecl CCollection::GetTypeInfo(unsigned int,unsigned long,struct ITypeInfo __far* __far*)__far
+
+ 0001:142A       ?GetIDsOfNames@CCollection@@VEAPEXAFUGUID@@PEPEDIKPEJ@Z
+                    public: virtual void __far* __far __cdecl CCollection::GetIDsOfNames(struct GUID const __far&,char __far* __far*,unsigned int,unsigned long,long __far*)__far
+
+ 0001:1468       ?Invoke@CCollection@@VEAPEXJAFUGUID@@KGPEUtagDISPPARAMS@@PEUtagVARIANT@@PEUtagEXCEPINFO@@PEI@Z
+                    public: virtual void __far* __far __cdecl CCollection::Invoke(long,struct GUID const __far&,unsigned long,unsigned short,struct tagDISPPARAMS __far*,struct tagVARIANT __far*,struct tagEXCEPINFO __far*,unsigned int __far*)__far
+
+ 0001:1570       ?Add@CCollection@@VEAXPEUIDispatch@@@Z
+                    public: virtual void __far __cdecl CCollection::Add(struct IDispatch __far*)__far
+
+ 0001:1764       ?get_Count@CCollection@@VEAJXZ
+                    public: virtual long __far __cdecl CCollection::get_Count(void)__far
+
+ 0001:178E       ?get_Item@CCollection@@VEAPEUIDispatch@@UtagVARIANT@@@Z
+                    public: virtual struct IDispatch __far* __far __cdecl CCollection::get_Item(struct tagVARIANT)__far
+
+ 0001:1B68       ?get__NewEnum@CCollection@@VEAPEUIUnknown@@XZ
+                    public: virtual struct IUnknown __far* __far __cdecl CCollection::get__NewEnum(void)__far
+
+ 0001:1CD2       ?Remove@CCollection@@VEAXUtagVARIANT@@@Z
+                    public: virtual void __far __cdecl CCollection::Remove(struct tagVARIANT)__far
+
+ 0001:2202       ?Create@CEnumVariant@@TAPEXPEUtagSAFEARRAY@@KPEPEV1@@Z
+                    public: static void __far* __far __cdecl CEnumVariant::Create(struct tagSAFEARRAY __far*,unsigned long,class CEnumVariant __far* __far*)
+
+ 0001:23FA       ??0CEnumVariant@@REC@XZ
+                    public: __far __pascal CEnumVariant::CEnumVariant(void)__far
+
+ 0001:243E       ??1CEnumVariant@@REC@XZ
+                    public: __far __pascal CEnumVariant::~CEnumVariant(void)__far
+
+ 0001:248A       ?QueryInterface@CEnumVariant@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CEnumVariant::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:251A       ?AddRef@CEnumVariant@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CEnumVariant::AddRef(void)__far
+
+ 0001:254E       ?Release@CEnumVariant@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CEnumVariant::Release(void)__far
+
+ 0001:25E2       ?Next@CEnumVariant@@VEAPEXKPEUtagVARIANT@@PEK@Z
+                    public: virtual void __far* __far __cdecl CEnumVariant::Next(unsigned long,struct tagVARIANT __far*,unsigned long __far*)__far
+
+ 0001:2802       ?Skip@CEnumVariant@@VEAPEXK@Z
+                    public: virtual void __far* __far __cdecl CEnumVariant::Skip(unsigned long)__far
+
+ 0001:2894       ?Reset@CEnumVariant@@VEAPEXXZ
+                    public: virtual void __far* __far __cdecl CEnumVariant::Reset(void)__far
+
+ 0001:28CE       ?Clone@CEnumVariant@@VEAPEXPEPEUIEnumVARIANT@@@Z
+                    public: virtual void __far* __far __cdecl CEnumVariant::Clone(struct IEnumVARIANT __far* __far*)__far
+
+ 0001:29B8       ?Create@CItem@@TAPEXPEDPEPEV1@@Z
+                    public: static void __far* __far __cdecl CItem::Create(char __far*,class CItem __far* __far*)
+
+ 0001:2BC6       ??0CItem@@REC@XZ
+                    public: __far __pascal CItem::CItem(void)__far
+
+ 0001:2C1A       ??1CItem@@REC@XZ
+                    public: __far __pascal CItem::~CItem(void)__far
+
+ 0001:2C90       ?QueryInterface@CItem@@VEAPEXAFUGUID@@PEPEX@Z
+                    public: virtual void __far* __far __cdecl CItem::QueryInterface(struct GUID const __far&,void __far* __far*)__far
+
+ 0001:2D88       ?AddRef@CItem@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CItem::AddRef(void)__far
+
+ 0001:2DBC       ?Release@CItem@@VEAKXZ
+                    public: virtual unsigned long __far __cdecl CItem::Release(void)__far
+
+ 0001:2E50       ?put_Text@CItem@@VEAXPED@Z
+                    public: virtual void __far __cdecl CItem::put_Text(char __far*)__far
+
+ 0001:2E86       ?get_Text@CItem@@VEAPEDXZ
+                    public: virtual char __far* __far __cdecl CItem::get_Text(void)__far
+
+ 0001:2EB4       _CLSID_App
+ 0001:2EC4       _LIBID_App
+ 0001:2ED4       _IID_IApp
+ 0001:2EE4       _IID_DApp
+ 0001:2EF4       _IID_ICollection
+ 0001:2F04       _IID_DCollection
+ 0001:2F14       _IID_IItem
+ 0001:2F24       _IID_DItem
+ 0001:2F34       ?InitApplication@@ZAHI@Z
+                    int __far __cdecl InitApplication(unsigned int)
+
+ 0001:2FAE       MainWndProc
+ 0001:2FF8       LIBMAIN
+ 0001:3064       __wflags
+ 0001:30A8       __astart
+ 0001:314A       __nomain
+ 0001:3162       __aNchkstk
+ 0001:3182       __chkstk
+ 0001:3182       __aFchkstk
+ 0001:31BC       ??3@ZAXPEX@Z
+                    void __far __cdecl operator delete(void __far*)
+
+ 0001:31CE       ??2@ZAPEXI@Z
+                    void __far* __far __cdecl operator new(unsigned int)
+
+ 0001:31DE       __purecall
+ 0001:31DE       __fpurecall
+ 0001:31DE       __npurecall
+ 0001:31E4       __aFlshl
+ 0001:31F0       __fmemcmp
+ 0001:324C       __stubmain
+ 0001:3278       __cinit
+ 0001:32C0       __cexit
+ 0001:32D1       __c_exit
+ 0001:331F       __ctermsub
+ 0001:335C       __FF_MSGBANNER
+ 0001:3380       __setenvp
+ 0001:3418       __cintDIV
+ 0001:3422       __amsg_exit
+ 0001:3464       __GetDGROUP
+ 0001:3474       __ffree
+ 0001:3495       __fmalloc
+ 0001:353C       __NMSG_TEXT
+ 0001:3573       __NMSG_WRITE
+ 0001:358A       __newseg
+ 0001:360C       __freefarheap
+ 0001:361A       __growseg
+ 0001:36AB       __incseg
+ 0001:3711       __findlast
+ 0001:3732       __fptrap
+ 0001:3738       __myalloc
+ 0001:3766       ___ExportedStub
+ 0001:377A       __nearstub
+ 0001:377C       __searchseg
+ 0001:37F8       __freelist
+ 0001:3822       __initseg
+ 0001:3856       __linkseg
+ 0001:3890       ??_GCCollection@@RECPEXI@Z
+                    public: void __far* __far __pascal CCollection::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:38D4       ??0_IApp@@REC@XZ
+                    public: __far __pascal _IApp::_IApp(void)__far
+
+ 0001:390A       ??_GCApp@@RECPEXI@Z
+                    public: void __far* __far __pascal CApp::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:394E       ??_GCItem@@RECPEXI@Z
+                    public: void __far* __far __pascal CItem::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:3992       ??0IUnknown@@REC@XZ
+                    public: __far __pascal IUnknown::IUnknown(void)__far
+
+ 0001:39BC       ??_7IUnknown@@6F@
+                    const __far IUnknown::`vftable'
+
+ 0001:39C8       ??_7_IApp@@6F@
+                    const __far _IApp::`vftable'
+
+ 0001:39DC       ??_7CApp@@6F@
+                    const __far CApp::`vftable'
+
+ 0001:39F0       ??8GUID@@RFCHAFU0@@Z
+                    public: int __far __pascal GUID::operator==(struct GUID const __far&)const __far
+
+ 0001:3A2E       ??0IClassFactory@@REC@XZ
+                    public: __far __pascal IClassFactory::IClassFactory(void)__far
+
+ 0001:3A64       ??_7IClassFactory@@6F@
+                    const __far IClassFactory::`vftable'
+
+ 0001:3A78       ??_7CAppCF@@6F@
+                    const __far CAppCF::`vftable'
+
+ 0001:3A8C       ??0_ICollection@@REC@XZ
+                    public: __far __pascal _ICollection::_ICollection(void)__far
+
+ 0001:3AC2       ??_GCEnumVariant@@RECPEXI@Z
+                    public: void __far* __far __pascal CEnumVariant::`scalar deleting destructor'(unsigned int)__far
+
+ 0001:3B06       ??0IDispatch@@REC@XZ
+                    public: __far __pascal IDispatch::IDispatch(void)__far
+
+ 0001:3B3C       ??_7IDispatch@@6F@
+                    const __far IDispatch::`vftable'
+
+ 0001:3B58       ??_7_ICollection@@6F@
+                    const __far _ICollection::`vftable'
+
+ 0001:3B88       ??_7CCollection@@6F@
+                    const __far CCollection::`vftable'
+
+ 0001:3BB8       ??0IEnumVARIANT@@REC@XZ
+                    public: __far __pascal IEnumVARIANT::IEnumVARIANT(void)__far
+
+ 0001:3BEE       ??_7CEnumVariant@@6F@
+                    const __far CEnumVariant::`vftable'
+
+ 0001:3C0A       ??_7IEnumVARIANT@@6F@
+                    const __far IEnumVARIANT::`vftable'
+
+ 0001:3C26       ??0_IItem@@REC@XZ
+                    public: __far __pascal _IItem::_IItem(void)__far
+
+ 0001:3C5C       ??_7_IItem@@6F@
+                    const __far _IItem::`vftable'
+
+ 0001:3C70       ??_7CItem@@6F@
+                    const __far CItem::`vftable'
+
+ 0002:0004       rsrvptrs
+ 0002:01A0       ?g_pAppCF@@3PEVCAppCF@@E
+                    class CAppCF __far* __far g_pAppCF
+
+ 0002:01A4       ?g_cObj@@3KE
+                    unsigned long __far g_cObj
+
+ 0002:01A8       ?g_cLock@@3KE
+                    unsigned long __far g_cLock
+
+ 0002:01C6       _STKHQQ
+ 0002:01C8       __hModule
+ 0002:01CA       __wDataSeg
+ 0002:01CC       __wHeapSize
+ 0002:01CE       __lpszCmdLine
+ 0002:01D2       __dllinit
+ 0002:01D3       _aseglo
+ 0002:01D5       _aseghi
+ 0002:01D7       ___aDBswpflg
+ 0002:01D9       ___aDBrterr
+ 0002:01DC       __aaltstkovr
+ 0002:01E0       __aintdiv
+ 0002:01E4       __fac
+ 0002:01EE       _errno
+ 0002:01F0       __umaskval
+ 0002:01F2       __winminor
+ 0002:01F2       __winver
+ 0002:01F3       __winmajor
+ 0002:01F4       __osminor
+ 0002:01F4       __osver
+ 0002:01F5       __osmajor
+ 0002:01F6       __osversion
+ 0002:01F8       __osmode
+ 0002:01F9       __cpumode
+ 0002:01FA       __doserrno
+ 0002:01FA       __oserr
+ 0002:01FC       __nfile
+ 0002:01FE       __osfile
+ 0002:0212       ___argc
+ 0002:0214       ___argv
+ 0002:0218       __environ
+ 0002:021C       __pgmptr
+ 0002:0221       __child
+ 0002:0223       __exitflag
+ 0002:0224       __adbgmsg
+ 0002:0228       __pnhFarHeap
+ 0002:022C       __fheap
+ 0002:023A       __amblksiz
+ 0002:023E       __fpinit
+ 0002:0352       _edata
+ 0002:0352       ?g_hinst@@3IE
+                    unsigned int __far g_hinst
+
+ 0002:0352       __edata
+ 0002:0354       ?g_dwRegisterCF@@3KE
+                    unsigned long __far g_dwRegisterCF
+
+ 0002:0358       ?g_szTitle@@3QEDE
+                    char __far* __far g_szTitle
+
+ 0002:038A       _end
+ 0002:038A       __end
+
+Program entry point at 0001:30a8

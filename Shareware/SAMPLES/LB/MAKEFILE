@@ -1,0 +1,31 @@
+#*************************************************************
+#  
+# MAKEFILE for the ListBox test application
+#
+#
+#*************************************************************
+
+MEM      =-AM
+LIBS     =mlibcew
+
+#CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3 -nologo -DDEBUG
+CLOPTS   =$(MEM) -c -Gsw -Oad -Zp -W3 -nologo
+
+#LINKOPTS =/NOD/NOE/CO
+LINKOPTS =/NOD/NOE
+
+test.exe:       test.obj\
+                lb.obj\
+                test.def\
+                test.res 
+    link $(LINKOPTS) test lb ,,, libw $(LIBS) mlhlib, test.def
+    rc -v test.res
+
+test.obj: test.c testd.h
+    cl $(CLOPTS) test.c > test.err
+
+lb.obj: lb.c lb.h
+    cl $(CLOPTS) lb.c > lb.err
+
+test.res: test.rc test.ico bitmap.bmp
+    rc -r test.rc

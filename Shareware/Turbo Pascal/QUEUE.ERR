@@ -1,0 +1,5 @@
+Turbo Pascal  Version 5.0  Copyright (c) 1983,88 Borland International
+Warning: TURBO.TPL not found.
+QUEUE.PAS(0)QUEUE.PAS(0)QUEUE.PAS(146): Error 15: File not found (SYSTEM.TPU).
+    printer ;
+            ^

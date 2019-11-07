@@ -1,0 +1,17 @@
+obj\TTVIEW+
+obj\config+
+obj\init+
+obj\wndmgr+
+obj\botstat+
+obj\cmd+
+obj\menu+
+obj\status+
+obj\font+
+obj\dlghelp+
+obj\subdlgs+
+obj\wsscanf
+TTVIEW /align:16 /NOE /NOD
+TTVIEW /map
+libw mlibcew commdlg wdb 
+TTVIEW.def
+

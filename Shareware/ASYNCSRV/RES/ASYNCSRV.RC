@@ -1,0 +1,96 @@
+/************************************************************************
+ *
+ *     Project:  ASYNCSRV 1.0
+ *
+ *      Module:  ASYNCSRV.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include <cek.h>
+#include <wdb.h>
+
+/*
+ * Dialog box defines
+ */
+#include "dlgs.h"
+#include "cmd.h"
+#include "res.h"
+
+/*
+ * Version Stamping
+ */
+#include "ASYNCSRV.rcv"
+
+/*
+ * String table
+ */
+#include "ASYNCSRV.str"
+
+/*
+ * Icons
+ */
+IDI_ASYNCSRV ICON "ASYNCSRV.ico"
+
+/*
+ * Bitmaps
+ */
+
+
+1 ACCELERATORS
+BEGIN
+   VK_F1, IDM_HELP_CONTENTS, VIRTKEY
+END
+
+/*
+ * Menus
+ */
+ASYNCSRV  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+  POPUP  "&File"
+  BEGIN
+     MenuItem "C&hoose Font...", IDM_OPT_FONT
+     MenuItem SEPARATOR
+     MenuItem "E&xit",  IDM_FILE_EXIT
+  END
+
+  MENUITEM "&About...",  IDM_HELP_ABOUT
+
+ #ifdef DEBUG
+   POPUP "&Test"
+   BEGIN
+     MenuItem "&Reset DDE Server", IDM_RESETDDE
+     MenuItem SEPARATOR
+     MenuItem "&Connect!", IDM_CONNECT
+     MenuItem "&Disconnect!", IDM_DISCONNECT
+   END
+
+   POPUP   "&Debug"
+   BEGIN
+      MENUITEM "&Configure...",       IDM_WDB_CONFIG
+   END
+ #endif
+
+END
+
+/*
+ * Dialog boxes
+ */
+#include "ASYNCSRV.dlg"
+
+/*
+ * RCDATA
+ */
+
+/************************************************************************
+ * End of File: ASYNCSRV.rc
+ ***********************************************************************/
+

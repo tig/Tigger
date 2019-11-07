@@ -1,0 +1,22 @@
+#include "windows.h"
+#include "statusd.h"
+
+#include "status.dlg"
+
+PORTSTATUS ICON "STATUS.ICO"
+
+PORTSTATUS MENU
+BEGIN
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&Exit",               IDM_EXIT
+        MENUITEM SEPARATOR
+        MENUITEM "&About...",           IDM_ABOUT
+    END
+    POPUP        "&Settings"
+    BEGIN
+        MENUITEM "&Port...",            IDM_CHANGEPORT
+    END
+    MENUITEM "&Check printer status!",  IDM_CHECK    
+END
+

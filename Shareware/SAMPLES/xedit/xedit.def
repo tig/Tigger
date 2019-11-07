@@ -1,0 +1,71 @@
+;************************************************************************
+;*
+;*    Copyright (C) 1991 Charles E. Kindel, Jr. All Rights Reserved.
+;*
+;*-----------------------------------------------------------------------
+;*
+;*     Project:  XEDIT.EXE
+;*
+;*      Module:  XEDIT.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              XEDIT
+
+DESCRIPTION       'XEDIT Copr. 1990-92 C.E. Kindel,Jr.'
+
+EXETYPE           WINDOWS
+
+STUB              'OBJ\\WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  XEDIT      PRELOAD MOVEABLE DISCARDABLE
+                  CONFIG       PRELOAD MOVEABLE DISCARDABLE
+                  INIT         PRELOAD MOVEABLE DISCARDABLE
+                  ABOUT        PRELOAD MOVEABLE DISCARDABLE
+                  WNDMGR       PRELOAD MOVEABLE DISCARDABLE
+                  BOTSTAT      PRELOAD MOVEABLE DISCARDABLE
+                  CMD          PRELOAD MOVEABLE DISCARDABLE
+                  MENU         MOVEABLE DISCARDABLE
+                  STATUS       PRELOAD MOVEABLE DISCARDABLE
+                  TOOLBAR      PRELOAD MOVEABLE DISCARDABLE
+                  FONT         PRELOAD MOVEABLE DISCARDABLE
+                  DLGHELP      PRELOAD MOVEABLE DISCARDABLE
+                  SUBDLGS      MOVEABLE DISCARDABLE
+                  TOOLPAL      PRELOAD MOVEABLE DISCARDABLE
+                  BMUTIL       PRELOAD MOVEABLE DISCARDABLE
+                  WSSCANF      PRELOAD MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          32000
+
+STACKSIZE         12192
+
+EXPORTS           
+                  fnAbout              @100
+                  fnShareware          @101
+                  fnMainWnd            @102
+                  fnEnumReally         @103
+                  fnEnumFonts          @104
+                  fnStatus             @105                  
+                  fnToolBar            @106
+                  fnToolPal            @109
+
+IMPORTS           
+                  RectVisible=gdi.104
+                  RectInRegion=gdi.181
+
+;/***********************************************************************
+;* End of File: XEDIT.def
+;************************************************************************
+

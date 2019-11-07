@@ -1,0 +1,90 @@
+
+[Header]
+Version=1.10 .00000.0619
+WinVer=2563
+WorkspaceName0=&Edit
+WorkspaceName1=&Debug
+WorkspaceName2=&Custom
+Initial=3
+PromptWhenSave=1
+CloseWindow=1
+Status=-1 -1 -1 5
+
+[Workspace3]
+Coord=328 55 1094 935
+Style=382664704
+RibbonHidden=0
+StatusHidden=0
+WindowNumber=5
+
+
+
+
+
+
+
+
+
+
+
+
+
+[WindowWorkspace30]
+Type=4
+DuplicateNb=1
+Coord=344 0 758 781
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Output - Build
+CursorPosition=0 0 0
+
+[WindowWorkspace31]
+Type=0
+DuplicateNb=1
+Coord=0 130 344 357
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Watch
+CursorPosition=0 0 8
+
+[WindowWorkspace32]
+Type=1
+DuplicateNb=1
+Coord=0 584 344 781
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Locals
+CursorPosition=0 0 0
+
+[WindowWorkspace33]
+Type=2
+DuplicateNb=1
+Coord=0 0 344 130
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=0
+FileName=Registers
+CursorPosition=0 0 0
+
+[WindowWorkspace34]
+Type=3
+DuplicateNb=1
+Coord=0 357 344 584
+Style=0
+Font=-13 0 0 0 400 0 0 0 0 0 0 0 0
+FaceName=Courier
+Language=0
+TopMostWindow=1
+FileName=Memory
+CursorPosition=0 0 0

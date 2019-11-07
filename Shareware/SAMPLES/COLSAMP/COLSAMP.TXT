@@ -1,0 +1,19 @@
+README for the ColSamp sample application
+
+There are some features of this application that have not been implemented
+yet:
+
+o  Much of the 'object model' has not been filled out.  For example
+   the only implemented collection is the CItems collection.  'Windows' and
+   'Documents' are other collections that need to be implemented.
+   
+o  Also missing are many automation methods and properties on the
+   exisiting objects.  At the top of each .CPP file are notes on which
+   methods and properties have been implemented.
+   
+o  The CColSampSrvrItem implementation currently does not support links to
+   either the entire document or to items in it.  
+   
+o  No code has been written to provide data via IDataObject from the
+   server item.   
+   

@@ -1,0 +1,186 @@
+
+     The basic premise behind how these classes are implelenteed
+is that property sets are just a data definition.   Dealing
+with property sets as they are stored in binary form is not
+easy or efficient.   Accessing a specific property within a section
+which is in a property set is not too bad, but adding or deleteing
+properties, or even changing the size of a property can be a royal
+pain.
+
+These classes make manipulating property sets easy.  CPropertySet
+contains a list of CPropertySections, each of which, in turn
+contain a list of CProperties.   Member functions of each of these
+three classes let you easily (and efficiently) add, delete, change,
+find properties.
+
+The use of these classes is illustrated below:
+
+     Assume that the property set we are interested in is a 
+     SummaryInformation property set.  We are an application
+     that reads and write files that contain SummaryInformation.
+
+     When we open a file, we check to see if it has a 
+     "\005SummaryInformation" stream.  If it does we load the
+     contents of the stream into a CPropertySet instance:
+     
+         SummaryInfo.ReadFromStream( pIStreamSumInfo ) ;
+
+     This actually reads the entire contents of the IStream, parsing
+     the information and building the content of the
+     SummaryInfo instance.   After this call you can close the
+     stream because all data has been *copied*.
+
+     We can then access individual properties within 
+     SummaryInfo:
+
+         szAuthor = (LPSTR)SummaryInfo.Get( 
+                               CLSID_SummaryInformation, 
+                               PID_AUTHOR, &cb ) ;
+         szSubject = (LPSTR)SummaryInfo.Get( 
+                               CLSID_SummaryInformation, 
+                               PID_SUBJECT, &cb ) ;
+     
+     Because each call above requires a search through all sections
+     within SummaryInfo, we can be more efficient:
+
+         pSection = SummaryInfo.GetSection( CLSID_SummaryInformation ) ;
+         szAuthor = (LPSTR)pSection->Get( PID_AUTHOR, &cb ) ;
+         szSubject = (LPSTR)pSection->Get( PID_SUBJECT, &cb ) ;
+
+     Of course, you'll want to make sure that ::Get() succeeded
+     by checking it's return value for NULL.
+
+     Obviously, you can add or change properties within a set:
+
+         pSection->Set( PID_KEYWORDS, szKeywords, VT_LPSTR ) ;
+
+     This would either modify the existing PID_KEYWORDS property, or
+     add a new one if it didn't exist.   Removing propertys is just as easy:
+
+         pSection->Remove( PID_KEYWORDS ) ;
+
+     Or:
+
+         SummaryInfo.Remove( CLSID_SummaryInformation, PID_KEYWORDS ) ;
+     
+     Putting a CPropertySet instance into a stream is cake:
+
+         SummaryInfo.WriteToStream( pIStream ) ;
+       
+     Individual sections can also be written to a stream:
+
+         pSection->WriteToStream( pIStream ) ;
+
+     
+HACK!!! HACK!!! HACK!!! HACK!!!
+
+ One of the biggest pains in dealing with most Property Sets is
+that one of the most common value types is that of a VT_LPSTR
+(or VT_BSTR which is the same for Prop Sets).   The reason is
+that the string has to be pre-pended with a DWORD indicating 
+its length...but the string is already zero-terminated!  In the
+samples above, I show calling functions like ::Set() using just
+a pointer to a standard sz String like this:
+
+     pSection->Set( PID_HITHERE, "Hello World", VT_LPSTR ) ;
+or
+     sz = pSection->Get( PID_HITHERE ) ;
+
+According to the 'rules' of property sets this is bogus because
+the 'value' for a VT_LPSTR is supposed to be a DWORD followed by
+the zero-terminated string, not just the string.  This works 
+with the way this code is implemented because I 'cheat' and
+automatically generate and prepend with the DWORD within the
+class implementation for you.  I had implemented the class 
+so that you had to follow the rules you would have to do the
+following to set/get a VT_LPSTR value:
+
+     char *pBuf = new char[lstrlen( "Hello World" )+sizeof(DWORD)] ;
+     char *p = pBuf + sizeof(DWORD) ;
+     *(DWORD*)pBuf = lstrlen( "Hello World " ) ;
+     lstrcpy( p, "Hello World" ) ;
+     pSection->Set( PID_HITHERE, pBuf, VT_LPSTR ) ;
+     delete pBuf ;
+or
+
+     char *pBuf = pSection->Get(PID_HITHERE) ;
+     sz = pBuf + sizeof(DWORD) ;
+
+Of course you could wrap this in some sort of macro, but it
+simply isn't elegant, or easy to code to.   
+
+The only problem with this cheat is that if you, for some
+weird reason, wanted to ::Set() a VT_BSTR/VT_LPSTR with 
+a string that had embedded '\0's in it.  In this case,
+only the part of the string up to the first '\0' would
+be stored.  The work around is to do the following:
+                                   
+     //pBuf points to a DWORD followed by characters
+     pProp = pSection->GetProperty( PID_WEIRD ) ;
+     pProp->Set( pBuf, VT_BLOB ) ;
+     pProp->SetType( VT_LPSTR ) ;
+
+In other words, you would have to use VT_BLOB in your
+::Set() operation, and then change the type with ::SetType.
+
+Note, that the code that does this 'cheat' is wrapped by
+#ifdefs.  If you do not want this behavior then undefine
+#define CHEAT_ON_BSTR in propset.cpp.
+
+This 'cheat' affects the following property set types (because
+they are all really BSTRs):
+
+     VT_BSTR, VT_LPSTR, VT_STREAM, VT_STORAGE, VT_STREAMED_OBJECT,
+     VT_STORED_OBJECT.
+
+
+----------------------------------------------------------
+The following structures show the structure of property sets.
+But because property sets are dynamically sized, using C structures
+like this won't work.  This does help describe them however...
+
+   
+   typedef struct tagFORMATIDOFFSET
+   {
+       GUID        formatID;
+       DWORD       dwOffset;
+   } FORMATIDOFFSET, FAR * LPFORMATIDOFFSET;
+   
+   typedef struct tagPROPERTYIDOFFSET
+   {
+       DWORD       propertyID;
+       DWORD       dwOffset;
+   } PROPERTYIDOFFSET, FAR * LPPROPERTYIDOFFSET;
+          
+   typedef struct tagPROPERTY
+   {
+       DWORD       dwType;
+       BYTE        rgbValue[ /*size of value*/ ];
+   } PROPERTY, FAR * LPPROPERTY;
+              
+   typedef struct tagPROPERTYSECTION
+   {
+       DWORD       cbSection ;
+       DWORD       cProperties ;
+       
+       PROPERTYIDOFFSET    rgPropIDOffset[cProperties] ;
+       PROPERTY            rgTypeValue[cProperties] ;
+   } PROPERTYSECTION, FAR *LPPROPERTYSECTION ;
+                 
+   typedef struct tagPROPERTYSET
+   {   
+       // Header 
+       WORD        wByteOrder ;    // Always 0xFFFE
+       WORD        wFormat ;       // Always 0
+       WORD        dwOSVer ;       // System version
+       CLSID       clsID ;         // Application CLSID
+       DWORD       cSections ;     // Number of sections (must be at least 1)
+   
+       // Format ID/Offset pairs
+       FORMATIDOFFSET  rgFormatIDOffset[cSections] ;
+       
+       // Sections
+       PROPERTYSECTION rgSections[cSections] ;
+   } PROPERTYSET, FAR * LPPROPERTYSET ;
+       
+----------------------------------------------------------

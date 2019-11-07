@@ -1,0 +1,4 @@
+#define IDM_ABOUT 100
+#define IDM_ANIMATE 101
+#define IDM_PALETTE 102
+#define IDD_ANIMATE 200

@@ -1,0 +1,14 @@
+LIBRARY   xrttest
+EXETYPE   WINDOWS
+CODE      PRELOAD MOVEABLE DISCARDABLE
+DATA      PRELOAD MOVEABLE SINGLE
+HEAPSIZE  4096
+
+SEGMENTS
+            WEP_SEG    PRELOAD FIXED
+            
+EXPORTS
+            WEP PRIVATE 
+            fnEnumReallyEx          @5
+            fnIDataObjDlg           @11
+            DisplayIDataObject      @100

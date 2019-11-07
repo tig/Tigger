@@ -1,0 +1,23 @@
+
+NAME            STATTEST	
+
+DESCRIPTION     'Status Window Test Application'
+
+EXETYPE         WINDOWS	
+
+STUB	          'WINSTUB.EXE'
+
+CODE            PRELOAD MOVEABLE DISCARDABLE
+
+DATA            PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE        8192
+STACKSIZE       8192
+
+; All functions that will be called by any Windows routine
+; MUST be exported.
+
+EXPORTS
+	FNMAINWND       @2   ; main window of sample app
+   FNABOUT         @3   ; about box proc
+   fnMusTest        @4

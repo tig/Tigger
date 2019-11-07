@@ -1,0 +1,31 @@
+#*************************************************************
+#  
+# MAKEFILE for the BMUTIL test application
+#
+#
+#*************************************************************
+
+MEM      =-AM
+LIBS     =mlibcew wdb
+
+CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3 -nologo -DDEBUG -DSAMPLE
+#CLOPTS   =$(MEM) -c -Gsw -Oad -Zp -W3 -nologo -DSAMPLE
+
+LINKOPTS =/NOD/NOE/CO
+#LINKOPTS =/NOD/NOE
+
+test.exe:       test.obj\
+                bmutil.obj\
+                test.def\
+                test.res 
+    link $(LINKOPTS) test bmutil,,, $(LIBS) libw, test.def
+    rc -v test.res
+
+test.obj: test.c testd.h
+    cl $(CLOPTS) test.c > test.err
+
+bmutil.obj: bmutil.c
+    cl $(CLOPTS) bmutil.c > bmutil.err
+
+test.res: test.rc test.ico about.dlg
+    rc -r test.rc

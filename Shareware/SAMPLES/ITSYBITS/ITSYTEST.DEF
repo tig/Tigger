@@ -1,0 +1,42 @@
+;************************************************************************
+;*
+;*     Project:  ITSYTEST.EXE
+;*
+;*      Module:  ITSYTEST.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              ITSYTEST
+
+DESCRIPTION       'ItsyBits Test App'
+
+EXETYPE           WINDOWS
+
+STUB              'WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  ITSYTEST     PRELOAD MOVEABLE DISCARDABLE
+                  ITSYBITS     PRELOAD MOVEABLE DISCARDABLE
+                  PRECOMP      MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          16000
+
+EXPORTS           
+                  fnMainWnd            @102
+                  fnItsyWnd            @103
+
+;/***********************************************************************
+;* End of File: ITSYTEST.def
+;************************************************************************
+

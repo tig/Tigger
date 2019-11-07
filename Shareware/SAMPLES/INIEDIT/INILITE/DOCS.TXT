@@ -1,0 +1,105 @@
+BOOL CALLBACK WritePrivateProfileStringEx( LPSTR lpszFileName, 
+                                           LPSTR lpszSection, 
+                                           LPSTR lpszKey, LPSTR lpszValue, 
+                                           UINT uiFlags )
+
+Description:
+    WritePrivateProfileStringEx is an extension to WritePrivateProfileString
+    The additional feature is that you can add duplicate keys. 
+
+Parameters
+    LPSTR lpszFileName
+        Fully qualified file name. This filename should be in ANSI.
+
+    LPSTR lpszSection
+        Zero terminated string containing the name of the section to 
+        which the string should be added. If the section does not exist,
+        a new one will be created if the WPPSE_CREATE_SECTION flag is set.
+
+    LPSTR lpszKey
+        Zero terminated string containing the name of the key to 
+        add. If the key exists, and if WPPSE_ALLOW_DUPES flag
+        is specified, it will be added all the same.
+
+    LPSTR lpszValue 
+        Zero terminated string containing the name of the value to 
+        attach to the key
+
+    UINT uiFlags 
+        Any of the following:
+        WPPSE_ALLOW_DUPES     - Allow duplicate keys
+  
+        WPPSE_CREATE_SECTION  - Create a new section if the specified
+                                section does not exist
+
+Return
+     TRUE  - If the string was written successfully
+     FALSE - The string was not added. The function can fail for the
+             following reasons:
+                 o if the lpszFileName or the lpszSection or the lpszKey
+                   is invalid.
+                 o Adding the new key made the INIFile greater than
+                   64K
+                 o if the key is a duplicate and WPPSE_ALLOW_DUPES was
+                   not specified
+                 o if the section did not exist and WPPSE_CREATE_SECTION
+                   was not specified.
+                 o If the file could not be opened
+                 o Global space could not be allocated for internal 
+                   structures
+
+Comments
+
+==========================================================================
+BOOL CALLBACK DeletePrivateProfile( LPSTR lpszFileName, LPSTR lpszSection, 
+                                    LPSTR lpszKey, LPSTR lpszValue, 
+                                    UINT uiFlags )
+Description:
+    DeletePrivateProfile lets you delete an entry in an INI file
+
+Parameters
+    LPSTR lpszFileName
+        Fully qualified file name. This filename should be in ANSI.
+
+    LPSTR lpszSection
+        Zero terminated string containing the name of the section in 
+        which the entry to be deleted can be found. If all entries in
+        all sections should be deleted, leave this NULL and use the
+        DPP_IN_ALL_SECTIONS
+
+    LPSTR lpszKey
+        Zero terminated string containing the name of the key to 
+        be deleted. This cannot be NULL.
+
+    LPSTR lpszValue 
+        Zero terminated string containing the the value of the key 
+        to be deleted. If all the key shoudl be deleted regardless
+        of the value, set this parameter to NULL and specify the
+        DPP_ANY_VALUE flag.
+
+    UINT uiFlags 
+        Any of the following or a combination:
+           DPP_ALL_MATCHING_KEYS - Delete all matches. As opposed
+                                   to deleting the first find.
+
+           DPP_IN_ALL_SECTIONS   - Deletes matching keys in all
+                                   sections in the INI file
+
+           DPP_ANY_VALUE         - Deletes the key regardless of
+                                   of the value
+Return
+     TRUE  - If the string was deleted successfully
+     FALSE - The string was not deleted. The function can fail for the
+             following reasons:
+                 o if the lpszFileName or the lpszKey is invalid.
+                 o Global space could not be allocated for internal 
+                   structures
+                 o The section was not found and DPP_IN_ALL_SECTIONS
+                   was not specified
+                 o The key was not found
+                 o The Key/value combination was not found and 
+                   DPP_ANY_VALUE was not specified
+
+Comments
+
+==========================================================================

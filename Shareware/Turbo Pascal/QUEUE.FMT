@@ -1,0 +1,880 @@
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 1
+
+
+          1  {
+          2                   queue.pas - Copyright (C) Charles E. Kindel, 1989
+          3                                 KindlCo Consulting
+          4   
+          5                                   QueueAnalysist
+          6                       An Open/Closed Queuing Network Analyzer
+          7   
+          8   
+          9  Author:   Charles E. Kindel, Jr.
+         10   
+         11  Started:  April 23, 1989
+         12  Version:  1.0
+         13   
+         14   
+         15  DESCRIPTION
+         16     QueueAnalysist will perform an analysis of open and closed queueing networks
+         17     given the following assumptions:
+         18        1) Interarrival times to the system are independent and identically 
+         19           distributed exponential random varaibles.
+         20        2) Service Times are independent exponential random variables, with a 
+         21           parameter that may vary with the station in the network.
+         22     Systems can have as many as 50 nodes (this number may be increased by modifying 
+         23     the MAXNODES constant if there is enough memory).  
+         24   
+         25     QueueAnalysist can get its input from either a disk file or from the keyboard.
+         26     Output can either be viewed on the screen or printed to the printer.  The data
+         27     that needs to be supplied by the user includes the following:  The number of nodes
+         28     in the system, the arrival rate to each node from outside the system, the
+         29     service time at each node, and the node transition probabilities.  
+         30   
+         31   
+         32  USAGE INSTRUCTIONS
+         33     QueueAnalysist can be run by typing QUEUE <filename> at the DOS prompt, where
+         34     <filename> refers to an optional file containing the specifications of a queue.
+         35     The format of this file will be described later.
+         36   
+         37     Once QueueAnalysist is running, the user will be presented with a prompt asking
+         38     for a filename.  The default filename will be the one included on the command 
+         39     line (as <filename>).  If no file was specified on the command line, this prompt 
+         40     will be bypassed.  If the user wishes to use the default file he just presses
+         41     ENTER at the prompt or the filename can be changed appropriately.  If the user
+         42     wishes to enter the network specifications interactively, then just press ENTER 
+         43     with nothing at the prompt.  
+         44   
+         45     If interactive input is active, the user will be prompted for the specifications 
+         46     of his system.  The first specification is the number of nodes.  Enter any 
+         47     number between 1 and MAXNODES (50).  After the number of nodes has been
+         48     successfully entered, the user will be prompted for the arrival rates
+         49     from outside the system.  For a closed system these should all be zeros.
+         50     The program will next ask for the service times for each node, followed by the 
+         51     node transition probability matrix.  The probability are input as follows:
+         52     P[i,j] = The probability of going from node i to node j.
+         53   
+         54     If the user chooses to use a file for input, the file must be in the following 
+         55     format:
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 2
+
+
+         56        - The order of the data is very important.  The data MUST be ordered as 
+         57          follows:  Network Name, Number of Nodes, Arrival Rates, Service Rates,
+         58          Transition Probabilites.
+         59   
+         60        - Lines beginning with a semi-colon (";") will be treated as comments, all
+         61          text on such a line will be ignored by the program.
+         62   
+         63        - The first line of the input file (after any comment lines) must contain
+         64          the name of the network.
+         65          The name of the network can contain any numbers or characters, but must
+         66          not exceed 40 characters in length.
+         67        
+         68        - The number of nodes (n) must be alone (starting in the first column) on 
+         69          a line.  It must be an integer value between 2 and MAXNODES (50).
+         70   
+         71        - The Arrival rates for each of the n nodes must each be on a separate 
+         72          line starting in the first column.  Comments may be interspersed
+         73          between lines.
+         74   
+         75        - The Service Rates for each of the n nodes follow the same rules as those
+         76          for the Arrival rates.
+         77   
+         78        - The Transistion Probabilities must be entered with n rows and n columns.
+         79          If P[i,j] = The probability of going from node i to node j, then the
+         80          rows are indexed by i and the columns are indexed by j.  See example below
+         81          for more detail.
+         82   
+         83     Below is an example of an Open Network Queuing System:
+         84           Open Network: Problem 1, set 9
+         85           ; these are comments
+         86           ; you can put a comment on any line of the file as long
+         87           ; as the first character of the line is a semi-colon (;)
+         88           ; We now specify the number of nodes, n
+         89           ; n must be on a line by itself
+         90           3
+         91           ; Next comes the arrival rates for each of the n nodes
+         92           ; each arrival rate must be on it's own line:
+         93           5
+         94           ; now for node 2.
+         95           10
+         96           ; and node 3
+         97           15
+         98           ; Next comes the service rates for each node.
+         99           ; each service rate must be on a separate line
+        100           10
+        101           50
+        102           100
+        103           ; The next set is the transition probabilities.  These are placed 
+        104           ; row by row, in matrix form.  Separate each probability in a row with
+        105           ; one or more spaces DO NOT USE TABS!
+        106           0.0     0.3333    0.3333 
+        107           0.0     0.0       1
+        108           0.0     0.5       0.0
+        109           ; This is all the data that can be entered via a file.
+        110           ; End of File!
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 3
+
+
+        111   
+        112     Any network that has at least one non-zero Arrival rate will be considered an
+        113     open system.  Any network with no non-zero Arrival rate will be considered a
+        114     Closed System.  
+        115   
+        116  IMPLEMENTATION
+        117     QueueAnalysist was developed using Borland International's Turbo Pascal 5.0 
+        118     and TurboPower Associates' Turbo Professional 4.0. 
+        119     It was written on an ALR 386/220 (a 20MHz 80386 IBM compatible).
+        120     The program was designed to be used with a color monitor, but it will work 
+        121     fine on a monochrome.
+        122   
+        123   
+        124  REVISIONS
+        125     DATE              VERSION     CHANGE
+        126     April 22, 1989    0.01        Initial prototyping
+        127     April 23, 1989    0.10        Interactive input routines
+        128     April 25, 1989    0.20        File input routines
+        129     April 27, 1989    0.60        Open System calculations
+        130     April 27, 1989    0.70        Initial Closed system routines
+        131     April 27, 1989    0.75        Closed System calculations
+        132     April 29, 1989    0.90        Documentation
+        133     April 30, 1989    0.95        Printer routines
+        134     April 30, 1989    1.00        Final debugging.
+        135   
+        136  }
+        137   
+        138   
+        139  Program Queue ;
+        140   
+        141  Uses
+        142      TpString,                             { These are TurboPascal 5.0 "Units", they are required }
+        143      TpCrt,                                { to do such things as access the printer, etc...      }
+        144      TpEdit,
+        145      TpWindow,
+        146      printer ;
+        147   
+        148  const
+        149      MAXNODES = 50 ;          { define MAXNODES to be the maximum number of nodes in the net    }
+        150      OPENSYSTEM = TRUE ;      { OPEN/CLOSEDSYTEM are used to keep track of which kind of system }
+        151      CLOSEDSYSTEM = FALSE ;   { we're dealing with.                                             }
+        152   
+        153  type
+        154      openclosetype = boolean ;
+        155      vectortype = array [1..maxnodes] of real ;
+        156      matrixtype = array [1..maxnodes, 1..maxnodes+1] of real;
+        157      { matrixtype is required by the Gaussian elimiation routine }
+        158   
+        159  var
+        160      Escaped : boolean ;                      { If the user presses ESC at any input halt program }
+        161      SysType : boolean ;                      { open or closed system ?                           }
+        162      QuitFlag: boolean ;
+        163      InFile  : text    ;                      { Input file if batch mode is used                  }
+        164      MenuWind : WindowPtr ;
+        165   
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 4
+
+
+        166      { The following variables contain the "meat" of the network data                             }
+        167      n       : integer ;                      { number of nodes in network                        }
+        168      r       : vectortype ;                   { Arrival rates for open nets, pi for closed nets   }
+        169      mu      : vectortype ;                   { Service rates at each server                      }
+        170      Lambda  : vectortype ;                   { Used only for Open nets                           }
+        171      P       : matrixtype ;                   { Transition probability matrix                     }
+        172      NetName : string ;                       { Name of network                                   }
+        173   
+        174      Storage : matrixtype ;                   { Used to get around recursive procedures during    }
+        175                                               { closed system calculations                        }
+        176   
+        177   
+        178   
+        179  {$I \TP\SOURCE\NUM\NEWGAUSS.PAS}
+        180   
+        181  {NEWGAUSS.PAS is a procedure that solves a system of simulatnous linear}
+        182  {equations using Guassian elimiation                                   }
+        183  {It was supplied by Sid Yakowitz during SIE 270                        }
+        184   
+        185  {$I \TP\SOURCE\NUM\EPSILON.PAS}
+        186  {EPSILON.PAS is a procedure to calculate machine epsilon...this is used}
+        187  {by NEWGAUSS to determine if the system of equations is singlular or not}
+        188   
+        189   
+        190    Function Str2Real (S : string; var R : real ) : boolean ;
+        191    { This function converts a string to a real value }
+        192        var Code : integer ;
+        193      begin
+        194        val (S, R, Code) ;
+        195        if Code <> 0 then
+        196          Str2Real := FALSE
+        197        else
+        198          Str2Real := TRUE ;
+        199      end ;
+        200   
+        201   
+        202   
+        203    Procedure InputSystem;
+        204    { InputSystem - This procedure does all the user input of data.  If the user puts a filename }
+        205    {               on the command line (i.e. C:\QUEUE <filename>) then this procedure will read }
+        206    {               the program data from <filename>.  The syntax for the data file is defined in}
+        207    {               the program documentation.                                                   }
+        208    {               If the user does NOT put a filename on the command line, then the program    }
+        209    {               will run in "interactive" mode, all input will be taken from the keyboard.   }
+        210   
+        211      var
+        212         i, j, x : integer ;
+        213         FileName, Comment, SubStr : string ;
+        214         ch : char ;
+        215   
+        216      begin
+        217        ClrScr ;
+        218        { if there is no file name on the command line then get all data interactively }
+        219        { else get it from the file                                                    }
+        220        FileName := ParamStr(1) ;
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 5
+
+
+        221        SysType := CLOSEDSYSTEM ;
+        222        ReadString ('Enter input file name, or [ENTER] for interactive input: ', 3,1,
+        223                        12, LightCyan, White, 0,escaped, FileName);
+        224        if Escaped then halt ;
+        225        ClrScr ;
+        226        if FileName = '' then
+        227          begin
+        228            TextColor (LightCyan) ;
+        229            n := 0 ;
+        230            ReadInteger ('Enter Number of nodes in the system: ', 3, 1, 4, LightRed,
+        231                       113, 1, MAXNODES, Escaped, n) ;
+        232            if Escaped then halt ;
+        233            Writeln ;
+        234            for i := 1 to n do                 {Get Arrival Rates from keyboard }
+        235              begin
+        236                r[i] := 0 ;
+        237                Writeln ;
+        238                Write ('Enter arrival rate for node ', i:2, ': ') ;
+        239                ReadReal ('', WhereY+2, WhereX, 15, LightRed,
+        240                           113, 4, 0, $FFFF, Escaped, r[i]) ;
+        241                if r[i] <> 0 then
+        242                  SysType := OPENSYSTEM ;
+        243                if Escaped then halt ;
+        244              end ;
+        245            clrscr ;
+        246            Writeln ;
+        247            for i := 1 to n do                 { Get Service rates from the keyboard }
+        248              begin
+        249                mu[i] := 0 ;
+        250                Writeln ;
+        251                Write ('Enter Serice rate for node ', i:2, ': ') ;
+        252                ReadReal ('', WhereY+2, WhereX, 15, LightRed,
+        253                           113, 4, 0, $FFFF, Escaped, mu[i]) ;
+        254                if Escaped then halt ;
+        255              end ;
+        256            ClrScr ;
+        257            Writeln ;
+        258            for i := 1 to n do                 { Get Probabilities.  By rows }
+        259              begin
+        260                for j := 1 to n do
+        261                  begin
+        262                    P[i,j] := 0 ;
+        263                    Writeln ;
+        264                    write ('Enter probability, P[',i:0,',',j:0,'] = ') ;
+        265                    ReadReal ('', WhereY+2, WhereX, 15, LightRed,
+        266                               113, 4, 0, $FFFF, Escaped, P[i,j]) ;
+        267                    if Escaped then halt ;
+        268                  end ;
+        269                writeln ;
+        270              end ;
+        271          end  { Interactive input }
+        272        else
+        273          begin { file input }
+        274            TextColor (LightRed) ;
+        275            Writeln ('Reading data from ', FileName, '...') ;
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 6
+
+
+        276            Assign (InFile, FileName) ;
+        277            Reset (InFile) ;
+        278            Readln (Infile, NetName) ;
+        279            Readln (Infile, Comment) ;
+        280            While (Comment[1] = ';') do
+        281              Readln (Infile, Comment) ;
+        282            if Not Str2Int (Comment, n) then
+        283              begin
+        284                TextColor (LightMagenta) ;
+        285                Writeln ;
+        286                Writeln ('ERROR in ', FileName, ': invalid number of nodes.') ;
+        287                writeln ('  Aborting....') ;
+        288                halt ;
+        289              end ;
+        290            Writeln ('System has ', n, ' nodes.') ;
+        291            Writeln ('Arrival rates from outside system: ') ;
+        292            TextColor (LightCyan) ;
+        293            Readln (Infile, Comment) ;
+        294            while Comment[1] = ';' do
+        295              readln (Infile, Comment) ;
+        296            i := 1 ;
+        297            while (i <= n) do
+        298              begin
+        299                If Not Str2Real (Comment, r[i]) then
+        300                  begin
+        301                    TextColor (LightMagenta) ;
+        302                    Writeln ;
+        303                    Writeln ('ERROR in ', FileName, ': invalid arrival rate.') ;
+        304                    writeln ('  Aborting....') ;
+        305                    halt ;
+        306                  end ;
+        307                Writeln ('r[',i,'] = ', r[i]:6:2) ;
+        308                if r[i] <> 0 then
+        309                  SysType := OPENSYSTEM ;
+        310                if i < n then
+        311                  begin
+        312                    readln (InFile, Comment) ;
+        313                    while Comment[1] = ';' do
+        314                      readln (Infile, Comment) ;
+        315                  end ;
+        316                inc(i) ;
+        317              end ;
+        318            TextColor (LightRed) ;
+        319            Writeln ('Service rates: ') ;
+        320            TextColor (LightCyan) ;
+        321            readln (Infile,Comment) ;
+        322            while Comment[1] = ';' do
+        323              readln (Infile, Comment) ;
+        324            i := 1 ;
+        325            while (i <= n) do
+        326              begin
+        327                If Not Str2Real (Comment, mu[i]) then
+        328                  begin
+        329                    TextColor (LightMagenta) ;
+        330                    Writeln ;
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 7
+
+
+        331                    Writeln ('ERROR in ', FileName, ': invalid service rate.') ;
+        332                    writeln ('  Aborting....') ;
+        333                    halt ;
+        334                  end ;
+        335                Writeln ('mu[',i,'] = ', mu[i]:6:2) ;
+        336                if i < n then
+        337                  begin
+        338                    readln (InFile, Comment) ;
+        339                    while Comment[1] = ';' do
+        340                      readln (Infile, Comment) ;
+        341                  end ;
+        342                inc(i) ;
+        343              end ;
+        344            TextColor (LightRed) ;
+        345            Writeln ('Transition probabilties:') ;
+        346            TextColor (LightCyan) ;
+        347            readln (Infile, Comment) ;
+        348            while Comment[1] = ';' do
+        349              readln (Infile, Comment) ;
+        350            i := 1 ;
+        351            while (i <= n) do
+        352              begin
+        353                x := 1 ;
+        354                Comment := Comment + ' ';
+        355                for j := 1 to n do
+        356                  begin
+        357                    Comment := TrimLead (Copy (Comment, x, Length(Comment)+1)) ;
+        358                    SubStr := Trim (copy (Comment, 1, Pos(' ', Comment))) ;
+        359                    x := Pos (' ', Comment) ;
+        360                    If Not Str2Real (SubStr, P[i,j]) then
+        361                    begin
+        362                      TextColor (LightMagenta) ;
+        363                      Writeln ;
+        364                      Writeln ('ERROR in ', FileName, ': invalid Probability.') ;
+        365                      writeln ('  Aborting....') ;
+        366                      halt ;
+        367                    end ;
+        368                    Write (P[i,j]:6:2) ;
+        369                  end ;
+        370                if i < n then
+        371                  begin
+        372                    readln (InFile, Comment) ;
+        373                    while Comment[1] = ';' do
+        374                      readln (Infile, Comment) ;
+        375                  end ;
+        376                Writeln ;
+        377                inc(i) ;
+        378              end ;
+        379            Close (Infile) ;
+        380          end ;
+        381      end ;
+        382   
+        383   
+        384    Procedure CalcOpen ;
+        385    { CalcOpen - This procedure calculates the Lambda's for an open system.  It calls Gauss      }
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 8
+
+
+        386    {            which is a routine that solves simltaneous linear equations using guassian      }
+        387    {            elimiation.  Before it calls gauss, it builds the simulanous equations          }
+        388    {            according to equation (4.3) on Page 328 of Ross.                                }
+        389   
+        390       var
+        391        i,j :integer ;              { counting variables }
+        392        ERR : boolean ;             { if Guass finds the system to be singular it will set ERR to true }
+        393        A : matrixtype ;            { A contains the system of equations for gauss Ax=b }
+        394   
+        395      begin
+        396        for i := 1 to n do
+        397          begin
+        398            A[i,n+1] := -r[i] ;                      { Gauss uses A[x, n+1] for the b vector in Ax=b }
+        399            for j := 1 to n do                       { we put -r there                               }
+        400              begin
+        401                if (i=j) then
+        402                  A[i,j] := P[i,i] - 1
+        403                else
+        404                  A[i,j] := P[j,i] ;
+        405              end ;
+        406          end ;
+        407          Gauss (n, 1, A, Epsilon, ERR) ;
+        408          if ERR then
+        409            begin
+        410              writeln ('Error solving equations') ;
+        411              halt;
+        412            end
+        413          else
+        414            for i := 1 to n do
+        415              Lambda[i] := A[i, n+1] ;             { Gauss puts the solution in A[x,n+1], we put them in Lambda}
+        416      end ;
+        417   
+        418   
+        419    Function L : real ;
+        420    {  This function calculates the average number of customers in an open system (L) using }
+        421    {  the equation given on page 329 of Ross                                               }
+        422   
+        423      var i:integer ;
+        424          sum : real ;
+        425      begin
+        426        sum := 0 ;
+        427        for i := 1 to n do
+        428          sum := sum + (Lambda[i]/(Mu[i]-Lambda[i])) ;
+        429        L := sum ;
+        430      end ;
+        431   
+        432   
+        433    Function W : real ;
+        434    {  This function calculates the average amount of time a customer spends in the system  }
+        435    {  (W) using the equation given on page 329 of Ross                                     }
+        436   
+        437      var i:integer ;
+        438          sum :real ;
+        439      begin
+        440        sum := 0 ;
+
+
+
+     QUEUE.PAS                                        Monday, May 1, 1989 1:06 am                                        Page 9
+
+
+        441        for i := 1 to n do
+        442          sum := sum + r[i] ;
+        443        W := L / sum ;
+        444      end ;
+        445   
+        446   
+        447   
+        448    Procedure OutputOpen ;
+        449    { This procedure simply outputs the calculated open system to the screen }
+        450      var i : integer ;
+        451      begin
+        452        ClrScr ;
+        453        for i := 1 to n do
+        454          writeln ('Lambda[',i:0,'] = ', Lambda[i]:5:2) ;
+        455        Writeln;
+        456        writeln ('L = ', L:6:2) ;
+        457        Writeln;
+        458        writeln ('W = ', W:6:2) ;
+        459      end ;
+        460   
+        461   
+        462   
+        463    Procedure CalcClosed ;
+        464    { This procedure calculates the pi values for a Closed system using equations (4.5) on page 331 of Ross }
+        465    { Like CalcOpen it uses Gauss to solve a system of simultaneous linear equations.                       }
+        466   
+        467    var m, i, j : integer ;
+        468          A : matrixtype ;
+        469          ERR : boolean ;
+        470   
+        471      begin
+        472        for i := 1 to n do
+        473          begin
+        474            A[i,n+1] := 0 ;
+        475            for j := 1 to n do
+        476              begin
+        477                if (i=j) then
+        478                  A[i,j] := P[i,i] - 1
+        479                else
+        480                  A[i,j] := P[j,i] ;
+        481              end ;
+        482          end ;
+        483          For i := 1 to n+1 do                { Replace 1st equation with sum of pi's = 1}
+        484            A[1,i] := 1 ;
+        485          Gauss (n, 1, A, Epsilon, ERR) ;
+        486          if ERR then
+        487            begin
+        488              writeln ('Error solving equations') ;
+        489              halt;
+        490            end
+        491          else
+        492            for i := 1 to n do
+        493              r[i] := A[i, n+1] ;      { r[i] holds the pi values }
+        494      end ;
+        495   
+
+
+
+     QUEUE.PAS                                       Monday, May 1, 1989 1:06 am                                        Page 10
+
+
+        496    Function Wj (j, m : integer) : real ;
+        497    { This function simply returns the value of Wj(m) given j and m.  The array Storage contains Wj }
+        498    { and Lambda(m) values so that (m-1) values do not need to be recalculated each time.           }
+        499   
+        500      begin
+        501        Storage [m,j] := 1/mu[j]*(1+Storage[m-1,n+1]*r[j]*Storage[m-1,j]) ;
+        502        Wj := Storage [m,j] ;
+        503      end ;
+        504   
+        505    Function LambdaRecursive (m : integer) : real ;
+        506    { This Function is not really recursive.  It was in a previous version, but I was able to get }
+        507    { around recursion (and it's inherent slowwwwwness) by utilizing the Storage array to store   }
+        508    { previously calculated Wj's and Lambdas.  This function calculates the Lambdas for a closed  }
+        509    { system using the recursive procedure given on pages 331-335 of Ross.                        }
+        510       var sum : real ;
+        511           i   : integer ;
+        512      begin
+        513        sum := 0 ;
+        514        for i := 1 to n do
+        515          sum := sum + r[i]*Wj(i,m) ;
+        516        Storage [m, n+1] := m / sum ;
+        517        LambdaRecursive := Storage[m,n+1];
+        518      end ;
+        519   
+        520    Procedure CalcLambda (m : integer) ;
+        521    { This Procedure drives the function LambdaRecursive to calculate the Lambdas and Wjs for a }
+        522    { closed system.  m is the number of recursive iterations.                                  }
+        523      var i,j : integer ;
+        524          sum : real ;
+        525      begin
+        526        sum := 0 ;
+        527        for i := 1 to n do
+        528          begin
+        529            for j := 1 to n+1 do
+        530              Storage[i,j] := -1 ;
+        531            Storage[1,i] := 1/mu[i] ;
+        532            sum := sum + r[i]*Storage[1,i] ;
+        533          end ;
+        534        Storage [1,n+1] := 1 / sum ;
+        535        for i := 2 to m do
+        536          Storage[i,n+1] := LambdaRecursive (i) ;
+        537      end ;
+        538   
+        539   
+        540   
+        541   
+        542   
+        543    Procedure OutputClosed ;
+        544    { This procedure outputs the calculated closed system to the screen }
+        545      var i,j : integer ;
+        546          m : integer ;
+        547          Lamd,Sum : real ;
+        548          ch   : char ;
+        549      begin
+        550        ClrScr ;
+
+
+
+     QUEUE.PAS                                       Monday, May 1, 1989 1:06 am                                        Page 11
+
+
+        551        for i := 1 to n do
+        552          writeln ('pi[',i:0,'] = ', r[i]:5:2) ;
+        553        writeln ;
+        554        writeln ;
+        555        m := 2 ;
+        556        ReadInteger ('Enter desired m value: ',
+        557                   WhereY+1, WhereX, 4, LightRed, White, 2, MAXNODES, Escaped, m) ;
+        558        if escaped then halt ;
+        559        CalcLambda (m) ;
+        560        write (' m      Lambda(m-1)') ;
+        561        for i := 1 to n do
+        562          write ('     W',i:2,'(m) ') ;
+        563        writeln ;
+        564        for i := 2 to m do
+        565          begin
+        566            write (i:3, Storage[i-1,n+1]:15:4);
+        567            for j := 1 to n do
+        568              write (Storage[i,j]:12:4) ;
+        569            writeln ;
+        570          end ;
+        571      end ;
+        572   
+        573    Procedure PrintOpen ;
+        574    { This procedure prints an Open System and all its calculated values to the printer }
+        575      var i, j : integer ;
+        576      begin
+        577        Writeln (lst) ;
+        578        writeln (lst) ;
+        579        writeln (lst, Center('QueueAnalysist - KindlCo Consulting - (C) Charles E. Kindel, 1989', 75)) ;
+        580        Writeln (lst, Center('Open Queuing System - '+NetName,75)) ;
+        581        writeln (lst) ;
+        582        Writeln (lst) ;
+        583        writeln (lst, 'System specifications...') ;
+        584        writeln (lst) ;
+        585        writeln (lst, '    Arrival Rates    Service Times') ;
+        586        Writeln (lst, '       r''s               mu''s') ;
+        587        Writeln (lst, '    ------------------------------') ;
+        588        for i := 1 to n do
+        589          writeln (lst, r[i]:15:5, mu[i]:15:5) ;
+        590        writeln (lst) ;
+        591        writeln (lst) ;
+        592        writeln (lst, '    Transistion probabilities (i.e. Probability of going from node i to j') ;
+        593        writeln (lst, '     ', ' ':Round((n/2)*10),'j') ;
+        594        for i := 1 to n do
+        595          begin
+        596            if (Round(n/2) = i) then
+        597              write (lst, '  i  ' )
+        598            else
+        599              write (lst, '     ') ;
+        600            for j := 1 to n do
+        601              write (lst, P[i,j]:10:5) ;
+        602            writeln (lst) ;
+        603          end ;
+        604        writeln (lst) ;
+        605        writeln (lst) ;
+
+
+
+     QUEUE.PAS                                       Monday, May 1, 1989 1:06 am                                        Page 12
+
+
+        606        writeln (lst, 'System calculations...') ;
+        607        writeln (lst) ;
+        608        writeln (lst) ;
+        609        writeln (lst, '    Arrival rates into each node (i.e. Lambda[1] = total arrival rate ') ;
+        610        writeln (lst, '    into node 1)...') ;
+        611        for i := 1 to n do
+        612          writeln (lst, '          Lambda[',i:0,'] = ', Lambda[i]:5:2) ;
+        613        Writeln (lst) ;
+        614        writeln (lst, '    Average Number of customers in the system (L) = ', L:6:2) ;
+        615        Writeln (lst) ;
+        616        writeln (lst, '    Average time a customer spends in the system (W) = ', W:6:2) ;
+        617        writeln (lst) ;
+        618      end ;
+        619   
+        620    Procedure PrintClosed ;
+        621    { This procedure prints a Closed System and all its calculated values to the printer }
+        622      var m, i, j : integer ;
+        623      begin
+        624        m := 2 ;
+        625        ReadInteger ('Enter desired m value: ',
+        626                   WhereY+1, WhereX, 4, LightRed, White, 2, MAXNODES, Escaped, m) ;
+        627        if escaped then halt ;
+        628        CalcLambda (m) ;
+        629        Writeln (lst) ;
+        630        writeln (lst) ;
+        631        writeln (lst, Center('QueueAnalysist - KindlCo Consulting - (C) Charles E. Kindel, 1989', 75)) ;
+        632        Writeln (lst, Center('Closed Queuing System - '+NetName,75)) ;
+        633        writeln (lst) ;
+        634        Writeln (lst) ;
+        635        writeln (lst, 'System specifications...') ;
+        636        writeln (lst) ;
+        637        writeln (lst, '    Service Times') ;
+        638        Writeln (lst, '         mu''s') ;
+        639        Writeln (lst, '    ------------------------------') ;
+        640        for i := 1 to n do
+        641          writeln (lst, mu[i]:15:5) ;
+        642        writeln (lst) ;
+        643        writeln (lst) ;
+        644        writeln (lst, '    Transistion probabilities (i.e. Probability of going from node i to j') ;
+        645        writeln (lst, '     ', ' ':Round((n/2)*10),'j') ;
+        646        for i := 1 to n do
+        647          begin
+        648            if (Round(n/2) = i) then
+        649              write (lst, '  i  ' )
+        650            else
+        651              write (lst, '     ') ;
+        652            for j := 1 to n do
+        653              write (lst, P[i,j]:10:5) ;
+        654            writeln (lst) ;
+        655          end ;
+        656        writeln (lst) ;
+        657        writeln (lst) ;
+        658        writeln (lst, 'System calculations...') ;
+        659        writeln (lst) ;
+        660        writeln (lst) ;
+
+
+
+     QUEUE.PAS                                       Monday, May 1, 1989 1:06 am                                        Page 13
+
+
+        661        writeln (lst, '    Stationary probabilities (pi''s)') ;
+        662        for i := 1 to n do
+        663          writeln (lst, '        pi[',i:0,'] = ', r[i]:5:2) ;
+        664        writeln (lst) ;
+        665        writeln (lst, '    Average Service Rates (Lambda), Number of Customers (L), and') ;
+        666        writeln (lst, '    Waiting Time (W).  (m = ', m:0, ' iterations.)') ;
+        667        write (lst, ' m      Lambda(m-1)') ;
+        668        for i := 1 to n do
+        669          write (lst, '     W',i:2,'(m) ') ;
+        670        writeln (lst) ;
+        671        for i := 2 to m do
+        672          begin
+        673            write (lst, i:3, Storage[i-1,n+1]:15:4);
+        674            for j := 1 to n do
+        675              write (lst, Storage[i,j]:12:4) ;
+        676            writeln (lst) ;
+        677          end ;
+        678        writeln (lst) ;
+        679      end ;
+        680   
+        681      
+        682      
+        683    Function Menu : char ;
+        684    { This function puts a menu inside of a window on the screen, giving the user his options }
+        685      var ch : char ;
+        686      begin
+        687        if not MakeWindow (MenuWind, 45, 3, 75,9, True, True, False,
+        688                           White, Yellow, LightRed, ' Menu ') then
+        689          begin
+        690            Writeln ('ERROR: MakeWindow') ;
+        691            halt ;
+        692          end
+        693        else
+        694          if not DisplayWindow (MenuWind) then
+        695            begin
+        696              writeln ('ERROR: DisplayWindow') ;
+        697              halt ;
+        698            end
+        699          else
+        700            begin
+        701              Window (50, 4, 75, 9) ;
+        702              TextColor (LightMagenta) ;
+        703              Write ('P'); TextColor (LightCyan) ;
+        704              Writeln ('rint report') ;
+        705              TextColor (LightMagenta) ;
+        706              Write ('V');
+        707              TextColor (LightCyan) ;
+        708              Writeln ('iew results') ;
+        709              TextColor (LightMagenta) ;
+        710              Write ('I') ;
+        711              TextColor (LightCyan) ;
+        712              writeln ('nput new network');
+        713              TextColor (lightMagenta) ;
+        714              Write ('Q') ; TextColor (LightCyan) ;
+        715              Writeln ('uit program.') ;
+
+
+
+     QUEUE.PAS                                       Monday, May 1, 1989 1:06 am                                        Page 14
+
+
+        716              Write ('Select [P, V, I, or Q]') ;
+        717              HiddenCursor ;
+        718              repeat
+        719                ch := upcase (readkey) ;
+        720              until ch in ['P','V','I','Q',chr(27)] ;
+        721              Menu := ch ;
+        722              MenuWind := EraseTopWindow ;
+        723              DisposeWindow (MenuWind) ;
+        724              NormalCursor ;
+        725            end ;
+        726      end ;
+        727   
+        728   
+        729   
+        730  begin
+        731    TextColor (LightGreen) ;
+        732    TextBackground (Black) ;
+        733    ClrScr ;
+        734    writeln ('QueueAnalysist - Copyright (c) Charles Kindel, KindlCo Consulting, 1989') ;
+        735    gotoxy (1,25) ;
+        736    TextColor (Yellow) ;
+        737    write ('Press [ESC] at any time to quit program') ;
+        738    Window (1,3,80,23) ;
+        739   
+        740    CursorToEnd := False ;
+        741    InputSystem ;
+        742    Window (1,1,80,25) ;
+        743    GotoXY (1, 2) ;
+        744    clreol ;
+        745    TextColor (White) ;
+        746    Write ('Network Name: ', NetName) ;
+        747    Window (1,3,80,23) ;
+        748    QuitFlag := FALSE ;
+        749    Repeat
+        750      case Menu of
+        751        'P' : if SysType = OPENSYSTEM then
+        752                begin
+        753                  CalcOpen ;
+        754                  PrintOpen
+        755                end
+        756              else
+        757                begin
+        758                  CalcClosed ;
+        759                  PrintClosed ;
+        760                end ;
+        761        'V' : if SysType = OPENSYSTEM then
+        762                begin
+        763                  ClrScr ;
+        764                  CalcOpen ;
+        765                  OutputOpen ;
+        766                end
+        767              else
+        768                begin
+        769                  ClrScr ;
+        770                  CalcClosed ;
+
+
+
+     QUEUE.PAS                                       Monday, May 1, 1989 1:06 am                                        Page 15
+
+
+        771                  OutputClosed ;
+        772                end ;
+        773        'I' : begin
+        774                InputSystem ;
+        775                Window (1,1,80,25) ;
+        776                GotoXY (1, 2) ;
+        777                TextColor (White) ;
+        778                clreol ;
+        779                Write ('Network Name: ', NetName) ;
+        780                Window (1,3,80,23) ;
+        781              end;
+        782   
+        783        'Q' : QuitFlag := TRUE ;
+        784        chr(27) : QuitFlag := TRUE ;
+        785        else
+        786          write (^G) ;
+        787      end ;
+        788    Until (QuitFlag) ;
+        789  end .
+

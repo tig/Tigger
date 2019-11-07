@@ -1,0 +1,46 @@
+;************************************************************************
+;*
+;*     Project:  Font.EXE
+;*
+;*      Module:  Font.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              Font
+
+DESCRIPTION       'Print Server'
+
+EXETYPE           WINDOWS
+
+STUB              'OBJ\\WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  Font      PRELOAD MOVEABLE DISCARDABLE
+                  PRECOMP      MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          16000
+
+STACKSIZE         8192
+
+EXPORTS           
+                  fnAbout              @100
+
+                  fnMainWnd            @102
+
+                  fnEnumReallyEx       @103
+
+;/***********************************************************************
+;* End of File: Font.def
+;************************************************************************
+

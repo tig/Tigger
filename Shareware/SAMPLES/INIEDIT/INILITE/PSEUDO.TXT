@@ -1,0 +1,76 @@
+IniLite
+=======
+
+This is the scale down version of INIMunge. This is a 2 API set 
+(as opposed to the 20+ APIs in INIMunge).
+
+
+=====================================================
+PseudoCode
+===========
+WritePrivateProfileStringEx()
+Flags:
+    WPPSE_ALLOWDUPES
+    WPPSE_CREATESECTION
+
+    OpenFile()
+    Read in the entire File to memory
+    Look for section
+    if !fSectionFound
+        if flagDontCreateNewSection
+            return FALSE
+        else
+            if we don't have space
+                close file
+                return FALSE
+
+    else
+        Look for key in the section
+        if the Key exists
+            if !fDuplicatesOK
+                    close file
+                    return FALSE
+
+            if we don't have space
+                close file
+                return FALSE
+
+    Add the Key
+    write and close file
+    return TRUE
+             
+-------------------------------------------             
+DeletePrivateProfile()
+       
+Flags: (can be used in combination. The default is the oppositre
+        of these flags)
+    DPP_ALL_MATCHING_KEYS as opposed to first matching key
+    DPP_IN_ALL_SECTIONS as opposed to specified section
+    Validate parameters
+    while ( ILDelteKey() );
+    if fDeleted
+        write File
+        return TRUE
+    return FALSE
+    
+--------------------------------------------
+ReadLine()
+    Get a pointer to the INIInfo data
+    Make sure we are given a goo buffer to read from
+    zero out all the buffers in the IFInfo struct namely the 
+    lpRLBuf, lpSecBuf, lpKeyBuf and lpValBuf
+    Read in a line from the text buffer into lpRLBuf
+    Terminate lpRLBuf with CRLF'\0'
+    Eat white space
+    if the lpRLBuf is a blank or a comment
+        return
+    if the first char is a '[' this might be the begining of a section
+        if we can find a ']' before the end of the line
+            copy the temp buffer (lpValBuf) to lpSecBuf
+            return RL_SECTION
+    if we have a '='
+        This is a key to save the text to lpKeyBuf
+        Save the rest of the text to lpValBuf
+
+================================================================
+

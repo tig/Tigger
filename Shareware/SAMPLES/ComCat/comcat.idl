@@ -1,0 +1,192 @@
+//+-------------------------------------------------------------------------
+//
+//  Microsoft Windows
+//  Copyright (C) Microsoft Corporation, 1992 - 1995.
+//
+//  File: comcat.idl
+//
+//  Component Categories interfaces
+//
+//--------------------------------------------------------------------------
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+interface IEnumGUID;
+interface IEnumCATEGORYINFO;
+interface ICatRegister;
+interface ICatInformation;
+
+/****************************************************************************
+ *  Generic GUID Enumerator
+ ****************************************************************************/
+
+[
+    object,
+    uuid(40FC6ECD-2438-11cf-A3DB-080036F12502),
+    pointer_default(unique)
+]
+
+interface IEnumGUID : IUnknown
+{
+
+    typedef [unique] IEnumGUID *LPENUMGUID;
+    typedef [unique] IEnumGUID *PENUMGUID;
+
+    [local]
+    HRESULT __stdcall Next(
+        [in] ULONG celt,
+        [out] LPGUID *rgelt,
+        [out] ULONG *pceltFetched);
+
+    [call_as(Next)]
+    HRESULT __stdcall RemoteNext(
+        [in] ULONG celt,
+        [out, size_is(celt), length_is(*pceltFetched)]
+        LPGUID *rgelt,
+        [out] ULONG *pceltFetched);
+
+
+    HRESULT Skip(
+        [in] ULONG celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out] IEnumGUID **ppenum);
+}
+
+cpp_quote("#define IID_IEnumCLSID		IID_IEnumGUID")
+cpp_quote("#define IEnumCLSID			IEnumGUID")
+#define IEnumCLSID			IEnumGUID
+
+/****************************************************************************
+ *  Component Categories Interfaces
+ ****************************************************************************/
+
+typedef [public] GUID CATID;
+typedef [public] REFGUID REFCATID;
+cpp_quote("#define CATID_NULL			GUID_NULL")
+cpp_quote("#define IsEqualCATID(rcatid1, rcatid2)	IsEqualGUID(rcatid1, rcatid2)")
+cpp_quote("#define IID_IEnumCATID		IID_IEnumGUID")
+cpp_quote("#define IEnumCATID			IEnumGUID")
+#define IEnumCATID			IEnumGUID
+
+[
+    object,
+    uuid(40FC6ECE-2438-11cf-A3DB-080036F12502),
+    pointer_default(unique)
+]
+
+interface IEnumCATEGORYINFO : IUnknown
+{
+    typedef [unique] IEnumCATEGORYINFO *LPENUNCATEGORYINFO;
+    typedef [unique] IEnumCATEGORYINFO *PENUNCATEGORYINFO;
+
+    typedef struct tagCATEGORYINFO {
+	    CATID		catid;
+	    LCID		lcid ;
+	    OLECHAR*	szDescription;
+    } CATEGORYINFO;
+
+
+    [local]
+    HRESULT __stdcall Next(
+        [in] ULONG celt,
+        [out] PENUNCATEGORYINFO *rgelt,
+        [out] ULONG *pceltFetched);
+
+    [call_as(Next)]
+    HRESULT __stdcall RemoteNext(
+        [in] ULONG celt,
+        [out, size_is(celt), length_is(*pceltFetched)]
+        PENUNCATEGORYINFO *rgelt,
+        [out] ULONG *pceltFetched);
+
+
+    HRESULT Skip(
+        [in] ULONG celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out] IEnumCATEGORYINFO **ppenum);
+}
+
+
+// Category ID Registration
+[
+    object, 
+    uuid(40FC6ECF-2438-11cf-A3DB-080036F12502),
+    pointer_default(unique)
+]
+interface ICatRegister : IUnknown
+{
+    HRESULT RegisterCategories(
+        [in] ULONG cCategories, 
+        [in, size_is(cCategories)] CATEGORYINFO rgCategoryInfo[]);
+
+    HRESULT UnRegisterCategories(
+        [in] ULONG cCategories, 
+        [in, size_is(cCategories)] CATID rgcatid[]);
+
+    HRESULT RegisterClassCategories(
+        [in] REFCLSID rclsid, 
+        [in] ULONG cCategories, 
+        [in, size_is(cCategories)] CATID rgcatid[]);
+    
+    HRESULT UnRegisterClassCategories(
+        [in] REFCLSID rclsid,
+        [in] ULONG cCategories, 
+        [in, size_is(cCategories)] CATID rgcatid[]);
+};
+
+[
+    object, 
+    uuid(40FC6ED0-2438-11cf-A3DB-080036F12502), 
+    pointer_default(unique)
+]
+interface ICatInformation : IUnknown
+{
+    cpp_quote("    // Category Information")
+    HRESULT EnumCategories(
+        [in] LCID lcid, 
+        [in] REFCLSID rclsid, 
+        [out] IEnumCATEGORYINFO** ppenumCategoryInfo);
+
+    HRESULT GetCategoryDesc(
+        [in] REFCATID rcatid, 
+        [in] LCID lcid, 
+        [out] OLECHAR* ppszDesc);
+
+    cpp_quote("    // Class/Category mapping")
+    HRESULT EnumClassesOfCategory(
+        [in] REFCATID rcatid, 
+        [out] IEnumCLSID** ppenumClsid);
+
+    HRESULT IsClassOfCategory(  
+        [in] REFCLSID rclsid, 
+        [out] REFCATID rcatid);
+
+    HRESULT EnumCategoriesOfClass(
+        [in] REFCLSID rclsid, 
+        [out] IEnumCATID** ppenumCatid);
+};
+
+[
+	uuid(40FC6ED1-2438-11cf-A3DB-080036F12502),
+ 	version(1.0),
+ 	helpstring("Component Category Manager Object Library")
+]
+library ComponentCategoryLib
+{
+    importlib("stdole32.tlb");
+
+    //typedef [public] GUID CATID;
+
+    interface IEnumGUID;
+    interface IEnumCATEGORYINFO;
+    interface ICatRegister;
+    interface ICatInformation;
+};

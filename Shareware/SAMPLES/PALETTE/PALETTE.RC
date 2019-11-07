@@ -1,0 +1,25 @@
+#include "windows.h"
+#include "paletted.h"
+
+#include "palette.dlg"
+
+palettedemo ICON "palette.ICO"
+
+palettedemo MENU
+BEGIN
+    MENUITEM     "&Palette!",         IDM_PALETTE
+    MENUITEM     "&Animate!",         IDM_ANIMATE
+
+
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About palette...", IDM_ABOUT
+    END
+END
+
+popupwindow MENU
+BEGIN
+    MENUITEM     "&Animate!",         IDM_ANIMATE
+END
+
+

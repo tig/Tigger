@@ -1,0 +1,137 @@
+/*************************************************************************
+**
+**    OLE Automation Collection sample
+**
+**    app.odl
+**
+**    Object Description source file
+**
+**     Written by Microsoft Product Support Services, Windows Developer Support
+**    (c) Copyright Microsoft Corp. 1993 All Rights Reserved
+**
+*************************************************************************/ 
+
+// Notes:
+// 1. Some object browsers look for dispinterfaces and ignore interfaces. To support
+//    these browsers use a construct like the following to create a dispinterface
+//    when an interface has been defined. 
+//       dispinterface App
+//       {
+//         interface _IApp;
+//       }
+// 2. Some Automation controllers support/will support run-time type checking.
+//    These controllers may support a scripting language which supports the 
+//    following syntax where an object name can be specified as a type name in the Dim statement:
+//       Dim AppObject As App
+//       Set AppObject = CreateObject("Collection.Application")
+//    The Automation contoller will look up the UUID of a dispinterface called 
+//    'App' (which is IID_DApp in this sample) and will QueryInterface the object 
+//    for this interface to do the type-checking.  
+//    To support these controllers name the dispinterface with the type name to be
+//    used in the Dim statement.  
+// 3. Name conflicts with type names (referred in 2) are resolved by Automation
+//    controllers by allowing the user to specify the type libraries to be used and/or
+//    by allowing the user to qualify the type name with the type library name as follows:
+//       Dim AppObject As CollectionApp.App
+// 4. The object browser convention is not to list names that are preceded by an 
+//    underscore. So name dispinterfaces without a preceding underscore. Name
+//    interfaces with a preceding underscore to prevent duplicate listing of the 
+//    properties and methods.
+// 5. Use meaningful names for the parameters of properties and methods because
+//    these will be viewable by users of some object browsers. 
+
+[
+  uuid(2328ED21-B5E5-101A-B826-00DD01103DE1),
+  helpstring("Collection Application 1.0 Object Library"),
+  lcid(0x0409),
+  version(1.0)
+] 
+library CollectionApp
+{
+    importlib("stdole.tlb");
+    
+    [
+      uuid(2328ED22-B5E5-101A-B826-00DD01103DE1), 
+      helpstring("Collection Application Interface"),
+      odl
+    ]
+    interface _IApp : IUnknown
+    {   
+        [propget, helpstring("Returns an empty collection.")]
+        IDispatch *Collection(void);
+        
+        [helpstring("Create a new Item.")]
+        IDispatch *NewItem([in] BSTR Text);        
+    } 
+    
+    [
+      uuid(2328ED23-B5E5-101A-B826-00DD01103DE1), 
+      helpstring("Collection Application Programmable Interface")
+    ]  
+    dispinterface App
+    {
+      interface _IApp;
+    } 
+    
+    [
+      uuid(2328ED24-B5E5-101A-B826-00DD01103DE1), 
+      helpstring("Collection Interface"),
+      odl
+    ]
+    interface _ICollection : IDispatch
+    {       
+      [helpstring("Adds a new item to collection.")]
+      void Add([in] IDispatch* NewItem);
+
+      [propget, helpstring("Returns number of items in collection.")]
+      long Count();
+
+      [propget, id(0), helpstring("Given an integer or string index, returns one of the items in the collection")]
+      IDispatch * Item([in] variant Index);
+                        
+      [propget, restricted, id(-4)]    // -4 is DISPID_NEWENUM. Must be propget.
+      IUnknown * _NewEnum();           // precede with underscore so users can't see it.
+      
+      [helpstring("Given an integer or string index, removes item from collection.")]
+      void Remove([in] variant Index);
+    } 
+    [
+      uuid(2328ED25-B5E5-101A-B826-00DD01103DE1), 
+      helpstring("Collection Programmable Interface")
+    ]  
+    dispinterface Collection
+    {
+      interface _ICollection;
+    }  
+    
+    [
+      uuid(2328ED26-B5E5-101A-B826-00DD01103DE1), 
+      helpstring("Item Interface"),
+      odl
+    ]
+    interface _IItem : IUnknown
+    {       
+       [propput, id(0), helpstring("Text property")] 
+        void Text([in] BSTR b);
+       [propget, id(0), helpstring("Text property")] 
+        BSTR Text(void);
+    }
+    [
+      uuid(2328ED27-B5E5-101A-B826-00DD01103DE1), 
+      helpstring("Item Programmable Interface")
+    ]  
+    dispinterface Item
+    {
+      interface _IItem;
+    }  
+    
+    [
+       uuid(2328ED20-B5E5-101A-B826-00DD01103DE1),
+       helpstring("Collection Application Class")
+    ]                                             
+    coclass _AppClass
+    {
+        dispinterface App;
+        interface _IApp;
+    }
+}

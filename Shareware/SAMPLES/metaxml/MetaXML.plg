@@ -1,0 +1,32 @@
+--------------------Configuration: MetaXML - Win32 Debug--------------------
+Begining build with project "C:\Source\metaxml\MetaXML.dsp", at root.
+Active configuration is Win32 (x86) Dynamic-Link Library (based on Win32 (x86) Dynamic-Link Library)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MTd /W3 /Gm /GX /Zi /Od /I "c:\inetpub\iissamples\sdk\include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_USRDLL" /FR"Debug/" /Fp"Debug/MetaXML.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "_DEBUG" /mktyplib203 /o NUL /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x409 /fo"Debug/MetaXML.res" /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Debug/MetaXML.bsc" "
+			"COFF Linker for 80x86" with flags "ole32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/MetaXML.pdb" /debug /machine:I386 /def:".\MetaXML.def" /out:"Debug/MetaXML.dll" /implib:"Debug/MetaXML.lib" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\TEMP\RSP204.tmp" with contents </nologo /MTd /W3 /Gm /GX /Zi /Od /I "c:\inetpub\iissamples\sdk\include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_USRDLL" /FR"Debug/" /Fp"Debug/MetaXML.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\Source\metaxml\MetaXML.cpp"
+>
+Creating command line "cl.exe @C:\TEMP\RSP204.tmp" 
+Creating temp file "C:\TEMP\RSP205.tmp" with contents <ole32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/MetaXML.pdb" /debug /machine:I386 /def:".\MetaXML.def" /out:"Debug/MetaXML.dll" /implib:"Debug/MetaXML.lib" /pdbtype:sept 
+.\Debug\MetaXML.obj
+.\Debug\StdAfx.obj
+.\Debug\util.obj
+.\Debug\MetaXML.res>
+Creating command line "link.exe @C:\TEMP\RSP205.tmp" 
+Compiling...
+MetaXML.cpp
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/MetaXML.bsc"  .\Debug\StdAfx.sbr .\Debug\MetaXML.sbr .\Debug\util.sbr" 
+Creating browse info file...
+
+
+
+MetaXML.dll - 0 error(s), 0 warning(s)

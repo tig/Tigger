@@ -1,0 +1,500 @@
+
+ TD
+
+ Start     Length     Name                   Class
+ 0001:0000 005AEH     _TEXT                  CODE
+ 0002:0000 00000H     WEP                    CODE
+ 0002:0000 00032H     INIT_TEXT              CODE
+ 0003:0000 00000H     TDUTIL                 CODE
+ 0003:0000 00000H     SHADOW                 CODE
+ 0003:0000 00000H     PRECOMP_TEXT           CODE
+ 0003:0000 001CAH     TDUTIL_TEXT            CODE
+ 0004:0000 00026H     WEP_TEXT               CODE
+ 0005:0000 01200H     SHADOW_TEXT            CODE
+ 0006:0000 00A24H     $3DCTRL_TEXT           CODE
+ 0007:0000 00010H     NULL                   BEGDATA
+ 0007:0010 002B2H     _DATA                  DATA
+ 0007:02C2 0000EH     CDATA                  DATA
+ 0007:02D0 00000H     XIFB                   DATA
+ 0007:02D0 00000H     XIF                    DATA
+ 0007:02D0 00000H     XIFE                   DATA
+ 0007:02D0 00000H     XIB                    DATA
+ 0007:02D0 00000H     XI                     DATA
+ 0007:02D0 00000H     XIE                    DATA
+ 0007:02D0 00000H     XPB                    DATA
+ 0007:02D0 00000H     XP                     DATA
+ 0007:02D0 00000H     XPE                    DATA
+ 0007:02D0 00000H     XCB                    DATA
+ 0007:02D0 00000H     XC                     DATA
+ 0007:02D0 00000H     XCE                    DATA
+ 0007:02D0 00000H     XCFB                   DATA
+ 0007:02D0 00000H     XCFCRT                 DATA
+ 0007:02D0 00000H     XCF                    DATA
+ 0007:02D0 00000H     XCFE                   DATA
+ 0007:02D0 00000H     XIFCB                  DATA
+ 0007:02D0 00000H     XIFU                   DATA
+ 0007:02D0 00000H     XIFL                   DATA
+ 0007:02D0 00000H     XIFM                   DATA
+ 0007:02D0 00000H     XIFCE                  DATA
+ 0007:02D0 00000H     DBDATA                 DATA
+ 0007:02D0 00000H     CONST                  CONST
+ 0007:02D0 00008H     HDR                    MSG
+ 0007:02D8 000D4H     MSG                    MSG
+ 0007:03AC 00002H     PAD                    MSG
+ 0007:03AE 00001H     EPAD                   MSG
+ 0007:03B0 00002H     _BSS                   BSS
+ 0007:03B2 00000H     XOB                    BSS
+ 0007:03B2 00000H     XO                     BSS
+ 0007:03B2 00000H     XOE                    BSS
+ 0007:03B2 00000H     XOFB                   BSS
+ 0007:03B2 00000H     XOF                    BSS
+ 0007:03B2 00000H     XOFE                   BSS
+ 0007:03C0 000C2H     c_common               BSS
+
+ Origin   Group
+ 0007:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0006:0718 fn3DStatic              fn3DStatic
+ 0005:1194 fnEnumChildren3D        fnEnumChildren3D
+ 0005:11AA fnEnumChildrenHide      fnEnumChildrenHide
+ 0006:0000 fnNewButton             fnNewButton
+ 0003:0172 tdCheckVersion          tdCheckVersion
+ 0005:11EA tdChildKind             tdChildKind
+ 0005:02B4 tdDraw3DCrease          tdDraw3DCrease
+ 0005:051A tdDraw3DLine            tdDraw3DLine
+ 0005:11C0 tdDraw3DLine1           tdDraw3DLine1
+ 0005:03AE tdDraw3DRect            tdDraw3DRect
+ 0005:074C tdDrawChild3DRect       tdDrawChild3DRect
+ 0005:08A6 tdDrawChildren3D        tdDrawChildren3D
+ 0005:08F4 tdDrawDropShadow        tdDrawDropShadow
+ 0005:1088 tdDrawFaceFrame         tdDrawFaceFrame
+ 0005:0BCC tdExtTextOut3D          tdExtTextOut3D
+ 0005:06FE tdGetChildRect          tdGetChildRect
+ 0005:09CA tdGetHighlightColor     tdGetHighlightColor
+ 0003:015E tdGethInst              tdGethInst
+ 0005:0ABA tdGetShadowColor        tdGetShadowColor
+ 0003:0194 tdGetVersion            tdGetVersion
+ 0005:11D4 tdHideSomeChildren      tdHideSomeChildren
+ 0005:0BAC tdMapTextColor          tdMapTextColor
+ 0005:0000 tdShadowControl         tdShadowControl
+ 0005:0CAA tdTextOut3D             tdTextOut3D
+ 0004:0000 WEP                     WEP
+ 0001:059A ___ExportedStub         ___ExportedStub
+
+  Address         Publics by Name
+
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  BITBLT               (GDI.34)
+ 0000:0000  Imp  CALLWINDOWPROC       (USER.122)
+ 0005:0EF8       CHILDKIND
+ 0000:0000  Imp  CREATECOMPATIBLEDC   (GDI.52)
+ 0000:0000  Imp  CREATEPATTERNBRUSH   (GDI.60)
+ 0000:0000  Imp  CREATESOLIDBRUSH     (GDI.66)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  DELETEDC             (GDI.68)
+ 0000:0000  Imp  DELETEOBJECT         (GDI.69)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0005:0CF6       DRAW3DLINE1
+ 0000:0000  Imp  DRAWFOCUSRECT        (USER.466)
+ 0005:0E0C       DRAWFRAME
+ 0000:0000  Imp  DRAWTEXT             (USER.85)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  EXCLUDEUPDATERGN     (USER.238)
+ 0000:0000  Imp  EXTTEXTOUT           (GDI.351)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0006:0718       fn3DStatic
+ 0005:1194       fnEnumChildren3D
+ 0005:11AA       fnEnumChildrenHide
+ 0006:0000       fnNewButton
+ 0000:0000  Imp  FRAMERECT            (USER.83)
+ 0000:0000  Imp  GETBKCOLOR           (GDI.75)
+ 0000:0000  Imp  GETCLASSINFO         (USER.404)
+ 0000:0000  Imp  GETCLASSNAME         (USER.58)
+ 0000:0000  Imp  GETCLIENTRECT        (USER.33)
+ 0000:0000  Imp  GETDC                (USER.66)
+ 0000:0000  Imp  GETDEVICECAPS        (GDI.80)
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  GETNEARESTCOLOR      (GDI.154)
+ 0000:0000  Imp  GETOBJECT            (GDI.82)
+ 0000:0000  Imp  GETPARENT            (USER.46)
+ 0000:0000  Imp  GETPROP              (USER.25)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Imp  GETSYSCOLOR          (USER.180)
+ 0000:0000  Imp  GETSYSTEMMETRICS     (USER.179)
+ 0000:0000  Imp  GETTEXTEXTENTPOINT   (GDI.471)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GETWINDOW            (USER.262)
+ 0000:0000  Imp  GETWINDOWLONG        (USER.135)
+ 0000:0000  Imp  GETWINDOWRECT        (USER.32)
+ 0000:0000  Imp  GETWINDOWTEXT        (USER.36)
+ 0000:0000  Imp  GETWINDOWTEXTLENGTH  (USER.38)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  GLOBALHANDLE         (KERNEL.21)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0005:0216       HACKBUTTONSANDFRAMES
+ 0000:0000  Imp  INFLATERECT          (USER.78)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  INTERSECTCLIPRECT    (GDI.22)
+ 0000:0000  Imp  ISCHILD              (USER.48)
+ 0000:0000  Imp  ISWINDOWENABLED      (USER.35)
+ 0000:0000  Imp  ISWINDOWVISIBLE      (USER.49)
+ 0002:0000       LibEntry
+ 0003:0000       LIBMAIN
+ 0000:0000  Imp  LOADBITMAP           (USER.175)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LocalInit            (KERNEL.4)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  LSTRCMPI             (USER.471)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  OFFSETRECT           (USER.77)
+ 0006:023E       PAINTBTN
+ 0006:0812       PAINTSTATIC
+ 0000:0000  Imp  PATBLT               (GDI.29)
+ 0000:0000  Imp  POLYGON              (GDI.36)
+ 0000:0000  Imp  POSTMESSAGE          (USER.110)
+ 0000:0000  Imp  RECTVISIBLE          (GDI.104)
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0000:0000  Imp  REGISTERWINDOWMESSAGE (USER.118)
+ 0000:0000  Imp  RELEASEDC            (USER.68)
+ 0000:0000  Imp  REMOVEPROP           (USER.24)
+ 0007:0004       rsrvptrs
+ 0000:0000  Imp  SCREENTOCLIENT       (USER.29)
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  SETBKCOLOR           (GDI.1)
+ 0000:0000  Imp  SETBKMODE            (GDI.2)
+ 0000:0000  Imp  SETPROP              (USER.26)
+ 0000:0000  Imp  SETTEXTCOLOR         (GDI.9)
+ 0000:0000  Imp  SETWINDOWLONG        (USER.136)
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0003:0172       tdCheckVersion
+ 0005:11EA       tdChildKind
+ 0005:02B4       tdDraw3DCrease
+ 0005:051A       tdDraw3DLine
+ 0005:11C0       tdDraw3DLine1
+ 0005:03AE       tdDraw3DRect
+ 0005:074C       tdDrawChild3DRect
+ 0005:08A6       tdDrawChildren3D
+ 0005:08F4       tdDrawDropShadow
+ 0005:1088       tdDrawFaceFrame
+ 0005:0BCC       tdExtTextOut3D
+ 0005:06FE       tdGetChildRect
+ 0005:09CA       tdGetHighlightColor
+ 0003:015E       tdGethInst
+ 0005:0ABA       tdGetShadowColor
+ 0003:0194       tdGetVersion
+ 0005:11D4       tdHideSomeChildren
+ 0005:0BAC       tdMapTextColor
+ 0005:0000       tdShadowControl
+ 0005:0CAA       tdTextOut3D
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  UNREALIZEOBJECT      (GDI.150)
+ 0004:0000       WEP
+ 0007:0271       _aseghi
+ 0007:026F       _aseglo
+ 0007:03E2       _dwVersion
+ 0007:047A       _dxBorder
+ 0007:0478       _dyBorder
+ 0007:03B0       _edata
+ 0007:0482       _end
+ 0007:0286       _errno
+ 0007:0010       _fMonochrome
+ 0007:0480       _hbmBtn
+ 0007:0476       _hbrBkGnd
+ 0007:03E0       _hInstDLL
+ 0007:047C       _lpfnDefButton
+ 0007:0262       _STKHQQ
+ 0007:03E6       _szModule
+ 0007:03C0       _szVersion
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0007:02B8       __adbgmsg
+ 0000:D6D6  Abs  __aDBused
+ 0007:0278       __aintdiv
+ 0007:02BC       __amblksiz
+ 0001:0338       __amsg_exit
+ 0001:0054       __astart
+ 0001:0172       __cexit
+ 0007:02B5       __child
+ 0001:012A       __cinit
+ 0001:032E       __cintDIV
+ 0007:0291       __cpumode
+ 0001:01D1       __ctermsub
+ 0001:0183       __c_exit
+ 0007:026E       __dllinit
+ 0007:0292       __doserrno
+ 0007:03B0       __edata
+ 0007:0482       __end
+ 0007:02AE       __environ
+ 0007:02B7       __exitflag
+ 0007:027C       __fac
+ 0001:020E       __FF_MSGBANNER
+ 0001:0471       __findlast
+ 0007:02C4       __fpinit
+ 0000:9876  Abs  __fptaskdata
+ 0001:02F8       __fptrap
+ 0001:0492       __GetDGROUP
+ 0001:037A       __growseg
+ 0007:0264       __hModule
+ 0001:040B       __incseg
+ 0007:026A       __lpszCmdLine
+ 0001:02FE       __myalloc
+ 0001:032C       __nearstub
+ 0007:0294       __nfile
+ 0001:04FE       __nfree
+ 0001:04A2       __nmalloc
+ 0001:02AA       __NMSG_TEXT
+ 0001:02E1       __NMSG_WRITE
+ 0001:0586       __nmsize
+ 0001:00E5       __nomain
+ 0001:0518       __nrealloc
+ 0007:0292       __oserr
+ 0007:0296       __osfile
+ 0007:028D       __osmajor
+ 0007:028C       __osminor
+ 0007:0290       __osmode
+ 0007:028C       __osver
+ 0007:028E       __osversion
+ 0007:02B0       __pgmptr
+ 0007:02BE       __pnhNearHeap
+ 0001:0232       __setenvp
+ 0000:0001  Abs  __sizec
+ 0000:0000  Abs  __sized
+ 0001:00FE       __stubmain
+ 0007:0288       __umaskval
+ 0007:0266       __wDataSeg
+ 0001:0010       __wflags
+ 0007:0268       __wHeapSize
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0007:028B       __winmajor
+ 0007:028A       __winminor
+ 0007:028A       __winver
+ 0007:0275       ___aDBrterr
+ 0007:0273       ___aDBswpflg
+ 0007:02AA       ___argc
+ 0007:02AC       ___argv
+ 0001:059A       ___ExportedStub
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  GETDOSENVIRONMENT    (KERNEL.131)
+ 0000:0000  Imp  GLOBALUNLOCK         (KERNEL.19)
+ 0000:0000  Imp  LOADBITMAP           (USER.175)
+ 0000:0000  Imp  GLOBALSIZE           (KERNEL.20)
+ 0000:0000  Imp  RELEASEDC            (USER.68)
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  GETWINDOWTEXT        (USER.36)
+ 0000:0000  Imp  GLOBALFREE           (KERNEL.17)
+ 0000:0000  Imp  REGISTERWINDOWMESSAGE (USER.118)
+ 0000:0000  Imp  CREATEPATTERNBRUSH   (GDI.60)
+ 0000:0000  Imp  GETWINDOW            (USER.262)
+ 0000:0000  Imp  GETPARENT            (USER.46)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  GETDC                (USER.66)
+ 0000:0000  Imp  DRAWFOCUSRECT        (USER.466)
+ 0000:0000  Imp  GETWINDOWRECT        (USER.32)
+ 0000:0000  Imp  DOS3CALL             (KERNEL.102)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  CALLWINDOWPROC       (USER.122)
+ 0000:0000  Abs  __sized
+ 0000:0000  Imp  __WINFLAGS           (KERNEL.178)
+ 0000:0000  Imp  GETSYSTEMMETRICS     (USER.179)
+ 0000:0000  Imp  GETPROP              (USER.25)
+ 0000:0000  Imp  SETPROP              (USER.26)
+ 0000:0000  Imp  SETTEXTCOLOR         (GDI.9)
+ 0000:0000  Imp  LOCALREALLOC         (KERNEL.6)
+ 0000:0000  Imp  LOCKSEGMENT          (KERNEL.23)
+ 0000:0000  Imp  BITBLT               (GDI.34)
+ 0000:0000  Imp  EXTTEXTOUT           (GDI.351)
+ 0000:0000  Imp  EXCLUDEUPDATERGN     (USER.238)
+ 0000:0000  Imp  SETBKMODE            (GDI.2)
+ 0000:0000  Imp  LOADCURSOR           (USER.173)
+ 0000:0000  Imp  FRAMERECT            (USER.83)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Imp  UNREALIZEOBJECT      (GDI.150)
+ 0000:0000  Imp  UNLOCKSEGMENT        (KERNEL.24)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  RECTVISIBLE          (GDI.104)
+ 0000:0000  Imp  GETCLASSNAME         (USER.58)
+ 0000:0000  Imp  ISWINDOWVISIBLE      (USER.49)
+ 0000:0000  Imp  DRAWTEXT             (USER.85)
+ 0000:0000  Imp  GLOBALALLOC          (KERNEL.15)
+ 0000:0000  Imp  GLOBALREALLOC        (KERNEL.16)
+ 0000:0000  Imp  PATBLT               (GDI.29)
+ 0000:0000  Imp  INTERSECTCLIPRECT    (GDI.22)
+ 0000:0000  Imp  GETMODULEUSAGE       (KERNEL.48)
+ 0000:0000  Imp  CREATESOLIDBRUSH     (GDI.66)
+ 0000:0000  Imp  GLOBALLOCK           (KERNEL.18)
+ 0000:0000  Imp  GETDEVICECAPS        (GDI.80)
+ 0000:0000  Imp  DELETEOBJECT         (GDI.69)
+ 0000:0000  Imp  INITTASK             (KERNEL.91)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  CREATECOMPATIBLEDC   (GDI.52)
+ 0000:0000  Imp  ISCHILD              (USER.48)
+ 0000:0000  Imp  GETBKCOLOR           (GDI.75)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  DELETEDC             (GDI.68)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LOCALSIZE            (KERNEL.10)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  SETBKCOLOR           (GDI.1)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  GETWINDOWTEXTLENGTH  (USER.38)
+ 0000:0000  Imp  GETCLASSINFO         (USER.404)
+ 0000:0000  Imp  GETNEARESTCOLOR      (GDI.154)
+ 0000:0000  Imp  REGISTERCLASS        (USER.57)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  GETTEXTEXTENTPOINT   (GDI.471)
+ 0000:0000  Imp  GETOBJECT            (GDI.82)
+ 0000:0000  Imp  GETCLIENTRECT        (USER.33)
+ 0000:0000  Imp  INFLATERECT          (USER.78)
+ 0000:0000  Imp  ISWINDOWENABLED      (USER.35)
+ 0000:0000  Imp  POLYGON              (GDI.36)
+ 0000:0000  Imp  REMOVEPROP           (USER.24)
+ 0000:0000  Imp  LocalInit            (KERNEL.4)
+ 0000:0000  Imp  OFFSETRECT           (USER.77)
+ 0000:0000  Imp  GETWINDOWLONG        (USER.135)
+ 0000:0000  Imp  SHOWWINDOW           (USER.42)
+ 0000:0000  Imp  GETSYSCOLOR          (USER.180)
+ 0000:0000  Imp  SETWINDOWLONG        (USER.136)
+ 0000:0000  Imp  GLOBALHANDLE         (KERNEL.21)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  POSTMESSAGE          (USER.110)
+ 0000:0000  Imp  SCREENTOCLIENT       (USER.29)
+ 0000:0000  Imp  DEFWINDOWPROC        (USER.107)
+ 0000:0000  Imp  LSTRCMPI             (USER.471)
+ 0000:0001  Abs  __sizec
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0010       __wflags
+ 0001:0054       __astart
+ 0001:00E5       __nomain
+ 0001:00FE       __stubmain
+ 0001:012A       __cinit
+ 0001:0172       __cexit
+ 0001:0183       __c_exit
+ 0001:01D1       __ctermsub
+ 0001:020E       __FF_MSGBANNER
+ 0001:0232       __setenvp
+ 0001:02AA       __NMSG_TEXT
+ 0001:02E1       __NMSG_WRITE
+ 0001:02F8       __fptrap
+ 0001:02FE       __myalloc
+ 0001:032C       __nearstub
+ 0001:032E       __cintDIV
+ 0001:0338       __amsg_exit
+ 0001:037A       __growseg
+ 0001:040B       __incseg
+ 0001:0471       __findlast
+ 0001:0492       __GetDGROUP
+ 0001:04A2       __nmalloc
+ 0001:04FE       __nfree
+ 0001:0518       __nrealloc
+ 0001:0586       __nmsize
+ 0001:059A       ___ExportedStub
+ 0002:0000       LibEntry
+ 0003:0000       LIBMAIN
+ 0003:015E       tdGethInst
+ 0003:0172       tdCheckVersion
+ 0003:0194       tdGetVersion
+ 0004:0000       WEP
+ 0005:0000       tdShadowControl
+ 0005:0216       HACKBUTTONSANDFRAMES
+ 0005:02B4       tdDraw3DCrease
+ 0005:03AE       tdDraw3DRect
+ 0005:051A       tdDraw3DLine
+ 0005:06FE       tdGetChildRect
+ 0005:074C       tdDrawChild3DRect
+ 0005:08A6       tdDrawChildren3D
+ 0005:08F4       tdDrawDropShadow
+ 0005:09CA       tdGetHighlightColor
+ 0005:0ABA       tdGetShadowColor
+ 0005:0BAC       tdMapTextColor
+ 0005:0BCC       tdExtTextOut3D
+ 0005:0CAA       tdTextOut3D
+ 0005:0CF6       DRAW3DLINE1
+ 0005:0E0C       DRAWFRAME
+ 0005:0EF8       CHILDKIND
+ 0005:1088       tdDrawFaceFrame
+ 0005:1194       fnEnumChildren3D
+ 0005:11AA       fnEnumChildrenHide
+ 0005:11C0       tdDraw3DLine1
+ 0005:11D4       tdHideSomeChildren
+ 0005:11EA       tdChildKind
+ 0006:0000       fnNewButton
+ 0006:023E       PAINTBTN
+ 0006:0718       fn3DStatic
+ 0006:0812       PAINTSTATIC
+ 0007:0004       rsrvptrs
+ 0007:0010       _fMonochrome
+ 0007:0262       _STKHQQ
+ 0007:0264       __hModule
+ 0007:0266       __wDataSeg
+ 0007:0268       __wHeapSize
+ 0007:026A       __lpszCmdLine
+ 0007:026E       __dllinit
+ 0007:026F       _aseglo
+ 0007:0271       _aseghi
+ 0007:0273       ___aDBswpflg
+ 0007:0275       ___aDBrterr
+ 0007:0278       __aintdiv
+ 0007:027C       __fac
+ 0007:0286       _errno
+ 0007:0288       __umaskval
+ 0007:028A       __winminor
+ 0007:028A       __winver
+ 0007:028B       __winmajor
+ 0007:028C       __osminor
+ 0007:028C       __osver
+ 0007:028D       __osmajor
+ 0007:028E       __osversion
+ 0007:0290       __osmode
+ 0007:0291       __cpumode
+ 0007:0292       __oserr
+ 0007:0292       __doserrno
+ 0007:0294       __nfile
+ 0007:0296       __osfile
+ 0007:02AA       ___argc
+ 0007:02AC       ___argv
+ 0007:02AE       __environ
+ 0007:02B0       __pgmptr
+ 0007:02B5       __child
+ 0007:02B7       __exitflag
+ 0007:02B8       __adbgmsg
+ 0007:02BC       __amblksiz
+ 0007:02BE       __pnhNearHeap
+ 0007:02C4       __fpinit
+ 0007:03B0       __edata
+ 0007:03B0       _edata
+ 0007:03C0       _szVersion
+ 0007:03E0       _hInstDLL
+ 0007:03E2       _dwVersion
+ 0007:03E6       _szModule
+ 0007:0476       _hbrBkGnd
+ 0007:0478       _dyBorder
+ 0007:047A       _dxBorder
+ 0007:047C       _lpfnDefButton
+ 0007:0480       _hbmBtn
+ 0007:0482       __end
+ 0007:0482       _end
+
+Program entry point at 0002:0000

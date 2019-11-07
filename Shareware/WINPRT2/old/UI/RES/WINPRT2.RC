@@ -1,0 +1,91 @@
+/************************************************************************
+ *
+ *     Project:  WINPRT2 1.0
+ *
+ *      Module:  WINPRT2.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include <wdb.h>
+
+/*
+ * Dialog box defines
+ */
+#include "dlgs.h"
+#include "res.h"
+
+/*
+ * Version Stamping
+ */
+#include "WINPRT2.rcv"
+
+/*
+ * String table
+ */
+#include "WINPRT2.str"
+
+/*
+ * Icons
+ */
+IDI_WINPRT2 ICON "WINPRT2.ico"
+
+/*
+ * Bitmaps
+ */
+
+/*
+ * Menus
+ */
+WINPRT2  MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+    POPUP  "&File"
+    BEGIN
+        MenuItem "&Page Setup...", IDM_TEST_PAGESETUP
+        MenuItem "&Header/Footer...", IDM_TEST_HF
+        MenuItem "P&rinter Setup...", IDM_TEST_PRINTERSETUP
+        MenuItem SEPARATOR
+        MenuItem "Pr&int...", IDM_TEST_PRINT
+        MenuItem SEPARATOR
+        MenuItem "E&xit",  IDM_FILE_EXIT
+    END
+    
+    MENUITEM "&Install!",       IDM_WINFILE_INSTALL
+    MENUITEM "&Remove!",       IDM_WINFILE_REMOVE
+
+    POPUP "&Test"
+    BEGIN
+        MenuItem "&Write", IDM_TEST_WRITE
+    END
+    
+    
+    #ifdef DEBUG
+    POPUP   "&Debug"
+    BEGIN
+        MENUITEM "&Configure...",       IDM_WDB_CONFIG
+    END
+    #endif
+
+END
+
+/*
+ * Dialog boxes
+ */
+#include "WINPRT2.dlg"
+
+/*
+ * RCDATA
+ */
+
+/************************************************************************
+ * End of File: WINPRT2.rc
+ ***********************************************************************/
+

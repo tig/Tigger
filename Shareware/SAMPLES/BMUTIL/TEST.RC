@@ -1,0 +1,23 @@
+#include "windows.h"
+#include "testd.h"
+
+TEST ICON "test.ICO"
+
+BMP1 BITMAP "NEW.BMP"
+BMP2 BITMAP "NEW2.BMP"
+
+
+TEST MENU
+BEGIN
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About", IDM_ABOUT
+    END
+END
+
+STRINGTABLE
+BEGIN
+   IDS_KITTY,     "%kitty"
+END
+
+#include "about.dlg"

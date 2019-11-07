@@ -1,0 +1,23 @@
+
+[MSVC Status File]
+Version=1.00
+ProjectType=11
+ArgsOrCaller=e:\source\ole2view.exe
+External=0
+BrkptCount=3
+BrkptType1=0
+BrkptActive1=1
+BrkptAmbig1=0
+BrkptIndex1=-1
+BrkptLoc1={,e:\source\research\collect\app.cpp,} .47
+BrkptType2=0
+BrkptActive2=1
+BrkptAmbig2=0
+BrkptIndex2=-1
+BrkptLoc2={,e:\source\research\collect\app.cpp,} .49
+BrkptType3=0
+BrkptActive3=1
+BrkptAmbig3=0
+BrkptIndex3=-1
+BrkptLoc3={,e:\source\research\collect\app.cpp,} .140
+WatchCount=0

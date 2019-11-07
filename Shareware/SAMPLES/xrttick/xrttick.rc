@@ -1,0 +1,200 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.rc""\r\n"
+    "#include ""xrttick.rc2""  // non-App Studio edited resources\r\n"
+    "#if 0\r\n"
+    "#include "".\\tlb16\\xrttick.tlb""  // 16-bit: force dependency on .TLB file\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_XRTTICKER           BITMAP  DISCARDABLE     "tickectl.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX_XRTTICKER DIALOG DISCARDABLE  34, 22, 260, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About XRT Ticker Control"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDI_ABOUTDLL,IDC_STATIC,10,10,18,20
+    LTEXT           "XRT Ticker Control, Version 1.0",IDC_STATIC,40,10,170,8
+    LTEXT           "Copyright © 1994, Microsoft Corporation",IDC_STATIC,40,
+                    25,170,8
+    DEFPUSHBUTTON   "OK",IDOK,220,10,32,14,WS_GROUP
+    LTEXT           "By Charlie Kindel and David Fienleib",IDC_STATIC,39,37,
+                    170,8
+END
+
+IDD_PROPPAGE_XRTTICKER DIALOG DISCARDABLE  0, 0, 250, 110
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Initial &Text:",IDC_STATIC,8,12,38,8
+    EDITTEXT        IDC_EDIT1,50,10,193,12,ES_AUTOHSCROLL
+    LTEXT           "&Scroll Speed:",IDC_STATIC,8,32,45,8
+    EDITTEXT        IDC_EDIT2,75,28,40,12,ES_AUTOHSCROLL
+    LTEXT           "Lower values result in faster scroll rates.",IDC_STATIC,
+                    120,28,121,15
+    LTEXT           "S&croll Smoothness:",IDC_STATIC,8,52,63,8
+    EDITTEXT        IDC_EDIT3,75,50,40,12,ES_AUTOHSCROLL
+    LTEXT           "Lower values result in a smoother scroll (1 is smoothest).",
+                    IDC_STATIC,120,49,121,15
+    PUSHBUTTON      "A&bout...",IDC_ABOUT,201,82,42,14
+    CONTROL         "Cach&e Ticker Data (So it continously repeats)",
+                    IDC_CACHEON,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,74,
+                    160,10
+    CONTROL         "&Offset values vertically from names",IDC_OFFSETVALUES,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,87,125,10
+END
+
+IDD_PROPPAGE_DATAOBJECT DIALOG DISCARDABLE  0, 0, 250, 110
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Source &DataObject (ProgID, Filename, or Moniker Display Name):",
+                    IDC_STATIC,8,9,206,8
+    EDITTEXT        ID_SERVERNAME,8,18,233,12,ES_AUTOHSCROLL
+    CONTROL         "Data Notifications A&ctive",IDC_ACTIVE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,39,94,10
+    PUSHBUTTON      "&Ssssss",IDC_STARTSTOP,8,54,55,13
+END
+
+IDD_PROPPAGE_WOSAXRT DIALOG DISCARDABLE  0, 0, 250, 110
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Make Server &Visible",IDC_MAKESERVERVISIBLE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,5,79,10
+    GROUPBOX        "WOSA/XRT DataObject Request",IDC_STATIC,6,18,237,65
+    RTEXT           "&Request:",IDC_STATIC,61,33,31,8
+    EDITTEXT        IDC_REQUEST,96,30,139,12,ES_AUTOHSCROLL
+    RTEXT           "&Name property name:",IDC_STATIC,22,50,70,8
+    EDITTEXT        IDC_NAMEPROPERTY,96,48,139,12,ES_AUTOHSCROLL
+    RTEXT           "Va&lue property name:",IDC_STATIC,22,67,70,8
+    EDITTEXT        IDC_VALUEPROPERTY,96,66,139,12,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ABOUTDLL            ICON    DISCARDABLE     "ticker.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PROPPAGE_XRTTICKER, DIALOG
+    BEGIN
+        RIGHTMARGIN, 232
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CURSOR1             CURSOR  DISCARDABLE     "cursor1.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_XRTTICKER           "XRT Ticker Control"
+    IDS_XRTTICKER_PPG       "XRT Ticker Property Page"
+    IDS_DATAOBJECT_PPG      "XRT Ticker DataObject Property Page"
+    IDS_XRT_PPG             "XRT Ticker WOSA/XRT Property Page"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_XRTTICKER_PPG_CAPTION "General"
+    IDS_DATAOBJECT_PPG_CAPTION "DataObject"
+    IDS_XRT_PPG_CAPTION     "WOSA/XRT"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "afxres.rc"
+#include "xrttick.rc2"  // non-App Studio edited resources
+#if 0
+#include ".\tlb16\xrttick.tlb"  // 16-bit: force dependency on .TLB file
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

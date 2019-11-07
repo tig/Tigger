@@ -1,0 +1,52 @@
+/************************************************************************
+ *
+ *     Project:  Project-42
+ *
+ *      Module:  KEYHK.rc
+ *
+ *     Remarks:  Resources
+ *
+ *   Revisions:           
+ *
+ ***********************************************************************/
+
+#define WIN31 1
+#include <windows.h>
+
+/*
+ * String table defines
+ */
+#include "..\inc\isz.h"
+
+/*
+ * Dialog box defines
+ */
+#include "..\inc\dlgs.h"
+
+/*
+ * Version Stamping
+ */
+#include "KEYHK.rcv"
+
+/*
+ * Icons
+ */
+cmndll ICON "KEYHK.ico"
+
+/*
+ * Bitmaps
+ */
+
+/*
+ * Menus
+ */
+
+/*
+ * Dialog boxes
+ */
+
+
+/************************************************************************
+ * End of File: KEYHK.rc
+ ***********************************************************************/
+

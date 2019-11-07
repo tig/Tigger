@@ -1,0 +1,16 @@
+;-------------------------------------
+;COLDLL.DEF module definition file
+;-------------------------------------
+
+LIBRARY     COLDLL
+
+DESCRIPTION    'OLE Automation Collection Sample'
+
+SEGMENTS
+            WEP_SEG    PRELOAD FIXED
+            
+EXPORTS
+            WEP PRIVATE 
+                DllGetClassObject       @2
+                DllCanUnloadNow         @3
+                MainWndProc

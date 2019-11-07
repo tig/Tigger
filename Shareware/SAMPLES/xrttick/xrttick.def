@@ -1,0 +1,11 @@
+; xrttick.def : Declares the module parameters.
+
+;LIBRARY      'XRTTICK'
+DESCRIPTION  'XRTTICK OLE Custom Control module'
+
+EXPORTS
+	DllCanUnloadNow    
+	DllGetClassObject  
+	DllRegisterServer  
+	DllUnregisterServer
+

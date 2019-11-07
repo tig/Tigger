@@ -1,0 +1,195 @@
+// winprt20.odl : type library source for OLE Custom Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (winprt20.tlb) that will become a resource in
+// winprt20.dll.
+
+#include <oledisp.h>
+#include <oletype.h>
+
+[ uuid(0002A502-0000-0000-C000-000000000046), version(1.0) ]
+library Winprt20
+{
+    importlib("stdole.tlb");
+    importlib(STDTYPE_TLB);
+
+    //  Primary dispatch interface for CHeaderSection
+    
+    [ uuid(0002A50C-0000-0000-C000-000000000046) ]
+    dispinterface IWinPrintHeaderSectionDisp
+    {
+        properties:
+            // NOTE - ClassWizard will maintain property information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_PROP(CHeaderSection)
+            [id(1)] BSTR Text;
+            [id(DISPID_FONT)] IFontDisp* Font;
+            //}}AFX_ODL_PROP
+            
+        methods:
+            // NOTE - ClassWizard will maintain method information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_METHOD(CHeaderSection)
+            //}}AFX_ODL_METHOD
+
+    };
+
+    //  Class information for CHeaderSection
+
+    [ uuid(0002A50D-0000-0000-C000-000000000046) ]
+    coclass CHeaderSection
+    {
+        [default] dispinterface IWinPrintHeaderSectionDisp;
+    };
+
+    //  Primary dispatch interface for CHeader
+    
+    [ uuid(0002A50A-0000-0000-C000-000000000046) ]
+    dispinterface IWinPrintHeaderDisp
+    {
+        properties:
+            // NOTE - ClassWizard will maintain property information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_PROP(CHeader)
+            [id(1)] float Height;
+            [id(2)] IWinPrintHeaderSectionDisp* Left;
+            [id(3)] IWinPrintHeaderSectionDisp* Center;
+            [id(4)] IWinPrintHeaderSectionDisp* Right;
+            //}}AFX_ODL_PROP
+            
+        methods:
+            // NOTE - ClassWizard will maintain method information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_METHOD(CHeader)
+            //}}AFX_ODL_METHOD
+
+    };
+
+    //  Class information for CHeader
+
+    [ uuid(0002A50B-0000-0000-C000-000000000046) ]
+    coclass CHeader
+    {
+        [default] dispinterface IWinPrintHeaderDisp;
+    };
+
+    //  Primary dispatch interface for CWinPrintControl
+    
+    [ uuid(0002A503-0000-0000-C000-000000000046) ]
+    dispinterface IWinPrintControl
+    {
+        properties:
+            // NOTE - ClassWizard will maintain property information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_PROP(CWinPrintControl)
+            [id(1)] BSTR Printer;
+            [id(2)] BSTR PrinterDriver;
+            [id(3)] BSTR PrinterOutput;
+            [id(4)] boolean UseDefaultPrinter;
+            [id(5)] boolean UsePrinterSettings;
+            [id(6)] long Orientation;
+            [id(7)] long PaperSize;
+            [id(8)] long PaperLength;
+            [id(9)] long PaperWidth;
+            [id(10)] long Scale;
+            [id(11)] long Copies;
+            [id(12)] long DefaultSource;
+            [id(13)] long PrintQuality;
+            [id(14)] long Color;
+            [id(15)] long Duplex;
+            [id(16)] float TopMargin;
+            [id(17)] float BottomMargin;
+            [id(18)] float LeftMargin;
+            [id(19)] float RightMargin;
+            [id(20)] boolean Border;
+            [id(21)] boolean Shade;
+            [id(22)] short Rows;
+            [id(23)] short Columns;
+            [id(24)] float HorzSeparation;
+            [id(25)] float VertSeparation;
+            [id(26)] BSTR ConfigName;
+            [id(27)] BSTR FileTypeDriverName;
+            [id(28)] IDispatch* FileTypeDriver;
+            [id(29)] IWinPrintHeaderDisp* Header;
+            [id(30)] IWinPrintHeaderDisp* Footer;
+            //}}AFX_ODL_PROP
+            
+        methods:
+            // NOTE - ClassWizard will maintain method information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_METHOD(CWinPrintControl)
+            [id(31)] boolean LoadConfiguration(BSTR ConfigName);
+            [id(32)] boolean SaveConfiguration(BSTR ConfigName);
+            [id(33)] void SetSource(BSTR SourceFile);
+            [id(34)] boolean Print(VARIANT Source);
+            //}}AFX_ODL_METHOD
+
+    };
+
+    //  Event dispatch interface for CWinPrintControl
+    
+    [ uuid(0002A504-0000-0000-C000-000000000046) ]
+    dispinterface IWinPrintControlEvents
+    {
+        properties:
+            //  Event interface has no properties
+            
+        methods:
+            // NOTE - ClassWizard will maintain event information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_EVENT(CWinPrintControl)
+            //}}AFX_ODL_EVENT
+    };
+
+    //  Class information for CWinPrintControl
+    
+    [ uuid(0002A501-0000-0000-C000-000000000046), licensed ]
+    coclass CWinPrintControl
+    {
+        [default] dispinterface IWinPrintControl;
+        [default, source] dispinterface IWinPrintControlEvents;
+    };
+
+    //  Primary dispatch interface for CWinPrintEngine
+    
+    [ uuid(0002A507-0000-0000-C000-000000000046) ]
+    dispinterface IWinPrintEngine
+    {
+        properties:
+            // NOTE - ClassWizard will maintain property information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_PROP(CWinPrintEngine)
+            //}}AFX_ODL_PROP
+            
+        methods:
+            // NOTE - ClassWizard will maintain method information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_METHOD(CWinPrintEngine)
+            //}}AFX_ODL_METHOD
+
+    };
+
+    //  Event dispatch interface for CWinPrintEngine
+    
+    [ uuid(0002A508-0000-0000-C000-000000000046) ]
+    dispinterface IWinPrintEngineEvents
+    {
+        properties:
+            //  Event interface has no properties
+            
+        methods:
+            // NOTE - ClassWizard will maintain event information here.
+            //    Use extreme caution when editing this section.
+            //{{AFX_ODL_EVENT(CWinPrintEngine)
+            //}}AFX_ODL_EVENT
+    };
+
+    //  Class information for CWinPrintEngine
+    
+    [ uuid(0002A506-0000-0000-C000-000000000046), licensed ]
+    coclass CWinPrintEngine
+    {
+        [default] dispinterface IWinPrintEngine;
+        [default, source] dispinterface IWinPrintEngineEvents;
+    };
+};

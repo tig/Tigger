@@ -1,0 +1,23 @@
+\Registry\MACHINE\SOFTWARE\Classes\CLSID\{8C610341-E003-1068-8BF8-00AA00339710}
+		    = Stocks-R-Us Stock Quote Object 1.0
+
+\Registry\MACHINE\SOFTWARE\Classes\CLSID\{8C610341-E003-1068-8BF8-00AA00339710}\LocalServer
+		    = xrtobj32.exe
+
+\Registry\MACHINE\SOFTWARE\Classes\CLSID\{8C610341-E003-1068-8BF8-00AA00339710}\ProgID
+		    = StocksRUs.Stocks.1
+
+\Registry\MACHINE\SOFTWARE\Classes\CLSID\{8C610341-E003-1068-8BF8-00AA00339710}\DefaultIcon
+		    = xrtobj32.exe,1
+
+\Registry\MACHINE\SOFTWARE\Classes\StocksRUs.Stocks.1
+		    = Stocks-R-Us Stock Quote Object 1.0
+
+\Registry\MACHINE\SOFTWARE\Classes\StocksRUs.Stocks.1\CLSID
+		    = {8C610341-E003-1068-8BF8-00AA00339710}
+
+\Registry\MACHINE\SOFTWARE\Classes\.XRT
+                    = StocksRUs.Stocks.1
+
+\Registry\MACHINE\SOFTWARE\Classes\CLSID\{8C610341-E003-1068-8BF8-00AA00339710}\ActivateAtBits
+		    = Y

@@ -1,0 +1,63 @@
+REGEDIT
+; Registration information for the collection application
+
+; Version independent registration
+HKEY_CLASSES_ROOT\Collection.Application = Collection Application
+HKEY_CLASSES_ROOT\Collection.Application\Clsid = {2328ED20-B5E5-101A-B826-00DD01103DE1}
+
+; Version 1.0 registration
+HKEY_CLASSES_ROOT\Collection.Application.1 = Collection Application 1.0
+HKEY_CLASSES_ROOT\Collection.Application.1\Clsid = {2328ED20-B5E5-101A-B826-00DD01103DE1}   
+HKEY_CLASSES_ROOT\CLSID\{2328ED20-B5E5-101A-B826-00DD01103DE1} = Collection Application 1.0
+HKEY_CLASSES_ROOT\CLSID\{2328ED20-B5E5-101A-B826-00DD01103DE1}\ProgID = Collection.Application.1
+HKEY_CLASSES_ROOT\CLSID\{2328ED20-B5E5-101A-B826-00DD01103DE1}\VersionIndependentProgID = Collection.Application 
+HKEY_CLASSES_ROOT\CLSID\{2328ED20-B5E5-101A-B826-00DD01103DE1}\LocalServer = e:\source\research\collect\app.exe -Automation
+HKEY_CLASSES_ROOT\CLSID\{2328ED20-B5E5-101A-B826-00DD01103DE1}\InprocServer
+
+; Type library registration information 
+HKEY_CLASSES_ROOT\TypeLib\{2328ED21-B5E5-101A-B826-00DD01103DE1}
+HKEY_CLASSES_ROOT\TypeLib\{2328ED21-B5E5-101A-B826-00DD01103DE1}\1.0 = Collection Application 1.0 TypeLibrary
+;US english
+HKEY_CLASSES_ROOT\TypeLib\{2328ED21-B5E5-101A-B826-00DD01103DE1}\1.0\409\win16 = e:\source\research\collect\app.tlb  
+
+
+; Some Automation controllers support/will support run-time type checking.
+; These controllers may support a scripting language which supports the 
+; following syntax where a type name can be specified in the Dim statement:
+;     Dim AppObject As App
+;     Set AppObject = CreateObject("Collection.Application")
+; The Automation contoller will look up the UUID of a dispinterface called 
+; 'App' (which is IID_DApp in this sample) and will QueryInterface the object 
+; for this interface to do the type-checking. This QueryInterface requires the
+; the IID_DApp interface to be remoted. To support the remoting the following
+; entries need to be added to the registry for each of the dispinterfaces whose
+; names that this application decides to support as type names. 
+;
+; The registration in the registry is done automatically by LoadRegTypeLib(). However
+; the following entries are required so that this information can be obtained without
+; running the application.
+;
+; In the entries below  {00020420-0000-0000-C000-000000000046} refers to the ProxyStub
+; implementation for IDispatch. NumMethod = 7 because IDispatch has 7 methods (3 from
+; IUnknown + 4 of its own). {00020400-0000-0000-C000-000000000046} refers to the
+; IDispatch interface which is the Base Interface of App, Collection and Item interfaces.
+
+; IID_DApp = {2328ED23-B5E5-101A-B826-00DD01103DE1}
+HKEY_CLASSES_ROOT\Interface\{2328ED23-B5E5-101A-B826-00DD01103DE1} = App
+HKEY_CLASSES_ROOT\Interface\{2328ED23-B5E5-101A-B826-00DD01103DE1}\ProxyStubClsid = {00020420-0000-0000-C000-000000000046}
+HKEY_CLASSES_ROOT\Interface\{2328ED23-B5E5-101A-B826-00DD01103DE1}\NumMethod = 7
+HKEY_CLASSES_ROOT\Interface\{2328ED23-B5E5-101A-B826-00DD01103DE1}\BaseInterface = {00020400-0000-0000-C000-000000000046}
+
+; IID_DCollection = {2328ED25-B5E5-101A-B826-00DD01103DE1} 
+HKEY_CLASSES_ROOT\Interface\{2328ED25-B5E5-101A-B826-00DD01103DE1} = Collection
+HKEY_CLASSES_ROOT\Interface\{2328ED25-B5E5-101A-B826-00DD01103DE1}\ProxyStubClsid = {00020420-0000-0000-C000-000000000046}
+HKEY_CLASSES_ROOT\Interface\{2328ED25-B5E5-101A-B826-00DD01103DE1}\NumMethod = 7
+HKEY_CLASSES_ROOT\Interface\{2328ED25-B5E5-101A-B826-00DD01103DE1}\BaseInterface = {00020400-0000-0000-C000-000000000046}
+
+; IID_DItem = {2328ED27-B5E5-101A-B826-00DD01103DE1} 
+HKEY_CLASSES_ROOT\Interface\{2328ED27-B5E5-101A-B826-00DD01103DE1} = Item
+HKEY_CLASSES_ROOT\Interface\{2328ED27-B5E5-101A-B826-00DD01103DE1}\ProxyStubClsid = {00020420-0000-0000-C000-000000000046}
+HKEY_CLASSES_ROOT\Interface\{2328ED27-B5E5-101A-B826-00DD01103DE1}\NumMethod = 7
+HKEY_CLASSES_ROOT\Interface\{2328ED27-B5E5-101A-B826-00DD01103DE1}\BaseInterface = {00020400-0000-0000-C000-000000000046}
+    
+                                                                                                      

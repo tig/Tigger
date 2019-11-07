@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<TITLE>Pager Test</TITLE>
+</HEAD>
+<BODY>
+<H1>Microsoft Pager Test Page</H1>
+    <OBJECT ID="pager"
+     CLASSID="CLSID:23208899-15BF-11D0-97FB-00AA001F73C1">
+    </OBJECT>
+Phone #:
+    <INPUT TYPE=TEXT VALUE="1-800-759-7243" NAME="Phone">
+<P>
+PIN:
+    <INPUT TYPE=TEXT VALUE="1234" NAME="PIN">
+<P>
+Message:
+    <INPUT TYPE=TEXT VALUE="Message goes here." NAME="Msg">
+<P>
+    <INPUT TYPE=BUTTON VALUE="Test"  NAME="Test">
+<P>
+
+<SCRIPT LANGUAGE="VBScript" FOR=Test EVENT=onClick>
+  f = pager.Page(Phone.Value, PIN.Value, Msg.Value)
+  If (f = True) Then
+     MsgBox("Yay!")
+  Else
+     MsgBox("Nay!")
+  End If
+
+</SCRIPT>
+</BODY>
+</HTML>

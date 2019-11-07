@@ -1,0 +1,77 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "Y:\\!\\INIedit2\\INC\\DLGS.H\0"
+END
+
+DLG_ABOUTBOX DIALOG 20, 33, 250, 134
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About INIedit 2.0"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "Black Frame", IDD_BOX0, "Static", SS_BLACKFRAME, 2, 2, 
+                    245, 128
+    ICON            IDOK, IDOK, 8, 12, 21, 20
+    LTEXT           "INIedit", IDD_APPNAME, 39, 6, 108, 10
+    LTEXT           "Version 1.4", IDD_VERSION, 39, 16, 155, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Copyright © 1990-1992 Charles E. Kindel, Jr.", 
+                    IDD_COPYRIGHT, 39, 26, 174, 10, NOT WS_GROUP
+    LTEXT           "Portions Copyright © 1985-1992 Microsoft Corporation", 
+                    IDD_MSCOPYRIGHT, 39, 36, 198, 10, NOT WS_GROUP
+    LTEXT           "Portions Copyright © 1985-1992 Scott M. McCraw", 67, 39, 
+                    46, 198, 10, NOT WS_GROUP
+    LTEXT           "By Charles E. Kindel, Jr.", IDD_BYCEK, 40, 63, 174, 10
+    LTEXT           "22925 N.E 12th Place", IDD_ADDRESS1, 40, 73, 174, 10, 
+                    NOT WS_GROUP
+    LTEXT           "Redmond, WA  98053", IDD_ADDRESS2, 40, 83, 174, 10, NOT 
+                    WS_GROUP
+    LTEXT           "CompuServe ID 71551,1445", IDD_ADDRESS3, 40, 93, 174, 
+                    10, NOT WS_GROUP
+    CONTROL         "", IDD_BLACKRECT, "Static", SS_BLACKRECT | WS_GROUP, 9, 
+                    106, 233, 1
+    RTEXT           "This product is licenced to:", IDD_USERNAME_LBL, 6, 114, 
+                    101, 9, NOT WS_GROUP
+    DEFPUSHBUTTON   "OK", IDCANCEL, 197, 7, 45, 14, WS_GROUP
+    EDITTEXT        IDD_USERNAME, 109, 114, 128, 9, ES_AUTOHSCROLL | 
+                    WS_DISABLED | NOT WS_BORDER
+END
+
+DLG_SHAREWARE DIALOG 21, 39, 255, 177
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "This copy of INIedit 2.0 has not been registered!"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "Black Frame", IDD_BOX0, "Static", SS_BLACKFRAME | 
+                    WS_GROUP, 4, 3, 191, 104
+    LTEXT           "INIedit is a commercial software application distributed as shareware.  You may use and evaluate it for 21 days.  After that time you must pay a registration fee of $25 to the author if you continue using it.", 
+                    IDD_SHAREWARE1, 9, 9, 180, 42, NOT WS_GROUP
+    LTEXT           "Once you pay your INIedit registration fee you will receive an invoice with a registration number.  Enter your name and registration number exactly as shown on the invoice.  Once you have done this, these startup windows will deactivated.", 
+                    IDD_SHAREWARE2, 9, 56, 180, 49, NOT WS_GROUP
+    LTEXT           "Name INIedit is Registered to:", IDD_USERNAME_LBL, 11, 
+                    117, 127, 9, NOT WS_GROUP
+    CONTROL         "Black Frame", IDD_BOX1, "Static", SS_BLACKFRAME, 4, 111, 
+                    247, 62
+    EDITTEXT        IDD_USERNAME, 19, 128, 125, 12, ES_AUTOHSCROLL | 
+                    WS_GROUP
+    LTEXT           "Registration Number:", IDD_REGNUMBER_LBL, 11, 144, 84, 
+                    10, NOT WS_GROUP
+    EDITTEXT        IDD_REGNUMBER, 20, 155, 125, 12, ES_AUTOHSCROLL
+    CTEXT           "If you press the 'Print Reg. Form' Button INIedit will print a registration form which you can send in.", 
+                    IDD_PRINT_LBL, 148, 117, 96, 34, NOT WS_GROUP
+    PUSHBUTTON      "&Print Reg. Form", IDD_PRINTREGFORM, 163, 154, 69, 14
+    DEFPUSHBUTTON   "OK", IDOK, 204, 6, 45, 14, WS_GROUP
+    PUSHBUTTON      "Ignore", IDD_CLOSE, 204, 23, 45, 14
+    PUSHBUTTON      "&Help", psh15, 204, 40, 45, 14
+END
+
+DLG_EDITOR DIALOG 35, 25, 209, 61
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Configure External Editor"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Editor Command Line:", IDD_EDITOR_LBL, 7, 8, 77, 8
+    EDITTEXT        IDD_EDITOR, 7, 18, 142, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "OK", IDOK, 163, 6, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 163, 23, 40, 14
+    PUSHBUTTON      "&Browse...", IDD_BROWSE, 163, 40, 40, 14
+END
