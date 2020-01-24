@@ -1,0 +1,57 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "imgsample", "http://kindelsrv/imgsample/imgsample.csproj", "{AEC6FAA6-A409-4BC3-AE8A-6EAD3E6CFFC6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{625D3C21-06AA-430A-BA31-52EFA3DF7C2F} = {625D3C21-06AA-430A-BA31-52EFA3DF7C2F}
+		{4CF42539-00A8-4536-B268-13D284B4D422} = {4CF42539-00A8-4536-B268-13D284B4D422}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rewrite.NET", "\\kindelsrv\wwwroot$\imgsample\Rewrite.NET\Rewrite.NET.csproj", "{625D3C21-06AA-430A-BA31-52EFA3DF7C2F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RulesEngine", "\\kindelsrv\wwwroot$\imgsample\RulesEngine\RulesEngine.csproj", "{4CF42539-00A8-4536-B268-13D284B4D422}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {7DFDDA25-826B-499F-AEC9-CD723B318A48}
+		SccProjectUniqueName1 = http://kindelsrv/imgsample/imgsample.csproj
+		SccLocalPath1 = \\\\kindelsrv\\wwwroot$\\imgsample
+		CanCheckoutShared = false
+		SccProjectEnlistmentChoice1 = 2
+		SccProjectUniqueName2 = \\\\kindelsrv\\wwwroot$\\imgsample\\Rewrite.NET\\Rewrite.NET.csproj
+		SccProjectName2 = \u0022$/imgsample/Rewrite.NET\u0022,\u0020VKLAAAAA
+		SccLocalPath2 = \\\\kindelsrv\\wwwroot$\\imgsample\\Rewrite.NET
+		CanCheckoutShared = false
+		SccProjectUniqueName3 = \\\\kindelsrv\\wwwroot$\\imgsample\\RulesEngine\\RulesEngine.csproj
+		SccProjectName3 = \u0022$/imgsample/RulesEngine\u0022,\u0020WKLAAAAA
+		SccLocalPath3 = \\\\kindelsrv\\wwwroot$\\imgsample\\RulesEngine
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{AEC6FAA6-A409-4BC3-AE8A-6EAD3E6CFFC6}.Debug.ActiveCfg = Debug|.NET
+		{AEC6FAA6-A409-4BC3-AE8A-6EAD3E6CFFC6}.Debug.Build.0 = Debug|.NET
+		{AEC6FAA6-A409-4BC3-AE8A-6EAD3E6CFFC6}.Release.ActiveCfg = Release|.NET
+		{AEC6FAA6-A409-4BC3-AE8A-6EAD3E6CFFC6}.Release.Build.0 = Release|.NET
+		{625D3C21-06AA-430A-BA31-52EFA3DF7C2F}.Debug.ActiveCfg = Debug|.NET
+		{625D3C21-06AA-430A-BA31-52EFA3DF7C2F}.Debug.Build.0 = Debug|.NET
+		{625D3C21-06AA-430A-BA31-52EFA3DF7C2F}.Release.ActiveCfg = Release|.NET
+		{625D3C21-06AA-430A-BA31-52EFA3DF7C2F}.Release.Build.0 = Release|.NET
+		{4CF42539-00A8-4536-B268-13D284B4D422}.Debug.ActiveCfg = Debug|.NET
+		{4CF42539-00A8-4536-B268-13D284B4D422}.Debug.Build.0 = Debug|.NET
+		{4CF42539-00A8-4536-B268-13D284B4D422}.Release.ActiveCfg = Release|.NET
+		{4CF42539-00A8-4536-B268-13D284B4D422}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

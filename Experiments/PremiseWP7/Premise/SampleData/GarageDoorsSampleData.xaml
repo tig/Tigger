@@ -1,0 +1,17 @@
+<vm:GarageDoorsViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:Premise.ViewModel" 
+    xmlns:m="clr-namespace:Premise.Model" 
+    ApplicationTitle="Premise Home Control Software"
+    PageName="Garage Doors">
+
+    <vm:GarageDoorsViewModel.Items>
+        <m:GarageDoorSensor DisplayName="Upper Garage East"   Description="Upper East Garage"   GarageDoorOpened="False"/>
+        <m:GarageDoorSensor DisplayName="Upper Garage Center" Description="Upper Center Garage" GarageDoorOpened="False"/>
+        <m:GarageDoorSensor DisplayName="Upper Garage West"   Description="Upper West Garage"   GarageDoorOpened="False"/>
+        <m:GarageDoorSensor DisplayName="Lower Garage East"   Description="Lower East Garage"   GarageDoorOpened="False"/>
+        <m:GarageDoorSensor DisplayName="Lower Garage West"   Description="Lower West Garage"    GarageDoorOpened="False"/>
+    </vm:GarageDoorsViewModel.Items>
+
+</vm:GarageDoorsViewModel>

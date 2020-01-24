@@ -1,0 +1,25 @@
+<local:MainViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:KindelHome" 
+    SampleProperty="Sample Text Property Value">
+    
+    <local:MainViewModel.QuickItems>
+        <local:ItemViewModel LineOne="Audio/Video" LineTwo="All house music is muted" LineThree=""/>
+        <local:ItemViewModel LineOne="Security" LineTwo="Disarmed; System ready" LineThree="System Ready"/>
+        <local:ItemViewModel LineOne="Lighting" LineTwo="Lights on" LineThree=""/>
+        <local:ItemViewModel LineOne="Comfort" LineTwo="Upstairs: 69, Downstairs: 67, Heat on" LineThree=""/>
+        <local:ItemViewModel LineOne="Garage Doors" LineTwo="A garage door is open" LineThree=""/>
+        <local:ItemViewModel LineOne="Irrigation" LineTwo="Back yard is being watered" LineThree=""/>
+    </local:MainViewModel.QuickItems>
+
+    <local:MainViewModel.LightingItems>
+        <local:ItemViewModel LineOne="All Lights Off" LineTwo="Turns all lights off" LineThree=""/>
+        <local:ItemViewModel LineOne="Entrance" LineTwo="Turn entrance ligths on/off" LineThree=""/>
+        <local:ItemViewModel LineOne="Back yard" LineTwo="Turn back yard ligths on/off" LineThree=""/>
+        <local:ItemViewModel LineOne="Emergency!" LineTwo="All interior and exterior lights on" LineThree=""/>
+        <local:ItemViewModel LineOne="Night" LineTwo="Night mode" LineThree=""/>
+        <local:ItemViewModel LineOne="Lighting Details" LineTwo="Turn on/off individual lighting" LineThree=""/>
+    </local:MainViewModel.LightingItems>
+
+</local:MainViewModel>

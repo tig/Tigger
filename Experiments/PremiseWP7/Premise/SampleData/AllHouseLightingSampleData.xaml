@@ -1,0 +1,18 @@
+<local:AllHouseLightingViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Premise.ViewModel" 
+    xmlns:premise="clr-namespace:Premise.Model" 
+    xmlns:model="Premise.AllHouseLightingSampleData"
+    ApplicationTitle="Premise Home Control Software"
+    PageName="lighting Scenes">
+
+    <local:AllHouseLightingViewModel.Items>
+        <premise:LightingScene DisplayName="Interior Lights Off"    Description="Turns off all interior lights"       Value="False"/>
+        <premise:LightingScene DisplayName="Exterior Lights Off" Description="Turns off all exterior lights"    Value="False"/>
+        <premise:LightingScene DisplayName="Emergency Lighting"     Description="Turns on Emergency Lighting"        Value="False"/>
+        <premise:LightingScene DisplayName="Night Scene"            Description="Sets the Night Scene"               Value="True"/>
+        <premise:LightingScene DisplayName="Pathway Scene"            Description="Sets the Pathway Scene"               Value="True"/>
+    </local:AllHouseLightingViewModel.Items>
+
+</local:AllHouseLightingViewModel>

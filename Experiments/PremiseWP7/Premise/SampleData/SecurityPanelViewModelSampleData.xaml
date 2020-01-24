@@ -1,0 +1,31 @@
+<local:SecurityPanelViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Premise.ViewModel" 
+    xmlns:premise="clr-namespace:Premise.Model" 
+    xmlns:model="Premise.SecurityPanelViewModel"
+    xmlns:qi="Premise.SecurityQuickItem" 
+    ApplicationTitle="Premise Home Control Software"
+    PageName="Security System">
+
+
+    <local:SecurityPanelViewModel.SecuirtySystemStatus>
+        <premise:SecurityQuickItem Value="Disarmed; Disconnected" 
+                                   NotReadyZones="Zone 1, Zone 2, Zone 3"/>
+    </local:SecurityPanelViewModel.SecuirtySystemStatus>
+
+    <!--   NotReadyZones="Zone 1, Zone 2, Zone 3"/> -->
+
+
+    <!--
+    <local:MainViewModel.LightingItems>
+        <local:ItemViewModel LineOne="All Lights Off" LineTwo="Turns all lights off" LineThree=""/>
+        <local:ItemViewModel LineOne="Entrance" LineTwo="Turn entrance ligths on/off" LineThree=""/>
+        <local:ItemViewModel LineOne="Back yard" LineTwo="Turn back yard ligths on/off" LineThree=""/>
+        <local:ItemViewModel LineOne="Emergency!" LineTwo="All interior and exterior lights on" LineThree=""/>
+        <local:ItemViewModel LineOne="Night" LineTwo="Night mode" LineThree=""/>
+        <local:ItemViewModel LineOne="Lighting Details" LineTwo="Turn on/off individual lighting" LineThree=""/>
+    </local:MainViewModel.LightingItems>
+    -->
+
+</local:SecurityPanelViewModel>

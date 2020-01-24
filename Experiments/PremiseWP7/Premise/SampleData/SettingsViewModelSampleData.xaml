@@ -1,0 +1,13 @@
+<vm:ConnectionSettingsViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:Premise.ViewModel" 
+    xmlns:m="clr-namespace:Premise.Model" 
+    PageName="Connection Settings"
+    Description="Settings for server connnections"
+    Host="abc.defg.hig"
+    Port="9999"
+    SSL="True"
+    Username="tigger"
+    Password="P00h!"
+/>

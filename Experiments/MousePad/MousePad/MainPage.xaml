@@ -1,0 +1,79 @@
+﻿<phone:PhoneApplicationPage x:Class="MousePad.MainPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="Landscape"
+                            Orientation="Landscape"
+                            mc:Ignorable="d"
+                            d:DesignWidth="728"
+                            d:DesignHeight="480"
+                            shell:SystemTray.IsVisible="False"
+                            DataContext="{Binding Main, Source={StaticResource Locator}}" Loaded="PhoneApplicationPage_Loaded">
+
+	<!--LayoutRoot contains the root grid where all other page content is placed-->
+	<Grid x:Name="LayoutRoot"
+	      Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentGrid" IsHitTestVisible="True" Grid.Row="1">
+            <Rectangle Name="pad" 
+                       IsHitTestVisible="True" Height="480" HorizontalAlignment="Left" Margin="0,0,0,0" 
+                       Visibility="{Binding Path=Connected, Converter={StaticResource VisibilityConverter}}"
+                       Stroke="DarkGray" StrokeThickness="1" 
+                       Opacity="1" OpacityMask="DarkGray" Fill="DarkGray" 
+                       VerticalAlignment="Top" Width="720" Tap="padTap" 
+                       MouseLeftButtonDown="padMouseLeftButtonDown" 
+                       MouseLeftButtonUp="padMouseLeftButtonUp" 
+                       MouseMove="padMouseMove" 
+                       DoubleTap="padDoubleTap" />
+            <Button Name="connect" Content="Connect" Height="72" HorizontalAlignment="Center" 
+                    Margin="214,201,214,207" VerticalAlignment="Center" Width="300" 
+                    Visibility="{Binding Path=Connected, Converter={StaticResource VisibilityInverseConverter}}" 
+                    Click="connectClick" />
+            <TextBlock Name="textError" Height="30" HorizontalAlignment="Center" Margin="20,398,25,0" Text="{Binding Error}" 
+                       Visibility="{Binding Path=Connected, Converter={StaticResource VisibilityInverseConverter}}"
+                       VerticalAlignment="Top" Width="683" TextAlignment="Center" />
+            <toolkit:PerformanceProgressBar Background="Transparent" 
+                                        HorizontalAlignment="Stretch" 
+                                        Foreground="Red"
+                                        Margin="0,4,0,0" 
+                                        x:Name="progressBar" 
+                                        Visibility="{Binding ProgressIndicatorVisible, Converter={StaticResource VisibilityConverter}}" 
+                                        IsIndeterminate="{Binding ProgressIndicatorVisible}"
+                                        VerticalAlignment="Top" Height="20" />
+        </Grid>
+    </Grid>
+    
+	<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="disconnect" 
+                                            IconUri="/images/appbar.close.rest.png"  Text="Disconnect" 
+                                            Click="disconnectClick">
+                
+            </shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton x:Name="keyboard" 
+                                            IconUri="/Images/appbar.edit.rest.png" Text="Keyboard" 
+                                            Click="keyboard_Click">
+                
+            </shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton x:Name="settings" 
+                                            IconUri="/Images/appbar.feature.settings.rest.png" Text="Settings" 
+                                            Click="settings_Click">
+                
+            </shell:ApplicationBarIconButton>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
+
+</phone:PhoneApplicationPage>

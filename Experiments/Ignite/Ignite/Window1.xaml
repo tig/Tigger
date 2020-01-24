@@ -1,0 +1,19 @@
+﻿<Window x:Class="Ignite.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window1" Height="704" Width="818">
+    <Grid>
+        <DockPanel Name="dockPanel1" >
+            <Menu Name="menu1" ClipToBounds="False"  DockPanel.Dock="Top">
+                <MenuItem Header="_Edit" Click="MenuItem_Click_1">
+                    <MenuItem Header="_Bold" IsCheckable="True" Checked="MenuItem_Checked"/>
+                    <MenuItem Header="_Italic" IsCheckable="True" Unchecked="MenuItem_Unchecked"/>
+                    <MenuItem />
+                    <MenuItem />
+                </MenuItem>
+            </Menu>
+            <Image VerticalAlignment="Top" Height="430" MinHeight="160" MinWidth="160"  Name="image1" Source="file://C:/Users/Charlie/Desktop/amazon-kindle-dx_1.jpg" Stretch="Fill" Width="470" DockPanel.Dock="Left"/>
+            <ContentControl Name="contentControl1" DockPanel.Dock="Right"/>
+        </DockPanel>
+    </Grid>
+</Window>

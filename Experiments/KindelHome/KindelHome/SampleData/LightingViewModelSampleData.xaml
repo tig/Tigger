@@ -1,0 +1,19 @@
+<local:LightingViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:KindelHome" 
+    SampleProperty="Sample Text Property Value">
+    
+    <local:LightingViewModel.SceneItems>
+        <local:ItemViewModel LineOne="All Lights Off" LineTwo="Turns all lights off" LineThree=""/>
+        <local:ItemViewModel LineOne="Emergency!" LineTwo="All interior and exterior lights on" LineThree=""/>
+        <local:ItemViewModel LineOne="Night" LineTwo="Night mode" LineThree=""/>
+    </local:LightingViewModel.SceneItems>
+
+    <local:LightingViewModel.UpstairsItems>
+        <local:ItemViewModel LineOne="Runtime 1" LineTwo="blah, blah" LineThree=""/>
+        <local:ItemViewModel LineOne="Runtime 2" LineTwo="blah, blah" LineThree=""/>
+        <local:ItemViewModel LineOne="Runtime 2" LineTwo="blah, blah" LineThree=""/>
+        </local:LightingViewModel.UpstairsItems>
+
+</local:LightingViewModel>

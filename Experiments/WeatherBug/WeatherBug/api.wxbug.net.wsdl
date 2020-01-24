@@ -1,0 +1,964 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://api.wxbug.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://api.wxbug.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://api.wxbug.net/">
+      <s:element name="GetLocationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationListResult" type="tns:ArrayOfApiLocationData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApiLocationData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApiLocationData" nillable="true" type="tns:ApiLocationData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApiLocationData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUSWorldCityByLatLong">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="longitude" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUSWorldCityByLatLongResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUSWorldCityByLatLongResult" type="tns:LocationUSWorldCityData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LocationUSWorldCityData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isUSCity" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Province" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeZone" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStationListByCityCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unitType" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="UnitType">
+        <s:restriction base="s:string">
+          <s:enumeration value="English" />
+          <s:enumeration value="Metric" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetStationListByCityCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStationListByCityCodeResult" type="tns:ArrayOfApiStationData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApiStationData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApiStationData" nillable="true" type="tns:ApiStationData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApiStationData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Distance" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DistanceUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Latitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Longitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStationListByUSZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unitType" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStationListByUSZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStationListByUSZipCodeResult" type="tns:ArrayOfApiStationData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveCompactWeatherByCityCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unittype" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveCompactWeatherByCityCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLiveCompactWeatherByCityCodeResult" type="tns:LiveCompactWeatherData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LiveCompactWeatherData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrIcon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GustWindSpeed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GustWindSpeedUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GustWindDirectionString" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputLocationUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="ObDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainToday" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationIDRequested" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationIDReturned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Temperature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperatureUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeZoneOffset" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindDirection" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindSpeed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindSpeedUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLiveCompactWeatherByUSZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unittype" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveCompactWeatherByUSZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLiveCompactWeatherByUSZipCodeResult" type="tns:LiveCompactWeatherData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveCompactWeatherByStationID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stationid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unittype" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveCompactWeatherByStationIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLiveCompactWeatherByStationIDResult" type="tns:LiveCompactWeatherData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveWeatherByCityCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unittype" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveWeatherByCityCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLiveWeatherByCityCodeResult" type="tns:LiveWeatherData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LiveWeatherData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AuxTemperature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuxTemperatureRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrIcon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DewPoint" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Elevation" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ElevationUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeelsLike" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GustTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="GustWindSpeed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GustWindSpeedUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GustWindDirectionString" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Humidity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HumidityUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HumidityHigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HumidityLow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HumidityRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputLocationUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MoonPhase" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MoonPhaseImage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pressure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PressureUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PressureHigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PressureLow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PressureRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PressureRateUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Light" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LightRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndoorTemperature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndoorTemperatureRate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="ObDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ObDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainRateMax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainRateUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainToday" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RainYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationIDRequested" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationIDReturned" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sunrise" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sunset" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Temperature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperatureHigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperatureLow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperatureRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperatureRateUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperatureUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeZoneOffset" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WetBulb" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindDirection" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindDirectionAvg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindSpeed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindSpeedAvg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WindSpeedUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLiveWeatherByUSZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unittype" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveWeatherByUSZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLiveWeatherByUSZipCodeResult" type="tns:LiveWeatherData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveWeatherByStationID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stationid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unittype" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLiveWeatherByStationIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLiveWeatherByStationIDResult" type="tns:LiveWeatherData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlertsDataList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlertsDataListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAlertsDataListResult" type="tns:ArrayOfApiAlertData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApiAlertData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApiAlertData" nillable="true" type="tns:ApiAlertData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApiAlertData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpiryTimeZone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssueDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="IssueTimeZone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAlertsIssueData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlertsIssueDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAlertsIssueDataResult" type="tns:ApiAlertIssueData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApiAlertIssueData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AlertCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fips" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetForecastIssueDetailsByCityCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetForecastIssueDetailsByCityCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetForecastIssueDetailsByCityCodeResult" type="tns:ApiForecastIssueData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApiForecastIssueData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ForecastDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetForecastIssueDetailsByUSZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetForecastIssueDetailsByUSZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetForecastIssueDetailsByUSZipCodeResult" type="tns:ApiForecastIssueData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetForecastByCityCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unitType" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetForecastByCityCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetForecastByCityCodeResult" type="tns:ArrayOfApiForecastData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApiForecastData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApiForecastData" nillable="true" type="tns:ApiForecastData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApiForecastData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ConditionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Icon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsNight" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prediction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortPrediction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TempHigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TempLow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TempUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetForecastByUSZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="unitType" type="tns:UnitType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetForecastByUSZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetForecastByUSZipCodeResult" type="tns:ArrayOfApiForecastData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLocationListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationList" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUSWorldCityByLatLongSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUSWorldCityByLatLong" />
+  </wsdl:message>
+  <wsdl:message name="GetUSWorldCityByLatLongSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUSWorldCityByLatLongResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStationListByCityCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStationListByCityCode" />
+  </wsdl:message>
+  <wsdl:message name="GetStationListByCityCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStationListByCityCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStationListByUSZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStationListByUSZipCode" />
+  </wsdl:message>
+  <wsdl:message name="GetStationListByUSZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStationListByUSZipCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveCompactWeatherByCityCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLiveCompactWeatherByCityCode" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveCompactWeatherByCityCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLiveCompactWeatherByCityCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveCompactWeatherByUSZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLiveCompactWeatherByUSZipCode" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveCompactWeatherByUSZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLiveCompactWeatherByUSZipCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveCompactWeatherByStationIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLiveCompactWeatherByStationID" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveCompactWeatherByStationIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLiveCompactWeatherByStationIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveWeatherByCityCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLiveWeatherByCityCode" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveWeatherByCityCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLiveWeatherByCityCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveWeatherByUSZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLiveWeatherByUSZipCode" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveWeatherByUSZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLiveWeatherByUSZipCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveWeatherByStationIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLiveWeatherByStationID" />
+  </wsdl:message>
+  <wsdl:message name="GetLiveWeatherByStationIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLiveWeatherByStationIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertsDataListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAlertsDataList" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertsDataListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAlertsDataListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertsIssueDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAlertsIssueData" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertsIssueDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAlertsIssueDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetForecastIssueDetailsByCityCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetForecastIssueDetailsByCityCode" />
+  </wsdl:message>
+  <wsdl:message name="GetForecastIssueDetailsByCityCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetForecastIssueDetailsByCityCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetForecastIssueDetailsByUSZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetForecastIssueDetailsByUSZipCode" />
+  </wsdl:message>
+  <wsdl:message name="GetForecastIssueDetailsByUSZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetForecastIssueDetailsByUSZipCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetForecastByCityCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetForecastByCityCode" />
+  </wsdl:message>
+  <wsdl:message name="GetForecastByCityCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetForecastByCityCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetForecastByUSZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetForecastByUSZipCode" />
+  </wsdl:message>
+  <wsdl:message name="GetForecastByUSZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetForecastByUSZipCodeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WeatherBugWebServicesSoap">
+    <wsdl:operation name="GetLocationList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns US/World locations based on US zipcode or any search string.</wsdl:documentation>
+      <wsdl:input message="tns:GetLocationListSoapIn" />
+      <wsdl:output message="tns:GetLocationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUSWorldCityByLatLong">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return the location data of US/world city that is nearest to the input Lat, Long.</wsdl:documentation>
+      <wsdl:input message="tns:GetUSWorldCityByLatLongSoapIn" />
+      <wsdl:output message="tns:GetUSWorldCityByLatLongSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationListByCityCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns station list (US or International) based on citycode.</wsdl:documentation>
+      <wsdl:input message="tns:GetStationListByCityCodeSoapIn" />
+      <wsdl:output message="tns:GetStationListByCityCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStationListByUSZipCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns station list based on US zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:GetStationListByUSZipCodeSoapIn" />
+      <wsdl:output message="tns:GetStationListByUSZipCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByCityCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Live Compact Weather for international cities (including US cities) based on citycode.</wsdl:documentation>
+      <wsdl:input message="tns:GetLiveCompactWeatherByCityCodeSoapIn" />
+      <wsdl:output message="tns:GetLiveCompactWeatherByCityCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByUSZipCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Live Compact Weather for US cities based on zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:GetLiveCompactWeatherByUSZipCodeSoapIn" />
+      <wsdl:output message="tns:GetLiveCompactWeatherByUSZipCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByStationID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Live Compact Weather for US and International locations based on StationID.</wsdl:documentation>
+      <wsdl:input message="tns:GetLiveCompactWeatherByStationIDSoapIn" />
+      <wsdl:output message="tns:GetLiveCompactWeatherByStationIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByCityCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Live Weather for international cities (including US cities) based on citycode.</wsdl:documentation>
+      <wsdl:input message="tns:GetLiveWeatherByCityCodeSoapIn" />
+      <wsdl:output message="tns:GetLiveWeatherByCityCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByUSZipCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Live Weather for US cities based on zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:GetLiveWeatherByUSZipCodeSoapIn" />
+      <wsdl:output message="tns:GetLiveWeatherByUSZipCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByStationID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Live Weather for US and International locations based on StationID.</wsdl:documentation>
+      <wsdl:input message="tns:GetLiveWeatherByStationIDSoapIn" />
+      <wsdl:output message="tns:GetLiveWeatherByStationIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsDataList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Severe Weather Alerts based on US zipcodes.</wsdl:documentation>
+      <wsdl:input message="tns:GetAlertsDataListSoapIn" />
+      <wsdl:output message="tns:GetAlertsDataListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsIssueData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Alerts location details based on US zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:GetAlertsIssueDataSoapIn" />
+      <wsdl:output message="tns:GetAlertsIssueDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastIssueDetailsByCityCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get forecast location details based on citycode.</wsdl:documentation>
+      <wsdl:input message="tns:GetForecastIssueDetailsByCityCodeSoapIn" />
+      <wsdl:output message="tns:GetForecastIssueDetailsByCityCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastIssueDetailsByUSZipCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get forecast location details based on US zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:GetForecastIssueDetailsByUSZipCodeSoapIn" />
+      <wsdl:output message="tns:GetForecastIssueDetailsByUSZipCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastByCityCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get forecast based on citycode.</wsdl:documentation>
+      <wsdl:input message="tns:GetForecastByCityCodeSoapIn" />
+      <wsdl:output message="tns:GetForecastByCityCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastByUSZipCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get forecast based on US zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:GetForecastByUSZipCodeSoapIn" />
+      <wsdl:output message="tns:GetForecastByUSZipCodeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WeatherBugWebServicesSoap" type="tns:WeatherBugWebServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLocationList">
+      <soap:operation soapAction="http://api.wxbug.net/GetLocationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUSWorldCityByLatLong">
+      <soap:operation soapAction="http://api.wxbug.net/GetUSWorldCityByLatLong" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationListByCityCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetStationListByCityCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationListByUSZipCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetStationListByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByCityCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetLiveCompactWeatherByCityCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByUSZipCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetLiveCompactWeatherByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByStationID">
+      <soap:operation soapAction="http://api.wxbug.net/GetLiveCompactWeatherByStationID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByCityCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetLiveWeatherByCityCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByUSZipCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetLiveWeatherByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByStationID">
+      <soap:operation soapAction="http://api.wxbug.net/GetLiveWeatherByStationID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsDataList">
+      <soap:operation soapAction="http://api.wxbug.net/GetAlertsDataList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsIssueData">
+      <soap:operation soapAction="http://api.wxbug.net/GetAlertsIssueData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastIssueDetailsByCityCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetForecastIssueDetailsByCityCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastIssueDetailsByUSZipCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetForecastIssueDetailsByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastByCityCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetForecastByCityCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastByUSZipCode">
+      <soap:operation soapAction="http://api.wxbug.net/GetForecastByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WeatherBugWebServicesSoap12" type="tns:WeatherBugWebServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLocationList">
+      <soap12:operation soapAction="http://api.wxbug.net/GetLocationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUSWorldCityByLatLong">
+      <soap12:operation soapAction="http://api.wxbug.net/GetUSWorldCityByLatLong" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationListByCityCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetStationListByCityCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStationListByUSZipCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetStationListByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByCityCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetLiveCompactWeatherByCityCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByUSZipCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetLiveCompactWeatherByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveCompactWeatherByStationID">
+      <soap12:operation soapAction="http://api.wxbug.net/GetLiveCompactWeatherByStationID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByCityCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetLiveWeatherByCityCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByUSZipCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetLiveWeatherByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveWeatherByStationID">
+      <soap12:operation soapAction="http://api.wxbug.net/GetLiveWeatherByStationID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsDataList">
+      <soap12:operation soapAction="http://api.wxbug.net/GetAlertsDataList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsIssueData">
+      <soap12:operation soapAction="http://api.wxbug.net/GetAlertsIssueData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastIssueDetailsByCityCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetForecastIssueDetailsByCityCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastIssueDetailsByUSZipCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetForecastIssueDetailsByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastByCityCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetForecastByCityCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForecastByUSZipCode">
+      <soap12:operation soapAction="http://api.wxbug.net/GetForecastByUSZipCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WeatherBugWebServices">
+    <wsdl:port name="WeatherBugWebServicesSoap" binding="tns:WeatherBugWebServicesSoap">
+      <soap:address location="http://api.wxbug.net/webservice-v1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WeatherBugWebServicesSoap12" binding="tns:WeatherBugWebServicesSoap12">
+      <soap12:address location="http://api.wxbug.net/webservice-v1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,23 @@
+<vm:MainViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:Premise.ViewModel" 
+    xmlns:m="clr-namespace:Premise.Model" 
+    ApplicationTitle="Premise Home Control Software"
+    PageName="Quick Access">
+   
+    <vm:MainViewModel.QuickItems>
+        <m:PremiseObject DisplayName="Audio/Video" Value="Test"/>
+        <m:PremiseObject DisplayName="Security" Value="Test"/>
+        <m:PremiseObject DisplayName="Comfort" Value="Test"/>
+        <m:PremiseObject DisplayName="Garage Doors" Value="Test"/>
+        <m:PremiseObject DisplayName="Irrigation" Value="Test"/>
+    </vm:MainViewModel.QuickItems>
+
+    <vm:MainViewModel.SettingsItems>
+<!--        <vm:ConnectionSettingsViewModel PageName="Connection" Description="Connection settings" Host="home.kindel.net" Port="99" SSL="True"/> -->
+        <vm:SettingsViewModelBase       PageName="Startup" Description="App startup settings"/>
+        <vm:SettingsViewModelBase       PageName="Themes" Description="App colors and font settings"/>
+    </vm:MainViewModel.SettingsItems>
+
+</vm:MainViewModel>

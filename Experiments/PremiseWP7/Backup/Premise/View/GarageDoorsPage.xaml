@@ -1,0 +1,104 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Premise.GarageDoorsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP7"
+    xmlns:premise="clr-namespace:Premise"
+    xmlns:vm="clr-namespace:Premise.ViewModel"
+    xmlns:c4fun="clr-namespace:Coding4Fun.Phone.Controls;assembly=Coding4Fun.Phone.Controls"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    d:DataContext="{d:DesignData ../SampleData/GarageDoorsSampleData.xaml}"
+    DataContext="{Binding GarageDoorsViewModel, Source={StaticResource Locator}}" 
+    Unloaded="PhoneApplicationPage_Unloaded"
+    Loaded="PhoneApplicationPage_Loaded" >
+
+    <phone:PhoneApplicationPage.Resources>
+        <vm:GDOStateFormatConverter x:Key="GDOStateFormatConverter"  />
+        <Style x:Key="GDOButtonStyle" TargetType="Button">
+            <Setter Property="Width"                Value="120"/>
+            <Setter Property="Height"               Value="85"/>
+            <Setter Property="VerticalAlignment"    Value="Top" />
+            <Setter Property="HorizontalAlignment"  Value="Left"/>
+            <Setter Property="Background"           Value="DimGray" />
+            <Setter Property="Foreground"           Value="White" />
+            <Setter Property="BorderBrush"          Value="{x:Null}"/>
+            <Setter Property="BorderThickness"      Value="0" />
+            <Setter Property="Padding"              Value="0"/>
+            <Setter Property="FontSize"             Value="{StaticResource PhoneFontSizeMedium}"/>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--Data context is set to sample data above and LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel"
+		            Grid.Row="0"
+		            Margin="24,24,0,12">
+            <TextBlock x:Name="ApplicationTitle"
+			           Text="{Binding ApplicationTitle}"
+			           Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle"
+			           Text="{Binding PageName}"
+			           Margin="-3,-8,0,0"
+			           Style="{StaticResource PhoneTextTitle1Style}" />
+        </StackPanel>
+       
+        <!--ContentPanel contains ListBox and ListBox ItemTemplate. Place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ListBox x:Name="DoorsListBox" Margin="0,0,-12,0" 
+                     ItemsSource="{Binding Items}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,35">
+                            <StackPanel>
+                                <!-- We use Description instead of DisplayName because DisplayName changes for GDOs. -->
+                                <TextBlock TextAlignment="Left" TextWrapping="NoWrap" Width="320"
+                                           Text="{Binding Description}" Style="{StaticResource PhoneTextTitle2Style}"/>
+                                <TextBlock TextAlignment="Left" TextWrapping="NoWrap" Width="320"
+                                           Text="{Binding GarageDoorOpened, Converter={StaticResource GDOStateFormatConverter}}" Style="{StaticResource PhoneTextSubtleStyle}" />
+                            </StackPanel>
+                            <Button DataContext="{Binding}" Content="{Binding OpenCloseCommand}" IsEnabled="{Binding HasRealData}" Style="{StaticResource GDOButtonStyle}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <Command:EventToCommand 
+                                            Command="{Binding TriggerCommand}"
+                                            CommandParameter="{Binding ElementName=Self, Path=Location }"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Grid DataContext="{Binding MainViewModel, Source={StaticResource Locator}}">
+            <c4fun:PerformanceProgressBar Background="Transparent" HorizontalAlignment="Stretch" Margin="0,4,0,0" Name="progressBar" 
+                                      Visibility="{Binding ProgressIndicatorVisible}" VerticalAlignment="Top" />
+        </Grid>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False">
+            <shell:ApplicationBarIconButton x:Name="RefreshButton" Click="RefreshButtonClick" IconUri="/Images/appbar.sync.rest.png" Text="Refresh"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    -->
+
+</phone:PhoneApplicationPage>
