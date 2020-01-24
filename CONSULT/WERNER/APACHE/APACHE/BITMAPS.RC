@@ -1,0 +1,37 @@
+//***************************************************************************
+//
+//  Module: bitmaps.rc
+//
+//  Purpose:
+//     This module defines all bitmaps included in the APACHE
+//     project.
+//
+//  Development Team:
+//     Bryan A. Woodruff
+//
+//  History:   Date       Author      Comment
+//              2/ 2/92   BryanW      Wrote it.
+//
+//---------------------------------------------------------------------------
+//
+//  *** ***  THIS CODE IS CONFIDENTIAL PROPERTY OF WERNER ASSOCIATES *** *** 
+//  Copyright (c) 1992 Werner Associates.  All Rights Reserved.
+//
+//***************************************************************************
+
+CREDITSBMP    BITMAP PRELOAD DISCARDABLE CREDITS.BMP
+APACHEBMP     BITMAP PRELOAD DISCARDABLE APACHE.BMP
+
+DIALUPBMP     BITMAP PRELOAD DISCARDABLE DIAL_UP.BMP
+CONNECTUPBMP  BITMAP PRELOAD DISCARDABLE CON_UP.BMP
+EDITUPBMP     BITMAP PRELOAD DISCARDABLE EDIT_UP.BMP
+NEWUPBMP      BITMAP PRELOAD DISCARDABLE NEW_UP.BMP
+DELETEUPBMP   BITMAP PRELOAD DISCARDABLE DEL_UP.BMP
+OPTIONSUPBMP  BITMAP PRELOAD DISCARDABLE OPT_UP.BMP
+CANCELUPBMP   BITMAP PRELOAD DISCARDABLE CNCL_UP.BMP
+RECYCLEUPBMP  BITMAP PRELOAD DISCARDABLE RCYCL_UP.BMP
+
+//***************************************************************************
+//  End of File: bitmaps.rc
+//***************************************************************************
+

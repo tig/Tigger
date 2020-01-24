@@ -1,0 +1,32 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "DIALOGS.H\0"
+END
+
+DIALDIRDLGBOX DIALOG 12, 20, 320, 188
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_THICKFRAME
+CAPTION "Dialing Directory"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME1, "Static", SS_GRAYFRAME, 4, 4, 316, 
+                    184
+    CONTROL         "", IDD_DIALSLIDER, "FL_SLIDER", 
+                    SLS_ADJUSTSIZE | SLS_3DLOOK_OUT, 12, 12, 300, 12
+    LISTBOX         IDD_DIALLB, 12, 24, 300, 128, LBS_OWNERDRAWFIXED | 
+                    LBS_DISABLENOSCROLL | NOT WS_BORDER | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "&Dial", IDB_DIAL, "FL_BMPBTN", WS_TABSTOP, 12, 160, 36, 
+                    20
+    CONTROL         "&Edit", IDB_EDIT, "FL_BMPBTN", WS_TABSTOP, 100, 160, 36, 
+                    20
+    CONTROL         "&New", IDB_NEW, "FL_BMPBTN", WS_TABSTOP, 144, 160, 36, 
+                    20
+    CONTROL         "&Options", IDB_OPTIONS, "FL_BMPBTN", WS_TABSTOP, 232, 
+                    160, 36, 20
+    CONTROL         "C&ancel", IDB_CANCEL, "FL_BMPBTN", WS_TABSTOP, 276, 160, 
+                    36, 20
+    CONTROL         "De&lete", IDB_DELETE, "FL_BMPBTN", WS_TABSTOP, 188, 160, 
+                    36, 20
+    CONTROL         "&Connect", IDB_CONNECT, "FL_BMPBTN", WS_TABSTOP, 56, 
+                    160, 36, 20
+END

@@ -1,0 +1,300 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "..\\SRC\\RES.H\0"
+END
+
+ABOUT_DLG DIALOG 14, 13, 239, 163
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "%s Version %s", IDD_VERSION, 6, 48, 178, 9
+    LTEXT           "Copyright © 1992 Connect Software.", IDD_COPYRIGHT, 6, 
+                    57, 178, 9
+    LTEXT           "All Rights Reserved.", IDD_ALLRIGHTS, 6, 66, 178, 9
+    DEFPUSHBUTTON   "OK", IDCANCEL, 191, 6, 42, 15
+    LTEXT           "PANOSE (TM) is a trademark of the typeface matching system from ElseWare Corporation.  ElseWare Corporation takes no responsiblity for the mapping results of fonts that do not also bear the PANOSE trademark.", 
+                    IDD_PANOSE, 6, 140, 218, 23
+END
+
+PANOSE_DLG DIALOG 57, 22, 193, 159
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "PANOSE Typeface Matching System"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Weights:", -1, 4, 6, 40, 8, NOT WS_GROUP
+    LTEXT           "Digits:", -1, 60, 6, 80, 8, NOT WS_GROUP
+    LTEXT           "Family:", -1, 18, 18, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_FAMILY_DIGITS, 59, 16, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_SERIF_WEIGHT, 6, 30, 10, 12
+    LTEXT           "Serif:", -1, 18, 32, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_SERIF_DIGITS, 59, 30, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_WEIGHT_WEIGHT, 6, 44, 10, 12
+    LTEXT           "Weight:", -1, 18, 46, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_WEIGHT_DIGITS, 59, 44, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_PROP_WEIGHT, 6, 58, 10, 12
+    LTEXT           "Proportion:", -1, 18, 60, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_PROP_DIGITS, 59, 58, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_CONTRAST_WEIGHT, 6, 72, 10, 12
+    LTEXT           "Contrast:", -1, 18, 74, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_CONTRAST_DIGITS, 59, 72, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_STROKE_WEIGHT, 6, 86, 10, 12
+    LTEXT           "Stroke:", -1, 19, 88, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_STROKE_DIGITS, 59, 86, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_ARMSTYLE_WEIGHT, 6, 100, 10, 12
+    LTEXT           "Arm Style:", -1, 19, 102, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_ARMSTYLE_DIGITS, 59, 100, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_LTRFORM_WEIGHT, 6, 114, 10, 12
+    LTEXT           "Letterform:", -1, 19, 116, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_LTRFORM_DIGITS, 59, 114, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_MIDLINE_WEIGHT, 6, 128, 10, 12
+    LTEXT           "Midline:", -1, 19, 130, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_MIDLINE_DIGITS, 59, 128, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_XHEIGHT_WEIGHT, 6, 142, 10, 12
+    LTEXT           "X-height:", -1, 19, 144, 40, 8, NOT WS_GROUP
+    COMBOBOX        ID_XHEIGHT_DIGITS, 59, 142, 81, 80, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK", IDOK, 147, 6, 42, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 147, 23, 42, 14
+    PUSHBUTTON      "Help", IDB_HELP, 147, 40, 42, 14
+    PUSHBUTTON      "Update", ID_UPDATE, 147, 64, 42, 14
+END
+
+FILTER_DLG DIALOG 53, 45, 202, 67
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Set Filter"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Publisher contains:", ID_UPDATE, 8, 4, 69, 10, NOT 
+                    WS_GROUP
+    EDITTEXT        IDE_START, 80, 4, 73, 12, ES_AUTOHSCROLL
+    LTEXT           "Font name contains:", IDS_NAME, 8, 19, 69, 10, NOT 
+                    WS_GROUP
+    EDITTEXT        IDE_NAME, 80, 19, 73, 12, ES_AUTOHSCROLL
+    LTEXT           "Price >=", IDS_PRICE1, 8, 34, 31, 10, NOT WS_GROUP
+    EDITTEXT        IDE_PRICE1, 43, 34, 33, 12
+    LTEXT           "Price <=", IDS_PRICE2, 80, 34, 31, 10, NOT WS_GROUP
+    EDITTEXT        IDE_PRICE2, 120, 34, 33, 12
+    LTEXT           "Size >=", IDS_SIZE1, 8, 49, 31, 10, NOT WS_GROUP
+    EDITTEXT        IDE_SIZE1, 43, 49, 33, 12
+    LTEXT           "Size <=", IDS_SIZE2, 80, 49, 31, 10, NOT WS_GROUP
+    EDITTEXT        IDE_SIZE2, 120, 49, 33, 12
+    DEFPUSHBUTTON   "OK", IDOK, 161, 4, 35, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 161, 21, 35, 14
+    PUSHBUTTON      "Help", IDB_HELP, 161, 38, 35, 14
+END
+
+COLLECTIONS_DLG DIALOG 37, 17, 296, 184
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Viewing Collections"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "&Collections:", -1, 5, 5, 47, 10, NOT WS_GROUP
+    CONTROL         "", IDL_COLLECTIONS, "SHOPPER.EXTENDED_LISTBOX", 
+                    WS_BORDER | WS_TABSTOP, 5, 16, 194, 79
+    GROUPBOX        "Shipping", -1, 205, 44, 85, 53, WS_GROUP
+    CONTROL         "&1-2 Day", IDB_12DAY, "Button", BS_AUTORADIOBUTTON, 209, 
+                    57, 39, 10
+    CONTROL         "&2-3 Day", IDB_23DAY, "Button", BS_AUTORADIOBUTTON, 209, 
+                    70, 39, 10
+    CONTROL         "&UPS/Postal Service", IDB_UPS, "Button", 
+                    BS_AUTORADIOBUTTON, 209, 83, 80, 10
+    LTEXT           "&Description:", -1, 5, 98, 47, 10
+    EDITTEXT        IDE_DESC, 5, 108, 285, 71, ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 250, 6, 40, 14, WS_GROUP
+    PUSHBUTTON      "Help", IDB_HELP, 250, 23, 40, 14
+END
+
+PURCHASE_DLG DIALOG 29, 23, 321, 189
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Purchase Fonts"
+FONT 8, "Helv"
+BEGIN
+    DEFPUSHBUTTON   "Commit Order", IDOK, 258, 101, 58, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 258, 118, 58, 14
+    PUSHBUTTON      "Help", IDB_HELP, 258, 135, 58, 14
+    PUSHBUTTON      "&Billing...", IDB_BILLING, 258, 152, 58, 14
+    PUSHBUTTON      "&Comm...", IDB_COMM, 258, 169, 58, 14
+    LISTBOX         IDL_ITEMS, 4, 15, 312, 84, LBS_SORT | LBS_USETABSTOPS | 
+                    WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    GROUPBOX        "", -1, 4, 98, 137, 74, WS_GROUP
+    LTEXT           "Sub-total ", IDS_SUBTOTAL, 11, 110, 75, 11, NOT 
+                    WS_GROUP
+    LTEXT           "Shipping/Handling", IDS_SHIPPING, 11, 121, 75, 11, NOT 
+                    WS_GROUP
+    LTEXT           "Amex Surcharge (5%)", IDS_SURCHARGE, 11, 132, 75, 11, 
+                    NOT WS_GROUP
+    LTEXT           "WA Sales Tax (8.2%)", IDS_TAX, 11, 143, 75, 11, NOT 
+                    WS_GROUP
+    CONTROL         "", -1, "Static", SS_BLACKRECT, 11, 156, 120, 1
+    LTEXT           "Total ", IDS_TOTAL, 11, 159, 75, 11, NOT WS_GROUP
+    LTEXT           "The time online for this order will be approximately: %02d:%02d:%02d", 
+                    IDS_DOWNLOAD, 5, 177, 240, 10
+    LTEXT           "The shipping and handling values given are approximate if you live outside the continental United States.  The exact shipping costs will be calculated online.", 
+                    IDD_TEXT, 152, 118, 91, 41
+END
+
+NEWUSER_DLG DIALOG 11, 23, 232, 149
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "New User Subscription Order Form"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "New user subscriptions include a full retail package which will be delivered to you using the shipping method of your choice.  Press the Submit Order button to purchase a subscription to The Font Connection.", 
+                    IDD_TEXT, 5, 6, 137, 48
+    GROUPBOX        "Charges (in U.S. Dollars)", -1, 5, 60, 150, 82, 
+                    WS_GROUP
+    LTEXT           "1 Year Subscription", IDS_SUBTOTAL, 16, 80, 94, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Shipping/Handling", IDS_SHIPPING, 16, 90, 94, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Amex Surcharge (5%)", IDS_SURCHARGE, 16, 100, 94, 10, 
+                    NOT WS_GROUP
+    LTEXT           "WA Sales Tax (8.2%)", IDS_TAX, 16, 110, 94, 10, NOT 
+                    WS_GROUP
+    CONTROL         "", -1, "Static", SS_BLACKFRAME, 16, 122, 132, 1
+    LTEXT           "Total", IDS_TOTAL, 16, 127, 94, 8, NOT WS_GROUP
+    DEFPUSHBUTTON   "Submit Order", IDOK, 160, 6, 66, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 160, 23, 66, 14
+    PUSHBUTTON      "&Help", IDB_HELP, 160, 40, 66, 14
+    PUSHBUTTON      "&Shipping Info...", IDD_SHIPPINGINFO, 161, 94, 66, 14
+    PUSHBUTTON      "&Billing Info...", IDD_BILLINGINFO, 161, 111, 66, 14
+    PUSHBUTTON      "&Comm Settings...", IDD_COMMSETUP, 161, 128, 66, 14
+END
+
+VIEWTEXT_DLG DIALOG 10, 20, 255, 187
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Title"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Agree", IDOK, 209, 6, 40, 14
+    PUSHBUTTON      "&Disagree", IDCANCEL, 209, 23, 40, 14
+    PUSHBUTTON      "Help", IDB_HELP, 209, 40, 40, 14
+    PUSHBUTTON      "&Copy", IDL_COLLECTIONS, 209, 57, 40, 14
+    PUSHBUTTON      "&Print", 258, 209, 57, 40, 14
+    EDITTEXT        IDE_DESC, 6, 6, 197, 170, ES_MULTILINE | ES_NOHIDESEL | 
+                    ES_READONLY | WS_VSCROLL | NOT WS_TABSTOP
+END
+
+OPTIONS_DLG DIALOG 13, 54, 266, 191
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Download Options", -1, 3, 2, 216, 53
+    CONTROL         "&Automatically Install Purchased Fonts", 1042, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 8, 15, 137, 10
+    LTEXT           "&Download directory:", -1, 8, 27, 70, 8
+    EDITTEXT        1152, 8, 38, 165, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Display Options", -1, 3, 57, 216, 130
+    LTEXT           "&Font:", 1088, 8, 69, 40, 9
+    COMBOBOX        1136, 8, 79, 94, 54, CBS_SIMPLE | CBS_OWNERDRAWFIXED | 
+                    CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | 
+                    CBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Font St&yle:", 1089, 110, 69, 44, 9
+    COMBOBOX        1137, 110, 79, 64, 54, CBS_SIMPLE | CBS_DISABLENOSCROLL | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Size:", 1090, 181, 69, 30, 9
+    COMBOBOX        1138, 181, 79, 32, 54, CBS_SIMPLE | CBS_OWNERDRAWFIXED | 
+                    CBS_SORT | CBS_HASSTRINGS | CBS_DISABLENOSCROLL | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK", IDOK, 223, 6, 40, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 223, 23, 40, 14, WS_GROUP
+    PUSHBUTTON      "&Help", 1038, 223, 57, 40, 14, WS_GROUP
+    GROUPBOX        "Sample", 1073, 8, 133, 205, 49, WS_GROUP
+    CTEXT           "", 1093, 290, 96, 54, 20, SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBb123YyZz", 1092, 14, 142, 195, 37, SS_NOPREFIX | NOT 
+                    WS_VISIBLE
+    PUSHBUTTON      "&Apply", IDM_ERRORS, 289, 12, 40, 14, WS_DISABLED | 
+                    WS_GROUP
+    GROUPBOX        "Effects", 1072, 287, 30, 84, 34, WS_DISABLED
+    CONTROL         "Stri&keout", 1040, "Button", BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP, 291, 40, 49, 10
+    CONTROL         "&Underline", 1041, "Button", BS_AUTOCHECKBOX | 
+                    WS_DISABLED, 291, 52, 51, 10
+    LTEXT           "&Color:", 1091, 287, 68, 30, 9, NOT WS_GROUP
+    COMBOBOX        1139, 287, 78, 84, 100, CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | 
+                    WS_DISABLED | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+END
+
+POSTPURCHASE_DLG DIALOG 29, 23, 321, 192
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Session Summary"
+FONT 8, "Helv"
+BEGIN
+    LISTBOX         IDL_ITEMS, 4, 62, 312, 105, LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK", IDOK, 268, 4, 47, 14
+    PUSHBUTTON      "Help", IDB_HELP, 268, 21, 47, 14
+    LTEXT           "The items listed below were successfully purchased and/or downloaded to your computer.  All TrueType font files listed were copied into the %s subdirectory%s.", 
+                    IDD_TEXT, 4, 6, 251, 32
+    LTEXT           "For your convenience, a log of all purchases you make with The Font Connection are kept in a file named ORDER.LOG.  You can find this log in the FONTCON subdirectory.", 
+                    IDD_TEXT2, 4, 170, 311, 17
+    LTEXT           "As a result of this online session, your %s was charged $%ld.%02ld.", 
+                    IDD_TEXT3, 4, 37, 309, 10
+END
+
+NOUSERID_DLG DIALOG 42, 26, 209, 140
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "User ID Not Found"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDD_USERID, 65, 5, 63, 12, ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "In order to purchase/download fonts The Font Connection requires you to have a User ID.   If you purchased The Font Connection from Connect Software you can find your User ID on the disk label and on the cover of the manual.", 
+                    IDD_TEXT, 9, 25, 141, 47
+    LTEXT           "If you did not purchase The Font Connection from Connect Software you may either purchase a subscription by pressing the Purchase Subscription button or you may request a temporary demo User ID by pushing the Request Demo User ID button.", 
+                    IDD_TEXT2, 9, 77, 190, 40, NOT WS_GROUP
+    PUSHBUTTON      "&Purchase Subscription", IDD_PURCHASE, 9, 121, 92, 14, 
+                    WS_GROUP
+    PUSHBUTTON      "&Request Demo User ID", IDD_REQUESTDEMOID, 108, 121, 92, 
+                    14
+    RTEXT           "&Enter User ID:", -1, 6, 7, 52, 8
+    DEFPUSHBUTTON   "OK", IDOK, 159, 6, 44, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 159, 23, 44, 14
+    PUSHBUTTON      "&Help", IDB_HELP, 159, 40, 44, 14
+END
+
+FILEVERSIONS_DLG DIALOG 6, 20, 171, 113
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "File Versions"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDD_VERSION, 3, 5, 123, 74, LBS_SORT | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "OK", IDOK, 132, 6, 33, 14
+    LTEXT           "The Font Connection was developed for Connect Software by Charles E. Kindel, Jr. and Michael S. McCraw.", 
+                    IDD_TEXT, 3, 84, 163, 26
+END
+
+RENEWUSER_DLG DIALOG 11, 23, 232, 118
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Subscription Renewal Order Form"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Charges (in U.S. Dollars)", -1, 2, 51, 150, 62, 
+                    WS_GROUP
+    LTEXT           "1 Year Subscription", IDS_SUBTOTAL, 10, 66, 94, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Amex Surcharge (5%)", IDS_SURCHARGE, 10, 76, 94, 10, 
+                    NOT WS_GROUP
+    LTEXT           "WA Sales Tax (8.2%)", IDS_TAX, 10, 86, 94, 10, NOT 
+                    WS_GROUP
+    CONTROL         "", -1, "Static", SS_BLACKFRAME, 10, 97, 132, 1
+    LTEXT           "Total", IDS_TOTAL, 10, 99, 94, 8, NOT WS_GROUP
+    DEFPUSHBUTTON   "Submit Order", IDOK, 160, 6, 66, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 160, 23, 66, 14
+    PUSHBUTTON      "&Help", IDB_HELP, 160, 42, 66, 14
+    PUSHBUTTON      "&Shipping Info...", IDD_SHIPPINGINFO, 160, 82, 66, 14
+    PUSHBUTTON      "&Billing Info...", IDD_BILLINGINFO, 160, 99, 66, 14
+    LTEXT           "Your subscription to The Font Connection has expired!  Press the Submit Order button to renew your subscription.  You will not be able to purchase any items until you renew your subscription.", 
+                    IDD_TEXT, 5, 4, 146, 45
+END

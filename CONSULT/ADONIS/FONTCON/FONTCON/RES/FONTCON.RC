@@ -1,0 +1,113 @@
+//*************************************************************
+//  File name: fontcon.rc
+//
+//  Description: 
+//      Resources for the fontcon
+//
+//  History:    Date       Author     Comment
+//               2/11/92   MSM        Created
+//
+//*************************************************************
+
+#include "..\..\inc\wdb.h"
+#include "windows.h"
+#include "global.h"
+#include "viewtext.h"
+#include "fontcon.rcv"
+
+#include "fontcon.dlg"
+
+IDI_FSICON   ICON    "fontcon.ico"
+
+IDB_TOOLBAR  BITMAP  "tb.bmp"
+IDB_FONTCON  BITMAP  "fntcon.bmp"
+IDB_ADONIS   BITMAP  "connect.bmp"
+IDB_PANOSE   BITMAP  "panose.bmp"
+
+
+1 ACCELERATORS
+BEGIN
+   VK_F1, IDM_HELP_INDEX, VIRTKEY
+   VK_F2, IDM_ACTION_DOWNLOAD, VIRTKEY
+   VK_F5, IDM_ACTION_UPDATE, VIRTKEY
+   VK_F11, IDM_GROUP_PUB, VIRTKEY
+   VK_F12, IDM_GROUP_FACE, VIRTKEY
+END
+
+
+TFCMENU MENU
+BEGIN
+    POPUP "&Action"
+    BEGIN
+        MENUITEM "&Update Local Database \tF5",      IDM_ACTION_UPDATE
+        MENUITEM SEPARATOR
+        MENUITEM "Un&mark All",                 IDM_ACTION_UNMARK
+        MENUITEM "&Purchase Marked Fonts... \tF2",   IDM_ACTION_DOWNLOAD
+        MENUITEM "Pu&rchase Subscription...",   IDM_ACTION_PURCHASE_SUB
+        MENUITEM SEPARATOR
+        MENUITEM "&Change Password...",         IDM_ACTION_PASSWORD
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDM_ACTION_EXIT
+    END
+
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&What's New...",              IDM_INFO_WHATSNEW
+        MENUITEM "&Collections...",             IDM_ACTION_COLLECTIONS
+        MENUITEM SEPARATOR
+        MENUITEM "Sort By &Name",               IDM_SORT_NAME
+        MENUITEM "Sort By &Price",              IDM_SORT_PRICE
+        MENUITEM "Sort By &Size",               IDM_SORT_SIZE
+        MENUITEM "Sort By P&ANOSE...",          IDM_SORT_PANOSE
+        MENUITEM SEPARATOR
+        MENUITEM "S&et Filter...",              IDM_SET_FILTER
+        MENUITEM "&Remove Filter",              IDM_CLEAR_FILTER
+        MENUITEM SEPARATOR
+        MENUITEM "&Group By Publisher \tF11",         IDM_GROUP_PUB
+        MENUITEM "Gro&up By Face \tF12",              IDM_GROUP_FACE
+    END
+
+    POPUP "&Configure"
+    BEGIN
+        MENUITEM "&Options...",                 IDM_SETTINGS_FONT
+        MENUITEM SEPARATOR
+        MENUITEM "&Communications Setup...",    IDM_SETTINGS_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "C&ustomer Address...",           IDM_INFO_CUSTOMER
+        MENUITEM "&Billing Info...",            IDM_INFO_BILLING
+        MENUITEM "&Shipping Info...",           IDM_INFO_SHIPPING
+    END
+
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents\tF1",                   IDM_HELP_INDEX
+        MENUITEM "&Search for Help on...",      IDM_HELP_SEARCH
+        MENUITEM "&How to use Help",            IDM_HELP_USINGHELP
+        MENUITEM SEPARATOR
+        MENUITEM "&About The Font Connection...",         IDM_HELP_ABOUT
+    END
+
+
+   #ifdef INTERNAL
+   POPUP   "&Internal"
+   BEGIN
+      MENUITEM "&Generate Ingres Files...",     IDM_INGRES
+   END
+   #endif
+
+   #ifdef DEBUG
+   POPUP   "&Debug"
+   BEGIN
+      MENUITEM "&Configure...",                 IDM_WDB_CONFIG
+      MENUITEM "&View Error reports...",        IDM_ERRORS
+      MENUITEM "&Reload database",              IDM_RELOAD
+   END
+   #endif
+
+END
+
+#include "strtbl.str"
+#include "panose.str"
+
+
+//*** EOF: fontcon.rc

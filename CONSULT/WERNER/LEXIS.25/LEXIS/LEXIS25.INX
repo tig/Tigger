@@ -1,0 +1,60 @@
+[User Preferences]
+StatusBar = 1
+InfoBar = 1
+Buttons = 1
+Header = Werner Associates &p &d, %t
+Footer = &d
+L2000Keyboard =
+Editor = NOTEPAD.EXE
+Bell = 1
+
+[Connection]
+LogonID = hxt24cd
+ConnectionType = Modem
+
+[Terminal]
+Font = Terminal
+FontHeight = 8
+FontWidth = 8
+BGColor = 0xFFFFFF
+FGColor = 0x000000
+HLColor = 0xFF0000
+
+[Main Window]
+Xpos = 10
+Ypos = 34
+Xsize = 623
+Ysize = 340
+nCmdShow = 1      ; 1 = normal, 2 = min, 3 = max
+
+[Directories]
+Record = C:\LEXIS
+Notepad = C:\LEXIS
+Maps = C:\LEXIS
+Docs = C:\LEXIS
+
+[Modem]
+Port = COM1
+ModemType = Hayes 2400
+
+[Primary]
+Network = MEADNET
+Number = 392-3423
+Prefix = 1-800
+Baud = 2400
+Parity = 0
+
+[1st Alternate]
+Network = MEADNET
+Number = 392-3423
+Prefix = 1-800
+Baud = 1200
+Parity = 0
+
+[2nd Alternate]
+Network = MEADNET
+Number = 392-3423
+Prefix = 1-800
+Baud = 1200
+Parity = 0
+

@@ -1,0 +1,7 @@
+register ws_reg auxw
+register /align:16 /NOE
+register /map
+mlibw /CO
+register.def
+
+

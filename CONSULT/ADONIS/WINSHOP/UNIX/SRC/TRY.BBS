@@ -1,0 +1,1357 @@
+/* 
+ Date: 3-23-1990              
+ Raleigh Bellas               
+ Doug Kent                    
+ Creation Date:   3/23/90     
+*/
+
+#include "stdinc.h"
+#include "stdcomm.h" 
+#include "messages.h" 
+#include <stdio.h>
+#include "bbs.h"
+#include "bbstruct.h"
+#include "comm.h"
+#include "xmodem.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/ioctl.h>
+#include <termio.h>
+#include <fcntl.h>
+#include <prototypes.h>
+#include "signal.h"
+#include <string.h>
+#include <id.h>
+#include <tymnet.h>
+#include <netcomm.h>
+#include <setjmp.h>
+
+
+#ifndef ACCTH
+#include  "acct.h"
+#endif
+#include  "acct_pro.h"
+
+extern int errno;
+
+// which port to read from
+#define WS_PORT GlobalhCom
+
+void setnewuser(void);
+int GetPaddedBuf(HANDLE hCom, WORD nNumChars, char *szBuf,BOOL upperize);
+int GetFileName(HANDLE hCom, WORD nNumChars, char *szFileName);
+int GetExt(char *szFileName);
+BOOL GetThatMoola(ORDER_STRUCT *Order, CCReq *ccreq);
+int ReceiveThatOrder(ORDER_STRUCT *Order);
+
+#define BADSIG (int (*)())-1
+static void ShutDown(int sig);
+static int nTimeout;
+static int catchsigs(void);
+static HANDLE GlobalhCom=(HANDLE)NULL,
+              hOrigCom=(HANDLE)NULL;
+/* char *savetty;  moved declaration to comm.c so I could compile-Ben*/
+HANDLE cc_server;
+DWORD lCurUserID=0L,lSessionID=0L;
+
+static    BYTE RequestedFileName[STD_FILENAME_SIZE+1];
+static    BYTE UptodateFileName[STD_FILENAME_SIZE+1];
+static    HANDLE CurFilePtr = -1;
+static    ORDER_STRUCT CurOrder;
+static    CCReq CurCCReq;
+static    ADDRESS_STRUCT CurCustInfo;
+static    char CurPassword[PW_SIZE+1],CurUserID[PW_SIZE+1];
+static    WORD WinVer,ExeType;
+static	  jmp_buf jmpenv;
+static	  int pID;
+
+main(int argc, char *argv[])
+{
+
+    MSGTYPE msg;
+	BOOL bAuthorized;
+
+    if(argc != 2)
+    {
+       printf("Usage: %s [tty device]\n\
+(example: %s /dev/tty1a)\n",argv[0],argv[0]);
+       exit(1);
+    }
+
+
+    savetty = argv[1];
+
+    #ifdef TEST_SERVER
+    if ((cc_server = connect_to_server("adonis1","cc_server","udp")) == FAIL)
+        perror("bbs");
+    #endif
+
+    while(1)
+    {
+	catchsigs(); // child may have captured one.  Signals will be 
+				 // inherited by child
+	switch(pID = fork()) 
+	/* The fork necessary to get setpgrp() to work properly.  
+       setpgrp() sets the group id to the value of the process id.  
+	   Thus setpgrp() will only work once for a given process.  
+	   Each child, however, has a unique process id, and 
+	   thus each child's call to setpgrp() is effective. */
+	{
+		case 0: // child
+			printf("child forked\n");
+			openWSPort(); // only the child opens the port
+			bAuthorized=TRUE;
+			break; // into message loop
+
+		case -1:
+			printf("bbs: can't create new child process\n");
+			ExitParent(1); // exit bbs
+
+		default: // parent receives process id of child
+			if (wait(NULL) == -1)
+				perror("bbs");
+			printf("child returned\n");
+			continue; // to fork again
+
+	}
+
+    /* we get here only if child */
+
+	/* Seed random number generator with process ID for rare
+	   instance of new user and Window Shopper not in stock */
+
+	srand(getpid());
+
+	while (1)
+	{
+        if (Receive_Message(WS_PORT,&msg) != OK)
+        {
+			printf("Window Shopper timed out.\n");
+			ExitChild(0);
+        }
+
+        switch(msg)
+        {
+            case MSG_HANGING_UP:
+                printf("Window Shopper hanging up\n");
+				ExitChild(0);
+            break;
+
+            case MSG_SEND_EXETYPE:
+                if (ReceiveBuf(WS_PORT,(BYTE *)&ExeType,
+                     sizeof(ExeType),STD_WAIT) != OK)
+                {
+                    printf("Error getting ExeType:   %x\n",ExeType);
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+                    printf("Received ExeType:  %x\n",ExeType);
+					switch(ExeType)
+					{
+						case EXE_BETA:
+							nTimeout = 120; // 2 minutes
+						break;
+
+						case EXE_REGULAR:
+						case EXE_INTERNAL:
+							nTimeout = 600; // ten minutes
+						break;
+					}
+					if (SendByte(WS_PORT,ACK) != OK)
+						;
+                    //printf("Timeout:  %d seconds\n",nTimeout);
+                }
+			break;
+
+            case MSG_SEND_WINVER:
+                if (ReceiveBuf(WS_PORT,(BYTE *)&WinVer,
+                     sizeof(WinVer),STD_WAIT) != OK)
+                {
+                    printf("Error getting WinVer:   %x\n",WinVer);
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+                    printf("Received WinVer:  %x\n",WinVer);
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                }
+            break;
+
+            case MSG_SET_CUST_INFO:
+                if (ReceiveCRC(WS_PORT,(BYTE *)&CurCustInfo, 
+                          sizeof(CurCustInfo)) != OK)
+                {
+                    printf("Current CustInfo not received\n");
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+                       /*
+                       At this point we don't yet know whether this is a
+                       new user.
+                       Nor do we know the userID or password.
+
+                       The sequence is (roughly):
+                       1) receive this customer info
+                       2) receive userID or generate a new one
+                       3) if new user: 
+                              a)  check whether new userID is OK
+                              b)  receive password
+                              c)  try to capture credit
+                              d)  commit new user to INGRES
+                          else not a new user:
+                              a) obtain existing password
+                        4) record that user's session has begun
+                        */
+                    //printf("Current CustInfo received\n");
+                    ShowCust(&CurCustInfo);
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                }
+            break;
+
+            case MSG_QUERY_USERID_OK:
+            case MSG_QUERY_NEW_USERID_OK:
+			{
+                WORD Active;
+                if (Acct_CustIsActiveUserID(lCurUserID,&Active,NULL) != OK)
+					Active = -1;
+				printf("Query UserID returning: %d\n",Active);
+				if (SendBuf(WS_PORT,(BYTE *)&Active,sizeof(Active)) != OK)
+					;
+			}
+			break;
+
+            case MSG_BEGIN_SESSION:
+                /* record with INGRES that our user's session has begun.
+                   It ends (gracefully) when we receive a HANGING_UP message. */
+                if (Acct_NewID(&lSessionID,ACCT_ID_SESSION) != OK)
+                    SendByte(WS_PORT,NAK);
+                else if (Acct_CustBeginSession(lCurUserID, lSessionID) != OK)
+                    SendByte(WS_PORT,NAK);
+                else if (SendByte(WS_PORT,ACK) == OK)
+				{
+					printf("Opened user (%lx) session (%ld) password (%s)\n",
+								lCurUserID,lSessionID,CurPassword);
+					break;
+				}
+
+                printf("Unable to open user (%lx) session (%ld)\n",
+					lCurUserID,lSessionID);
+            break;
+
+            case MSG_QUERY_SHIPPING_COSTS:
+			#if 0
+			{
+                Shipcost_Ary CostMatrix = {};
+			}
+			#else
+            {
+                /** assumes that CurOrder is set.  Query to INGRES
+                     and send the info on to WS. */
+                Shipcost_Ary CostMatrix;
+				 if (Acct_ShippingCost(&CurOrder,CostMatrix) != OK)
+				 {
+					printf("unable to obtain shipping costs\n");
+					if (SendByte(WS_PORT,NAK) != OK)
+						;
+					break;
+				 }
+				 else
+				 {
+					//printf("shipping costs:\n");
+					//ShowShip(CostMatrix);
+					if (SendByte(WS_PORT,ACK) != OK)
+						;
+					if (SendCRC(WS_PORT,(BYTE *)CostMatrix,
+							sizeof(CostMatrix)) != OK)
+						;
+				 }
+			}
+			#endif
+            break;
+
+            case MSG_SET_USER_ID:
+            {
+                char szTmp[PW_SIZE+1];
+                /* receive userID */
+                if (ReceiveCRC(WS_PORT,szTmp,PW_SIZE) != OK)
+				{
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+				}
+                else
+                {
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                    szTmp[PW_SIZE] = '\0';
+                    strcpy(CurUserID,szTmp);
+                    lCurUserID = strtol(szTmp,NULL,16);
+                    //printf("UserID: %s (%lx)\n",CurUserID,lCurUserID);
+                }
+            }
+            break;
+
+            case MSG_GET_NEW_USER_ID:
+            {
+                DWORD NewUserID;
+                /* get a new unused userID from INGRES (don't record
+                   it as used yet, however).  Send it to Window Shopper. */
+                //printf("getting New userID\n");
+                if(Acct_NewID(&NewUserID,ACCT_ID_USER)  != OK)
+                {
+                    printf("error getting new userid");
+                    break;
+                }
+                lCurUserID = NewUserID;
+				bAuthorized = FALSE;
+                sprintf(CurUserID,"%08lx",NewUserID);
+                //printf("New userID: %s\n",CurUserID);
+                if (SendCRC(WS_PORT,CurUserID,PW_SIZE) != OK)
+					;
+			}
+            break;
+
+            case MSG_COMMIT_PASSWD:
+                /* send password to INGRES */
+
+                if (Acct_CustSetPassword(lCurUserID, CurPassword) == OK)
+				{
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+				}
+                else
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+            break;
+
+            case MSG_COMMIT_CUST_INFO:
+                if (Acct_CustSetAddress(lCurUserID, &CurCustInfo) == OK)
+				{
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+				}
+                else
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+            break;
+
+            case MSG_SET_PASSWD:
+                /* receive password */
+                if (GetPaddedBuf(WS_PORT,PW_SIZE,
+                                 CurPassword,FALSE) != OK)
+                {
+                    printf("Error getting password:   %s\n",CurPassword);
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                    //printf("password:   %s\n",CurPassword);
+                }
+            break;
+
+            case MSG_QUERY_PASSWD:
+            {
+                int len;
+                char szTmp[PW_SIZE+1];
+
+                /** put password obtained from INGRES into CurPassword **/
+				//printf("Query password\n");
+                if (Acct_CustGetPassword(lCurUserID,CurPassword) == OK)
+                {
+                    strcpy(szTmp,CurPassword);
+                    len = strlen(szTmp);
+                    memset(szTmp+len,PADCHAR,PW_SIZE-len);
+                    if (SendCRC(WS_PORT,(BYTE *)szTmp,PW_SIZE) != OK)
+                        printf("Error sending password\n");
+					else
+						//printf("password = %s\n",CurPassword)
+						;
+                }
+				else
+					printf("Error obtaining password (got %s)\n",CurPassword);
+            }
+            break;
+
+
+
+            case MSG_QUERY_LIB_ORDER_OK:
+            case MSG_QUERY_NEWUSER_OK:
+                /* Assume is in stock. */
+                GetThatMoola(&CurOrder, &CurCCReq);
+				/* WS will send a COMMIT message if all else completes OK */
+			break;
+
+            case MSG_QUERY_CLIP_DLD_OK:
+                if (GetThatMoola(&CurOrder, &CurCCReq))
+				{
+					/* record submission of order for delivery.  Assume 
+					   this is tantamount to beginning the clipart download. 
+					   (Makes sense since we've got their money now) */
+					CurOrder.flags |= OF_SUBMITTED;
+					Acct_NormalOrder ( &CurOrder, &CurCCReq ) ;
+				}
+				/* WS will send a COMMIT message if download completes OK */
+            break;
+
+            case MSG_SET_CUR_CLIP_DLD:
+            case MSG_SET_NEW_USER_ORDER:
+            case MSG_SET_CUR_LIB_ORDER:
+                ReceiveThatOrder(&CurOrder);
+				if (msg == MSG_SET_NEW_USER_ORDER)
+		            WriteBuf("ORDER.TXT",&CurOrder,sizeof(ORDER_STRUCT));
+            break;
+
+            case MSG_COMMIT_NEWUSER:
+                /* record the customer info */
+                if (Acct_CustNewUser(lCurUserID,CurPassword,&CurCustInfo) == OK)
+				if (!bAuthorized)
+				{
+					/* record completion of order */
+					CurOrder.flags |= OF_PLACED;
+					if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) == OK)
+					{
+						SendByte(WS_PORT,ACK);
+						break;
+					}
+				}
+				else
+				{
+					SendByte(WS_PORT,ACK);
+					break;
+				}
+
+				SendByte(WS_PORT,NAK);
+				printf("error committing new user ");
+            break;
+
+            case MSG_COMMIT_CLIP_DLD:
+            case MSG_COMMIT_LIB_ORDER:
+				if (msg == MSG_COMMIT_CLIP_DLD) // download succeeded
+					/* record delivery of clipart */
+					CurOrder.flags |= OF_DELIVERED;
+				else   // all go on lib order
+					/* record placement of order */
+					CurOrder.flags |= OF_PLACED;
+				if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) == OK)
+				{
+					SendByte(WS_PORT,ACK);
+					SendBuf(WS_PORT,&CurOrder.orderID,sizeof(CurOrder.orderID));
+					break;
+				}
+
+				SendByte(WS_PORT,NAK);
+				printf("error placing order\n");
+            break;
+
+
+            case MSG_SAY_HI:
+                if (SendByte(WS_PORT,ACK) != OK)
+                    printf("Error sending ACK\n");
+                else
+                    printf("Said Hi\n");
+            break;
+
+            case MSG_SET_CUR_FILENAME: 
+                if (CurFilePtr != -1)
+                    close(CurFilePtr);
+
+                if (GetPaddedBuf(WS_PORT,STD_FILENAME_SIZE,
+                                 RequestedFileName,TRUE) != OK)
+                {
+					printf("Error getting RequestedFileName:   %s\n",
+								  RequestedFileName);
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+
+                else 
+                {
+					char TmpFileName[STD_FILENAME_SIZE+10+1];
+					if (SendByte(WS_PORT,ACK) != OK)
+						;
+					/*
+                    printf("Received RequestedFileName: %s\n",
+								  RequestedFileName);
+					*/
+					/* the idea here is that we try to open any file that
+					   has the same basename as RequestedFileName.  */
+				    strcpy(UptodateFileName,RequestedFileName);
+                    if (GetExt(UptodateFileName) == OK)
+                    {
+						if ((UptodateFileName[0] == '0') AND 
+							(UptodateFileName[1] == '1'))
+							 sprintf(TmpFileName,"%s%s","./clips/",
+									  UptodateFileName);
+						else
+							strcpy(TmpFileName,UptodateFileName);
+                        if ((CurFilePtr = open(TmpFileName,O_RDONLY)) == -1)
+                        {
+                            printf("Unable to open %s\n",TmpFileName);
+							break;
+                        }
+                        else
+                        {
+                            //printf("Opened %s\n",UptodateFileName);
+							break;
+                        }
+                    }
+					else
+					{
+						printf("Unable to open %s\n",UptodateFileName);
+						break;
+					}
+                }
+            break;
+
+            case MSG_RECEIVE_FILE:
+            case MSG_DOWNLOAD_EXE:
+                printf("Sending %s...\n",UptodateFileName);
+                if (XMSend(WS_PORT,CurFilePtr) != OK)
+                    printf("Error sending file %s\n",UptodateFileName);
+                break;
+
+
+            case MSG_LATEST_VERSION:
+                {
+    #ifdef TEST_SERVER
+                char buf[9];
+                memset(buf,0,sizeof(buf));
+                if (send_to_server(cc_server,
+                                   "Hi to cc",8) == FAIL)
+                    perror("cc_server");
+                if (recv_from_server(cc_server,
+                                    buf,8) == FAIL)
+                    perror("cc_server");
+                    printf("cc_server returns: %s\n",buf);
+    #endif
+                }
+
+                //printf("Query file up-to-date (%s) (%s): ",
+							  //UptodateFileName,RequestedFileName);
+
+				if (strcmp(UptodateFileName,RequestedFileName))
+                {
+                    /* file is not up-to-date */
+                    //printf("no\n");
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+                    //printf("yes\n");
+                    if (SendByte(WS_PORT,ACK) != OK)
+                    	;
+                }
+                break;
+
+            case MSG_QUERY_DEST_FILENAME:
+            {
+                char szDestName[STD_FILENAME_SIZE+1];
+                int len;
+
+                //printf("Query dest filename:");
+                lseek(CurFilePtr,3L,SEEK_SET);
+                if (read(CurFilePtr,szDestName,STD_FILENAME_SIZE) 
+                                   < STD_FILENAME_SIZE)
+                    //printf("  Unable to obtain.\n")
+					;
+                else
+                {
+                    szDestName[STD_FILENAME_SIZE] = '\0';
+                    //printf("  %s.\n",szDestName);
+                }
+                /* pad */
+                len = strlen(szDestName);
+                memset(szDestName+len,PADCHAR,STD_FILENAME_SIZE-len);
+                if (SendCRC(WS_PORT,(BYTE *)szDestName,STD_FILENAME_SIZE) != OK)
+                    printf("Error sending dest filename\n");
+            }
+            break;
+
+            case MSG_QUERY_INSTOCK:
+				{
+					 WORD pstatus=ACK;
+					/* Get product availability if library or Window Shopper */
+
+					#if 0
+						if (Acct_CheckProdAvail ( &CurOrder, &pstatus ) != OK)
+							pstatus = FAIL;
+						switch(pstatus)
+						{
+							case CTRLX:
+									printf("Product out of stock\n");
+									Order->flags |= OF_BACKORDER;
+                                    /* note it is imperative here that the
+                                       ORDER structure not be sent again
+                                       by WS, else it will wipe out this
+                                       flags setting!! */
+							break;
+							case SOH:
+									printf("Product not available\n");
+							break;
+							}
+						}
+					#endif
+
+					 if (SendBuf(WS_PORT,(BYTE *)&pstatus,sizeof(pstatus)) != OK)
+						  printf("Error sending In Stock info\n");
+				}
+				break;
+
+					case MSG_QUERY_CUR_FILESIZE:
+					{
+						 WORD size;
+						 //printf("Query blocks:");
+						 lseek(CurFilePtr,3L + TOTALBLOCKNUM_INDEX,SEEK_SET);
+						 if (read(CurFilePtr,&size,sizeof(size)) < sizeof(size))
+							  //printf("  Unable to obtain.\n")
+						;
+						 else
+							  //printf("  %d.\n",size-1)
+						;
+						 --size;
+						 if (SendBuf(WS_PORT,(BYTE *)&size,sizeof(size)) != OK)
+							  printf("Error sending size\n");
+					}
+					break;
+
+			case MSG_QUERY_SUBSCRIPTION_PRICE:
+			{
+                DWORD price;
+                FILE *fp,*fopen();
+                //printf("Query window shopper price:");
+                if ((fp = fopen("WSINFO","rt")) == NULL)
+                    printf("Unable to open WSINFO\n");
+                else
+                {
+                    fscanf(fp,"%*d %ld",&price);
+                    fclose(fp);
+					if (SendBuf(WS_PORT,(BYTE *)&price,sizeof(price)) != OK)
+						printf("Error sending price\n");
+                }
+			}
+			break;
+
+            case MSG_QUERY_UNCOMPRESSED_FILESIZE:
+            {
+                DWORD size;
+                //printf("Query uncompressed filesize:");
+                lseek(CurFilePtr,3L + UNCOMPR_INDEX,SEEK_SET);
+                if (read(CurFilePtr,&size,sizeof(size)) < sizeof(size))
+                    //printf("  Unable to obtain.\n")
+					;
+                else
+                    //printf("  %ld.\n",size)
+					;
+                if (SendBuf(WS_PORT,(BYTE *)&size,sizeof(size)) != OK)
+                    printf("Error sending size\n");
+            }
+            break;
+
+            case MSG_LATEST_EXE:
+            {
+                WORD Version,CurVersion;
+                FILE *fp,*fopen();
+                if (ReceiveBuf(WS_PORT,(BYTE *)&Version,
+                     sizeof(Version),STD_WAIT) != OK)
+                {
+                    printf("Error getting Version:   %d\n",Version);
+                    break;
+                }
+                else
+                    //printf("Received Version:  %d\n",Version)
+					;
+
+                if ((fp = fopen("WSINFO","rt")) == NULL)
+                    printf("Unable to open WSINFO\n");
+                else
+                {
+                    fscanf(fp,"%d",&CurVersion);
+                    fclose(fp);
+                    if (Version < CurVersion)
+					{
+                        /* exe is not up-to-date */
+                        if (SendByte(WS_PORT,NAK) != OK)
+							;
+					}
+                    else
+                        if (SendByte(WS_PORT,ACK) != OK)
+							;
+                }
+            }
+            break;
+
+            default:
+            //    printf("Received unknown message %x\n",msg);
+            break;
+        }
+    }
+	}
+}
+
+int
+Receive_Message(HANDLE hCom, MSGTYPE *msgP)
+{
+    MSGTYPE msg2;
+
+    while(1)
+    {
+        /* wait nTimeout seconds before timing out */
+        if (ReceiveBuf(hCom,msgP,sizeof(MSGTYPE),nTimeout) != OK)
+           return FAIL;
+
+        if (ReceiveBuf(hCom,&msg2,sizeof(MSGTYPE),0) != OK)
+           continue;
+
+        /* redundancy for error checking */
+        if (*msgP == msg2)
+            return OK;
+    }
+}
+
+
+
+int
+GetPaddedBuf(HANDLE hCom, WORD nNumChars, char *szBuf, BOOL upperize)
+{
+    char *p;
+
+    /* get buf */
+    if (ReceiveCRC(hCom,szBuf,nNumChars) != OK)
+    {
+        printf("Error receiving padded buffer\n");
+        return FAIL;
+    }
+    else
+    {
+        szBuf[nNumChars] ='\0';
+        if (p = strchr(szBuf,PADCHAR))
+            *p ='\0';
+        if (upperize)
+            for(p=szBuf; *p; ++p)
+                *p = toupper(*p);
+        return OK;
+    }
+}
+
+
+#include <sys/dir.h>
+int
+GetExt(char *szFileName)
+/** this function could sure use some speeding up!!!  Could we put inode
+    list in memory?  Can we do a faster (binary) search on it? **/
+{
+    char *p;
+
+    struct directx
+    {
+        ino_t d_ino;
+        char d_name[DIRSIZ+1];
+    } dlink;
+    int fd, nread;
+    char *dname;
+
+	// remove extension if there is one
+    if (p = strchr(szFileName,'.'))
+        *p = '\0';
+
+    if ((szFileName[0] == '0') AND (szFileName[1] == '1'))
+	// look in clips directory (clips separated for speed on others)
+	{
+		if ((fd = open("./clips/",0)) == -1)
+		{
+			printf("Error opening ./clips/\n");
+			return FAIL;
+		}
+	}
+	else
+		if ((fd = open("./",0)) == -1)
+		{
+			printf("Error opening ./\n");
+			return FAIL;
+		}
+    
+    dlink.d_name[DIRSIZ] = '\0';
+    while ((nread = read(fd, &dlink, sizeof(struct direct))) == 
+                               (sizeof(struct direct)))
+    {
+        if (dlink.d_ino)
+            if (dname = strstr(dlink.d_name,szFileName))
+            {
+                strcpy(szFileName,dlink.d_name);
+				close(fd);
+                return OK;
+            }
+    }
+    close(fd);
+    return FAIL;
+}
+
+static void
+ShutDown(int sig)
+{
+    extern HANDLE Port;
+
+	printf("%s: ", pID ? "PARENT" : "CHILD");
+    switch(sig)
+    {
+        case SIGHUP:
+			printf("HangUp\n");
+		break;
+        case SIGINT:
+            printf("Interrupt\n");
+        break;
+		case SIGCLD:
+		/* then we're the parent and the child just died.  If it died
+		   because we killed it and we're ready to die, then now we can
+		   die to. */
+            printf("Child died\n");
+		break;
+        case SIGQUIT:
+            printf("Quit\n");
+        break;
+        case SIGTERM:
+            printf("Terminate\n");
+        break;
+    }
+
+	if (pID == 0) // then child
+	{
+		if (sig == SIGHUP)
+			printf("WS hung up without saying goodbye\n");
+		ExitChild(sig);
+	}
+    else /* killing bbs */
+		ExitParent(sig);
+
+}
+
+static int
+catchsigs(void)
+{
+    if (signal(SIGHUP,ShutDown) == BADSIG)
+        printf("Bad SIGHUP signal call\n");
+
+    if (signal(SIGINT,ShutDown) == BADSIG)
+        printf("Bad SIGINT signal call\n");
+
+    if (signal(SIGTERM,ShutDown) == BADSIG)
+        printf("Bad SIGTERM signal call\n");
+
+    if (signal(SIGQUIT,ShutDown) == BADSIG)
+        printf("Bad SIGQUIT signal call\n");
+
+}
+
+openWSPort()
+{
+    int nRetval = OK;
+    static int cur_baud=2400;
+	HANDLE hModem,hTmpCom;
+
+    while (1)
+    {
+        if (GlobalhCom)
+        {
+            HangUp(GlobalhCom,savetty);
+            close(GlobalhCom);
+            GlobalhCom = NULL;
+        }
+
+        if (hOrigCom)
+		{
+			restore_tty(hOrigCom);
+			close(hOrigCom);
+		}
+
+		if ((hTmpCom = open(savetty,O_RDWR|O_NDELAY)) < 0)
+		{
+			printf("Error opening %s\n",savetty);
+			ExitChild(1); // child
+		}
+		save_tty(hTmpCom); // for restore_tty()
+
+		/* in case these need resetting: */
+        setraw(hTmpCom);
+		set_tty_baud(hTmpCom,cur_baud);
+		set_tty_local(hTmpCom,TRUE);
+
+		/* open with these settings for writing to modem. */
+		#if 0
+		if ((hModem = open(savetty,O_RDWR)) < 0)
+		{
+			printf("Error opening %s\n",savetty);
+			ExitChild(1); // child
+		}
+		close(hTmpCom);
+		#else
+		hModem = hTmpCom;
+		#endif
+
+        /* this'll guarantee return values below */
+        WriteModemCommand(hModem,"+~+~+~~~ATE0V0Q0S0=1X4\r~");
+		// MNP modem, kill compression:
+        WriteModemCommand(hModem,"AT\\Q3\r~");
+		// 9600 modem, kill compression:
+        WriteModemCommand(hModem,"AT&M4&H1&R2&K0\r~");
+        /* clear return values */
+        flush(hModem,2);
+
+        /* so open will block: */
+		close(hModem);
+
+        printf("Waiting at the phone...\n");
+        if((hTmpCom = open(savetty,O_RDWR)) < 0)
+            END(FAIL)
+        else
+        {
+			char buf[3];
+			int len;
+            printf("Answering the phone!\n");
+
+			set_tty_local(hTmpCom,TRUE);
+
+			printf("Answer codes:\n");
+            while(read(hTmpCom,buf,1))
+				printf("  c:(%c) d:(%d)\n",buf[0],buf[0]);
+
+			END(FAIL)
+			if (ReceiveVarBuf(hTmpCom,buf,sizeof(buf),3,'\r',&len) != OK)
+			{
+				printf("VarBuf failed\n");
+				printf("buf (%d): %c%c\n",len,buf[0],buf[1]);
+				END(FAIL)
+			}
+
+            printf("buf (%d): %c%c\n",len,buf[0],buf[1]);
+			switch (buf[0])
+			{
+				default:
+					END(FAIL)
+				break;
+				case '1': 
+					{
+						errno = 0;
+						switch(buf[1])
+						{
+						case '5': 
+							printf("Connect at 1200!\n");
+							cur_baud = 1200;
+							END(OK)
+						break;
+						 case '8':
+						 case '9':
+							printf("Connect at 4800!\n");
+							cur_baud = 4800;
+							END(OK)
+						 break;
+						 case '3':
+						 case '7':
+							printf("Connect at 9600!\n");
+							cur_baud = 9600;
+							END(OK)
+						 break;
+						 case '0':
+						 case '6':
+							printf("Connect at 2400!\n");
+							cur_baud = 2400;
+							END(OK)
+						 break;
+						 case '\r':
+							printf("Connect at 300!\n");
+							cur_baud = 300;
+							END(OK)
+						 break;
+						}
+							#if 0
+							if (errno)
+								perror("waiting for connect");
+							#endif
+					} 
+				break; 
+				case '5': 
+					printf("Connect at 1200!\n");
+					cur_baud = 1200;
+				break;
+            }
+
+            set_tty_local(hTmpCom,FALSE);
+			setblock(hTmpCom,OFF);
+			set_tty_baud(hTmpCom,cur_baud);
+			set_tty_xclude(hTmpCom,TRUE);
+
+			setpgrp(); // this causes the next opened tty to issue a
+				   // SIGHUP when the device closes (the next opened
+				   // device becomes the 'controlling' tty.
+
+#if 0
+			if((GlobalhCom = open(savetty,O_RDWR,O_NDELAY)) < 0)
+			{
+				printf("error opening %s (2)\n",savetty);
+				END(FAIL)
+			}
+			/* we're gonna read from WS_PORT (GlobalhCom) henceforth */
+
+			close(hTmpCom);
+#else
+			GlobalhCom = hTmpCom;
+#endif
+			END(OK)
+        }
+
+    end:
+    if (nRetval == FAIL)
+    {
+        printf("Error opening %s\n",savetty);
+        //set_tty_local(WS_PORT,FALSE);
+    }
+    else
+    {
+        flush(WS_PORT,2);
+		setnewuser(); 
+        return OK;
+    }
+    }
+}
+
+
+ShowCust(ADDRESS_STRUCT *CustInfo)
+{
+    printf("CustInfo:\n");
+    printf("   %s\n",CustInfo->name);
+    printf("   %s\n",CustInfo->company);
+    printf("   %s\n",CustInfo->street);
+    printf("   %s, ",CustInfo->city);
+    printf("   %s  ",CustInfo->state);
+    printf("   %s\n",CustInfo->postal_code);
+    printf("   %d: ",CustInfo->whichCountry);
+    printf("   %s\n",CustInfo->country);
+    printf("   (%s)",CustInfo->phone.area);
+    printf("   %s - ",CustInfo->phone.number);
+    printf("   %s\n",CustInfo->phone.ext);
+}
+ShowOrder(ORDER_STRUCT *CurOrder)
+{
+    printf("CurOrder:\n");
+    printf("   %s\n",CurOrder->libName);
+    printf("   %lx\n",CurOrder->libID);
+    printf("   %s\n",CurOrder->clipDesc);
+    printf("   %lx\n",CurOrder->clipID);
+    printf("   %s\n",CurOrder->vendorName);
+    printf("   %lx\n",CurOrder->vendorID);
+    printf("   %s\n",CurOrder->ShipAddress.name);
+    printf("   %s\n",CurOrder->ShipAddress.street);
+    printf("   %s\n",CurOrder->ShipAddress.city);
+    printf("   %s\n",CurOrder->ShipAddress.state);
+    printf("   %s\n",CurOrder->ShipAddress.country);
+    printf("   %s\n",CurOrder->ShipAddress.postal_code);
+    printf("   %s\n",CurOrder->ccName);
+    printf("   %s\n",CurOrder->ccNum);
+    printf("   %s\n",CurOrder->ccExpDate);
+    printf("   %d\n",CurOrder->ccType);
+    printf("   %d\n",CurOrder->Quantity);
+    printf("   %u\n",(WORD)CurOrder->priceTotal);
+    printf("   %u\n",(WORD)CurOrder->priceEach);
+    printf("   %d\n",CurOrder->mediaType);
+    printf("   %d\n",CurOrder->CourierType);
+    printf("   %lx\n",CurOrder->flags);
+}
+
+
+
+BOOL
+GetThatMoola(ORDER_STRUCT *Order, CCReq *ccreq)
+/* returns whether credit captured */
+{
+    int nRetval = EOT;
+	BYTE pstatus;				/* Product availability */
+
+    strcpy(ccreq->AcctNum,Order->ccNum);
+    strcpy(ccreq->ExpDate,Order->ccExpDate);
+	ccreq->CCType = Order->ccType;
+    ccreq->Amount = (float)Order->priceTotal / 100.0;
+    ccreq->MsgCode = SALE;
+    ccreq->Force = FORCE;
+    ccreq->ReSend = NO_RESEND;
+    ccreq->Result = 0; // gotta clear this at least for freebee case
+
+    /* set up order */
+	if (Acct_NewID(&Order->orderID,ACCT_ID_ORDER) != OK)
+    {
+		printf("didn't get any money\n");
+		Order->flags |= OF_NO_CASH;
+		END(EOT)
+	}
+
+    Order->userID = lCurUserID;
+	Order->sessionID = lSessionID;
+
+	Order->flags |= OF_INITIALIZE;
+	if (Acct_NormalOrder ( Order, ccreq ) != OK)
+	{
+		printf("didn't get any money 2\n");
+		Order->flags |= OF_NO_CASH;
+		END(EOT)
+	}
+
+
+    //printf("CCReq fields from GetThatMoola pre CaptureCredit:\n");
+	//PrintCCReq(ccreq);
+
+    if (Order->priceTotal == 0L)
+		if (Order->prodType == CLIP)
+		{
+			printf("freebee\n");
+			END(ACK)
+		}
+		else // no price???
+		{
+			Order->flags |= OF_NO_CASH;
+			END(EOT)
+		}
+
+	if (Order->ccType == CORP)
+	{
+		DWORD corpID;
+/***  ASSUMES corpID in ccNum field is decimal, otherwise use scanf ***/
+		corpID = atol(Order->ccNum);
+	    if (Acct_CorpAcctApproval(Order->userID, corpID, Order->priceTotal, \
+									&ccreq->Result) != OK)
+		{
+			printf("didn't get any money 4\n");
+			Order->flags |= OF_NO_CASH;
+			END(EOT)
+		}
+	}
+	else
+	{
+	#if 0
+		if (CaptureCredit(ccreq, ExeType) != OK)
+		{
+			printf("didn't get any money 5\n");
+			Order->flags |= OF_NO_CASH;
+			END(EOT)
+		}
+	#else
+		ccreq->Result = nCAPTURE;
+	#endif
+	}
+		switch (ccreq->Result)
+		{
+			case nCAPTURE:
+			case nAUTH:
+				printf("got their money 6\n");
+				END(ACK)
+			break;
+
+			case nDUPLICATE: /* means got dup but was unable to force */
+			default: /* unable to communicate for some reason */
+				printf("didn't get any money 7\n");
+				Order->flags |= OF_NO_CASH;
+				END(EOT)
+			break;
+
+			case nVOICE_AUTH:
+			case nDECLINED:
+				printf("didn't get any money 8\n");
+				END(NAK)
+			break;
+		}
+
+	end:
+	if (SendByte(WS_PORT,(BYTE)nRetval) != OK)
+		;
+
+    if (Port)
+	/* hang up credit card line now that we've responded to WS. */
+	{
+		HangUp(Port,NULL);
+		//restore_tty(Port);
+		close(Port);
+		Port = NULL;
+	}
+
+	/* record result of transaction */
+	Order->flags |= OF_CC_RESULT;
+	Acct_NormalOrder ( Order, ccreq ) ;
+
+	return(nRetval == ACK ? TRUE : FALSE);
+}
+
+void
+setnewuser(void)
+{
+    if (Acct_Initialize() == FAIL)
+	{	
+		printf("Can't CONNECT to database, exiting\n");
+		exit(1);
+	}
+	else
+	{
+		//printf("Connected to database OK\n");
+	}
+	CurUserID[0] = '\0';
+	lCurUserID=lSessionID=0L;
+	CurPassword[0] = '\0';
+	nTimeout = 120;
+}
+
+
+
+int
+CloseUserSession(int ConditionCode)
+{
+	if (lSessionID)
+	{
+		if (Acct_CustEndSession(lSessionID) != OK)
+			printf("Unable to close user (%lx) session (%lx)\n",
+				lCurUserID,lSessionID);
+		else
+			printf("Closed user (%s) session (%lx)\n",
+                                CurUserID,lSessionID);
+		Acct_Finalize();
+		lSessionID = 0L;
+	}
+}
+
+int
+ReceiveThatOrder(ORDER_STRUCT *Order)
+{
+	if (ReceiveCRC(WS_PORT,(BYTE *)Order,sizeof(ORDER_STRUCT)) != OK)
+	{
+	    printf("Current order not received (%x)\n",sizeof(ORDER_STRUCT));
+		//ShowOrder(Order);
+	    if (SendByte(WS_PORT,NAK) != OK)
+					;
+	}
+	else
+	{
+	    //printf("Current order received\n");
+	    if (SendByte(WS_PORT,ACK) != OK)
+					;
+	    //ShowOrder(Order);
+	}
+}
+
+
+
+#ifdef DEBUG
+int
+WriteBuf(char *szFileName, char *buf, int NumBytes)
+{
+    int fp= -1;
+    int nRetval=OK;
+
+    if ((fp = open(szFileName,O_WRONLY|O_CREAT|O_APPEND|O_SYNC,
+									S_IREAD|S_IWRITE)) == -1)
+        END(FAIL)
+
+    if (write(fp,buf,NumBytes) != NumBytes)
+        END(FAIL)
+
+    end:
+    if (fp != -1)
+        close(fp);
+    return nRetval;
+}
+#endif
+
+
+ExitChild(int CondCode)
+{
+    printf("Exiting child...\n");
+	CloseUserSession(CondCode);
+	if (GlobalhCom)
+	{
+		HangUp(GlobalhCom,savetty);
+		close(GlobalhCom);
+		GlobalhCom = NULL;
+	}
+
+	if (hOrigCom)
+	{
+		//so won't answer phone...
+		set_tty_local(hOrigCom,TRUE);
+		WriteModemCommand(hOrigCom,"+~+~+~~~ATS0=0\r"); 
+		restore_tty(hOrigCom);
+		close(hOrigCom);
+		hOrigCom = NULL;
+	}
+
+	/* from credit card: */
+	if (Port)
+	{
+		HangUp(Port,NULL);
+		//restore_tty(Port);
+		close(Port);
+		Port = NULL;
+	}
+	printf("Bye from child\n");
+	fflush(stdout);
+	exit(CondCode);
+}
+
+ExitParent(int CondCode)
+{
+    printf("Exiting parent...\n");
+
+	/* kill the child process */
+    printf("killing child...\n");
+	kill(pID,SIGTERM);
+
+    /* in case child was gone already */
+	CloseUserSession(CondCode);
+
+	if (GlobalhCom)
+	{
+		HangUp(GlobalhCom,savetty);
+		close(GlobalhCom);
+		GlobalhCom = NULL;
+	}
+
+	if (hOrigCom)
+	{
+		//so won't answer phone...
+		set_tty_local(hOrigCom,TRUE);
+		WriteModemCommand(hOrigCom,"+~+~+~~~ATS0=0\r"); 
+		restore_tty(hOrigCom);
+		close(hOrigCom);
+		hOrigCom=NULL;
+	}
+
+	/* from credit card: */
+	if (Port)
+	{
+		HangUp(Port,NULL);
+		//restore_tty(Port);
+		close(Port);
+		Port = NULL;
+	}
+
+#ifdef TEST_SERVER
+	disconnect_from_server(cc_server);
+#endif
+
+	printf("\nBye from parent\n\n");
+	fflush(stdout);
+	exit(CondCode);
+}
+
+ShowShip(Shipcost_Ary CostMatrix)
+{
+	printf("sm\[0\]:.valid %d .cost %d\n",CostMatrix[0].valid,
+										 CostMatrix[0].cost);
+	printf("sm\[1\]:.valid %d .cost %d\n",CostMatrix[1].valid,
+										 CostMatrix[1].cost);
+	printf("sm\[2\]:.valid %d .cost %d\n",CostMatrix[2].valid,
+										 CostMatrix[2].cost);
+}

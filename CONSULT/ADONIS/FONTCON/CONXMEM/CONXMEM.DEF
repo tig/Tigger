@@ -1,0 +1,88 @@
+LIBRARY        CONXMEM
+DESCRIPTION    'Memory Manager for Windows by Scott McCraw'
+EXETYPE        WINDOWS
+CODE           MOVEABLE DISCARDABLE
+DATA           PRELOAD MOVEABLE SINGLE
+HEAPSIZE       4096
+
+SEGMENTS       CONXMEM     PRELOAD FIXED
+SEGMENTS       INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+
+EXPORTS
+    WEP                     @1 RESIDENTNAME
+
+    fsmmCheckVersion        @99
+    fsmmHeapCreate          @100
+    fsmmHeapDestroy         @101
+
+    fsmmHeapAlloc           @102
+    fsmmHeapReAlloc         @103
+    fsmmHeapFree            @104
+    fsmmHeapLock            @105
+    fsmmHeapUnlock          @106 
+
+    fsmmHeapAllocLock       @107
+    fsmmHeapAllocString     @108
+    fsmmHeapUnlockFree      @109
+
+    fsmmHeapCompact         @110
+    fsmmHeapFlags           @111
+    fsmmHeapHandle          @112
+    fsmmHeapDiscard         @113
+    fsmmHeapSize            @114
+    fsmmHeapSetDS           @115
+    fsmmHeapItems           @116
+    fsmmHeapDumpDebug       @117
+
+    fsmmListHeap            @129
+    fsmmListCreate          @130
+    fsmmListDestroy         @131
+    fsmmListFreeList        @132
+    fsmmListAllocNode       @133
+    fsmmListFreeNode        @134
+    fsmmListInsertNode      @135
+    fsmmListInsertSorted    @136
+    fsmmListAllocInsertNode @137
+    fsmmListRemoveNode      @138
+    fsmmListDeleteNode      @139
+    fsmmListNextNode        @140
+    fsmmListPrevNode        @141
+    fsmmListFirstNode       @142
+    fsmmListLastNode        @143
+    fsmmListNode2Item       @144
+    fsmmListItem2Node       @145
+    fsmmListItems           @146
+    fsmmListSwapNodes       @147
+    fsmmListDumpDebug       @148
+
+    fsmmStackCreate         @160
+    fsmmStackDestroy        @161
+    fsmmStackFreeStack      @162
+    fsmmStackAllocNode      @163
+    fsmmStackFreeNode       @164
+    fsmmStackPush           @165
+    fsmmStackAllocPush      @166
+    fsmmStackPop            @167
+    fsmmStackPeek           @168
+    fsmmStackRemove         @169
+    fsmmStackItems          @170
+    fsmmStackDumpDebug      @171
+                               
+    fsmmQueueCreate         @175
+    fsmmQueueDestroy        @176
+    fsmmQueueFreeQueue      @177
+    fsmmQueueAllocNode      @178
+    fsmmQueueFreeNode       @179
+    fsmmQueueInQ            @180
+    fsmmQueueAllocInQ       @181
+    fsmmQueueDeQ            @182
+    fsmmQueuePeek           @183
+    fsmmQueueRemove         @184
+    fsmmQueueItems          @185
+    fsmmQueueDumpDebug      @186
+
+    fsmmIsUsefulString          @230
+    fsmmIsNumber                @231
+    fsmmSetExtension            @232
+    fsmmHackSpaces              @233
+    fsmmGetValue                @234

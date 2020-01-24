@@ -1,0 +1,123 @@
+Script Engine for Lexis for Windows, Version 1.00
+
+
+-------------------------------------------------------------------------------
+Statement:  BREAK
+
+Format:     BREAK integer
+
+Description:
+  The BREAK statement will send a break out the comm port for the specified
+  number of milliseconds.
+
+Example:
+  Break 250     Send break for 1/4 second (250 milliseconds)
+
+
+
+-------------------------------------------------------------------------------
+Statement:  END
+
+Format:     END
+
+Description:
+  The END statement will end the execution of the script.
+
+Example:
+  END
+
+
+-------------------------------------------------------------------------------
+Statement:  DTR
+
+Format:     DTR { 0 | 1 }
+
+Description:
+  The DTR statement is used to lower or raise the state of the DTR pin on
+  the serial communication port currently openned.
+
+Example:
+  DTR	0	Lower the DTR
+  Sleep 250	Sleep for 1/4 second (250 milliseconds)
+  DTR	1	Raise the DTR
+
+
+-------------------------------------------------------------------------------
+Statement:  IF
+
+Format:     IF condition THEN label
+
+Description:
+  The IF statement is used to conditional branch to a new statement.
+
+Example:
+  IF speed == 2400 then Telenet2400
+  ...
+  ...
+:Telenet2400
+  ...
+
+
+-------------------------------------------------------------------------------
+Statement:  INPUT
+
+Format:     INPUT string
+
+Description:
+  The INPUT statement will halt the script and wait for the specified string
+  to be received from the communication port.  The INPUT will timeout based
+  on the value of the last TIMEOUT setting.
+
+Example:
+  INPUT "OK"
+
+
+-------------------------------------------------------------------------------
+Statement:  PRINT
+
+Format:     PRINT string [;]
+
+Description:
+  PRINT is used to send a string of bytes out the communication port.  If the
+  statement is terminated with a semicolon then the automatic carrage return
+  is not added to the string.  A number of fields from the user's setup can
+  be used in the string by using the following keywords:
+	DIAL	    Tone or Pulse dialing, contains either 'DT' or 'DP'.
+	PREFIX	    Dialing prefix.
+	NUMBER	    Number to dial.
+	NODE	    Node string.
+
+Example:
+  PRINT "AT"			    // Sent as 'A', 'T', CR
+  PRINT "AT";			    // Sent as 'A', 'T' (no CR added)
+  PRINT ""			    // Just send CR
+  PRINT "AT"+DIAL+PREFIX+NUMBER     // Sent as "DT9,555-1234"
+
+
+-------------------------------------------------------------------------------
+Statement:  SLEEP
+
+Format:     SLEEP integer
+
+Description:
+  The SLEEP statement will delay the script for the specified number of milli-
+  seconds.
+
+Example:
+  Sleep 250	Sleep for 1/4 second (250 milliseconds)
+
+
+
+-------------------------------------------------------------------------------
+Statement:  TIMEOUT
+
+Format:     TIMEOUT integer
+
+Description:
+  The TIMEOUT statement is used to timeout the script after the give number of
+  seconds has elapse.  If the TIMEOUT statement is repeated then the script
+  timeout is reset to the new interval.  On a timeout the next network will be
+  called.  Each new script starts with a default 30 second timeout.
+
+Example:
+  TIMEOUT 30	Timeout the script if not connected in 30 seconds.

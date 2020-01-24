@@ -1,0 +1,55 @@
+/************************************************************************
+ *
+ *    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  APACHE, Apache For Windows
+ *
+ *      Module:  string.rc
+ *
+ *     Remarks:  
+ *      This file contains the stringtable for IBMPC.
+ *      The IDS_* defines are defined in RESOURCE.H.
+ *
+ *   Revisions:  
+ *
+ ***********************************************************************/
+
+STRINGTABLE
+BEGIN
+   IDS_SETTINGS_LOCALECHO    "LocalEcho"
+   IDS_SETTINGS_NEWLINE      "NewLine"
+   IDS_SETTINGS_LINEWRAP     "LineWrap"
+   IDS_SETTINGS_NFACENAME    "NormalFaceName"
+   IDS_SETTINGS_NFACESIZEX   "NormalFaceSizeX"
+   IDS_SETTINGS_NFACESIZEY   "NormalFaceSizeY"
+   IDS_SETTINGS_NFGCOLOR     "NormalForeground"
+   IDS_SETTINGS_NBGCOLOR     "NormalBackground"
+   IDS_SETTINGS_HFACENAME    "HighlightFaceName"
+   IDS_SETTINGS_HFACESIZEX   "HighlightFaceSizeX"
+   IDS_SETTINGS_HFACESIZEY   "HighlightFaceSizeY"
+   IDS_SETTINGS_HFGCOLOR     "HighlightForeground"
+   IDS_SETTINGS_HBGCOLOR     "HighlightBackground"
+
+   IDS_DEFAULT_LOCALECHO     "False"
+   IDS_DEFAULT_NEWLINE       "False"
+   IDS_DEFAULT_LINEWRAP      "False"
+   IDS_DEFAULT_NFACENAME     "Courier"
+   IDS_DEFAULT_NFACESIZEX    "8"
+   IDS_DEFAULT_NFACESIZEY    "12"
+   IDS_DEFAULT_NFGCOLOR      "12632256"
+   IDS_DEFAULT_NBGCOLOR      "0"
+   IDS_DEFAULT_HFACENAME     "Courier"
+   IDS_DEFAULT_HFACESIZEX    "8"
+   IDS_DEFAULT_HFACESIZEY    "12"
+   IDS_DEFAULT_HFGCOLOR      "16777215"
+   IDS_DEFAULT_HBGCOLOR      "0"
+END
+
+
+/************************************************************************
+ * End of File: string.rc
+ ***********************************************************************/
+
+

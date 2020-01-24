@@ -1,0 +1,40 @@
+LIBRARY      NETBIOS
+EXETYPE      WINDOWS
+DESCRIPTION  'NETBIOS|NetBIOS Compatible Communications'
+STUB         'winstub.exe'
+
+SEGMENTS     _TEXT       PRELOAD MOVEABLE DISCARDABLE
+             INIT_TEXT   PRELOAD MOVEABLE DISCARDABLE
+             INVOKE      PRELOAD MOVEABLE DISCARDABLE
+             LIBENTRY    PRELOAD MOVEABLE
+             LIBMAIN     PRELOAD FIXED
+             LOAD        LOADONCALL MOVEABLE DISCARDABLE
+             MACHINE     PRELOAD MOVEABLE DISCARDABLE
+             NETBIOS     PRELOAD MOVEABLE DISCARDABLE
+             POST        PRELOAD FIXED
+             PROFILE     LOADONCALL MOVEABLE DISCARDABLE
+             SAVE        LOADONCALL MOVEABLE DISCARDABLE
+             SETUP       LOADONCALL MOVEABLE DISCARDABLE
+
+CODE         LOADONCALL MOVEABLE DISCARDABLE
+DATA         PRELOAD SINGLE FIXED
+
+HEAPSIZE     4096
+
+EXPORTS
+   WEP                    @1 RESIDENTNAME
+   GetConnectorUseCount   @2
+   CreateCCB              @3
+   DestroyCCB             @4
+   InitCCB                @5
+   LoadConnectorSettings  @6
+   SaveConnectorSettings  @7
+   DoConnectorSetupDlg    @8
+   OpenConnector          @9
+   CloseConnector         @10
+   ReadConnectorBlock     @11
+   WriteConnectorByte     @12
+   WriteConnectorBlock    @13
+   _WriteConnectorFormat  @14
+   IsConnected            @15
+   SettingsDlgProc        @16

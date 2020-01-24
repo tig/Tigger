@@ -1,0 +1,77 @@
+# Makefile for the STDCOMM DLL - Standard communications interface
+# Written by Bryan A. Woodruff
+# Copyright (c) 1992 Werner Associates
+
+# inference rules
+
+.asm.obj:
+        masm -Zi $*.asm ;
+
+.c.obj:
+        cl $(CFLAGS) $(PCHFLAGS) -NT $* $*.c | tee $*.err
+
+.rc.res:
+        rc $(RCFLAGS) $*.rc
+
+!IFNDEF RELEASE
+CFLAGS = -c -f -AMw -Od -G2 -Gsw -W3 -Zipe -nologo -DDEBUG
+LFLAGS = /CO /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ELSE
+CFLAGS = -c -AMw -Ot -G2 -Gsw -W3 -Zpe -nologo
+LFLAGS = /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ENDIF
+
+RCFLAGS = -r
+
+INCFILES =     precomp.pch stdcomm.h
+
+OBJECTS =      precomp.obj dialog.obj event.obj handler.obj load.obj\
+               libentry.obj libmain.obj save.obj setup.obj stdcomm.obj
+
+all:           stdcomm.con
+!IFNDEF RELEASE
+               copy stdcomm.con ..\..\debug
+!ELSE
+               copy stdcomm.con ..\..\release
+!ENDIF
+
+clean:
+               del *.obj
+               del *.map
+
+version:
+               bumpver version.h
+
+#----------------------------------------------------------------------------
+#  PreComp.C is used to create the precompiled information
+#----------------------------------------------------------------------------
+
+precomp.obj precomp.pch:   precomp.h
+               cl $(CFLAGS) -YcPRECOMP.H -NT precomp precomp.c | tee $*.err
+
+dialog.obj:    dialog.c $(INCFILES) resource.h
+
+event.obj:     event.c $(INCFILES)
+
+handler.obj:   handler.asm handler.inc
+
+libentry.obj:  libentry.asm
+
+libmain.obj:   libmain.c $(INCFILES)
+
+load.obj:      load.c $(INCFILES)
+
+save.obj:      save.c $(INCFILES)
+
+setup.obj:     setup.c $(INCFILES)
+
+stdcomm.obj:   stdcomm.c $(INCFILES) version.h
+
+stdcomm.res:   stdcomm.rc dialogs.rc binary.rc strings.rc resource.h
+
+stdcomm.con:   $(OBJECTS) ..\apache\facelift.lib stdcomm.res stdcomm.def
+               link $(LFLAGS) @stdcomm.lnk
+               rc -v stdcomm.res stdcomm.con
+               mapsym stdcomm

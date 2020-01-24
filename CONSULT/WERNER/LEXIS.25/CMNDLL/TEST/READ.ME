@@ -1,0 +1,49 @@
+*********************************************
+*****  READ THIS FILE!  READ THIS FILE! *****
+*********************************************
+
+Here's the latest in TEST2 and the Common DLL...
+
+****  CMNDLL V1.00.065 *****
+
+
+o  BmpBtn window class now draws both up and down bitmaps in the 
+   "same place" if both are specified.  This means that it is much 
+   easier to create bitmaps.
+
+   If only an up bitmap is specified, then the up bitmap is used for 
+   both the up and down bitmaps.  The bitmap _WILL_ be drawn down
+   and right 2 pixels (just like before).
+
+o  The status line now generates WM_COMMAND messages on a double click.
+
+   wParam
+          The child window control ID of the status line.
+          This is specified in the CreateWindow call.
+
+   HIWORD(lParam)   
+          The ID of the stat box (0 is first, 0xFFFF is the message
+          box).
+
+   HIWORD(lParam)
+          Any combination of the following values:
+
+                MK_CONTROL - Control key was down.
+                MK_SHIFT   - Shift key was down.
+                MK_LBUTTON - Left button double clicked.
+                MK_RBUTTON - Right button double clicked.
+                MK_MBUTTON - Middle button double clicked.
+
+   See TEST2 for an example.
+
+o  The atoi function has been renamed to AtoI to prevent conflict with
+   the C runtime function.  I still haven't been able to figure out 
+   why I don't get the 'char FAR*' version....
+
+*****  CMNDLL V1.00.052 *****
+
+o  First _real_ version.
+
+*********************************************
+*****  READ THIS FILE!  READ THIS FILE! *****
+*********************************************

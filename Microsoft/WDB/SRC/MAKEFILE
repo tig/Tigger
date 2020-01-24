@@ -1,0 +1,429 @@
+#*************************************************************************
+#
+#   WDB.DLL (Windows DeBugger) A killer debugging tool.
+#
+#*************************************************************************
+#  NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!!
+#
+#
+#    Most of the source in WDB.DLL has been ported to Win32.  For output
+#    to ODS, it should work if compiled under Win32.  The "WINDOW"
+#    output stuff has *not* been correctly ported yet.
+#    To compile for WIN32, remove the hash (#) from the
+#    WIN32 define below.
+#
+#    The first half of the makefile is Win32 specific, the
+#    second half is for 3.0/3.1.  Look for the !ifdef WIN32 stuff.
+#
+#    If you take it upon yourself to port the rest of WDB to Win32
+#    *please* let me know!
+#
+#                             - Charlie Kindel 2/14/92
+#
+#
+#  NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!! NOTE!!!
+#*************************************************************************
+#
+#  Written by Curtis J. Palmer (CurtisP) somtime in early 1991.
+#
+#*************************************************************************
+
+
+# comment the following macros out if this is a RELEASE make.
+#DEBUG_WDB       =   TRUE
+DEBUG_TESTWDB   =   TRUE
+
+WIN32=TRUE
+
+
+#------------------------------------------------------------------
+# Are we compiling with Win32 as the target?
+#------------------------------------------------------------------
+!ifdef WIN32
+
+!include <ntwin32.mak>
+
+OUTPUT  =   con
+
+#
+#   tstwdb32.EXE
+#
+
+!IFDEF DEBUG_TESTWDB
+
+ACC =   $(cc) -DDEBUG $(cflags) -DWIN32
+AZZ =   TESTWDB: ***** DEBUG ***** DEBUG ***** DEBUG ***** DEBUG *****
+
+!ELSE
+
+ACC =   $(cc) -DRELEASE $(cflags) -DWIN32
+AZZ =   TESTWDB: **** RELEASE *** RELEASE *** RELEASE *** RELEASE ****
+
+!ENDIF
+
+AMISC   =   testwdb.def
+AINCS   =   testwdb.h
+ASRCS   =   testwdb.c
+AOBJS   =   testwdb.obj
+
+
+#
+#   WDB32.DLL
+#
+
+!IFDEF DEBUG_WDB
+
+LCC =   $(cc) -DWDB_DEBUG $(cflags) -DWIN32
+LZZ =   WDB: ***** DEBUG ***** DEBUG ***** DEBUG ***** DEBUG *****
+
+!ELSE
+
+LCC =   $(cc) -DWDB_RELEASE $(cflags) -DWIN32
+LZZ =   WDB: **** RELEASE *** RELEASE *** RELEASE *** RELEASE ****
+
+!ENDIF
+
+LMISC   =   makefile    wdb.l32     wdbdoc.txt
+
+LINCS   =   wdb.h       wdbi.h
+
+LSRCS   =   wdb.c       wdbsup.c    wdbstr.c    wdbcfg.c    wdbwnd.c    \
+            wdbfont.c   wdbdlg.c    wdbmain.c   libentry.asm monoout.c
+
+LOBJS   =   wdb.obj     wdbsup.obj  wdbstr.obj  wdbcfg.obj  wdbwnd.obj  \
+            wdbfont.obj wdbdlg.obj  wdbmain.obj monoout.obj
+
+
+#
+#   BUILD RULES
+#
+
+all         :   WDB32.dll tstwdb32.exe
+
+
+#   tstwdb32.EXE
+
+tstwdb32.exe :   $(AOBJS) testwdb.def testwdb.res WDB32.dll
+                $(link) -machine:$(CPU) $(guiflags)\
+                -out:tstwdb32.exe testwdb.obj testwdb.res WDB32.lib $(guilibs)
+                @echo $(AZZ)
+                @echo $(AZZ)
+                @echo $(AZZ)
+
+testwdb.obj :   testwdb.c testwdb.h wdb.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(ACC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+testwdb.res :   testwdb.rc testwdb.h testwdb.ico wdbmenu.rc
+!IFDEF DEBUG_TESTWDB
+    rc -DDEBUG -r -fo testwdb.TMP testwdb.rc 
+!ELSE
+    rc -r -fo testwdb.TMP testwdb.rc 
+!ENDIF
+    cvtres -$(CPU) testwdb.TMP -o testwdb.RES
+    del testwdb.TMP
+
+#   WDB32.DLL build rules
+
+WDB32.lib     :   wdb.obj wdb.d32
+                lib -machine:$(CPU) -out:WDB32.lib $(LOBJS) -def:wdb.d32 
+
+WDB32.dll     :   $(LOBJS) wdb.res WDB32.lib
+                $(link) -machine:$(CPU) $(guiflags)\
+                -dll\
+                -entry:DllEntryPoint$(DLLENTRY)\
+                -out:WDB32.dll\
+                wdb32.exp\
+                wdb.res\
+		$(LOBJS)\
+                $(guilibs) wdb32.lib
+                @echo $(LZZ)
+                @echo $(LZZ)
+                @echo $(LZZ)
+
+wdbmain.obj :   wdbmain.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbsup.obj  :   wdbsup.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbstr.obj  :   wdbstr.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbcfg.obj  :   wdbcfg.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbwnd.obj  :   wdbwnd.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbfont.obj :   wdbfont.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbdlg.obj  :   wdbdlg.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+monoout.obj  :   monoout.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdb.obj     :   wdb.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdb.res:  wdb.rc wdb.h wdbi.h
+    rc -r -fo wdb.TMP wdb.rc 
+    cvtres -$(CPU) wdb.TMP -o wdb.RES
+    del wdb.TMP
+
+!ELSE
+#------------------------------------------------------------------
+# Are we compiling with Win16 as the target?
+#------------------------------------------------------------------
+
+# set these macros to control where stuff is placed/redirected
+OUTPUT  =   con
+
+#
+#   TESTWDB.EXE
+#
+
+!IFDEF DEBUG_TESTWDB
+
+AAS =   masm /Zi
+ACC =   cl -c -DDEBUG -AM -G2sw -Owd -W3 -Ziped
+ARC =   rc -v -DDEBUG
+ALN =   link /NOD/NOE/A:16/CO
+AZZ =   TESTWDB: ***** DEBUG ***** DEBUG ***** DEBUG ***** DEBUG *****
+
+!ELSE
+
+AAS =   masm
+ACC =   cl -c -DRELEASE -AM -G2sw -Ows -W3 -Zpe
+ARC =   rc -v -DRELEASE
+ALN =   link /NOD/NOE/A:16
+AZZ =   TESTWDB: **** RELEASE *** RELEASE *** RELEASE *** RELEASE ****
+
+!ENDIF
+
+AMISC   =   testwdb.def     testwdb.lnk
+
+AINCS   =   testwdb.h
+ASRCS   =   testwdb.c
+AOBJS   =   testwdb.obj
+
+
+#
+#   WDB.DLL
+#
+
+!IFDEF DEBUG_WDB
+
+LAS =   masm /Zi
+LCC =   cl -c -DWDB_DEBUG -Alnw -G2sw -Owd -W3 -Ziped
+LLN =   link /NOD/NOE/A:16/CO
+LRC =   rc -DWDB_DEBUG
+LRC2 =  rc -v -30 -t
+LZZ =   WDB: ***** DEBUG ***** DEBUG ***** DEBUG ***** DEBUG *****
+
+!ELSE
+
+LAS =   masm
+LCC =   cl -c -DWDB_RELEASE -Alnw -G2sw -Owx -W3 -Zpe
+LLN =   link /NOD/NOE/A:16
+LRC =   rc -DWDB_RELEASE
+LRC2 =   rc -v -30 -t
+LZZ =   WDB: **** RELEASE *** RELEASE *** RELEASE *** RELEASE ****
+
+!ENDIF
+
+LMISC   =   makefile    wdb.lnk     wdbdoc.txt
+
+LINCS   =   wdb.h       wdbi.h
+
+LSRCS   =   wdb.c       wdbsup.c    wdbstr.c    wdbcfg.c    wdbwnd.c    \
+            wdbfont.c   wdbdlg.c    wdbmain.c   libentry.asm wdblib.c \
+            monoout.c
+
+LOBJS   =   wdb.obj     wdbsup.obj  wdbstr.obj  wdbcfg.obj  wdbwnd.obj  \
+            wdbfont.obj wdbdlg.obj  wdbmain.obj libentry.obj wdblib.obj \
+            monoout.obj
+
+
+#
+#   BUILD RULES
+#
+
+all         :   wdb.dll testwdb.exe
+
+
+#   TESTWDB.EXE
+
+testwdb.exe :   $(AOBJS) testwdb.def testwdb.res wdb.dll
+                $(ALN) @testwdb.lnk
+                $(ARC) testwdb.res
+                copy testwdb.exe ..
+                @echo $(AZZ)
+                @echo $(AZZ)
+                @echo $(AZZ)
+
+testwdb.exe :   testwdb.res
+                $(ARC) testwdb.res
+                copy testwdb.exe ..
+                @echo $(AZZ)
+                @echo $(AZZ)
+                @echo $(AZZ)
+
+testwdb.obj :   testwdb.c testwdb.h wdb.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(ACC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+testwdb.res :   testwdb.rc testwdb.h testwdb.ico wdbmenu.rc
+                $(ARC) -r testwdb.rc
+
+
+#   WDB.DLL build rules
+
+wdb.dll     :   $(LOBJS) wdb.res wdb.def
+                $(LLN) @wdb.lnk
+                $(LRC2) wdb.res wdb.dll
+                implib wdb.lib wdb.def
+                lib wdblib.lib -+wdblib.obj,,
+
+                copy wdb.dll ..
+                copy wdb.lib ..
+                copy wdblib.lib ..
+                copy wdb.h ..
+                copy wdbmenu.rc ..
+                copy wdbdoc.txt ..
+               
+                @echo $(LZZ)
+                @echo $(LZZ)
+                @echo $(LZZ)
+
+wdb.dll     :   wdb.res
+                $(LRC2) wdb.res wdb.dll
+                copy wdb.dll ..
+                copy wdb.lib ..
+                copy wdblib.lib ..
+                copy wdb.h ..
+                copy wdbmenu.rc ..
+                copy wdbdoc.txt ..
+               
+                @echo $(LZZ)
+                @echo $(LZZ)
+                @echo $(LZZ)
+
+wdb.res     :   wdb.rc wdb.h wdbi.h
+                $(LRC) -r wdb.rc
+
+libentry.obj:   libentry.asm
+                $(LAS) $*;
+
+wdbmain.obj :   wdbmain.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbsup.obj  :   wdbsup.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbstr.obj  :   wdbstr.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbcfg.obj  :   wdbcfg.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbwnd.obj  :   wdbwnd.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbfont.obj :   wdbfont.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdbdlg.obj  :   wdbdlg.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdb.obj     :   wdb.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+wdblib.obj  :   wdblib.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+monoout.obj     :   monoout.c wdb.h wdbi.h
+                @echo Compiling $*.c... >$(OUTPUT)
+                $(LCC) -NT $* $*.c >$*.err
+                @type $*.err >$(OUTPUT)
+
+
+!ENDIF
+
+#   MISC. STUFF
+
+zip         :   clean
+                pkzip -a wdb.zip *.*
+
+xini        :
+                del $(WINDIR)\wdb.ini
+                del $(WINDIR)\testwdb.ini
+
+tclean      :
+                del testwdb.obj
+                del testwdb.err
+                del testwdb.res
+                del testwdb.exe
+                del testwdb.sym
+                del testwdb.map
+
+clean       :
+                del *.obj
+                del *.map
+                del *.sym
+                del *.res
+                del *.dll
+                del *.lib
+                del *.err
+                del *.exe
+                del *.zip
+
+ship        :   all
+                del *.obj
+                del *.map
+                del *.sym
+                del *.res
+                del *.err
+                del *.zip
+                touch *.*
+                pkzip -a wdb.zip *.*

@@ -1,0 +1,32 @@
+//*************************************************************
+//  File name: conxup.rc
+//
+//  Description: 
+//      Resources for the sample application
+//
+//  History:    Date       Author     Comment
+//              12/16/91   MSM        Created
+//
+// Written by Windows Developer Support
+// Copyright (c) 1992 Microsoft Corporation. All rights reserved.
+//*************************************************************
+
+#include "global.h"
+
+//*** Include version info
+#include "conxup.rcv"
+
+//*** EOF: conxup.rc
+
+
+
+
+
+
+               
+               
+               
+               
+               
+               
+               

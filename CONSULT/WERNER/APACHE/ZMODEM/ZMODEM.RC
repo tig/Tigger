@@ -1,0 +1,29 @@
+//---------------------------------------------------------------------------
+//
+//  Module: zmodem.rc
+//
+//  Purpose:
+//     ZMODEM resources
+//
+//  Development Team:
+//     Bryan A. Woodruff
+//
+//  History:   Date       Author      Comment
+//              3/10/92   BryanW      Wrote it.
+//
+//---------------------------------------------------------------------------
+//
+//  *** ***  THIS CODE IS CONFIDENTIAL PROPERTY OF WERNER ASSOCIATES *** *** 
+//  Copyright (c) 1992 Werner Associates.  All Rights Reserved.
+//
+//---------------------------------------------------------------------------
+
+#include <windows.h>
+#include "resource.h"
+
+#include "dialogs.rc"
+
+//---------------------------------------------------------------------------
+//  End of File: zmodem.rc
+//---------------------------------------------------------------------------
+

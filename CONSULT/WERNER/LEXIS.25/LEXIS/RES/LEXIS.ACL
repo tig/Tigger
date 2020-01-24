@@ -1,0 +1,34 @@
+/************************************************************************
+ *
+ *    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  LEXIS(R) 2000 Version 2.5 For Windows
+ *
+ *      Module:  lexis.acl
+ *
+ *   Author(s):  Charles E. Kindel, Jr. (cek)
+ *
+ *
+ *      System:  Microsoft C 6.00A, Windows 3.00
+ *
+ *     Remarks:  
+ *
+ *   Revisions:  
+ *
+ *
+ ************************************************************************/
+
+
+LEXIS25 ACCELERATORS
+BEGIN
+  VK_INSERT, IDM_COPY,		VIRTKEY, CONTROL
+  VK_INSERT, IDM_PASTE, 	VIRTKEY, SHIFT
+END
+
+
+/************************************************************************
+ * End of File: lexis.acl
+ ************************************************************************/
+

@@ -1,0 +1,92 @@
+//---------------------------------------------------------------------------
+//
+//  Module: strings.rc
+//
+//  Purpose:
+//     This file contains the stringtable for StdComm.
+//     The IDS_* defines are defined in RESOURCE.H.
+//
+//  Development Team:
+//     Bryan A. Woodruff
+//
+//  History:   Date       Author      Comment
+//              2/22/92   BryanW      Added this comment block.
+//
+//---------------------------------------------------------------------------
+//
+//  *** ***  THIS CODE IS CONFIDENTIAL PROPERTY OF WERNER ASSOCIATES *** *** 
+//  Copyright (c) 1992 Werner Associates.  All Rights Reserved.
+//
+//---------------------------------------------------------------------------
+
+STRINGTABLE
+BEGIN
+   IDS_COMPREFIX             "COM"
+
+   IDS_BAUD110               "110"
+   IDS_BAUD300               "300"
+   IDS_BAUD600               "600"
+   IDS_BAUD1200              "1200"
+   IDS_BAUD2400              "2400"
+   IDS_BAUD4800              "4800"
+   IDS_BAUD9600              "9600"
+   IDS_BAUD14400             "14.4k"
+   IDS_BAUD19200             "19.2k"
+   IDS_BAUD38400             "38.4k"
+   IDS_BAUD56000             "56k"
+   IDS_BAUD128000            "128k"
+   IDS_BAUD256000            "256k"
+                    
+   IDS_PARITYNONE            "None"
+   IDS_PARITYEVEN            "Even"
+   IDS_PARITYODD             "Odd"
+   IDS_PARITYMARK            "Mark"
+   IDS_PARITYSPACE           "Space"
+
+   IDS_ONESTOPBIT            "1"
+   IDS_ONE5STOPBITS          "1.5"
+   IDS_TWOSTOPBITS           "2"
+
+   IDS_BREAK100              "100"
+   IDS_BREAK250              "250"
+   IDS_BREAK500              "500"
+   IDS_BREAK750              "750"
+   IDS_BREAK1000             "1000"
+   IDS_BREAK1500             "1500"
+
+   IDS_SETTINGS_PORT         "Port"
+   IDS_SETTINGS_BAUDRATE     "BaudRate"
+   IDS_SETTINGS_DATABITS     "DataBits"
+   IDS_SETTINGS_PARITY       "Parity"
+   IDS_SETTINGS_STOPBITS     "StopBits"
+   IDS_SETTINGS_BREAKLENGTH  "BreakLength"
+   IDS_SETTINGS_FLOWCONTROL  "FlowControl"
+
+   IDS_DEFAULT_PORT          "1"
+   IDS_DEFAULT_BAUDRATE      "65302"
+   IDS_DEFAULT_DATABITS      "8"
+   IDS_DEFAULT_PARITY        "0"
+   IDS_DEFAULT_STOPBITS      "0"
+   IDS_DEFAULT_BREAKLENGTH   "250"
+   IDS_DEFAULT_FLOWCONTROL   "2"
+
+   IDS_CE_RXOVER             "CE_RXOVER"
+   IDS_CE_OVERRUN            "CE_OVERRUN"
+   IDS_CE_RXPARITY           "CE_RXPARITY"
+   IDS_CE_FRAME              "CE_FRAME"
+   IDS_CE_BREAK              "CE_BREAK"
+   IDS_CE_CTSTO              "CE_CTSTO"
+   IDS_CE_DSRTO              "CE_DSRTO"
+   IDS_CE_RLSDTO             "CE_RLSDTO"
+   IDS_CE_TXFULL             "CE_TXFULL"
+   IDS_CE_PTO                "CE_PTO"
+   IDS_CE_IOE                "CE_IOE"
+   IDS_CE_DNS                "CE_DNS"
+   IDS_CE_OOP                "CE_OOP"
+   IDS_CE_MODE               "CE_MODE"
+END
+
+//---------------------------------------------------------------------------
+//  End of File: strings.rc
+//---------------------------------------------------------------------------
+

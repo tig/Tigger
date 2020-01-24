@@ -1,0 +1,240 @@
+
+ lexmac
+
+ Start     Length     Name                   Class
+ 0001:0000 00176H     _TEXT                  CODE
+ 0002:0000 00032H     INIT_TEXT              CODE
+ 0003:0000 0004CH     lexmac                 CODE
+ 0004:0000 000C6H     DEBUG                  CODE
+ 0005:0000 000FAH     SHADOW                 CODE
+ 0006:0000 0015DH     ABOUT                  CODE
+ 0007:0000 00092H     VERSION                CODE
+ 0008:0000 006AAH     MAIN                   CODE
+ 0009:0000 00010H     NULL                   BEGDATA
+ 0009:0010 0025CH     _DATA                  DATA
+ 0009:026C 00000H     CDATA                  DATA
+ 0009:026C 00000H     XIFB                   DATA
+ 0009:026C 00000H     XIF                    DATA
+ 0009:026C 00000H     XIFE                   DATA
+ 0009:026C 00000H     XIB                    DATA
+ 0009:026C 00000H     XI                     DATA
+ 0009:026C 00000H     XIE                    DATA
+ 0009:026C 00000H     XPB                    DATA
+ 0009:026C 00000H     XP                     DATA
+ 0009:026C 00000H     XPE                    DATA
+ 0009:026C 00000H     XCB                    DATA
+ 0009:026C 00000H     XC                     DATA
+ 0009:026C 00000H     XCE                    DATA
+ 0009:026C 00000H     XCFB                   DATA
+ 0009:026C 00000H     XCF                    DATA
+ 0009:026C 00000H     XCFE                   DATA
+ 0009:026C 0000CH     DBDATA                 DATA
+ 0009:0278 00000H     CONST                  CONST
+ 0009:0278 00019H     HDR                    MSG
+ 0009:0291 00082H     MSG                    MSG
+ 0009:0313 00002H     PAD                    MSG
+ 0009:0315 00001H     EPAD                   MSG
+ 0009:0320 00000H     _BSS                   BSS
+ 0009:0320 00000H     XOB                    BSS
+ 0009:0320 00000H     XO                     BSS
+ 0009:0320 00000H     XOE                    BSS
+ 0009:0320 00042H     c_common               BSS
+
+ Origin   Group
+ 0009:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0006:0000 ABOUTDIALOG             ABOUTDIALOG
+ 0006:005F ABOUTDLGPROC            ABOUTDLGPROC
+ 0005:0000 DRAWSHADOW              DRAWSHADOW
+ 0008:01CE MAINDLGPROC             MAINDLGPROC
+ 0008:0000 SELECTMACRODIALOG       SELECTMACRODIALOG
+ 0007:0000 VERGETDLLVERSION        VERGETDLLVERSION
+ 0007:0037 VERMAKEVERSIONNUMBER    VERMAKEVERSIONNUMBER
+ 0003:002E WEP                     WEP
+ 0004:0060 _DP                     _DP
+ 0004:0000 _DPRINTF                _DPRINTF
+ 0001:0162 ___ExportedStub         ___ExportedStub
+
+  Address         Publics by Name
+
+ 0006:0000       ABOUTDIALOG
+ 0006:005F       ABOUTDLGPROC
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  DIALOGBOXPARAM       (USER.239)
+ 0005:0000       DRAWSHADOW
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  FREEPROCINSTANCE     (KERNEL.52)
+ 0000:0000  Imp  GETACTIVEWINDOW      (USER.60)
+ 0000:0000  Imp  GETDCORG             (GDI.79)
+ 0000:0000  Imp  GETDLGITEM           (USER.91)
+ 0000:0000  Imp  GETDLGITEMINT        (USER.95)
+ 0000:0000  Imp  GETDLGITEMTEXT       (USER.93)
+ 0000:0000  Imp  GETPROP              (USER.25)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  GETWINDOWRECT        (USER.32)
+ 0002:0000       LibEntry
+ 0003:0000       LIBMAIN
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  LocalInit            (KERNEL.4)
+ 0000:0000  Imp  LOCALLOCK            (KERNEL.8)
+ 0000:0000  Imp  LOCALUNLOCK          (KERNEL.9)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0008:01CE       MAINDLGPROC
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  MESSAGEBEEP          (USER.104)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  PLOCALHEAP
+ 0000:0000  Imp  POLYGON              (GDI.36)
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0000:0000  Imp  REMOVEPROP           (USER.24)
+ 0009:0004       rsrvptrs
+ 0008:0000       SELECTMACRODIALOG
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  SETDLGITEMINT        (USER.94)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  SETFOCUS             (USER.22)
+ 0000:0000  Imp  SETPROP              (USER.26)
+ 0009:0160       STKHQQ
+ 0007:0000       VERGETDLLVERSION
+ 0007:0037       VERMAKEVERSIONNUMBER
+ 0003:002E       WEP
+ 0000:0000  Imp  WVSPRINTF            (USER.421)
+ 0001:0066       _atoi
+ 0004:0060       _DP
+ 0004:0000       _DPRINTF
+ 0009:0320       _edata
+ 0009:0362       _end
+ 0009:0320       _hInst
+ 0009:0322       _szTemp
+ 0008:047F       _Validate
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0009:0162       __aaltstkovr
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtused2
+ 0000:D6D6  Abs  __aDBdoswp
+ 0009:0268       __adbgmsg
+ 0009:0270       __aDBrterr
+ 0001:0032       __aFchkstk
+ 0001:0074       __amsg_exit
+ 0001:0012       __aNchkstk
+ 0009:0280       __caption
+ 0001:0092       __catox
+ 0001:0032       __chkstk
+ 0001:006A       __cintDIV
+ 0009:0166       __ctype
+ 0009:0166       __ctype_
+ 0000:9876  Abs  __fptaskdata
+ 0001:0152       __GetDGROUP
+ 0001:00E6       __NMSG_TEXT
+ 0001:011D       __NMSG_WRITE
+ 0008:05F0       __strstrp
+ 0009:0272       ___aDBexit
+ 0009:026E       ___aDBswpchk
+ 0009:026C       ___aDBswpflg
+ 0001:0162       ___ExportedStub
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  GETWINDOWRECT        (USER.32)
+ 0000:0000  Imp  POLYGON              (GDI.36)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  SETFOCUS             (USER.22)
+ 0000:0000  Imp  ENDPAINT             (USER.40)
+ 0000:0000  Imp  FATALAPPEXIT         (KERNEL.137)
+ 0000:0000  Imp  WVSPRINTF            (USER.421)
+ 0000:0000  Imp  SETDLGITEMINT        (USER.94)
+ 0000:0000  Imp  BEGINPAINT           (USER.39)
+ 0000:0000  Imp  SELECTOBJECT         (GDI.45)
+ 0000:0000  Imp  FATALEXIT            (KERNEL.1)
+ 0000:0000  Imp  SETPROP              (USER.26)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  GETDLGITEM           (USER.91)
+ 0000:0000  Imp  GETDLGITEMTEXT       (USER.93)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  REMOVEPROP           (USER.24)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  LOCALALLOC           (KERNEL.5)
+ 0000:0000  Imp  GETDLGITEMINT        (USER.95)
+ 0000:0000  Imp  DIALOGBOXPARAM       (USER.239)
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  GETPROP              (USER.25)
+ 0000:0000  Imp  FREEPROCINSTANCE     (KERNEL.52)
+ 0000:0000  Imp  LOCALFREE            (KERNEL.7)
+ 0000:0000  Imp  MESSAGEBEEP          (USER.104)
+ 0000:0000  Imp  LOCALLOCK            (KERNEL.8)
+ 0000:0000  Imp  LocalInit            (KERNEL.4)
+ 0000:0000  Imp  GETSTOCKOBJECT       (GDI.87)
+ 0000:0000  Imp  LSTRLEN              (KERNEL.90)
+ 0000:0000  Imp  GETACTIVEWINDOW      (USER.60)
+ 0000:0000  Imp  GETTEXTMETRICS       (GDI.93)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0000  Imp  GETDCORG             (GDI.79)
+ 0000:0000  Imp  LOCALUNLOCK          (KERNEL.9)
+ 0000:0006  Abs  PLOCALHEAP
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __acrtused2
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0012       __aNchkstk
+ 0001:0032       __chkstk
+ 0001:0032       __aFchkstk
+ 0001:0066       _atoi
+ 0001:006A       __cintDIV
+ 0001:0074       __amsg_exit
+ 0001:0092       __catox
+ 0001:00E6       __NMSG_TEXT
+ 0001:011D       __NMSG_WRITE
+ 0001:0152       __GetDGROUP
+ 0001:0162       ___ExportedStub
+ 0002:0000       LibEntry
+ 0003:0000       LIBMAIN
+ 0003:002E       WEP
+ 0004:0000       _DPRINTF
+ 0004:0060       _DP
+ 0005:0000       DRAWSHADOW
+ 0006:0000       ABOUTDIALOG
+ 0006:005F       ABOUTDLGPROC
+ 0007:0000       VERGETDLLVERSION
+ 0007:0037       VERMAKEVERSIONNUMBER
+ 0008:0000       SELECTMACRODIALOG
+ 0008:01CE       MAINDLGPROC
+ 0008:047F       _Validate
+ 0008:05F0       __strstrp
+ 0009:0004       rsrvptrs
+ 0009:0160       STKHQQ
+ 0009:0162       __aaltstkovr
+ 0009:0166       __ctype
+ 0009:0166       __ctype_
+ 0009:0268       __adbgmsg
+ 0009:026C       ___aDBswpflg
+ 0009:026E       ___aDBswpchk
+ 0009:0270       __aDBrterr
+ 0009:0272       ___aDBexit
+ 0009:0280       __caption
+ 0009:0320       _hInst
+ 0009:0320       _edata
+ 0009:0322       _szTemp
+ 0009:0362       _end
+
+Program entry point at 0002:0000

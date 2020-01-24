@@ -1,0 +1,7 @@
+handler libentry libmain+
+precomp task taskman
+taskmgr.dll
+taskmgr
+wdb libw mdllcew
+taskmgr.def
+

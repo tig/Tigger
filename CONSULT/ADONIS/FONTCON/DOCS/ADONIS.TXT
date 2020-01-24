@@ -1,0 +1,49 @@
+Phone numbers
+-------------
+
+Main:  881-8251
+Scott: 827-9985
+Brian Silvey at Home:  281-7950
+
+BBS Machines:
+----------------------------
+(1)	881-6973	(Retail 2400 Lead)
+(2)	881-7086	(Retail 2400 #2)
+(3)	881-7155	(Retail 2400 #3)
+(4)	881-7214	(Retail 2400 #4)
+
+(5)	885-9757	(Retail 9600 Lead)
+(6)	881-6561	(Retail 9600 #2)
+
+(7)	881-6690	(Dev. 2400 Port A - BBS)
+(8)	882-1780	(Dev. 2400 Port B - Email BBS)
+(9)	881-6715	(Dev. 9600 Port C - BBS)
+(10)	881-6165	(Dev. 2400 Port D - GTTY)
+
+(11)	881-6283	(Credit Card)
+
+
+Passwords
+----------------------------
+Development ClipArt Shopper Acct:
+	Acct Num: 20130A7E
+	Password: Shopper
+
+My ClipArt Shopper Acct:
+	Acct Num: 2037ce6f
+	Password: Tigger
+
+Development bbs acct:
+	username: bbs
+	password: phones
+
+
+Notes
+----------------------------------------
+commands for the bbs:
+	bbs_start all
+	bbs_stop all
+	
+usr\bbs <- directory
+
+	BA <--- start trace

@@ -1,0 +1,103 @@
+# Makefile for the DECVT220 DLL - DEC(tm) VT220 Emulator
+# Written by Bryan A. Woodruff
+# Copyright (c) 1992 Werner Associates
+
+# inference rules
+
+.asm.obj:
+        masm -Zi $*.asm ;
+
+.c.obj:
+        cl $(CFLAGS) $(PCHFLAGS) -NT $* $*.c | tee $*.err
+
+.rc.res:
+        rc $(RCFLAGS) $*.rc
+
+!IFNDEF RELEASE
+CFLAGS = -c -AMw -Od -G2 -Gsw -W3 -Zipe -nologo -DDEBUG
+LFLAGS = /CO /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ELSE
+CFLAGS = -c -AMw -Ot -G2 -Gsw -W3 -Zpe -nologo
+LFLAGS = /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ENDIF
+
+RCFLAGS = -r
+
+INCFILES =     precomp.pch vt220.h
+
+OBJECTS =      precomp.obj blink.obj cursor.obj dialog.obj focus.obj\
+               keyhook.obj libentry.obj libmain.obj load.obj paint.obj\
+               rect.obj save.obj scroll.obj setup.obj size.obj\
+               vt220.obj window.obj write.obj
+
+all:           copylib
+
+clean:
+               del *.obj
+               del *.map
+
+copylib:       decvt220.emu
+!IFNDEF RELEASE
+               copy decvt220.emu ..\..\debug
+!ELSE
+               copy decvt220.emu ..\..\release
+!ENDIF
+
+version:
+               bumpver version.h
+
+#----------------------------------------------------------------------------
+#  PreComp.C is used to create the precompiled information
+#----------------------------------------------------------------------------
+
+precomp.pch precomp.obj:   precomp.c precomp.h
+               cl $(CFLAGS) -YcPRECOMP.H -NT precomp precomp.c | tee $*.err
+
+blink.obj:     blink.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NTSCREEN $*.c | tee $*.err
+
+cursor.obj:    cursor.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NTSCREEN $*.c | tee $*.err
+
+dialog.obj:    dialog.c $(INCFILES)
+
+focus.obj:     focus.c $(INCFILES)
+
+keyhook.obj:   keyhook.c $(INCFILES)
+
+libentry.obj:  libentry.asm
+
+libmain.obj:   libmain.c $(INCFILES)
+
+load.obj:      load.c $(INCFILES)
+
+paint.obj:     paint.asm paint.inc
+
+rect.obj:      rect.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NTSCREEN $*.c | tee $*.err
+
+save.obj:      save.c $(INCFILES)
+
+scroll.obj:    scroll.c $(INCFILES)
+
+setup.obj:     setup.c $(INCFILES)
+
+size.obj:      size.c $(INCFILES)
+
+vt220.h:       ..\apache\facelift.h ..\apache\asciidef.h version.h
+
+vt220.obj:     vt220.c $(INCFILES)
+
+vt220.res:     vt220.rc string.rc dialogs.rc vt220.ico resource.h
+
+window.obj:    window.c $(INCFILES)
+
+write.obj:     write.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NTSCREEN $*.c | tee $*.err
+
+decvt220.emu:  $(OBJECTS) vt220.res vt220.def
+               link $(LFLAGS) @vt220.lnk
+               rc -v vt220.res decvt220.emu
+               mapsym decvt220

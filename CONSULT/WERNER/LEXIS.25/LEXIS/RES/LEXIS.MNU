@@ -1,0 +1,513 @@
+/************************************************************************
+ *
+ *    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  LEXIS(R) 2000 Version 2.5 For Windows
+ *
+ *      Module:  lexis.mnu
+ *
+ *   Author(s):  Charles E. Kindel, Jr. (cek)
+ *
+ *
+ *      System:  Microsoft C 6.00A, Windows 3.00
+ *
+ *     Remarks:  
+ *
+ *   Revisions:  
+ *
+ *
+ ************************************************************************/
+
+
+/*************************************************************************
+ *  LEGALMENU
+ *
+ *  Description:
+ *      This is the menu for the Legal personality.
+ *
+ *      LEGALMENU is defined as 0x0001
+ *
+ *************************************************************************/
+LEGALMENU MENU
+{
+  POPUP "&File"
+  {
+    POPUP  "&New"
+    {
+        MENUITEM  "&Recording...",               IDM_NEW_RECORDING
+        MENUITEM  "&Diary...",                   IDM_NEW_DIARY
+        MENUITEM  "&Notepad...",                 IDM_NEW_NOTEPAD
+    }
+    POPUP  "&Open"
+    {
+        MENUITEM  "&Recording...",               IDM_OPEN_RECORDING
+        MENUITEM  "&Diary...",                   IDM_OPEN_DIARY
+        MENUITEM  "&Notepad...",                 IDM_OPEN_NOTEPAD
+    }
+    POPUP  "&Close"
+    {
+        MENUITEM  "&Recording",               IDM_CLOSE_RECORDING
+        MENUITEM  "&Diary",                   IDM_CLOSE_DIARY
+    }
+    MENUITEM  SEPARATOR
+
+    POPUP  "&Print"
+    {
+        MENUITEM  "&Recording...",               IDM_PRINT_RECORDING
+        MENUITEM  "&Diary...",                   IDM_PRINT_DIARY
+        MENUITEM  "&Notepad...",                 IDM_PRINT_NOTEPAD
+        MENUITEM  "D&ocument...",                IDM_PRINT_DOCUMENT
+        MENUITEM  SEPARATOR
+        MENUITEM  "&Screen",                     IDM_PRINT_SCREEN
+    }
+    MENUITEM  SEPARATOR
+
+    MENUITEM  "&Recording On",              IDM_RECORDING
+    MENUITEM  "Session &Diary On",          IDM_DIARY
+    MENUITEM  "Pr&inter On",                IDM_PRINTER
+    MENUITEM  SEPARATOR
+
+    POPUP     "&Setup"
+    {    
+        MENUITEM  "&User Preferences...",        IDM_SETUP_USERPREF
+        MENUITEM  "&Directories...",             IDM_SETUP_DIRECTORIES
+        MENUITEM  "&Connection...",                IDM_SETUP_HARDWARE
+        MENUITEM  SEPARATOR
+
+        MENUITEM  "&Page...",             IDM_PAGESETUP
+        MENUITEM  "P&rinter...",          IDM_PRINTSETUP
+    }
+    MENUITEM  SEPARATOR
+
+    MENUITEM  "Si&gn On LEXIS®",            IDM_SIGNON
+    MENUITEM  "E&xit",                          IDM_EXIT
+  }
+
+  POPUP "&Edit"
+  {
+    MENUITEM  "&Copy\tCtrl+Ins",                IDM_COPY
+    MENUITEM  "&Paste\tShift+Ins",              IDM_PASTE
+    MENUITEM  "Paste to &Diary",                IDM_COPYDIARY
+  }
+
+  POPUP "&Search"
+  {
+    MENUITEM  "&New Search",                    IDM_NEWSEARCH
+    MENUITEM  "&Modify Search...",              IDM_SEARCHMODIFY
+    MENUITEM  "&Display Diff Search Level...",	IDM_SEARCHLEVEL
+    MENUITEM  SEPARATOR
+    MENUITEM  "Change &Library",                IDM_LIBRARY
+    MENUITEM  "Change &File",                   IDM_FILE
+    MENUITEM  "Change &Client",                 IDM_CLIENT
+    MENUITEM  SEPARATOR
+    MENUITEM  "Save &ECLIPSE"                   IDM_ECLIPSE
+    MENUITEM  "Recall ECLI&PSE"                 IDM_ECLIPSERECALL
+    MENUITEM  SEPARATOR
+    MENUITEM  "Display Search &Request",        IDM_SEARCHDISPLAY
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Stop Search",                   IDM_STOP
+  }
+
+  POPUP "&View"
+  {
+    MENUITEM  "&Forward n Pages...",            IDM_NEXTPAGE
+    MENUITEM  "&Back n Pages...",               IDM_PREVPAGE
+    MENUITEM  SEPARATOR
+    MENUITEM  "F&orward n Documents...",        IDM_NEXTDOC
+    MENUITEM  "B&ack n Documents...",           IDM_PREVDOC
+    MENUITEM  SEPARATOR
+    MENUITEM  "Go to Pa&ge n...",               IDM_GOTOPAGE
+    MENUITEM  "Go to Do&cument n...",           IDM_GOTODOC
+    MENUITEM  SEPARATOR
+    MENUITEM  "Fi&rst Page",                    IDM_FIRSTPAGE
+    MENUITEM  "Firs&t Document",                IDM_FIRSTDOC
+  }
+
+  POPUP "F&ormats"
+  {
+    MENUITEM  "&KWIC",                          IDM_KWIC
+    MENUITEM  "&Full",                          IDM_FULL
+    MENUITEM  "&Cite",                          IDM_CITE
+    MENUITEM  "&Var KWIC...",                   IDM_VARKWIC
+    MENUITEM  "&Segments",                      IDM_SEGMENTS
+    MENUITEM  "S&ort",                          IDM_SEQUENCE
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Enter Star",                    IDM_ENTERSTAR
+    MENUITEM  "E&xit Star",                     IDM_EXITSTAR
+  }
+
+  POPUP "Se&rvices"
+  {
+    MENUITEM  "&Auto-Cite®",                    IDM_AUTOCITE
+    MENUITEM  "&Shepard's®",                    IDM_SHEPARD
+    MENUITEM  "LE&XSEE",                        IDM_LEXSEE
+    MENUITEM  "&LEXSTAT",                       IDM_LEXSTAT
+    MENUITEM  "LEX&DOC",                        IDM_LEXDOC
+    MENUITEM  "&Browse",                        IDM_BROWSE
+    MENUITEM  "&Resume...",                     IDM_RESUME
+    MENUITEM  SEPARATOR
+    MENUITEM  "Select Ser&vice",                IDM_SELECTSERVICE
+    MENUITEM  "&Exit Service",                  IDM_EXITSERVICE
+    MENUITEM  SEPARATOR                     
+    MENUITEM  "&Quotes",                        IDM_QUOTES
+  }
+
+  POPUP "&Delivery"
+  {
+    MENUITEM  "Print &Screen",                  IDM_PRINTSCREEN
+    MENUITEM  "Print &Document",                IDM_PRINTDOC
+    MENUITEM  "&Print All (Mail It)",		IDM_PRINTALL
+  }
+
+  POPUP "&Info"
+  {
+    MENUITEM  "&Time",                          IDM_TIME
+    MENUITEM  "&Request",                       IDM_REQUEST
+    MENUITEM  "&Pages",                         IDM_PAGES
+    MENUITEM  "&Debut",                         IDM_DEBUT
+  }
+
+  POPUP "&Help"
+  {
+    MENUITEM  "&Index",                         IDM_HELP_INDEX
+    MENUITEM  "&Keyboard",                      IDM_HELP_KEYBOARD
+    MENUITEM  "&Basic Skills",                  IDM_HELP_BASIC
+    MENUITEM  "&Commands",                      IDM_HELP_COMMANDS
+    MENUITEM  "&Procedures",                    IDM_HELP_PROCEDURES
+    MENUITEM  "&Using Help",                    IDM_HELP_HELPONHELP
+    MENUITEM  "&Tutorial",                      IDM_TUTORIAL
+    MENUITEM  "This &Screen",                   IDM_LEXISHELP
+    MENUITEM  SEPARATOR
+    MENUITEM  "&About LEXIS®...",		IDM_ABOUT
+  }
+
+}/* LEGALMENU */
+
+/*************************************************************************
+ *  CORPMENU (0x0002)
+ *
+ *  Description:
+ *      This is the menu for the Corporate personality.
+ *
+ *************************************************************************/
+CORPMENU MENU
+{
+  POPUP "&File"
+  {
+    POPUP  "&New"
+    {
+        MENUITEM  "&Recording...",               IDM_NEW_RECORDING
+        MENUITEM  "&Diary...",                   IDM_NEW_DIARY
+        MENUITEM  "&Notepad...",                 IDM_NEW_NOTEPAD
+    }
+    POPUP  "&Open"
+    {
+        MENUITEM  "&Recording...",               IDM_OPEN_RECORDING
+        MENUITEM  "&Diary...",                   IDM_OPEN_DIARY
+        MENUITEM  "&Notepad...",                 IDM_OPEN_NOTEPAD
+    }
+    POPUP  "&Close"
+    {
+        MENUITEM  "&Recording",               IDM_CLOSE_RECORDING
+        MENUITEM  "&Diary",                   IDM_CLOSE_DIARY
+    }
+    MENUITEM  SEPARATOR
+
+    POPUP  "&Print"
+    {
+        MENUITEM  "&Recording...",               IDM_PRINT_RECORDING
+        MENUITEM  "&Diary...",                   IDM_PRINT_DIARY
+        MENUITEM  "&Notepad...",                 IDM_PRINT_NOTEPAD
+        MENUITEM  "D&ocument...",                IDM_PRINT_DOCUMENT
+        MENUITEM  SEPARATOR
+        MENUITEM  "&Screen",                     IDM_PRINT_SCREEN
+    }
+    MENUITEM  SEPARATOR
+
+    MENUITEM  "&Recording On",              IDM_RECORDING
+    MENUITEM  "Session &Diary On",          IDM_DIARY
+    MENUITEM  "Pr&inter On",                IDM_PRINTER
+    MENUITEM  SEPARATOR
+
+    POPUP     "&Setup"
+    {    
+        MENUITEM  "&User Preferences...",        IDM_SETUP_USERPREF
+        MENUITEM  "&Directories...",             IDM_SETUP_DIRECTORIES
+        MENUITEM  "&Connection...",                IDM_SETUP_HARDWARE
+        MENUITEM  SEPARATOR
+
+        MENUITEM  "&Page...",             IDM_PAGESETUP
+        MENUITEM  "P&rinter...",          IDM_PRINTSETUP
+    }
+    MENUITEM  SEPARATOR
+
+    MENUITEM  "Si&gn On LEXIS®",            IDM_SIGNON
+    MENUITEM  "E&xit",                          IDM_EXIT
+  }
+
+  POPUP "&Edit"
+  {
+    MENUITEM  "&Copy\tCtrl+Ins",                IDM_COPY
+    MENUITEM  "&Paste\tShift+Ins",              IDM_PASTE
+    MENUITEM  "Paste to &Diary",                IDM_COPYDIARY
+  }
+
+  POPUP "&Search"
+  {
+    MENUITEM  "&New Search",                    IDM_NEWSEARCH
+    MENUITEM  "&Modify Search...",              IDM_SEARCHMODIFY
+    MENUITEM  "&Display Diff Search Level...",	IDM_SEARCHLEVEL
+    MENUITEM  SEPARATOR
+    MENUITEM  "Change &Library",                IDM_LIBRARY
+    MENUITEM  "Change &File",                   IDM_FILE
+    MENUITEM  "Change &Client",                 IDM_CLIENT
+    MENUITEM  SEPARATOR
+    MENUITEM  "Save &ECLIPSE"                   IDM_ECLIPSE
+    MENUITEM  "Recall ECLI&PSE"                 IDM_ECLIPSERECALL
+    MENUITEM  SEPARATOR
+    MENUITEM  "Display Search &Request",        IDM_SEARCHDISPLAY
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Stop Search",                   IDM_STOP
+  }
+
+  POPUP "&View"
+  {
+    MENUITEM  "&Forward n Pages...",            IDM_NEXTPAGE
+    MENUITEM  "&Back n Pages...",               IDM_PREVPAGE
+    MENUITEM  SEPARATOR
+    MENUITEM  "F&orward n Documents...",        IDM_NEXTDOC
+    MENUITEM  "B&ack n Documents...",           IDM_PREVDOC
+    MENUITEM  SEPARATOR
+    MENUITEM  "Go to Pa&ge n...",               IDM_GOTOPAGE
+    MENUITEM  "Go to Do&cument n...",           IDM_GOTODOC
+    MENUITEM  SEPARATOR
+    MENUITEM  "Fi&rst Page",                    IDM_FIRSTPAGE
+    MENUITEM  "Firs&t Document",                IDM_FIRSTDOC
+  }
+
+  POPUP "F&ormats"
+  {
+    MENUITEM  "&KWIC",                          IDM_KWIC
+    MENUITEM  "&Full",                          IDM_FULL
+    MENUITEM  "&Cite",                          IDM_CITE
+    MENUITEM  "&Var KWIC...",                   IDM_VARKWIC
+    MENUITEM  "&Segments",                      IDM_SEGMENTS
+    MENUITEM  "S&ort",                          IDM_SEQUENCE
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Enter Star",                    IDM_ENTERSTAR
+    MENUITEM  "E&xit Star",                     IDM_EXITSTAR
+  }
+
+
+  POPUP "Se&rvices"
+  {
+    MENUITEM  "Select Ser&vice",                IDM_SELECTSERVICE
+    MENUITEM  SEPARATOR
+    MENUITEM  "Save &ECLIPSE"                   IDM_ECLIPSE
+    MENUITEM  "Recall ECLI&PSE"                 IDM_ECLIPSERECALL
+    MENUITEM  "&Debut",                         IDM_DEBUT
+    MENUITEM  "&Tutorial",                      IDM_TUTORIAL
+    MENUITEM  "&Quotes",                        IDM_QUOTES
+    MENUITEM  SEPARATOR
+    MENUITEM  "E&xit Service",                  IDM_EXITSERVICE
+  }
+
+  POPUP "&Delivery"
+  {
+    MENUITEM  "Print &Screen",                  IDM_PRINTSCREEN
+    MENUITEM  "Print &Document",                IDM_PRINTDOC
+    MENUITEM  "&Print All (Mail It)",		IDM_PRINTALL
+  }
+
+  POPUP "&Info"
+  {
+    MENUITEM  "&Time",                          IDM_TIME
+    MENUITEM  "&Request",                       IDM_REQUEST
+    MENUITEM  "&Pages",                         IDM_PAGES
+    MENUITEM  "&Debut",                         IDM_DEBUT
+  }
+
+  POPUP "&Help"
+  {
+    MENUITEM  "&Index",                         IDM_HELP_INDEX
+    MENUITEM  "&Keyboard",                      IDM_HELP_KEYBOARD
+    MENUITEM  "&Basic Skills",                  IDM_HELP_BASIC
+    MENUITEM  "&Commands",                      IDM_HELP_COMMANDS
+    MENUITEM  "&Procedures",                    IDM_HELP_PROCEDURES
+    MENUITEM  "&Using Help",                    IDM_HELP_HELPONHELP
+    MENUITEM  "&Tutorial",                      IDM_TUTORIAL
+    MENUITEM  "This &Screen",                   IDM_LEXISHELP
+    MENUITEM  SEPARATOR
+    MENUITEM  "&About LEXIS®...",		IDM_ABOUT
+  }
+
+}/* CORPMENU */
+
+/*************************************************************************
+ *  COMBINEDMENU (0x0004)
+ *
+ *  Description:
+ *      This is the menu for the Combined personality.
+ *
+ *************************************************************************/
+COMBINEDMENU MENU
+{
+  POPUP "&File"
+  {
+    POPUP  "&New"
+    {
+        MENUITEM  "&Recording...",               IDM_NEW_RECORDING
+        MENUITEM  "&Diary...",                   IDM_NEW_DIARY
+        MENUITEM  "&Notepad...",                 IDM_NEW_NOTEPAD
+    }
+    POPUP  "&Open"
+    {
+        MENUITEM  "&Recording...",               IDM_OPEN_RECORDING
+        MENUITEM  "&Diary...",                   IDM_OPEN_DIARY
+        MENUITEM  "&Notepad...",                 IDM_OPEN_NOTEPAD
+    }
+    POPUP  "&Close"
+    {
+        MENUITEM  "&Recording",               IDM_CLOSE_RECORDING
+        MENUITEM  "&Diary",                   IDM_CLOSE_DIARY
+    }
+    MENUITEM  SEPARATOR
+
+    POPUP  "&Print"
+    {
+        MENUITEM  "&Recording...",               IDM_PRINT_RECORDING
+        MENUITEM  "&Diary...",                   IDM_PRINT_DIARY
+        MENUITEM  "&Notepad...",                 IDM_PRINT_NOTEPAD
+        MENUITEM  "D&ocument...",                IDM_PRINT_DOCUMENT
+        MENUITEM  SEPARATOR
+        MENUITEM  "&Screen",                     IDM_PRINT_SCREEN
+    }
+    MENUITEM  SEPARATOR
+
+    MENUITEM  "&Recording On",              IDM_RECORDING
+    MENUITEM  "Session &Diary On",          IDM_DIARY
+    MENUITEM  "Pr&inter On",                IDM_PRINTER
+    MENUITEM  SEPARATOR
+
+    POPUP     "&Setup"
+    {    
+        MENUITEM  "&User Preferences...",        IDM_SETUP_USERPREF
+        MENUITEM  "&Directories...",             IDM_SETUP_DIRECTORIES
+        MENUITEM  "&Connection...",                IDM_SETUP_HARDWARE
+        MENUITEM  SEPARATOR
+
+        MENUITEM  "&Page...",             IDM_PAGESETUP
+        MENUITEM  "P&rinter...",          IDM_PRINTSETUP
+    }
+    MENUITEM  SEPARATOR
+
+    MENUITEM  "Si&gn On LEXIS®",            IDM_SIGNON
+    MENUITEM  "E&xit",                          IDM_EXIT
+  }
+
+  POPUP "&Edit"
+  {
+    MENUITEM  "&Copy\tCtrl+Ins",                IDM_COPY
+    MENUITEM  "&Paste\tShift+Ins",              IDM_PASTE
+    MENUITEM  "Paste to &Diary",                IDM_COPYDIARY
+  }
+
+  POPUP "&Search"
+  {
+    MENUITEM  "&New Search",                    IDM_NEWSEARCH
+    MENUITEM  "&Modify Search...",              IDM_SEARCHMODIFY
+    MENUITEM  "&Display Diff Search Level...",	IDM_SEARCHLEVEL
+    MENUITEM  SEPARATOR
+    MENUITEM  "Change &Library",                IDM_LIBRARY
+    MENUITEM  "Change &File",                   IDM_FILE
+    MENUITEM  "Change &Client",                 IDM_CLIENT
+    MENUITEM  SEPARATOR
+    MENUITEM  "Save &ECLIPSE"                   IDM_ECLIPSE
+    MENUITEM  "Recall ECLI&PSE"                 IDM_ECLIPSERECALL
+    MENUITEM  SEPARATOR
+    MENUITEM  "Display Search &Request",        IDM_SEARCHDISPLAY
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Stop Search",                   IDM_STOP
+  }
+
+  POPUP "&View"
+  {
+    MENUITEM  "&Forward n Pages...",            IDM_NEXTPAGE
+    MENUITEM  "&Back n Pages...",               IDM_PREVPAGE
+    MENUITEM  SEPARATOR
+    MENUITEM  "F&orward n Documents...",        IDM_NEXTDOC
+    MENUITEM  "B&ack n Documents...",           IDM_PREVDOC
+    MENUITEM  SEPARATOR
+    MENUITEM  "Go to Pa&ge n...",               IDM_GOTOPAGE
+    MENUITEM  "Go to Do&cument n...",           IDM_GOTODOC
+    MENUITEM  SEPARATOR
+    MENUITEM  "Fi&rst Page",                    IDM_FIRSTPAGE
+    MENUITEM  "Firs&t Document",                IDM_FIRSTDOC
+  }
+
+  POPUP "F&ormats"
+  {
+    MENUITEM  "&KWIC",                          IDM_KWIC
+    MENUITEM  "&Full",                          IDM_FULL
+    MENUITEM  "&Cite",                          IDM_CITE
+    MENUITEM  "&Var KWIC...",                   IDM_VARKWIC
+    MENUITEM  "&Segments",                      IDM_SEGMENTS
+    MENUITEM  "S&ort",                          IDM_SEQUENCE
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Enter Star",                    IDM_ENTERSTAR
+    MENUITEM  "E&xit Star",                     IDM_EXITSTAR
+  }
+
+
+  POPUP "Se&rvices"
+  {
+    MENUITEM  "&Auto-Cite®",                    IDM_AUTOCITE
+    MENUITEM  "&Shepard's®",                    IDM_SHEPARD
+    MENUITEM  "LE&XSEE",                        IDM_LEXSEE
+    MENUITEM  "&LEXSTAT",                       IDM_LEXSTAT
+    MENUITEM  "&LEXDOC",                        IDM_LEXDOC
+    MENUITEM  "&Browse",                        IDM_BROWSE
+    MENUITEM  "&Resume...",                     IDM_RESUME
+    MENUITEM  SEPARATOR
+    MENUITEM  "Select Ser&vice",                IDM_SELECTSERVICE
+    MENUITEM  "&Exit Service",                  IDM_EXITSERVICE
+    MENUITEM  SEPARATOR                     
+    MENUITEM  "&Quotes",                        IDM_QUOTES
+  }
+
+  POPUP "&Delivery"
+  {
+    MENUITEM  "Print &Screen",                  IDM_PRINTSCREEN
+    MENUITEM  "Print &Document",                IDM_PRINTDOC
+    MENUITEM  "&Print All (Mail It)",		IDM_PRINTALL
+  }
+
+  POPUP "&Info"
+  {
+    MENUITEM  "&Time",                          IDM_TIME
+    MENUITEM  "&Request",                       IDM_REQUEST
+    MENUITEM  "&Pages",                         IDM_PAGES
+    MENUITEM  "&Debut",                         IDM_DEBUT
+  }
+
+  POPUP "&Help"
+  {
+    MENUITEM  "&Index",                         IDM_HELP_INDEX
+    MENUITEM  "&Keyboard",                      IDM_HELP_KEYBOARD
+    MENUITEM  "&Basic Skills",                  IDM_HELP_BASIC
+    MENUITEM  "&Commands",                      IDM_HELP_COMMANDS
+    MENUITEM  "&Procedures",                    IDM_HELP_PROCEDURES
+    MENUITEM  "&Using Help",                    IDM_HELP_HELPONHELP
+    MENUITEM  "&Tutorial",                      IDM_TUTORIAL
+    MENUITEM  "This &Screen",                   IDM_LEXISHELP
+    MENUITEM  SEPARATOR
+    MENUITEM  "&About LEXIS®...",		IDM_ABOUT
+  }
+
+}/* COMBINEDMENU */
+/************************************************************************
+ * End of File: lexis.mnu
+ ************************************************************************/
+

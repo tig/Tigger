@@ -1,0 +1,42 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "RESOURCE.H\0"
+END
+
+SETTINGSDLGBOX DIALOG 16, 36, 176, 152
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "COMM Settings ..."
+FONT 8, "HELV"
+BEGIN
+    ICON            ICON, 0xFFFF, 148, 122, 16, 16
+    CONTROL         "", IDD_DLGFRAME, "Static", SS_GRAYFRAME, 4, 4, 124, 144
+    RTEXT           "P&ort:", 0xFFFF, 12, 12, 48, 10
+    COMBOBOX        IDD_PORTCB, 64, 10, 56, 44, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Baud Rate:", 0xFFFF, 12, 28, 48, 10
+    COMBOBOX        IDD_BAUDRATECB, 64, 26, 56, 44, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Data Bits:", 0xFFFF, 12, 44, 48, 10
+    COMBOBOX        IDD_DATABITSCB, 64, 42, 56, 44, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Parity:", 0xFFFF, 12, 60, 48, 10
+    COMBOBOX        IDD_PARITYCB, 64, 58, 56, 44, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Stop Bits:", 0xFFFF, 12, 76, 48, 10
+    COMBOBOX        IDD_STOPBITSCB, 64, 74, 56, 44, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Break &Length:", 0xFFFF, 12, 92, 48, 10
+    COMBOBOX        IDD_BREAKLENGTHCB, 64, 90, 56, 44, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Flow Control:", 0xFFFF, 12, 108, 48, 10
+    CONTROL         "D&TR/DSR", IDD_DTRDSR, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 64, 108, 48, 10
+    CONTROL         "RTS/&CTS", IDD_RTSCTS, "Button", BS_AUTOCHECKBOX, 64, 
+                    120, 48, 10
+    CONTROL         "&XON/XOFF", IDD_XONXOFF, "Button", BS_AUTOCHECKBOX, 64, 
+                    132, 48, 10
+    CONTROL         "&Ok", IDB_OK, "FL_BMPBTN", WS_GROUP | WS_TABSTOP | 
+                    0x2000, 136, 46, 36, 22
+    CONTROL         "C&ancel", IDB_CANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000, 
+                    136, 76, 36, 22
+END

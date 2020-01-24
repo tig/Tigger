@@ -1,0 +1,35 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "Y:\\!\\WINPRINT\\INC\\DLGS.H\0"
+END
+
+64 DIALOG 20, 33, 250, 134
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About WinPrint 2.0"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "Black Frame", 8192, "Static", SS_BLACKFRAME, 2, 2, 245, 
+                    128
+    ICON            "WINPRINT", ico1, 11, 14, 18, 20
+    LTEXT           "WinPrint", 8193, 39, 6, 108, 10
+    LTEXT           "Version %d.%02d.%02d", IDD_VERSION, 39, 16, 155, 10, 
+                    NOT WS_GROUP
+    LTEXT           "Copyright © 1990-1992 Charles E. Kindel, Jr.", 8194, 39, 
+                    26, 174, 10, NOT WS_GROUP
+    LTEXT           "Portions Copyright © 1985-1992 Microsoft Corporation", 
+                    8195, 39, 36, 198, 10, NOT WS_GROUP
+    LTEXT           "By Charles E. Kindel, Jr.", 8196, 40, 63, 174, 10
+    LTEXT           "22925 N.E 12th Place", 8197, 40, 73, 174, 10, NOT 
+                    WS_GROUP
+    LTEXT           "Redmond, WA  98053", 8198, 40, 83, 174, 10, NOT 
+                    WS_GROUP
+    LTEXT           "CompuServe ID 71551,1445", 8199, 40, 93, 174, 10, NOT 
+                    WS_GROUP
+    CONTROL         "", 8200, "Static", SS_BLACKRECT | WS_GROUP, 9, 106, 233, 
+                    1
+    RTEXT           "This product is licenced to:", 8201, 6, 114, 101, 9, 
+                    NOT WS_GROUP
+    DEFPUSHBUTTON   "OK", IDCANCEL, 197, 7, 45, 14, WS_GROUP
+    EDITTEXT        8204, 109, 114, 128, 9, ES_AUTOHSCROLL | WS_DISABLED | 
+                    NOT WS_BORDER
+END

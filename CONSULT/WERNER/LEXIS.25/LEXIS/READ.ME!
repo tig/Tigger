@@ -1,0 +1,346 @@
+
+************************************************************************
+***********                                               **************
+***********   READ ME FILE FOR LEXIS 2000 2.5 FOR WINDOWS **************
+***********                                               **************
+************************************************************************
+
+This file contains the latest information on Lexis 2000 2.5 for Windows.
+
+The latest and greatest information will be added to the file as the
+project continues.
+
+Read this file BEFORE you run the latest version.  This way you won't
+get your hopes up too high when you see something that appears to 
+be broken.
+
+NOTE:  READ THIS!!!:
+
+   BEFORE RUNNING A "NEW" VERSION, MAKE SURE YOU DELETE ALL PREVIOUS
+   VERSIONS OF "CMNDLL.DLL" FROM YOUR PATH!
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.132            Date: 3/18/91
+
+Selecting text is almost finished.  The current implementation 
+"flickers"...that will be fixed.
+
+Added LEXPRNT.DLL.  This is the printing module.  The File.Print... 
+functions all now work.
+
+Choose the "Sign On/Off Lexis..." menu item.  The "connect" dialog box
+has been implemented.  Notice the "LED" lights and "Stop sign" button.
+
+This version comes with CMNDLL Version 1.00.179.
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.120            Date: 3/10/91
+
+Added right mouse button support (i.e. Right mouse button moves cursor
+to where the mouse was clicked).
+
+Most of the printing code is implemented....but there's nothing to
+print at this point.
+
+Much of the logic for selecting text and pasting it to the clipboard
+is implemented.  There are some wrinkles still, however.  Thus the
+selection mechanism is disabled in this release.
+
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.118            Date: 3/6/91
+
+Fixed bug 0.00.112:0001 (Menu mnemoics).
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.113            Date: 3/4/91
+
+There was an "OutputDebugString()" call in the Directories dialog box.
+If you ran version 0.00.109 or 112 on a system without a terminal
+connected to COM1 you would get an "Error writing to device AUX" 
+message when the Directories dialog box exited.  This version fixes
+this.
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.112            Date: 3/4/91
+
+
+Fixed scrolling problem.
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.109            Date: 3/4/91
+
+Added terminal window.
+
+  Implemented:
+        Caret tracking (i.e. caret moves outside of visible window,
+           I track it and make it visible)
+        Word wrap.
+        Scrolling.
+        Changing colors/fonts in UserPrefs...
+        Cursor movement keys.
+
+  Not yet Implemented:
+        Insert mode.
+        Character attributes (primary and secondary).
+        Selection (i.e. with mouse)
+
+Added System Error dialog boxes.  These dialog boxes will pop up
+if anything serious goes wrong.  The dialog box indicates the
+source code module and line number that the error was generated
+from.  THIS IS FOR TESTING ONLY.  If you encounter one of these
+dialog boxes please report all relevent information to me.
+        
+Comes with CMNDLL.DLL Version 1.00.160.
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.062             Date: 2/24/91
+
+Updated all menu "Quick Help" strings so they are more complete and
+explainatory. 
+
+Fixed "clipping" message line problem.
+
+Finialized the Help menu.  For a good example of how the help system will
+be implemented see Excel 3.0.  Added some Help functionality.  The
+LEXIS.HLP file is not ready yet, so I just call up WINHELP.HLP for
+now.
+
+Added "page setup" dialog box.
+
+Finished "User preferences"  It now paints a sample, and the font 
+info is stored in the INI file.
+
+Implemented "Connection Setup" dialog.  This includes the "Modem 
+setup" and the "Networks" dialogs.  The "Connector" dialog will
+be supplied when the communications drivers are implemented.
+
+Note that some of the functinality in the dialog boxes is not implemented
+yet.
+
+Made several cosmetic changes.
+
+Comes with CMNDLL.DLL Version 1.00.158.
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.059             Date: 2/23/91
+
+I have added the "File" dialog boxes.  There are some refinements 
+needed, but this will come.
+
+To make the File dialog boxes (File.New, File.Open, File.Print) work
+correctly use the File.Setup.Directories dialog to set the default 
+directories to a "real" directory.  (This is only needed if you
+do not have a C:\LEXIS directory).  Note that this WILL NOT be 
+hard coded this way...it was done so here for testing purposes.
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.056             Date: 2/22/91
+
+This version has been tested thoroughly in all operating modes of Windows
+on all hardware I have available to me.  
+
+More dialog box functions have been added, the menu's have been fixed up,
+and the bottom status line now shows the status of the Record, Diary,
+and Print functions.  
+
+Note that currently there is no code to turn on and off the new status
+indicators.  That functionality will come into play when the associated
+functions are implemented.
+
+The "File.Setup.Directories" dialog box has been implemented.
+
+The "File.Setup.Printer" dilog box has been implemented.
+
+The "File.Setup.User Preferences" dialog box has undergone some changes,
+but is still not 100% there.
+
+This version comes with CMNDLL.DLL Version 1.00.155.
+
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.050             Date: 2/12/91
+
+The main change in this version is the modification of the User 
+Prefereneces dialog box.  A "Select Font" dialog box was added for
+the Normal Font and the Hightlight Font.
+
+Note that the User Preferences dialog box does not implement the "sample"
+yet.  Also note that the Select Font dialog box does not implement 
+color selection yet either.
+
+When switching from one Personality to another, I have sped up the
+window redraws.  
+
+Fixed several "Real Mode" bugs.  Note that there may still be some 
+problems in Real Mode when using an EMS driver.  I wanted to get this
+version to you quickly and tracking down the problems in Real Mode is
+VERY time consuming.
+
+Note that this Version comes with CMNDLL Version 1.00.152.
+
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.043             Date: 2/06/91
+
+Completed "3 GUIs".  Added User Preferences dialog box.  Notice the 
+new and improved menu layout in the "File"  menu.  This should make 
+the File menu easier to read and use for the user.  
+
+Use the "File.Setup.User Preferences" menu item to change the 
+"Personality" of LEXIS between the 3 (LEGAL, CORP, and COMBINED).
+You can also turn on/off the button bar, top status bar, and 
+bottom bar.  
+
+NOTE!: The Font selection has been moved from the "Formats" menu to
+this dialog box.  Also note that I haven't implemented this yet
+(that's why the list boxes are empty)...
+
+Moved the buttons closer together.  I think I like this better.  It 
+takes less screen real estate and makes the groupings clearer.
+
+Added one pixel above the text in a stat box on the status bars. 
+This gives it a little more "even" look, without making it too tall.
+
+Modified layout of the about box.  This is a little more consistant
+looking.
+
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.025             Date: 1/28/91
+
+
+Fixed font problems on Mike's machine (i hope).  Fixed UAE problem with
+the time and date routines when the [Intl] section of WIN.INI had not
+been intialized.
+
+Made button font smaller and non-bold.  Also changed colors a little
+bit.
+
+-------------------------------------------------------------------------
+
+  Version: 0.00.022             Date: 1/28/91
+
+This is the first version that I'm going to let anyone see.
+
+PLEASE READ THE FOLLOWING COMPLETELY BEFORE RUNNING IT!!!
+
+Here's what's there and what isn't:
+
+
+- MAIN WINDOW
+   When you start L2000 2.5 for the first time, it will place itself
+   at a "default" position on the screen.  Then from that time forward
+   whenever you exit L2000, it will save it's LAST screen position and
+   when it's started again it will come up in that position.
+
+   It even remembers if it was maximized or not.  For instance let's
+   say you had it open at x = 10, y = 56, xsize = 600, and ysize = 323, 
+   and you close it down.  Then you start it up again.  It will come
+   up at 10,56,600,323.  
+
+   Then let's say you maximize it.  Ok, so now it's full screen.  Now
+   you quit again.  Next time you run it, it will be maximized!  But 
+   let's say you hit the "restore" arrow...  The window will go to 
+   where you think it should:  10,56,600,323!
+
+- MENU
+   The menu "message" tracking is all there.  The only menu item
+   that actually does anything is the "About..." menu item under
+   the Help menu.  
+
+- TOP STATUS BAR
+   This was formerly called the InfoBar in 1.7.  In the a later version
+   you will be able to double click on this bar and pop up the "Change
+   Client" and "Change Libaray" dialog boxes".  
+
+- BOTTOM STATUS BAR
+   This was formerly called the status line in 1.7.  Double click
+   on the various boxes to see that it acts like a button.  Note 
+   the status bars DO NOT depress when you click on them, they only
+   send the appropriate messages.  
+
+   MESSAGE BOX
+     The idea is for the "message box" (the part that say's "Offline",
+     and tracks the menu items) to serve as a means for the user to get
+     quick help (i.e. double click on that part and he/she'll get the
+     help system).
+
+
+     Note that the menu's are ALL tracked in the message part, including
+     the system menu!
+
+   NUM and CAPS BOXES
+     These two boxes track the status of the NUM and CAPS lock keys.
+     Note the COLOR of these strings!  I can change them _easily_
+     to make anyone happy.
+        
+   DATE BOX
+     The date is displayed here in Window's "Long" date format.  To
+     see how super cool this is, go to the control panel and change
+     the "Long" date format (in international) to something 
+     different while L2000 2.5 is running (you have to OKay your
+     way out of the International dialog boxes in CtrlPanel for this
+     to work).
+
+   CD BOX
+     This shows the Carrier Detect Status....
+
+- BUTTON WINDOW
+   As you can see this is cool <grin>.  While these buttons may 
+   _look_ like normal Windows buttons, think again...These buttons
+   are of my own "bmpbtn" class.  What does this mean?
+
+        1) I can change the color at will.  (There are four colors
+           to each button: Text, FocusText, Face, and Shadow).
+
+           Note how the yellow button's shadow is a "dark" yellow!
+
+        2) See how the font looks a little smaller than the "normal"
+           system font?  I can change the font of the buttons to
+           any font Windows can display.  I'll show you others
+           in later versions.
+
+        3) By simply changing some strings in the application's
+           resources (i.e. without changing _ANY_ code, I can 
+           make bitmaps appear in those buttons.  You've seen
+           TEST2.EXE's buttons...
+
+   KEYBOARD INTERFACE
+     I've implemented fully the keyboard interface for the buttons
+     as we discussed it on the phone.  When you are in the terminal
+     window (which doesn't really exist yet) or other child window
+     you can hit the TAB key to get into the button window.  Then
+     hit TAB, UP, DOWN, RIGHT, LEFT, HOME, END, PAGEUP, and PAGEDOWN
+     to move from button to button.  SHIFT-TAB off the "first button"
+     (i.e. "Transmit") and you'll return to the main window, TAB off
+     the "last button" and you'll return to the main window.
+
+     Cool, huh?
+
+     While any button has the focus notice the following:
+
+        1)  It is highlighted by a different text color
+        2)  Pressing SPACE causes it to be "pressed"
+        3)  Pressing ENTER causes the "Transmit" button to be pressed!
+   
+That's about it.  Let me know what you think!
+
+-------------------------------------------------------------------------
+
+************************************************************************
+                        End of File
+************************************************************************
+

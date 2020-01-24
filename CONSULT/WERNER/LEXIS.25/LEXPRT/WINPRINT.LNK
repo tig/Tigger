@@ -1,0 +1,9 @@
+OBJ\libentry+
+OBJ\WEP+
+OBJ\WINPRINT+
+OBJ\ABOUT
+WINPRT2.DLL /align:16
+WINPRT2 /map
+wdb libw mdllcew
+WINPRINT.DEF
+

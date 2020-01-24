@@ -1,0 +1,10 @@
+#include <windows.h>
+#include "cmndlld.h"
+
+#include "cmndll.dlg"
+#include "cmndll.str"
+
+cmndll ICON "cmndll.ico"
+
+
+

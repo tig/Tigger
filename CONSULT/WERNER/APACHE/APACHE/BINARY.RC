@@ -1,0 +1,41 @@
+//***************************************************************************
+//
+//  Module: binary.rc
+//
+//  Purpose:
+//     This is the binary resource stuff.
+//
+//  Development Team:
+//     Bryan A. Woodruff
+//
+//  History:   Date       Author      Comment
+//              2/ 5/92   BryanW      Wrote it.
+//
+//---------------------------------------------------------------------------
+//
+//  *** ***  THIS CODE IS CONFIDENTIAL PROPERTY OF WERNER ASSOCIATES *** *** 
+//  Copyright (c) 1992 Werner Associates.  All Rights Reserved.
+//
+//***************************************************************************
+
+SESSIONDIRBTNINFO RCDATA DISCARDABLE
+BEGIN
+    IDB_DIAL, DIALUPBMP, DIALDNBMP
+    IDB_CONNECT, CONNECTUPBMP, CONNECTDNBMP
+    IDB_EDIT, EDITUPBMP, EDITDNBMP
+    IDB_NEW, NEWUPBMP, NEWDNBMP
+    IDB_DELETE, DELETEUPBMP, DELETEDNBMP
+    IDB_OPTIONS, OPTIONSUPBMP, OPTIONSDNBMP
+    IDCANCEL, CANCELUPBMP, CANCELDNBMP
+END
+
+DIALINGBTNINFO RCDATA DISCARDABLE
+BEGIN
+   IDB_DELETE, DELETEUPBMP, DELETEDNBMP
+   IDB_RECYCLE, RECYCLEUPBMP, RECYCLEDNBMP
+END
+
+//***************************************************************************
+//  End of File: binary.rc
+//***************************************************************************
+

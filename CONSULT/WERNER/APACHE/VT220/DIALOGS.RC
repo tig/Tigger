@@ -1,0 +1,32 @@
+SETTINGSDLGBOX DIALOG 12, 42, 256, 172
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "DEC(tm) VT220 Settings"
+FONT 8, "Helv"
+BEGIN
+    CTEXT           "VT220 Compatible Emulation", -1, 24, 6, 208, 8
+    ICON            ICONS, -1, 236, 2, 16, 16
+    ICON            ICONS, -1, 4, 2, 16, 16
+    CONTROL         "", IDD_DLGFRAME, "Static", SS_BLACKFRAME, 4, 22, 248, 
+                    126
+    CONTROL         "&Local Echo", IDD_LOCALECHO, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 12, 32, 84, 10
+    CONTROL         "&New Line on CR", IDD_NEWLINE, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 12, 44, 84, 10
+    CONTROL         "&Use NUMLOCK as PF1", IDD_USENUMLOCK, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 12, 80, 84, 10
+    CONTROL         "&Send DEL on BS", IDD_SENDDEL, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 12, 68, 84, 10
+    CONTROL         "&Auto Line Wrap", IDD_LINEWRAP, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 12, 56, 84, 10
+    LTEXT           "&Translation:", -1, 176, 32, 68, 8
+    COMBOBOX        IDD_TRANSLATECB, 176, 42, 68, 36, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Set &Base Font", IDD_BASEFONT, 176, 110, 68, 14, 
+                    WS_GROUP
+    PUSHBUTTON      "Set &Highlight Font", IDD_HIGHLIGHTFONT, 176, 128, 68, 
+                    14, WS_GROUP
+    CONTROL         "", IDD_SAMPLE, "Static", SS_BLACKFRAME, 12, 110, 156, 
+                    32
+    DEFPUSHBUTTON   "&Ok", IDOK, 52, 154, 40, 14, WS_GROUP
+    PUSHBUTTON      "&Cancel", IDCANCEL, 164, 154, 40, 14
+END

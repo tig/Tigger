@@ -1,0 +1,101 @@
+#include "windows.h"
+#include "test2d.h"
+#include "..\inc\cmndll.h"
+#include "..\inc\cmndlld.h"
+test2 ICON "test2.ICO"
+
+stop1 BITMAP "stop1.bmp"
+stop2 BITMAP "stop2.bmp"
+
+stop3 BITMAP "stop3.bmp"
+stop4 BITMAP "stop4.bmp"
+
+con1 BITMAP "con1.bmp"
+con2 BITMAP "con2.bmp"
+
+con3 BITMAP "con3.bmp"
+con4 BITMAP "con4.bmp"
+
+pyramid BITMAP "pyramid.bmp"
+boxes BITMAP "boxes.bmp"
+weave BITMAP "weave.bmp"
+
+#include "test2.dlg"
+
+test2 MENU
+BEGIN
+    POPUP       "&File"
+    BEGIN
+        MENUITEM "&Open File...", IDM_FILEOPEN
+        MENUITEM "&Select Printer...", IDM_SELPRN
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit", IDM_FILEEXIT
+    END
+    POPUP        "&MessageLine"
+    BEGIN
+        MENUITEM "&Message line visible", IDM_MSGVISIBLE, CHECKED
+    END
+    MENUITEM "&Next!", IDM_NEXTMSG
+    POPUP       "&Font"
+    BEGIN
+        MENUITEM "&Select Font...",             IDM_SELFONT
+        MENUITEM SEPARATOR
+        MENUITEM "&Defaults", IDM_DEFAULT
+        MENUITEM "&Raster", IDM_RASTER
+        MENUITEM "&Device", IDM_DEVICE
+        MENUITEM "&ANSI", IDM_ANSI
+        MENUITEM "&SYMBOL", IDM_SYMBOL
+        MENUITEM "&SHIFTJIS", IDM_SHIFTJIS
+        MENUITEM "&OEM", IDM_OEM
+        MENUITEM "&Variable", IDM_VARIABLE
+        MENUITEM "&Fixed", IDM_FIXED
+        MENUITEM SEPARATOR
+        MENUITEM "&Use Printer Fonts", IDM_USEPRINTER
+        MENUITEM "No Printer",                 IDM_NOPRINTER  
+        MENUITEM "No FG Color",                IDM_NOFGCOLOR  
+        MENUITEM "No BG Color",                IDM_NOBGCOLOR  
+        MENUITEM "No Default Font",            IDM_NODEFAULT  
+        MENUITEM "No Bold",                    IDM_NOBOLD     
+        MENUITEM "No Italic",                  IDM_NOITALIC   
+        MENUITEM "No Underline",               IDM_NOUNDERLINE
+        MENUITEM "No StrikeOut",               IDM_NOSTRIKEOUT
+    END
+
+    POPUP        "&Controls"
+    BEGIN
+        MENUITEM "&Led Box", IDM_LED
+        MENUITEM "&Shadows", IDM_TEST
+    END
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About...", IDM_HELPABOUT
+    END
+END
+
+
+
+STRINGTABLE
+BEGIN
+  IDB_1, "~stop1|stop2|TheEnd!"
+  IDB_2, "~con1|con2|Connect"
+  IDB_3, "~con3|con4|Connect!"
+  IDB_4, "~stop1|stop2|TheEnd!"
+  IDB_5, "~stop3|stop4|Stop!"
+  IDB_6, "~stop2|stop1|Halt!"
+  IDB_7, "~weave|boxes|Weave1"
+  IDB_8, "~pyramid||3d pyramid"
+
+  IDB_9, "~%pyramid"
+  IDB_10, "~%boxes"
+  IDB_11, "~%weave"
+  IDB_12, "~%pyramid||"
+  IDB_13, "~%pyramid||Pyramid1"
+  IDB_14, "~%pyramid|boxes|Pyramid2"
+  IDB_15, "~%pyramid|weave|Pyramid3"
+  IDB_16, "~%weave|boxes|Weave1"
+
+  IDS_APPNAME, "Test2"
+  IDS_HEXFMT, "0x%04X"
+  IDS_LPSTRFMT, "%s(0x%04X) = %s"
+END
+

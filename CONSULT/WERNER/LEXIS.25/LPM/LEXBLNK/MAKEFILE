@@ -1,0 +1,52 @@
+#*************************************************************
+#  
+# MAKEFILE for the LEXIS Program Manager Screen Blanker
+#
+# Copyright (c) 1991 Werner Associates.  All Rights Reserved.
+#
+#
+#*************************************************************
+
+MEM      =-AS
+LIBS     =slibcew
+
+#CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3 -nologo -D DEBUG
+#LINKOPTS =/NOD/NOE/CO
+
+CLOPTS   =$(MEM) -c -Gsw -Oad -Zpe -W3 -nologo
+LINKOPTS =/NOD/NOE
+
+lexblnk.exe:       lexblnk.obj\
+                   winstub.exe\
+                   lexblnk.def\
+                   lexblnk.res\
+                   blnkdll.dll 
+    link $(LINKOPTS) lexblnk,,, blnkdll wdb $(LIBS) libw, lexblnk.def
+    rc -v lexblnk.res
+
+lexblnk.obj: lexblnk.c resource.h lexblnk.h blnkdll.h
+    cl $(CLOPTS) lexblnk.c > lexblnk.err
+
+winstub.exe: winstub.asm
+    masm -I.\  winstub.asm;
+    link winstub;
+
+lexblnk.res: lexblnk.rc lexblnk.ico resource.h
+    rc -r lexblnk.rc
+
+
+blnkdll.dll: blnkdll.res blnkdll.obj libentry.obj 
+    link $(LINKOPTS) blnkdll libentry, blnkdll.dll /align:16, blnkdll, wdb sdllcew libw, blnkdll.def
+    rc -v BLNKDLL.RES BLNKDLL.DLL
+    implib BLNKDLL.lIB BLNKDLL.DEF
+
+blnkdll.res: blnkdll.rc
+    rc -r blnkdll.rc
+
+blnkdll.obj:  blnkdll.c blnkdll.h
+    cl $(CLOPTS) blnkdll.c > blnkdll.err
+
+
+LIBENTRY.OBJ: LIBENTRY.asm
+    @echo Assembling LIBENTRY.asm...
+    masm -Mx LIBENTRY, $(MYOBJ)LIBENTRY;

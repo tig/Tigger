@@ -1,0 +1,353 @@
+# Uncomment this line for normal compilation
+cc = cl -c -nologo -u -DNDEBUG -DNOTRC -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT
+
+# Uncomment These two for codeview debug
+# cc = cl -c -nologo -u -Zi      -AM -FPa -Gcsw -Ow  -W2 -Zpe -NT
+# CO = /CO
+
+all : xtalk.exe
+
+xtalk.res: xtalk.rc xtalk.h dialogs.h strtbl.h xtalk.ico tokens.dat
+    rc -r xtalk.rc
+
+tokens.dat:	compile.h
+		cl -W2 -Zpe resource.c
+		resource
+
+ascii.obj:	ascii.c xtalk.h library.h xfer.h comm.h term.h\
+		properf.h variable.h prodata.h dialogs.h dosos2.h
+		$(cc) _ASCII ascii.c
+
+capture.obj:	capture.c xtalk.h library.h capture.h comm.h global.h\
+		sess.h term.h prodata.h variable.h xfer.h dialogs.h dosos2.h
+		$(cc) _CAPTURE capture.c
+
+commdlg.obj:	commdlg.c xtalk.h library.h dialogs.h comm.h\
+		prodata.h dosos2.h
+		$(cc) _COMMDLG commdlg.c
+
+commhi.obj:	commhi.c xtalk.h library.h comm.h capture.h term.h sess.h\
+		properf.h interp.h prodata.h dialogs.h variable.h dosos2.h
+		$(cc) _COMMHI commhi.c
+
+commlo.obj:	commlo.c xtalk.h library.h comm.h dialogs.h  dosos2.h
+		$(cc) _COMMLO commlo.c
+
+compile.obj:	compile.c xtalk.h library.h compile.h interp.h prodata.h\
+		variable.h dialogs.h term.h dosos2.h
+		$(cc) _COMPILE compile.c
+
+copy.obj:	copy.c xtalk.h library.h capture.h term.h sess.h comm.h\
+		disp.h prodata.h properf.h dialogs.h interp.h\
+		global.h variable.h dosos2.h
+		$(cc) _COPY copy.c
+
+cross.obj:	cross.c xtalk.h library.h comm.h prodata.h term.h\
+		xfer.h capture.h dialogs.h variable.h dosos2.h
+		$(cc) _CROSS cross.c
+
+ctlcolor.obj:	ctlcolor.c xtalk.h ctlcolor.h dialogs.h dosos2.h
+		$(cc) CTLCOLOR ctlcolor.c
+
+dart.obj:	dart.c xtalk.h library.h comm.h prodata.h term.h\
+		xfer.h capture.h dialogs.h variable.h dosos2.h
+		$(cc) _DART  dart.c
+
+ddeadv.obj:	ddeadv.c xtalk.h ddeadv.h
+		$(cc) _NRES1 ddeadv.c
+
+dispdlg.obj:	dispdlg.c xtalk.h library.h dialogs.h comm.h disp.h\
+		term.h prodata.h dosos2.h
+		$(cc) _DISPDLG dispdlg.c
+
+disphi.obj:	disphi.c xtalk.h disp.h dosos2.h
+		$(cc) _TEXT disphi.c
+
+displo.obj:	displo.c xtalk.h disp.h term.h dosos2.h
+		$(cc) _DISPLO displo.c
+
+dlgbox.obj:	dlgbox.c xtalk.h compile.h interp.h variable.h\
+		dialogs.h dosos2.h
+		$(cc) DLGBOX dlgbox.c
+
+dlgmsg.obj:	dlgmsg.c xtalk.h compile.h interp.h variable.h\
+		dialogs.h dosos2.h
+		$(cc) DLGMSG dlgmsg.c
+
+dlgopen.obj:	dlgopen.c xtalk.h library.h term.h dialogs.h\
+		variable.h dosos2.h
+		$(cc) _NDLG3 dlgopen.c
+
+dlgsave.obj:	dlgsave.c xtalk.h dialogs.h global.h variable.h dosos2.h
+		$(cc) _NDLG4 dlgsave.c
+
+dosos2.obj:	dosos2.c dosos2.h
+		$(cc) DOSOS2 dosos2.c
+
+errordlg.obj:	errordlg.c xtalk.h library.h variable.h interp.h\
+		prodata.h term.h dialogs.h dosos2.h
+		$(cc) _ERROR errordlg.c
+
+evaluate.obj:	evaluate.c xtalk.h library.h compile.h interp.h\
+		 variable.h comm.h xfer.h dosos2.h
+		$(cc) _EVAL evaluate.c
+
+font.obj:	font.c xtalk.h library.h font.h term.h prodata.h\
+		dialogs.h dosos2.h
+		$(cc) _FONT font.c
+
+funct.obj:	funct.c xtalk.h library.h interp.h comm.h term.h\
+		 properf.h variable.h dosos2.h
+		$(cc) _FUNCT funct.c
+
+global.obj:	global.c xtalk.h library.h global.h comm.h term.h\
+		properf.h dialogs.h variable.h dosos2.h
+		$(cc) _GLOBAL global.c
+
+help.obj:	help.c xtalk.h library.h sess.h global.h prodata.h\
+		 dialogs.h term.h global.h dosos2.h
+		$(cc) HELP help.c
+
+ibm3101.obj:	ibm3101.c xtalk.h library.h term.h properf.h capture.h comm.h\
+		disp.h interp.h sess.h prodata.h dialogs.h dosos2.h
+		$(cc) _I3101 ibm3101.c
+
+info.obj:	info.c xtalk.h library.h comm.h font.h prodata.h\
+		 sess.h term.h properf.h dialogs.h dosos2.h
+		$(cc) _INFO info.c
+
+input.obj:	input.c xtalk.h library.h comm.h prodata.h interp.h\
+		 term.h xfer.h dialogs.h dosos2.h
+		$(cc) _INPT1 input.c
+
+interp.obj:	interp.c xtalk.h library.h interp.h compile.h variable.h\
+		 capture.h macro.h comm.h global.h sess.h term.h xfer.h\
+		 kermit.h prodata.h properf.h dosos2.h
+		$(cc) _NRES2 interp.c
+
+intfunct.obj:	intfunct.c xtalk.h library.h capture.h compile.h\
+		 interp.h variable.h comm.h term.h properf.h xfer.h dosos2.h
+		$(cc) _INTF intfunct.c
+
+kermit.obj:	kermit.c xtalk.h library.h comm.h prodata.h\
+		 xfer.h kermit.h variable.h dialogs.h dosos2.h
+		$(cc) _XKRM1 kermit.c
+
+kermit1.obj:	kermit1.c xtalk.h library.h kermit.h dialogs.h comm.h\
+		 prodata.h term.h variable.h xfer.h dosos2.h
+		$(cc) _XKRM2 kermit1.c
+
+krmcmd.obj:	krmcmd.c xtalk.h library.h kermit.h comm.h prodata.h\
+		 term.h xfer.h dialogs.h global.h variable.h dosos2.h
+		$(cc) _XKRM4 krmcmd.c
+
+krmcom.obj:	krmcom.c xtalk.h library.h kermit.h dialogs.h comm.h\
+		 prodata.h term.h xfer.h capture.h global.h\
+		variable.h dosos2.h
+		$(cc) _XKRM2 krmcom.c
+
+krmrcv.obj:	krmrcv.c xtalk.h library.h kermit.h dialogs.h comm.h\
+		 prodata.h term.h xfer.h global.h variable.h dosos2.h
+		$(cc) _XKRM2 krmrcv.c
+
+krmsnd.obj:	krmsnd.c xtalk.h library.h kermit.h comm.h prodata.h\
+		 term.h xfer.h dialogs.h global.h dosos2.h
+		$(cc) _XKRM2 krmsnd.c
+
+krmsub.obj:	krmsub.c xtalk.h library.h kermit.h term.h prodata.h\
+		variable.h dosos2.h
+		$(cc) _XKRM3 krmsub.c
+
+krmwnd.obj:	krmwnd.c xtalk.h library.h term.h xfer.h kermit.h\
+		dialogs.h dosos2.h
+		$(cc) _KRMWND krmwnd.c
+
+libfile.obj:	libfile.c xtalk.h library.h variable.h term.h dosos2.h
+		$(cc) LIBFILE libfile.c
+
+libmisc.obj:	libmisc.c xtalk.h library.h variable.h dialogs.h dosos2.h
+		$(cc) LIBMISC libmisc.c
+
+macro.obj:	macro.c xtalk.h library.h comm.h disp.h font.h macro.h\
+		 interp.h dialogs.h dosos2.h
+		$(cc) MACRO macro.c
+
+macrodlg.obj:	macrodlg.c xtalk.h library.h macro.h disp.h sess.h\
+		 term.h xfer.h dialogs.h prodata.h ctlcolor.h dosos2.h
+		$(cc) MACRODLG macrodlg.c
+
+pcibm.obj:	pcibm.c xtalk.h library.h term.h font.h properf.h\
+		 capture.h comm.h disp.h interp.h sess.h\
+		 xfer.h prodata.h dialogs.h dosos2.h
+		$(cc) _PCIBM pcibm.c
+
+print.obj:	print.c xtalk.h library.h term.h sess.h dialogs.h dosos2.h
+		$(cc) _NRES9 print.c
+
+procis.obj:	procis.c xtalk.h library.h comm.h capture.h dialogs.h\
+		 term.h xfer.h variable.h dosos2.h
+		$(cc) _NCIS2 procis.c
+
+prodata.obj:	prodata.c xtalk.h library.h comm.h disp.h font.h\
+		 prodata.h sess.h term.h xfer.h macro.h dialogs.h\
+		 global.h variable.h dosos2.h
+		$(cc) _NRES8 prodata.c
+
+prodde.obj:	prodde.c xtalk.h library.h comm.h prodata.h term.h\
+		 interp.h kermit.h variable.h sess.h dosos2.h ddeadv.h
+		$(cc) _NRES1 prodde.c
+
+prodial.obj:	prodial.c xtalk.h library.h dialogs.h comm.h sess.h\
+		 term.h xfer.h prodata.h interp.h global.h\
+		variable.h dosos2.h
+		$(cc) _NRES7 prodial.c
+
+proexec.obj:	proexec.c xtalk.h library.h dialogs.h comm.h prodata.h\
+		 sess.h term.h properf.h interp.h variable.h\
+		 compile.h global.h variable.h dosos2.h
+		$(cc) _NRES2 proexec.c
+
+proinit.obj:	proinit.c xtalk.h library.h comm.h disp.h font.h macro.h\
+		 term.h sess.h xfer.h interp.h prodata.h properf.h\
+		 dialogs.h global.h variable.h ctlcolor.h dosos2.h ddeadv.h
+		$(cc) _INIT proinit.c
+
+promisc.obj:	promisc.c xtalk.h library.h dialogs.h comm.h prodata.h\
+		 sess.h term.h xfer.h kermit.h global.h variable.h dosos2.h
+		$(cc) _NRES6 promisc.c
+
+pronotes.obj:	pronotes.c xtalk.h prodata.h dialogs.h disp.h dosos2.h
+		$(cc) _NOTES pronotes.c
+
+pronres.obj:	pronres.c xtalk.h library.h dialogs.h comm.h disp.h\
+		 macro.h term.h interp.h prodata.h properf.h\
+		kermit.h dosos2.h
+		$(cc) _NRES0 pronres.c
+
+properf1.obj:	properf1.c xtalk.h library.h term.h properf.h dialogs.h dosos2.h
+		$(cc) _PERF1 properf1.c
+
+properf2.obj:	properf2.c xtalk.h term.h properf.h library.h dosos2.h
+		$(cc) _PERF2 properf2.c
+
+proscrn.obj:	proscrn.c xtalk.h library.h capture.h comm.h disp.h\
+		 prodata.h sess.h term.h properf.h dosos2.h
+		$(cc) _NRES4 proscrn.c
+
+quickb.obj:	quickb.c xtalk.h library.h comm.h term.h prodata.h\
+		 xfer.h dialogs.h variable.h dosos2.h
+		$(cc) _QUICKB quickb.c
+
+sessdlg.obj:	sessdlg.c xtalk.h library.h sess.h term.h global.h\
+		 prodata.h variable.h dialogs.h dosos2.h
+		$(cc) _SESSDLG sessdlg.c
+
+sesshi.obj:	sesshi.c xtalk.h sess.h  dosos2.h
+		$(cc) _TEXT sesshi.c
+
+sesslo.obj:	sesslo.c xtalk.h sess.h dosos2.h
+		$(cc) _SESSLO sesslo.c
+
+status.obj:	status.c xtalk.h library.h comm.h prodata.h term.h\
+		 properf.h dialogs.h variable.h dosos2.h
+		$(cc) _STAT status.c
+
+strfunct.obj:	strfunct.c xtalk.h library.h compile.h interp.h variable.h\
+		 capture.h comm.h macro.h term.h prodata.h properf.h\
+		xfer.h dosos2.h
+		$(cc) _STRF strfunct.c
+
+termdlg.obj:	termdlg.c xtalk.h library.h dialogs.h term.h\
+		 sess.h font.h prodata.h variable.h dosos2.h
+		$(cc) _TERMDLG termdlg.c
+
+termhi.obj:	termhi.c xtalk.h library.h term.h comm.h disp.h prodata.h\
+		 properf.h dialogs.h interp.h global.h variable.h\
+		 kermit.h macro.h dosos2.h
+		$(cc) _TERMHI termhi.c
+
+termlo.obj:	termlo.c xtalk.h library.h sess.h term.h comm.h font.h\
+		 prodata.h properf.h dialogs.h interp.h dosos2.h
+		$(cc) _TERMLO termlo.c
+
+variable.obj:	variable.c xtalk.h library.h variable.h comm.h disp.h\
+		 sess.h term.h xfer.h compile.h macro.h\
+		 properf.h dialogs.h global.h dosos2.h ddeadv.h
+		$(cc) _VAR variable.c
+
+vidtex.obj:	vidtex.c xtalk.h library.h capture.h comm.h disp.h font.h\
+		 interp.h prodata.h sess.h term.h properf.h variable.h\
+		 xfer.h dialogs.h dosos2.h
+		$(cc) _NCIS1 vidtex.c
+
+vt52.obj:	 vt52.c xtalk.h library.h term.h font.h properf.h capture.h\
+		 comm.h disp.h interp.h sess.h prodata.h dialogs.h dosos2.h
+		$(cc) _VT52 vt52.c
+
+vtchar.obj:	vtchar.c xtalk.h library.h term.h capture.h comm.h\
+		 disp.h font.h sess.h prodata.h dosos2.h
+		$(cc) _VTHI vtchar.c
+
+vtinit.obj:	vtinit.c xtalk.h term.h dialogs.h dosos2.h
+		$(cc) _VTLO vtinit.c
+
+vtproc.obj:	vtproc.c xtalk.h library.h term.h properf.h comm.h\
+		 disp.h interp.h prodata.h dosos2.h
+		$(cc) _VTHI vtproc.c
+
+wspawn.obj:	wspawn.asm
+		masm wspawn;
+
+xferdlg.obj:	xferdlg.c xtalk.h library.h dialogs.h comm.h\
+		 xfer.h prodata.h dosos2.h
+		$(cc) _XFERDLG xferdlg.c
+
+xferhi.obj:	xferhi.c xtalk.h library.h dialogs.h comm.h prodata.h\
+		 term.h xfer.h kermit.h variable.h dosos2.h
+		$(cc) _XFERHI xferhi.c
+
+xferlo.obj:	xferlo.c xtalk.h library.h xfer.h term.h kermit.h\
+		 prodata.h global.h variable.h dialogs.h dosos2.h
+		$(cc) _XFERLO xferlo.c
+
+xmodem.obj:	xmodem.c xtalk.h library.h comm.h prodata.h term.h\
+		 xfer.h dialogs.h global.h variable.h dosos2.h
+		$(cc) _XFER2 xmodem.c
+
+xtalk.obj:	xtalk.c xtalk.h library.h dialogs.h comm.h disp.h\
+		 sess.h term.h prodata.h interp.h properf.h xfer.h\
+		 kermit.h global.h variable.h dosos2.h
+		$(cc) _TEXT xtalk.c
+
+ymodem.obj:	ymodem.c xtalk.h library.h comm.h term.h prodata.h\
+		xfer.h dialogs.h variable.h dosos2.h
+		$(cc) _XFER3 ymodem.c
+
+zmodem.obj:	zmodem.c xtalk.h library.h comm.h prodata.h\
+		 term.h properf.h xfer.h dialogs.h global.h\
+		variable.h dosos2.h
+		$(cc) ZMODEM zmodem.c
+
+xtalk.exe: xtalk.def xtalk.res xtalk.obj  proexec.obj \
+             commhi.obj  commlo.obj  commdlg.obj  \
+	     sesshi.obj  sesslo.obj  sessdlg.obj  \
+	     termhi.obj  termlo.obj  termdlg.obj  \
+	     xferhi.obj  xferlo.obj  xferdlg.obj  \
+	     disphi.obj  displo.obj  dispdlg.obj  \
+             macro.obj   macrodlg.obj \
+	     global.obj  font.obj    variable.obj capture.obj \
+	     proinit.obj prodata.obj print.obj prodial.obj \
+	     compile.obj interp.obj  evaluate.obj strfunct.obj intfunct.obj \
+             dlgbox.obj dlgmsg.obj errordlg.obj pronres.obj help.obj \
+	     promisc.obj proscrn.obj prodde.obj copy.obj \
+	     dlgopen.obj properf1.obj properf2.obj \
+	     vtinit.obj vtproc.obj vtchar.obj vt52.obj ibm3101.obj pcibm.obj \
+             status.obj info.obj ddeadv.obj \
+             ymodem.obj ascii.obj dart.obj cross.obj zmodem.obj \
+	     kermit.obj kermit1.obj krmwnd.obj krmrcv.obj krmsnd.obj \
+             krmcmd.obj krmcom.obj xmodem.obj vidtex.obj procis.obj quickb.obj \
+             input.obj pronotes.obj libmisc.obj libfile.obj wspawn.obj \
+	     dlgopen.obj dlgsave.obj funct.obj ctlcolor.obj dosos2.obj
+    link $(CO) /f @xtalk.lnk
+    rc xtalk.res
+    mapsym xtalk

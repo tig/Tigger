@@ -1,0 +1,45 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "DIAL.H\0"
+END
+
+DIALINGDLGBOX DIALOG 20, 26, 348, 96
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Dialing..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME, "Static", SS_GRAYFRAME, 4, 4, 300, 88
+    RTEXT           "Name:", 0xFFFF, 12, 8, 60, 8
+    LTEXT           "", IDD_NAME, 76, 8, 84, 8, NOT WS_GROUP
+    RTEXT           "Number:", 0xFFFF, 12, 20, 60, 8
+    LTEXT           "", IDD_NUMBER, 76, 20, 84, 8, NOT WS_GROUP
+    RTEXT           "Script File:", 0xFFFF, 12, 32, 60, 8
+    LTEXT           "", IDD_SCRIPT, 76, 32, 84, 8, NOT WS_GROUP
+    RTEXT           "Last Result:", 0xFFFF, 12, 44, 60, 8
+    LTEXT           "", IDD_LASTRESULT, 76, 44, 84, 8, NOT WS_GROUP
+    RTEXT           "Pass Number:", 0xFFFF, 12, 56, 60, 8
+    LTEXT           "", IDD_PASSNUMBER, 76, 56, 84, 8, NOT WS_GROUP
+    RTEXT           "Elapsed Time:", 0xFFFF, 12, 68, 60, 8
+    LTEXT           "", IDD_ELAPSEDTIME, 76, 68, 20, 8, NOT WS_GROUP
+    LTEXT           "Secs.", 0xFFFF, 276, 52, 20, 8, NOT WS_GROUP
+    RTEXT           "Last Connected:", 0xFFFF, 160, 8, 88, 8
+    LTEXT           "", IDD_LASTCONNECT, 252, 8, 48, 8, NOT WS_GROUP
+    RTEXT           "Total Calls:", 0xFFFF, 160, 20, 88, 8
+    LTEXT           "", IDD_TOTALCALLS, 252, 20, 48, 8, NOT WS_GROUP
+    RTEXT           "&Wait for Connection:", 0xFFFF, 160, 36, 88, 8
+    EDITTEXT        IDD_WAITEC, 252, 34, 20, 12, ES_AUTOHSCROLL
+    LTEXT           "Secs.", 0xFFFF, 100, 68, 20, 8, NOT WS_GROUP
+    RTEXT           "&Pause Between Calls:", 0xFFFF, 160, 52, 88, 8
+    EDITTEXT        IDD_PAUSEEC, 252, 50, 20, 12, ES_AUTOHSCROLL
+    LTEXT           "Secs.", 0xFFFF, 276, 36, 20, 8, NOT WS_GROUP
+    RTEXT           "Time at Start of Dial:", 0xFFFF, 160, 68, 88, 8
+    LTEXT           "", IDD_DIALTIME, 252, 68, 48, 8, NOT WS_GROUP
+    RTEXT           "Time at Start of this Call:", 0xFFFF, 160, 80, 88, 8
+    LTEXT           "", IDD_CALLTIME, 252, 80, 48, 8, NOT WS_GROUP
+    CONTROL         "&Delete", IDB_DELETE, "FL_BMPBTN", WS_GROUP | 
+                    WS_TABSTOP | 0x2000, 308, 38, 36, 22
+    CONTROL         "&Recycle", IDB_RECYCLE, "FL_BMPBTN", WS_TABSTOP | 
+                    0x2000, 308, 10, 36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000, 
+                    308, 66, 36, 22
+END

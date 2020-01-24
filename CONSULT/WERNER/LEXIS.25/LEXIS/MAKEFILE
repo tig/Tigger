@@ -1,0 +1,327 @@
+#************************************************************************
+#*
+#*    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+#*
+#*-----------------------------------------------------------------------
+#*
+#*     Project:  Lexis 2000 2.5 For Windows
+#*
+#*      Module:  makefile
+#*
+#*   Author(s):  Charles E. Kindel, Jr. (cek)
+#*
+#*
+#*      System:  Microsoft C 6.00A, Windows 3.00
+#*
+#*     Remarks:  
+#*
+#*      Notes about how this makefile is setup:                              
+#*                                                                           
+#*                                                                           
+#*      The output from all compiles is directed to files in the source      
+#*      directory with the extension .ERR.  This allows Brief to automatically
+#*      take you to the lines with ERRors (use ^N and ^P).                   
+#*                                                                           
+#*      Each segment name (-NT switch) is the name of the module             
+#*                                                                           
+#*      Other output is directed to the AUX port, this allows you to run     
+#*      the compile in a minimized DOS window and see what's going on.
+#*                                                                           
+#*      The directory strucuture is set up like this:                        
+#*                                                                           
+#*       LEXIS---+            Contains makefile, version info, final exe, lnk
+#*               |                                                           
+#*               INC--        Contains all header files                      
+#*               |                                                           
+#*               OBJ--        Contains all resulting object files            
+#*               |                                                           
+#*               RES--        Contains all resources (such as RES, ICO, etc..
+#*               |                                                           
+#*               SRC--        Contains all source code modules.
+#*
+#*   Revisions:  
+#*     00.00.000  1/20/91 cek   First Version
+#*
+#*
+#************************************************************************/
+
+#************************************************************************
+#* Macros 
+#************************************************************************/
+#
+# NOTE:  Set the following macro, DEBUG, to TRUE to build a debbuging
+#        version (Comment it out to build a release)
+#
+
+#DEBUG=TRUE
+#BUMPVER=bumpver lexis.ver
+OUTPUT=con
+
+#
+# Set up for either a debugging version of release version
+#
+!IFDEF DEBUG
+
+CLOPTS=-AM -c -Gw -Owd -W3 -Zpei -DDEBUG -DTESTING
+LINKOPTS=/NOE/NOD/CO
+
+!ELSE
+
+CLOPTS=-AM -c -Gsw -Ows -W3 -Zpe -DTESTING
+LINKOPTS=/NOE/NOD
+
+!ENDIF
+
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = INC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+
+#************************************************************************
+#* Final Target
+#************************************************************************/
+
+LEXIS25.EXE:    $(MYOBJ)LEXIS.OBJ\
+                $(MYOBJ)GLOBAL.OBJ\
+                $(MYOBJ)TIMER.OBJ\
+                $(MYOBJ)INIT.OBJ\
+                $(MYOBJ)MENU.OBJ\
+                $(MYOBJ)MAINWND.OBJ\
+                $(MYOBJ)TOPSTAT.OBJ\
+                $(MYOBJ)BOTSTAT.OBJ\
+                $(MYOBJ)BUTTON.OBJ\
+                $(MYOBJ)PROFILE.OBJ\
+                $(MYOBJ)STATE.OBJ\
+                $(MYOBJ)USERPREF.OBJ\
+                $(MYOBJ)DIRECT.OBJ\
+                $(MYOBJ)FILEDLGS.OBJ\
+                $(MYOBJ)PRINT.OBJ\
+                $(MYOBJ)HARDWARE.OBJ\
+                $(MYOBJ)HELP.OBJ\
+                $(MYOBJ)TERM.OBJ\
+                $(MYOBJ)KEYBOARD.OBJ\
+                $(MYOBJ)COMMAND.OBJ\
+                $(MYOBJ)CONNECT.OBJ\
+                LEXIS.def\
+                $(MYRES)LEXIS.RES
+                @echo Linkng... >$(OUTPUT)
+                link $(LINKOPTS) @LEXIS.LNK
+                rc -v -k $(MYRES)LEXIS.RES LEXIS25.EXE
+                $(BUMPVER)
+
+
+
+#************************************************************************
+#* 'C' Modules
+#************************************************************************/
+
+#
+# WndMain.  Main message loop.
+#
+$(MYOBJ)LEXIS.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)LEXIS.C
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)LEXIS.OBJ -NTLEXIS $(MYSRC)LEXIS.C > $(MYSRC)LEXIS.ERR
+ @type $(MYSRC)LEXIS.ERR > $(OUTPUT)
+
+#
+# All GLOBAL variables are decalred here
+# GLOBAL.C is dependent on LEXIS.VER!!!!!!
+#
+$(MYOBJ)GLOBAL.OBJ : $(MYINC)LEXIS.H $(MYSRC)GLOBAL.C $(MYINC)GLOBAL.H LEXIS.ver
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)GLOBAL.OBJ -NTGLOBAL $(MYSRC)GLOBAL.C > $(MYSRC)GLOBAL.ERR
+ @type $(MYSRC)GLOBAL.ERR > $(OUTPUT)
+
+#
+# handles creating the TIMER, dispatching TIMER messages to the various
+# child windows, and destroying the TIMER
+#
+$(MYOBJ)TIMER.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)TIMER.C
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)TIMER.OBJ -NTTIMER $(MYSRC)TIMER.C > $(MYSRC)TIMER.ERR
+ @type $(MYSRC)TIMER.ERR > $(OUTPUT)
+
+#
+# handles intialization for the application, creates the main window. 
+# called from LEXIS.C
+#
+$(MYOBJ)INIT.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)INIT.C
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)INIT.OBJ -NTINIT $(MYSRC)INIT.C > $(MYSRC)INIT.ERR
+ @type $(MYSRC)INIT.ERR > $(OUTPUT)
+
+#
+# Handles processing of MENU selection messages for the purpose of displaying
+# info for the user on the message line.
+#
+$(MYOBJ)MENU.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)MENU.C
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)MENU.OBJ -NTMENU $(MYSRC)MENU.C > $(MYSRC)MENU.ERR
+ @type $(MYSRC)MENU.ERR > $(OUTPUT)
+
+#
+# Contains the main window proc and support functions
+#
+$(MYOBJ)MAINWND.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)MAINWND.C
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)MAINWND.OBJ -NTMAINWND $(MYSRC)MAINWND.C > $(MYSRC)MAINWND.ERR
+ @type $(MYSRC)MAINWND.ERR > $(OUTPUT)
+
+#
+# Handles the top status bar (creation, window proc, destroy)
+#
+$(MYOBJ)TOPSTAT.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)TOPSTAT.C $(MYINC)TOPSTAT.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)TOPSTAT.OBJ -NTTOPSTAT $(MYSRC)TOPSTAT.C > $(MYSRC)TOPSTAT.ERR
+ @type $(MYSRC)TOPSTAT.ERR > $(OUTPUT)
+
+#
+# Handles the bottom status bar (creation, window proc, destroy)
+#
+$(MYOBJ)BOTSTAT.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)BOTSTAT.C $(MYINC)BOTSTAT.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)BOTSTAT.OBJ -NTBOTSTAT $(MYSRC)BOTSTAT.C > $(MYSRC)BOTSTAT.ERR
+ @type $(MYSRC)BOTSTAT.ERR > $(OUTPUT)
+
+#
+# Handles the BUTTON bar (creation, window proc, destroy)
+#
+$(MYOBJ)BUTTON.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)BUTTON.C $(MYINC)BUTTON.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)BUTTON.OBJ -NTBUTTON $(MYSRC)BUTTON.C > $(MYSRC)BUTTON.ERR
+ @type $(MYSRC)BUTTON.ERR > $(OUTPUT)
+
+#
+# Hanldes the reading and writing of PROFILE strings
+#
+$(MYOBJ)PROFILE.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)PROFILE.C $(MYINC)PROFILE.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)PROFILE.OBJ -NTPROFILE $(MYSRC)PROFILE.C > $(MYSRC)PROFILE.ERR
+ @type $(MYSRC)PROFILE.ERR > $(OUTPUT)
+
+#
+# Handles the saving and restoring of STATE information
+#
+$(MYOBJ)STATE.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)STATE.C $(MYINC)STATE.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)STATE.OBJ -NTSTATE $(MYSRC)STATE.C > $(MYSRC)STATE.ERR
+ @type $(MYSRC)STATE.ERR > $(OUTPUT)
+
+#
+# User Preferences dialog box
+#
+$(MYOBJ)USERPREF.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)USERPREF.C $(MYINC)USERPREF.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)USERPREF.OBJ -NTUSERPREF $(MYSRC)USERPREF.C > $(MYSRC)USERPREF.ERR
+ @type $(MYSRC)USERPREF.ERR > $(OUTPUT)
+
+#
+# Default Directories dialog box
+#
+$(MYOBJ)DIRECT.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)DIRECT.C $(MYINC)DIRECT.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)DIRECT.OBJ -NTDIRECT $(MYSRC)DIRECT.C > $(MYSRC)DIRECT.ERR
+ @type $(MYSRC)DIRECT.ERR > $(OUTPUT)
+
+#
+# File dialog box HELPer routines
+#
+$(MYOBJ)FILEDLGS.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)FILEDLGS.C $(MYINC)FILEDLGS.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)FILEDLGS.OBJ -NTFILEDLGS $(MYSRC)FILEDLGS.C > $(MYSRC)FILEDLGS.ERR
+ @type $(MYSRC)FILEDLGS.ERR > $(OUTPUT)
+
+#
+# Printing and PRINT dialog boxes
+#
+$(MYOBJ)PRINT.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)PRINT.C $(MYINC)PRINT.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)PRINT.OBJ -NTPRINT $(MYSRC)PRINT.C > $(MYSRC)PRINT.ERR
+ @type $(MYSRC)PRINT.ERR > $(OUTPUT)
+
+#
+# Hardware setup dialog box
+#
+$(MYOBJ)HARDWARE.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)HARDWARE.C $(MYINC)HARDWARE.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)HARDWARE.OBJ -NTHARDWARE $(MYSRC)HARDWARE.C > $(MYSRC)HARDWARE.ERR
+ @type $(MYSRC)HARDWARE.ERR > $(OUTPUT)
+
+#
+# Help system
+#
+$(MYOBJ)HELP.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)HELP.C $(MYINC)HELP.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)HELP.OBJ -NTHELP $(MYSRC)HELP.C > $(MYSRC)HELP.ERR
+ @type $(MYSRC)HELP.ERR > $(OUTPUT)
+
+#
+# Video routines
+#
+$(MYOBJ)TERM.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)TERM.C $(MYINC)TERM.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)TERM.OBJ -NTTERM $(MYSRC)TERM.C > $(MYSRC)TERM.ERR
+ @type $(MYSRC)TERM.ERR > $(OUTPUT)
+
+#
+# Keyboard routines
+#
+$(MYOBJ)KEYBOARD.OBJ : $(MYINC)LEXIS.H $(MYINC)GLOBAL.H $(MYSRC)KEYBOARD.C $(MYINC)KEYBOARD.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)KEYBOARD.OBJ -NTKEYBOARD $(MYSRC)KEYBOARD.C > $(MYSRC)KEYBOARD.ERR
+ @type $(MYSRC)KEYBOARD.ERR > $(OUTPUT)
+
+
+#
+# Command routines
+#
+$(MYOBJ)COMMAND.OBJ : $(MYINC)LEXIS.H  $(MYINC)TERM.H $(MYINC)GLOBAL.H $(MYSRC)COMMAND.C $(MYINC)COMMAND.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)COMMAND.OBJ -NTCOMMAND $(MYSRC)COMMAND.C > $(MYSRC)COMMAND.ERR
+ @type $(MYSRC)COMMAND.ERR > $(OUTPUT)
+
+#
+# Connect/disconnect routines
+#
+$(MYOBJ)CONNECT.OBJ : $(MYINC)LEXIS.H  $(MYINC)TERM.H $(MYINC)GLOBAL.H $(MYSRC)CONNECT.C $(MYINC)CONNECT.H
+ @echo Compiling to $*.C... >$(OUTPUT)
+ cl $(CLOPTS) -Fo$(MYOBJ)CONNECT.OBJ -NTCONNECT $(MYSRC)CONNECT.C > $(MYSRC)CONNECT.ERR
+ @type $(MYSRC)CONNECT.ERR > $(OUTPUT)
+#************************************************************************
+#* MASM Modlues
+#************************************************************************/
+
+#************************************************************************
+#* Resources
+#************************************************************************/
+#
+# DO NOT UNCOMMENT THIS!  IF WERE USING WRT WE DONT NEED THIS!!!!!
+#
+$(MYRES)LEXIS.RES:      $(MYRES)LEXIS.RC\
+                        $(MYINC)LEXISD.H\
+                        $(MYRES)LEXIS.MNU\
+                        $(MYRES)LEXIS.ICO\
+                        $(MYRES)LEXIS.STR\
+                        $(MYRES)LEXIS.ACL\
+                        $(MYRES)LEXIS.BMP\
+                        $(MYINC)LEXDLGD.H\
+                        $(MYRES)DIRECT.DLG\
+                        $(MYRES)USERPREF.DLG\
+                        $(MYRES)HARDWARE.DLG\
+                        $(MYRES)MODEM.DLG\
+                        $(MYRES)PHONENUM.DLG\
+                        $(MYRES)PAGE.DLG\
+                        $(MYRES)CONNECT.DLG
+ @echo Compiling resouRCes in LEXIS.RC... > $(OUTPUT)
+ RC -r -I RES;INC $(MYRES)LEXIS.RC
+
+
+
+#************************************************************************
+#* End of File: makefile
+#************************************************************************/
+

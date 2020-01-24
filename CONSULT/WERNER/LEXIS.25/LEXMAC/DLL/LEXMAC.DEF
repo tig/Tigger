@@ -1,0 +1,37 @@
+; lexmac.def
+;
+; Module Definition file for lexmac.DLL
+;
+; Copyright 1990 Charles E. Kindel, Jr.
+;
+LIBRARY         lexmac
+
+DESCRIPTION     'lexmac.DLL Copyright (c) 1990 Werner Associates'
+
+EXETYPE         WINDOWS
+
+SEGMENTS        _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                INIT_TEXT    PRELOAD MOVABLE DISCARDABLE
+                LEXMAC       PRELOAD MOVEABLE DISCARDABLE
+                DEBUG        LOADONCALL MOVEABLE DISCARDABLE
+                SHADOW       LOADONCALL MOVEABLE DISCARDABLE
+                ABOUT        LOADONCALL MOVEABLE DISCARDABLE
+                VERSION      LOADONCALL MOVEABLE DISCARDABLE
+                MAIN         LOADONCALL MOVEABLE DISCARDABLE
+
+CODE            MOVEABLE DISCARDABLE
+
+DATA            PRELOAD SINGLE
+
+HEAPSIZE        4096
+
+EXPORTS         WEP                     @1 RESIDENTNAME
+                _DPRINTF                @2
+                _DP                     @3
+                SELECTMACRODIALOG       @4
+                MAINDLGPROC             @5
+                DRAWSHADOW              @6                
+                ABOUTDIALOG             @7
+                ABOUTDLGPROC            @8
+                VERGETDLLVERSION        @9
+                VERMAKEVERSIONNUMBER    @10

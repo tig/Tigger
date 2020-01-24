@@ -1,0 +1,20 @@
+LIBRARY      ZMODEM
+EXETYPE      WINDOWS
+DESCRIPTION  'ZMODEM|ZMODEM transfer protocol'
+STUB         'winstub.exe'
+
+SEGMENTS     _TEXT       PRELOAD MOVEABLE DISCARDABLE
+             INIT_TEXT   PRELOAD MOVEABLE DISCARDABLE
+             ZMODEM      PRELOAD MOVEABLE DISCARDABLE
+
+DATA         PRELOAD SINGLE MOVEABLE
+
+HEAPSIZE     32768
+
+EXPORTS
+   WEP                     @1 RESIDENTNAME
+   GetZmodemUseCount       @2
+   ZmodemReceive           @3
+   ZmodemSend              @4
+   ZmodemDlgProc           @5
+

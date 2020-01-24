@@ -1,0 +1,6 @@
+#include "windows.h"
+#include "resource.h"
+
+LEXBLNK ICON "lexblnk.ICO"
+LEXBLNK CURSOR "lexblnk.cur"
+

@@ -1,0 +1,34 @@
+.\obj.bta\ksearch + 
+.\obj.bta\subscr + 
+.\obj.bta\comm + 
+.\obj.bta\comm2 + 
+.\obj.bta\comm3 + 
+.\obj.bta\modem + 
+.\obj.bta\xmodem + 
+.\obj.bta\settings + 
+.\obj.bta\wsinit + 
+.\obj.bta\wsres +
+.\obj.bta\custinfo +
+.\obj.bta\file +
+.\obj.bta\file2 +
+.\obj.bta\file3 +
+.\obj.bta\help +
+.\obj.bta\messages +
+.\obj.bta\misc +
+.\obj.bta\order +
+.\obj.bta\download +
+.\obj.bta\viewbox +
+.\obj.bta\busy +
+.\obj.bta\pref +
+.\obj.bta\info +
+.\obj.bta\billing +
+.\obj.bta\libmgr +
+.\obj.bta\libmgr2 +
+.\obj.bta\error +
+.\obj.bta\lmemcpy.obj +
+.\obj.bta\availdsk.obj +
+.\obj.bta\dilute /align:16  /map /li 
+shopper.exe
+shopper.map
+mlibw/noe mlibcaw /nod
+shopper.def      

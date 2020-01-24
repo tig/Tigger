@@ -1,0 +1,39 @@
+h41779
+s 00000/00000/00024
+d D 1.2 90/11/07 12:18:08 bbs 2 1
+c 
+e
+s 00024/00000/00000
+d D 1.1 90/08/21 15:27:48 bbs 1 0
+c date and time created 90/08/21 15:27:48 by bbs
+e
+u
+U
+t
+T
+I 1
+#ifdef DEBUG
+int
+WriteBuf(char *szFileName, char *buf, int NumBytes)
+{
+    int fp= -1;
+    extern int _fmode;
+    int nRetval=OK;
+
+    _fmode = O_BINARY;
+    if ((fp = _lopen(szFileName,READ_WRITE)) == -1)
+        END(FAIL)
+
+    _llseek(fp,0L,2); // to end of file for append
+
+    if (_lwrite(fp,buf,NumBytes) != NumBytes)
+        END(FAIL)
+
+    end:
+    if (fp != -1)
+        _lclose(fp);
+    _fmode = O_TEXT;
+    return nRetval;
+}
+#endif
+E 1

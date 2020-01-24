@@ -1,0 +1,5 @@
+UPDATE DATABASE instructs Window Shopper how to update the out-of-date database files when you first logon to the Adonis Server.
+
+'Minimal' update instructs Shopper to only update the database files as you access them.
+
+'Maximal' update instructs Shopper to update all database files (excluding thumbnail information) on your hard drive at the time you log on.  This way you can be certain that all of your database information (excluding thumbnail files) is up-to-date once you logoff.  This is the default setting.$

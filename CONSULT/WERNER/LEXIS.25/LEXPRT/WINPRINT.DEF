@@ -1,0 +1,42 @@
+;************************************************************************
+;*
+;*
+;************************************************************************
+
+
+LIBRARY         WINPRT2
+
+DESCRIPTION     'WinPrint 2.0 - Copr. 1992 Charles Kindel'
+
+EXETYPE         WINDOWS
+
+SEGMENTS        _TEXT        PRELOAD MOVEABLE
+                WEP          PRELOAD FIXED 
+                INIT_TEXT    PRELOAD MOVEABLE 
+                WINPRINT     PRELOAD MOVEABLE DISCARDABLE
+                ABOUT        LOADONCALL MOVEABLE DISCARDABLE
+                PRTCORE      LOADONCALL MOVEABLE DISCARDABLE
+                PRTFILE      LOADONCALL MOVEABLE DISCARDABLE
+
+CODE            MOVEABLE DISCARDABLE
+
+DATA            PRELOAD SINGLE
+
+HEAPSIZE        8192
+
+EXPORTS         WEP                     @2 RESIDENTNAME
+
+                FMExtensionProc         
+
+                GETWINPRINTVERSION       @3
+                GETWINPRINTHINST         @4
+            
+                fnFileMan               @5
+
+                fnAbout                 @6
+
+;/***********************************************************************
+;* End of File: cmndll.def
+;************************************************************************
+
+

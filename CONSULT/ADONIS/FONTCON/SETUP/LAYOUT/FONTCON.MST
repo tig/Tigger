@@ -1,0 +1,254 @@
+' ************************************************************************
+' *
+' *     Project:  The Font Connection Setup
+' *
+' *      Module:  fontcon.mst
+' *
+' *     Remarks:  
+' *
+' *   Revisions:  
+' *    0.00.00    6/15/92  cek   Second Try
+' *
+' *********************************************************************** 
+
+'$INCLUDE 'setupapi.inc'
+
+CONST SW_SHOWMAXIMIZED =  3
+
+DECLARE FUNCTION ShowWindow LIB "user" (hwnd%, flag%) AS INTEGER
+
+DECLARE SUB WritePrivateProfileString LIB "kernel" (szSec$, szKey$, szVal$, szFile$ )
+''
+'' These functions are exported from CONXLIB.DLL
+''
+''BOOL WINAPI CustomerInfoDialog( HWND hwndParent, LPSTR szHelpFile, LPSTR lpszINISection, DWORD dwData2 );
+DECLARE FUNCTION CustomerInfoDialog LIB "CONXLIB.DLL" ( hwndParent%, szHelpFile$, lpszINISection$, dwData2& ) AS INTEGER
+
+''BOOL WINAPI ShippingInfoDialog( HWND hwndParent, LPSTR szHelpFile, LPSTR lpszINISection, DWORD dwData2 );
+DECLARE FUNCTION ShippingInfoDialog LIB "CONXLIB.DLL" ( hwndParent%, szHelpFile$, lpszINISection$, dwData2& ) AS INTEGER
+
+''BOOL WINAPI BillingInfoDialog ( HWND hwndParent, LPSTR szHelpFile, LPSTR lpszINISection, DWORD dwData2 );
+DECLARE FUNCTION BillingInfoDialog LIB "CONXLIB.DLL" ( hwndParent%, szHelpFile$, lpszINISection$, dwData2& ) AS INTEGER
+
+''BOOL WINAPI CommSettingsDialog( HWND hwndParent, LPSTR szHelpFile, LPSTR lpszINISection, DWORD dwData2 );
+DECLARE FUNCTION CommSettingsDialog LIB "CONXLIB.DLL" ( hwndParent%, szHelpFile$, lpszINISection$, dwData2& ) AS INTEGER
+
+''Dialog ID's
+CONST WELCOME       = 100
+CONST ASKQUIT       = 200
+CONST ASKQUIT2      = 201
+CONST DESTPATH      = 300
+CONST EXITFAILURE   = 400
+CONST EXITQUIT      = 600
+CONST EXITSUCCESS   = 700
+CONST OPTIONS       = 800
+CONST APPHELP       = 900
+CONST BADPATH       = 6400
+
+''Bitmap ID
+CONST LOGO = 1
+
+GLOBAL DEST$        ''Default destination directory.
+GLOBAL OPTCUR$      ''Option selection from option dialog.
+
+DECLARE SUB Install
+DECLARE FUNCTION MakePath (szDir$, szFile$) AS STRING
+
+
+INIT:
+    hwnd = HwndFrame()
+    n = ShowWindow( hwnd, SW_SHOWMAXIMIZED ) 
+    CUIDLL$ = "mscuistf.dll"            ''Custom user interface dll
+    HELPPROC$ = "FHelpDlgProc"          ''Help dialog procedure
+
+    SetBitmap CUIDLL$, LOGO
+    SetTitle "The Font Connection"
+
+    szInf$ = GetSymbolValue("STF_SRCINFPATH")
+    IF szInf$ = "" THEN
+        szInf$ = GetSymbolValue("STF_CWDDIR") + "FONTCON.INF"
+    END IF
+    ReadInfFile szInf$
+
+    OPTCUR$ = "1"
+    DEST$ = "C:\FONTCON"
+
+GETPATH:
+    ClearCopyList
+
+    SetSymbolValue "EditTextIn", DEST$
+    SetSymbolValue "EditFocus", "END"
+GETPATHL1:
+    sz$ = UIStartDlg(CUIDLL$, DESTPATH, "FEditDlgProc", APPHELP, HELPPROC$)
+    DEST$ = GetSymbolValue("EditTextOut")
+
+    IF sz$ = "CONTINUE" THEN
+        IF IsDirWritable(DEST$) = 0 THEN
+            GOSUB BADPATH
+            GOTO GETPATHL1
+        END IF
+        UIPop 1
+    ELSEIF sz$ = "REACTIVATE" THEN
+        GOTO GETPATHL1
+    ELSE
+        GOSUB ASKQUIT
+        GOTO GETPATH
+    END IF
+
+    SrcDir$ = GetSymbolValue("STF_SRCDIR")
+    DATABASE$ = MAKEPATH(DEST$,"DATABASE")
+
+    AddSectionFilesToCopyList "Files", SrcDir$, DEST$
+    AddSectionFilesToCopyList "DATABASE", SrcDir$, DATABASE$
+
+''**
+''** Check for free disk space
+''**
+
+    StillNeed& = GetCopyListCost("", "", "")
+
+    IF StillNeed& > 0 THEN
+      i% = DoMsgBox("There is not enough disk space on the specified drive.  Please free up at least "+str$(StillNeed&)+" bytes or choose another drive and try again.", "Setup Message", MB_OK+MB_TASKMODAL+MB_ICONHAND)
+
+      GOTO GETPATH
+    END IF
+
+    CreateDir DEST$, cmoNone
+    CreateDir DATABASE$, cmoNone
+
+    CopyFilesInCopyList
+
+''    ini$ = "CONXTION.INI"
+''    WritePrivateProfileString "ConXSrv", "UseCN_RECEIVE", "0", ini$ 
+
+    CreateProgmanGroup "Connect Software", "", cmoNone
+    ShowProgmanGroup  "Connect Software", 1, cmoNone
+    CreateProgmanItem "Connect Software", "The Font Connection", MakePath(DEST$,"fontcon.exe"), "", cmoOverwrite
+    CreateProgmanItem "Connect Software", "The Font Connection Help", "winhelp.exe "+MakePath(DEST$,"FCHELP.HLP"), "", cmoOverwrite
+
+
+' After install was complete, ask the dude for all his info by
+' calling the routines in CONXLIB.DLL.
+
+   szHelpFile$ = MakePath(DEST$,"FCHELP.HLP")
+
+GETCUSTINFO:
+   IF 0 = CustomerInfoDialog( hwnd, szHelpFile$, "CONXTION.INI", 1 ) THEN
+        GOSUB ASKQUIT
+        GOTO GETCUSTINFO
+   END IF
+   
+GETSHIPPINGINFO:
+   IF 0 = ShippingInfoDialog( hwnd, szHelpFile$, "CONXTION.INI", 1 ) THEN
+        GOSUB ASKQUIT
+        GOTO GETSHIPPINGINFO
+   END IF
+   
+GETCOMMSETTINGS:
+   IF 0 = CommSettingsDialog( hwnd, szHelpFile$, "CONXTION.INI", 1 ) THEN
+        GOSUB ASKQUIT
+        GOTO GETCOMMSETTINGS
+   END IF
+   
+GETBILLINGINFO:
+   IF 0 = BillingInfoDialog( hwnd, szHelpFile$, "CONXTION.INI", 1 ) THEN
+        GOSUB ASKQUIT2
+        GOTO GETBILLINGINFO
+   END IF
+   
+
+' Now run The Font Connection...
+'
+
+
+QUIT:
+    ON ERROR GOTO ERRQUIT
+
+    IF ERR = 0 THEN
+        dlg% = EXITSUCCESS
+    ELSEIF ERR = STFQUIT THEN
+        dlg% = EXITQUIT
+    ELSE
+        dlg% = EXITFAILURE
+    END IF
+QUITL1:
+    sz$ = UIStartDlg(CUIDLL$, dlg%, "FInfo0DlgProc", 0, "")
+    IF sz$ = "REACTIVATE" THEN
+        GOTO QUITL1
+    END IF
+    UIPop 1
+
+    END
+
+ERRQUIT:
+    i% = DoMsgBox("Setup sources were corrupted, call Adonis Technical Support at (800) 234-9497!", "Setup Message", MB_OK+MB_TASKMODAL+MB_ICONHAND)
+    END
+
+
+
+BADPATH:
+    sz$ = UIStartDlg(CUIDLL$, BADPATH, "FInfo0DlgProc", 0, "")
+    IF sz$ = "REACTIVATE" THEN
+        GOTO BADPATH
+    END IF
+    UIPop 1
+    RETURN
+
+
+
+ASKQUIT:
+    sz$ = UIStartDlg(CUIDLL$, ASKQUIT, "FQuitDlgProc", 0, "")
+
+    IF sz$ = "EXIT" THEN
+        UIPopAll
+        ERROR STFQUIT
+    ELSEIF sz$ = "REACTIVATE" THEN
+        GOTO ASKQUIT
+    ELSE
+        UIPop 1
+    END IF
+    RETURN
+
+
+ASKQUIT2:
+    sz$ = UIStartDlg(CUIDLL$, ASKQUIT2, "FQuitDlgProc", 0, "")
+
+    IF sz$ = "EXIT" THEN
+        UIPopAll
+        ERROR STFQUIT
+    ELSEIF sz$ = "REACTIVATE" THEN
+        GOTO ASKQUIT2
+    ELSE
+        UIPop 1
+    END IF
+    RETURN
+
+
+
+'**
+'** Purpose:
+'**     Appends a file name to the end of a directory path,
+'**     inserting a backslash character as needed.
+'** Arguments:
+'**     szDir$  - full directory path (with optional ending "\")
+'**     szFile$ - filename to append to directory
+'** Returns:
+'**     Resulting fully qualified path name.
+'*************************************************************************
+FUNCTION MakePath (szDir$, szFile$) STATIC AS STRING
+    IF szDir$ = "" THEN
+        MakePath = szFile$
+    ELSEIF szFile$ = "" THEN
+        MakePath = szDir$
+    ELSEIF MID$(szDir$, LEN(szDir$), 1) = "\" THEN
+        MakePath = szDir$ + szFile$
+    ELSE
+        MakePath = szDir$ + "\" + szFile$
+    END IF
+END FUNCTION
+
+
+' ************************************************************************
+' * End of File: fontcon.mst
+' *********************************************************************** 
+

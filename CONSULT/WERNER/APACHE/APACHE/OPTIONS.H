@@ -1,0 +1,12 @@
+#define DIALDIRSETTINGSDLG          0x0064
+#define IDD_OPTION_NAME             0x0066
+#define IDD_OPTION_NUMBER           0x0067
+#define IDD_OPTION_CONNECTOR        0x0068
+#define IDD_OPTION_SETTINGS         0x0069
+#define IDD_OPTION_MODE             0x006A
+#define IDD_OPTION_LASTCALL         0x006B
+#define DIALDIROPTIONSDLG           0x00C8
+#define IDD_OPTION_EMULATOR         0x00C9
+#define IDD_OPTION_PROTOCOL         0x00CA
+#define IDD_DLGFRAME                0x00CB
+#define IDB_OK                      0x00CC

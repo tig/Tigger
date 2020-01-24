@@ -1,0 +1,181 @@
+ /*                           WINSPIT.C -- Main routines for WinSpit
+
+                         WinSpit - A Text File Printing Program for Windows
+                          (c) Copyright 1989, 1990, Charles E. Kindel, Jr.
+
+REVISIONS
+
+   DATE        VERSION     CHANGES
+*/
+/* ------------------ IMPORTS ------------------- */
+#include <windows.h>
+#include <winundoc.h>
+#include <stdlib.h>
+#include <string.h>
+#include "ws_defs.h"
+#include "ws_types.h"
+#include "ws_reg.h"
+#include "register.h"
+
+#ifdef DEBUG
+#include "auxwrite.h"
+#endif
+
+
+/* ----------------- GLOBAL DATA --------------------- */
+char        szAppName [] = "Register" ;
+HWND        hDlg ;
+
+
+int PASCAL WinMain (HANDLE hInstance, HANDLE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow) 
+{
+HWND     hWnd ;         
+MSG      msg ;
+HANDLE   hAccel ;
+
+
+   if (!hPrevInstance)
+      if (!InitWnd (hInstance))
+      {
+         MessageBox (NULL, "Not enough memory to run", szAppName, MB_ICONHAND | MB_SYSTEMMODAL) ;
+         return FALSE ;
+      }
+
+   hWnd = CreateWindow (szAppName, "Registration Numbers",
+                        WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
+                        CW_USEDEFAULT, 0,
+                        CW_USEDEFAULT, 0,
+                        NULL, NULL, hInstance, NULL) ;
+
+   ShowWindow (hWnd, nCmdShow) ;
+   UpdateWindow (hWnd) ;
+
+   while (GetMessage (&msg, NULL, 0, 0))
+   {
+      if (hDlg == 0 || !IsDialogMessage (hDlg, &msg))
+      {
+         TranslateMessage (&msg) ;
+         DispatchMessage (&msg) ;
+      }
+   }
+   return msg.wParam ;
+}
+
+
+long FAR PASCAL WndProc (HWND hWnd, unsigned iMessage, WORD wParam, LONG lParam)
+{
+HANDLE   hInstance ;
+FARPROC  lpfnDlgProc ;
+char     szText [80] ;
+
+   switch (iMessage)
+   {
+      case WM_CREATE:
+         hInstance = ((LPCREATESTRUCT) lParam)->hInstance ;
+         lpfnDlgProc = MakeProcInstance (DlgProc, hInstance) ;
+         hDlg = CreateDialog (hInstance, szAppName, hWnd, lpfnDlgProc) ;
+         break ;
+
+      case WM_SETFOCUS:
+         SetFocus (hDlg) ;
+         break ;
+
+      case WM_COMMAND:
+         break ;
+
+      case WM_DESTROY:
+         FreeProcInstance (lpfnDlgProc) ;
+         PostQuitMessage (0) ;
+         break ;
+
+      default:
+         return DefWindowProc (hWnd, iMessage, wParam, lParam) ;
+
+   }
+
+   return 0L ;
+}
+
+BOOL FAR PASCAL DlgProc (HWND hDlg, unsigned iMessage, WORD wParam, LONG lParam)
+{
+LONG     Seed ;
+unsigned iResult ;
+
+char     szName [REG_NAME_LEN+1],
+         szNum  [REG_NUM_LEN+1] ;
+
+BOOL     bTranslated ;
+
+   switch (iMessage)
+   {
+      case WM_INITDIALOG:
+         SetDlgItemInt (hDlg, IDD_INFO, 42, FALSE) ;
+         /* fall through */
+
+      case WM_SETFOCUS:
+         SetFocus (GetDlgItem (hDlg, IDD_NAME)) ;
+         return FALSE ;
+
+      case WM_COMMAND:
+         switch (wParam)
+         {
+            case IDD_OK:
+               Seed = (LONG) GetDlgItemInt (hDlg, IDD_INFO, (BOOL FAR *) &bTranslated, NULL) ;
+               iResult = GetDlgItemText (hDlg, IDD_NAME, szName, REG_NAME_LEN) ;
+               if (Seed == 0  || iResult == 0)
+               {
+                  MessageBeep (0) ;
+                  break ;
+               }
+               CreateRegistration (szNum, szName) ;
+               SetDlgItemText (hDlg, IDD_REGNUMBER, szNum) ;
+               break ;
+
+         }
+         break ;
+
+      default:
+         return FALSE ;
+   }
+   return TRUE ;
+}
+
+BOOL DrawShadow (HWND hWnd, short iBrush)
+{
+
+   return TRUE ;
+}
+
+
+BOOL InitWnd (HANDLE hInstance)
+{
+HANDLE      hMemory ;
+PWNDCLASS   pWndClass ;
+BOOL        bSuccess ;
+
+   hMemory = LocalAlloc (LPTR, sizeof (WNDCLASS)) ;
+   pWndClass = (PWNDCLASS) LocalLock (hMemory) ;
+
+   pWndClass->style             = CS_HREDRAW | CS_VREDRAW ;
+   pWndClass->lpfnWndProc       = WndProc ;
+   pWndClass->cbClsExtra        = 0 ;
+   pWndClass->cbWndExtra        = 0 ;
+   pWndClass->hInstance         = hInstance ;
+   pWndClass->hIcon             = LoadIcon (hInstance, szAppName) ;
+   pWndClass->hCursor           = LoadCursor (NULL, IDC_ARROW) ;
+   pWndClass->hbrBackground     = GetStockObject (WHITE_BRUSH) ;
+   pWndClass->lpszMenuName      = NULL ;
+   pWndClass->lpszClassName     = szAppName ;
+
+   bSuccess = RegisterClass (pWndClass) ;
+
+   LocalUnlock (hMemory) ;
+   LocalFree (hMemory) ;
+
+   return (bSuccess) ;
+}
+
+
+
+
+

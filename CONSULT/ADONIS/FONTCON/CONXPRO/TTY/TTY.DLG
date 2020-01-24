@@ -1,0 +1,77 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "RESOURCE.H\0"
+END
+
+SETTINGSDLGBOX DIALOG 25, 21, 198, 171
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "TTY Settings..."
+FONT 8, "Helv"
+BEGIN
+    GROUPBOX        "&COM Options:", -1, 4, 3, 115, 130
+    RTEXT           "&Port:", -1, 9, 18, 40, 10
+    COMBOBOX        IDD_PORTCB, 54, 18, 55, 45, CBS_DROPDOWNLIST | 
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Baud Rate:", -1, 9, 33, 40, 10, NOT WS_GROUP
+    COMBOBOX        IDD_BAUDCB, 54, 33, 55, 63, CBS_DROPDOWNLIST | 
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Data Bits:", -1, 9, 48, 40, 10, NOT WS_GROUP
+    COMBOBOX        IDD_DATABITSCB, 54, 48, 55, 48, CBS_DROPDOWNLIST | 
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "P&arity:", -1, 9, 63, 40, 10, NOT WS_GROUP
+    COMBOBOX        IDD_PARITYCB, 54, 63, 55, 57, CBS_DROPDOWNLIST | 
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Stop Bits:", -1, 9, 78, 40, 10, NOT WS_GROUP
+    COMBOBOX        IDD_STOPBITSCB, 54, 78, 55, 39, CBS_DROPDOWNLIST | 
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "F&low:", -1, 9, 93, 40, 10, NOT WS_GROUP
+    CONTROL         "DTR/DSR", IDD_DTRDSR, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 54, 93, 50, 10
+    CONTROL         "RTS/CTS", IDD_RTSCTS, "Button", BS_AUTOCHECKBOX, 54, 
+                    103, 50, 10
+    CONTROL         "XON/XOFF", IDD_XONXOFF, "Button", BS_AUTOCHECKBOX, 54, 
+                    113, 50, 10
+    GROUPBOX        "&TTY Options:", -1, 124, 3, 70, 55, WS_GROUP
+    CONTROL         "Autowrap", IDD_AUTOWRAP, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 134, 18, 50, 10
+    CONTROL         "New Line", IDD_NEWLINE, "Button", BS_AUTOCHECKBOX, 134, 
+                    28, 50, 10
+    CONTROL         "Local Echo", IDD_LOCALECHO, "Button", BS_AUTOCHECKBOX, 
+                    134, 38, 50, 10
+    GROUPBOX        "Control &Options", -1, 4, 133, 190, 35
+    CONTROL         "Use CN_RECEIVE Notifications", IDD_USECNRECEIVE, 
+                    "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 9, 148, 115, 10
+    CONTROL         "Display Errors", IDD_DISPLAYERRORS, "Button", 
+                    BS_AUTOCHECKBOX, 129, 148, 60, 10
+    PUSHBUTTON      "&Font", IDD_FONT, 139, 68, 40, 14, WS_GROUP
+    DEFPUSHBUTTON   "Ok", IDOK, 139, 88, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 139, 108, 40, 14
+END
+
+ABOUTDLGBOX DIALOG 10, 25, 234, 100
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About the SDK TTY Sample"
+FONT 8, "Helv"
+BEGIN
+    ICON            TTYICON, IDD_ABOUTICON, 10, 5, 18, 20
+    LTEXT           "Microsoft Windows v.%d.%d", IDD_TITLELINE, 45, 5, 127, 
+                    10, SS_NOPREFIX | NOT WS_GROUP
+    LTEXT           "TTY Sample v.%02d.%02d.%03d", IDD_VERSION, 45, 15, 120, 
+                    10, SS_NOPREFIX | NOT WS_GROUP
+    LTEXT           "Copyright © 1991 Microsoft Corp.", -1, 45, 25, 145, 10, 
+                    SS_NOPREFIX | NOT WS_GROUP
+    LTEXT           "", IDD_BYLINE, 45, 35, 145, 20, SS_NOPREFIX | NOT 
+                    WS_GROUP
+    CONTROL         "", -1, "Static", SS_BLACKRECT, 45, 60, 172, 1
+    LTEXT           "386 Enhanced Mode", IDD_WINDOWSMODE, 45, 65, 150, 10, 
+                    SS_NOPREFIX | NOT WS_GROUP
+    LTEXT           "Memory:", -1, 45, 75, 70, 10, SS_NOPREFIX | NOT 
+                    WS_GROUP
+    LTEXT           "%lu KB Free", IDD_FREEMEM, 120, 75, 74, 10, SS_NOPREFIX | 
+                    NOT WS_GROUP
+    DEFPUSHBUTTON   "OK", IDOK, 190, 5, 38, 14
+    LTEXT           "System Resources:", -1, 45, 85, 70, 10, SS_NOPREFIX | 
+                    NOT WS_GROUP
+    LTEXT           "%d%%", IDD_RESOURCES, 120, 85, 74, 10, SS_NOPREFIX | 
+                    NOT WS_GROUP
+END

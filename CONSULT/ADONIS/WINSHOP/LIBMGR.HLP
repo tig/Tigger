@@ -1,0 +1,1 @@
+The Cache Size shows how many bytes of hard disk space you want Window Shopper to allocate for thumbnail information.  This is where Shopper stores images which have been decompressed for viewing.  The more space you allocate, the less frequently Shopper will need to search the thumbnail directory (such as a floppy disk).$

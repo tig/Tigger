@@ -1,0 +1,35 @@
+ZMODEMDLGBOX DIALOG 12, 24, 236, 112
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "ZMODEM File Transfer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME1, "Static", SS_GRAYFRAME, 4, 4, 228, 78
+    RTEXT           "File Name:", 0xFFFF, 8, 8, 48, 8
+    LTEXT           "", IDD_FILENAME, 60, 8, 56, 8, NOT WS_GROUP
+    RTEXT           "File Size:", 0xFFFF, 8, 20, 48, 8
+    LTEXT           "", IDD_FILESIZE, 60, 20, 56, 8, NOT WS_GROUP
+    RTEXT           "Block Check:", 0xFFFF, 8, 32, 48, 8
+    LTEXT           "", IDD_BLOCKCHECK, 60, 32, 56, 8, NOT WS_GROUP
+    RTEXT           "Total Blocks:", 0xFFFF, 8, 44, 48, 8
+    LTEXT           "", IDD_TOTALBLOCKS, 60, 44, 56, 8, NOT WS_GROUP
+    RTEXT           "Time Estimate:", 0xFFFF, 8, 56, 48, 8
+    LTEXT           "", IDD_TIMEESTIMATE, 60, 56, 56, 8, NOT WS_GROUP
+    RTEXT           "Received:", 0xFFFF, 8, 68, 48, 8
+    LTEXT           "", IDD_RECEIVED, 60, 68, 56, 8, NOT WS_GROUP
+    RTEXT           "Byte Count:", 0xFFFF, 120, 8, 48, 8
+    LTEXT           "", IDD_BYTECOUNT, 172, 8, 56, 8, NOT WS_GROUP
+    RTEXT           "Block Count:", 0xFFFF, 120, 20, 48, 8
+    LTEXT           "", IDD_BLOCKCOUNT, 172, 20, 56, 8, NOT WS_GROUP
+    RTEXT           "Corrections:", 0xFFFF, 120, 32, 48, 8
+    LTEXT           "", IDD_CORRECTIONS, 172, 32, 56, 8, NOT WS_GROUP
+    RTEXT           "Average CPS:", 0xFFFF, 120, 44, 48, 8
+    LTEXT           "", IDD_AVERAGECPS, 172, 44, 56, 8, NOT WS_GROUP
+    RTEXT           "Last Message:", 0xFFFF, 120, 56, 48, 8
+    LTEXT           "", IDD_LASTMESSAGE, 172, 56, 56, 8, NOT WS_GROUP
+    RTEXT           "Progress:", 0xFFFF, 120, 68, 48, 8
+    CONTROL         "0%", IDD_PROGRESS, "Button", NOT WS_GROUP |
+                    BS_OWNERDRAW, 172, 68, 56, 8
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_GROUP | WS_TABSTOP | 
+                    0x2000, 196, 86, 36, 22
+END
+

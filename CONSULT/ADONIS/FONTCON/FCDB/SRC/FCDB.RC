@@ -1,0 +1,30 @@
+//*************************************************************
+//  File name: FCDB.rc
+//
+//  Description: 
+//      Resources for the FCDB
+//
+//  History:    Date       Author     Comment
+//               2/25/92   MSM        Updated for The Font Connection
+//
+//*************************************************************
+
+#include "intFCDB.h"
+#include "FCDB.rcv"
+
+ELB_FOLDERS  BITMAP elb.bmp
+
+COPYRIGHT FILES "copyrite.txt"
+
+STRINGTABLE
+{
+    IDS_TECHSUPPORT,    "\n\nConnection Software Technical Support - (800) 243-9497"
+    IDS_FATALSTARTUP,   "The Font Connection has experienced an error during initialization.  Shut down other applications and try to restart The Font Connection.  If this problem persists, contact Technical Support."
+    IDS_DISKERROR,      "The Font Connection has experienced a disk error while loading the database.  Shut down and try to restart The Font Connection.  If this problem persists, contact Technical Support."
+    IDS_CORRUPTWARN,    "The Font Connection has identified pieces of the database as being corrupt and has successfully removed them from the database.  Use 'Update Local Database' to restore the corrupted pieces.  If this problem persists, contact Technical Support."
+    IDS_MEMORYONLOAD,   "The Font Connection has experienced a memory allocation error during initialization.  Shut down other applications and try to start The Font Connection again.  If this problem persists, contact Technical Support."
+    IDS_RECOVERERROR,   "The Font Connection has identified pieces of the database as being corrupt and was unable to removed them from the database.  Use 'Update Local Database' to restore the corrupted pieces.  If this problem persists, contact Technical Support."
+    IDS_NODB,           "The Font Connection was unable to find the database.  Please contact Technical Support."
+}
+
+//*** EOF: FCDB.rc

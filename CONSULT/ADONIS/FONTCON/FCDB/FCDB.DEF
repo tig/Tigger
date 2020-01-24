@@ -1,0 +1,128 @@
+;************************************************************************
+;*
+;*     Project:  FCDB.EXE
+;*
+;*      Module:  FCDB.def
+;*
+;*   Author(s):  Michael Scott McCraw
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+LIBRARY           FCDB
+
+DESCRIPTION       'Font Shopper Database Editor'
+
+EXETYPE           WINDOWS
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  FCDB         PRELOAD FIXED DISCARDABLE
+                  INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+DATA              PRELOAD MOVEABLE
+HEAPSIZE          16000
+
+EXPORTS           
+    WEP                     @1   RESIDENTNAME
+    LBSubClassProc          @90
+    ELBWndProc              @91    
+
+    InitializeFCDB          @95
+
+    ELBAddInto              @100
+    ELBCloseNode            @101
+    ELBDeleteNode           @102 
+    ELBGetCurSel            @103
+    ELBGetDatabase          @104
+    ELBGetItem              @105
+    ELBGetPaintProc         @106
+    ELBGetSortProc          @107
+    ELBInsertNode           @108
+    ELBRemoveNode           @109
+    ELBResetContent         @110
+    ELBSetBitmap            @111
+    ELBSetCurSel            @112
+    ELBSetDatabase          @113
+    ELBSetFont              @114
+    ELBSetPaintProc         @115
+    ELBSetSortProc          @116
+    ShrinkFilename          @117
+    ExpandFilename          @118
+    SetFileVersion          @119
+    GetFileVersion          @120
+    ValidateFileAndGetVersion @121
+    CreateStyle             @122
+    FreeStyle               @123
+    GetFirstStyle           @124
+    GetNextStyle            @125
+    CreateFace              @126
+    FreeFace                @127
+    LoadFace                @128
+    SaveFace                @129
+    GetFirstFace            @130
+    GetNextFace             @131
+
+    LoadFaceBitmap          @133
+    CreateFamily            @134
+    FreeFamily              @135
+    LoadFamily              @136
+    SaveFamily              @137
+    GetFirstFamily          @138
+    GetNextFamily           @139
+    LoadFamilyBitmap        @140
+    CreatePublisher         @141
+    FreePublisher           @142
+    LoadPublisher           @143
+    SavePublisher           @144
+
+    LoadPublisherLCopyright @147
+    FreePublisherLCopyright @148
+    GetFirstPublisher       @149
+    GetNextPublisher        @150
+    CreateDataBase          @151
+    FreeDataBase            @152
+    EmptyDataBase           @153
+    LoadDataBase            @154
+    SaveDataBase            @155
+    GetLoadBitmapError      @156
+    GetLoadError            @157
+    GetFirstChildDBNode     @158 
+    GetNextDBNode           @159
+    FillDBELB               @160
+    ExpandDBELBNode         @161
+    CollapseDBELBNode       @162
+    SetDBELBToView          @163
+    SetDBELBToSort          @164
+    InsertChildrenInto      @165
+    SyncDBELBToSlider       @166
+    DBELBPaintProc          @167
+    DBELBSortProc           @168
+    HandleDBELBCommand      @169  
+    SetDBELBToFilter        @170
+    IsAncestorChecked       @171
+    ReportFontshopError     @172
+    SortDatabase            @173
+
+    CreateCollection        @180
+    FreeCollection          @181
+    GetFirstCollection      @182
+    GetNextCollection       @183
+    LoadPublisherCollections @184
+    FreePublisherCollections @185
+    LoadPublisherCollectionsText @186
+    FreePublisherCollectionsText @187
+
+    GetFirstPurchasedNode   @190
+    GetNextPurchasedNode    @191
+
+    BuildDirList            @200
+    DestroyDirList          @201
+    GetNextDirListItem      @202
+    IsItemInDirList         @203
+
+

@@ -1,0 +1,36 @@
+# makefile for Register (c) copyright 1990, Charles E. Kindel, Jr.
+#
+#
+# Executable name
+BASE=register
+
+# standard options for C compiler
+
+CLOPTS= -AM -c -FPa -D LINT_ARGS -D DEBUG -Gsw -Os -W2 -Zp -I..\
+
+# object files
+OBJ=register.obj auxw.obj
+
+# include files
+INCLUDE=..\ws_types.h ..\ws_defs.h
+
+# this is an inference statement, it makes MAKE infer how to compile
+.c.obj       : $*.c $(INCLUDE)
+        cl $(CLOPTS) $*.c >$*.err
+
+#-------------------------------------------------------------------------------
+# List all source names here:
+#------------------------------------------------------------------------------
+register.obj   :  $*.h ws_reg.h
+
+ws_reg.obj      : $*.h
+
+auxw.obj        : ..\auxwrite.h
+
+register.exe  : $(OBJ) $(BASE).def $(BASE).res
+        link4 @register.lnk
+        rc $(BASE).res $(BASE).exe
+        d:\msc\bin\mark memory register.exe
+
+        
+

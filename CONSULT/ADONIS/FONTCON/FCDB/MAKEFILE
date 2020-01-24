@@ -1,0 +1,186 @@
+
+MAINTARGET=FCDB
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+   
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+# if PUTEXE is defined the dll/exe will be copied from the root to
+PUTEXE  = ..\BUILD\
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  = ..\LIB\
+
+# if pubinc is define the include file will be copied there
+PUTINC  = ..\INC\
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+!IFDEF DEBUG
+
+CFLAGS      =  -f -c -nologo -AMw -G2sw -Owd -W3 -Zip -DDEBUG 
+LINKOPTS    =  /NOD/NOE/A:16/CO/MAP/nologo
+RCOPTS      =  -r -DDEBUG -iSRC
+BUILDTYPE   =  DEBUG
+
+!ELSE
+
+CFLAGS      =  -c -nologo -AMw -G2sw -Owt -W3 -Zp 
+LINKOPTS    =  /NOD/NOE/A:16/MAP/nologo
+RCOPTS      =  -r -iSRC
+BUILDTYPE   =  RELEASE
+
+!ENDIF
+
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+RESOPTS     =  -v -t
+
+BANNER =   $(MAINTARGET) : **** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) ****
+
+#
+# Directories
+#
+MYRES = SRC\ 
+MYINC = SRC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = ..\inc\VERSION.H $(MYRES)$(MAINTARGET).RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(MYOBJ)precomp.pch\
+          $(VERINCS)\
+          $(MYRES)$(MAINTARGET).rc\
+          $(MYRES)$(MAINTARGET).rcv\
+          $(MYRES)ELB.BMP
+
+# 
+# Library dependencies
+# 
+LMISC   =   makefile\
+            $(MAINTARGET).def
+
+LINCS   =   $(MYINC)$(MAINTARGET).H $(MYINC)INTFCDB.H
+
+LOBJS   =   \
+            $(MYOBJ)LIBENTRY.OBJ\
+            $(MYOBJ)PRECOMP.OBJ\
+            $(MYOBJ)FCDB.obj\
+            $(MYOBJ)db.obj\
+            $(MYOBJ)dbbmp.obj\
+            $(MYOBJ)dbelb.obj\
+            $(MYOBJ)dbsave.obj\
+            $(MYOBJ)dbwalk.obj\
+            $(MYOBJ)dirlist.obj\
+            $(MYOBJ)elb.obj
+
+#
+#   BUILD RULES
+#
+all : $(MAINTARGET).DLL
+
+#
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS) $(PCHFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+#   $(MAINTARGET).DLL build rules
+
+$(MAINTARGET).DLL  :   $(LOBJS) $(MYRES)$(MAINTARGET).res $(MAINTARGET).def
+   @echo *** $(MAINTARGET) *** Linking...
+   link $(LINKOPTS) @<<
+$(LOBJS)
+$(MAINTARGET).DLL
+$(MAINTARGET).MAP
+..\lib\wdb ..\lib\conxmem ..\lib\conxlib libw mdllcew 
+$(MAINTARGET).DEF
+<<
+   rc $(RESOPTS) $(MYRES)$(MAINTARGET).RES $(MAINTARGET).DLL
+   @implib /nologo $(MAINTARGET).LIB $(MAINTARGET).DEF
+   @mapsym $(MAINTARGET).map >NUL
+   @copy $(MAINTARGET).lib ..\lib
+   @copy $(MAINTARGET).DLL ..\build
+   @copy $(MAINTARGET).SYM ..\build
+   @copy $(MYSRC)$(MAINTARGET).h ..\inc
+   @echo $(BANNER) >$(OUTPUT)
+
+$(MYOBJ)PRECOMP.OBJ:  $(MYSRC)PRECOMP.H
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Pre-compiling $(@B).C... >$(OUTPUT)
+    @SET CL=$(CFLAGS)
+    $(CC) -YcPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH -Fo$@ $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @SET CL=
+
+$(MYOBJ)LIBENTRY.OBJ: $(MYSRC)LIBENTRY.ASM
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Assembling $(@B).ASM... >$(OUTPUT)
+    masm -Mx $(MYSRC)LIBENTRY, $(MYOBJ)LIBENTRY;
+
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS) 
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Building $(@B).RES... >$(OUTPUT)
+    rc $(RCOPTS) $(MYRES)$(MAINTARGET).rc $(MYRES)$(MAINTARGET).RES
+
+$(MYOBJ)FCDB.OBJ:  $(MYSRC)FCDB.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)DB.OBJ:  $(MYSRC)DB.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)DBBMP.OBJ:  $(MYSRC)DBBMP.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)DBELB.OBJ:  $(MYSRC)DBELB.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)DBSAVE.OBJ:  $(MYSRC)DBSAVE.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)DBWALK.OBJ:  $(MYSRC)DBWALK.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)ELB.OBJ:  $(MYSRC)ELB.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)INIT.OBJ:  $(MYSRC)INIT.C $(VERINCS)
+
+$(MYOBJ)LIBMAIN.OBJ: $(MYSRC)LIBMAIN.C  $(VERINCS)
+
+
+#   MISC. STUFF
+
+.ignore : 
+clean       :  
+                !del $(MYOBJ)*.obj
+                !del $(MYOBJ)*.exe
+                !del $(MYOBJ)*.pch
+                !del *.map
+                !del *.sym
+                !del $(MYRES)*.res
+                !del *.EXE
+                !del *.DLL
+                !del *.lib
+                !del $(MYSRC)*.err
+                @echo *** DONE ***
+
+ship        :   all
+                !copy $(MAINTARGET).DLL $(PUTEXE)
+                !copy $(MYOBJ)$(MAINTARGET).LIB $(PUTLIB)
+                !copy $(MYINC)$(MAINTARGET).H $(PUTINC)
+                !bumpver $(MYINC)VERSION.H
+                @echo *** DONE ***
+
+        

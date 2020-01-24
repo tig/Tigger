@@ -1,0 +1,22 @@
+                  obj\wep+
+                  obj\cmndll+
+                  obj\libentry+
+                  obj\selprn+
+                  obj\fileopen+
+                  obj\shadow+
+                  obj\about+
+                  obj\version+
+                  obj\status+
+                  obj\bmpbtn+
+                  obj\string+
+                  obj\time+
+                  obj\dlghelp+
+                  obj\font+
+                  obj\color+
+                  obj\led
+cmndll.dll /align:16
+cmndll /map
+wdb mdllcew libw
+cmndll.def
+
+

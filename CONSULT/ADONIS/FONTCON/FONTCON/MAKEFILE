@@ -1,0 +1,281 @@
+ # NOTE:  This is a very generic makefile.  Just define MAINTARGET and
+ #        specify your object files $(OBJS1) and $(OBJS2) and that's it.
+
+########################################################################
+## SPECIAL FONTCON #defines:
+##
+## Define            Meaning
+## ------            ---------------------------------------------------
+## BETA as BETA      The product will identify itself to the bbs as a beta.
+##                   otherwise, define it as RELEASE
+##
+## INTERNAL          An Internal menu item will be available for generating
+##                   ingres files.
+##                   Otherwise define it as NO_INTERNAL
+##
+########################################################################
+
+
+INTERNAL=EXTERNAL
+
+BETA=RELEASE
+
+
+MAINTARGET=FONTCON
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+# if PUTEXE is defined the dll/exe will be copied from the root to
+PUTEXE  = ..\BUILD\
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  = ..\LIB\
+
+# if pubinc is define the include file will be copied there
+PUTINC  = ..\INC\
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+!IFDEF DEBUG
+
+CFLAGS      =   -f -c -nologo -AM -G2sw -Owd -W3 -Zip -DDEBUG -D$(BETA) -D$(INTERNAL) -D$(MAINTARGET) 
+LINKOPTS    =   /NOLOGO/BATCH/NOD/NOE/A:16/CO/M
+RCOPTS      =   -r -DDEBUG -D$(INTERNAL) -iSRC;INC;RES
+BUILDTYPE   =   DEBUG
+
+!ELSE
+
+CFLAGS      =   -c -nologo -AM -G2sw -Owt -W3 -Zp -D$(BETA) -D$(INTERNAL) -D$(MAINTARGET)
+LINKOPTS    =   /NOLOGO/BATCH/NOD/NOE/A:16/M
+RCOPTS      =   -r -D$(INTERNAL) -iSRC;INC;RES
+BUILDTYPE   =   RELEASE
+
+!ENDIF
+
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+RESOPTS     =  -v -t
+
+BANNER      = $(MAINTARGET).EXE: **** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) ****
+
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = SRC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = ..\inc\VERSION.H $(MYRES)$(MAINTARGET).RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(VERINCS)\
+          $(MYINC)mainwnd.h\
+          $(MYSRC)RES.H\
+          $(MYRES)STRTBL.STR\
+          $(MYRES)panose.STR\
+          $(MYRES)$(MAINTARGET).rc\
+          $(MYRES)$(MAINTARGET).dlg\
+          $(MYRES)$(MAINTARGET).ico\
+          $(MYRES)tb.bmp\
+          $(MYRES)adonis.bmp\
+          $(MYRES)fntcon.bmp
+
+# 
+# Library dependencies
+# 
+LMISC   =   MAKEFILE\
+            $(MAINTARGET).DEF
+
+LINCS   =   $(MYOBJ)PRECOMP.PCH $(MYINC)GLOBAL.H
+
+LOBJS   =\
+            $(MYOBJ)PRECOMP.OBJ\
+            $(MYOBJ)$(MAINTARGET).OBJ\
+            $(MYOBJ)coll.obj\
+            $(MYOBJ)config.obj\
+            $(MYOBJ)dde.obj\
+            $(MYOBJ)filter.obj\
+            $(MYOBJ)fontview.obj\
+            $(MYOBJ)init.obj\
+            $(MYOBJ)mainwnd.obj\
+            $(MYOBJ)panose.obj\
+            $(MYOBJ)purchase.obj\
+            $(MYOBJ)viewtext.obj\
+            $(MYOBJ)bbs.obj\
+            $(MYOBJ)newuser.obj\
+            $(MYOBJ)online.obj
+
+LOBJS2  =\
+            $(MYOBJ)elsecvt1.obj\
+            $(MYOBJ)elsecvt2.obj\
+            $(MYOBJ)elsecvt3.obj\
+            $(MYOBJ)elsecvt4.obj\
+            $(MYOBJ)elsemap.obj\
+            $(MYOBJ)elseres.obj
+
+#
+#   BUILD RULES
+#
+#all : $(MAINTARGET).EXE $(MYHELP)$(MAINTARGET).hlp
+all : $(MAINTARGET).EXE 
+
+#
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS) $(PCHFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+
+#   $(MAINTARGET).EXE build rules
+
+$(MAINTARGET).EXE  : $(LOBJS) $(LOBJS2) $(MYRES)$(MAINTARGET).res $(MAINTARGET).def $(MYOBJ)WINSTUB.EXE
+   @echo *** $(MAINTARGET) *** Linking...
+   link @<<
+$(LOBJS)+
+$(LOBJS2)
+$(MAINTARGET).EXE
+$(MAINTARGET).MAP
+..\lib\wdb ..\lib\FCDB ..\lib\CONXMEM ..\lib\CONXLIB lzexpand commdlg ddeml shell ver mlibcew libw
+$(MAINTARGET).def $(LINKOPTS)
+<<
+                   rc $(RESOPTS) $(MYRES)$(MAINTARGET).res $(MAINTARGET).EXE
+                   @mapsym $(MAINTARGET).map
+                   @copy $(MAINTARGET).EXE ..\build
+                   @copy $(MAINTARGET).SYM ..\build
+                   @echo.>$(OUTPUT)
+                   @echo $(BANNER)>$(OUTPUT)
+
+$(MYOBJ)PRECOMP.OBJ :  $(MYINC)PRECOMP.H
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Pre-compiling $(@B).C... >$(OUTPUT)
+    @SET CL=$(CFLAGS)
+    $(CC) -YcPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH -Fo$(MYOBJ)PRECOMP.OBJ -NT PRECOMP $(MYSRC)PRECOMP.C>$(MYSRC)$(@B).ERR
+    @SET CL=
+    @type $(MYSRC)$(@B).ERR>$(OUTPUT)
+
+$(MYOBJ)WINSTUB.EXE:  $(MYSRC)WINSTUB.ASM
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Assembling $(@B).ASM... >$(OUTPUT)
+    masm -I.\  $(MYSRC)winstub.asm,$(MYOBJ)WINSTUB.OBJ;
+    link $(MYOBJ)WINSTUB.OBJ,$(MYOBJ)WINSTUB.EXE;
+
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS)
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Building $(MYRES)$(MAINTARGET).RES
+    rc $(RCOPTS) $(MYRES)$(MAINTARGET).rc $(MYRES)$(MAINTARGET).RES
+
+$(MYOBJ)$(MAINTARGET).OBJ:  $(MYSRC)$(MAINTARGET).C $(LINCS) $(VERINCS)
+
+$(MYOBJ)COLL.OBJ:  $(MYSRC)COLL.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)CONFIG.OBJ:  $(MYSRC)CONFIG.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)DDE.OBJ:  $(MYSRC)DDE.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)FILTER.OBJ:  $(MYSRC)FILTER.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)FONTVIEW.OBJ:  $(MYSRC)FONTVIEW.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)INIT.OBJ:  $(MYSRC)INIT.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)MAINWND.OBJ:  $(MYSRC)MAINWND.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)PANOSE.OBJ:  $(MYSRC)PANOSE.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)PURCHASE.OBJ:  $(MYSRC)PURCHASE.C $(MYSRC)PURCHASE.H $(MYSRC)ONLINE.H $(LINCS) $(VERINCS)
+
+$(MYOBJ)VIEWTEXT.OBJ:  $(MYSRC)VIEWTEXT.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)BBS.OBJ:  $(MYSRC)BBS.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)NEWUSER.OBJ:  $(MYSRC)NEWUSER.C $(LINCS) $(VERINCS)
+
+$(MYOBJ)ONLINE.OBJ:  $(MYSRC)PURCHASE.H $(MYSRC)ONLINE.H $(MYSRC)ONLINE.C $(LINCS) $(VERINCS)
+
+
+# Same as the automatic ones except we don't use precompiled headers
+# for these guys
+$(MYOBJ)ELSECVT1.OBJ:  $(MYSRC)ELSECVT1.C $(LINCS) $(VERINCS)
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+$(MYOBJ)ELSECVT2.OBJ:  $(MYSRC)ELSECVT2.C $(LINCS) $(VERINCS)
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+$(MYOBJ)ELSECVT3.OBJ:  $(MYSRC)ELSECVT3.C $(LINCS) $(VERINCS)
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+$(MYOBJ)ELSECVT4.OBJ:  $(MYSRC)ELSECVT4.C $(LINCS) $(VERINCS)
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+$(MYOBJ)ELSEMAP.OBJ:  $(MYSRC)ELSEMAP.C $(LINCS) $(VERINCS)
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+$(MYOBJ)ELSERES.OBJ:  $(MYSRC)ELSERES.C $(LINCS) $(VERINCS)
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+
+#   MISC. STUFF
+
+zip         :   clean
+                pkzip -psr $(MAINTARGET).zip *.*
+
+.ignore : 
+clean       :  
+                !del $(MYOBJ)*.obj
+                !del $(MYOBJ)*.exe
+                !del $(MYOBJ)*.pch
+                !del *.map
+                !del *.sym
+                !del $(MYRES)*.res
+                !del *.EXE
+                !del *.DLL
+                !del *.lib
+                !del $(MYSRC)*.err
+                @echo *** DONE ***
+
+        

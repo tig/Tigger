@@ -1,0 +1,103 @@
+/************************************************************************
+ *
+ *  Copyright (c) 1991 Charles E. Kindel, Jr. All Rights Reserved.
+ *
+ *     Project:  SHOPLIB 2.0
+ *
+ *      Module:  SHOPLIB.rcv
+ *
+ *     Remarks:  Version stamping resource stuff.
+ *
+ *   Revisions:  
+ *
+ ***********************************************************************/
+
+#include <ver.h>
+
+#include "..\..\inc\version.h"
+
+#define FS_FILEVERSION  VER_CONXPRO
+
+/*
+ * the following lines are specific to this file
+ */
+#define VER_PRODUCTVERSION          VER_MAJOR,VER_MINOR,0,0
+
+/*
+ * For each of the font shopper executable files, the version info
+ * is parsed as:
+ *
+ *   Word1 = VER_MAJOR   (i.e. 1)
+ *   Word2 = VER_MINOR   (i.e. 2)
+ *   Word3 = VER_BUILD   (i.e. 85) (always 0 in released builds)
+ *   Word4 = Version of file (i.e. 003)
+ *
+ * It is Word4 that is used by FontShopper to determine if
+ * a file needs updating or not.
+ */  
+
+#define VER_FILEVERSION             VER_MAJOR,VER_MINOR,VER_BUILD,FS_FILEVERSION
+
+#define VER_FILEFLAGS               VS_FF_PRERELEASE
+
+#define VER_FILETYPE                VFT_DLL
+#define VER_FILESUBTYPE             VFT2_UNKNOWN
+
+#define VER_FILEDESCRIPTION_STR     "Connect Software File Transfer Protocol\0"
+#define VER_FILEVERSION_STR         "1.00\0"
+#define VER_INTERNALNAME_STR        "CONXPRO\0"
+
+#define VER_PRODUCTNAME_STR         "Connect Software\0"
+#define VER_PRODUCTVERSION_STR      "1.0\0"
+#define VER_COMPANYNAME_STR         "Connect Software, Inc.\0"
+#define VER_LEGALCOPYRIGHT_STR      "Copyright \251 1992 Connect Software\0"
+
+/*
+ *                                                              
+ * The following section actually creates the version structure.
+ * They are ignored if we are not being invoked by RC.          
+ *                                                              
+ * These lines should only be modified for localized versions   
+ * where indicated.                                              
+ *                                                              
+ */
+
+#ifdef RC_INVOKED
+ 
+VS_VERSION_INFO VERSIONINFO 
+FILEVERSION    VER_FILEVERSION
+PRODUCTVERSION VER_PRODUCTVERSION
+FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
+FILEFLAGS      VER_FILEFLAGS
+FILEOS         VOS_DOS_WINDOWS16
+FILETYPE       VER_FILETYPE
+FILESUBTYPE    VER_FILESUBTYPE
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN 
+            VALUE "CompanyName",     VER_COMPANYNAME_STR
+            VALUE "FileDescription", VER_FILEDESCRIPTION_STR
+            VALUE "FileVersion",     VER_FILEVERSION_STR
+            VALUE "InternalName",    VER_INTERNALNAME_STR
+            VALUE "LegalCopyright",  VER_LEGALCOPYRIGHT_STR
+            VALUE "ProductName",     VER_PRODUCTNAME_STR
+            VALUE "ProductVersion",  VER_PRODUCTVERSION_STR
+        END 
+        /* additional info should be added here for localized versions */
+    END 
+ 
+    BLOCK "VarFileInfo" 
+    BEGIN 
+        /* the following line should be extended for localized versions */
+        VALUE "Translation", 0x409, 1252
+    END 
+END 
+
+#endif
+
+/************************************************************************
+ * End of File: SHOPLIB.rcv
+ ***********************************************************************/
+

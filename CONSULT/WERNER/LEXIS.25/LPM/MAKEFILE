@@ -1,0 +1,60 @@
+#*************************************************************
+#  
+# MAKEFILE for the LEXIS Program Manager
+#
+# Copyright (c) 1991 Werner Associates.  All Rights Reserved.
+#
+#
+#*************************************************************
+
+MEM      =-AM
+LIBS     =mlibcaw
+
+#CLOPTS   =$(MEM) -c -Gsw -Oad -Zpei -W3 -FPa -nologo -D DEBUG
+#LINKOPTS =/NOD/NOE/CO
+
+CLOPTS   =$(MEM) -c -Gsw -Oad -Zp -W3 -FPa -nologo
+LINKOPTS =/NOD/NOE
+
+lpm.exe:       lpm.obj\
+               shadow.obj\
+               utils.obj\
+               bmpbtn.obj\
+               winstub.exe\
+               lpm.def\
+               lpm.res\
+               lexblnk.exe
+    link $(LINKOPTS) lpm utils bmpbtn shadow,,, wdb $(LIBS) libw, lpm.def
+    rc -v lpm.res
+
+lexblnk.exe: 
+    chdir lexblnk
+    nmake
+    copy lexblnk.exe ..
+    copy blnkdll.dll ..
+    chdir ..
+
+lpm.obj: lpm.c resource.h lpm.h
+    cl $(CLOPTS) lpm.c > lpm.err
+
+shadow.obj: shadow.c 
+    cl $(CLOPTS) shadow.c > shadow.err
+
+utils.obj: utils.c 
+    cl $(CLOPTS) utils.c > utils.err
+
+bmpbtn.obj: bmpbtn.c  bmpbtn.h
+    cl $(CLOPTS) bmpbtn.c > bmpbtn.err
+
+winstub.exe: winstub.asm
+    masm -I.\  winstub.asm;
+    link winstub;
+
+lpm.res: lpm.rc lpm.ico resource.h about.dlg exit.dlg\
+         lfw.bmp\
+         lfd.bmp\
+         home.bmp\
+         check.bmp\
+         lexfrm.bmp\
+         util.bmp
+    rc -r lpm.rc

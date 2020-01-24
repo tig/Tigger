@@ -1,0 +1,1779 @@
+/*****************************************************************************\
+*                                                                             *
+*  Copyright (C) 1990 Digital Communications Associates, Inc.                 *
+*                All Rights Reserved.                                         *
+*  Copyright (C)  Michael J. Werner and Associates  All Rights Reserved.      *
+*                                                                             *
+*  Project: XTALK, Crosstalk for Windows for Crosstalk Communications         *
+*                                                                             *
+*   Module: Resource Definition File (XTALK.RC)                               *
+*                                                                             *
+*   Author: Kent David Cedola                                                 *
+*                                                                             *
+*   System: Microsoft Windows 2.1 using Microsoft C 5.1                       *
+*                                                                             *
+*  Remarks: This is the standard resource file needed by all Windows          *
+*           application to store the menu(s), dialog(s), icon(s), string(s)   *
+*           and the other bits and pieces needed to support a windows         *
+*           application.                                                      *
+*                                                                             *
+*  Revisions:								      *
+*  1.00 07/17/89          Initial Version.				      *
+*  1.01 01/17/89 dca00003 Added 1990 to Help.About Copyright and	      *
+*                (D00083) re-centered the dialog.			      *
+*  1.01 01/31/90 dca00007 PJL Changed Setup.Terminal.More 'Wrap to next line' *
+*                         CheckBox spacing (for EGA).			      *
+*  1.01 02/02/90 dca00016 PJL Change Version Number, "Redial" text	      *
+*  1.01 02/19/90 dca00023 PJL Change "Xtalk" to "XTALK" (File.New)	      *
+*  1.1  03/01/90 dca00037 MKL added accelerators for Setup.session.more	      *
+*    			  Answerback, Capture file name & Dial Modifier	      *
+*  1.1  03/01/90 dca00038 MKL changed setup.terminal.more.graphics text to    *
+*			  "Enable graphics mode".			      *
+*  1.1  03/01/90 dca00041 MKL changed IDD_PROTOCAL, IDD_PROTOCAL_ASCII, IDD_  *
+*			  SETTING & ID_PROTOCAL_MAXERRORS to fixed edit	      *
+*			  boxes too small on CGA monitor problem	      *
+*  1.1  03/13/90 dca00048 MKL added COM3, COM4 support			      *
+*  1.1  03/15/90 dca00051 PJL Blank out ModemResults and Disconnect strings   *
+*			  for non-Hayes compatible modems.		      *
+*  1.1  03/19/90 dca00053 MKL added Windows 3.0 proportional font support     *
+*  1.1  04/02/90 dca00065 PJL Change "Unknown Unit" to "Invalid disk drive".  *
+*  1.1  04/09/90 dca00074 MKL added new icon for Win3.0			      *
+*  1.1  04/09/90 dca00079 PJL Widen file xfer dlg so "Bad Packet" will fit.   *
+*  1.1  04/16/90          PJL Change ICON ordering so Win30 icon is first.    *
+*  1.1  04/19/90 dca00089 PJL Modify CONNECT_ARQ Modem strings (Setup.Modem). *
+*  1.1b 05/09/90          PJL Split DIALOGS.H into two files - too big for RC.*
+*  1.1b 05/16/90 dca00097 PJL Add PP PM2400SA modem to Setup.Modem list.      *
+*                                                                             *
+\*****************************************************************************/
+
+#include <style.h>
+#include "xtalk.h"
+#include "dialogs.h"
+#include "strtbl.h"
+
+#define TAB      WS_TABSTOP
+#define TABGRP   WS_TABSTOP | WS_GROUP
+#define DLGMODAL WS_POPUP | WS_DLGFRAME
+
+
+/******************************************************************************/
+/*									      */
+/*  ICON resources                                                            */
+/*									      */
+/******************************************************************************/
+
+/* dca00074 MKL added a new icon for Win3.0 */
+#define IDI_ICON2	31
+IDI_ICON2 ICON xtalkn.ico
+IDI_ICON ICON xtalk.ico
+
+
+/******************************************************************************/
+/*									      */
+/*  BITMAP resources                                                          */
+/*									      */
+/******************************************************************************/
+
+IDB_TITLE1 BITMAP xtalk.bmp     /* The main title bitmap displayed          */
+IDB_FROG1  BITMAP frog.bmp      /* Kermit 'KCP'                             */
+
+
+/******************************************************************************/
+/*									      */
+/*  ICON resources                                                            */
+/*									      */
+/******************************************************************************/
+
+IDC_HAND CURSOR hand.cur        /* Hand Icon                                */
+
+
+/******************************************************************************/
+/*									      */
+/*  USER resources                                                            */
+/*									      */
+/******************************************************************************/
+
+IDU_TOKENS USER  tokens.dat     /* Tokens are kept out of memory this way   */
+
+
+/******************************************************************************/
+/*									      */
+/*  MENU resources                                                            */
+/*									      */
+/******************************************************************************/
+
+IDM_MENU MENU
+  BEGIN
+  POPUP "&File"
+    BEGIN
+    MENUITEM  "&New phone book entry...",       CMD_NEW
+    MENUITEM  "&Open a phone book entry...",    CMD_OPEN
+    MENUITEM  "&Save",                          CMD_SAVE
+    MENUITEM  "Save &As...",                    CMD_SAVEAS
+    MENUITEM  SEPARATOR
+    MENUITEM  "Page Se&tup...",                 CMD_PAGESETUP
+    MENUITEM  "&Print",                         CMD_PRINT
+    MENUITEM  "P&rinter Setup...",              CMD_PRINTSETUP
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Capture\tF5",                   CMD_CAPTURE
+    MENUITEM  "&Upload text...",                CMD_UPLOAD, GRAYED
+    MENUITEM  SEPARATOR
+    MENUITEM  "S&end with Xmodem...",           CMD_SEND, GRAYED
+    MENUITEM  "Rece&ive with Xmodem...",        CMD_RECEIVE, GRAYED
+    MENUITEM  SEPARATOR
+    MENUITEM  "E&xit",                          CMD_EXIT
+    END
+
+  POPUP "&Edit"
+    BEGIN
+    MENUITEM  "&Copy\tCtrl+Ins",                CMD_COPY
+    MENUITEM  "&Paste\tShift+Ins",              CMD_PASTE, GRAYED
+    MENUITEM  "Screen to &File...",             CMD_COPYFILE
+    MENUITEM  "Screen to C&apture",             CMD_COPYCAPTURE, GRAYED
+    MENUITEM  "Screen to &Notes",               CMD_COPYNOTES
+    MENUITEM  "Screen to Prin&ter",             CMD_COPYPRINTER
+    MENUITEM  "Copy to &Host",                  CMD_COPYSEND, GRAYED
+    MENUITEM  "Paste to H&ost",                 CMD_PASTEUPLOAD, GRAYED
+    MENUITEM  SEPARATOR
+    MENUITEM  "Sc&roll\tScroll-Lock",           CMD_SCROLL
+    /*
+    MENUITEM  "S&earch Scroll Buffer",          CMD_SEARCHSCROLL
+    */
+    END
+
+  POPUP "&Actions"
+    BEGIN
+    MENUITEM  "&Connect\tF6",                   CMD_CONNECT
+    MENUITEM  "&Dial...\tF7",                   CMD_DIAL
+    MENUITEM  "&Scripts...\tF8",                CMD_EXECUTE
+    MENUITEM  "&Notes",                         CMD_NOTES
+    MENUITEM  "&Kermit Command Processor",      CMD_KERMIT, GRAYED
+    MENUITEM  "&Playback...",                   CMD_PLAYBACK
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Break\tCtrl+Break",             CMD_BREAK, GRAYED
+    MENUITEM  "&Reset Terminal\tCtrl+=",        CMD_RESET
+    END
+
+  POPUP "&Setup"
+    BEGIN
+    MENUITEM  "&Session...",                    CMD_SESSION
+    MENUITEM  "&Device (COM1)...",              CMD_COMMUNICATIONS
+    MENUITEM  "&Terminal (VT102)...",           CMD_TERMINAL
+    MENUITEM  "&Protocol (Xmodem)...",          CMD_PROTOCOL
+    MENUITEM  "&ASCII upload settings...",      CMD_ASCII
+    MENUITEM  "Function &Keys...",              CMD_MACROS
+    MENUITEM  "D&isplay...",                    CMD_DISPLAY
+    MENUITEM  "&Fonts...",                      CMD_FONTS
+    MENUITEM  SEPARATOR
+    MENUITEM  "&Modem...",                      CMD_MODEM
+    MENUITEM  "S&ystem...",                     CMD_SYSTEM
+    END
+
+  POPUP "&User"
+    BEGIN
+    MENUITEM  "Empty",                          CMD_MENUNULL
+    END
+
+  POPUP "&Window"
+    BEGIN
+    MENUITEM  "&File Transfer"                  CMD_WINDOW_XFER
+    MENUITEM  "&Notes",                         CMD_WINDOW_NOTES
+    END
+
+  POPUP "\a&Help"
+    BEGIN
+    MENUITEM  "Help Topics...",                 CMD_INDEX
+    MENUITEM  SEPARATOR
+    MENUITEM  "A&bout CROSSTALK...",            CMD_ABOUT
+    END
+  END
+
+IDM_CISG MENU
+  BEGIN
+  MENUITEM  "&Copy!",                           CMD_CISG_COPY
+  MENUITEM  "&Invert!",                         CMD_CISG_INVERT
+  END
+
+
+/******************************************************************************/
+/*									      */
+/*  ACCELERATOR resource                                                      */
+/*									      */
+/******************************************************************************/
+
+IDI_ACCEL ACCELERATORS
+BEGIN
+  VK_INSERT, CMD_COPY,		VIRTKEY, CONTROL
+  VK_INSERT, CMD_PASTE, 	VIRTKEY, SHIFT
+  VK_F5,     CMD_CAPTURE,	VIRTKEY
+  VK_F6,     CMD_CONNECT,	VIRTKEY
+  VK_F7,     CMD_DIAL,		VIRTKEY
+  VK_F8,     CMD_EXECUTE,       VIRTKEY
+/*VK_F9,     CMD_NOTES,         VIRTKEY */
+END
+
+
+/******************************************************************************/
+/*									      */
+/*  DIALOG resources (lots of them...)                                        */
+/*									      */
+/******************************************************************************/
+
+IDD_ABORT DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 16, 94, 54
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Cancel" IDCANCEL, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 30, 33, 36, 14
+  CONTROL "Sending" -1, "static", SS_CENTER | WS_GROUP | WS_CHILD, 12, 3, 72, 8
+  CONTROL "" ID_NAME, "static", SS_CENTER | WS_GROUP | WS_CHILD, 0, 10, 94, 8
+  CONTROL "to print spooler." -1, "static", SS_CENTER | WS_GROUP | WS_CHILD, 6, 13, 83, 8
+END
+
+/* Kent: I changed dialog when adding 1990 to Copyright. Paula. D0083.*/
+/* dca00016 PJL Change Version Number & "Redial" text */
+IDD_ABOUT DIALOG LOADONCALL MOVEABLE DISCARDABLE 28, 22, 262, 110
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 111, 67, 40, 14
+  CONTROL "", -1, "static", SS_BLACKFRAME | WS_GROUP | WS_CHILD, 76, 5, 104, 18
+  CONTROL "CROSSTALK for Windows", -1, "static", SS_CENTER | WS_CHILD, 89, 10, 84, 8
+  CONTROL "Version 1.1c", -1, "static", SS_CENTER | WS_CHILD, 92, 25, 80, 8
+  CONTROL "Copyright © Digital Communications Associates, Inc., 1989, 1990", -1, "static", SS_CENTER | WS_CHILD, 5, 34, 252, 8
+  CONTROL "Copyright © Werner Associates, 1989, 1990", -1, "static", SS_CENTER | WS_CHILD, 49, 45, 164, 8
+  CONTROL "", -1, "static", SS_BLACKRECT | WS_CHILD, 0, 86, 262, 3
+  CONTROL "Conventional Memory:", -1, "static", SS_RIGHT | WS_CHILD, 34, 94, 82, 8
+  CONTROL "%4d of %4d KB Free", ID_ABOUT_CMEM, "static", SS_LEFT | WS_CHILD, 121, 94, 98, 8
+  CONTROL "All rights reserved.", -1, "static", SS_CENTER | WS_GROUP | WS_CHILD, 91, 55, 80, 8
+END
+
+IDD_ALERT DIALOG LOADONCALL MOVEABLE DISCARDABLE 44, 37, 233, 54
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "", ID_ALERT_MSG1, "static", SS_CENTER | WS_CHILD, 9, 5, 214, 8
+  CONTROL "", ID_ALERT_MSG2, "static", SS_CENTER | WS_CHILD, 9, 12, 214, 8
+  CONTROL "", ID_ALERT_EDIT, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 9, 15, 214, 12
+  CONTROL "", ID_ALERT_BUTTON1, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 13, 32, 48, 14
+  CONTROL "", ID_ALERT_BUTTON2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 66, 32, 48, 14
+  CONTROL "", ID_ALERT_BUTTON3, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 119, 32, 48, 14
+  CONTROL "", ID_ALERT_BUTTON4, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 32, 48, 14
+END
+
+IDD_ASCII DIALOG LOADONCALL MOVEABLE DISCARDABLE 61, 32, 203, 122
+CAPTION "ASCII Text Upload"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "File:", -1, "static", SS_LEFT | WS_CHILD, 6, 4, 20, 8
+  CONTROL "", ID_XFER_NAME, "static", SS_LEFT | WS_CHILD, 28, 4, 172, 8
+  CONTROL "Stats", -1, "button", BS_GROUPBOX | WS_CHILD, 6, 16, 190, 86
+  CONTROL "File Size:", -1, "static", SS_LEFT | WS_CHILD, 14, 31, 43, 8
+  CONTROL "", ID_XFER_SIZE, "static", SS_LEFT | WS_CHILD, 64, 31, 28, 10
+  CONTROL "Bytes Sent:", -1, "static", SS_LEFT | WS_CHILD, 14, 44, 45, 9
+  CONTROL "", ID_XFER_BYTES, "static", SS_LEFT | WS_CHILD, 64, 44, 28, 10
+  CONTROL "Lines Sent:", -1, "static", SS_LEFT | WS_CHILD, 14, 57, 46, 8
+  CONTROL "", ID_XFER_LINES, "static", SS_LEFT | WS_CHILD, 64, 57, 28, 10
+  CONTROL "", ID_XFER_GRAPHICS, "button", BS_USERBUTTON | WS_BORDER | WS_CHILD, 12, 72, 180, 12
+  CONTROL "", ID_XFER_MSG, "static", SS_CENTER | WS_CHILD, 22, 89, 158, 8
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 72, 106, 56, 14
+END
+
+IDD_BATCH DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 20, 199, 114
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Open" ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 113, 55, 50, 14
+  CONTROL "Cancel" ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 113, 74, 50, 14
+  CONTROL "&Batch" ID_MORE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 113, 93, 50, 14
+  CONTROL "Select File to Send" -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 55, 3, 88, 8
+  CONTROL "" ID_EDIT, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 46, 16, 142, 12
+  CONTROL "" ID_LISTBOX, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_GROUP | WS_TABSTOP | WS_CHILD, 4, 31, 58, 66
+  CONTROL "File name:" -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 2, 17, 40, 12
+  CONTROL "" ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 79, 34, 113, 12
+END
+
+IDD_CAPTURE DIALOG LOADONCALL MOVEABLE DISCARDABLE 42, 18, 240, 53
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Capture data to:", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 2, 3, 85, 11
+  CONTROL "", ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 69, 3, 121, 12
+  CONTROL "Capture File:", -1, "static", SS_LEFT | WS_CHILD, 3, 22, 54, 8
+  CONTROL "", ID_EDIT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 58, 19, 131, 12
+  CONTROL "Capture Mode:", -1, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 3, 38, 55, 8
+  CONTROL "No&rmal", ID_SESSION_NORMAL, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 58, 36, 35, 12
+  CONTROL "Ra&w", ID_SESSION_RAW, "button", BS_AUTORADIOBUTTON | WS_CHILD, 94, 36, 24, 12
+  CONTROL "&Visual", ID_SESSION_VISUAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 124, 36, 35, 12
+  CONTROL "Man&ual", ID_SESSION_MANUAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 160, 36, 35, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 199, 4, 38, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 199, 22, 38, 14
+END
+
+IDD_COMERROR DIALOG LOADONCALL MOVEABLE DISCARDABLE 35, 22, 249, 99
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Syntax error %d-%d during the compilation of %s", ID_ERROR_ERROR, "static", SS_LEFT | WS_CHILD, 5, 5, 237, 8
+  CONTROL "", ID_ERROR_TEXT, "static", SS_CENTER | WS_CHILD, 10, 21, 218, 8
+  CONTROL "Line %d", ID_ERROR_LINENO, "button", BS_GROUPBOX | WS_CHILD, 5, 34, 237, 34
+  CONTROL "", ID_ERROR_LINE, "static", SS_LEFT | SS_NOPREFIX | WS_CHILD, 10, 50, 226, 8
+  CONTROL "&Re-Edit", ID_EDIT, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 47, 77, 50, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 78, 50, 14
+END
+
+IDD_COMMUNICATIONS DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 18, 301, 147
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Communication Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 2, 1, 92, 10
+  CONTROL "&Port", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 35, 20, 17, 9
+  /* dca00048 MKL added COM3, COM4 support */
+  /* dca00053 MKL added proportional font support */
+  CONTROL "COM1", ID_COMM_COM1, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 59, 19, 30, 10
+  CONTROL "COM2", ID_COMM_COM2, "button", BS_AUTORADIOBUTTON | WS_CHILD, 91, 19, 30, 10
+  CONTROL "COM3", ID_COMM_COM3, "button", BS_AUTORADIOBUTTON | WS_CHILD, 123, 19, 30, 10
+  CONTROL "COM4", ID_COMM_COM4, "button", BS_AUTORADIOBUTTON | WS_CHILD, 155, 19, 30, 10
+  CONTROL "Current", ID_COMM_CURRENT, "button", BS_AUTORADIOBUTTON | WS_CHILD, 187, 19, 40, 10
+  CONTROL "&Speed", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 27, 33, 24, 9
+  CONTROL "110", ID_COMM_110, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 59, 32, 28, 10
+  CONTROL "300", ID_COMM_300, "button", BS_AUTORADIOBUTTON | WS_CHILD, 88, 32, 28, 10
+  CONTROL "600", ID_COMM_600, "button", BS_AUTORADIOBUTTON | WS_CHILD, 117, 32, 28, 10
+  CONTROL "1200", ID_COMM_1200, "button", BS_AUTORADIOBUTTON | WS_CHILD, 147, 32, 28, 10
+  CONTROL "2400", ID_COMM_2400, "button", BS_AUTORADIOBUTTON | WS_CHILD, 177, 32, 28, 10
+  CONTROL "4800", ID_COMM_4800, "button", BS_AUTORADIOBUTTON | WS_CHILD, 207, 32, 28, 10
+  CONTROL "9600", ID_COMM_9600, "button", BS_AUTORADIOBUTTON | WS_CHILD, 237, 32, 28, 10
+  CONTROL "19200", ID_COMM_19200, "button", BS_AUTORADIOBUTTON | WS_CHILD, 267, 32, 31, 10
+  CONTROL "&Data Bits", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 15, 46, 36, 9
+  CONTROL "7", ID_COMM_WORD7, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 59, 45, 25, 10
+  CONTROL "8", ID_COMM_WORD8, "button", BS_AUTORADIOBUTTON | WS_CHILD, 87, 45, 25, 10
+  CONTROL "P&arity", -1, "static", SS_RIGHT | WS_GROUP	| WS_CHILD, 24, 59, 27, 8
+  CONTROL "None", ID_COMM_NOPAR, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 59, 58, 27, 10
+  CONTROL "Odd", ID_COMM_ODD, "button", BS_AUTORADIOBUTTON | WS_CHILD, 87, 58, 23, 10
+  CONTROL "Even", ID_COMM_EVEN, "button", BS_AUTORADIOBUTTON | WS_CHILD, 117, 58, 28, 10
+  CONTROL "Mark", ID_COMM_MARK, "button", BS_AUTORADIOBUTTON | WS_CHILD, 147, 58, 28, 10
+  CONTROL "Space", ID_COMM_SPACE, "button", BS_AUTORADIOBUTTON | WS_CHILD, 177, 58, 30, 10
+  CONTROL "S&top Bits", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 15, 72, 36, 8
+  CONTROL "1", ID_COMM_STOP1, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 59, 71, 18, 10
+  CONTROL "2", ID_COMM_STOP2, "button", BS_AUTORADIOBUTTON | WS_CHILD, 87, 71, 16, 10
+  CONTROL "&Break Length", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 2, 85, 49, 9
+  CONTROL "10", ID_COMM_B10, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 59, 84, 28, 10
+  CONTROL "150", ID_COMM_B150, "button", BS_AUTORADIOBUTTON | WS_CHILD, 87, 84, 25, 10
+  CONTROL "200", ID_COMM_B200, "button", BS_AUTORADIOBUTTON | WS_CHILD, 117, 84, 28, 10
+  CONTROL "250", ID_COMM_B250, "button", BS_AUTORADIOBUTTON | WS_CHILD, 147, 84, 28, 10
+  CONTROL "300", ID_COMM_B300, "button", BS_AUTORADIOBUTTON | WS_CHILD, 177, 84, 28, 10
+  CONTROL "500", ID_COMM_B500, "button", BS_AUTORADIOBUTTON | WS_CHILD, 207, 84, 28, 10
+  CONTROL "1000", ID_COMM_B1000, "button", BS_AUTORADIOBUTTON | WS_CHILD, 237, 84, 28, 10
+  CONTROL "2000", ID_COMM_B2000, "button", BS_AUTORADIOBUTTON | WS_CHILD, 267, 84, 28, 10
+  CONTROL "&Local", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 29, 98, 23, 8
+  CONTROL "On", ID_COMM_ON, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 59, 97, 21, 10
+  CONTROL "Off", ID_COMM_OFF, "button", BS_AUTORADIOBUTTON | WS_CHILD, 87, 97, 24, 10
+  CONTROL "&Flow Control", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 2, 111, 50, 8
+  CONTROL "None", ID_COMM_NONE, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 59, 110, 28, 10
+  CONTROL "Xon/Xoff", ID_COMM_XON, "button", BS_AUTORADIOBUTTON | WS_CHILD, 97, 110, 43, 10
+  CONTROL "RTS/CTS", ID_COMM_RTS, "button", BS_AUTORADIOBUTTON | WS_CHILD, 143, 110, 40, 10
+  CONTROL "Both", ID_COMM_BOTH, "button", BS_AUTORADIOBUTTON | WS_CHILD, 189, 110, 27, 10
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 80, 127, 40, 16
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 136, 127, 40, 16
+END
+
+IDD_COMPILE DIALOG LOADONCALL MOVEABLE DISCARDABLE 84, 31, 155, 42
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 6, 40, 14
+  CONTROL "Compiling", -1, "static", SS_LEFT | WS_CHILD, 4, 8, 39, 8
+  CONTROL "", ID_COMPILE_SCRIPT, "static", SS_LEFT | WS_CHILD, 46, 8, 59, 8
+  CONTROL "On line", -1, "static", SS_LEFT | WS_CHILD, 4, 20, 30, 8
+  CONTROL "", ID_COMPILE_LINE, "static", SS_LEFT | WS_CHILD, 46, 20, 30, 8
+END
+
+IDD_DIAL DIALOG LOADONCALL MOVEABLE DISCARDABLE 27, 18, 271, 122
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  /* MKL added WS_GROUP to first five entries */
+  CONTROL "Phone Book Entries in", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 5, 1, 86, 9
+  CONTROL "", ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 92, 1, 174, 10
+  CONTROL "", ID_LISTBOX, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | LBS_USETABSTOPS | WS_BORDER | WS_VSCROLL | WS_GROUP | WS_TABSTOP | WS_CHILD, 4, 13, 214, 81
+  CONTROL "Dial", ID_DIAL_MANUAL, "button", BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP | WS_CHILD, 7, 103, 27, 12
+  CONTROL "", ID_DIAL_NUMBER, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 34, 103, 112, 12
+  CONTROL "&Dial", ID_OK, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_GROUP | WS_CHILD, 225, 21, 40, 15
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 225, 44, 40, 15
+  CONTROL "D&elete", ID_DELETE, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP | WS_CHILD, 225, 68, 40, 15
+  CONTROL "with current settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 149, 105, 87, 8
+END
+
+IDD_DIALING DIALOG LOADONCALL MOVEABLE DISCARDABLE 42, 40, 239, 66
+CAPTION "Dialing - "
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Dialing Number:", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 5, 9, 63, 8
+  CONTROL "", ID_DIAL_NUMBER, "static", SS_LEFT | WS_CHILD, 72, 9, 157, 8
+  CONTROL "Current Status:", -1, "static", SS_RIGHT | WS_CHILD, 6, 21, 62, 8
+  CONTROL "", ID_DIAL_STATUS, "static", SS_LEFT | WS_CHILD, 72, 21, 157, 8
+  CONTROL "Modem Response:", -1, "static", SS_RIGHT | WS_CHILD, 5, 33, 63, 8
+  CONTROL "", ID_DIAL_MSG, "static", SS_LEFT | WS_CHILD, 72, 33, 157, 8
+  CONTROL "Watch commands to the modem", ID_DIAL_WATCH, "button", BS_AUTOCHECKBOX | WS_TABSTOP | | WS_GROUP WS_CHILD, 17, 47, 126, 12
+  CONTROL "&Redial", ID_OK, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_GROUP | WS_CHILD, 146, 46, 41, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP | WS_CHILD, 192, 46, 41, 14
+END
+
+IDD_DISPLAY DIALOG LOADONCALL MOVEABLE DISCARDABLE 39, 28, 249, 77
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Display", -1, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 3, 0, 82, 74
+  CONTROL "&Status Bar", ID_DISPLAY_STATUS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_GROUP | WS_CHILD, 8, 10, 53, 12
+  CONTROL "&Keys Bar", ID_DISPLAY_MACRO, "button", BS_AUTOCHECKBOX | WS_CHILD, 8, 22, 49, 12
+  CONTROL "&Information Bar", ID_DISPLAY_INFO, "button", BS_AUTOCHECKBOX | WS_CHILD, 8, 34, 70, 12
+  CONTROL "&Vertical Bar", ID_DISPLAY_VERT, "button", BS_AUTOCHECKBOX | WS_CHILD, 8, 46, 59, 12
+  CONTROL "&Horizontal Bar", ID_DISPLAY_HORZ, "button", BS_AUTOCHECKBOX | WS_CHILD, 8, 58, 68, 12
+  CONTROL "Input", -1, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 95, 0, 95, 74
+  CONTROL "I&nput Line", ID_DISPLAY_INPUT, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_GROUP | WS_CHILD, 100, 10, 53, 12
+  CONTROL "No &Blinking Cursor", ID_DISPLAY_NOBLINK, "button", BS_AUTOCHECKBOX | WS_CHILD, 100, 26, 84, 12
+  CONTROL "&One Char Click", ID_DISPLAY_ONECHAR, "button", BS_AUTOCHECKBOX | WS_CHILD, 100, 42, 71, 12
+  CONTROL "&Slow Cursor Mouse", ID_DISPLAY_SLOWCUR, "button", BS_AUTOCHECKBOX | WS_CHILD, 100, 58, 80, 12
+  CONTROL "Character Colors", -1, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 3, 77, 242, 96
+  CONTROL "&Foreground", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 8, 89, 44, 8
+  CONTROL "", ID_DISPLAY_FOREGROUND, "listbox", LBS_NOTIFY | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_GROUP | WS_CHILD | WS_DISABLED, 7, 99, 49, 49
+  CONTROL "B&ackground", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 68, 89, 43, 8
+  CONTROL "", ID_DISPLAY_BACKGROUND, "listbox", LBS_NOTIFY | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_GROUP | WS_CHILD | WS_DISABLED, 67, 99, 50, 49
+  CONTROL "Bo&lding", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 128, 89, 43, 8
+  CONTROL "", ID_DISPLAY_BOLDING, "listbox", LBS_NOTIFY | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_GROUP | WS_CHILD | WS_DISABLED, 127, 99, 51, 49
+  CONTROL "Blin&king", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 188, 89, 43, 8
+  CONTROL "", ID_DISPLAY_BLINKING, "listbox", LBS_NOTIFY | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD | WS_DISABLED, 187, 99, 52, 49
+  CONTROL "", ID_DISPLAY_TEXT, "button", BS_USERBUTTON | WS_GROUP | WS_BORDER | WS_CHILD | WS_DISABLED, 30, 156, 50, 11
+  CONTROL "", ID_DISPLAY_BOLD, "button", BS_USERBUTTON | WS_BORDER | WS_CHILD, 98, 156, 50, 11
+  CONTROL "", ID_DISPLAY_BLINK, "button", BS_USERBUTTON | WS_BORDER | WS_GROUP | WS_CHILD, 163, 156, 50, 11
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 202, 7, 42, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP | WS_CHILD, 202, 30, 43, 15
+  CONTROL "&Colors >>", ID_MORE, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_GROUP | WS_CHILD, 202, 53, 43, 15
+END
+
+IDD_DOWNLOAD DIALOG LOADONCALL MOVEABLE DISCARDABLE 79, 21, 158, 53
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "", ID_EDIT, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 4, 15, 142, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 21, 34, 35, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 98, 34, 35, 14
+  CONTROL "", ID_PATH, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 80, 2, 72, 12
+  CONTROL "Download file as:", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 4, 3, 74, 8
+END
+
+IDD_EXECUTE DIALOG LOADONCALL MOVEABLE DISCARDABLE 28, 27, 272, 117
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Scripts in", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 5, 1, 42, 9
+  CONTROL "", ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 48, 1, 173, 10
+  CONTROL "", ID_LISTBOX, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | LBS_USETABSTOPS | WS_BORDER | WS_VSCROLL | WS_GROUP | WS_TABSTOP | WS_CHILD, 5, 13, 216, 81
+  CONTROL "&Run", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 227, 7, 35, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 227, 25, 36, 14
+  CONTROL "&Compile", ID_OPT1, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 227, 43, 36, 14
+  CONTROL "&Edit", ID_EDIT, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 227, 62, 36, 14
+  CONTROL "&New", ID_ADD, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 227, 80, 36, 14
+  CONTROL "&Delete", ID_DELETE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 227, 98, 36, 14
+  CONTROL "Script Arguments:", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 5, 102, 69, 8
+  CONTROL "", ID_OPT2, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 75, 99, 145, 12
+END
+
+IDD_FILE_REQUEST DIALOG LOADONCALL MOVEABLE DISCARDABLE 63, 20, 199, 58
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Specify File(s) to Receive:", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 5, 5, 110, 10
+  CONTROL "", ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 115, 4, 81, 10
+  CONTROL "", ID_EDIT, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 25, 17, 142, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 35, 36, 43, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 116, 36, 43, 14
+END
+
+IDD_FONTS DIALOG LOADONCALL MOVEABLE DISCARDABLE 66, 25, 188, 112
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "&Font", -1, "static", SS_LEFT | WS_CHILD, 6, 15, 16, 8
+  CONTROL "", ID_FONT_FONTLIST, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 4, 26, 67, 57
+  CONTROL "", ID_FONT_FONTTEXT, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 4, 87, 67, 12
+  CONTROL "&Size", -1, "static", SS_LEFT | WS_CHILD, 82, 15, 16, 8
+  CONTROL "", ID_FONT_SIZELIST, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 80, 26, 43, 57
+  CONTROL "", ID_FONT_SIZETEXT, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 80, 87, 43, 12
+  CONTROL "Type", -1, "static", SS_LEFT | WS_CHILD, 138, 15, 16, 8
+  CONTROL "", ID_FONT_TYPE, "static", SS_CENTER | WS_GROUP | WS_BORDER | WS_CHILD, 137, 26, 38, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 136, 50, 41, 15
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 136, 69, 41, 15
+  CONTROL "&Replace", ID_REPLACE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 136, 88, 41, 15
+  CONTROL "Emulation Font Setting", 113, "static", SS_LEFT | WS_GROUP | WS_CHILD, 3, 2, 91, 8
+END
+
+IDD_GENERROR DIALOG LOADONCALL MOVEABLE DISCARDABLE 35, 23, 243, 53
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Error %d-%d", ID_ERROR_ERROR, "static", SS_LEFT | WS_CHILD, 4, 1, 231, 29
+  CONTROL "", ID_ERROR_TEXT, "static", SS_CENTER | SS_NOPREFIX | WS_CHILD, 13, 14, 218, 8
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 96, 34, 50, 14
+  CONTROL "", ID_ERROR_LINE, "static",WS_GROUP | WS_CHILD, 13, 80, 218, 8
+END
+
+IDD_HELP1 DIALOG LOADONCALL MOVEABLE DISCARDABLE 36, 24, 248, 98
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "", ID_LISTBOX, "listbox", LBS_NOTIFY | WS_BORDER | WS_VSCROLL | WS_GROUP | WS_TABSTOP | WS_CHILD, 7, 11, 193, 81
+  CONTROL "Help Topics", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 7, 1, 50, 8
+  CONTROL "&Help", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 204, 14, 41, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 204, 36, 41, 14
+END
+
+IDD_HELP2 DIALOG LOADONCALL MOVEABLE DISCARDABLE 36, 24, 248, 98
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "&Topics", ID_HELP_TOPICS, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 13, 76, 41, 14
+  CONTROL "&Next", ID_HELP_NEXT, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 72, 76, 41, 14
+  CONTROL "&Previous", ID_HELP_PREV, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 129, 76, 41, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 187, 76, 41, 14
+  CONTROL "", ID_LISTBOX, "listbox", LBS_NOTIFY | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 5, 5, 236, 65
+END
+
+IDD_INTERROR DIALOG LOADONCALL MOVEABLE DISCARDABLE 35, 22, 249, 99
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Runtime error %d-%d during the execution of %s", ID_ERROR_ERROR, "static", SS_LEFT | WS_CHILD, 5, 5, 237, 8
+  CONTROL "", ID_ERROR_TEXT, "static", SS_LEFT | WS_CHILD, 10, 21, 218, 8
+  CONTROL "Line %d", ID_ERROR_LINENO, "button", BS_GROUPBOX | WS_CHILD, 5, 34, 237, 34
+  CONTROL "", ID_ERROR_LINE, "static", SS_LEFT | SS_NOPREFIX | WS_CHILD, 10, 50, 226, 8
+  CONTROL "&Re-Edit", ID_EDIT, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 47, 77, 50, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 78, 50, 14
+END
+
+IDD_MACROS DIALOG LOADONCALL MOVEABLE DISCARDABLE 21, 10, 278, 205
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Function Key Settings", -1, "static", SS_LEFT | WS_CHILD, 2, 1, 87, 8
+  CONTROL "Characters to Send or Script to Run", -1, "static", SS_CENTER | WS_CHILD, 47, 13, 144, 8
+  CONTROL "Keystroke", -1, "static", SS_LEFT | WS_CHILD, 8, 19, 38, 8
+  CONTROL "Label", -1, "static", SS_LEFT | WS_CHILD, 208, 19, 22, 8
+  CONTROL "Menu", -1, "static", SS_LEFT | WS_CHILD, 250, 19, 18, 8
+  CONTROL "", ID_MACRO_TITLE1, "static", SS_LEFT | WS_CHILD, 4, 35, 41, 8
+  CONTROL "", ID_MACRO_MACRO1, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 48, 33, 141, 12
+  CONTROL "", ID_MACRO_LABEL1, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 194, 33, 53, 12
+  CONTROL " ", ID_MACRO_MFLAG1, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 256, 33, 9, 12
+  CONTROL "", ID_MACRO_TITLE2, "static", SS_LEFT | WS_CHILD, 4, 49, 42, 8
+  CONTROL "", ID_MACRO_MACRO2, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 48, 47, 141, 12
+  CONTROL "", ID_MACRO_LABEL2, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 194, 47, 53, 12
+  CONTROL " ", ID_MACRO_MFLAG2, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 256, 47, 9, 12
+  CONTROL "", ID_MACRO_TITLE3, "static", SS_LEFT | WS_CHILD, 4, 63, 42, 8
+  CONTROL "", ID_MACRO_MACRO3, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 48, 61, 141, 12
+  CONTROL "", ID_MACRO_LABEL3, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 194, 61, 53, 12
+  CONTROL " ", ID_MACRO_MFLAG3, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 256, 61, 9, 12
+  CONTROL "", ID_MACRO_TITLE4, "static", SS_LEFT | WS_CHILD, 4, 77, 42, 8
+  CONTROL "", ID_MACRO_MACRO4, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 48, 75, 141, 12
+  CONTROL "", ID_MACRO_LABEL4, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 194, 75, 53, 12
+  CONTROL " ", ID_MACRO_MFLAG4, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 256, 75, 9, 12
+  CONTROL "", ID_MACRO_TITLE5, "static", SS_LEFT | WS_CHILD, 4, 91, 42, 8
+  CONTROL "", ID_MACRO_MACRO5, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 48, 89, 141, 12
+  CONTROL "", ID_MACRO_LABEL5, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 194, 89, 53, 12
+  CONTROL " ", ID_MACRO_MFLAG5, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 256, 88, 9, 12
+  CONTROL "", ID_MACRO_TITLE6, "static", SS_LEFT | WS_CHILD, 4, 105, 42, 8
+  CONTROL "", ID_MACRO_MACRO6, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 48, 103, 141, 12
+  CONTROL "", ID_MACRO_LABEL6, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 194, 103, 53, 12
+  CONTROL " ", ID_MACRO_MFLAG6, "button", BS_AUTOCHECKBOX | WS_GROUP  | WS_TABSTOP | WS_CHILD, 256, 103, 9, 12
+  CONTROL "Shift F&1-F6", ID_MACRO_GROUP1, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 13, 122, 57, 12
+  CONTROL "Shift F&7-F12", ID_MACRO_GROUP2, "button", BS_AUTORADIOBUTTON | WS_CHILD, 75, 122, 59, 12
+  CONTROL "Ctrl F1-F&6", ID_MACRO_GROUP3, "button", BS_AUTORADIOBUTTON | WS_CHILD, 142, 122, 52, 12
+  CONTROL "Ctrl F7-F1&2", ID_MACRO_GROUP4, "button", BS_AUTORADIOBUTTON | WS_CHILD, 206, 122, 58, 12
+  CONTROL "Ctrl &A-F", ID_MACRO_GROUP5, "button", BS_AUTORADIOBUTTON | WS_CHILD, 13, 136, 49, 12
+  CONTROL "Ctrl &G-L", ID_MACRO_GROUP6, "button", BS_AUTORADIOBUTTON | WS_CHILD, 75, 136, 52, 12
+  CONTROL "Ctrl &M-T", ID_MACRO_GROUP7, "button", BS_AUTORADIOBUTTON | WS_CHILD, 142, 136, 60, 12
+  CONTROL "Ctrl &U-Z", ID_MACRO_GROUP8, "button", BS_AUTORADIOBUTTON | WS_CHILD, 206, 136, 64, 12
+  CONTROL "&Foreground", -1, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 8, 158, 42, 9
+  CONTROL "", ID_MACRO_COLORBAR1, "XTKColor", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 53, 157, 100, 12
+  CONTROL "&Background", -1, "static", SS_LEFT | WS_CHILD, 8, 176, 41, 9
+  CONTROL "", ID_MACRO_COLORBAR2, "XTKColor", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 53, 175, 100, 12
+  CONTROL "&Show Active Keys Only", ID_MACRO_MACRON, "button", BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP | WS_CHILD, 170, 160, 94, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 178, 185, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 225, 185, 40, 14
+  CONTROL "", ID_MACRO_NOTE, "static", SS_LEFT | WS_GROUP | WS_CHILD, 13, 193, 157, 8
+  CONTROL "(Precede script with an @ sign)", -1, "static", SS_CENTER | WS_CHILD, 49, 22, 140, 8
+  CONTROL "Text", -1, "static", SS_BLACKFRAME | WS_CHILD, 51, 173, 104, 16
+  CONTROL "Text", -1, "static", SS_BLACKFRAME | WS_CHILD, 51, 155, 104, 16
+END
+
+IDD_MODEM DIALOG LOADONCALL MOVEABLE DISCARDABLE 59, 22, 202, 146
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Modem Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 3, 1, 62, 8
+  CONTROL "Modem Port", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 4, 11, 43, 9
+  /* dca00053 MKL added proportional font support */
+  CONTROL "COM1", ID_MODEM_COM1, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 50, 10, 30, 12
+  CONTROL "COM2", ID_MODEM_COM2, "button", BS_AUTORADIOBUTTON | WS_CHILD, 82, 10, 30, 12
+  /* dca00048 MKL added COM3, COM4 support */
+  CONTROL "COM3", ID_MODEM_COM3, "button", BS_AUTORADIOBUTTON | WS_CHILD, 114, 10, 30, 12
+  CONTROL "COM4", ID_MODEM_COM4, "button", BS_AUTORADIOBUTTON | WS_CHILD, 146, 10, 30, 12
+  CONTROL "", ID_LISTBOX, "listbox", LBS_NOTIFY | WS_GROUP | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 3, 25, 142, 105
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 153, 31, 41, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 153, 56, 41, 14
+  CONTROL "&Settings", ID_MORE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 153, 81, 41, 14
+END
+
+IDD_NEWFILE DIALOG LOADONCALL MOVEABLE DISCARDABLE 15, 18, 297, 143
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "New phone book entry", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 0, 1, 83, 8
+  CONTROL "&Description:", -1, "static", SS_RIGHT | WS_CHILD, 3, 16, 48, 10
+  CONTROL "", ID_SESSION_DESCRIPTION, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 55, 14, 125, 12
+  CONTROL "&Number:", -1, "static", SS_RIGHT | WS_CHILD, 21, 30, 30, 10
+  CONTROL "", ID_SESSION_NUMBER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 55, 28, 125, 12
+  CONTROL "De&vice", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 26, 44, 24, 9
+  /* dca00053 MKL added proportional font support */
+  CONTROL "COM1", ID_MODEM_COM1, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 55, 43, 30, 10
+  CONTROL "COM2", ID_MODEM_COM2, "button", BS_AUTORADIOBUTTON | WS_CHILD, 92, 43, 30, 10
+  /* dca00048 MKL added COM3, COM4 support */
+  CONTROL "COM3", ID_MODEM_COM3, "button", BS_AUTORADIOBUTTON | WS_CHILD, 126, 43, 30, 10
+  CONTROL "COM4", ID_MODEM_COM4, "button", BS_AUTORADIOBUTTON | WS_CHILD, 164, 43, 30, 10
+  CONTROL "&Speed", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 26, 58, 24, 9
+  CONTROL "110", ID_COMM_110, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 55, 57, 28, 10
+  CONTROL "300", ID_COMM_300, "button", BS_AUTORADIOBUTTON | WS_CHILD, 92, 57, 28, 10
+  CONTROL "1200", ID_COMM_1200, "button", BS_AUTORADIOBUTTON | WS_CHILD, 126, 57, 28, 10
+  CONTROL "2400", ID_COMM_2400, "button", BS_AUTORADIOBUTTON | WS_CHILD, 164, 57, 28, 10
+  CONTROL "9600", ID_COMM_9600, "button", BS_AUTORADIOBUTTON | WS_CHILD, 210, 57, 28, 10
+  CONTROL "19200", ID_COMM_19200, "button", BS_AUTORADIOBUTTON | WS_CHILD, 253, 56, 31, 10
+  CONTROL "&Terminal", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 16, 72, 35, 8
+  CONTROL "VT102", ID_TERM_VT102, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 55, 71, 40, 10
+  CONTROL "VT52", ID_TERM_VT52, "button", BS_AUTORADIOBUTTON | WS_CHILD, 92, 71, 40, 10
+  CONTROL "IBM-PC", ID_TERM_IBMPC, "button", BS_AUTORADIOBUTTON | WS_CHILD, 126, 71, 35, 10
+  CONTROL "IBM3101", ID_TERM_IBM3101, "button", BS_AUTORADIOBUTTON | WS_CHILD, 164, 71, 45, 10
+  CONTROL "VIDTEX", ID_TERM_VIDTEX, "button", BS_AUTORADIOBUTTON | WS_CHILD, 210, 71, 37, 10
+  CONTROL "&Protocol", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 16, 86, 35, 8
+  CONTROL "CIS-B", ID_PROTOCOL_CSERVEB, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 55, 85, 33, 10
+  CONTROL "DART", ID_PROTOCOL_DART, "button", BS_AUTORADIOBUTTON | WS_CHILD, 92, 85, 28, 10
+  CONTROL "Kermit", ID_PROTOCOL_KERMIT, "button", BS_AUTORADIOBUTTON | WS_CHILD, 126, 85, 36, 10
+  CONTROL "XTALK", ID_PROTOCOL_XTALK, "button", BS_AUTORADIOBUTTON | WS_CHILD, 164, 85, 35, 10
+  /* dca00053 MKL added proportional font support */
+  CONTROL "Xmodem", ID_PROTOCOL_XMODEM, "button", BS_AUTORADIOBUTTON | WS_CHILD, 210, 85, 38, 10
+  CONTROL "Zmodem", ID_PROTOCOL_ZMODEM, "button", BS_AUTORADIOBUTTON | WS_CHILD, 253, 85, 38, 10
+  CONTROL "S&ave as:", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 17, 100, 34, 10
+  CONTROL "", ID_EDIT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 55, 98, 125, 12
+  CONTROL "Sc&ript:", -1, "static", SS_RIGHT | WS_CHILD, 17, 114, 34, 10
+  CONTROL "", ID_SESSION_SCRIPT, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 55, 112, 125, 12
+  CONTROL "&Connect now", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 5, 128, 45, 8
+  CONTROL "Yes", ID_YES, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 55, 127, 23, 10
+  CONTROL "No", ID_NO, "button", BS_AUTORADIOBUTTON | WS_CHILD, 83, 127, 19, 10
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 249, 8, 38, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 249, 26, 38, 14
+END
+
+IDD_NOPHONE DIALOG LOADONCALL MOVEABLE DISCARDABLE 87, 18, 122, 66
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Ok" ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 9, 44, 40, 14
+  CONTROL "Cancel" ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 69, 44, 40, 14
+  CONTROL "There is no phone number" 0, "static", SS_LEFT | WS_GROUP | WS_CHILD, 9, 5, 100, 12
+  CONTROL "in the Phone Settings." 0, "static", SS_LEFT | WS_CHILD, 9, 17, 100, 12
+  CONTROL "Do you want to continue?" 0, "static", SS_LEFT | WS_GROUP | WS_CHILD, 9, 29, 100, 12
+END
+
+IDD_NOTES DIALOG LOADONCALL MOVEABLE DISCARDABLE 61, 27, 176, 137
+CAPTION "Notes for - "
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "" ID_EDIT, "edit", ES_LEFT | ES_MULTILINE | ES_AUTOVSCROLL | ES_NOHIDESEL | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 5, 3, 165, 99
+  CONTROL "Display Notes when profile is loaded" ID_RECALL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 105, 158, 10
+  CONTROL "&Save" ID_SAVE, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 2, 120, 32, 14
+  CONTROL "&Copy" ID_COPY, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 37, 120, 32, 14
+  CONTROL "C&ut" ID_CUT, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 72, 120, 32, 14
+  CONTROL "&Paste" ID_PASTE, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 107, 120, 32, 14
+  CONTROL "Cancel" ID_CANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 142, 120, 32, 14
+END
+
+IDD_OPEN DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 18, 153, 125
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Open a &phone book entry:", -1, "static", SS_LEFT | WS_CHILD, 5, 4, 98, 10
+  CONTROL "", ID_EDIT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 5, 17, 100, 12
+  CONTROL "&Files in", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 5, 36, 38, 9
+  CONTROL "", ID_LISTBOX, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_GROUP | WS_TABSTOP | WS_CHILD, 5, 50, 58, 65
+  CONTROL "Open", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 88, 62, 50, 16
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 88, 87, 50, 16
+  CONTROL "", ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 44, 36, 98, 12
+END
+
+IDD_OPENDEMO DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 18, 152, 124
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Playback File &Name:" -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 5, 4, 78, 10
+  CONTROL "&Files in" -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 5, 36, 38, 9
+  CONTROL "" ID_EDIT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 5, 17, 100, 12
+  CONTROL "" ID_LISTBOX, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_GROUP | WS_TABSTOP | WS_CHILD, 5, 50, 58, 66
+  CONTROL "Open" ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 88, 62, 50, 16
+  CONTROL "Cancel" ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 88, 87, 50, 16
+  CONTROL "" ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 44, 36, 98, 12
+END
+
+IDD_PAGESETUP DIALOG LOADONCALL MOVEABLE DISCARDABLE 59, 18, 209, 48
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Page Setup", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 3, 3, 43, 8
+  CONTROL "&Header:", -1, "static", SS_LEFT | WS_CHILD, 3, 17, 27, 10
+  CONTROL "", ID_PRINT_HEADER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 36, 15, 111, 12
+  CONTROL "&Footer:", -1, "static", SS_LEFT | WS_CHILD, 3, 32, 27, 10
+  CONTROL "", ID_PRINT_FOOTER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 36, 30, 111, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 156, 6, 48, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 155, 23, 49, 14
+END
+
+IDD_PRINTSETUP DIALOG LOADONCALL MOVEABLE DISCARDABLE 50, 18, 213, 75
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "&Printer", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 4, 5, 30, 8
+  CONTROL "", ID_LISTBOX, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 4, 17, 151, 49
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 165, 7, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 165, 28, 40, 14
+  CONTROL "&Setup...", ID_MORE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 165, 49, 40, 14
+END
+
+IDD_PROTOCOL DIALOG LOADONCALL MOVEABLE DISCARDABLE 80, 18, 159, 142
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Protocol Selections", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 4, 3, 79, 8
+  CONTROL "CROSSTALK", ID_PROTOCOL_XTALK, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 6, 20, 54, 12
+  CONTROL "DART", ID_PROTOCOL_DART, "button", BS_AUTORADIOBUTTON | WS_CHILD, 6, 33, 27, 12
+  CONTROL "Xmodem", ID_PROTOCOL_MODEM7, "button", BS_AUTORADIOBUTTON | WS_CHILD, 6, 46, 49, 12
+  CONTROL "Xmodem/CRC", ID_PROTOCOL_XMODEM, "button", BS_AUTORADIOBUTTON | WS_CHILD, 6, 58, 55, 12
+  CONTROL "Xmodem/1K", ID_PROTOCOL_MODEM1K, "button", BS_AUTORADIOBUTTON | WS_CHILD, 6, 72, 85, 12
+  CONTROL "Ymodem/Batch", ID_PROTOCOL_YMODEM, "button", BS_AUTORADIOBUTTON | WS_CHILD, 6, 85, 60, 12
+  CONTROL "Kermit", ID_PROTOCOL_KERMIT, "button", BS_AUTORADIOBUTTON | WS_CHILD, 6, 98, 91, 12
+  CONTROL "CompuServe B", ID_PROTOCOL_CSERVEB, "button", BS_AUTORADIOBUTTON | WS_CHILD, 6, 111, 60, 12
+  CONTROL "Zmodem", ID_PROTOCOL_ZMODEM, "button", BS_AUTORADIOBUTTON | WS_CHILD, 6, 124, 60, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 110, 36, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 110, 60, 40, 14
+  CONTROL "&Settings", ID_MORE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 110, 84, 40, 14
+END
+
+IDD_PROTOCOL_ASCII DIALOG LOADONCALL MOVEABLE DISCARDABLE 14, 18, 287, 158
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "ASCII Upload Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 2, 2, 94, 8
+  CONTROL "Characters", -1, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 6, 15, 226, 42
+  CONTROL "&Pacing", -1, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 16, 28, 28, 8
+  CONTROL "None", ID_ASCII_CWAIT_NONE, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 66, 26, 28, 12
+  CONTROL "Echo", ID_ASCII_CWAIT_ECHO, "button", BS_AUTORADIOBUTTON | WS_CHILD, 97, 26, 27, 12
+  CONTROL "Delay", ID_ASCII_CWAIT_DELAY, "button", BS_AUTORADIOBUTTON | WS_CHILD, 126, 26, 31, 12
+  CONTROL "", ID_ASCII_CWAIT_TEXT, "edit", ES_LEFT | WS_GROUP  | WS_BORDER | WS_TABSTOP | WS_CHILD, 157, 26, 20, 12
+  CONTROL "milliseconds", -1, "static", SS_LEFT | WS_CHILD, 180, 28, 49, 8
+  CONTROL "&Expand Tabs", -1, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 16, 43, 46, 8
+  CONTROL "Yes", ID_ASCII_TABEX_YES, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 66, 42, 23, 10
+  CONTROL "No", ID_ASCII_TABEX_NO, "button", BS_AUTORADIOBUTTON | WS_CHILD, 97, 42, 19, 10
+  CONTROL "Lines", -1, "button", BS_GROUPBOX | WS_GROUP  | WS_CHILD, 6, 60, 264, 92
+  CONTROL "Pa&cing", -1, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 16, 73, 28, 8
+  CONTROL "None", ID_ASCII_LWAIT_NONE, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 47, 72, 27, 10
+  CONTROL "Echo", ID_ASCII_LWAIT_ECHO, "button", BS_AUTORADIOBUTTON | WS_CHILD, 81, 72, 28, 10
+  CONTROL "Count", ID_ASCII_LWAIT_COUNT, "button", BS_AUTORADIOBUTTON | WS_CHILD, 112, 72, 31, 10
+  CONTROL "Delay", ID_ASCII_LWAIT_DELAY, "button", BS_AUTORADIOBUTTON | WS_CHILD, 145, 72, 31, 10
+  CONTROL "Prompt", ID_ASCII_LWAIT_PROMPT, "button", BS_AUTORADIOBUTTON | WS_CHILD, 177, 72, 35, 11
+  CONTROL "", ID_ASCII_LWAIT_TEXT, "edit", ES_LEFT | WS_GROUP  | WS_BORDER | WS_TABSTOP | WS_CHILD, 212, 72, 32, 12
+  CONTROL "", ID_ASCII_LTYPE_TEXT, "static", ES_LEFT | WS_GROUP | WS_CHILD, 246, 74, 20, 12
+  CONTROL "&Wait a maximum of", -1, "static", SS_LEFT | WS_CHILD, 16, 89, 69, 8
+  CONTROL "", ID_ASCII_LINETIME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 87, 87, 17, 12
+  CONTROL "seconds before sending the next line", -1, "static", SS_LEFT | WS_CHILD, 107, 89, 148, 8
+  CONTROL "&After each line of text, send", -1, "static", SS_LEFT | WS_CHILD, 16, 105, 117, 8
+  CONTROL "", ID_ASCII_LINEDELIM, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 135, 102, 37, 12
+  CONTROL "&In place of a blank line, send", -1, "static", SS_LEFT | WS_CHILD, 16, 121, 120, 8
+  CONTROL "", ID_ASCII_BLANKEX, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 138, 119, 37, 12
+  CONTROL "W&rap text to the next line at column", -1, "static", SS_LEFT | WS_CHILD, 16, 137, 145, 8
+  CONTROL "", ID_ASCII_WORDWRAP, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 163, 135, 16, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 240, 6, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 240, 27, 40, 14
+END
+
+IDD_PROTOCOL_CISB DIALOG LOADONCALL MOVEABLE DISCARDABLE 31, 26, 256, 47
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "CompuServe Quick B Protocol Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 2, 2, 160, 8
+  CONTROL "&Timing", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 22, 17, 27, 9
+  CONTROL "Tight", ID_PROTOCOL_TIGHT, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 54, 15, 31, 12
+  CONTROL "Normal", ID_PROTOCOL_NORMAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 88, 15, 34, 12
+  CONTROL "Loose", ID_PROTOCOL_LOOSE, "button", BS_AUTORADIOBUTTON | WS_CHILD, 126, 15, 32, 12
+  CONTROL "Sloppy", ID_PROTOCOL_SLOPPY, "button", BS_AUTORADIOBUTTON | WS_CHILD, 162, 15, 36, 12
+  CONTROL "&Packet Size", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 4, 30, 45, 8
+  CONTROL "128", ID_PROTOCOL_128, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 54, 28, 25, 12
+  CONTROL "256", ID_PROTOCOL_256, "button", BS_AUTORADIOBUTTON | WS_CHILD, 88, 28, 24, 12
+  CONTROL "512", ID_PROTOCOL_512, "button", BS_AUTORADIOBUTTON | WS_CHILD, 126, 28, 22, 12
+  CONTROL "1024", ID_PROTOCOL_1024, "button", BS_AUTORADIOBUTTON | WS_CHILD, 162, 28, 29, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 207, 6, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 207, 26, 40, 14
+END
+
+IDD_PROTOCOL_CROSSTALK DIALOG LOADONCALL MOVEABLE DISCARDABLE 28, 23, 266, 60
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "CROSSTALK Protocol Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 3, 3, 113, 8
+  CONTROL "&Timing", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 27, 15, 27, 8
+  CONTROL "Tight", ID_PROTOCOL_TIGHT, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 61, 13, 31, 12
+  CONTROL "Normal", ID_PROTOCOL_NORMAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 99, 13, 34, 12
+  CONTROL "Loose", ID_PROTOCOL_LOOSE, "button", BS_AUTORADIOBUTTON | WS_CHILD, 139, 13, 32, 12
+  CONTROL "Sloppy", ID_PROTOCOL_SLOPPY, "button", BS_AUTORADIOBUTTON | WS_CHILD, 174, 13, 36, 12
+  CONTROL "&Packet Size", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 10, 30, 45, 8
+  CONTROL "256", ID_PROTOCOL_256, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 61, 28, 25, 12
+  CONTROL "512", ID_PROTOCOL_512, "button", BS_AUTORADIOBUTTON | WS_CHILD, 99, 28, 24, 12
+  CONTROL "768", ID_PROTOCOL_768, "button", BS_AUTORADIOBUTTON | WS_CHILD, 139, 28, 22, 12
+  CONTROL "1024", ID_PROTOCOL_1024, "button", BS_AUTORADIOBUTTON | WS_CHILD, 174, 28, 29, 12
+  CONTROL "Cancel transfer after", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 9, 45, 86, 8
+  CONTROL "", ID_PROTOCOL_MAXERRORS, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 96, 43, 12, 12
+  CONTROL "errors", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 111, 45, 26, 8
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 220, 7, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 220, 23, 40, 14
+END
+
+IDD_PROTOCOL_DART DIALOG LOADONCALL MOVEABLE DISCARDABLE 15, 22, 296, 116
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "DART Protocol Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 2, 3, 90, 8
+  CONTROL "&Timing", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 62, 18, 27, 9
+  CONTROL "Tight", ID_PROTOCOL_TIGHT, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 94, 16, 31, 12
+  CONTROL "Normal", ID_PROTOCOL_NORMAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 128, 16, 34, 12
+  CONTROL "Loose", ID_PROTOCOL_LOOSE, "button", BS_AUTORADIOBUTTON | WS_CHILD, 166, 16, 32, 12
+  CONTROL "Sloppy", ID_PROTOCOL_SLOPPY, "button", BS_AUTORADIOBUTTON | WS_CHILD, 202, 16, 36, 12
+  CONTROL "Partial &File Recovery", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 1, 32, 88, 8
+  CONTROL "On", ID_PROTOCOL_RECON, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 94, 30, 20, 12
+  CONTROL "Off", ID_PROTOCOL_RECOFF, "button", BS_AUTORADIOBUTTON | WS_CHILD, 128, 30, 23, 12
+  CONTROL "&Packet Size", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 44, 46, 45, 8
+  CONTROL "128", ID_PROTOCOL_128, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 94, 44, 25, 12
+  CONTROL "256", ID_PROTOCOL_256, "button", BS_AUTORADIOBUTTON | WS_CHILD, 128, 44, 24, 12
+  CONTROL "512", ID_PROTOCOL_512, "button", BS_AUTORADIOBUTTON | WS_CHILD, 166, 44, 22, 12
+  CONTROL "1024", ID_PROTOCOL_1024, "button", BS_AUTORADIOBUTTON | WS_CHILD, 202, 44, 29, 12
+  CONTROL "&Receive files", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 32, 60, 57, 8
+  CONTROL "Different", ID_PROTOCOL_RECVNORM, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 94, 58, 48, 10
+  CONTROL "Newer", ID_PROTOCOL_RECVNEWER, "button", BS_AUTORADIOBUTTON | WS_CHILD, 146, 58, 32, 10
+  CONTROL "All", ID_PROTOCOL_RECVALL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 190, 58, 22, 10
+  CONTROL "&Set the date/time to", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 5, 74, 84, 8
+  CONTROL "Original files'", ID_PROTOCOL_ORIGINAL, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 94, 73, 70, 10
+  CONTROL "When Received", ID_PROTOCOL_CREATE, "button", BS_AUTORADIOBUTTON | WS_CHILD, 166, 73, 66, 10
+  CONTROL "&Host Mode", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 53, 88, 36, 8
+  CONTROL "CROSSTALK", ID_PROTOCOL_HOSTON, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 94, 86, 51, 10
+  CONTROL "Other", ID_PROTOCOL_HOSTOFF, "button", BS_AUTORADIOBUTTON | WS_CHILD, 166, 86, 34, 10
+  CONTROL "Cancel transfer after", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 3, 102, 85, 8
+  CONTROL "", ID_PROTOCOL_MAXERRORS, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 93, 101, 12, 12
+  CONTROL "errors", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 110, 102, 27, 8
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 246, 7, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 246, 27, 40, 14
+END
+
+IDD_PROTOCOL_XMODEM DIALOG LOADONCALL MOVEABLE DISCARDABLE 39, 24, 254, 56
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Xmodem / Ymodem Protocol Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 6, 5, 132, 8
+  CONTROL "&Timing", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 16, 24, 27, 8
+  CONTROL "Tight", ID_PROTOCOL_TIGHT, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 47, 22, 31, 12
+  CONTROL "Normal", ID_PROTOCOL_NORMAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 82, 22, 34, 12
+  CONTROL "Loose", ID_PROTOCOL_LOOSE, "button", BS_AUTORADIOBUTTON | WS_CHILD, 121, 22, 32, 12
+  CONTROL "Sloppy", ID_PROTOCOL_SLOPPY, "button", BS_AUTORADIOBUTTON | WS_CHILD, 156, 22, 36, 12
+  CONTROL "Cancel transfer after", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 18, 38, 85, 8
+  CONTROL "", ID_PROTOCOL_MAXERRORS, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 106, 37, 12, 12
+  CONTROL "errors", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 123, 38, 27, 8
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 206, 3, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 206, 21, 40, 14
+END
+
+IDD_PROTOCOL_ZMODEM DIALOG LOADONCALL MOVEABLE DISCARDABLE 28, 23, 266, 60
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Zmodem Protocol Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 3, 3, 113, 8
+  CONTROL "&Timing", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 27, 15, 27, 8
+  CONTROL "Tight", ID_PROTOCOL_TIGHT, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 61, 13, 31, 12
+  CONTROL "Normal", ID_PROTOCOL_NORMAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 99, 13, 34, 12
+  CONTROL "Loose", ID_PROTOCOL_LOOSE, "button", BS_AUTORADIOBUTTON | WS_CHILD, 139, 13, 32, 12
+  CONTROL "Sloppy", ID_PROTOCOL_SLOPPY, "button", BS_AUTORADIOBUTTON | WS_CHILD, 174, 13, 36, 12
+  CONTROL "&Packet Size", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 9, 30, 45, 8
+  CONTROL "128", ID_PROTOCOL_128, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 61, 28, 25, 12
+  CONTROL "256", ID_PROTOCOL_256, "button", BS_AUTORADIOBUTTON | WS_CHILD, 99, 28, 24, 12
+  CONTROL "512", ID_PROTOCOL_512, "button", BS_AUTORADIOBUTTON | WS_CHILD, 139, 28, 22, 12
+  CONTROL "1024", ID_PROTOCOL_1024, "button", BS_AUTORADIOBUTTON | WS_CHILD, 174, 28, 29, 12
+  CONTROL "Cancel transfer after", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 7, 45, 86, 8
+  CONTROL "", ID_PROTOCOL_MAXERRORS, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 97, 43, 12, 12
+  CONTROL "errors", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 112, 45, 26, 8
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 220, 7, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 220, 23, 40, 14
+END
+
+/*
+	NOTE ... The following STRING TABLE entries must be set to
+		 the corresponding application filename:
+
+			IDS_CLIPBRD		(default = "Clipboard.exe")
+			IDS_CONTROL		(default = "Control.exe")
+			IDS_NOTEPAD		(default = "Notepad.exe")
+*/
+IDD_RUNAPP DIALOG LOADONCALL MOVEABLE DISCARDABLE 94, 34, 126, 68
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Run Application", -1, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 3, 3, 75, 60
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 84, 26, 38, 14
+  CONTROL "&Clipboard", ID_RUNAPP_CLIPBOARD, "button", BS_RADIOBUTTON | WS_TABSTOP | WS_CHILD, 9, 16, 47, 12
+  CONTROL "Control &Panel", ID_RUNAPP_CONTROL, "button", BS_RADIOBUTTON | WS_TABSTOP | WS_CHILD, 9, 32, 80, 10
+  CONTROL "&Notepad", ID_RUNAPP_NOTEPAD, "button", BS_RADIOBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 9, 46, 41, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 84, 8, 38, 14
+END
+
+IDD_SAVEAS DIALOG LOADONCALL MOVEABLE DISCARDABLE 47, 18, 181, 50
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Save File &Name As:" -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 6, 4, 85, 12
+  CONTROL "" ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 90, 4, 79, 12
+  CONTROL "" ID_EDIT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 6, 17, 170, 12
+  CONTROL "Ok" ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 29, 33, 43, 14
+  CONTROL "Cancel" ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 101, 33, 43, 14
+END
+
+/* dca00016 PJL Change Version Number & "Redial" text */
+IDD_SESSION DIALOG LOADONCALL MOVEABLE DISCARDABLE 33, 15, 255, 90
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Session Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 1, 0, 68, 8
+  CONTROL "&Description:", -1, "static", SS_RIGHT | WS_CHILD, 9, 14, 48, 10
+  CONTROL "", ID_SESSION_DESCRIPTION, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 60, 12, 134, 12
+  CONTROL "&Number:", -1, "static", SS_RIGHT | WS_CHILD, 27, 27, 30, 10
+  CONTROL "", ID_SESSION_NUMBER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 60, 25, 134, 12
+  CONTROL "&User ID:", -1, "static", SS_RIGHT | WS_CHILD, 22, 40, 35, 10
+  CONTROL "", ID_SESSION_USERID, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 60, 38, 134, 12
+  CONTROL "&Password:", -1, "static", SS_RIGHT | WS_CHILD, 18, 53, 39, 10
+  CONTROL "", ID_SESSION_PASSWORD, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 60, 51, 134, 12
+  CONTROL "&Script:", -1, "static", SS_RIGHT | WS_CHILD, 25, 66, 32, 11
+  CONTROL "", ID_SESSION_SCRIPT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 60, 64, 134, 12
+  CONTROL "Net &ID:", -1, "static", SS_RIGHT | WS_CHILD, 27, 79, 30, 10
+  CONTROL "", ID_SESSION_NETID, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 60, 77, 134, 12
+  CONTROL "Allow", -1, "static", SS_LEFT | WS_CHILD, 8, 97, 22, 8
+  CONTROL "", ID_SESSION_PATIENCE, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD | WS_DISABLED, 31, 95, 17, 12
+  CONTROL "seconds for the host to answer", -1, "static", SS_LEFT | WS_CHILD, 51, 97, 126, 8
+  CONTROL "Try to redial", -1, "static", SS_LEFT | WS_CHILD, 8, 107, 53, 8
+  CONTROL "", ID_SESSION_REDIALCOUNT, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | WS_DISABLED, 63, 105, 12, 12
+  CONTROL "times", -1, "static", SS_LEFT | WS_CHILD, 79, 107, 22, 8
+  CONTROL "Wait", -1, "static", SS_LEFT | WS_CHILD, 8, 118, 17, 8
+  CONTROL "", ID_SESSION_REDIALWAIT, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | WS_DISABLED, 27, 116, 12, 12
+  CONTROL "seconds between dialing attempts", -1, "static", SS_LEFT | WS_CHILD, 43, 118, 134, 8
+  CONTROL "&Capture file name:", -1, "static", SS_LEFT | WS_CHILD, 9, 136, 73, 9
+  CONTROL "", ID_SESSION_LOG, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD | WS_DISABLED, 83, 134, 109, 12
+  CONTROL "Capture mode", -1, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 9, 149, 50, 8
+  CONTROL "No&rmal", ID_SESSION_NORMAL, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD | WS_DISABLED, 60, 148, 35, 10
+  CONTROL "Ra&w", ID_SESSION_RAW, "button", BS_AUTORADIOBUTTON | WS_CHILD, 96, 148, 24, 10
+  /* dca00053 MKL added proportional font support */
+  CONTROL "&Visual", ID_SESSION_VISUAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 124, 148, 34, 10
+  CONTROL "Man&ual", ID_SESSION_MANUAL, "button", BS_AUTORADIOBUTTON | WS_CHILD, 158, 148, 34, 10
+  CONTROL "&Answerback Response:", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 3, 164, 82, 8
+  CONTROL "", ID_SESSION_ANSWERBACK, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | WS_DISABLED, 87, 162, 107, 12
+  CONTROL "Dia&l Modifier:", -1, "static", SS_RIGHT | WS_CHILD, 28, 177, 57, 10
+  CONTROL "", ID_SESSION_MODIFIER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD | WS_DISABLED, 87, 176, 107, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 205, 14, 41, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 205, 35, 41, 14
+  CONTROL "&More >>", ID_MORE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 205, 56, 41, 14
+  CONTROL "", -1, "static", SS_BLACKFRAME | WS_GROUP | WS_CHILD, 4, 92, 190, 38
+  CONTROL "", -1, "static", SS_BLACKFRAME | WS_CHILD, 4, 132, 190, 29
+END
+
+IDD_SETTING DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 23, 266, 155
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Modem Settings for", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 6, 4, 74, 8
+  CONTROL "", ID_EDIT, "static", SS_LEFT | WS_CHILD, 82, 4, 100, 8
+  CONTROL "Dial &Prefix:", -1, "static", SS_RIGHT | WS_CHILD, 16, 22, 49, 8
+  CONTROL "", ID_MODEM_PREFIX, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 21, 60, 12
+  CONTROL "Dial &Suffix:", -1, "static", SS_RIGHT | WS_CHILD, 17, 36, 48, 8
+  CONTROL "", ID_MODEM_SUFFIX, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 35, 60, 12
+  CONTROL "&Answer Setup:", -1, "static", SS_RIGHT | WS_CHILD, 11, 50, 54, 8
+  CONTROL "", ID_MODEM_ANSWER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 49, 60, 12
+  CONTROL "&Initialization:", -1, "static", SS_RIGHT | WS_CHILD, 5, 64, 60, 8
+  CONTROL "", ID_MODEM_INIT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 63, 60, 12
+  CONTROL "&Disconnect:", -1, "static", SS_RIGHT | WS_CHILD, 12, 78, 53, 8
+  CONTROL "", ID_MODEM_HANGUP, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 77, 60, 12
+  CONTROL "Command O&K:", -1, "static", SS_RIGHT | WS_CHILD, 17, 92, 48, 8
+  CONTROL "", ID_MODEM_OK, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 91, 60, 12
+  CONTROL "Command &Error:", -1, "static", SS_RIGHT | WS_CHILD, 9, 106, 56, 8
+  CONTROL "", ID_MODEM_ERROR, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 105, 60, 12
+  CONTROL "&No Carrier:", -1, "static", SS_RIGHT | WS_CHILD, 19, 120, 46, 8
+  CONTROL "", ID_MODEM_CARRIER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 119, 60, 12
+  CONTROL "&Connect:", -1, "static", SS_RIGHT | WS_CHILD, 146, 22, 46, 8
+  CONTROL "", ID_MODEM_CONNECT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 195, 21, 60, 12
+  CONTROL "Connec&t Speed:", -1, "static", SS_RIGHT | WS_CHILD, 134, 36, 58, 8
+  CONTROL "", ID_MODEM_SPEED, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 195, 35, 60, 12
+  CONTROL "Connect AR&Q:", -1, "static", SS_RIGHT | WS_CHILD, 139, 50, 52, 8
+  CONTROL "", ID_MODEM_ARQ, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 195, 49, 60, 12
+  CONTROL "Dia&l Tone:", -1, "static", SS_RIGHT | WS_CHILD, 152, 64, 40, 8
+  CONTROL "", ID_MODEM_DIALTONE, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 195, 63, 60, 12
+  CONTROL "No Dial T&one:", -1, "static", SS_RIGHT | WS_CHILD, 135, 78, 57, 8
+  CONTROL "", ID_MODEM_NOTONE, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 195, 77, 60, 12
+  CONTROL "Rin&ging:", -1, "static", SS_RIGHT | WS_CHILD, 140, 92, 52, 8
+  CONTROL "", ID_MODEM_RING, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 195, 91, 60, 12
+  CONTROL "&Busy:", -1, "static", SS_RIGHT | WS_CHILD, 140, 106, 52, 8
+  CONTROL "", ID_MODEM_BUSY, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 195, 105, 60, 12
+  CONTROL "A&utomatically select speed", ID_MODEM_CHANGE, "button", BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP | WS_CHILD, 143, 119, 117, 10
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 167, 134, 41, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 214, 134, 41, 14
+END
+
+IDD_SYSTEM DIALOG LOADONCALL MOVEABLE DISCARDABLE 19, 18, 291, 105
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "System Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 4, 0, 66, 8
+  CONTROL "&Startup Script:", -1, "static", SS_RIGHT | WS_CHILD, 51, 15, 67, 8
+  CONTROL "", ID_GLOBAL_STARTUP, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 122, 13, 102, 12
+  CONTROL "Local &Access Number:", -1, "static", SS_RIGHT | WS_CHILD, 34, 30, 84, 8
+  CONTROL "", ID_GLOBAL_OUTNUMBER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 122, 28, 102, 12
+  CONTROL "Long &Distance Access Number:", -1, "static", SS_RIGHT | WS_CHILD, 4, 45, 114, 8
+  CONTROL "", ID_GLOBAL_LDNUMBER, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 122, 43, 102, 12
+  CONTROL "Display the password in SETUP.SESSION dialog", ID_GLOBAL_SECRET, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 39, 64, 187, 12
+  CONTROL "Keep duplicate files by creating .BAK file", ID_GLOBAL_BACKUPS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 39, 77, 186, 12
+  CONTROL "Add CR to end of Paste-To-Host data stream", ID_GLOBAL_PASTE, "button", BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP | WS_CHILD, 39, 90, 186, 12
+  CONTROL "&Phone Book Entries:", -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 21, 110, 78, 10
+  CONTROL "", ID_GLOBAL_XWP, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD | WS_DISABLED, 103, 108, 172, 12
+  CONTROL "S&cripts:", -1, "static", SS_RIGHT | WS_CHILD, 66, 124, 33, 10
+  CONTROL "", ID_GLOBAL_XWS, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD | WS_DISABLED, 103, 122, 172, 12
+  CONTROL "&Transfers and Captures:", -1, "static", SS_RIGHT | WS_CHILD, 6, 139, 93, 10
+  CONTROL "", ID_GLOBAL_FIL, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD | WS_DISABLED, 103, 136, 172, 12
+  CONTROL "&Editor to use:", -1, "static", SS_RIGHT | WS_CHILD, 6, 153, 93, 10
+  CONTROL "", ID_GLOBAL_EDIT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD | WS_DISABLED, 103, 150, 172, 12
+  CONTROL "Sc&rolling Buffer Size", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 15, 167, 85, 8
+  CONTROL "None", ID_GLOBAL_NONE, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD | WS_DISABLED, 105, 165, 28, 12
+  CONTROL "16k", ID_GLOBAL_16K, "button", BS_AUTORADIOBUTTON | WS_CHILD | WS_DISABLED, 140, 165, 24, 12
+  CONTROL "32k", ID_GLOBAL_32K, "button", BS_AUTORADIOBUTTON | WS_CHILD | WS_DISABLED, 173, 165, 24, 12
+  CONTROL "64k", ID_GLOBAL_64K, "button", BS_AUTORADIOBUTTON | WS_CHILD | WS_DISABLED, 208, 165, 24, 12
+  CONTROL "C&omm. Port Buffer Size", -1, "static", SS_RIGHT | WS_GROUP  | WS_CHILD, 11, 181, 89, 8
+  CONTROL "2k", ID_GLOBAL_CP2K, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD | WS_DISABLED, 105, 179, 19, 12
+  CONTROL "4k", ID_GLOBAL_CP4K, "button", BS_AUTORADIOBUTTON | WS_CHILD | WS_DISABLED, 140, 179, 21, 12
+  CONTROL "8k", ID_GLOBAL_CP8K, "button", BS_AUTORADIOBUTTON | WS_CHILD | WS_DISABLED, 173, 179, 23, 12
+  CONTROL "12k", ID_GLOBAL_CP12K, "button", BS_AUTORADIOBUTTON | WS_CHILD | WS_DISABLED, 208, 179, 24, 12
+  CONTROL "16k", ID_GLOBAL_CP16K, "button", BS_AUTORADIOBUTTON | WS_CHILD | WS_DISABLED, 241, 179, 24, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 234, 6, 40, 14
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 234, 27, 40, 14
+  CONTROL "&More >>", ID_MORE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 234, 48, 40, 14
+END
+
+/*
+  dca00007 PJL Moved Terminal.More CheckBoxes - spacing was too close for EGA
+*/
+IDD_TERMINAL DIALOG LOADONCALL MOVEABLE DISCARDABLE 27, 18, 268, 90
+STYLE WS_DLGFRAME | WS_VISIBLE | WS_POPUP
+BEGIN
+  CONTROL "Terminal Settings", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 2, 1, 71, 10
+  CONTROL "&Type", -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 6, 15, 20, 10
+  CONTROL "VT102", ID_TERM_VT102, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 70, 14, 40, 12
+  CONTROL "VT52", ID_TERM_VT52, "button", BS_AUTORADIOBUTTON | WS_CHILD, 104, 14, 30, 12
+  CONTROL "IBM-PC", ID_TERM_IBMPC, "button", BS_AUTORADIOBUTTON | WS_CHILD, 136, 14, 35, 12
+  CONTROL "IBM3101", ID_TERM_IBM3101, "button", BS_AUTORADIOBUTTON | WS_CHILD, 174, 14, 45, 12
+  CONTROL "VIDTEX", ID_TERM_VIDTEX, "button", BS_AUTORADIOBUTTON | WS_CHILD, 221, 14, 36, 12
+  CONTROL "&Columns", ID_TERM_COLUMNS, "static", SS_LEFT | WS_GROUP | WS_CHILD, 6, 27, 35, 10
+  CONTROL "80", ID_TERM_80, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 70, 26, 22, 10
+  CONTROL "132", ID_TERM_132, "button", BS_AUTORADIOBUTTON | WS_CHILD, 104, 26, 27, 10
+  CONTROL "Cursor &Shape", -1, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 6, 39, 50, 10
+  CONTROL "Bar", ID_TERM_BAR, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 70, 38, 24, 10
+  CONTROL "Line", ID_TERM_LINE, "button", BS_AUTORADIOBUTTON | WS_CHILD, 104, 38, 32, 10
+  CONTROL "Block", ID_TERM_BLOCK, "button", BS_AUTORADIOBUTTON | WS_CHILD, 136, 38, 30, 10
+  CONTROL "&Auto LineFeed", ID_TERM_LFAUTO, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 6, 51, 55, 10
+  CONTROL "No", ID_TERM_OFF, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 104, 50, 20, 10
+  CONTROL "Yes", ID_TERM_ADDLF, "button", BS_AUTORADIOBUTTON | WS_CHILD, 70, 50, 24, 10
+  CONTROL "&Enter key sends", ID_TERM_NEWLINE, "static", SS_LEFT | WS_GROUP  | WS_CHILD, 6, 63, 61, 8
+  CONTROL "CR", ID_TERM_CR, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_CHILD, 70, 62, 19, 10
+  CONTROL "CR/LF", ID_TERM_CRLF, "button", BS_AUTORADIOBUTTON | WS_CHILD, 104, 62, 31, 10
+  CONTROL "", ID_TERM_ENTER, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 70, 61, 34, 12
+  CONTROL "Ta&b stops every", -1, "static", SS_LEFT | WS_CHILD, 6, 75, 61, 9
+  CONTROL "", ID_TERM_TABWIDTH, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 70, 74, 12, 11
+  CONTROL "spaces", -1, "static", SS_LEFT | WS_CHILD, 85, 75, 26, 8
+  CONTROL "Echo typed characters locally", ID_TERM_ECHO, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_GROUP | WS_CHILD | WS_DISABLED, 6, 90, 128, 12
+  CONTROL "Wrap to next line when cursor reaches last column", ID_TERM_AUTOWRAP, "button", BS_AUTOCHECKBOX | WS_CHILD, 6, 102, 207, 12
+  CONTROL "Add form feeds to page prints", ID_TERM_FORMFEED, "button", BS_AUTOCHECKBOX | WS_CHILD, 6, 113, 127, 12
+   /* dca00038 MKL changed setup.terminal.more.graphics text.
+      CONTROL "Enable graphic characters", ID_TERM_GRAPHICS, "button", BS_AUTOCHECKBOX | WS_CHILD, 6, 124, 111, 12
+  */
+  CONTROL "", ID_TERM_GRAPHICS, "button", BS_AUTOCHECKBOX | WS_CHILD, 6, 124, 168, 12
+  CONTROL "Interpret color codes received from the host", ID_TERM_NOCOLOR, "button", BS_AUTOCHECKBOX | WS_CHILD, 6, 135, 188, 12
+  CONTROL "Print Page prints entire screen (vs just region)", ID_TERM_PRINTEXTENT, "button", BS_AUTOCHECKBOX | WS_CHILD, 6, 146, 204, 12
+  CONTROL "Swap Backspace and Ctrl-Backspace control codes", ID_TERM_SWAPDEL, "button", BS_AUTOCHECKBOX | WS_CHILD, 6, 157, 218, 12
+  CONTROL "Wrap text to fit into resized terminal window", ID_TERM_WINDOWWRAP, "button", BS_AUTOCHECKBOX | WS_CHILD, 6, 168, 193, 12
+  CONTROL "Ok", ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 220, 31, 41, 15
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 220, 52, 41, 15
+  CONTROL "&More >>", ID_MORE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 220, 73, 41, 15
+END
+
+IDD_UPLOAD DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 20, 199, 108
+STYLE WS_DLGFRAME | WS_POPUP
+BEGIN
+  CONTROL "Open" ID_OK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 113, 55, 50, 14
+  CONTROL "Cancel" ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 113, 74, 50, 14
+  CONTROL "Select File to Send" -1, "static", SS_LEFT | WS_GROUP | WS_CHILD, 55, 3, 88, 8
+  CONTROL "" ID_EDIT, "edit", ES_LEFT | WS_BORDER | WS_GROUP | WS_TABSTOP | WS_CHILD, 46, 16, 142, 12
+  CONTROL "" ID_LISTBOX, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_GROUP | WS_TABSTOP | WS_CHILD, 4, 31, 58, 66
+  CONTROL "File name:" -1, "static", SS_RIGHT | WS_GROUP | WS_CHILD, 2, 17, 40, 12
+  CONTROL "" ID_PATH, "static", SS_LEFT | WS_GROUP | WS_CHILD, 79, 34, 113, 12
+END
+
+IDD_XFER DIALOG LOADONCALL MOVEABLE DISCARDABLE 13, 32, 295, 116
+CAPTION " File Transfer"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_POPUP
+BEGIN
+  CONTROL "Cancel", ID_CANCEL, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 243, 77, 40, 14
+  CONTROL "&Hide", ID_HIDE, "button", BS_PUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 243, 100, 40, 14
+  CONTROL "", ID_XFER_TITLE, "static", SS_CENTER | WS_GROUP | WS_CHILD, 12, 6, 258, 8
+  CONTROL "Block:", -1, "static", SS_RIGHT | WS_CHILD, 29, 24, 28, 8
+  CONTROL "", ID_XFER_BLOCK, "static", SS_LEFT | WS_CHILD, 61, 24, 35, 8
+  CONTROL "Block size:", -1, "static", SS_RIGHT | WS_CHILD, 9, 36, 48, 8
+  CONTROL "", ID_XFER_SIZE, "static", SS_LEFT | WS_CHILD, 61, 36, 35, 8
+  CONTROL "Bytes sent:", ID_XFER_NAME, "static", SS_RIGHT | WS_CHILD, 9, 48, 48, 8
+  CONTROL "", ID_XFER_BYTES, "static", SS_LEFT | WS_CHILD, 61, 48, 37, 8
+  CONTROL "of", -1, "static", SS_CENTER | WS_CHILD, 101, 48, 16, 8
+  CONTROL "", ID_XFER_OFBYTES, "static", SS_LEFT | WS_CHILD, 119, 48, 41, 8
+  CONTROL "Estimated time remaining:", -1, "static", SS_RIGHT | WS_CHILD, 6, 60, 101, 8
+  CONTROL "", ID_XFER_EST, "static", SS_LEFT | WS_CHILD, 109, 60, 34, 8
+  CONTROL "Total errors:", -1, "static", SS_RIGHT | WS_CHILD, 185, 24, 54, 8
+  CONTROL "", ID_XFER_TOTAL, "static", SS_LEFT | WS_CHILD, 243, 24, 35, 8
+  CONTROL "Consec errors:", -1, "static", SS_RIGHT | WS_CHILD, 180, 36, 59, 8
+  CONTROL "", ID_XFER_CONSEC, "static", SS_LEFT | WS_CHILD, 243, 36, 35, 8
+  CONTROL "Last error:", -1, "static", SS_RIGHT | WS_CHILD, 192, 48, 47, 8
+  CONTROL "", ID_XFER_LAST, "static", SS_LEFT | WS_CHILD, 243, 48, 40, 8
+  CONTROL "Approximate throughput:", -1, "static", SS_RIGHT | WS_CHILD, 145, 60, 94, 8
+  CONTROL "", ID_XFER_CPS, "static", SS_LEFT | WS_CHILD, 243, 60, 35, 8
+  CONTROL "% complete:", -1, "static", SS_LEFT | WS_CHILD, 12, 80, 47, 8
+  CONTROL "", ID_XFER_GRAPHICS, "button", BS_USERBUTTON | WS_BORDER | WS_CHILD, 64, 78, 174, 12
+  CONTROL "", -1, "static", SS_BLACKFRAME | WS_CHILD, 5, 20, 285, 53
+  /* dca00053 MKL added Win3.0 proportional font support
+  CONTROL "0%........25%........50%........75%......100%", -1, "static", SS_LEFT | WS_CHILD, 62, 92, 182, 8
+  */
+  CONTROL "0%.................", -1, "static", SS_LEFT | WS_CHILD, 62, 91, 52, 8
+  CONTROL "25%...............", -1, "static", SS_LEFT | WS_CHILD, 104, 91, 51, 8
+  CONTROL "50%...............", -1, "static", SS_LEFT | WS_CHILD, 146, 91, 50, 8
+  CONTROL "75%...............", -1, "static", SS_LEFT | WS_CHILD, 189, 91, 50, 8
+  CONTROL "100%", -1, "static", SS_LEFT | WS_CHILD, 230, 91, 18, 8
+  CONTROL "", ID_XFER_MSG, "static", SS_CENTER | WS_GROUP | WS_CHILD, 37, 105, 204, 8
+END
+
+
+/******************************************************************************/
+/*									      */
+/*  STRINGTABLE resource                                                      */
+/*									      */
+/******************************************************************************/
+
+STRINGTABLE
+BEGIN
+    IDS_APPNAME,    "XTALK"
+    IDS_APPTITLE,   "CROSSTALK for Windows"
+    IDS_UNTITLED,   "(Untitled)"
+    IDS_CLIPBRD,    "Clipboard.exe"
+    IDS_CONTROL,    "Control.exe"
+    IDS_NOTEPAD,    "Notepad.exe"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Strings used by the file open/save dialogs.                          */
+    /*									    								 */
+    /*----------------------------------------------------------------------*/
+
+    IDS_IFN,        "%% is not a valid filename."
+    IDS_FNF,        "%% not found - Create new file?"
+    IDS_REF,        "Replace existing %%?"
+    IDS_SCC,        "%% has changed.  Save current changes?"
+    IDS_EOF,        "Error opening %%"
+    IDS_ECF,        "Error creating %%"
+    IDS_EXT,        "\\*.TXT"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Strings that define the various window classes.                      */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    IDS_WNDCLASS_MAIN,	    "XTKMain"
+    IDS_WNDCLASS_STATUS,    "XTKStatus"
+    IDS_WNDCLASS_INFO,	    "XTKInfo"
+    IDS_WNDCLASS_MACRO,     "XTKKeys"
+    IDS_WNDCLASS_TERM,	    "XTKTerm"
+    IDS_WNDCLASS_CISG,	    "XTKCisGH"
+    IDS_WNDCLASS_KERMIT,    "XTKKermit"
+    IDS_WNDCLASS_COLORBAR,  "XTKColor"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Strings that define the name of the terminal emulators.              */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    IDS_EMULATOR_VT102,     "VT-102 "
+    IDS_EMULATOR_VT52,      "VT-52  "
+    IDS_EMULATOR_PCIBM,     "IBM-PC "
+    IDS_EMULATOR_3101,	    "IBM3101"
+    IDS_EMULATOR_VIDTEX,    "VIDTEX "
+
+
+    /*----------------------------------------------------------------------*/
+    /* Strings that define the name of the file transfer protocols.         */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    IDS_PROTOCOL_XTALK,     "CROSSTALK"
+    IDS_PROTOCOL_DART,      "DART"
+    IDS_PROTOCOL_MODEM7,    "Xmodem"
+    IDS_PROTOCOL_XMODEM,    "Xmodem/CRC"
+    IDS_PROTOCOL_MODEM1K,   "Xmodem/1K"
+    IDS_PROTOCOL_YMODEM,    "Ymodem/Batch"
+    IDS_PROTOCOL_KERMIT,    "Kermit"
+    IDS_PROTOCOL_CSERVEB,   "CompuServe B"
+    IDS_PROTOCOL_ZMODEM,    "Zmodem"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Strings that define the various colors.                              */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    IDS_CHRATTR_BLACK,	    "Black"
+    IDS_CHRATTR_RED,	    "Red"
+    IDS_CHRATTR_GREEN,	    "Green"
+    IDS_CHRATTR_YELLOW,     "Yellow"
+    IDS_CHRATTR_BLUE,	    "Blue"
+    IDS_CHRATTR_MAGENTA,    "Magenta"
+    IDS_CHRATTR_CYAN,	    "Cyan"
+    IDS_CHRATTR_WHITE,	    "White"
+    IDS_CHRATTR_BOLDED,     "Bold"
+    IDS_CHRATTR_UNDERLINED, "Underline"
+    IDS_CHRATTR_SAMPLE,     "Text"
+    IDS_CHRATTR_BLINKING,   "Blink"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Strings used as default values for the status window.                */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    IDS_STAT_EMULATOR,      " VT102 "
+    IDS_STAT_CONFIG,        "1200/7E1/COM1"
+    IDS_STAT_KEYPAD,        " Nor/80 "
+    IDS_STAT_CLOCK,         "00:00:00"
+
+
+    /*---------------------------------------------------------------------*/
+    /* Strings that defined the default set of modems.                     */
+    /*																		*/
+    /* dca00051 PJL Blank ModemResults & Disconnect for non-Hayes modems.  */
+    /* dca00089 PJL Update ConnectArq strings for all modems.				*/
+    /*---------------------------------------------------------------------*/
+    IDS_MODEM_2224B,     "AT&T Autocall 2224B,^M,^M,,,,1,,,,,,,,,,"
+    IDS_MODEM_7404,      "AT&T Sys75 7404 7407,{~~~c^M~,^M,,,,1,,,,,,,,,,"
+    IDS_MODEM_DTDM,      "AT&T Sys75 DTDM PDM MPDM,{,^M,,,,1,,,,,,,,,,"
+    IDS_MODEM_BIZCOMP,   "Bizcomp PC-Intellimodem,ATNU^M~ATDT,^M,,ATX1S0=1^M,,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_BYTCOM,    "Bytcom 212AD,^M~^M~~D~T~,^M,,^M,,1,,,,,,,,,,"
+    IDS_MODEM_COMPAQ,    "Compaq internal modem,ATDT,^M,ATS0=1^M,^M~ATV1E0X4^M~AT&C1&D2^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_CONCORD,   "Concord Data Systems 224,^M^M~D,^M,,,,1,,,,,,,,,,"
+    IDS_MODEM_DCA911,    "DCA 911,CRN,^J,,,,1,,,,,,,,,,"
+    IDS_MODEM_DCAFAST,   "DCA Fastlink,ATS6=5DT,^M,ATS0=1^M,~ATS50=0S52=1S53=1S58=2S66=1S68=2^M,~~+++~~ATH0^M,0,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,CONNECT %/REL^M^J,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_GRID,      "Grid Case (internal),ATDT,^M,ATS0=1^M,^M~ATE0V1X1^M~,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_HAYES300,  "Hayes 300,ATDT,^M,ATS0=1^M,^M~ATV1E0^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_HAYES1200, "Hayes 1200,ATDT,^M,ATS0=1^M,^M~ATV1E0X1^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_HAYES2400, "Hayes 2400,ATDT,^M,ATS0=1^M,^M~ATV1E0X4^M~AT&C1&D2^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_V2400,     "Hayes V2400,ATDT,^M,ATS0=1^M,^M~ATV1E0X4^M~AT&C1&D2^M,~~+++~~ATH0^M,0,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_V9600,     "Hayes V9600,ATDT,^M,ATS0=1^M,^M~ATV1E0X4^M~AT&C1&D2^M,~~+++~~ATH0^M,0,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_IBM5841,   "IBM 5841 (external),ATDT,^M,ATS0=1^M,^M~ATV1E0X1^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_IBMCONV,   "IBM Convertible,^N~C S; L 0; D,; T 0^M,,^N~C 1^M,,1,,,,,,,,,,"
+    IDS_MODEM_IBM1200,   "IBM Internal 1200,ATDT,^M,ATS0=1^M,^M~ATV1E0X1^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_MIGENT,    "Migent Pocket 1200,ATDT,^M,ATS0=1^M,^M~ATV1E0X4^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_MULTITECH, "MultiTech 224AD 224AB,ATDT,^M,ATS0=1^M,^M~ATV1E0^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_NOVATION,  "Novation (all models),%D~,; U 0^M,,%C~ 1; U~ 0^M,,1,,,,,,,,,,"
+    IDS_MODEM_POPCOM,    "Popcom (all models),ATDT,^M,ATS0=1^M,^M~ATV1E0X1S18=0^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_PM2400SA,  "Practical Peripherals PM2400SA,ATDT,^M,ATS0=1^M,^M~ATV1E0X4&C1&D2\\J0\\N3\\Q1\\V1\\C1^M,~~+++~~ATH0^M,0,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,CONNECT %/REL^M^J,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_RACAL3451, "Racal-Vadic 3451,~^E^M~D^M~~,^M~~^M,,^M,,1,,,,,,,,,,"
+    IDS_MODEM_RACAL212,  "Racal-Vadic VA-212,~^E^M~D^M~~,^M~~^M,,^M,,1,,,,,,,,,,"
+    IDS_MODEM_RIXON212,  "Rixon Executive 212,ATDT,^M,ATS0=1^M,,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_RIXON212A, "Rixon PC212a,ATDT,^M,,ATX1S0=0,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_TELEBIT,   "Telebit Trailblazer,ATS6=5DT,^M,ATS0=1^M,^M~ATS50=0S52=1S53=1S58=2S66=1S68=2^M,~~+++~~ATH0^M,0,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,CONNECT %/REL^M^J,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_USR212,    "US Robotics Autodial 212,ATDT,^M,ATS0=1^M,^M~ATV1E0X1^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,CONNECT %/ARQ^M^J,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_USR2400,   "US Robotics Courier 2400,ATDT,^M,ATS0=1^M,^M~ATV1E0X1^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,CONNECT %/ARQ^M^J,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_HST9600,   "US Robotics Courier HST,ATDT,^M,ATS0=1^M,^M~AT&B1&N0&H1&M4&I0&R2X4^M,~~+++~~ATH0^M,0,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,CONNECT %/ARQ^M^J,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_VEN1200,   "Ven-Tel 1200,ATDT,^M,ATS0=1^M,^M~ATV1E0X1^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_VEN2400,   "Ven-Tel 2400,ATDT,^M,ATS0=1^M,^M~ATV1E0X1^M,~~+++~~ATH0^M,1,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_VENEC18K,  "Ven-Tel EC18K,ATS6=5DT,^M,ATS0=1^M,^M~ATS50=0S52=1S53=1S58=2S66=1S68=2^M,~~+++~~ATH0^M,0,OK^M^J,ERROR^M^J,CONNECT^M^J,CONNECT %^M^J,CONNECT %/REL^M^J,TONE^M^J,RING^M^J,NO DIAL^M^J,BUSY^M^J,NO CARRIER^M^J"
+    IDS_MODEM_DIRECT,    "Direct Connection"
+    IDS_MODEM_CUSTOM,	 "Custom Modem"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Strings used by various dialogs for display of text.                 */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    MSG_LOG_FILE,          "Please enter name of capture file"
+    MSG_BECONNECTED,       "Must be connected"
+    MSG_LOCALMEMORY,       "Fatal! No local memory"
+    MSG_NOENTRIES,         "No entries found!  Check SETUP.SYSTEM directories"
+    MSG_BADCAPTUREFILE,    "Unable to open Capture File"
+    MSG_SURETODELETE,      "Are you sure that you want to delete?"
+    KRMSTR_LOGOPEN,        "*** Capture file opened at %s."
+    IDS_READ_ERROR,        "Error while reading from disk"
+    IDS_WRITE_ERROR,       "Error while writing to disk"
+    MSGDIA_INIT,           "Initializing modem"
+    MSGDIA_WAIT,           "Waiting %d seconds for redial"
+    MSGDIA_DIAL,           "Dialing, attempt number %d"
+    MSGDLG_KEYS_CONTROL1,  "* Mouse or menu operation only."
+    MSGKRM_NOERROR,        "Command processed successfully"
+    MSGKRM_PROCESSING,     "Processing requested command"
+    MSGKRM_IDLE,           "Kermit Idle, Enter a Command..."
+    MSGMNU_CONNECT,        "&Connect\tF6"
+    MSGMNU_DISCONNECT,     "Dis&connect\tF6"
+    MSGMNU_CPY_FILE,       "Copy to &File..."
+    MSGMNU_CPY_LOG,        "Copy to C&apture"
+    MSGMNU_CPY_NOTES,      "Copy to &Notes"
+    MSGMNU_CPY_PRINTER,    "Copy to Prin&ter"
+    MSGMNU_SCR_FILE,       "Screen to &File..."
+    MSGMNU_SCR_LOG,        "Screen to C&apture"
+    MSGMNU_SCR_NOTES,      "Screen to &Notes"
+    MSGMNU_SCR_PRINTER,    "Screen to Prin&ter"
+    MSGMNU_SEND,           "S&end with %s..."
+    MSGMNU_RECEIVE,        "Rece&ive with %s..."
+    MSGMNU_SCRIPT1,        "&Scripts...\tF8"
+    MSGMNU_SCRIPT2,        "Stop &Script\tF8"
+    MSGMNU_CAPTURE1,       "&Capture\tF5"
+    MSGMNU_CAPTURE2,       "&Capture to %s\tF5"
+    MSGPRT_NOPRINTER,      "Unable to open printer device"
+    MSGPRT_PRINTERR,       "Printer error, print turned off"
+    MSGVSS_NOREALMEM,      "Unable to attain any real memory for scroll buffers"
+    MSGVSS_PTREALMEM,      "Only partial real memory attained for scroll buffers"
+    MSGXFR_FILENO,         "Transferring file number %d"
+    MSGXFR_FILEOF,         "Transferring file %d of %d"
+    MSGXFR_ALLDONE,        "File transfer completed"
+    MSGXFR_WAITUP,         "Waiting to upload (CROSSTALK -> Remote)"
+    MSGXFR_WAITDOWN,       "Waiting to download (Remote -> CROSSTALK)"
+    MSGXFR_CROSSSND,       "CROSSTALK transfer from CROSSTALK"
+    MSGXFR_CROSSRCV,       "CROSSTALK transfer to CROSSTALK"
+    MSGXFR_DARTSND,        "DART transfer from CROSSTALK"
+    MSGXFR_DARTRCV,        "DART transfer to CROSSTALK"
+    MSGXFR_ZMODEMSND,      "Zmodem transfer from CROSSTALK"
+    MSGXFR_ZMODEMRCV,      "Zmodem transfer to CROSSTALK"
+    MSGXFR_QUICKBACT,      "CompuServe B transfer is Active"
+    MSGXFR_QUICKBSND,      "CompuServe B transfer from CROSSTALK"
+    MSGXFR_QUICKBRCV,      "CompuServe B transfer to CROSSTALK"
+    MSGXFR_MODEM7SND,      "Xmodem transfer from CROSSTALK"
+    MSGXFR_MODEM7RCV,      "Xmodem transfer to CROSSTALK"
+    MSGXFR_XMODEMSND,      "Xmodem/CRC transfer from CROSSTALK"
+    MSGXFR_XMODEMRCV,      "Xmodem/CRC transfer to CROSSTALK"
+    MSGXFR_MODEM1KSND,     "Xmodem-1K transfer from CROSSTALK"
+    MSGXFR_MODEM1KRCV,     "Xmodem-1K transfer to CROSSTALK"
+    MSGXFR_YMODEMSND,      "Ymodem/Batch transfer from CROSSTALK"
+    MSGXFR_YMODEMRCV,      "Ymodem/Batch transfer to CROSSTALK"
+    MSGXFR_USEXMODEM,      "Not True Ymodem, use Xmodem/CRC or Xmodem-1K"
+    MSGXFR_MUSTCLOSE,      "Must terminate file transfers"
+    MSGXFR_ASCIITEMP,      "Data from COPY/PASTE function"
+    MSGXFR_ASCIISND,       "ASCII file transfer from CROSSTALK"
+    MSGXFR_ASCIIRCV,       "ASCII file transfer to CROSSTALK"
+    MSGXFR_ASCIIBUFF,      "Output buffer full, waiting to clear"
+    MSGXFR_ASCIISEND,      "Sending next line"
+    MSGXFR_ASCIIPACE,      "Pace Character timeout"
+    MSGXFR_ASCIIWAIT,      "Waiting for Pace Character"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Crosstalk for Windows Kermit Command Processor Messages. Used by the */
+    /* SHOW ALL and STAT commands to display information on the screen.     */
+    /*----------------------------------------------------------------------*/
+
+    KRMSTR_SHOW01, "Warning (filename change): %s"
+    KRMSTR_SHOW02, "Discard incomplete file: %s"
+    KRMSTR_SHOW03, "Control-Z is end of file: %s"
+    KRMSTR_SHOW04, "Ring Bell after transfer: %s"
+    KRMSTR_SHOW06, "Timer: %s"
+    KRMSTR_SHOW08, "Path             Snd: %s  Rcv: %s"
+    KRMSTR_SHOW12, "Packet-Length    Snd: %2d  Rcv: %2d"
+    KRMSTR_SHOW09, "Start-Of-Packet  Snd: %2s  Rcv: %2s"
+    KRMSTR_SHOW10, "End-Of-Packet    Snd: %2s  Rcv: %2s"
+    KRMSTR_SHOW11, "Control Prefix   Snd: %2s  Rcv: %2s"
+    KRMSTR_SHOW13, "Pad-Character    Snd: %2s  Rcv: %2s"
+    KRMSTR_SHOW14, "Padding Count    Snd: %2d  Rcv: %2d"
+    KRMSTR_SHOW15, "Time Out         Snd: %2d  Rcv: %2d"
+    KRMSTR_SHOW16, "Send Pause: %d ms"
+    KRMSTR_SHOW17, "Retries  Initial: %d  Packets: %d"
+    KRMSTR_SHOW18, "Block Check: %d"
+
+    KRMSTR_STAT01, "Total File Characters  : %6ld"
+    KRMSTR_STAT02, "Communication Line In  : %6ld"
+    KRMSTR_STAT03, "Communication Line Out : %6ld"
+    KRMSTR_STAT04, "Elapsed Time           : %6d sec"
+    KRMSTR_STAT05, "Effective Baud Rate    : %6d"
+    KRMSTR_STAT06, "Efficiency             : %6d%%"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Crosstalk for Windows Informational Messages (Info Line).	    */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    /* Generated by reviewing the menu items */
+
+    INFO_SYSBOX,            "Move, size or close window"
+    INFO_FILE,		    	 "Open, close or save Sessions"
+    INFO_EDIT,              "Copy or paste text"
+    INFO_MSESSION,          "Start, end or set session options"
+    INFO_SETUP, 	    	 "Change current profile configuration"
+    INFO_USER,		    	 "Execute user defined function"
+    INFO_WINDOW,            "Change viewing status of windows"
+    INFO_HELP,              "Display help and about information"
+    INFO_RESTORE,           "Restore window to normal size"
+    INFO_MOVE,              "Change window position"
+    INFO_SIZE,              "Change window size"
+    INFO_REDUCE,            "Reduce window to icon"
+    INFO_ENLARGE,           "Enlarge window to full size"
+    INFO_CLOSE, 	    	 "Close window and quit CROSSTALK"
+    INFO_NEW,               "Create a new phone book entry"
+    INFO_OPEN,              "Load an existing phone book entry"
+    INFO_SAVE,		    	 "Save present setup with current name"
+    INFO_SAVEAS,	    	 "Save present setup with another name"
+    INFO_CAPTURE,	    	 "Capture incoming data"
+    INFO_UPLOAD,	    	 "Upload text as a fast typist"
+    INFO_PAGESETUP,	     "Change page layout"
+    INFO_PRINT, 	    	 "Concurrent printing"
+    INFO_PRINTSETUP,	     "Change printer settings or select printer"
+    INFO_SEND,		    	 "Send via selected protocol"
+    INFO_RECEIVE,	    	 "Receive via selected protocol"
+    INFO_EXIT,		    	 "Close window and quit CROSSTALK"
+    INFO_COPY,		    	 "Copy screen or marked text to clipboard"
+    INFO_COPYFILE,	    	 "Copy screen or marked text to disk file"
+    INFO_COPYCAPTURE,       "Copy screen or marked text to capture file"
+    INFO_COPYNOTES,	     "Copy screen or marked text to notes"
+    INFO_COPYPRINTER,	     "Copy screen or marked text to printer"
+    INFO_COPYSEND,	    	 "Copy marked text to host"
+    INFO_PASTE,             "Paste text from clipboard to host"
+    INFO_PASTEUPLOAD,       "Paste text to host using ASCII upload"
+    INFO_SCROLL,	    	 "Toggles scroll buffer on/off"
+    INFO_SEARCHSCROLL,      "Search the scroll back buffer for text"
+    INFO_CONNECT,	    	 "Use current entry to connect"
+    INFO_DIAL,		    	 "Dial a number from a list or manually"
+    INFO_EXECUTE,	    	 "Edit, compile, or run script programs"
+    INFO_NOTES, 	    	 "A handy buffer for storing notes"
+    INFO_KERMIT,	    	 "Start the KCP"
+    INFO_PLAYBACK,          "Play back data from a capture file"
+    INFO_BREAK,             "Send a break signal"
+    INFO_RESET,             "Reset terminal and clear screen"
+    INFO_SESSION,           "Change host system parameters"
+    INFO_COMMUNICATIONS,    "Change the communications settings"
+    INFO_TERMINAL,	    	 "Change the terminal emulation"
+    INFO_PROTOCOL,	    	 "Change the file transfer parameters"
+    INFO_ASCII, 	    	 "Change the ASCII upload settings"
+    INFO_MACROS,	    	 "Define function keys"
+    INFO_DISPLAY,           "Change display options"
+    INFO_FONTS,             "Change character style"
+    INFO_SYSTEM,	    	 "Change the system globals"
+    INFO_MODEM, 	    	 "Change the modem settings"
+    INFO_MENUNULL,	    	 "Empty function key list"
+    INFO_MENUMACRO,	     "Execute selected function key"
+    INFO_WINDOW_XFER,       "Display file transfer window"
+    INFO_WINDOW_NOTES,      "Display current entry notes window"
+    INFO_TOPICS,            "Help topics to review"
+    INFO_ABOUT, 	    	 "Information about CROSSTALK"
+    /* MKL added Info for Help Menu */
+    INFO_INDEX,		    "Help Index"
+    INFO_PROC,		    	"Procedure information"
+    INFO_CMMD,		    	"Menu command information"
+    INFO_MOUSE,		    "Mouse function information"
+    INFO_KBD,		    	"Keyboard function information"
+    INFO_DDE,		    	"Dynamic Data Exchange information"
+    INFO_HELPHELP,	    	"How to use the help system"
+
+
+    /* Generated by logic during various processes */
+
+    MSGINF_COMPILING,	    "Compiling script, please wait..."
+    MSGINF_DISCONNECTING,   "Disconnecting line, please wait..."
+    MSGINF_PLAYBACK,        "Playing a capture, ^S/^Q to stop/start"
+    MSGINF_HELP,	    "For Help, press F1"
+    MSGINF_KERMIT_IEXCH,    "Exchanging Parameters (I)"
+    MSGINF_KERMIT_SEXCH,    "Exchanging Parameters (S)"
+    MSGINF_KERMIT_NAME,     "Processing File Name"
+    MSGINF_KERMIT_RTEXT,    "Receiving Text Data"
+    MSGINF_KERMIT_ATTR,     "Processing File Attributes"
+    MSGINF_KERMIT_RDATA,    "Receiving File Data"
+    MSGINF_KERMIT_DBAD,     "Kermit: Download Aborted"
+    MSGINF_KERMIT_DGOOD,    "Kermit: Download Successful"
+    MSGINF_KERMIT_INVALID,  "Kermit: Invalid Response from Server"
+    MSGINF_KERMIT_SFILE,    "Sending File Header (F)"
+    MSGINF_KERMIT_SDATA,    "Sending File Data"
+    MSGINF_KERMIT_UBAD,     "Kermit: Upload Aborted"
+    MSGINF_KERMIT_UGOOD,    "Kermit: Upload Successful"
+    MSGINF_KERMIT_ABORTED,  "Kermit: Aborted"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Crosstalk for Windows Error Messages used in dialogs.                */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    IDS_ERRDLG_PATIENCE     "Patience must be in 10 to 999 range"
+    IDS_ERRDLG_REDIALCOUNT  "RedialCount must be in 0 to 99 range"
+    IDS_ERRDLG_REDIALWAIT   "RedialWait must be in 0 to 99 range"
+    IDS_ERRDLG_MAXERRORS    "Max Errors must be in the 0 to 20 range"
+    IDS_ERRDLG_LWAITCOUNT   "LWait Count must be in the 0 to 255 range"
+    IDS_ERRDLG_TABWIDTH     "TabWidth must be in the  1 to 16 range"
+    IDS_ERRDLG_CWAITDELAY   "CWait Delay must be in the 0 to 9999 range"
+    IDS_ERRDLG_LWAITDELAY   "LWait Delay must be in the 0 to 25 range"
+    IDS_ERRDLG_LINETIME     "Line Time must be in the 0 to 127 range"
+    IDS_ERRDLG_WORDWRAP     "Word Wrap must be 0, or in the 20 to 127 range"
+    IDS_ERRDLG_BADDRIVE     "Invalid disk drive specified"
+    IDS_ERRDLG_MAKEDIR      "Make directory '%s'"
+    IDS_ERRDLG_BADMKDIR     "Unable to create directory"
+    IDS_ERRDLG_NOHELP       "File 'XTALK.HLP' not found in path"
+    IDS_ERRDLG_NOFONTS	     "File 'VT102.FON' not found in path"
+    IDS_ERRDLG_COM1COM2     "Only 'COM1' and 'COM2' supported"
+    IDS_ERRDLG_COM1COM4     "Only 'COM1, COM2, COM3, and COM4' supported"
+    IDS_ERRDLG_COMMBAD      "Invalid comm port specified"
+    IDS_ERRDLG_DISCONNECT1  "This will disconnect your session"
+    IDS_ERRDLG_DISCONNECT2  "Are you sure you wish to disconnect?"
+
+
+    /*----------------------------------------------------------------------*/
+    /* Crosstalk for Windows Error Messages.				    */
+    /*									    */
+    /* Note: The error number will be generated by the error display logic. */
+    /*----------------------------------------------------------------------*/
+
+    /* Compiler Errors, see VARIABLE.H for #defines, 11-XX */
+
+    IDS_ERRCOM+1,   "Unknown variable, function, or symbol"
+    IDS_ERRCOM+2,   "Incorrectly formed constant"
+    IDS_ERRCOM+3,   "Operator out of place"
+    IDS_ERRCOM+4,   "Missing operand"
+    IDS_ERRCOM+5,   "Missing expression"
+    IDS_ERRCOM+6,   "Missing left paren or too many right parens"
+    IDS_ERRCOM+7,   "Missing right paren or too many left parens"
+    IDS_ERRCOM+8,   "Missing close paren in function"
+    IDS_ERRCOM+9,   "Missing open paren in function"
+    IDS_ERRCOM+10,  "Function missing arguments"
+    IDS_ERRCOM+11,  "Missing terminating quote or string"
+    IDS_ERRCOM+12,  "WEND without WHILE"
+    IDS_ERRCOM+13,  "WHILE without WEND"
+    IDS_ERRCOM+14,  "UNTIL without REPEAT"
+    IDS_ERRCOM+15,  "REPEAT without UNTIL"
+    IDS_ERRCOM+16,  "THEN without IF"
+    IDS_ERRCOM+17,  "ELSE without THEN (or IF)"
+    IDS_ERRCOM+18,  "IF without THEN"
+    IDS_ERRCOM+19,  "CROSSTALK Mk.4 CASL keyword not supported"
+    IDS_ERRCOM+20,  "Cannot read script file"
+    IDS_ERRCOM+21,  "Not enough global memory"
+    IDS_ERRCOM+22,  "Statement too long or too complex"
+    IDS_ERRCOM+23,  "Real numbers not supported"
+    IDS_ERRCOM+24,  "Arrays not supported"
+    IDS_ERRCOM+25,  "Unable to write XWC file"
+    IDS_ERRCOM+26,  "Unexpected end of file"
+    IDS_ERRCOM+27,  "Label has already been declared"
+    IDS_ERRCOM+28,  "User aborted script compile"
+    IDS_ERRCOM+29,  "Value out of permisible range"
+
+
+    /* Interpreter Errors, see VARIABLE.H for #defines, 12-XX */
+
+    IDS_ERRINT+1,   "Unknown or misspelled command word"
+    IDS_ERRINT+2,   "Symbol inappropriate as command word"
+    IDS_ERRINT+3,   "Extra text after command"
+    IDS_ERRINT+4,   "Command requires additional information"
+    IDS_ERRINT+5,   "Unknown or misspelled keyword"
+    IDS_ERRINT+6,   "No default data type for variable"
+    IDS_ERRINT+7,   "Can't redefine reserved word"
+    IDS_ERRINT+8,   "Miscombined keyword clause"
+    IDS_ERRINT+9,   "Missing keyword clause"
+    IDS_ERRINT+10,  "Duplicate keyword clause"
+    IDS_ERRINT+11,  "Invalid redefinition of variable"
+    IDS_ERRINT+12,  "Statement too long or complex"
+    IDS_ERRINT+13,  "Bad or missing variable name"
+    IDS_ERRINT+14,  "Bad or missing on/off switch"
+    IDS_ERRINT+15,  "Number expected"
+    IDS_ERRINT+16,  "Incorrect syntax in OPEN"
+    IDS_ERRINT+17,  "Unknown file mode"
+    IDS_ERRINT+18,  "Bad label or value"
+    IDS_ERRINT+19,  "Missing argument"
+    IDS_ERRINT+20,  "Missing '='"
+    IDS_ERRINT+21,  "Coordinates or size expected"
+    IDS_ERRINT+22,  "Boolean or integer expresion expected"
+    IDS_ERRINT+23,  "String expression expected"
+    IDS_ERRINT+24,  "Unknown variable type"
+    IDS_ERRINT+25,  "GET only reads into string variables"
+    IDS_ERRINT+26,  "SWAP may only swap script variables"
+    IDS_ERRINT+27,  "Expression necessary to assign to script variable"
+    IDS_ERRINT+28,  "Label not found"
+    IDS_ERRINT+29,  "Bad time expression"
+    IDS_ERRINT+30,  "Internal failure"
+    IDS_ERRINT+31,  "Invalid QUIET expression"
+    IDS_ERRINT+32,  "Invalid KEY expression"
+    IDS_ERRINT+33,  "Invalid COUNT expression"
+    IDS_ERRINT+34,  "Invalid WATCH expression"
+    IDS_ERRINT+35,  "Invalid WATCH string"
+    IDS_ERRINT+36,  "WATCH paramters missing"
+    IDS_ERRINT+37,  "Bad WATCH parameter"
+    IDS_ERRINT+38,  "Bad WAIT parameter"
+    IDS_ERRINT+39,  "String expression too long"
+    IDS_ERRINT+40,  "Cannot mix string and integer expressions"
+    IDS_ERRINT+41,  "Variable not defined"
+    IDS_ERRINT+42,  "Not enough global memory available"
+    IDS_ERRINT+43,  "Cannot find XWC file"
+    IDS_ERRINT+44,  "Invalid expression"
+    IDS_ERRINT+45,  "Invalid string expression"
+    IDS_ERRINT+46,  "Missing function arguments"
+    IDS_ERRINT+47,  "Label not found"
+    IDS_ERRINT+48,  "GOSUBs nested too deeply"
+    IDS_ERRINT+49,  "Variable space limit exceeded"
+    IDS_ERRINT+50,  "Command cancelled"
+    IDS_ERRINT+51,  "Return/Pop Underflow"
+    IDS_ERRINT+52,  "Read only variable"
+    IDS_ERRINT+53,  "Dialog keyword can only used in dialog"
+    IDS_ERRINT+54,  "Invalid dialog control item keyword"
+    IDS_ERRINT+55,  "EndDialog keyword not found"
+    IDS_ERRINT+56,  "No dialog control items found"
+    IDS_ERRINT+57,  "Command only available when online"
+
+
+    /* I/O Errors, see VARIABLE.H for #defines, 13-XX */
+
+    IDS_ERRIOE+1,   "Command doesn't work with file lists"
+    IDS_ERRIOE+2,   "Upload canceled by local operator"
+    IDS_ERRIOE+3,   "Missing or empty file list"
+    IDS_ERRIOE+4,   "Can't create backup file"
+    IDS_ERRIOE+5,   "Invalid or missing channel number"
+    IDS_ERRIOE+6,   "Channel already open"
+    IDS_ERRIOE+7,   "Channel not open"
+    IDS_ERRIOE+8,   "Can't READ from output file"
+    IDS_ERRIOE+9,   "Can't WRITE to input file"
+    IDS_ERRIOE+10,  "Can't GET/PUT with text file"
+    IDS_ERRIOE+11,  "Can't READ/WRITE with random file"
+    IDS_ERRIOE+12,  "File not found in path"
+
+
+    /* Mathematical and Range Errors, see VARIABLE.H for #defines, 14-XX */
+
+    IDS_ERRATH+1,   "Arithmetic overflow"
+    IDS_ERRATH+2,   "Arithmetic underflow"
+    IDS_ERRATH+3,   "Division by zero"
+    IDS_ERRATH+4,   "Function key out of range"
+    IDS_ERRATH+5,   "Expression not among possible values for variable"
+    IDS_ERRATH+6,   "Value out of permissible range"
+    IDS_ERRATH+7,   "Value must be ON or OFF"
+
+
+    /* Critical Errors, see VARIABLE.H for #defines, 16-XX */
+
+    IDS_ERRSYS+1,   "Device is write-protected"
+    IDS_ERRSYS+2,   "Invalid disk drive"				/* dca00065 PJL */
+    IDS_ERRSYS+3,   "Drive not ready"
+    IDS_ERRSYS+4,   "Unkown command"
+    IDS_ERRSYS+5,   "Data Error"
+    IDS_ERRSYS+6,   "Bad request structure length"
+    IDS_ERRSYS+7,   "Seek error"
+    IDS_ERRSYS+8,   "Unknown Media Type"
+    IDS_ERRSYS+9,   "Sector not found"
+    IDS_ERRSYS+10,  "Out of paper"
+    IDS_ERRSYS+11,  "Write fault"
+    IDS_ERRSYS+12,  "Read fault"
+    IDS_ERRSYS+13,  "General failure"
+    IDS_ERRSYS+14,  "Open fault"
+    IDS_ERRSYS+15,  "Not enough global memory"
+
+
+    /* DOS Gateway Errors, see VARIABLE.H for #defines, 19-XX */
+
+    IDS_ERRDOS+1,   "Unexpected DOS error"
+    IDS_ERRDOS+2,   "File not found"
+    IDS_ERRDOS+3,   "Path not found"
+    IDS_ERRDOS+4,   "Too many open files (no handles left)"
+    IDS_ERRDOS+5,   "Access denied to directory"
+    IDS_ERRDOS+6,   "Can't remove directory"
+    IDS_ERRDOS+7,   "Diskette is write protected"
+    IDS_ERRDOS+8,   "Disk is full"
+    IDS_ERRDOS+9,   "Invalid characters in file name"
+
+
+    /* Call/Dial Errors, see VARIABLE.H for #defines, 20-XX */
+
+    IDS_ERRDIA+1,   "Call cancelled by user"
+    IDS_ERRDIA+2,   "No answer"
+    IDS_ERRDIA+3,   "No dial tone"
+    IDS_ERRDIA+4,   "Number is busy"
+    IDS_ERRDIA+5,   "Voice answer"
+    IDS_ERRDIA+6,   "Number required for connection"
+    IDS_ERRDIA+7,   "Connection already in progress"
+    IDS_ERRDIA+8,   "Lost connection"
+    IDS_ERRDIA+9,   "Modem error"
+    IDS_ERRDIA+10,  "Modem not responding"
+
+
+    /* Missing Information Errors, see VARIABLE.H for #defines, 21-XX */
+
+    IDS_ERRMIS+1,   "Can't find script file"
+    IDS_ERRMIS+2,   "Can't find setup file"
+    IDS_ERRMIS+3,   "Can't find variable"
+    IDS_ERRMIS+4,   "Default filename is empty"
+    IDS_ERRMIS+5,   "Filename argument required"
+    IDS_ERRMIS+6,   "Incorrect XWP format, unable to read"
+
+
+    /* DDE Errors, see VARIABLE.H for #defines, 32-XX */
+
+    IDS_ERRDDE+1,   "Invalid or missing DDE channel number"
+    IDS_ERRDDE+2,   "Bad response from PostMessage (internal)"
+    IDS_ERRDDE+3,   "No response for any app to initiate command"
+    IDS_ERRDDE+4,   "Variable busy, cannot be used in ADVISE"
+    IDS_ERRDDE+5,   "Variable not in ADVISE status, can't be UNADVISED"
+    IDS_ERRDDE+6,   "Unknown data format returned from other app"
+    IDS_ERRDDE+7,   "Busy status returned from the other app"
+    IDS_ERRDDE+8,   "Rejected status returned from the other app"
+
+
+    /* Communication Device Errors, see VARIABLE.H for #defines, 42-XX */
+
+    IDS_ERRDEV+1,   "Unsupported serial port"
+    IDS_ERRDEV+2,   "Port already in use"
+    IDS_ERRDEV+3,   "Port not open"
+    IDS_ERRDEV+4,   "Unable to allocate queues"
+    IDS_ERRDEV+5,   "Error in default parameters"
+    IDS_ERRDEV+6,   "Reserved -6"
+    IDS_ERRDEV+7,   "Reserved -7"
+    IDS_ERRDEV+8,   "Reserved -8"
+    IDS_ERRDEV+9,   "Reserved -9"
+    IDS_ERRDEV+10,  "Hardware not present"
+    IDS_ERRDEV+11,  "Invalid byte size"
+    IDS_ERRDEV+12,  "Unsupported baud rate"
+    IDS_ERRDEV+13,  "Bad communication parameter"
+    IDS_ERRDEV+14,  "Unknown modem selected"
+
+
+    /* Terminal Errors, see VARIABLE.H for #defines, 44-XX */
+
+    IDS_ERRTRM+1,   "Bad terminal selection"
+    IDS_ERRTRM+2,   "Bad terminal parameter"
+
+
+    /* File Transfer Errors, see VARIABLE.H for #defines, 45-XX */
+
+    IDS_ERRXFR+1,   "General Timeout"
+    IDS_ERRXFR+2,   "Host not responding"
+    IDS_ERRXFR+3,   "Incorrect response from host"
+    IDS_ERRXFR+4,   "Too many errors - transfer cancelled"
+    IDS_ERRXFR+5,   "Lost connection - transfer cancelled"
+    IDS_ERRXFR+6,   "Sequencing failure - transfer cancelled"
+    IDS_ERRXFR+7,   "Transfer cancelled by local operator"
+    IDS_ERRXFR+8,   "Transfer cancelled by host"
+    IDS_ERRXFR+9,   "Protocol can't do wildcard transfers"
+    IDS_ERRXFR+10,  "File(s) not found"
+    IDS_ERRXFR+11,  "Local disk full"
+    IDS_ERRXFR+12,  "Host disk full"
+    IDS_ERRXFR+13,  "Protocol has not server commands"
+    IDS_ERRXFR+14,  "File name required for transfer"
+    IDS_ERRXFR+15,  "System Busy"
+    IDS_ERRXFR+16,  "Bad protocol selection"
+    IDS_ERRXFR+17,  "Bad file transfer parameter"
+    IDS_ERRXFR+18,  "Received block too long, reduce size of sender"
+
+
+    /* Kermit Errors, see VARIABLE.H for #defines, 46-XX */
+
+    IDS_ERRKRM+1,   "KCP is currently busy with another task"
+    IDS_ERRKRM+2,   "KCP is not busy with any tasks"
+    IDS_ERRKRM+3,   "Invalid use of command"
+    IDS_ERRKRM+4,   "Incorrect command format, see doc"
+    IDS_ERRKRM+5,   "Cannot be executed by user"
+    IDS_ERRKRM+6,   "Can only be executed by user"
+    IDS_ERRKRM+7,   "Internal failure of KCP"
+    IDS_ERRKRM+8,   "Already connected"
+    IDS_ERRKRM+9,   "File not openned"
+    IDS_ERRKRM+10,  "Cannot open file for reading"
+    IDS_ERRKRM+11,  "Cannot open file for writing"
+    IDS_ERRKRM+12,  "File transfer is not in progress"
+    IDS_ERRKRM+13,  "Packet Length must be between 10 and 1000"
+    IDS_ERRKRM+14,  "Valid range is 0 to 32"
+    IDS_ERRKRM+15,  "Invalid pause delay"
+    IDS_ERRKRM+16,  "Invalid timeout delay"
+    IDS_ERRKRM+17,  "Only Block-Check values 1, 2, or 3"
+    IDS_ERRKRM+18,  "Valid Delay range is 0 to 60"
+    IDS_ERRKRM+19,  "Valid range is 0 to 60"
+    IDS_ERRKRM+20,  "No wildcard matches found"
+    IDS_ERRKRM+21,  "Wildcard send start file not found"
+    IDS_ERRKRM+22,  "Sent packet was not received properly"
+    IDS_ERRKRM+23,  "Received bad packet"
+    IDS_ERRKRM+24,  "Unknown error response"
+    IDS_ERRKRM+25,  "KCP is not running"
+END

@@ -1,0 +1,34 @@
+.\obj.dbg\ksearch + 
+.\obj.dbg\subscr + 
+.\obj.dbg\comm + 
+.\obj.dbg\comm2 + 
+.\obj.dbg\comm3 + 
+.\obj.dbg\modem + 
+.\obj.dbg\xmodem + 
+.\obj.dbg\settings + 
+.\obj.dbg\wsinit + 
+.\obj.dbg\wsres +
+.\obj.dbg\custinfo +
+.\obj.dbg\file +
+.\obj.dbg\file2 +
+.\obj.dbg\file3 +
+.\obj.dbg\help +
+.\obj.dbg\messages +
+.\obj.dbg\misc +
+.\obj.dbg\order +
+.\obj.dbg\download +
+.\obj.dbg\viewbox +
+.\obj.dbg\busy +
+.\obj.dbg\pref +
+.\obj.dbg\info +
+.\obj.dbg\billing +
+.\obj.dbg\libmgr +
+.\obj.dbg\libmgr2 +
+.\obj.dbg\error + 
+.\obj.dbg\lmemcpy.obj +
+.\obj.dbg\availdsk.obj +
+.\obj.dbg\dilute /align:16  /map /li /CO
+WSDEBUG.exe
+WSDEBUG.map
+libw/noe mlibcaw /nod 
+shopper.def      

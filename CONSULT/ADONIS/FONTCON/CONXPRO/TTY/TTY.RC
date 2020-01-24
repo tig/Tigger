@@ -1,0 +1,95 @@
+//---------------------------------------------------------------------------
+//
+//  Module: tty.rc
+//
+//  Purpose:
+//     TTY resource definitions
+//
+//  Development Team:
+//     Bryan A. Woodruff
+//
+//  History:   Date       Author      Comment
+//              5/ 9/91   BryanW      Wrote it
+//
+//---------------------------------------------------------------------------
+//
+//  Written by Microsoft Product Support Services, Windows Developer Support.
+//  Copyright (c) 1991 Microsoft Corporation.  All Rights Reserved.
+//
+//---------------------------------------------------------------------------
+
+#include <windows.h>
+
+#include "resource.h"
+
+#include "tty.dlg"
+
+TTYICON ICON     tty.ico
+TTYBITMAP BITMAP tty.bmp
+
+TTYMENU MENU LOADONCALL MOVEABLE PURE DISCARDABLE 
+BEGIN
+   POPUP "&Action"
+   BEGIN
+      MenuItem "&Connect\tShift+PgUp",     IDM_CONNECT
+      MenuItem "&Disconnect\tShift+PgDn",  IDM_DISCONNECT
+      MenuItem  SEPARATOR
+      MenuItem "&Receive Zmodem\tPageDn",  IDM_RECEIVEZMODEM
+      MenuItem "&Send Zmodem\tPageUp",     IDM_SENDZMODEM     
+
+      MenuItem  "E&xit",                   IDM_EXIT
+   END
+   MenuItem "&Settings...",                IDM_SETTINGS
+   MenuItem "A&bout",                      IDM_ABOUT
+END
+
+TTYACCEL ACCELERATORS
+BEGIN
+  VK_PRIOR, IDM_CONNECT, VIRTKEY, SHIFT
+  VK_NEXT, IDM_DISCONNECT, VIRTKEY, SHIFT
+  VK_NEXT, IDM_RECEIVEZMODEM, VIRTKEY
+  VK_PRIOR, IDM_SENDZMODEM, VIRTKEY
+END
+
+STRINGTABLE
+BEGIN
+   IDS_COMPREFIX     "COM"
+
+   IDS_BAUD110       "110"
+   IDS_BAUD300       "300"
+   IDS_BAUD600       "600"
+   IDS_BAUD1200      "1200"
+   IDS_BAUD2400      "2400"
+   IDS_BAUD4800      "4800"
+   IDS_BAUD9600      "9600"
+   IDS_BAUD14400     "14.4k"
+   IDS_BAUD19200     "19.2k"
+   IDS_BAUD38400     "38.4k"
+   IDS_BAUD56000     "56k"
+   IDS_BAUD128000    "128k"
+   IDS_BAUD256000    "256k"
+
+   IDS_PARITYNONE    "None"
+   IDS_PARITYEVEN    "Even"
+   IDS_PARITYODD     "Odd"
+   IDS_PARITYMARK    "Mark"
+   IDS_PARITYSPACE   "Space"
+
+   IDS_ONESTOPBIT    "1"
+   IDS_ONE5STOPBITS  "1.5"
+   IDS_TWOSTOPBITS   "2"
+
+   IDS_BYLINE        "Written by Bryan A. Woodruff\nWindows Developer Support Group"
+
+   IDS_MODE_STANDARD "Standard mode"
+   IDS_MODE_ENHANCED "386 Enhanced mode"
+   IDS_MODE_WLO      "WLO Compatibilty mode"
+   IDS_MODE_UNDEF    "Undefined mode"
+END
+
+
+//---------------------------------------------------------------------------
+//  End of File: tty.rc
+//---------------------------------------------------------------------------
+
+

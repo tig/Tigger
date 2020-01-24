@@ -1,0 +1,34 @@
+#include    <windows.h>
+#include    <cmndll.h>
+
+#include    "..\inc\lexisd.h"
+
+#include    "..\inc\lexdlgd.h"
+
+#define GRP  WS_GROUP
+#define TAB  WS_TABSTOP
+#define TABGRP  WS_TABSTOP | WS_GROUP
+#define DLGMODAL WS_POPUP | WS_DLGFRAME
+
+stop1 BITMAP "res\\stop1.bmp"
+stop2 BITMAP "res\\stop2.bmp"
+
+lexis25  ICON "res\\lexis.ico"
+
+#include "hardware.dlg"
+#include "modem.dlg"
+#include "phonenum.dlg"
+
+#include "userpref.dlg"
+#include "direct.dlg"
+
+#include "page.dlg"
+
+#include "connect.dlg"
+
+#include "lexis.mnu"
+
+#include "lexis.acl"
+
+#include "lexis.str"
+

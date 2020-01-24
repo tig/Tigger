@@ -1,0 +1,34 @@
+.\obj.int\ksearch + 
+.\obj.int\subscr + 
+.\obj.int\comm + 
+.\obj.int\comm2 + 
+.\obj.int\comm3 + 
+.\obj.int\modem + 
+.\obj.int\xmodem + 
+.\obj.int\settings + 
+.\obj.int\wsinit + 
+.\obj.int\wsres +
+.\obj.int\custinfo +
+.\obj.int\file +
+.\obj.int\file2 +
+.\obj.int\file3 +
+.\obj.int\help +
+.\obj.int\messages +
+.\obj.int\misc +
+.\obj.int\order +
+.\obj.int\download +
+.\obj.int\viewbox +
+.\obj.int\busy +
+.\obj.int\pref +
+.\obj.int\info +
+.\obj.int\billing +
+.\obj.int\libmgr +
+.\obj.int\libmgr2 +
+.\obj.int\error +
+.\obj.int\lmemcpy.obj +
+.\obj.int\availdsk.obj +
+.\obj.int\dilute /align:16 
+wsintern.exe
+wsintern.map
+libw/noe mlibcaw /nod 
+shopper.def      

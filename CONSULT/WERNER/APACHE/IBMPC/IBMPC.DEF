@@ -1,0 +1,36 @@
+LIBRARY      IBMPC
+EXETYPE      WINDOWS
+DESCRIPTION  'IBMPC|ANSI (IBM PC) Emulation'
+STUB         'winstub.exe'
+
+SEGMENTS     _TEXT       PRELOAD MOVEABLE DISCARDABLE
+             INIT_TEXT   PRELOAD MOVEABLE DISCARDABLE
+             IBMPC       PRELOAD MOVEABLE DISCARDABLE
+             DIALOG      LOADONCALL MOVEABLE DISCARDABLE
+             FOCUS       PRELOAD MOVEABLE DISCARDABLE
+             KEYHOOK     PRELOAD FIXED
+             LOAD        LOADONCALL MOVEABLE DISCARDABLE
+             PROFILE     LOADONCALL MOVEABLE DISCARDABLE
+             SAVE        LOADONCALL MOVEABLE DISCARDABLE
+             SCREEN      PRELOAD MOVEABLE NONDISCARDABLE
+             SCROLL      PRELOAD MOVEABLE DISCARDABLE
+             SETUP       LOADONCALL MOVEABLE DISCARDABLE
+             SIZE        PRELOAD MOVEABLE DISCARDABLE
+             LIBENTRY    PRELOAD MOVEABLE DISCARDABLE
+             LIBMAIN     PRELOAD FIXED
+
+CODE         LOADONCALL MOVEABLE DISCARDABLE
+DATA         PRELOAD SINGLE
+
+HEAPSIZE     4096
+
+EXPORTS
+   WEP                       @1 RESIDENTNAME
+   GetEmulatorUseCount       @2
+   LoadEmulatorSettings      @3
+   SaveEmulatorSettings      @4
+   DoEmulatorSetupDlg        @5
+   EmulatorWndProc           @6
+   EmulatorKeyboardHook      @7
+   SettingsDlgProc           @8
+

@@ -1,0 +1,8 @@
+./             database.h     p.dirtree.h    s.database.h   s.xmodem.h
+../            dh*            p.makelist.h   s.dirtree.h    sean.h
+bbs.h          dirtree.h      p.messages.h   s.makelist.h   stdcomm.h
+bbstruct.h     list           p.modem.h      s.messages.h   stdinc.h
+bbstruct.i     makelist.h     p.stdinc.h     s.modem.h      tmp.h
+chunk          messages.h     s.bbs.h        s.sean.h       xmodem.h
+ckin*          modem.h        s.bbstruct.h   s.stdcomm.h
+comm.h         p.comm.h       s.comm.h       s.stdinc.h

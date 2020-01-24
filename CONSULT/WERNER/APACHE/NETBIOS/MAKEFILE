@@ -1,0 +1,66 @@
+# Apache for Windows - NetBIOS Communications DLL
+# Copyright (c) 1990 by Werner Associates
+
+# inference rules
+.c.obj:
+        cl $(CFLAGS) -NT$* $*.c
+
+.asm.obj:
+        masm $(MFLAGS) $*.asm ;
+
+!IFNDEF RELEASE
+CFLAGS = -c -AMw -Od -Gsw -G2 -W3 -Zipe -nologo -DDEBUG
+LFLAGS = /CO /NOD /align:16 /m
+MFLAGS = /z /Zi /DDEBUG
+!ELSE
+CFLAGS = -c -AMw -Ox -Gsw -G2 -W3 -Zpe -nologo
+LFLAGS = /NOD /align:16 /m
+MFLAGS = /z
+!ENDIF
+
+RCFLAGS = -r
+
+OBJECTS =      dialog.obj invoke.obj load.obj libentry.obj libmain.obj\
+               machine.obj netbios.obj post.obj profile.obj save.obj\
+               setup.obj
+
+all:           netbios.con
+
+clean:
+               del *.obj
+               del *.map
+version:
+               bumpver version.h
+
+dialog.obj:    dialog.c netbios.h
+
+invoke.obj:    invoke.asm
+
+load.obj:      load.c netbios.h
+
+libentry.obj:  libentry.asm
+
+libmain.obj:   libmain.c netbios.h
+
+machine.obj:   machine.asm
+
+netbios.obj:   netbios.c netbios.h
+
+netbios.res:   netbios.rc dialogs.rc resource.h
+               rc -r $*.rc
+
+# post.obj:      post.c netbios.h
+
+post.obj:      post.asm post.inc
+
+profile.obj:   profile.c netbios.h
+
+save.obj:      save.c netbios.h
+
+setup.obj:     setup.c netbios.h
+
+netbios.con:   $(OBJECTS) netbios.res netbios.def
+               link $(LFLAGS) @netbios.l
+               rc -v netbios.res netbios.con
+               mapsym netbios
+

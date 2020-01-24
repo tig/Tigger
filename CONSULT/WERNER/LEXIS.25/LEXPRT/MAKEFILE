@@ -1,0 +1,207 @@
+ #*****************************************************************************
+ #
+ #    Copyright (C) 1991 Charles E. Kindel, Jr.  All Rights Reserved.
+ #
+ #-----------------------------------------------------------------------
+ #
+ #     Project:  WINPRINT 2.x
+ #
+ #      Module:  makefile
+ #
+ #   Author(s):  Charles E. Kindel, Jr. (cek)
+ #
+ #      System:  Microsoft Windows 3.x, MS-DOS 5.0, Compiled with Microsoft  
+ #               C 6.00A and Microsoft MASM 5.1.                             
+ #                                                                           
+ #*****************************************************************************
+
+
+MAINTARGET=WINPRT2.DLL
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+
+# comment the following macros out if this is a RELEASE make.
+!IFDEF DEBUG
+DEBUG = TRUE
+!ELSE
+DEBUG = FALSE
+!ENDIF
+
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+# if putdll is defined the dll/exe will be copied from the root to
+# PUTDLL
+PUTDLL  =   TEST
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  =   OBJ
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+#
+#   WINPRT2.DLL
+#
+
+!IFDEF DEBUG
+
+LAS =   masm /Zi
+LCC =   cl -c -DDEBUG -AMw -G2sw -Owd -W3 -Zip
+LLN =   link /NOD/NOE/A:16/CO
+LRC1=   rc -r -DDEBUG -iINC;RES
+LRC2=   rc -30 -v -t
+LXX =   DEBUG
+
+!ELSE
+
+LAS =   masm
+LCC =   cl -c -AMw -G2sw -Owt -W3 -Zp
+LLN =   link /NOD/NOE/A:16
+LRC1=   rc -r -iINC;RES
+LRC2=   rc -30 -v -t 
+LXX =   RELEASE
+
+!ENDIF
+
+LZZ =   WINPRT2: **** $(LXX) *** $(LXX) *** $(LXX) *** $(LXX) ****
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = INC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = $(MYINC)VERSION.H $(MYRES)WINPRINT.RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(VERINCS)\
+          $(MYINC)isz.h\
+          $(MYINC)dlgs.h\
+          $(MYRES)WINPRINT.rc\
+          $(MYRES)WINPRINT.rcv\
+          $(MYRES)WINPRINT.dlg\
+          $(MYRES)WINPRINT.str\
+          $(MYRES)WINPRINT.ico
+
+# 
+# Library dependencies
+# 
+LMISC   =   makefile\
+            WINPRINT.lnk\
+            WINPRINT.def
+
+LINCS   =   $(MYINC)WINPRINT.h $(MYINC)dlgs.h
+
+LOBJS   =\
+            $(MYOBJ)LIBENTRY.OBJ\
+            $(MYOBJ)WEP.obj\
+            $(MYOBJ)WINPRINT.obj\
+            $(MYOBJ)about.obj\
+            $(MYOBJ)dlghelp.obj\
+            
+
+#
+#   BUILD RULES
+#
+#all : $(MAINTARGET) $(MYHELP)WINPRINT.hlp
+all : $(MAINTARGET) 
+
+#   WINPRINT.DLL build rules
+
+$(MAINTARGET)  :   $(LOBJS) $(MYRES)WINPRINT.res WINPRINT.def $(MYOBJ)WINSTUB.EXE
+                   $(LLN) @WINPRINT.lnk
+                   $(LRC2) $(MYRES)WINPRINT.res $(MAINTARGET)
+                   implib $(MYOBJ)WINPRT2.LIB WINPRINT.DEF
+                   @echo. >$(OUTPUT)
+                   @echo $(LZZ) >$(OUTPUT)
+                   @echo. >$(OUTPUT)
+                   @mapsym WINPRT2.map
+                   @type inc\version.h >$(OUTPUT)
+
+#$(MYHELP)WINPRINT.HLP: help\WINPRINT.rtf help\map.h help\WINPRINT.hpj
+#   chdir HELP
+#   $(MAKE)
+#   copy WINPRINT.HLP ..
+#   chdir ..
+
+$(MYOBJ)WINSTUB.EXE:  $(MYSRC)WINSTUB.ASM
+    masm -I.\  $(MYSRC)winstub.asm,$(MYOBJ)WINSTUB.OBJ;
+    link $(MYOBJ)WINSTUB.OBJ,$(MYOBJ)WINSTUB.EXE;
+
+$(MYOBJ)LIBENTRY.OBJ: $(MYSRC)LIBENTRY.ASM
+    @echo Assembling $(MYSRC)LIBENTRY.ASM... >$(OUTPUT)
+    masm -Mx $(MYSRC)LIBENTRY, $(MYOBJ)LIBENTRY;
+
+$(MYOBJ)WEP.OBJ:  $(MYSRC)WEP.C $(LINCS) $(VERINCS)
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Compiling $(@B).C to $@... >$(OUTPUT)
+    $(LCC) -Fo$@ -NT$(@B) $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @type $(MYSRC)$(@B).ERR > $(OUTPUT)
+
+$(MYRES)WINPRINT.res:  $(LINCS) $(LRCINCS)
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Building $(MYRES)WINPRINT.RES
+    $(LRC1) $(MYRES)WINPRINT.rc $(MYRES)WINPRINT.RES
+
+$(MYOBJ)WINPRINT.OBJ:  $(MYSRC)WINPRINT.C $(LINCS) $(VERINCS)
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Compiling $(@B).C to $@... >$(OUTPUT)
+    $(LCC) -Fo$@ -NT$(@B) $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @type $(MYSRC)$(@B).ERR > $(OUTPUT)
+
+$(MYOBJ)DLGHELP.OBJ:  $(MYSRC)DLGHELP.C $(MYINC)DLGHELP.H $(VERINCS)
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Compiling $(@B).C to $@... >$(OUTPUT)
+    $(LCC) -Fo$@ -NT$(@B) $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @type $(MYSRC)$(@B).ERR > $(OUTPUT)
+
+$(MYOBJ)ABOUT.OBJ:  $(MYSRC)ABOUT.C $(MYINC)ABOUT.H $(VERINCS)
+    @echo. >$(OUTPUT)
+    @echo *** $(LXX) *** Compiling $(@B).C to $@... >$(OUTPUT)
+    $(LCC) -Fo$@ -NT$(@B) $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @type $(MYSRC)$(@B).ERR > $(OUTPUT)
+
+#   MISC. STUFF
+
+zip         :   clean
+                pkzip -psr WINPRINT.zip *.*
+
+.ignore : 
+clean       :  
+                del $(MYOBJ)*.obj
+                del *.map
+                del $(MYRES)*.res
+                del *.EXE
+                del $(MYOBJ)*.lib
+                del $(MYSRC)*.err
+                del *.zip
+                @echo *** DONE ***
+
+ship        :   all
+                !del $(MYOBJ)*.obj
+                !del *.map
+                !del $(MYRES)*.res
+                !del $(MYSRC)*.err
+                !del *.zip
+                touch *.*
+                pkzip -prs WINPRINT.zip *.*
+
+ #*****************************************************************************
+ # End of 
+ #*****************************************************************************
+        

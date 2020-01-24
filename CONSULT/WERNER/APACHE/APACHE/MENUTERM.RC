@@ -1,0 +1,47 @@
+APACHEMENUTERMINAL  MENU LOADONCALL MOVEABLE PURE DISCARDABLE 
+BEGIN
+#ifdef DEBUG
+  POPUP "&Task"
+  BEGIN
+    MenuItem "&Create Task",  IDM_CREATETASK
+    MenuItem "&Start Task",   IDM_STARTTASK
+    MenuItem "S&top Task",    IDM_STOPTASK
+    MenuItem "&Destroy Task", IDM_DESTROYTASK
+  END
+#endif
+  POPUP "&Session"
+  BEGIN
+    MenuItem  "&Directory...",   IDM_SESSIONDIR
+    MenuItem  "&Close", IDM_CLOSE
+    MenuItem  SEPARATOR
+    MenuItem  "E&xit", IDM_EXIT
+  END
+  POPUP "S&ettings..."
+  BEGIN
+     MenuItem "&Connector", IDM_SETUPCONNECTOR
+     MenuItem "&Emulator", IDM_SETUPEMULATOR 
+  END
+  POPUP "&Transfer"
+  BEGIN
+     MenuItem "&Download\tCtrl+PgDn", IDM_DOWNLOAD
+     MenuItem "&Upload\tCtrl+PgUp", IDM_UPLOAD
+  END
+  POPUP "&Window"
+  BEGIN
+    MenuItem  "&Cascade\tShift+F5", IDM_CASCADE
+    MenuItem  "&Tile\tShift+F4", IDM_TILE
+    MenuItem  "Arrange &Icons", IDM_ARRANGE
+    MenuItem  "Close &All", IDM_CLOSEALL
+  END
+  POPUP "&Help"
+  BEGIN
+    MenuItem  "&Index", IDM_HELPINDEX
+    MenuItem  "&Keyboard", IDM_HELPKEYBOARD
+    MenuItem  "&Commands", IDM_HELPCOMMANDS
+    MenuItem  "&Procedures", IDM_HELPPROCEDURES
+    MenuItem  "&Using Help", IDM_HELPUSINGHELP
+    MenuItem  SEPARATOR
+    MenuItem  "&About...", IDM_ABOUT
+  END
+  #include <wdbmenu.rc>
+END

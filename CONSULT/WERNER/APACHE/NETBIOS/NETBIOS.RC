@@ -1,0 +1,34 @@
+/************************************************************************
+ *
+ *    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  APACHE, Apache For Windows
+ *
+ *      Module:  netbios.rc
+ *
+ *   Author(s):  Bryan A. Woodruff (baw)
+ *               Charles E. Kindel, Jr. (cek)
+ *
+ *
+ *     Remarks:  Resource file header
+ *
+ *   Revisions:  
+ *     01.00.000  1/ 7/91 baw   Initial Version
+ *
+ ************************************************************************/
+
+#include <windows.h>
+
+#include "resource.h"
+
+#include "dialogs.rc"
+
+#include "string.rc"
+
+ICONS ICON NETBIOS.ICO
+
+/************************************************************************
+ * End of File: netbios.rc
+ ************************************************************************/

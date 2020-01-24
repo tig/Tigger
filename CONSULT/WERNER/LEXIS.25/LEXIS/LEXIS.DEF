@@ -1,0 +1,98 @@
+;************************************************************************
+;*
+;*    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+;*
+;*-----------------------------------------------------------------------
+;*
+;*     Project:  Lexis 2000 2.5 For Windows
+;*
+;*      Module:  lexis.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*
+;*      System:  Microsoft C 6.00A, Windows 3.00
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*     00.00.000  1/20/91 cek   First Version
+;*
+;*
+;************************************************************************/
+
+;************************************************************************
+;* Application Information
+;************************************************************************/
+
+NAME            LEXIS25
+
+DESCRIPTION     'Lexis2000(R) V2.5 For Windows, Copr. 1991 Werner Associates'
+
+EXETYPE         WINDOWS
+
+STUB            'WINSTUB.EXE'
+
+;************************************************************************
+;* Code Segment Information
+;************************************************************************/
+
+CODE            PRELOAD         MOVABLE DISCARDABLE
+                                
+SEGMENTS        LEXIS           PRELOAD MOVABLE
+                GLOBAL          PRELOAD MOVABLE DISCARDABLE
+                INIT            PRELOAD MOVABLE DISCARDABLE
+                TIMER           PRELOAD MOVABLE DISCARDABLE
+                MENU            PRELOAD MOVABLE DISCARDABLE
+                MAINWND         LOADONCALL MOVABLE DISCARDABLE
+                TOPSTAT         LOADONCALL MOVABLE DISCARDABLE
+                BOTSTAT         LOADONCALL MOVABLE DISCARDABLE
+                BUTTON          LOADONCALL MOVABLE DISCARDABLE
+                PROFILE         LOADONCALL MOVABLE DISCARDABLE
+                STATE           LOADONCALL MOVABLE DISCARDABLE
+                USERPREF        LOADONCALL MOVABLE DISCARDABLE
+                DIRECT          LOADONCALL MOVABLE DISCARDABLE
+                FILEDLGS        LOADONCALL MOVABLE DISCARDABLE
+                PRINT           LOADONCALL MOVABLE DISCARDABLE
+                HARDWARE        LOADONCALL MOVABLE DISCARDABLE
+                HELP            LOADONCALL MOVABLE DISCARDABLE
+                TERM            LOADONCALL MOVABLE DISCARDABLE
+                KEYBOARD        LOADONCALL MOVABLE DISCARDABLE
+                COMMAND         LOADONCALL MOVABLE DISCARDABLE
+                CONNECT         LOADONCALL MOVABLE DISCARDABLE
+
+
+;************************************************************************
+;* Data Segment Information
+;************************************************************************/
+
+DATA            PRELOAD         MOVABLE MULTIPLE
+
+HEAPSIZE        16384
+
+STACKSIZE       8192
+
+;************************************************************************
+;* Exported Functions
+;************************************************************************/
+
+EXPORTS         
+                FNMAINWND       
+                FNTIMER
+                FNTOPSTAT
+                FNBOTSTAT
+                FNBUTTONWND
+                FNBMPBTN
+                FNUSERPREF
+                FNDIRECTORIES
+                FNHARDWARE
+                FNMODEM
+                FNNETWORKS
+                FNPAGESETUP
+                FNTERM
+                FNCONNECT
+
+;************************************************************************
+;* End of File: lexis.def
+;************************************************************************/
+

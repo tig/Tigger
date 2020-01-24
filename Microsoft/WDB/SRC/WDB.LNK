@@ -1,0 +1,8 @@
+wdb.obj wdbsup.obj wdbstr.obj +
+wdbcfg.obj wdbwnd.obj wdbfont.obj +
+wdbdlg.obj libentry.obj wdbmain.obj +
+monoout.obj
+wdb.dll
+wdb
+mdllcew libw
+wdb.def;

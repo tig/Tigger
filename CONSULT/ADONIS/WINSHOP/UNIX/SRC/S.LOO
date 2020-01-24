@@ -1,0 +1,777 @@
+h59662
+s 00004/00003/00248
+d D 1.7 91/12/02 16:30:55 bbs 7 6
+c 
+e
+s 00002/00000/00249
+d D 1.6 91/09/09 13:13:05 bbs 6 5
+c B19200,B38400 added
+e
+s 00000/00000/00249
+d D 1.5 90/11/07 12:17:51 bbs 5 4
+c 
+e
+s 00109/00106/00140
+d D 1.4 90/10/20 23:17:32 bbs 4 3
+c 
+e
+s 00133/00134/00113
+d D 1.3 90/06/27 17:26:48 bbs 3 2
+c 
+e
+s 00105/00107/00142
+d D 1.2 90/06/27 16:43:07 bbs 2 1
+c 
+e
+s 00249/00000/00000
+d D 1.1 90/05/23 07:02:59 sluggj 1 0
+c date and time created 90/05/23 07:02:59 by sluggj
+e
+u
+U
+t
+T
+I 1
+
+#include  <termio.h>
+#include  <stdio.h>
+#include  <fcntl.h>
+
+
+static char   workBuf [ 4 ];
+
+static  char*
+s_AnyInterpret ( int  charValue )
+{
+   workBuf[0] = 0;
+   workBuf[1] = 0;
+   workBuf[2] = 0;
+   workBuf[3] = 0;
+   if  ( charValue < (int) '@' )  {
+      workBuf[0] = '^';
+      workBuf[1] = '@' + charValue;
+   }
+   else if ( charValue == 255 )  {
+      workBuf[0] = 'D';
+      workBuf[1] = 'E';
+      workBuf[2] = 'L';
+   }
+   else if ( charValue > 127 )  { 
+     workBuf[0] = '*';
+      workBuf[1] = '*';
+      workBuf[2] = '*';
+   }
+   else  {
+     workBuf[0] = charValue;
+   }
+   return ( workBuf );
+}
+
+
+
+static  char*
+s_VInterpret ( int  vIndex )
+{
+   static char str[5];
+
+   if  ( vIndex == VINTR )   return "VINTR";
+   if  ( vIndex == VQUIT )   return "VQUIT";
+   if  ( vIndex == VERASE )  return "ERASE";
+   if  ( vIndex == VKILL )   return "VKILL";
+   if  ( vIndex == VEOF )    return "VEOF";
+   if  ( vIndex == VEOL )    return "VEOL";
+   if  ( vIndex == VEOL2 )   return "VEOL2";
+   if  ( vIndex == VMIN )    return "VMIN";
+   if  ( vIndex == VTIME )   return "VTIME";
+   if  ( vIndex == VSWTCH )  return "SWTCH";
+	sprintf(str,"%d",vIndex);
+	return str;
+}
+
+
+
+static  char*
+s_CInterpret ( int  ctrlChar )
+{
+   static char str[5];
+   if  ( ctrlChar == CNUL )     return "CNUL";
+   if  ( ctrlChar == CDEL )     return "CDEL";
+   if  ( ctrlChar == CESC )     return "CESC";
+   if  ( ctrlChar == CINTR )    return "CINTR";
+   if  ( ctrlChar == CQUIT )    return "CQUIT";
+   if  ( ctrlChar == CERASE )   return "CERASE";
+   if  ( ctrlChar == CKILL )    return "CKILL";
+   if  ( ctrlChar == CEOF )     return "CEOF";
+   if  ( ctrlChar == CSTART )   return "CSTART";
+   if  ( ctrlChar == CSTOP )    return "CSTOP";
+   if  ( ctrlChar == CSWTCH )   return "CSWTCH";
+   if  ( ctrlChar == CNSWTCH )  return "CNSWTCH";
+   if  ( ctrlChar == CSUSP )    return "CSUSP";
+   if  ( ctrlChar == VCEOF )    return "VCEOF";
+   if  ( ctrlChar == VCEOL )    return "VCEOL";
+	sprintf(str,"%x",ctrlChar);
+	return str;
+}
+
+
+
+void
+LookIO ( int     device,
+         FILE*   fout )
+
+{
+
+   int  idx;
+I 4
+   int status;
+E 4
+
+   struct termio  this;
+
+D 4
+   ioctl ( device, TCGETA, &this );
+E 4
+I 4
+   if (ioctl ( device, TCGETA, &this ) == -1)
+		perror("LookIO: ioctl");
+E 4
+
+/*
+D 3
+   printf (  "\nThese are manifest constants from <termio.h>" );
+   printf (  "\nNCC    (8) = %d", NCC );
+   printf (  "\nVINTR  (0) = %d", VINTR );
+   printf (  "\nVQUIT  (1) = %d", VQUIT );
+   printf (  "\nVERASE (2) = %d", VERASE );
+   printf (  "\nVKILL  (3) = %d", VKILL );
+   printf (  "\nVEOF   (4) = %d", VEOF );
+   printf (  "\nVEOL   (5) = %d", VEOL );
+   printf (  "\nVEOL2  (6) = %d", VEOL2 );
+   printf (  "\nVMIN   (4) = %d", VMIN );
+   printf (  "\nVTIME  (5) = %d", VTIME );
+   printf (  "\nVSWTCH (7) = %d", VSWTCH );
+   printf (  "\nCNUL    (000) = %03o",  CNUL );
+   printf (  "\nCDEL    (0377)= %03o",  CDEL );
+   printf (  "\nCESC    ('\\') = %c",   CESC );
+   printf (  "\nCINTR   (0177)= %03o",  CINTR );
+   printf (  "\nCQUIT   (034) = %03o",  CQUIT );
+   printf (  "\nCERASE  (010) = %03o",  CERASE );
+   printf (  "\nCKILL   (025) = %03o",  CKILL );
+   printf (  "\nCEOF    (004) = %03o",  CEOF );
+   printf (  "\nCSTART  (021) = %03o",  CSTART );
+   printf (  "\nCSTOP   (023) = %03o",  CSTOP );
+   printf (  "\nCSWTCH  (032) = %03o",  CSWTCH );
+   printf (  "\nCNSWTCH (000) = %03o",  CNSWTCH );
+   printf (  "\nCSUSP   (032) = %03o",  CSUSP );
+   printf (  "\nVCEOF   (NCC) = %03o",  VCEOF );
+   printf (  "\nVCEOL (NCC+1) = %03o",  VCEOL );
+   printf (  "\n" );
+E 3
+I 3
+   fprintf (  "\nThese are manifest constants from <termio.h>" );
+   fprintf (  "\nNCC    (8) = %d", NCC );
+   fprintf (  "\nVINTR  (0) = %d", VINTR );
+   fprintf (  "\nVQUIT  (1) = %d", VQUIT );
+   fprintf (  "\nVERASE (2) = %d", VERASE );
+   fprintf (  "\nVKILL  (3) = %d", VKILL );
+   fprintf (  "\nVEOF   (4) = %d", VEOF );
+   fprintf (  "\nVEOL   (5) = %d", VEOL );
+   fprintf (  "\nVEOL2  (6) = %d", VEOL2 );
+   fprintf (  "\nVMIN   (4) = %d", VMIN );
+   fprintf (  "\nVTIME  (5) = %d", VTIME );
+   fprintf (  "\nVSWTCH (7) = %d", VSWTCH );
+   fprintf (  "\nCNUL    (000) = %03o",  CNUL );
+   fprintf (  "\nCDEL    (0377)= %03o",  CDEL );
+   fprintf (  "\nCESC    ('\\') = %c",   CESC );
+   fprintf (  "\nCINTR   (0177)= %03o",  CINTR );
+   fprintf (  "\nCQUIT   (034) = %03o",  CQUIT );
+   fprintf (  "\nCERASE  (010) = %03o",  CERASE );
+   fprintf (  "\nCKILL   (025) = %03o",  CKILL );
+   fprintf (  "\nCEOF    (004) = %03o",  CEOF );
+   fprintf (  "\nCSTART  (021) = %03o",  CSTART );
+   fprintf (  "\nCSTOP   (023) = %03o",  CSTOP );
+   ffprintf (  "\nCSWTCH  (032) = %03o",  CSWTCH );
+   fprintf (  "\nCNSWTCH (000) = %03o",  CNSWTCH );
+   fprintf (  "\nCSUSP   (032) = %03o",  CSUSP );
+   fprintf (  "\nVCEOF   (NCC) = %03o",  VCEOF );
+   fprintf (  "\nVCEOL (NCC+1) = %03o",  VCEOL );
+   fprintf (  "\n" );
+E 3
+*/
+
+D 2
+   printf (  "\n***  input modes  ***" );
+   printf (  "\nc_iflag = %07o (octal)", this.c_iflag );
+   printf (  "\nIGNBRK  = 0000001%s", this.c_iflag&IGNBRK? "  set":"");
+   printf (  "\nBRKINT  = 0000002%s", this.c_iflag&BRKINT? "  set":"");
+   printf (  "\nIGNPAR  = 0000004%s", this.c_iflag&IGNPAR? "  set":"");
+   printf (  "\nPARMRK  = 0000010%s", this.c_iflag&PARMRK? "  set":"");
+   printf (  "\nINPCK   = 0000020%s", this.c_iflag&INPCK?  "  set":"");
+   printf (  "\nISTRIP  = 0000040%s", this.c_iflag&ISTRIP? "  set":"");
+   printf (  "\nINLCR   = 0000100%s", this.c_iflag&INLCR?  "  set":"");
+   printf (  "\nIGNCR   = 0000200%s", this.c_iflag&IGNCR?  "  set":"");
+   printf (  "\nICRNL   = 0000400%s", this.c_iflag&ICRNL?  "  set":"");
+   printf (  "\nIUCLC   = 0001000%s", this.c_iflag&IUCLC?  "  set":"");
+   printf (  "\nIXON    = 0002000%s", this.c_iflag&IXON?   "  set":"");
+   printf (  "\nIXANY   = 0004000%s", this.c_iflag&IXANY?  "  set":"");
+   printf (  "\nIXOFF   = 0010000%s", this.c_iflag&IXOFF?  "  set":"");
+   printf (  "\nDOSMODE = 0100000%s", this.c_iflag&DOSMODE?"  set":"");
+   printf (  "\n" );
+E 2
+I 2
+D 3
+   printf (fpout,  "\n***  input modes  ***" );
+   printf (fpout,  "\nc_iflag = %07o (octal)", this.c_iflag );
+   printf (fpout,  "\nIGNBRK  = 0000001%s", this.c_iflag&IGNBRK? "  set":"");
+   printf (fpout,  "\nBRKINT  = 0000002%s", this.c_iflag&BRKINT? "  set":"");
+   printf (fpout,  "\nIGNPAR  = 0000004%s", this.c_iflag&IGNPAR? "  set":"");
+   printf (fpout,  "\nPARMRK  = 0000010%s", this.c_iflag&PARMRK? "  set":"");
+   printf (fpout,  "\nINPCK   = 0000020%s", this.c_iflag&INPCK?  "  set":"");
+   printf (fpout,  "\nISTRIP  = 0000040%s", this.c_iflag&ISTRIP? "  set":"");
+   printf (fpout,  "\nINLCR   = 0000100%s", this.c_iflag&INLCR?  "  set":"");
+   printf (fpout,  "\nIGNCR   = 0000200%s", this.c_iflag&IGNCR?  "  set":"");
+   printf (fpout,  "\nICRNL   = 0000400%s", this.c_iflag&ICRNL?  "  set":"");
+   printf (fpout,  "\nIUCLC   = 0001000%s", this.c_iflag&IUCLC?  "  set":"");
+   printf (fpout,  "\nIXON    = 0002000%s", this.c_iflag&IXON?   "  set":"");
+   printf (fpout,  "\nIXANY   = 0004000%s", this.c_iflag&IXANY?  "  set":"");
+   printf (fpout,  "\nIXOFF   = 0010000%s", this.c_iflag&IXOFF?  "  set":"");
+   printf (fpout,  "\nDOSMODE = 0100000%s", this.c_iflag&DOSMODE?"  set":"");
+   printf (fpout,  "\n" );
+E 3
+I 3
+D 4
+   fprintf (fout,  "\n***  input modes  ***" );
+   fprintf (fout,  "\nc_iflag = %07o (octal)", this.c_iflag );
+   fprintf (fout,  "\nIGNBRK  = 0000001%s", this.c_iflag&IGNBRK? "  set":"");
+   fprintf (fout,  "\nBRKINT  = 0000002%s", this.c_iflag&BRKINT? "  set":"");
+   fprintf (fout,  "\nIGNPAR  = 0000004%s", this.c_iflag&IGNPAR? "  set":"");
+   fprintf (fout,  "\nPARMRK  = 0000010%s", this.c_iflag&PARMRK? "  set":"");
+   fprintf (fout,  "\nINPCK   = 0000020%s", this.c_iflag&INPCK?  "  set":"");
+   fprintf (fout,  "\nISTRIP  = 0000040%s", this.c_iflag&ISTRIP? "  set":"");
+   fprintf (fout,  "\nINLCR   = 0000100%s", this.c_iflag&INLCR?  "  set":"");
+   fprintf (fout,  "\nIGNCR   = 0000200%s", this.c_iflag&IGNCR?  "  set":"");
+   fprintf (fout,  "\nICRNL   = 0000400%s", this.c_iflag&ICRNL?  "  set":"");
+   fprintf (fout,  "\nIUCLC   = 0001000%s", this.c_iflag&IUCLC?  "  set":"");
+   fprintf (fout,  "\nIXON    = 0002000%s", this.c_iflag&IXON?   "  set":"");
+   fprintf (fout,  "\nIXANY   = 0004000%s", this.c_iflag&IXANY?  "  set":"");
+   fprintf (fout,  "\nIXOFF   = 0010000%s", this.c_iflag&IXOFF?  "  set":"");
+   fprintf (fout,  "\nDOSMODE = 0100000%s", this.c_iflag&DOSMODE?"  set":"");
+   fprintf (fout,  "\n" );
+E 4
+I 4
+   printf ("\n***  input modes  ***" );
+   printf ("\nc_iflag = %07o (octal)", this.c_iflag );
+D 7
+   printf ("\nIGNBRK  = 0000001%s", this.c_iflag&IGNBRK? "  set":"");
+E 7
+I 7
+   if (this.c_iflag&IGNBRK)
+	   printf ("\nIGNBRK is set");
+E 7
+   printf ("\nBRKINT  = 0000002%s", this.c_iflag&BRKINT? "  set":"");
+   printf ("\nIGNPAR  = 0000004%s", this.c_iflag&IGNPAR? "  set":"");
+   printf ("\nPARMRK  = 0000010%s", this.c_iflag&PARMRK? "  set":"");
+   printf ("\nINPCK   = 0000020%s", this.c_iflag&INPCK?  "  set":"");
+   printf ("\nISTRIP  = 0000040%s", this.c_iflag&ISTRIP? "  set":"");
+   printf ("\nINLCR   = 0000100%s", this.c_iflag&INLCR?  "  set":"");
+   printf ("\nIGNCR   = 0000200%s", this.c_iflag&IGNCR?  "  set":"");
+   printf ("\nICRNL   = 0000400%s", this.c_iflag&ICRNL?  "  set":"");
+   printf ("\nIUCLC   = 0001000%s", this.c_iflag&IUCLC?  "  set":"");
+   printf ("\nIXON    = 0002000%s", this.c_iflag&IXON?   "  set":"");
+   printf ("\nIXANY   = 0004000%s", this.c_iflag&IXANY?  "  set":"");
+   printf ("\nIXOFF   = 0010000%s", this.c_iflag&IXOFF?  "  set":"");
+   printf ("\nDOSMODE = 0100000%s", this.c_iflag&DOSMODE?"  set":"");
+   printf ("\n" );
+E 4
+E 3
+E 2
+
+
+D 2
+   printf (  "\n***  output modes  ***" );
+   printf (  "\nc_oflag= %07o (octal)", this.c_oflag );
+   printf (  "\nOPOST  = 0000001%s", this.c_oflag&OPOST?  "  set":"" );
+   printf (  "\nOLCUC  = 0000002%s", this.c_oflag&OLCUC?  "  set":"" );
+   printf (  "\nONLCR  = 0000004%s", this.c_oflag&ONLCR?  "  set":"" );
+   printf (  "\nOCRNL  = 0000010%s", this.c_oflag&OCRNL?  "  set":"" );
+   printf (  "\nONOCR  = 0000020%s", this.c_oflag&ONOCR?  "  set":"" );
+   printf (  "\nONLRET = 0000040%s", this.c_oflag&ONLRET? "  set":"" );
+   printf (  "\nOFILL  = 0000100%s", this.c_oflag&OFILL?  "  set":"" );
+   printf (  "\nOFDEL  = 0000200%s", this.c_oflag&OFDEL?  "  set":"" );
+   printf (  "\nNLDLY  = 0000400%s", this.c_oflag&NLDLY?  "  set":"" );
+   printf (  "\nNL0    = 0      %s", this.c_oflag&NL0?    "  set":"" );
+   printf (  "\nNL1    = 0000400%s", this.c_oflag&NL1?    "  set":"" );
+   printf (  "\nCRDLY  = 0003000%s", this.c_oflag&CRDLY?  "  set":"" );
+   printf (  "\nCR0    = 0      %s", this.c_oflag&CR0?    "  set":"" );
+   printf (  "\nCR1    = 0001000%s", this.c_oflag&CR1?    "  set":"" );
+   printf (  "\nCR2    = 0002000%s", this.c_oflag&CR2?    "  set":"" );
+   printf (  "\nCR3    = 0003000%s", this.c_oflag&CR3?    "  set":"" );
+   printf (  "\nTABDLY = 0014000%s", this.c_oflag&TABDLY? "  set":"" );
+   printf (  "\nTAB0   = 0      %s", this.c_oflag&TAB0?   "  set":"" );
+   printf (  "\nTAB1   = 0004000%s", this.c_oflag&TAB1?   "  set":"" );
+   printf (  "\nTAB2   = 0010000%s", this.c_oflag&TAB2?   "  set":"" );
+   printf (  "\nTAB3   = 0014000%s", this.c_oflag&TAB3?   "  set":"" );
+   printf (  "\nBSDLY  = 0020000%s", this.c_oflag&BSDLY?  "  set":"" );
+   printf (  "\nBS0    = 0      %s", this.c_oflag&BS0?    "  set":"" );
+   printf (  "\nBS1    = 0020000%s", this.c_oflag&BS1?    "  set":"" );
+   printf (  "\nVTDLY  = 0040000%s", this.c_oflag&VTDLY?  "  set":"" );
+   printf (  "\nVT0    = 0      %s", this.c_oflag&VT0?    "  set":"" );
+   printf (  "\nVT1    = 0040000%s", this.c_oflag&VT1?    "  set":"" );
+   printf (  "\nFFDLY  = 0100000%s", this.c_oflag&FFDLY?  "  set":"" );
+   printf (  "\nFF0    = 0      %s", this.c_oflag&FF0?    "  set":"" );
+   printf (  "\nFF1    = 0100000%s", this.c_oflag&FF1?    "  set":"" );
+   printf (  "\n" );
+E 2
+I 2
+D 3
+   printf (fpout,  "\n***  output modes  ***" );
+   printf (fpout,  "\nc_oflag= %07o (octal)", this.c_oflag );
+   printf (fpout,  "\nOPOST  = 0000001%s", this.c_oflag&OPOST?  "  set":"" );
+   printf (fpout,  "\nOLCUC  = 0000002%s", this.c_oflag&OLCUC?  "  set":"" );
+   printf (fpout,  "\nONLCR  = 0000004%s", this.c_oflag&ONLCR?  "  set":"" );
+   printf (fpout,  "\nOCRNL  = 0000010%s", this.c_oflag&OCRNL?  "  set":"" );
+   printf (fpout,  "\nONOCR  = 0000020%s", this.c_oflag&ONOCR?  "  set":"" );
+   printf (fpout,  "\nONLRET = 0000040%s", this.c_oflag&ONLRET? "  set":"" );
+   printf (fpout,  "\nOFILL  = 0000100%s", this.c_oflag&OFILL?  "  set":"" );
+   printf (fpout,  "\nOFDEL  = 0000200%s", this.c_oflag&OFDEL?  "  set":"" );
+   printf (fpout,  "\nNLDLY  = 0000400%s", this.c_oflag&NLDLY?  "  set":"" );
+   printf (fpout,  "\nNL0    = 0      %s", this.c_oflag&NL0?    "  set":"" );
+   printf (fpout,  "\nNL1    = 0000400%s", this.c_oflag&NL1?    "  set":"" );
+   printf (fpout,  "\nCRDLY  = 0003000%s", this.c_oflag&CRDLY?  "  set":"" );
+   printf (fpout,  "\nCR0    = 0      %s", this.c_oflag&CR0?    "  set":"" );
+   printf (fpout,  "\nCR1    = 0001000%s", this.c_oflag&CR1?    "  set":"" );
+   printf (fpout,  "\nCR2    = 0002000%s", this.c_oflag&CR2?    "  set":"" );
+   printf (fpout,  "\nCR3    = 0003000%s", this.c_oflag&CR3?    "  set":"" );
+   printf (fpout,  "\nTABDLY = 0014000%s", this.c_oflag&TABDLY? "  set":"" );
+   printf (fpout,  "\nTAB0   = 0      %s", this.c_oflag&TAB0?   "  set":"" );
+   printf (fpout,  "\nTAB1   = 0004000%s", this.c_oflag&TAB1?   "  set":"" );
+   printf (fpout,  "\nTAB2   = 0010000%s", this.c_oflag&TAB2?   "  set":"" );
+   printf (fpout,  "\nTAB3   = 0014000%s", this.c_oflag&TAB3?   "  set":"" );
+   printf (fpout,  "\nBSDLY  = 0020000%s", this.c_oflag&BSDLY?  "  set":"" );
+   printf (fpout,  "\nBS0    = 0      %s", this.c_oflag&BS0?    "  set":"" );
+   printf (fpout,  "\nBS1    = 0020000%s", this.c_oflag&BS1?    "  set":"" );
+   printf (fpout,  "\nVTDLY  = 0040000%s", this.c_oflag&VTDLY?  "  set":"" );
+   printf (fpout,  "\nVT0    = 0      %s", this.c_oflag&VT0?    "  set":"" );
+   printf (fpout,  "\nVT1    = 0040000%s", this.c_oflag&VT1?    "  set":"" );
+   printf (fpout,  "\nFFDLY  = 0100000%s", this.c_oflag&FFDLY?  "  set":"" );
+   printf (fpout,  "\nFF0    = 0      %s", this.c_oflag&FF0?    "  set":"" );
+   printf (fpout,  "\nFF1    = 0100000%s", this.c_oflag&FF1?    "  set":"" );
+   printf (fpout,  "\n" );
+E 3
+I 3
+D 4
+   fprintf (fout,  "\n***  output modes  ***" );
+   fprintf (fout,  "\nc_oflag= %07o (octal)", this.c_oflag );
+   fprintf (fout,  "\nOPOST  = 0000001%s", this.c_oflag&OPOST?  "  set":"" );
+   fprintf (fout,  "\nOLCUC  = 0000002%s", this.c_oflag&OLCUC?  "  set":"" );
+   fprintf (fout,  "\nONLCR  = 0000004%s", this.c_oflag&ONLCR?  "  set":"" );
+   fprintf (fout,  "\nOCRNL  = 0000010%s", this.c_oflag&OCRNL?  "  set":"" );
+   fprintf (fout,  "\nONOCR  = 0000020%s", this.c_oflag&ONOCR?  "  set":"" );
+   fprintf (fout,  "\nONLRET = 0000040%s", this.c_oflag&ONLRET? "  set":"" );
+   fprintf (fout,  "\nOFILL  = 0000100%s", this.c_oflag&OFILL?  "  set":"" );
+   fprintf (fout,  "\nOFDEL  = 0000200%s", this.c_oflag&OFDEL?  "  set":"" );
+   fprintf (fout,  "\nNLDLY  = 0000400%s", this.c_oflag&NLDLY?  "  set":"" );
+   fprintf (fout,  "\nNL0    = 0      %s", this.c_oflag&NL0?    "  set":"" );
+   fprintf (fout,  "\nNL1    = 0000400%s", this.c_oflag&NL1?    "  set":"" );
+   fprintf (fout,  "\nCRDLY  = 0003000%s", this.c_oflag&CRDLY?  "  set":"" );
+   fprintf (fout,  "\nCR0    = 0      %s", this.c_oflag&CR0?    "  set":"" );
+   fprintf (fout,  "\nCR1    = 0001000%s", this.c_oflag&CR1?    "  set":"" );
+   fprintf (fout,  "\nCR2    = 0002000%s", this.c_oflag&CR2?    "  set":"" );
+   fprintf (fout,  "\nCR3    = 0003000%s", this.c_oflag&CR3?    "  set":"" );
+   fprintf (fout,  "\nTABDLY = 0014000%s", this.c_oflag&TABDLY? "  set":"" );
+   fprintf (fout,  "\nTAB0   = 0      %s", this.c_oflag&TAB0?   "  set":"" );
+   fprintf (fout,  "\nTAB1   = 0004000%s", this.c_oflag&TAB1?   "  set":"" );
+   fprintf (fout,  "\nTAB2   = 0010000%s", this.c_oflag&TAB2?   "  set":"" );
+   fprintf (fout,  "\nTAB3   = 0014000%s", this.c_oflag&TAB3?   "  set":"" );
+   fprintf (fout,  "\nBSDLY  = 0020000%s", this.c_oflag&BSDLY?  "  set":"" );
+   fprintf (fout,  "\nBS0    = 0      %s", this.c_oflag&BS0?    "  set":"" );
+   fprintf (fout,  "\nBS1    = 0020000%s", this.c_oflag&BS1?    "  set":"" );
+   fprintf (fout,  "\nVTDLY  = 0040000%s", this.c_oflag&VTDLY?  "  set":"" );
+   fprintf (fout,  "\nVT0    = 0      %s", this.c_oflag&VT0?    "  set":"" );
+   fprintf (fout,  "\nVT1    = 0040000%s", this.c_oflag&VT1?    "  set":"" );
+   fprintf (fout,  "\nFFDLY  = 0100000%s", this.c_oflag&FFDLY?  "  set":"" );
+   fprintf (fout,  "\nFF0    = 0      %s", this.c_oflag&FF0?    "  set":"" );
+   fprintf (fout,  "\nFF1    = 0100000%s", this.c_oflag&FF1?    "  set":"" );
+   fprintf (fout,  "\n" );
+E 4
+I 4
+   printf ("\n***  output modes  ***" );
+   printf ("\nc_oflag= %07o (octal)", this.c_oflag );
+   printf ("\nOPOST  = 0000001%s", this.c_oflag&OPOST?  "  set":"" );
+   printf ("\nOLCUC  = 0000002%s", this.c_oflag&OLCUC?  "  set":"" );
+   printf ("\nONLCR  = 0000004%s", this.c_oflag&ONLCR?  "  set":"" );
+   printf ("\nOCRNL  = 0000010%s", this.c_oflag&OCRNL?  "  set":"" );
+   printf ("\nONOCR  = 0000020%s", this.c_oflag&ONOCR?  "  set":"" );
+   printf ("\nONLRET = 0000040%s", this.c_oflag&ONLRET? "  set":"" );
+   printf ("\nOFILL  = 0000100%s", this.c_oflag&OFILL?  "  set":"" );
+   printf ("\nOFDEL  = 0000200%s", this.c_oflag&OFDEL?  "  set":"" );
+   printf ("\nNLDLY  = 0000400%s", this.c_oflag&NLDLY?  "  set":"" );
+   printf ("\nNL0    = 0      %s", this.c_oflag&NL0?    "  set":"" );
+   printf ("\nNL1    = 0000400%s", this.c_oflag&NL1?    "  set":"" );
+   printf ("\nCRDLY  = 0003000%s", this.c_oflag&CRDLY?  "  set":"" );
+   printf ("\nCR0    = 0      %s", this.c_oflag&CR0?    "  set":"" );
+   printf ("\nCR1    = 0001000%s", this.c_oflag&CR1?    "  set":"" );
+   printf ("\nCR2    = 0002000%s", this.c_oflag&CR2?    "  set":"" );
+   printf ("\nCR3    = 0003000%s", this.c_oflag&CR3?    "  set":"" );
+   printf ("\nTABDLY = 0014000%s", this.c_oflag&TABDLY? "  set":"" );
+   printf ("\nTAB0   = 0      %s", this.c_oflag&TAB0?   "  set":"" );
+   printf ("\nTAB1   = 0004000%s", this.c_oflag&TAB1?   "  set":"" );
+   printf ("\nTAB2   = 0010000%s", this.c_oflag&TAB2?   "  set":"" );
+   printf ("\nTAB3   = 0014000%s", this.c_oflag&TAB3?   "  set":"" );
+   printf ("\nBSDLY  = 0020000%s", this.c_oflag&BSDLY?  "  set":"" );
+   printf ("\nBS0    = 0      %s", this.c_oflag&BS0?    "  set":"" );
+   printf ("\nBS1    = 0020000%s", this.c_oflag&BS1?    "  set":"" );
+   printf ("\nVTDLY  = 0040000%s", this.c_oflag&VTDLY?  "  set":"" );
+   printf ("\nVT0    = 0      %s", this.c_oflag&VT0?    "  set":"" );
+   printf ("\nVT1    = 0040000%s", this.c_oflag&VT1?    "  set":"" );
+   printf ("\nFFDLY  = 0100000%s", this.c_oflag&FFDLY?  "  set":"" );
+   printf ("\nFF0    = 0      %s", this.c_oflag&FF0?    "  set":"" );
+   printf ("\nFF1    = 0100000%s", this.c_oflag&FF1?    "  set":"" );
+   printf ("\n" );
+E 4
+E 3
+E 2
+
+D 2
+   printf (  "\n***  control modes  ***" );
+   printf (  "\nc_cflag = %07o (octal)", this.c_cflag );
+   printf (  "\n&CBAUD  = %07o", this.c_cflag & CBAUD );
+E 2
+I 2
+D 3
+   printf (fpout,  "\n***  control modes  ***" );
+   printf (fpout,  "\nc_cflag = %07o (octal)", this.c_cflag );
+   printf (fpout,  "\n&CBAUD  = %07o", this.c_cflag & CBAUD );
+E 3
+I 3
+D 4
+   fprintf (fout,  "\n***  control modes  ***" );
+   fprintf (fout,  "\nc_cflag = %07o (octal)", this.c_cflag );
+   fprintf (fout,  "\n&CBAUD  = %07o", this.c_cflag & CBAUD );
+E 4
+I 4
+   printf ("\n***  control modes  ***" );
+   printf ("\nc_cflag = %07o (octal)", this.c_cflag );
+   printf ("\n&CBAUD  = %07o", this.c_cflag & CBAUD );
+E 4
+E 3
+E 2
+   switch ( this.c_cflag & CBAUD )  {
+D 2
+      default:           printf (  "  => ???" );         break;
+      case ( B0 ):       printf (  "  => hangup" );      break;
+      case ( B50 ):      printf (  "  => 50" );          break;
+      case ( B75 ):      printf (  "  => 75" );          break;
+      case ( B110 ):     printf (  "  => 110" );         break;
+      case ( B134 ):     printf (  "  => 134.5" );       break;
+      case ( B150 ):     printf (  "  => 150" );         break;
+      case ( B200 ):     printf (  "  => 200" );         break;
+      case ( B300 ):     printf (  "  => 300" );         break;
+      case ( B600 ):     printf (  "  => 600" );          break;
+      case ( B1200 ):    printf (  "  => 1200" );        break;
+      case ( B1800 ):    printf (  "  => 1800" );        break;
+      case ( B2400 ):    printf (  "  => 2400" );        break;
+      case ( B4800 ):    printf (  "  => 4800" );        break;
+      case ( B9600 ):    printf (  "  => 9600" );        break;
+      case ( EXTA ):     printf (  "  => EXTA/19.2k" );  break;
+      case ( EXTB ):     printf (  "  => EXTB/38.4k" );  break;
+E 2
+I 2
+D 3
+      default:           printf (fpout,  "  => ???" );         break;
+      case ( B0 ):       printf (fpout,  "  => hangup" );      break;
+      case ( B50 ):      printf (fpout,  "  => 50" );          break;
+      case ( B75 ):      printf (fpout,  "  => 75" );          break;
+      case ( B110 ):     printf (fpout,  "  => 110" );         break;
+      case ( B134 ):     printf (fpout,  "  => 134.5" );       break;
+      case ( B150 ):     printf (fpout,  "  => 150" );         break;
+      case ( B200 ):     printf (fpout,  "  => 200" );         break;
+      case ( B300 ):     printf (fpout,  "  => 300" );         break;
+      case ( B600 ):     printf (fpout,  "  => 600" );          break;
+      case ( B1200 ):    printf (fpout,  "  => 1200" );        break;
+      case ( B1800 ):    printf (fpout,  "  => 1800" );        break;
+      case ( B2400 ):    printf (fpout,  "  => 2400" );        break;
+      case ( B4800 ):    printf (fpout,  "  => 4800" );        break;
+      case ( B9600 ):    printf (fpout,  "  => 9600" );        break;
+      case ( EXTA ):     printf (fpout,  "  => EXTA/19.2k" );  break;
+      case ( EXTB ):     printf (fpout,  "  => EXTB/38.4k" );  break;
+E 3
+I 3
+D 4
+      default:           fprintf (fout,  "  => ???" );         break;
+      case ( B0 ):       fprintf (fout,  "  => hangup" );      break;
+      case ( B50 ):      fprintf (fout,  "  => 50" );          break;
+      case ( B75 ):      fprintf (fout,  "  => 75" );          break;
+      case ( B110 ):     fprintf (fout,  "  => 110" );         break;
+      case ( B134 ):     fprintf (fout,  "  => 134.5" );       break;
+      case ( B150 ):     fprintf (fout,  "  => 150" );         break;
+      case ( B200 ):     fprintf (fout,  "  => 200" );         break;
+      case ( B300 ):     fprintf (fout,  "  => 300" );         break;
+      case ( B600 ):     fprintf (fout,  "  => 600" );          break;
+      case ( B1200 ):    fprintf (fout,  "  => 1200" );        break;
+      case ( B1800 ):    fprintf (fout,  "  => 1800" );        break;
+      case ( B2400 ):    fprintf (fout,  "  => 2400" );        break;
+      case ( B4800 ):    fprintf (fout,  "  => 4800" );        break;
+      case ( B9600 ):    fprintf (fout,  "  => 9600" );        break;
+      case ( EXTA ):     fprintf (fout,  "  => EXTA/19.2k" );  break;
+      case ( EXTB ):     fprintf (fout,  "  => EXTB/38.4k" );  break;
+E 4
+I 4
+      default:           printf ("  => ???" );         break;
+      case ( B0 ):       printf ("  => hangup" );      break;
+      case ( B50 ):      printf ("  => 50" );          break;
+      case ( B75 ):      printf ("  => 75" );          break;
+      case ( B110 ):     printf ("  => 110" );         break;
+      case ( B134 ):     printf ("  => 134.5" );       break;
+      case ( B150 ):     printf ("  => 150" );         break;
+      case ( B200 ):     printf ("  => 200" );         break;
+      case ( B300 ):     printf ("  => 300" );         break;
+      case ( B600 ):     printf ("  => 600" );          break;
+      case ( B1200 ):    printf ("  => 1200" );        break;
+      case ( B1800 ):    printf ("  => 1800" );        break;
+      case ( B2400 ):    printf ("  => 2400" );        break;
+      case ( B4800 ):    printf ("  => 4800" );        break;
+      case ( B9600 ):    printf ("  => 9600" );        break;
+I 6
+      case ( B19200 ):   printf ("  => 19200" );        break;
+      case ( B38400 ):    printf ("  => 38400" );        break;
+E 6
+D 7
+      case ( EXTA ):     printf ("  => EXTA/19.2k" );  break;
+      case ( EXTB ):     printf ("  => EXTB/38.4k" );  break;
+E 7
+I 7
+      //case ( EXTA ):     printf ("  => EXTA/19.2k" );  break;
+      //case ( EXTB ):     printf ("  => EXTB/38.4k" );  break;
+E 7
+E 4
+E 3
+E 2
+   }
+D 2
+   fflush(stdout);
+   printf (  "\nCS5     = 0      %s",(this.c_cflag&CSIZE)==CS5?    "  set":"" );
+   printf (  "\nCS6     = 0000020%s",(this.c_cflag&CSIZE)==CS6?    "  set":"" );
+   printf (  "\nCS7     = 0000040%s",(this.c_cflag&CSIZE)==CS7?    "  set":"" );
+   printf (  "\nCS8     = 0000060%s",(this.c_cflag&CSIZE)==CS8?    "  set":"" );
+   printf (  "\nCSTOPB  = 0000100%s", this.c_cflag&CSTOPB?  "  set":"" );
+   printf (  "\nCREAD   = 0000200%s", this.c_cflag&CREAD?   "  set":"" );
+   printf (  "\nPARENB  = 0000400%s", this.c_cflag&PARENB?  "  set":"" );
+   printf (  "\nPARODD  = 0001000%s", this.c_cflag&PARODD?  "  set":"" );
+   printf (  "\nHUPCL   = 0002000%s", this.c_cflag&HUPCL?   "  set":"" );
+   printf (  "\nCLOCAL  = 0004000%s", this.c_cflag&CLOCAL?  "  set":"" );
+   printf (  "\nRCV1EN  = 0010000%s", this.c_cflag&RCV1EN?  "  set":"" );
+   printf (  "\nXMT1EN  = 0020000%s", this.c_cflag&XMT1EN?  "  set":"" );
+   printf (  "\nLOBLK   = 0040000%s", this.c_cflag&LOBLK?   "  set":"" );
+   printf (  "\nXCLUDE  = 0100000%s", this.c_cflag&XCLUDE?  "  set":"" );
+   printf (  "\nXLOBLK  = 0010000%s", this.c_cflag&XLOBLK?  "  set":"" );
+   printf (  "\nCTSFLOW = 0020000%s", this.c_cflag&CTSFLOW? "  set":"" );
+   printf (  "\nRTSFLOW = 0040000%s", this.c_cflag&RTSFLOW? "  set":"" );
+   printf (  "\n" );
+E 2
+I 2
+D 3
+   printf (fpout,  "\nCS5     = 0      %s",(this.c_cflag&CSIZE)==CS5?    "  set":"" );
+   printf (fpout,  "\nCS6     = 0000020%s",(this.c_cflag&CSIZE)==CS6?    "  set":"" );
+   printf (fpout,  "\nCS7     = 0000040%s",(this.c_cflag&CSIZE)==CS7?    "  set":"" );
+   printf (fpout,  "\nCS8     = 0000060%s",(this.c_cflag&CSIZE)==CS8?    "  set":"" );
+   printf (fpout,  "\nCSTOPB  = 0000100%s", this.c_cflag&CSTOPB?  "  set":"" );
+   printf (fpout,  "\nCREAD   = 0000200%s", this.c_cflag&CREAD?   "  set":"" );
+   printf (fpout,  "\nPARENB  = 0000400%s", this.c_cflag&PARENB?  "  set":"" );
+   printf (fpout,  "\nPARODD  = 0001000%s", this.c_cflag&PARODD?  "  set":"" );
+   printf (fpout,  "\nHUPCL   = 0002000%s", this.c_cflag&HUPCL?   "  set":"" );
+   printf (fpout,  "\nCLOCAL  = 0004000%s", this.c_cflag&CLOCAL?  "  set":"" );
+   printf (fpout,  "\nRCV1EN  = 0010000%s", this.c_cflag&RCV1EN?  "  set":"" );
+   printf (fpout,  "\nXMT1EN  = 0020000%s", this.c_cflag&XMT1EN?  "  set":"" );
+   printf (fpout,  "\nLOBLK   = 0040000%s", this.c_cflag&LOBLK?   "  set":"" );
+   printf (fpout,  "\nXCLUDE  = 0100000%s", this.c_cflag&XCLUDE?  "  set":"" );
+   printf (fpout,  "\nXLOBLK  = 0010000%s", this.c_cflag&XLOBLK?  "  set":"" );
+   printf (fpout,  "\nCTSFLOW = 0020000%s", this.c_cflag&CTSFLOW? "  set":"" );
+   printf (fpout,  "\nRTSFLOW = 0040000%s", this.c_cflag&RTSFLOW? "  set":"" );
+   printf (fpout,  "\n" );
+E 3
+I 3
+D 4
+   fprintf (fout,  "\nCS5     = 0      %s",(this.c_cflag&CSIZE)==CS5?    "  set":"" );
+   fprintf (fout,  "\nCS6     = 0000020%s",(this.c_cflag&CSIZE)==CS6?    "  set":"" );
+   fprintf (fout,  "\nCS7     = 0000040%s",(this.c_cflag&CSIZE)==CS7?    "  set":"" );
+   fprintf (fout,  "\nCS8     = 0000060%s",(this.c_cflag&CSIZE)==CS8?    "  set":"" );
+   fprintf (fout,  "\nCSTOPB  = 0000100%s", this.c_cflag&CSTOPB?  "  set":"" );
+   fprintf (fout,  "\nCREAD   = 0000200%s", this.c_cflag&CREAD?   "  set":"" );
+   fprintf (fout,  "\nPARENB  = 0000400%s", this.c_cflag&PARENB?  "  set":"" );
+   fprintf (fout,  "\nPARODD  = 0001000%s", this.c_cflag&PARODD?  "  set":"" );
+   fprintf (fout,  "\nHUPCL   = 0002000%s", this.c_cflag&HUPCL?   "  set":"" );
+   fprintf (fout,  "\nCLOCAL  = 0004000%s", this.c_cflag&CLOCAL?  "  set":"" );
+   fprintf (fout,  "\nRCV1EN  = 0010000%s", this.c_cflag&RCV1EN?  "  set":"" );
+   fprintf (fout,  "\nXMT1EN  = 0020000%s", this.c_cflag&XMT1EN?  "  set":"" );
+   fprintf (fout,  "\nLOBLK   = 0040000%s", this.c_cflag&LOBLK?   "  set":"" );
+   fprintf (fout,  "\nXCLUDE  = 0100000%s", this.c_cflag&XCLUDE?  "  set":"" );
+   fprintf (fout,  "\nXLOBLK  = 0010000%s", this.c_cflag&XLOBLK?  "  set":"" );
+   fprintf (fout,  "\nCTSFLOW = 0020000%s", this.c_cflag&CTSFLOW? "  set":"" );
+   fprintf (fout,  "\nRTSFLOW = 0040000%s", this.c_cflag&RTSFLOW? "  set":"" );
+   fprintf (fout,  "\n" );
+E 4
+I 4
+   printf ("\nCS5     = 0      %s",(this.c_cflag&CSIZE)==CS5?    "  set":"" );
+   printf ("\nCS6     = 0000020%s",(this.c_cflag&CSIZE)==CS6?    "  set":"" );
+   printf ("\nCS7     = 0000040%s",(this.c_cflag&CSIZE)==CS7?    "  set":"" );
+   printf ("\nCS8     = 0000060%s",(this.c_cflag&CSIZE)==CS8?    "  set":"" );
+   printf ("\nCSTOPB  = 0000100%s", this.c_cflag&CSTOPB?  "  set":"" );
+   printf ("\nCREAD   = 0000200%s", this.c_cflag&CREAD?   "  set":"" );
+   printf ("\nPARENB  = 0000400%s", this.c_cflag&PARENB?  "  set":"" );
+   printf ("\nPARODD  = 0001000%s", this.c_cflag&PARODD?  "  set":"" );
+   printf ("\nHUPCL   = 0002000%s", this.c_cflag&HUPCL?   "  set":"" );
+   printf ("\nCLOCAL  = 0004000%s", this.c_cflag&CLOCAL?  "  set":"" );
+   printf ("\nRCV1EN  = 0010000%s", this.c_cflag&RCV1EN?  "  set":"" );
+   printf ("\nXMT1EN  = 0020000%s", this.c_cflag&XMT1EN?  "  set":"" );
+   printf ("\nLOBLK   = 0040000%s", this.c_cflag&LOBLK?   "  set":"" );
+   printf ("\nXCLUDE  = 0100000%s", this.c_cflag&XCLUDE?  "  set":"" );
+   printf ("\nXLOBLK  = 0010000%s", this.c_cflag&XLOBLK?  "  set":"" );
+   printf ("\nCTSFLOW = 0020000%s", this.c_cflag&CTSFLOW? "  set":"" );
+   printf ("\nRTSFLOW = 0040000%s", this.c_cflag&RTSFLOW? "  set":"" );
+   printf ("\n" );
+E 4
+E 3
+E 2
+
+D 2
+   printf (  "\n***  line discipline modes  ***" );
+   printf (  "\n.c_lflag  = %7o (octal)", this.c_lflag );
+   printf (  "\nISIG      = 0000001%s", this.c_lflag&ISIG?   "  set":"" );
+   printf (  "\nICANON    = 0000002%s", this.c_lflag&ICANON? "  set":"" );
+   printf (  "\nXCASE     = 0000004%s", this.c_lflag&XCASE?  "  set":"" );
+   printf (  "\nECHO      = 0000010%s", this.c_lflag&ECHO?   "  set":"" );
+   printf (  "\nECHOE     = 0000020%s", this.c_lflag&ECHOE?  "  set":"" );
+   printf (  "\nECHOK     = 0000040%s", this.c_lflag&ECHOK?  "  set":"" );
+   printf (  "\nECHONL    = 0000100%s", this.c_lflag&ECHONL? "  set":"" );
+   printf (  "\nNOFLSH    = 0000200%s", this.c_lflag&NOFLSH? "  set":"" );
+   printf (  "\n" );
+E 2
+I 2
+D 3
+   printf (fpout,  "\n***  line discipline modes  ***" );
+   printf (fpout,  "\n.c_lflag  = %7o (octal)", this.c_lflag );
+   printf (fpout,  "\nISIG      = 0000001%s", this.c_lflag&ISIG?   "  set":"" );
+   printf (fpout,  "\nICANON    = 0000002%s", this.c_lflag&ICANON? "  set":"" );
+   printf (fpout,  "\nXCASE     = 0000004%s", this.c_lflag&XCASE?  "  set":"" );
+   printf (fpout,  "\nECHO      = 0000010%s", this.c_lflag&ECHO?   "  set":"" );
+   printf (fpout,  "\nECHOE     = 0000020%s", this.c_lflag&ECHOE?  "  set":"" );
+   printf (fpout,  "\nECHOK     = 0000040%s", this.c_lflag&ECHOK?  "  set":"" );
+   printf (fpout,  "\nECHONL    = 0000100%s", this.c_lflag&ECHONL? "  set":"" );
+   printf (fpout,  "\nNOFLSH    = 0000200%s", this.c_lflag&NOFLSH? "  set":"" );
+   printf (fpout,  "\n" );
+E 3
+I 3
+D 4
+   fprintf (fout,  "\n***  line discipline modes  ***" );
+   fprintf (fout,  "\n.c_lflag  = %7o (octal)", this.c_lflag );
+   fprintf (fout,  "\nISIG      = 0000001%s", this.c_lflag&ISIG?   "  set":"" );
+   fprintf (fout,  "\nICANON    = 0000002%s", this.c_lflag&ICANON? "  set":"" );
+   fprintf (fout,  "\nXCASE     = 0000004%s", this.c_lflag&XCASE?  "  set":"" );
+   fprintf (fout,  "\nECHO      = 0000010%s", this.c_lflag&ECHO?   "  set":"" );
+   fprintf (fout,  "\nECHOE     = 0000020%s", this.c_lflag&ECHOE?  "  set":"" );
+   fprintf (fout,  "\nECHOK     = 0000040%s", this.c_lflag&ECHOK?  "  set":"" );
+   fprintf (fout,  "\nECHONL    = 0000100%s", this.c_lflag&ECHONL? "  set":"" );
+   fprintf (fout,  "\nNOFLSH    = 0000200%s", this.c_lflag&NOFLSH? "  set":"" );
+   fprintf (fout,  "\n" );
+E 4
+I 4
+   printf ("\n***  line discipline modes  ***" );
+   printf ("\n.c_lflag  = %7o (octal)", this.c_lflag );
+   printf ("\nISIG      = 0000001%s", this.c_lflag&ISIG?   "  set":"" );
+   printf ("\nICANON    = 0000002%s", this.c_lflag&ICANON? "  set":"" );
+   printf ("\nXCASE     = 0000004%s", this.c_lflag&XCASE?  "  set":"" );
+   printf ("\nECHO      = 0000010%s", this.c_lflag&ECHO?   "  set":"" );
+   printf ("\nECHOE     = 0000020%s", this.c_lflag&ECHOE?  "  set":"" );
+   printf ("\nECHOK     = 0000040%s", this.c_lflag&ECHOK?  "  set":"" );
+   printf ("\nECHONL    = 0000100%s", this.c_lflag&ECHONL? "  set":"" );
+   printf ("\nNOFLSH    = 0000200%s", this.c_lflag&NOFLSH? "  set":"" );
+   printf ("\n" );
+E 4
+E 3
+E 2
+
+D 2
+   fflush(stdout);
+   printf (  "\n***  line discipline  ***" );
+   printf (  "\n.c_line = %x", this.c_line );
+   printf (  "\n" );
+E 2
+I 2
+D 3
+   printf (fpout,  "\n***  line discipline  ***" );
+   printf (fpout,  "\n.c_line = %x", this.c_line );
+   printf (fpout,  "\n" );
+E 3
+I 3
+D 4
+   fprintf (fout,  "\n***  line discipline  ***" );
+   fprintf (fout,  "\n.c_line = %x", this.c_line );
+   fprintf (fout,  "\n" );
+E 4
+I 4
+   printf ("\n***  line discipline  ***" );
+   printf ("\n.c_line = %x", this.c_line );
+   printf ("\n" );
+E 4
+E 3
+E 2
+   
+D 2
+   printf (  "\n***  control characters  ***" );
+E 2
+I 2
+D 3
+   printf (fpout,  "\n***  control characters  ***" );
+E 3
+I 3
+D 4
+   fprintf (fout,  "\n***  control characters  ***" );
+E 4
+I 4
+   printf ("\n***  control characters  ***" );
+E 4
+E 3
+E 2
+   for  ( idx = 0;  idx < NCC;  idx++ )  {
+D 2
+      printf (  "\n.c_cc[%s] = %s",
+E 2
+I 2
+D 3
+      printf (fpout,  "\n.c_cc[%s] = %s",
+E 3
+I 3
+D 4
+      fprintf (fout,  "\n.c_cc[%s] = %s",
+E 4
+I 4
+      printf ("\n.c_cc[%s] = %s",
+E 4
+E 3
+E 2
+               s_VInterpret ( idx ),
+               s_CInterpret ( this.c_cc[idx] ) );
+   }
+D 2
+   printf (  "\n" );
+E 2
+I 2
+D 3
+   printf (fpout,  "\n" );
+E 2
+   fflush(stdout);
+E 3
+I 3
+D 4
+   fprintf (fout,  "\n" );
+E 4
+I 4
+   printf ("\n" );
+   fflush(fout);
+E 4
+E 3
+}
+
+
+E 1

@@ -1,0 +1,229 @@
+ #***********************************************************************
+ #
+ #    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ #
+ #-----------------------------------------------------------------------
+ #
+ #     Project:  CMNDLL, Common DLL for Werner Apps
+ #
+ #      Module:  makefile
+ #
+ #   Author(s):  Bryan A. Woodruff (baw)
+ #               Charles E. Kindel, Jr. (cek)
+ #
+ #      System:  Microsoft Windows 3.0, MS-DOS 5.0, Compiled with Microsoft  
+ #               C 6.00A and Microsoft MASM 5.1.                             
+ #                                                                           
+ #                                                                           
+ #     Remarks:  This make file was written to work with Microsoft NMK 1.1   
+ #                                                                           
+ #      Notes about how this makefile is setup:                              
+ #                                                                           
+ #                                                                           
+ #      The output from all compiles is directed to files in the source      
+ #      directory with the extension .err.  This allows Brief to automatically
+ #      take you to the lines with errors (use ^N and ^P).                   
+ #                                                                           
+ #      Each segment name (-NT switch) is the name of the module             
+ #                                                                           
+ #      Other output is directed to the $(OUTPUT) port, this allows you to run     
+ #      the compile in a minimized DOS window.                               
+ #                                                                           
+ #      The directory strucuture is set up like this:                        
+ #                                                                           
+ #       CMNDLL--+            Contains makefile, version info, final exe, lnk
+ #               |                                                           
+ #               INC--        Contains all header files                      
+ #               |                                                           
+ #               OBJ--        Contains all resulting object files            
+ #               |                                                           
+ #               RES--        Contains all resources (such as RES, ICO, etc..
+ #               |                                                           
+ #               SRC--        Contains all C source code modules
+ #
+ #               I86X--       Contains all MASM code modules 
+ #               |
+ #               TEST--       Contains test program
+ #
+ #   Revisions:  
+ #     1.00.000 1/8/91 Initial version (cek)                                 
+ #
+ #
+ #***********************************************************************
+
+#all: CMNDLL.DLL
+
+#
+# NOTE:  Set the following macro, DEBUG, to TRUE to build a debbuging
+#        version.
+#
+DEBUG=TRUE
+
+#BUMPVER=bumpver CMNDLL.VER
+
+OUTPUT=con
+
+#
+# Set up for either a debugging version of release version
+#
+!IFDEF DEBUG
+
+CLOPTS=-AMw -c -Gw -Od -W3 -Zpei -DDEBUG
+LINKOPTS=/NOE/NOD/CO
+#MYOBJ = OBJ\DEBUG\  
+
+!ELSE
+
+CLOPTS=-AMw -c -Gsw -Os -W3 -Zpe
+LINKOPTS=/NOE/NOD
+#MYOBJ = OBJ\REL\ 
+
+!ENDIF
+
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = INC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYMASM = I86X\  
+
+OBJECTS =      $(MYOBJ)CMNDLL.OBJ\
+               $(MYOBJ)WEP.OBJ\
+               $(MYOBJ)LIBENTRY.OBJ\
+               $(MYOBJ)SELPRN.OBJ\
+               $(MYOBJ)SHADOW.OBJ\
+               $(MYOBJ)ABOUT.OBJ\
+               $(MYOBJ)FILEOPEN.OBJ\
+               $(MYOBJ)VERSION.OBJ\
+               $(MYOBJ)STATUS.OBJ\
+               $(MYOBJ)BMPBTN.OBJ\
+               $(MYOBJ)STRING.OBJ\
+               $(MYOBJ)TIME.OBJ\
+               $(MYOBJ)DLGHELP.OBJ\
+               $(MYOBJ)FONT.OBJ\
+               $(MYOBJ)COLOR.OBJ\
+               $(MYOBJ)LED.OBJ
+
+RESOURCES =    $(MYRES)CMNDLL.DLG\
+               $(MYRES)CMNDLL.ICO\
+               $(MYRES)CMNDLL.STR\
+               $(MYRES)CMNDLL.RC
+ 
+#
+#  Main file
+#
+CMNDLL.DLL:     $(OBJECTS)\
+                CMNDLL.DEF\
+                $(MYRES)CMNDLL.RES
+    @echo Linkng... >$(OUTPUT)
+    link $(LINKOPTS) @CMNDLL.LNK 
+    rc -v $(MYRES)CMNDLL.RES CMNDLL.DLL
+    implib CMNDLL.lIB CMNDLL.DEF
+    $(BUMPVER)
+    copy CMNDLL.DLL TEST
+    copy CMNDLL.lIB TEST
+    copy INC\*.H TEST
+
+#
+# DO NOT UNCOMMENT THIS!  IF WERE USING WRT WE DONT NEED THIS!!!!!
+#
+$(MYRES)CMNDLL.RES: $(RESOURCES) $(MYINC)CMNDLLD.H 
+    @echo Compiling resources in CMNDLL.RC... > $(OUTPUT)
+    rc -r -IINC;RES $(MYRES)CMNDLL.RC
+
+$(MYOBJ)LIBENTRY.OBJ: $(MYMASM)LIBENTRY.asm
+    @echo Assembling $(MYMASM)LIBENTRY.asm... >$(OUTPUT)
+    masm -Mx $(MYMASM)LIBENTRY, $(MYOBJ)LIBENTRY;
+
+$(MYOBJ)CMNDLL.OBJ:       $(MYINC)CMNDLL.H $(MYSRC)CMNDLL.C
+    @echo Compiling CMNDLL.C... >$(OUTPUT)
+    cl $(CLOPTS) -Fo$(MYOBJ)CMNDLL.OBJ -NTCMNDLL $(MYSRC)CMNDLL.C > $(MYSRC)CMNDLL.ERR
+    @type $(MYSRC)CMNDLL.ERR > $(OUTPUT)
+
+$(MYOBJ)WEP.OBJ:       $(MYSRC)WEP.C
+    @echo Compiling WEP.C... >$(OUTPUT)
+    cl $(CLOPTS) -Fo$(MYOBJ)WEP.OBJ -NTWEP $(MYSRC)WEP.C > $(MYSRC)WEP.ERR
+    @type $(MYSRC)WEP.ERR > $(OUTPUT)
+
+$(MYOBJ)SELPRN.OBJ: $(MYSRC)SELPRN.C
+    @echo Compiling SELPRN.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTSELPRN $(MYSRC)SELPRN.C > $(MYSRC)SELPRN.ERR
+    @type $(MYSRC)SELPRN.ERR > $(OUTPUT)
+
+$(MYOBJ)FILEOPEN.OBJ: $(MYSRC)FILEOPEN.C
+    @echo Compiling FILEOPEN.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTFILEOPEN $(MYSRC)FILEOPEN.C > $(MYSRC)FILEOPEN.ERR
+    @type $(MYSRC)FILEOPEN.ERR > $(OUTPUT)
+
+#$(MYOBJ)DEBUG.OBJ:   $(MYSRC)DEBUG.C
+#    @echo Compiling DEBUG.C... >$(OUTPUT)
+#    $(CC) -Fo$*.OBJ $(CLOPTS) -NTDEBUG $(MYSRC)DEBUG.C > $(MYSRC)DEBUG.ERR
+#    @type $(MYSRC)DEBUG.ERR > $(OUTPUT)
+
+$(MYOBJ)SHADOW.OBJ:   $(MYSRC)SHADOW.C
+    @echo Compiling SHADOW.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTSHADOW $(MYSRC)SHADOW.C > $(MYSRC)SHADOW.ERR
+    @type $(MYSRC)SHADOW.ERR > $(OUTPUT)
+
+$(MYOBJ)ABOUT.OBJ:   $(MYSRC)ABOUT.C
+    @echo Compiling ABOUT.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTABOUT $(MYSRC)ABOUT.C > $(MYSRC)ABOUT.ERR
+    @type $(MYSRC)ABOUT.ERR > $(OUTPUT)
+
+$(MYOBJ)VERSION.OBJ:   $(MYSRC)VERSION.C CMNDLL.VER
+    @echo Compiling VERSION.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTVERSION $(MYSRC)VERSION.C > $(MYSRC)VERSION.ERR
+    @type $(MYSRC)VERSION.ERR > $(OUTPUT)
+
+$(MYOBJ)STATUS.OBJ:   $(MYSRC)STATUS.C
+    @echo Compiling STATUS.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTSTATUS $(MYSRC)STATUS.C > $(MYSRC)STATUS.ERR
+    @type $(MYSRC)STATUS.ERR > $(OUTPUT)
+
+$(MYOBJ)msgline.OBJ:   $(MYSRC)msgline.C
+    @echo Compiling msgline.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTMSGLINE $(MYSRC)msgline.C > $(MYSRC)msgline.ERR
+    @type $(MYSRC)msgline.ERR > $(OUTPUT)
+
+$(MYOBJ)BMPBTN.OBJ:   $(MYSRC)BMPBTN.C
+    @echo Compiling BMPBTN.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTBMPBTN $(MYSRC)BMPBTN.C > $(MYSRC)BMPBTN.ERR
+    @type $(MYSRC)BMPBTN.ERR > $(OUTPUT)
+
+$(MYOBJ)STRING.OBJ:   $(MYSRC)STRING.C
+    @echo Compiling STRING.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTSTRING $(MYSRC)STRING.C > $(MYSRC)STRING.ERR
+    @type $(MYSRC)STRING.ERR > $(OUTPUT)
+
+$(MYOBJ)TIME.OBJ:   $(MYSRC)TIME.C
+    @echo Compiling TIME.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTTIME $(MYSRC)TIME.C > $(MYSRC)TIME.ERR
+    @type $(MYSRC)TIME.ERR > $(OUTPUT)
+
+$(MYOBJ)DLGHELP.OBJ:   $(MYSRC)DLGHELP.C
+    @echo Compiling DLGHELP.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTDLGHELP $(MYSRC)DLGHELP.C > $(MYSRC)DLGHELP.ERR
+    @type $(MYSRC)DLGHELP.ERR > $(OUTPUT)
+
+$(MYOBJ)FONT.OBJ:   $(MYSRC)FONT.C
+    @echo Compiling FONT.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTFONT $(MYSRC)FONT.C > $(MYSRC)FONT.ERR
+    @type $(MYSRC)FONT.ERR > $(OUTPUT)
+
+$(MYOBJ)COLOR.OBJ:   $(MYSRC)COLOR.C
+    @echo Compiling COLOR.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTCOLOR $(MYSRC)COLOR.C > $(MYSRC)COLOR.ERR
+    @type $(MYSRC)COLOR.ERR > $(OUTPUT)
+
+$(MYOBJ)LED.OBJ:   $(MYSRC)LED.C
+    @echo Compiling LED.C... >$(OUTPUT)
+    $(CC) -Fo$*.OBJ $(CLOPTS) -NTLED $(MYSRC)LED.C > $(MYSRC)LED.ERR
+    @type $(MYSRC)LED.ERR > $(OUTPUT)
+
+#***********************************************************************
+# End of File: makefile
+#***********************************************************************
+

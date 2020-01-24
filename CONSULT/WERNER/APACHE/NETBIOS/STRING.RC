@@ -1,0 +1,44 @@
+/************************************************************************
+ *
+ *    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  APACHE, Apache For Windows
+ *
+ *      Module:  string.rc
+ *
+ *     Remarks:  
+ *      This file contains the stringtable for NetBIOS.
+ *      The IDS_* defines are defined in RESOURCE.H.
+ *
+ *   Revisions:  
+ *
+ ***********************************************************************/
+
+STRINGTABLE
+BEGIN
+   IDS_SETTINGS_LOCALNAME    "LocalName"
+   IDS_SETTINGS_REMOTENAME   "RemoteName"
+   IDS_SETTINGS_SERVERMODE   "ServerMode"
+   IDS_SETTINGS_BLANKPAD     "BlankPadding"
+   IDS_SETTINGS_RXTIMEOUT    "RxTimeOut"
+   IDS_SETTINGS_TXTIMEOUT    "TxTimeOut"
+   IDS_SETTINGS_EXTENSION    "Extension"
+
+   IDS_DEFAULT_LOCALNAME     "Local"
+   IDS_DEFAULT_REMOTENAME    "Remote"
+   IDS_DEFAULT_SERVERMODE    "False"
+   IDS_DEFAULT_BLANKPAD      "False"
+   IDS_DEFAULT_RXTIMEOUT     "30"
+   IDS_DEFAULT_TXTIMEOUT     "30"
+   IDS_DEFAULT_EXTENSION     "1"
+END
+
+
+/************************************************************************
+ * End of File: string.rc
+ ***********************************************************************/
+
+
+

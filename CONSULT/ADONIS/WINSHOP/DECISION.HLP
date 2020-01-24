@@ -1,0 +1,9 @@
+This dialog appears when Window Shopper is unable to locate a needed thumbnail file in either your data directory or your thumbnail directory.  You may change your thumbnail directory so Shopper can locate the appropriate thumbnail file, or you may cancel the view operation.  
+
+If your thumbnail directory is "A:\Thumb" or "B:\Thumb" then you will need to place the Window Shopper floppy containing the current Publisher's thumbnails in the floppy drive.  If a Publisher's thumbnails are spread over more than one floppy disk, you may need to repeat this operation.
+
+If your thumbnail directory is a directory on your hard drive (usually [Drive]:\..PATH..\SHOPPER\THUMB) then Window Shopper has already looked in that directory and was unable to find the needed thumbnails.  Select the "Thumbnail Directory" option, select your floppy drive and place the correct thumbnail disk in the drive (see above).  Or, use the File Manager or DOS to copy the thumbnails from the floppy into your alternate directory and repeat the view or search operation.
+
+The easiest way to be certain you have the latest thumbnails is to Logon on to the Adonis server and repeat the current view or search operation.
+
+If you choose to cancel the view operation, you will be returned to the previous view.  If you are currently in search mode the search will continue, skipping the missing thumbnail.$

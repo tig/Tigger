@@ -1,0 +1,584 @@
+h34817
+s 00014/00007/00274
+d D 1.5 91/12/02 16:30:25 bbs 5 4
+c 
+e
+s 00071/00073/00210
+d D 1.4 91/06/17 15:33:00 bbs 4 3
+c 
+e
+s 00000/00000/00283
+d D 1.3 90/11/07 12:17:55 bbs 3 2
+c 
+e
+s 00129/00023/00154
+d D 1.2 90/10/20 23:17:10 bbs 2 1
+c 
+e
+s 00177/00000/00000
+d D 1.1 90/10/19 18:11:18 bbs 1 0
+c date and time created 90/10/19 18:11:18 by bbs
+e
+u
+U
+t
+T
+I 2
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <sys/types.h>
+E 2
+I 1
+#include <sys/dir.h>
+#include "dirtree.h"
+I 2
+#include <memory.h>
+E 2
+#include "stdlib.h"
+I 4
+#include "database.h"
+#include "util.h"
+E 4
+
+D 2
+static LONG 
+E 2
+I 2
+D 4
+static FILENODE *
+GetFileNodeFromTree(FILENODE *DirTree,DWORD lNewFile);
+static DWORD 
+E 2
+GetFileNum(char *szFileName);
+static char *
+GetFileExt(char *szFileName);
+static BOOL
+IsRightFormat(char *szFileName);
+D 2
+static WORD
+AddFileToTree(WORD wChildPtr, LONG lNewFile, char *Ext);
+E 2
+I 2
+static int
+AddFileToTree(DWORD lNewFile, char *Ext);
+E 4
+I 4
+static FILENODE * GetFileNodeFromTree(FILENODE *DirTree,DWORD lNewFile);
+static DWORD GetFileNum(char *szFileName);
+static char * GetFileExt(char *szFileName);
+BOOL IsRightFormat(char *szFileName);
+static int AddFileToTree(DWORD lNewFile, char *Ext);
+D 5
+static unsigned char newLRC(char *sIn);
+E 5
+I 5
+WORD newLRC(char *sIn);
+E 5
+E 4
+E 2
+
+I 4
+extern WORD wDataFileCount;	// tracks number of database files
+
+extern DWORD dwDataFileSum; // LRC sum of all database filenames to compare 
+							//against local database
+
+E 4
+/*************************************************************\
+ ** MakeFileTree
+ **
+ ** ARGUMENTS:
+ **  char *szDirName
+ **
+ ** DESCRIPTION:
+ **  All all the files in szDirName to binary search tree.  Return
+ **  pointer to tree.  Don't include files that don't have an eight-digit
+ **  numerical basename.
+ **
+ ** ASSUMES:
+ **
+ ** MODIFIES:
+ **
+ ** RETURNS:
+ **  Pointer to tree or NULL if failed.
+ **
+ ** HISTORY:   Doug Kent  October 19, 1990 (written)
+\*************************************************************/
+static FILENODE *TreeTop=NULL;
+D 2
+static int TreeSize = 0;
+E 2
+I 2
+static int TreeSize;
+E 2
+
+FILENODE *
+MakeFileTree(char *szDirName)
+{
+    char *p;
+
+    struct directx
+    {
+        ino_t d_ino;
+        char d_name[DIRSIZ+1];
+    } dlink;
+    int fd, nread;
+    char *dname;
+    int nRetval=OK;
+I 4
+	long lFileNum;
+E 4
+
+	if ((fd = open(szDirName,0)) == -1)
+	{
+D 4
+		printf("Error opening ./\n");
+E 4
+I 4
+		printf("Error opening %s\n",szDirName);
+E 4
+		return NULL;
+	}
+    
+    /* allocate the top of the tree, a dummy root */
+    if ((TreeTop = (FILENODE *)malloc(sizeof(FILENODE))) == NULL)
+    {
+        printf("Unable to make directory tree (insufficient memory)\n");
+        END(FAIL)
+    }
+
+    memset(TreeTop,0,sizeof(FILENODE));
+D 2
+    TreeSize = 0;
+E 2
+I 2
+    TreeSize = 1;
+E 2
+
+I 4
+	wDataFileCount = 0;
+E 4
+    dlink.d_name[DIRSIZ] = '\0';
+    while ((nread = read(fd, &dlink, sizeof(struct direct))) == 
+                               (sizeof(struct direct)))
+    {
+        if (dlink.d_ino)
+        {
+            /* is name in proper format for inclusion? */
+            if (IsRightFormat(dlink.d_name))
+I 2
+			{
+I 4
+				lFileNum = GetFileNum(dlink.d_name);
+E 4
+E 2
+                /* it is so add to tree */
+D 2
+                if (AddFileToTree(TreeTop->r,GetFileNum(dlink.d_name),GetFileExt(dlink.d_name)) == FAIL)
+E 2
+I 2
+D 4
+				if (AddFileToTree(GetFileNum(dlink.d_name),
+								  GetFileExt(dlink.d_name)) == FAIL)
+E 4
+I 4
+				if (AddFileToTree(lFileNum, GetFileExt(dlink.d_name)) == FAIL)
+E 4
+E 2
+                    END(FAIL)
+I 4
+
+				//add LRC vaue of filename to global
+				if (NOT (bIS_THUMBNAIL_FILE(lFileNum) OR 
+						 bIS_THUMBNAIL_INFO_FILE(lFileNum) OR
+						 bIS_LRU_FILE(lFileNum)))
+				{
+					dwDataFileSum += (DWORD) newLRC(dlink.d_name);
+					++wDataFileCount;
+				}
+E 4
+I 2
+			}
+E 2
+        }
+        dlink.d_name[DIRSIZ] = '\0';
+    }
+
+    end:
+
+    if (nRetval != OK)
+    {
+        if (TreeTop)
+            free(TreeTop);
+        TreeTop = NULL;
+    }
+
+    close(fd);
+    return TreeTop;
+}
+
+
+D 2
+WORD
+AddFileToTree(WORD wChildPtr, LONG lNewFile, char *Ext)
+E 2
+I 2
+int
+AddFileToTree(DWORD lNewFile, char *Ext)
+E 2
+{
+D 2
+    LONG cond;
+E 2
+I 2
+D 4
+#if 1
+E 4
+    int nRetval=OK;
+    int start, end, x;
+
+I 4
+#if 0
+	WORD wExt;
+	WORD wNum;
+#endif
+
+E 4
+	if ((TreeTop = (FILENODE *)realloc(TreeTop,
+				((TreeSize+1) * sizeof(FILENODE)))) == NULL)
+	{
+		printf("Unable to make directory tree (insufficient memory)\n");
+		return FAIL;
+	}
+
+    /* enough, now add the sucker */
+    start = 0;              // first item in list
+    end = TreeSize-1;  // last  item in list
+
+    //AuxPrint("(BEFORE) end: (%x)=>0x%lx, start: (%x)=>0x%lx, adding: 0x%lx",
+        //end,pUptodate[end],start,pUptodate[start],lFileNum);
+
+    while ( end >= start )
+    {
+        x = (start + end) >> 1;
+        if ( lNewFile < TreeTop[x].basename )
+            end = x - 1;
+        else
+            start = x + 1;
+    }
+
+    /* now insert after end, before start */
+    //AuxPrint("(AFTER)  end: (%x)=>0x%lx, start: (%x)=>0x%lx, adding: 0x%lx",
+        //end,pUptodate[end],start,pUptodate[start],lFileNum);
+	#if 1
+	/* can't link memmove, so... (dammit) */
+	{
+		FILENODE *pprev = TreeTop + TreeSize - 1,
+				 *pnext = pprev + 1;
+		int count = TreeSize - end;
+		while(count--)
+			*pnext-- = *pprev--;
+	}
+	#else
+    memmove(TreeTop + start,TreeTop + end,sizeof(FILENODE) * (TreeSize - end));
+	#endif
+
+    TreeTop[start].basename = lNewFile;
+    strcpy(TreeTop[start].extension,Ext);
+    ++TreeSize;
+D 4
+	return OK;
+E 4
+
+D 4
+#else
+    DWORD cond;
+E 2
+    WORD nRetval;
+    FILENODE *p;
+
+    /* if at the bottom of subtree or making the root */
+    if (wChildPtr == 0)
+    {
+D 2
+        if ((TreeTop = (FILENODE *)realloc(TreeTop,++TreeSize * sizeof(FILENODE))) == NULL)
+E 2
+I 2
+        if ((TreeTop = (FILENODE *)realloc(TreeTop,
+					(++TreeSize * sizeof(FILENODE)))) == NULL)
+E 2
+        {
+            printf("Unable to make directory tree (insufficient memory)\n");
+            return FAIL;
+        }
+D 2
+        p = TreeTop + TreeSize;  /* add a new node to the end of the LRU table  */
+E 2
+I 2
+        p = TreeTop + TreeSize - 1;  /* add a new node to the end */
+E 2
+        p->basename = lNewFile;    
+        strcpy(p->extension,Ext);
+        p->l=p->r=0;              
+I 2
+		printf("adding %lx.%s\n",lNewFile,Ext);
+E 2
+    }
+D 2
+    else  /* If the node we're adding is already in the tree, then
+             we simply 'touch' it by moving it to the end of the array 
+             space and updating the affected pointers in the tree.  */
+E 2
+I 2
+    else 
+E 2
+    {
+        p = TreeTop + wChildPtr;  /* access the node */
+        if ((cond = (lNewFile - p->basename)) == 0 )
+        {
+            printf("Error, duplicate basenames.\n");
+            END(FAIL)
+        }
+        else if (cond < 0) /* new lib is smaller, go left subtree */
+D 2
+            nRetval = p->l = AddFileToTree(p->l,lNewFile);
+E 2
+I 2
+            nRetval = p->l = AddFileToTree(p->l,lNewFile,Ext);
+E 2
+        else   /* new lib is bigger, go right subtree */
+D 2
+            nRetval = p->r = AddFileToTree(p->r,lNewFile);
+E 2
+I 2
+            nRetval = p->r = AddFileToTree(p->r,lNewFile,Ext);
+E 2
+    }
+
+I 2
+    end:
+E 2
+    if (nRetval == FAIL)
+       return FAIL;
+    else
+D 2
+        return ((WORD) (p - TreeTop));  /* returns the index of the current node  */
+E 2
+I 2
+		/* returns the index of the current node  */
+        return ((WORD) (p - TreeTop));
+#endif
+E 4
+I 4
+	return OK;
+E 4
+E 2
+}
+
+BOOL
+IsRightFormat(char *szFileName)
+D 4
+/** convert file name to it's basename long value **/
+E 4
+I 4
+/* this routine isn't perfect in weeding out bad formats, but its good enuf */
+E 4
+{
+D 4
+    char tmp[13],*p;
+E 4
+I 4
+	char *p = szFileName + 7;
+E 4
+D 2
+    count = 8;
+E 2
+
+D 4
+    strcpy(tmp,szFileName);
+    if (p = strchr(tmp,'.'))
+        *p = '\0';
+E 4
+I 4
+    while (p >= szFileName)
+        if (!isxdigit(*p)) return FALSE;
+        else --p;
+E 4
+
+D 2
+    if (strlen(tmp) != 8)
+E 2
+I 2
+D 4
+     p = tmp;
+    if (strlen(p) != 8)
+E 2
+        return FALSE;
+
+D 2
+    while (*tmp)
+        if (!isxdigit(*tmp))
+E 2
+I 2
+    while (*p)
+        if (!isxdigit(*p))
+E 2
+            return FALSE;
+D 2
+        else ++tmp;
+E 2
+I 2
+        else ++p;
+E 2
+
+E 4
+    return TRUE;
+}
+
+D 2
+LONG
+E 2
+I 2
+DWORD
+E 2
+GetFileNum(char *szFileName)
+/** convert file name to it's basename long value **/
+{
+    char tmp[13],*p;
+    strcpy(tmp,szFileName);
+    if (p = strchr(tmp,'.'))
+        *p = '\0';
+    return (strtol(tmp,NULL,16));
+}
+
+char *
+GetFileExt(char *szFileName)
+{
+    return (strchr(szFileName,'.') + 1);
+}
+
+I 2
+int
+GetExtFromTree(FILENODE *DirTree, char *szFileName)
+/* assume extension is removed */
+{
+	int nRetval=OK;
+	FILENODE *FileNode;
+I 4
+	DWORD lFileNum = strtol(szFileName,NULL,16);
+E 4
+E 2
+
+I 2
+D 4
+    //printf("Looking for:  %lx\n", strtol(szFileName,NULL,16));
+	if ((FileNode = GetFileNodeFromTree(DirTree,
+							strtol(szFileName,NULL,16))) == NULL)
+E 4
+I 4
+    //printf("Looking for:  %lx\n",lFileNum); 
+	if (lFileNum == 0L)
+E 4
+		END(FAIL)
+I 4
+
+	if ((FileNode = GetFileNodeFromTree(DirTree,lFileNum)) == NULL)
+		END(FAIL)
+E 4
+    else
+	{
+		strcat(szFileName,".");
+		strcat(szFileName,FileNode->extension);
+		END(OK)
+	}
+	end:
+	//printf("%s  ",nRetval == OK ? "Found":"Not Found\n");
+	//if (nRetval == OK)
+		//printf("%s\n",szFileName);
+	return nRetval;
+}
+
+FILENODE *
+GetFileNodeFromTree(FILENODE *DirTree, DWORD lFileNum)
+{
+    int start,end,x;
+
+    start = 0;         // first item in list
+    end = TreeSize-1;  // last  item in list
+
+    while ( end >= start )
+    {
+        x = (start + end) >> 1;
+        if ( lFileNum < DirTree[x].basename )
+            end = x - 1;
+        else
+            start = x + 1;
+        if ( lFileNum == DirTree[x].basename )
+			return (&DirTree[x]);
+    }
+
+    return NULL;
+I 4
+}
+
+
+/*
+   This function calculates the LRC value for a given string.  The function
+   has the side effect of setting the eighth (parity) bit of each character
+   in sIn to zero.  For this implemnetation we will skip leading zeros and
+   periods in filenames ( if the filename has more than one significant digit).
+*/
+
+D 5
+unsigned char newLRC(char *sIn)
+E 5
+I 5
+WORD newLRC(char *sIn)
+E 5
+{
+D 5
+    unsigned char temp = 0;
+	char* pTmp = sIn;
+E 5
+I 5
+    WORD temp = 0;
+E 5
+
+	// skip leading zeros
+	while (*sIn == '0')
+		++sIn;
+
+   //get started, we assume sIn is still longer than 2 chars
+D 5
+   temp = (*sIn++ ^ *sIn++);
+E 5
+I 5
+   temp = (sIn[0] ^ sIn[1]);
+   sIn++;
+   sIn++;
+E 5
+
+   // rest of string
+   while (*sIn)
+D 5
+		   temp ^= *sIn++;
+
+E 5
+I 5
+   {
+	   temp ^= *sIn;
+	   sIn++;
+   }	
+E 5
+   return temp;
+E 4
+}
+I 5
+
+
+
+
+E 5
+E 2
+E 1

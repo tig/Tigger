@@ -1,0 +1,76 @@
+NAME    Shopper
+
+DESCRIPTION 'Bulletin Board Utility for Window Shopping'
+
+STUB 'WINSTUB.EXE'
+
+EXETYPE WINDOWS
+
+CODE    MOVEABLE
+DATA    MOVEABLE MULTIPLE
+
+HEAPSIZE    4096        
+STACKSIZE   8162
+
+SEGMENTS
+    _TEXT       PRELOAD     MOVEABLE        NONDISCARDABLE
+	_INIT		PRELOAD  	MOVEABLE		NONDISCARDABLE
+    NOGATE      PRELOAD     MOVEABLE        NONDISCARDABLE
+	_RES		LOADONCALL 	MOVEABLE        DISCARDABLE
+	_WSRES		LOADONCALL 	MOVEABLE        DISCARDABLE
+	_CUSTINFO	LOADONCALL 	MOVEABLE        DISCARDABLE
+	_DOWNLOAD 	LOADONCALL	MOVEABLE		DISCARDABLE
+	_ERROR 	    LOADONCALL	MOVEABLE		DISCARDABLE
+	_FILE		LOADONCALL	MOVEABLE		DISCARDABLE
+	_HELP		LOADONCALL	MOVEABLE		DISCARDABLE
+	_INFO		LOADONCALL	MOVEABLE		DISCARDABLE
+	_MISC		LOADONCALL	MOVEABLE		DISCARDABLE
+	_ORDER		LOADONCALL	MOVEABLE		DISCARDABLE
+	_SETTINGS   LOADONCALL  MOVEABLE		DISCARDABLE
+	_VIEWBOX	LOADONCALL  MOVEABLE		DISCARDABLE
+	_COMM    	LOADONCALL  MOVEABLE		DISCARDABLE
+    _LIBMGR     LOADONCALL  MOVEABLE        DISCARDABLE
+    _PREF       LOADONCALL  MOVEABLE        DISCARDABLE
+    _BILLING    LOADONCALL  MOVEABLE        DISCARDABLE
+    _BUSY       LOADONCALL  MOVEABLE        DISCARDABLE
+    _SUBSCR     LOADONCALL  MOVEABLE        DISCARDABLE
+    _SEARCH     LOADONCALL  MOVEABLE        DISCARDABLE
+                 
+EXPORTS                
+	WSViewBoxDlgProc		@1			; viewbox.c   
+	WSDownloadSingleDlgProc	@2			; downloada.c 
+	WSAboutDlgProc			@3
+	WSOrderFormDlgProc		@4			; order.c     
+    WSBillingInfoDlgProc    @5          ; billing.c
+    WSShippingInfoDlgProc   @6          ; info.c
+	WSDownloadOrderDlgProc	@7 			; downloada.c 
+    WSCustomerInfoDlgProc   @8          ; info.c
+	WSLibraryDlgProc   		@9 
+;	WSHelpTopicsDlgProc     @10
+	WSHelpTextDlgProc       @11
+    WSDldInfoDlgProc        @12
+    WSMultiEditSubProc      @13
+    WSCopyrightDlgProc      @14
+;    WSSelectBillingDlgProc  @15          ; billing.c
+    WSNewUserDlgProc        @16
+    ChildKeyProc            @17
+    KeyBoardHook            @18         ; wsinit.c
+    WSVerifyPasswdDlgProc   @19
+    WSCommInfoDlgProc       @20         ; settings.c
+    WSLibManagerDlgProc     @21         ; settings.c
+;    WSLibDriveDlgProc       @22
+;    WSUpdateDBDlgProc       @23         ; pref.c
+    WSChangePasswordDlgProc @24
+;    WSCancelDlgProc         @25
+    WSPasswordEditProc      @26         ; order.c
+    WSTimerDlgProc          @27         ; wsres.c
+    BusyBoxDlgProc          @28         ; busy.c
+    WSDecisionDlgProc       @29         ; MISSINGTHUMB
+    WSSubscriptionDlgProc   @30         ; comm.c
+;    MessageHook             @31         ; wsinit.c
+    EnableWindowProc        @32         ; misc.c
+    WSSearchDlgProc         @33         ; search.c
+    WSStopSearchDlgProc     @34         ; search.c
+    BusyBoxIconDlgProc      @35         ; busy.c
+    WSGetAltDriveDlgProc    @36         ; GETALTDRIVE
+

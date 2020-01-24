@@ -1,0 +1,170 @@
+SESSIONDIRDLG DIALOG 12, 20, 360, 202
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_THICKFRAME
+CAPTION "Session Directory"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_SESSIONDIRSLIDER,  "FL_SLIDER", SLS_ADJUSTSIZE |
+                    SLS_3DLOOK_OUT, 8, 10, 304, 12
+    LISTBOX         IDD_SESSIONDIRLB, 8, 24, 304, 168, LBS_SORT | 
+                    LBS_MULTIPLESEL | LBS_OWNERDRAWFIXED | 
+                    LBS_DISABLENOSCROLL | NOT WS_BORDER | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "&Dial", IDB_DIAL, "FL_BMPBTN", WS_TABSTOP | BS_NOFOCUS,
+                    320, 6, 36, 22
+    CONTROL         "&Connect", IDB_CONNECT, "FL_BMPBTN", WS_TABSTOP | BS_NOFOCUS,
+                    320, 34, 36, 22
+    CONTROL         "&Edit", IDB_EDIT, "FL_BMPBTN", WS_TABSTOP | BS_NOFOCUS,
+                    320, 62, 36, 22
+    CONTROL         "&New", IDB_NEW, "FL_BMPBTN", WS_TABSTOP | BS_NOFOCUS,
+                    320, 90, 36, 22
+    CONTROL         "De&lete", IDB_DELETE, "FL_BMPBTN", WS_TABSTOP | BS_NOFOCUS,
+                    320, 118, 36, 22
+    CONTROL         "&Options", IDB_OPTIONS, "FL_BMPBTN", WS_TABSTOP | BS_NOFOCUS,
+                    320, 146, 36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP |
+                    BS_NOFOCUS | 0x1L, 320, 174, 36, 22
+END
+
+SESSIONDIRENTRYDLG DIALOG 12, 24, 256, 140
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Session Directory Entry - %s"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME1, "Static", SS_GRAYFRAME, 4, 4, 248, 132
+    RTEXT           "&Name:", 0xFFFF, 12, 12, 40, 8
+    EDITTEXT        IDD_NAMEEC, 56, 12, 140, 12, ES_AUTOHSCROLL
+    RTEXT           "N&umber:", 0xFFFF, 12, 28, 40, 8
+    EDITTEXT        IDD_NUMBEREC, 56, 28, 140, 12, ES_AUTOHSCROLL
+    RTEXT           "&Connector:", 0xFFFF, 12, 44, 40, 8
+    COMBOBOX        IDD_CONNECTORCB, 56, 44, 140, 48, CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Setup", IDD_CONNECTORSETUP, 200, 44, 44, 12
+    RTEXT           "&Emulator:", 0xFFFF, 12, 60, 40, 8
+    COMBOBOX        IDD_EMULATORCB, 56, 60, 140, 48, CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Setup", IDD_EMULATORSETUP, 200, 60, 44, 12
+    RTEXT           "&Protocol:", 0xFFFF, 12, 76, 40, 8
+    COMBOBOX        IDD_PROTOCOLCB, 56, 76, 140, 48, CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Mo&dem:", 0xFFFF, 12, 92, 40, 8
+    COMBOBOX        IDD_MODEMCB, 56, 92, 140, 48, CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Setup", IDD_MODEMSETUP, 200, 92, 44, 12
+    CONTROL         "&Ok", IDOK, "FL_BMPBTN", WS_TABSTOP | 0x2000 | 0x1L,
+                    80, 108, 36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000, 
+                    140, 108, 36, 22
+END
+
+SESSIONDIROPTIONSDLG DIALOG 8, 28, 188, 100
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Session Directory Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME1, "Static", SS_GRAYFRAME, 4, 4, 180, 92
+    GROUPBOX        "&Display Options", 0xFFFF, 12, 8, 120, 82
+    CONTROL         "&Name", IDD_OPTION_NAME, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 20, 24, 48, 10
+    CONTROL         "N&umber", IDD_OPTION_NUMBER, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 20, 36, 48, 10
+    CONTROL         "&Connection", IDD_OPTION_CONNECTOR, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 20, 48, 48, 10
+    CONTROL         "&Settings", IDD_OPTION_SETTINGS, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 20, 60, 48, 10
+    CONTROL         "&Last Call", IDD_OPTION_LASTCALL, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 20, 72, 48, 10
+    CONTROL         "&Total Calls", IDD_OPTION_TOTALCALLS, "Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 76, 24, 48, 10
+    CONTROL         "&Emulation", IDD_OPTION_EMULATOR, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 76, 36, 48, 10
+    CONTROL         "&Modem", IDD_OPTION_MODEM, "Button", BS_AUTOCHECKBOX |
+                    WS_TABSTOP, 76, 48. 48, 10
+    CONTROL         "&Protocol", IDD_OPTION_PROTOCOL, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 76, 60, 48, 10
+    CONTROL         "&Ok", IDOK, "FL_BMPBTN", WS_TABSTOP | 0x2000 | 0x1L,
+                    140, 28, 36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000,
+                    140, 56, 36, 22
+END
+
+MODEMSETTINGSDLG DIALOG 8, 20, 304, 154
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Modem Settings - %s"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME1, "Static", SS_GRAYFRAME, 4, 4, 296, 
+                    120
+    RTEXT           "Dial &Prefix:", 0xFFFF, 8, 12, 64, 8
+    EDITTEXT        IDD_DIALPREFIXEC, 76, 10, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Dial &Suffix:", 0xFFFF, 8, 28, 64, 8
+    EDITTEXT        IDD_DIALSUFFIXEC, 76, 26, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Answer &Mode:", 0xFFFF, 8, 44, 64, 8
+    EDITTEXT        IDD_ANSWERMODEEC, 76, 42, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Modem &Init:", 0xFFFF, 8, 60, 64, 8
+    EDITTEXT        IDD_MODEMINITEC, 76, 58, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&Disconnect:", 0xFFFF, 8, 76, 64, 8
+    EDITTEXT        IDD_DISCONNECTEC, 76, 74, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Command O&K:", 0xFFFF, 8, 92, 64, 8
+    EDITTEXT        IDD_COMMANDOKEC, 76, 90, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Command &ERROR:", 0xFFFF, 8, 108, 64, 8
+    EDITTEXT        IDD_COMMANDERROREC, 76, 106, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&Connect:", 0xFFFF, 152, 12, 64, 8
+    EDITTEXT        IDD_CONNECTEC, 220, 10, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&Baud Connect:", 0xFFFF, 152, 28, 64, 8
+    EDITTEXT        IDD_BAUDCONNECTEC, 220, 26, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "AR&Q Connect:", 0xFFFF, 152, 44, 64, 8
+    EDITTEXT        IDD_ARQCONNECTEC, 220, 42, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&No Carrier:", 0xFFFF, 152, 60, 64, 8
+    EDITTEXT        IDD_NOCARRIEREC, 220, 58, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "No Dial &Tone:", 0xFFFF, 152, 78, 64, 8
+    EDITTEXT        IDD_NODIALTONEEC, 220, 74, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Bus&y:", 0xFFFF, 152, 92, 64, 8
+    EDITTEXT        IDD_BUSYEC, 220, 90, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&Ringing:", 0xFFFF, 152, 108, 64, 8
+    EDITTEXT        IDD_RINGINGEC, 220, 106, 72, 12, ES_AUTOHSCROLL
+    CONTROL         "&Ok", IDOK, "FL_BMPBTN", WS_TABSTOP | 0x2000 | 0x1L,
+                    220, 128, 36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000, 
+                    264, 128, 36, 22
+END
+
+DIALINGDLG DIALOG 20, 26, 348, 96
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Dialing..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME1, "Static", SS_GRAYFRAME, 4, 4, 300, 88
+    CONTROL         "&Recycle", IDB_RECYCLE, "FL_BMPBTN", WS_TABSTOP | 
+                    0x2000 | 0x1L, 308, 10, 36, 22
+    CONTROL         "&Delete", IDB_DELETE, "FL_BMPBTN", WS_GROUP | 
+                    WS_TABSTOP | 0x2000, 308, 38, 36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000,
+                    308, 66, 36, 22                                       
+    RTEXT           "Name:", 0xFFFF, 12, 8, 60, 8
+    LTEXT           "", IDD_NAME, 76, 8, 84, 8, NOT WS_GROUP
+    RTEXT           "Number:", 0xFFFF, 12, 20, 60, 8
+    LTEXT           "", IDD_NUMBER, 76, 20, 84, 8, NOT WS_GROUP
+    RTEXT           "Script File:", 0xFFFF, 12, 32, 60, 8
+    LTEXT           "", IDD_SCRIPT, 76, 32, 84, 8, NOT WS_GROUP
+    RTEXT           "Last Result:", 0xFFFF, 12, 44, 60, 8
+    LTEXT           "", IDD_LASTRESULT, 76, 44, 84, 8, NOT WS_GROUP
+    RTEXT           "Pass Number:", 0xFFFF, 12, 56, 60, 8
+    LTEXT           "", IDD_PASSNUMBER, 76, 56, 84, 8, NOT WS_GROUP
+    RTEXT           "Elapsed Time:", 0xFFFF, 12, 68, 60, 8
+    LTEXT           "", IDD_ELAPSEDTIME, 76, 68, 20, 8, NOT WS_GROUP
+    LTEXT           "Secs.", 0xFFFF, 100, 68, 20, 8, NOT WS_GROUP
+    RTEXT           "Last Connected:", 0xFFFF, 160, 8, 88, 8
+    LTEXT           "", IDD_LASTCONNECT, 252, 8, 48, 8, NOT WS_GROUP
+    RTEXT           "Total Calls:", 0xFFFF, 160, 20, 88, 8
+    LTEXT           "", IDD_TOTALCALLS, 252, 20, 48, 8, NOT WS_GROUP
+    RTEXT           "&Wait for Connection:", 0xFFFF, 160, 36, 88, 8
+    EDITTEXT        IDD_WAITEC, 252, 34, 20, 12, ES_AUTOHSCROLL
+    LTEXT           "Secs.", 0xFFFF, 276, 36, 20, 8, NOT WS_GROUP
+    RTEXT           "&Pause Between Calls:", 0xFFFF, 160, 52, 88, 8
+    EDITTEXT        IDD_PAUSEEC, 252, 50, 20, 12, ES_AUTOHSCROLL
+    LTEXT           "Secs.", 0xFFFF, 276, 52, 20, 8, NOT WS_GROUP
+    RTEXT           "Time at Start of Dial:", 0xFFFF, 160, 68, 88, 8
+    LTEXT           "", IDD_DIALTIME, 252, 68, 48, 8, NOT WS_GROUP
+    RTEXT           "Time at Start of this Call:", 0xFFFF, 160, 80, 88, 8
+    LTEXT           "", IDD_CALLTIME, 252, 80, 48, 8, NOT WS_GROUP
+END

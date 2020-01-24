@@ -1,0 +1,105 @@
+DLGINCLUDE RCDATA
+BEGIN
+    "Y:\\!\\CMNDLL\\INC\\CMNDLLD.H\0"
+END
+
+ABOUTBOX DIALOG 21, 40, 182, 119
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "Helv"
+BEGIN
+    CTEXT           "Copyright © 1991 Werner Associates.", -1, 10, 30, 165, 
+                    9, NOT WS_GROUP
+    DEFPUSHBUTTON   "OK", IDOK, 73, 76, 32, 14
+    CTEXT           "description", IDD_DESCRIPTION, 11, 49, 163, 25, NOT 
+                    WS_GROUP
+    LTEXT           "Version 00.00.00", IDD_VERSION, 7, 102, 76, 8, NOT 
+                    WS_GROUP
+    RTEXT           "CEKLIB V00.00.00", IDD_DLLVERSION, 89, 102, 84, 8, NOT 
+                    WS_GROUP
+    CONTROL         "Text", IDD_BOX_0, "Static", SS_GRAYFRAME | WS_CHILD | 
+                    WS_VISIBLE, 4, 3, 173, 91
+    CONTROL         "Text", IDD_BOX_1, "Static", SS_WHITEFRAME | WS_CHILD | 
+                    WS_VISIBLE, 4, 98, 173, 16
+    CTEXT           "All Rights Reserved.", -1, 8, 38, 167, 9, NOT WS_GROUP
+END
+
+FILEOPENBOX DIALOG 10, 41, 186, 143
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select File"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "Centered", IDD_BOX_0, "Static", SS_BLACKFRAME | 
+                    WS_CHILD | WS_VISIBLE, 3, 4, 179, 133
+    EDITTEXT        IDD_FILESPEC_EC, 43, 11, 88, 12
+    LISTBOX         IDD_FILES_LB, 8, 50, 58, 80, LBS_SORT | WS_VSCROLL | 
+                    WS_TABSTOP
+    LISTBOX         IDD_DIR_LB, 72, 50, 58, 82, LBS_SORT | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "OK", IDOK, 136, 10, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 136, 28, 40, 14
+    LTEXT           "&Directories:", -1, 72, 38, 34, 10, NOT WS_GROUP
+    LTEXT           "&Files:", -1, 8, 38, 32, 10, NOT WS_GROUP
+    LTEXT           "Directory:", -1, 8, 26, 32, 8, NOT WS_GROUP
+    LTEXT           "c:\\windows\\system", IDD_CURDIR, 42, 26, 88, 10, NOT 
+                    WS_GROUP
+    LTEXT           "File&name:", -1, 8, 13, 33, 10, NOT WS_GROUP
+END
+
+FONTSELECT DIALOG 10, 43, 241, 133
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Font"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "&Font", -1, 8, 9, 32, 9, NOT WS_GROUP
+    LISTBOX         IDD_FONT_LB, 8, 19, 81, 48, LBS_SORT | LBS_HASSTRINGS | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDD_FONT_EC, 7, 70, 84, 12
+    LTEXT           "&Size", -1, 96, 9, 24, 9, NOT WS_GROUP
+    LISTBOX         IDD_SIZE_LB, 96, 19, 31, 49, WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDD_SIZE_EC, 95, 70, 32, 12
+    GROUPBOX        "Style", IDD_STYLE_GRP, 133, 7, 50, 61
+    CONTROL         "&Bold", IDD_BOLD, "Button", BS_AUTOCHECKBOX | WS_CHILD | 
+                    WS_VISIBLE | WS_TABSTOP, 138, 19, 39, 12
+    CONTROL         "&Italic", IDD_ITALIC, "Button", BS_AUTOCHECKBOX | 
+                    WS_CHILD | WS_VISIBLE | WS_TABSTOP, 138, 30, 39, 12
+    CONTROL         "&Underline", IDD_UNDERLINE, "Button", BS_AUTOCHECKBOX | 
+                    WS_CHILD | WS_VISIBLE | WS_TABSTOP, 138, 41, 43, 12
+    CONTROL         "Stri&keout", IDD_STRIKEOUT, "Button", BS_AUTOCHECKBOX | 
+                    WS_CHILD | WS_VISIBLE | WS_TABSTOP, 138, 52, 42, 12
+    CONTROL         "P&rinter Fonts", IDD_PRINTERFONTS, "Button", 
+                    BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 
+                    133, 70, 56, 12
+    LTEXT           "&Text:", IDD_COLORFG_TXT, 11, 96, 21, 9, NOT WS_GROUP
+    COMBOBOX        IDD_COLORFG_CB, 11, 106, 35, 66, CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWFIXED | CBS_SORT | WS_VSCROLL | WS_TABSTOP |
+                    CBS_HASSTRINGS
+    LTEXT           "Bk&gr:", IDD_COLORBG_TXT, 52, 96, 25, 9, NOT WS_GROUP
+    COMBOBOX        IDD_COLORBG_CB, 52, 106, 35, 66, CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Centered", IDD_BOX_0, "Static", SS_BLACKFRAME | 
+                    WS_CHILD | WS_VISIBLE, 3, 4, 234, 123
+    GROUPBOX        "Sample", -1, 95, 85, 138, 37
+    CONTROL         "", IDD_SAMPLE, "Static", SS_WHITEFRAME | WS_CHILD | 
+                    WS_VISIBLE, 98, 95, 132, 25
+    GROUPBOX        "Color", IDD_COLOR_GRP, 7, 85, 84, 37
+    PUSHBUTTON      "&Default", IDD_NORMALFONT, 191, 53, 40, 15
+    DEFPUSHBUTTON   "OK", IDOK, 191, 11, 40, 15
+    PUSHBUTTON      "Cancel", IDCANCEL, 191, 28, 40, 15
+END
+
+SELECTPRINTER DIALOG 11, 33, 217, 88
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Select Printer"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "&Printer:", -1, 8, 8, 48, 8, NOT WS_GROUP
+    LISTBOX         IDD_LIST, 8, 19, 159, 62, LBS_HASSTRINGS | WS_VSCROLL
+    LISTBOX         IDD_HIDDENLIST, 48, 31, 51, 25, WS_VSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 172, 19, 34, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 172, 35, 34, 14
+    PUSHBUTTON      "&Setup...", IDD_SETUP, 172, 59, 34, 14
+    CONTROL         "Text", IDD_BOX, "Static", SS_BLACKFRAME | WS_CHILD | 
+                    WS_VISIBLE, 4, 5, 208, 76
+END

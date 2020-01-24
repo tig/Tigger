@@ -1,0 +1,46 @@
+LIBRARY      TASKMGR
+DESCRIPTION  'TASKMGR - Task manager (c) 1992 Werner Associates'
+EXETYPE      WINDOWS
+STUB         'WINSTUB.EXE'
+
+SEGMENTS     _TEXT         PRELOAD MOVEABLE DISCARDABLE
+             INIT_TEXT     PRELOAD MOVEABLE DISCARDABLE
+             FIXED_CODE    PRELOAD FIXED
+             COMMON_CODE   PRELOAD MOVEABLE DISCARDABLE
+
+CODE         LOADONCALL MOVEABLE DISCARDABLE
+DATA         PRELOAD SINGLE FIXED
+
+HEAPSIZE     4096
+
+EXPORTS
+   WEP                    @1 RESIDENTNAME
+   TimerHandler           @2
+   CreateTaskDatabase     @3
+   DestroyTaskDatabase    @4
+   SetTaskWord            @5
+   GetTaskWord            @6
+   TaskStackPop           @7
+   TaskStackPush          @8
+   TaskLocalAlloc         @9
+   TaskLocalCompact       @10
+   TaskLocalDiscard       @11
+   TaskLocalFlags         @12
+   TaskLocalFree          @13
+   TaskLocalLock          @14
+   TaskLocalReAlloc       @15
+   TaskLocalSize          @16
+   TaskLocalUnlock        @17
+   CreateTaskList         @18
+   DestroyTaskList        @19
+   AddTask                @20
+   RemoveTask             @21
+   ExecuteTask            @22
+   TaskManagerSlice       @23
+   SetTaskTimer           @24
+   KillTaskTimer          @25
+
+IMPORTS
+     CreateSystemTimer = System.2
+     KillSystemTimer = System.3
+

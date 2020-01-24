@@ -1,0 +1,2 @@
+SRC\WINPRINT.C
+SRC\WINPRINT.C(187) : warning C4069: conversion of near pointer to long integer

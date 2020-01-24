@@ -1,0 +1,11 @@
+#include <windows.h>
+#include <wdb.h>
+
+#include "facelift.h"
+
+#include "resource.h"
+#include "dialogs.rc"
+
+APACHEICON ICON APACHE.ICO
+TERMINALICON ICON TERMINAL.ICO
+

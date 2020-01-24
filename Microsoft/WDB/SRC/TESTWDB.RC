@@ -1,0 +1,118 @@
+/*    (C) Copyright Microsoft Corp. 1991.  All rights reserved.
+ *
+ *    You have a royalty-free right to use, modify, reproduce and 
+ *    distribute the Sample Files (and/or any modified version) in 
+ *    any way you find useful, provided that you agree that 
+ *    Microsoft has no warranty obligations or liability for any 
+ *    Sample Application Files which are modified. 
+ */
+
+
+/** testwdb.rc                                                          **/
+
+
+/* the includes required */
+    #include <windows.h>
+    #include "testwdb.h"
+
+
+/* misc. resources */
+    ICON_TEST       ICON    testwdb.ICO
+
+
+/* the menu */
+    MENU_TEST MENU
+    BEGIN
+        POPUP "&File"
+        BEGIN
+            MENUITEM "E&xit",               IDM_FILE_EXIT
+        END
+
+        POPUP "&Assert"
+        BEGIN
+            MENUITEM "Assert",              IDM_ASSERT_ASSERT
+            MENUITEM "AssertMsg",           IDM_ASSERT_ASSERTMSG
+        END
+
+        POPUP "wdbPut&s"
+        BEGIN
+            MENUITEM "DPS()",               IDM_PUTS_DPS
+            MENUITEM "DPS1()",              IDM_PUTS_DPS1
+            MENUITEM "DPS2()",              IDM_PUTS_DPS2
+            MENUITEM "DPS3()",              IDM_PUTS_DPS3
+            MENUITEM "DPS4()",              IDM_PUTS_DPS4
+            MENUITEM "DPS5()",              IDM_PUTS_DPS5
+        END
+
+        POPUP "wdbPrint&f"
+        BEGIN
+            MENUITEM "DPF()",               IDM_PRINTF_DPF
+            MENUITEM "DPF1()",              IDM_PRINTF_DPF1
+            MENUITEM "DPF2()",              IDM_PRINTF_DPF2
+            MENUITEM "DPF3()",              IDM_PRINTF_DPF3
+            MENUITEM "DPF4()",              IDM_PRINTF_DPF4
+            MENUITEM "DPF5()",              IDM_PRINTF_DPF5
+        END
+
+        POPUP "wdb&VPrintf"
+        BEGIN
+            MENUITEM "DVPF()",              IDM_VPRINTF_DVPF
+            MENUITEM "DVPF1()",             IDM_VPRINTF_DVPF1
+            MENUITEM "DVPF2()",             IDM_VPRINTF_DVPF2
+            MENUITEM "DVPF3()",             IDM_VPRINTF_DVPF3
+            MENUITEM "DVPF4()",             IDM_VPRINTF_DVPF4
+            MENUITEM "DVPF5()",             IDM_VPRINTF_DVPF5
+        END
+
+        POPUP "wdb&Print"
+        BEGIN
+            MENUITEM "DP()",                IDM_PRINT_DP
+            MENUITEM "DP1()",               IDM_PRINT_DP1
+            MENUITEM "DP2()",               IDM_PRINT_DP2
+            MENUITEM "DP3()",               IDM_PRINT_DP3
+            MENUITEM "DP4()",               IDM_PRINT_DP4
+            MENUITEM "DP5()",               IDM_PRINT_DP5
+        END
+
+        POPUP "&Help"
+        BEGIN
+            MENUITEM "&About WDB Test...",  IDM_HELP_ABOUT
+        END
+
+
+        /*  The following file will include a 'Debug' menu to this
+         *  menu resource iff DEBUG is defined.  This is a temporary
+         *  hack until WDB grows some code to append menus to an
+         *  application window's [system] menu.
+         *
+         *  Because this is a 'testbed' for WDB, it uses the wdbmenu.rc
+         *  file in the current directory.  For an application that
+         *  is using WDB you should use:
+         *
+         *      #include <wdbmenu.rc>
+         *
+         *  with the wdbmenu.rc file in the INCLUDE path.
+         */
+
+        #include "wdbmenu.rc"
+    END
+
+
+/* the about dialog box */
+    DLG_TEST_ABOUT DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 50, 150, 75
+    STYLE DS_MODALFRAME | WS_SYSMENU | WS_VISIBLE | WS_POPUP | DS_LOCALEDIT
+    CAPTION "About WDB Test..."
+    FONT 8, "Helv"
+    BEGIN
+        CONTROL "Microsoft Windows 3.0", -1, "static", SS_CENTER | WS_CHILD, 0, 5, 150, 8
+        CONTROL "+ Multimedia Extensions 1.0", -1, "static", SS_CENTER | WS_CHILD, 0, 14, 150, 8
+        CONTROL "WDB Test Application", -1, "static", SS_CENTER | WS_CHILD, 0, 26, 150, 8
+        CONTROL "version stuff goes here" IDD_VERSION, "STATIC", SS_CENTER | WS_CHILD, 0, 35, 150, 8
+        CONTROL "© Microsoft Corp. 1991. All rights reserved.", -1, "static", SS_CENTER | WS_CHILD, 0, 47, 150, 9
+        CONTROL "Ok", IDOK, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 55, 59, 32, 14
+        CONTROL "ICON_TEST", -1, "static", SS_ICON | WS_CHILD, 2, 5, 0, 0
+    END
+
+
+
+/** testwdb.rc **/

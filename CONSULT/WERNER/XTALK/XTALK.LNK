@@ -1,0 +1,18 @@
+xtalk proinit prodde proexec prodata +
+proscrn font copy help commhi +
+commlo commdlg termhi  termlo termdlg +
+xferhi xferlo xferdlg disphi displo dispdlg +
+sesshi sesslo sessdlg macro  macrodlg +
+global variable interp compile dlgbox +
+evaluate strfunct intfunct funct errordlg +
+vtinit vtproc vtchar status info capture dlgmsg +
+input  vidtex procis pronotes pronres ctlcolor +
+promisc prodial vt52 ibm3101 pcibm properf1 properf2 +
+dart cross xmodem ymodem ascii quickb zmodem +
+kermit kermit1 krmwnd krmrcv krmsnd krmcmd +
+krmsub krmcom print dlgopen dlgsave libmisc +
+libfile dosos2 wspawn ddeadv
+xtalk.exe/align:16/NOE
+xtalk/map
+mlibcew libw/NOD
+xtalk.def

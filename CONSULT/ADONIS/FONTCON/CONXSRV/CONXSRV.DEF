@@ -1,0 +1,66 @@
+;************************************************************************
+;*
+;*     Project:  CONXSRV.EXE
+;*
+;*      Module:  CONXSRV.def
+;*
+;*   Author(s):  Charles E. Kindel, Jr. (cek)
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+NAME              CONXSRV
+
+DESCRIPTION       'Window Shopper Communications Server'
+
+EXETYPE           WINDOWS
+
+STUB              'OBJ\\WINSTUB.EXE'
+
+SEGMENTS          _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                  CONXSRV      PRELOAD MOVEABLE DISCARDABLE
+                  TTY          MOVEABLE DISCARDABLE
+                  DDE          PRELOAD MOVEABLE DISCARDABLE
+                  DDEITEMS     MOVEABLE DISCARDABLE
+                  DDECMDS      MOVEABLE DISCARDABLE
+                  CONFIG       PRELOAD MOVEABLE DISCARDABLE
+                  INIT         PRELOAD MOVEABLE DISCARDABLE
+                  WNDMGR       PRELOAD MOVEABLE DISCARDABLE
+                  BOTSTAT      MOVEABLE DISCARDABLE
+                  CMD          PRELOAD MOVEABLE DISCARDABLE
+                  MENU         MOVEABLE DISCARDABLE
+                  CONNECT      MOVEABLE DISCARDABLE
+                  COMM         MOVEABLE DISCARDABLE
+                  FSM          MOVEABLE DISCARDABLE
+                  BBS          MOVEABLE DISCARDABLE
+                  ONLINE       MOVEABLE DISCARDABLE
+                  SETTINGS     MOVEABLE DISCARDABLE
+                  PRECOMP      MOVEABLE DISCARDABLE
+
+CODE              MOVEABLE DISCARDABLE
+
+DATA              PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE          16000
+
+STACKSIZE         12000
+
+EXPORTS           
+                  fnAbout              @100
+
+                  fnMainWnd            @102
+                  fnTTYWnd             @103
+                  fnConnectDlg         @107
+                  fnDisConnectDlg      @108
+                  fnDdeCallback        @109
+                  fnOnLineDlg          @110
+                  fnZmodemSend         @111
+
+;/***********************************************************************
+;* End of File: CONXSRV.def
+;************************************************************************
+

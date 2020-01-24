@@ -1,0 +1,45 @@
+
+ test
+
+ Start     Length     Name                   Class
+ 0001:0000 00539H     TEST_TEXT              CODE
+ 0001:0540 00622H     _TEXT                  CODE
+ 0002:0000 00010H     NULL                   BEGDATA
+ 0002:0010 00128H     _DATA                  DATA
+ 0002:0138 0000EH     CDATA                  DATA
+ 0002:0146 00000H     XIFB                   DATA
+ 0002:0146 00000H     XIF                    DATA
+ 0002:0146 00000H     XIFE                   DATA
+ 0002:0146 00000H     XIB                    DATA
+ 0002:0146 00000H     XI                     DATA
+ 0002:0146 00000H     XIE                    DATA
+ 0002:0146 00000H     XPB                    DATA
+ 0002:0146 00000H     XP                     DATA
+ 0002:0146 00000H     XPE                    DATA
+ 0002:0146 00000H     XCB                    DATA
+ 0002:0146 00000H     XC                     DATA
+ 0002:0146 00000H     XCE                    DATA
+ 0002:0146 00000H     XCFB                   DATA
+ 0002:0146 00000H     XCF                    DATA
+ 0002:0146 00000H     XCFE                   DATA
+ 0002:0146 0000CH     DBDATA                 DATA
+ 0002:0152 00002H     XIQC                   DATA
+ 0002:0154 00000H     CONST                  CONST
+ 0002:0154 00019H     HDR                    MSG
+ 0002:016D 000B1H     MSG                    MSG
+ 0002:021E 00002H     PAD                    MSG
+ 0002:0220 00001H     EPAD                   MSG
+ 0002:0230 00010H     _BSS                   BSS
+ 0002:0240 00000H     XOB                    BSS
+ 0002:0240 00000H     XO                     BSS
+ 0002:0240 00000H     XOE                    BSS
+ 0002:0240 00142H     c_common               BSS
+
+ Origin   Group
+ 0002:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0001:01AB MainWndProc             MainWndProc
+
+Program entry point at 0001:0551

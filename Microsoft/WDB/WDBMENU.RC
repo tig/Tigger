@@ -1,0 +1,25 @@
+/** wdbmenu.rc                                                          **/
+
+
+/*  The following is intended to be included in the menu resource for
+ *  an application using WDB.  No menu will be inserted if DEBUG is not
+ *  defined.  Put this file in your INCLUDE directory and then use:
+ *
+ *      #include <wdbmenu.rc>
+ *
+ *  in your .RC script for your menu resource.  See TESTWDB.RC for an
+ *  example of what I am talking about...  Remember to include the
+ *  WDB.H file in your .RC file or IDM_WDB_CONFIG and _DUMP will not
+ *  be resolved.
+ */
+
+#ifdef DEBUG
+        POPUP   "&Debug"
+        BEGIN
+            MENUITEM "&Configure...",       IDM_WDB_CONFIG
+            MENUITEM "&Dump Debug Info",    IDM_WDB_DUMP
+        END
+#endif
+
+
+/** EOF: wdbmenu.rc **/

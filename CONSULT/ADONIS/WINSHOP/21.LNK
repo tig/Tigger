@@ -1,0 +1,34 @@
+.\obj.21\ksearch + 
+.\obj.21\subscr + 
+.\obj.21\comm + 
+.\obj.21\comm2 + 
+.\obj.21\comm3 + 
+.\obj.21\modem + 
+.\obj.21\xmodem + 
+.\obj.21\settings + 
+.\obj.21\wsinit + 
+.\obj.21\wsres +
+.\obj.21\custinfo +
+.\obj.21\file +
+.\obj.21\file2 +
+.\obj.21\file3 +
+.\obj.21\help +
+.\obj.21\messages +
+.\obj.21\misc +
+.\obj.21\order +
+.\obj.21\download +
+.\obj.21\viewbox +
+.\obj.21\busy +
+.\obj.21\pref +
+.\obj.21\info +
+.\obj.21\billing +
+.\obj.21\libmgr +
+.\obj.21\libmgr2 +
+.\obj.21\error +
+.\obj.21\lmemcpy.obj +
+.\obj.21\availdsk.obj +
+.\obj.21\dilute /align:16 
+shopper.exe
+nul
+mlibw/noe mlibcaw /nod
+shopper.def      

@@ -1,0 +1,42 @@
+/************************************************************************
+ *
+ *    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  APACHE, Apache For Windows
+ *
+ *      Module:  apache.rc
+ *
+ *   Author(s):  Bryan A. Woodruff (baw)
+ *               Charles E. Kindel, Jr. (cek)
+ *
+ *
+ *     Remarks:  Resource file header
+ *
+ *   Revisions:  
+ *     01.00.000  1/ 7/91 baw   Initial Version
+ *
+ ************************************************************************/
+
+#include <windows.h>
+#include <wdb.h>
+
+#include "facelift.h"
+
+#include "resource.h"
+#include "dialogs.rc"
+#include "menuinit.rc"
+#include "menuterm.rc"
+#include "accel.rc"
+#include "strings.rc"
+#include "bitmaps.rc"
+#include "binary.rc"
+
+APACHEICON ICON APACHE.ICO
+TERMINALICON ICON TERMINAL.ICO
+
+/************************************************************************
+ * End of File: apache.rc
+ ************************************************************************/
+

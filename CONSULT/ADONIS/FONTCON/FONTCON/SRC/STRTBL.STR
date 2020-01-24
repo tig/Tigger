@@ -1,0 +1,515 @@
+//*************************************************************
+//  File name: strtbl.h
+//
+//  Description: 
+//      The string table for the fontshop project.
+//
+//  History:    Date       Author     Comment
+//               3/15/92   MSM        Created
+//
+//*************************************************************
+
+
+#ifdef RC_INVOKED
+    #define DEFSTR(V,SID,S)   V     S
+    #define ADDSTR(SID,S)     SID   S
+
+   /* 
+    * Entries defined with DBGSTR get defined as empty strings
+    * if DEBUG is not defined.
+    */ 
+    #ifdef DEBUG
+      #define DBGSTR DEFSTR
+    #else
+      #define DBGSTR(V,SID,S)   // an empty string
+    #endif
+#else
+    #define DEFSTR(V,SID,S)   enum {SID=V};
+    #define ADDSTR(SID,S)     
+    #define DBGSTR            DEFSTR
+#endif
+
+#ifdef RC_INVOKED
+STRINGTABLE
+BEGIN
+#endif
+                                          
+DEFSTR(0x0081, IDS_APPNAME,                  "The Font Connection")
+DEFSTR(0x0082, IDS_MAINCLASS,                "TFCCLASS")
+DEFSTR(0x0083, IDS_MAINMENU,                 "TFCMENU")
+DEFSTR(0x0084, IDS_INIFILE,                  "CONXTION.INI")
+DEFSTR(0x0085, IDS_HELPFILE,                 "FCHELP.HLP" )
+DEFSTR(0x0086, IDS_WNDPOS,                   "Window")
+DEFSTR(0x0087, IDS_FONT,                     "Font")
+DEFSTR(0x0088, IDS_CONFIG,                   "The Font Connection")
+DEFSTR(0x0089, IDS_SLIDER,                   "Slider")
+DEFSTR(0x008a, IDS_VIEW,                     "View")
+DEFSTR(0x008b, IDS_DOWNLOADDIR,              "Download Dir" )
+DEFSTR(0x008c, IDS_INSTALLFONTS,             "AutoInstall" )
+
+DEFSTR(0x008d, IDS_SINGLEINST,               "The Font Connection is already running!")
+DEFSTR(0x008e, IDS_SLDRNAME,                 "Name")
+DEFSTR(0x008f, IDS_SLDRPRICE,                "Price")
+DEFSTR(0x0090, IDS_SLDRSIZE,                 "Size")
+DEFSTR(0x0091, IDS_SLDRPUBLISHER,            "Publisher")
+DEFSTR(0x0092, IDS_STAT_READY,               "The Font Connection Copyright © 1992 Connect Software.")
+DEFSTR(0x0093, IDS_WHATSNEW,                 "What's New")
+DEFSTR(0x0094, IDS_STATTOTAL,                "Selected Sub-Total:")
+DEFSTR(0x0095, IDS_STATSIZE,                 "Selected Size:")
+DEFSTR(0x0096, IDS_INI_STATUS,               "Status" )
+
+DEFSTR(0x00a0, IDS_CONXSRV,                  "CONXSRV")
+DEFSTR(0x00a1, IDS_FONTSHOPPER,              "TheFontConnection")
+DEFSTR(0x00a2, IDS_DEFPANOSE,                "0,0,0,0,0,0,0,0,0,0")
+DEFSTR(0x00a3, IDS_PANOSE,                   "Panose")
+DEFSTR(0x00a4, IDS_WEIGHTS,                  "Weights")
+DEFSTR(0x00a5, IDS_DEFWEIGHTS,               "1,1,1,1,1,1,1,1,1,1")
+DEFSTR(0x00a6, IDS_FILTER,                   "Filter")
+DEFSTR(0x00a7, IDS_DEFFILTER,                ",,-1,-1,-1,-1")
+DEFSTR(0x00a8, IDS_DOWNLOADTIME,             "Download time: %02d:%02d:%02d")
+DEFSTR(0x00a9, IDS_PURCOLL,                  "Collection\t$%ld.%02ld\tN/A\t%s\t%s")
+DEFSTR(0x00aa, IDS_PURFACE,                  "Face\t$%ld.%02ld\t%ld.%02ldK\t%s\t%s")
+DEFSTR(0x00ab, IDS_PURSTYLE,                 "Style\t$%ld.%02ld\t%ld.%02ldK\t%s\t%s %s")
+DEFSTR(0x00ac, IDS_MEDIA_12,                 "5¼ inch, 1.2MB" )
+DEFSTR(0x00ad, IDS_MEDIA_144,                "3½ inch, 1.44MB" )
+
+DEFSTR(0x00b0, IDS_NOBMPPRESENT,             "No thumb nail installed on system")
+DEFSTR(0x00b1, IDS_NOBMPMEMORY,              "Not enough memory to load thumb nail")
+DEFSTR(0x00b2, IDS_MARKITEM,                 "Mark for Purchase")
+DEFSTR(0x00b3, IDS_UNMARKITEM,               "Unmark for Purchase")
+DEFSTR(0x00b4, IDS_SAMPPRICE,                "99999.990000")
+DEFSTR(0x00b5, IDS_SAMPDOLLAR,               "$99999")
+DEFSTR(0x00b6, IDS_COLLECTION,               "Collection000")
+DEFSTR(0x00b7, IDS_AND_INSTALLED,            " and installed" )
+DEFSTR(0x00b8, IDS_MASTERCARD,               "Master Card" )
+DEFSTR(0x00b9, IDS_VISA,                     "VISA" )
+DEFSTR(0x00ba, IDS_DISCOVER,                 "Discover card" )
+DEFSTR(0x00bb, IDS_AMERICAN_EXPRESS,         "American Express" )
+DEFSTR(0x00bc, IDS_CORPORATE_CARD,           "Corporate Account" )
+
+DEFSTR(0x00bd, IDS_INI_FCDB_LIMIT,           "FCDB Limit" )
+
+DEFSTR(0x00c0, IDS_HELP_INDEX,               "Table of Contents")
+DEFSTR(0x00c1, IDS_HELP_TOOLBAR,             "Tool Bar")
+DEFSTR(0x00c2, IDS_HELP_STATUSBAR,           "Status Bar")
+DEFSTR(0x00c3, IDS_HELP_PURCHASE,            "Purchase Dialog")
+DEFSTR(0x00c4, IDS_HELP_PANOSE,              "Panose Dialog")
+DEFSTR(0x00c5, IDS_HELP_FILTER,              "Filter Dialog")
+DEFSTR(0x00c6, IDS_HELP_COLLECTION,          "View Collections Dialog")
+DEFSTR(0x00c7, IDS_HELP_NEWUSER,             "New User Dialog")
+DEFSTR(0x00c8, IDS_HELP_NOUSERID,            "No User ID Dialog")
+DEFSTR(0x00c9, IDS_HELP_OPTIONS,             "Options Dialog" )
+DEFSTR(0x00ca, IDS_HELP_POSTPURCHASE,        "Purchase Summary Dialog")
+//DEFSTR( 0x00ca, IDS_HELP_VIEW,             "View What's" )
+
+/* ErrorResBox() strings */
+DEFSTR(0x00f0, IDS_ERR_DUMMY,                "%s")
+DEFSTR(0x00f1, IDS_ERR_NOMEMORY,             "Not enough memory to run The Font Connection.\n\nPlease contact Connect Software Technical Support at (800) 234-9497." )
+DEFSTR(0x00f2, IDS_ERR_COMMANDLINE,          "Error Processing Command Line.\nOffending String: \042%s\042" )
+DEFSTR(0x00f3, IDS_ERR_BADDLLVER,            "The version of '%s' on this system is old.\nFONTCON 1.0 requires version %d.00 or higher.\n\nPlease contact Connect Software Technical Support at (800) 234-9497." )
+DEFSTR(0x00f4, IDS_ERR_CREATEWINDOW,         "Could not create the main window of The Font Connection.\n\nPlease contact Connect Software Technical Support at (800) 234-9497." )
+DEFSTR(0x00f5, IDS_ERR_DDESERVERINIT,        "Could not initialize the DDE client.\n\nPlease contact Connect Software Technical Support at (800) 234-9497." )
+DEFSTR(0x00f6, IDS_ERR_STRINGLOAD,           "Could not access resources.\n\nPlease contact Connect Software Technical Support at (800) 234-9497." )
+DEFSTR(0x00f7, IDS_ERR_INITCLASS,            "Could not register window classes for The Font Connection.\n\nPlease contact Connect Software Technical Support at (800) 234-9497.")
+DEFSTR(0x00f8, IDS_ERR_MEMORYALLOC,          "A memory allocation failed in module %s, line %d.\n\nPlease Contact Connect Software Technical Support at (800) 234-9497." )
+DEFSTR(0x00f9, IDS_ERR_TECHSUPPORT,          "\n\nFor more information please consult the manual or contact Connect Software Technical Support at (800) 234-9497." ) ;
+DEFSTR(0x00fa, IDS_ERR_CUSTINFO,             "Your customer information is not completely specified.  Use the Configure menu item to enter your address, shipping preferences, and billing information.  Then try again.") ;
+DEFSTR(0x00fb, IDS_ERR_PASSWORDCHANGED,      "Your password was changed successfully." )
+DEFSTR(0x00fc, IDS_ERR_PASSWORDNOTCHANGED,   "Your password was NOT changed." )
+
+DEFSTR(0x0100, IDS_ERR_DOYOUHAVEAUSERID,     "Do you have a Font Connection User ID and Password?\n\nIf you purchased The Font Connection directly from Connect Software you will find your User ID and Password on either the product box or disk #1." )
+DEFSTR(0x0101, IDS_ERR_YOURPASSWORDIS,       "You have successfully purchased a subscription to The Font Connection.  Your User ID and password are  '%s'.  Please make a note of it.  It is recommended that you change your password using the Change Password menu item." )
+DEFSTR(0x0102, IDS_ERR_CONDITIONAL_ORDER,    "The Font Connection was unable to validate your credit.  Would you like to place an order conditional upon later validation?" )
+DEFSTR(0x0103, IDS_ERR_CREDIT_NOT_ACCEPT,    "The Font Connection was unable to accept your credit.  Please select another billing method and try again." ) 
+DEFSTR(0x0104, IDS_ERR_BAD_CUSTINFO,         "The customer information you entered appears to be invalid.  Please check the Customer Info dialog box and try again." )
+DEFSTR(0x0105, IDS_ERR_GENERAL_COMM,         "The Font Connection was unable to complete this operation due to a communications failure.  Please try again." ) 
+DEFSTR(0x0106, IDS_ERR_NEWUSER_NOTACCEPTED,  "The Connect Software Server was unable to authorize your subscription.  Please try again." ) 
+DEFSTR(0x0107, IDS_ERR_UPDATESTUFF,          "The Connect Software Server has new program components and/or database files.  Do you want to update now?\nIf you say no, this online session will be aborted." )
+DEFSTR(0x0108, IDS_ERR_CUSTINFO_REJECTED,    "The Connect Software Server has rejected your customer information.  Please verify the contents of the Customer Info dialog box and try again." ) 
+DEFSTR(0x0109, IDS_ERR_FONTINSTALL,          "The Font Connection was unable to install the font file '%s'." )   
+DEFSTR(0x010a, IDS_ERR_FONTINSTALL2,         "The Font Connection was unable to install the font file '%s' because the FOT file could not be created." )
+
+DEFSTR(0x011a, IDS_ERR_RESTARTING,           "The Font Connection has successfully downloaded updated program components.  The Font Connection will exit and restart now." )
+DEFSTR(0x011b, IDS_ERR_DATABASEUPDATED,      "The Font Connection has successfully downloaded updated database components.  The database will be reloaded now." )
+DEFSTR(0x011c, IDS_ERR_DIRNOEXIST,           "The specified font download directory, %s, does not exist.  Do you want The Font Connection to create it?" )
+DEFSTR(0x011d, IDS_ERR_COULDNOTCREATEDIR,    "The directory, %s, could not be created." )
+DEFSTR(0x011e, IDS_ERR_LZERROR_WRITE,        "Could not expand the compressed TrueType font file, %s, due to lack of disk space.  Use the Windows Control Panel to install this compressed TrueType font." )
+DEFSTR(0x011f, IDS_ERR_LZERROR_GENERAL,      "The downloaded TrueType font file, %s, could not be installed due to a general error.  Use the Windows Control Panel to install this compressed TrueType font.  If that fails, contact Connect Software Technical Support." )
+
+DEFSTR(0x0120, IDS_ERR_QUERY_USERID,         "The Font Connection was unable to verify your User ID with the Connect Software Server.  Please try again or contact Connect Software Technical Support at (800) 234-9497." ) 
+DEFSTR(0x0121, IDS_ERR_ORDER_REJECTED,       "The Connect Software Server has rejected your order for '%s'.  Please verify your billing info and address information and try again." ) 
+DEFSTR(0x0122, IDS_ERR_TTFALREADYINSTALLED,  "The %s font (%s) is already installed on your system.  This font will not be included in this order." ) 
+DEFSTR(0x0123, IDS_ERR_NAMEALREADYINSTALLED, "There is a font with the name %s currently installed on your system.  You must uninstall the existing font using the Windows Control Panel.  This font will not be included in this order." ) 
+DEFSTR(0x0124, IDS_ERR_TTFEXISTS,            "The TrueType font file associated with the %s font is already in the download directory (%s).  This font will not be included in this order." ) 
+DEFSTR(0x0125, IDS_ERR_TTFEXISTSSOMEWHERE,   "The TrueType font file associated with the %s font is already on your system (%s).  Are you sure you want to purchase it?  If you say no it will not be included in this order." )
+DEFSTR(0x0126, IDS_ERR_CONNECTNOW,           "Before attempting to purchase any fonts, you should allow The Font Connection to update it's components by logging on to the server.  Do you want to do that now?" )
+DEFSTR(0x0127, IDS_ERR_UPTODATE,             "All of The Font Connection's components, and the local database, are up to date." )
+DEFSTR(0x0128, IDS_ERR_NOCONNECT,            "The Connect Software Server is not responding to The Font Connection.  Please contact Connect Software Technical Support at (800)234-9497.")
+DEFSTR(0x0129, IDS_ERR_CONXSRV,              "The Font Connection could not initialize the Asynchronous Server Application.  Please contact Connect Software Technical Support at (800)234-9497 for assistance.")
+DEFSTR(0x012a, IDS_ERR_DEMOUSER,             "Only free items may be downloaded until a full subscription to The Font Connection is purchased.  Non-free items will be unselected." ) 
+DEFSTR(0x012b, IDS_ERR_YOURDEMOPASSWORDIS,   "Your Free Demo User ID and password are  '%s'.  Please make a note of it.\n\nYou may purchase a full subscription at any time using the Purchase Subscription menu item." )
+DEFSTR(0x012c, IDS_ERR_DEMOTOFULLOK,         "Congratulations! Your subscription has been purchased successfully.")
+DEFSTR(0x012d, IDS_ERR_ACK_BAD,              "Phone-line noise has disrupted the communications session.  The communications session will be aborted.\n\nPlease try again or contact Connect Software Technical Support at (800) 234-9497." )
+DEFSTR(0x012e, IDS_ERR_TEMP_DISKSPACE,       "This order requires %s of free space on your TEMP drive (%s).  Drive %s has %s free.  Please free up at least %s  on disk %s and try again." )
+DEFSTR(0x012f, IDS_ERR_DEST_DISKSPACE,       "This order requires %s of free space on drive %s.  Drive %s has %s free.  Please free up at least %s on disk %s and try again." )
+
+DEFSTR(0x0130, IDS_ERR_DATABASE_DOWN,        "The Connect Software Server has been temporarily taken off line for maintenance.  We are sorry for the inconvenience.  Please try again later." )
+DEFSTR(0x0131, IDS_ERR_RENEWALOK,            "Congratulations! Your subscription has been successfully renewed." )
+DEFSTR(0x0132, IDS_ERR_RENEWAL_NOTACCEPTED,  "The Connect Software Server was unable to renew your subscription.  Please try again." ) 
+
+/* Log file strings */
+DEFSTR(0x01a0, IDS_LOG_HEADER,               "This file contains a log of all purchases made with The Font Connection.\r\n\r\nPlease refer to this file when communicating with Connect Software Technical\r\nSupport.\r\n\r\n" )
+
+                                             //  ORDER ID DATE     TIME  TYP   TOTAL PROD ID  FILENAME     DESCRIPTION                                                   PUBLISHER                      PRICE    SHIP SURCHRG WA. TAX 
+                                             //  12345678 00/00/00 00:00 Col 0000.00 12345678 ABCDEFGH.TTF Masterworks TrueType Library                                  Digital Typeface Corporation 0000.00 0000.00 0000.00 0000.00 
+DEFSTR(0x01a1, IDS_LOG_FMT1,                 "%-8.8s %-8.8s %-5.5s %-3.3s %7.7s %-8s %-12s %-62s %-31.31s %7.7s %7.7s %7.7s %7.7s\r\n" )
+
+DEFSTR(0x01a2, IDS_LOG_FMT2,                 "%08lX %-8.8s %-5.5s %-3.3s %4.0ld.%02ld %08lX %-12s %-62.62s %-31.31s %4.0ld.%02ld %4.0ld.%02ld %4.0ld.%02ld %4.0ld.%02ld\r\n" )
+DEFSTR(0x01a3, IDS_LOG_FMT3,                 "                                             %-12s %-62.62s %s\r\n" )
+DEFSTR(0x01a4, IDS_LOG_LBL_ORDERID,          "ORDER ID" )
+DEFSTR(0x01a5, IDS_LOG_LBL_DATE,             "DATE" )
+DEFSTR(0x01a6, IDS_LOG_LBL_TIME,             "TIME" )
+DEFSTR(0x01a7, IDS_LOG_LBL_TYPE,             "TYP" )
+DEFSTR(0x01a8, IDS_LOG_LBL_PRICE,            "PRICE" )
+DEFSTR(0x01a9, IDS_LOG_LBL_SHIPPING,         "SHIP" )
+DEFSTR(0x01aa, IDS_LOG_LBL_SURCHARGE,        "SURCHRG" )
+DEFSTR(0x01ab, IDS_LOG_LBL_SALESTAX,         "WA. TAX" )
+DEFSTR(0x01ac, IDS_LOG_LBL_TOTAL,            "TOTAL" )
+DEFSTR(0x01ad, IDS_LOG_LBL_PRODID,           "ITEM ID" )
+DEFSTR(0x01ae, IDS_LOG_LBL_FILENAME,         "FILENAME" )
+DEFSTR(0x01af, IDS_LOG_LBL_DESCRIPTION,      "DESCRIPTION" )
+DEFSTR(0x01b0, IDS_LOG_LBL_PUBLISHER,        "PUBLISHER" )
+
+/* Exectuables.  Order is important! */
+#define IDS_EXECUTABLES IDS_EXE_FONTCON
+DEFSTR(0x0200, IDS_EXE_FONTCON,              "FONTCON.EXE" )
+DEFSTR(0x0201, IDS_EXE_CONXUP,               "CONXUP.MOD" )
+DEFSTR(0x0202, IDS_EXE_CONXSRV,              "CONXSRV.MOD" )
+DEFSTR(0x0203, IDS_EXE_CONXLIB,              "CONXLIB.DLL" )
+DEFSTR(0x0204, IDS_EXE_FCDB,                 "FCDB.DLL" )
+DEFSTR(0x0205, IDS_EXE_FSMEMMAN,             "CONXMEM.DLL" )
+DEFSTR(0x0206, IDS_EXE_ZMODEM,               "CONXPRO.DLL" )
+DEFSTR(0x0207, IDS_EXE_MODEMINI,             "MODEM.INI" )
+DEFSTR(0x0208, IDS_EXE_HELPFILE,             "FCHELP.BIN" )
+
+DEFSTR(0x021F, IDS_CONXUP,                   "ConXup" )
+
+DEFSTR(0x0980, IDS_SMNU,                     " ")
+DEFSTR(0x0981, IDS_SMNU_SIZE,                "Sizes the main window")
+DEFSTR(0x0982, IDS_SMNU_MOVE,                "Moves the main window")
+DEFSTR(0x0983, IDS_SMNU_MINIMIZE,            "Minimizes the main window to an icon")
+DEFSTR(0x0984, IDS_SMNU_MAXIMIZE,            "Maximizes the main window to the full screen size")
+DEFSTR(0x0985, IDS_SMNU_CLOSE,               "Closes the window and exits The Font Connection")
+DEFSTR(0x0986, IDS_SMNU_RESTORE,             "Restores main window to previous size and position")
+DEFSTR(0x0987, IDS_SMNU_TASKLIST,            "Switches applications with the Task Manager")
+
+DEFSTR(IDS_POPUPMENUSTART+0, IDS_ACTIONMENU, "Database and sever actions")
+DEFSTR(IDS_POPUPMENUSTART+1, IDS_INFOMENU,   "Change View, Sort, and Filter options")
+DEFSTR(IDS_POPUPMENUSTART+2,IDS_SETTINGSMENU,"Change The Font Connection settings")
+DEFSTR(IDS_POPUPMENUSTART+3, IDS_HELPMENU,   "Help on The Font Connection and copyright information")
+
+ADDSTR(IDM_ACTION_UPDATE,                    "Update database and software from the Connect Software server")
+ADDSTR(IDM_ACTION_UNMARK,                    "Unmark all selections")
+ADDSTR(IDM_ACTION_PURCHASE_SUB,              "Purchase a subscription to The Font Connection" )
+ADDSTR(IDM_ACTION_COLLECTIONS,               "View collections of fonts for purchasing")
+ADDSTR(IDM_ACTION_DOWNLOAD,                  "Purchase currently selected font(s)")
+ADDSTR(IDM_ACTION_PASSWORD,                  "Change your Font Connection password")
+ADDSTR(IDM_ACTION_EXIT,                      "Exit The Font Connection")
+
+ADDSTR(IDM_INFO_CUSTOMER,                    "Enter and modify customer information")
+ADDSTR(IDM_INFO_SHIPPING,                    "Enter and modify shipping information")
+ADDSTR(IDM_INFO_BILLING,                     "Enter and modify billing information")
+ADDSTR(IDM_INFO_WHATSNEW,                    "Read about what's new with The Font Connection and Connect Software")
+
+ADDSTR(IDM_SETTINGS_FONT,                    "Change the display font")
+ADDSTR(IDM_SORT_NAME,                        "Sort fonts by name")
+ADDSTR(IDM_SORT_PRICE,                       "Sort fonts by price")
+ADDSTR(IDM_SORT_SIZE,                        "Sort fonts by font file size")
+ADDSTR(IDM_SORT_PANOSE,                      "Sort fonts by PANOSE classifcation")
+ADDSTR(IDM_SET_FILTER ,                      "Specify and activate a display fliter")
+ADDSTR(IDM_CLEAR_FILTER,                     "Remove the active display filter" )
+ADDSTR(IDM_GROUP_PUB,                        "Include publisher in the grouping")
+ADDSTR(IDM_GROUP_FACE,                       "Include face in the grouping")
+ADDSTR(IDM_SETTINGS_SETUP,                   "Set communications options")
+
+ADDSTR(IDM_HELP_INDEX,                       "Help table of contents")
+ADDSTR(IDM_HELP_SEARCH,                      "Search for a topic")
+ADDSTR(IDM_HELP_USINGHELP,                   "Gives help on using help")
+ADDSTR(IDM_HELP_ABOUT,                       "About The Font Connection and copyright information")
+
+
+DBGSTR(0x7F00, IDS_MSG_NUL,                  "MSG_NUL" )
+DBGSTR(0x7F01, IDS_MSG_RECEIVE_FILE,         "MSG_RECEIVE_FILE" )
+DBGSTR(0x7F02, IDS_MSG_LATEST_VERSION,       "MSG_LATEST_VERSION" )
+DBGSTR(0x7F03, IDS_MSG_LATEST_EXE,           "MSG_LATEST_EXE" )
+DBGSTR(0x7F04, IDS_MSG_EOT,                  "MSG_EOT" )
+DBGSTR(0x7F05, IDS_MSG_QUERY_CUR_FILESIZE,   "MSG_QUERY_CUR_FILESIZE" )
+DBGSTR(0x7F06, IDS_MSG_ACK,                  "MSG_ACK" )
+DBGSTR(0x7F07, IDS_MSG_QUERY_DEST_FILENAME,  "MSG_QUERY_DEST_FILENAME" )
+DBGSTR(0x7F08, IDS_MSG_SAY_HI,               "MSG_SAY_HI" )
+DBGSTR(0x7F09, IDS_MSG_SET_CUR_FILENAME,     "MSG_SET_CUR_FILENAME" )
+DBGSTR(0x7F0a, IDS_MSG_QUERY_UNCOMPRESSED_FILESIZE,  "MSG_QUERY_UNCOMPRESSED_FILESIZE" )
+DBGSTR(0x7F0b, IDS_MSG_HANGING_UP,           "MSG_HANGING_UP" )
+DBGSTR(0x7F0c, IDS_MSG_SET_CUR_LIB_ORDER,    "MSG_SET_CUR_LIB_ORDER" )
+DBGSTR(0x7F0d, IDS_MSG_QUERY_LIB_ORDER_OK,   "MSG_QUERY_LIB_ORDER_OK" )
+DBGSTR(0x7F0e, IDS_MSG_COMMIT_LIB_ORDER,     "MSG_COMMIT_LIB_ORDER" )
+DBGSTR(0x7F0f, IDS_MSG_SET_CUR_CLIP_DLD,     "MSG_SET_CUR_CLIP_DLD" )
+DBGSTR(0x7F10, IDS_MSG_QUERY_CLIP_DLD_OK,    "MSG_QUERY_CLIP_DLD_OK" )
+DBGSTR(0x7F11, IDS_MSG_COMMIT_CLIP_DLD,      "MSG_COMMIT_CLIP_DLD" )
+DBGSTR(0x7F12, IDS_MSG_SET_CUST_INFO,        "MSG_SET_CUST_INFO" )
+DBGSTR(0x7F13, IDS_MSG_SET_USER_ID,          "MSG_SET_USER_ID" )
+DBGSTR(0x7F14, IDS_MSG_GET_NEW_USER_ID,      "MSG_GET_NEW_USER_ID" )
+DBGSTR(0x7F15, IDS_MSG_NAK,                  "MSG_NAK" )
+DBGSTR(0x7F16, IDS_MSG_SET_PASSWD,           "MSG_SET_PASSWD" )
+DBGSTR(0x7F17, IDS_MSG_QUERY_PASSWD,         "MSG_QUERY_PASSWD" )
+DBGSTR(0x7F18, IDS_MSG_CTRLX,                "MSG_CTRLX" )
+DBGSTR(0x7F19, IDS_MSG_QUERY_NEWUSER_OK,     "MSG_QUERY_NEWUSER_OK" )
+DBGSTR(0x7F1a, IDS_MSG_COMMIT_NEWUSER,       "MSG_COMMIT_NEWUSER" )
+DBGSTR(0x7F1b, IDS_MSG_SET_NEW_USER_ORDER,   "MSG_SET_NEW_USER_ORDER" )
+DBGSTR(0x7F1c, IDS_MSG_QUERY_NEW_USERID_OK,  "MSG_QUERY_NEW_USERID_OK" )
+DBGSTR(0x7F1d, IDS_MSG_BEGIN_SESSION,        "MSG_BEGIN_SESSION" )
+DBGSTR(0x7F1e, IDS_MSG_COMMIT_PASSWD,        "MSG_COMMIT_PASSWD" )
+DBGSTR(0x7F1f, IDS_MSG_SEND_WINVER,          "MSG_SEND_WINVER" )
+DBGSTR(0x7F20, IDS_MSG_COMMIT_CUST_INFO,     "MSG_COMMIT_CUST_INFO" )
+DBGSTR(0x7F21, IDS_MSG_QUERY_SHIPPING_COSTS, "MSG_QUERY_SHIPPING_COSTS" )
+DBGSTR(0x7F22, IDS_MSG_SEND_EXETYPE,         "MSG_SEND_EXETYPE" )
+DBGSTR(0x7F23, IDS_MSG_QUERY_USERID_OK,      "MSG_QUERY_USERID_OK" )
+DBGSTR(0x7F24, IDS_MSG_QUERY_SUBSCRIPTION_PRICE, "MSG_QUERY_SUBSCRIPTION_PRICE" )
+DBGSTR(0x7F25, IDS_MSG_DOWNLOAD_EXE,         "MSG_DOWNLOAD_EXE" )
+DBGSTR(0x7F26, IDS_MSG_QUERY_INSTOCK,        "MSG_QUERY_INSTOCK" )
+DBGSTR(0x7F27, IDS_MSG_COMMIT_RENEWAL,       "MSG_COMMIT_RENEWAL" )
+DBGSTR(0x7F28, IDS_MSG_QUERY_RENEWAL_PRICE,  "MSG_QUERY_RENEWAL_PRICE" )
+DBGSTR(0x7F29, IDS_MSG_QUERY_RENEWAL_OK,     "MSG_QUERY_RENEWAL_OK" )
+DBGSTR(0x7F2a, IDS_MSG_QUERY_SUBTYPE,        "MSG_QUERY_SUBTYPE" )
+DBGSTR(0x7F2b, IDS_MSG_QUERY_SHIP_RENEWAL,   "MSG_QUERY_SHIP_RENEWAL" )
+DBGSTR(0x7F2c, IDS_MSG_QUERY_DATA_LRC,       "MSG_QUERY_DATA_LRC" )
+DBGSTR(0x7F2d, IDS_MSG_NEW_GET_NEW_USER_ID,  "MSG_NEW_GET_NEW_USER_ID" )
+DBGSTR(0x7F2e, IDS_MSG_QUERY_SUBSCR_PRICES,  "MSG_QUERY_SUBSCR_PRICES" )
+DBGSTR(0x7F2f, IDS_MSG_COMMIT_SUBSCRIPTION,  "MSG_COMMIT_SUBSCRIPTION" )
+DBGSTR(0x7F30, IDS_MSG_QUERY_EXEVERSIONS,    "MSG_QUERY_EXEVERSIONS" )
+DBGSTR(0x7F31, IDS_MSG_QUERY_ORDERID,        "MSG_QUERY_ORDERID" )
+DBGSTR(0x7F32, IDS_MSG_SET_ORDER,            "MSG_SET_ORDER" )
+DBGSTR(0x7F33, IDS_MSG_DOWNLOAD_FCDBLST,     "MSG_DOWNLOAD_FCDBLST" )
+DBGSTR(0x7F34, IDS_MSG_DOWNLOAD_FCDBFILE,    "MSG_DOWNLOAD_FCDBFILE" )
+           
+#ifdef RC_INVOKED
+END            
+#endif         
+
+#if 0
+
+    /* see error.h for codes */
+    IDS_IO_ERR                  "Error %d. Please contact Connect Software Technical Support at (800) 234-9497."
+    IDS_FILE_IO_ERR             "I/O error #%d: %s. Please contact Connect Software Technical Support at (800) 234-9497."
+
+/* user-friendly database errors */
+
+    IDS_ERR_PLEASE_WAIT         "The Connect Software Server is not yet up and running.  Sorry for the inconvenience.  Please contact Connect Software for the latest news."
+    IDS_ERR_OLDWINVER           "Window Shopper requires Windows version 2.10 or higher."
+    IDS_ERR_MISSING_VIEW_THUMB   "Window Shopper is unable to display your selection due to a missing thumbnail file from %s.\n\nYou may either cancel this selection, or obtain the thumbnail by changing your Thumb directory or logging on to the Connect Software Ser
+    IDS_ERR_MISSING_SEARCH_THUMB "Window Shopper is unable to display one or more images due to a missing thumbnail file from %s.\n\nYou may either skip the image(s) and continue searching, or obtain the thumbnail by changing your Thumb directory or loggi
+    IDS_ERR_MISSING_ALT_DRIVE   "Your thumbnail directory (%s) is not accessible.  Please insert the %s thumbnail diskette or Logon to view/search thumbnail images online."
+    IDS_ERR_MISSING_ADMIN_FILES "Window Shopper cannot access a database file.  You may obtain it by logging on to the Connect Software Server."
+    IDS_MSG_SUBSCRIBE           "Window Shopper cannot access a database file.  You may obtain it by subscribing to the online service (press the NewUser button in the main Window Shopper window)."
+    IDS_ERR_DIR_DOESNT_EXIST    "Your download directory (%s) does not exist.  Please select another directory."
+    IDS_ERR_LIB_NOTAVAIL        "This library is not available for viewing.  Please select another and try again."
+        IDS_ERR_DISK_FULL                   "Window Shopper was unable retrieve a file because your hard disk is full.  Please make some room and try again!  You might try reducing your cache size until you force deletion of least-recently-used thumbnail files."
+        IDS_ERR_CACHE_FULL                  "Window Shopper was unable to obtain a thumbnail file because the amount allocated for your cache will be exceeded.  Please increase your cache size and try again!"
+    IDS_ERR_UNABLE_TO_DOWNLOAD  "Window Shopper was unable to download %s."
+    IDS_ERR_READING_WININI      "Window Shopper was unable to read your customer information to the win.ini file."
+    IDS_ERR_WRITING_WININI      "Window Shopper was unable to write your customer information to the win.ini file."
+    IDS_ERR_INITIALIZING        "Window Shopper was unable to initialize the win.ini file for a new user."
+        IDS_ERR_DISK_UNAVAIL        "There is not enough disk space on your drive for your requested cache size."
+
+/* memory errors */
+
+        IDS_FATAL_ERR_TITLE                 "Window Shopper - Fatal Error!"
+        IDS_ERR_GMEM_FULL                   "Window Shopper could not allocate Global Memory and must shut down.\012\012Please report this problem to Adonis Corporation."
+    IDS_ERR_NO_MEMORY           "Window Shopper has run out of memory for this operation.  Try shutting down some other applications and try the operation again."
+    IDS_ERR_LMEM_FULL           "Window Shopper could not allocate any local memory.\012\012Please report this problem to Adonis Corporation."
+    IDS_ERR_DELETE_LIBS         "The cache size you selected will cause Window Shopper to delete one or more least-recently-used libraries from your cache.  Proceed?"
+
+/* communication errors */
+
+    IDS_ERR_SETTING_PASSWD      "We're sorry, but Window Shopper was unable to change the password.  Please try again later."
+    IDS_ERR_UNABLE_TO_CONNECT   "Window Shopper was unable to connect to the Adonis Server. Please call Adonis Technical Support at (800) 234-9497 for assistance."
+        IDS_ERR_BUSY                "We're sorry, but the Adonis Server is currently busy.  Please try to Logon again later!"
+    IDS_ERR_BBS_TIMED_OUT       "Window Shopper must log off because the Adonis Server is not responding.  Please try to log on again later!"
+    IDS_ERR_MUST_LOGON          "You must Logon before attempting this operation."
+    IDS_ERR_COMM                "We're sorry, but Window Shopper had to terminate the phone connection due to a communications error.  Please try to Logon again."
+
+/* user info errors */
+
+    IDS_ERR_ADDLRU              "Error in LRU table"
+    IDS_ERR_PASSWD_LEN          "Passwords must be 5-8 characters long."
+    IDS_ERR_BAD_USERID          "We are unable to accept your user ID."
+    IDS_ERR_BAD_NEW_ACCOUNT     "Sorry, we are unable to create a new account for you."
+        IDS_ERR_TITLE                       "Window Shopper - Error!"
+        IDS_ERR_SECOND_INSTANCE         "A copy of Window Shopper is already running!"
+        IDS_ERR_TOO_MANY_TIMERS         "The Window Shopper Logon timer could not be started."
+        IDS_ERR_INVALID_USER_NAME       "You have entered an invalid user name."
+    IDS_ERR_INVALID_CARD_INFO   "You have entered invalid credit card information for this card.  Please check for correct information before saving."
+    IDS_ERR_MISSING_NAME        "You must enter your name as it appears on this credit card.  Please check for correct information before saving."
+    IDS_ERR_INVALID_EXPR        "You must enter a valid expiration date as numbers in the form mm/yy.  Please check for correct information before saving."
+    IDS_ERR_INVALID_CARD        "You have selected a card with invalid information.  Please select another card."
+    IDS_ERR_MUST_HAVE_PASSWORD  "You must enter a password in order to use Window Shopper."
+        IDS_ERR_INVALID_PASSWORD        "You have entered an invalid password.  Please try again."
+    IDS_ERR_MUST_SELECT         "The billing method you have selected is invalid.  You must select a credit card with valid information before pressing OK."
+    IDS_ERR_NEED_INFO           "The information in this dialog must be filled out before pressing OK."
+    IDS_ERR_INVALID_BILLING     "The information for the credit card you have selected is invalid and must be reentered in order to continue.  Do you wish to continue?"
+    IDS_ERR_INVALID_USERID      "You must enter a valid user id before continuing.  Please try again."
+        IDS_ERR_UNENCRYPTING        "Window Shopper was unable to unencrypt your credit card information.  Please contact Adonis Corporation."
+        IDS_ERR_ENCRYPTING          "Window Shopper was unable to encrypt your credit card information.  Please contact Adonis Corporation."
+    IDS_ERR_NOT_DOWNLOADABLE    "Images in this library are not available for downloading.  You can purchase the complete library by using the Library Order Form dialog box."
+    IDS_ERR_CHECK_MODEM         "Window Shopper was unable to make a modem connection.  Please check that your serial port, modem and phone are connected and turned on, then try this operation again!"
+    IDS_ERR_MISSING_NUMBER      "Window Shopper was unable to determine the phone number to the Adonis Server because your phone number is not correctly entered in the Customer Information Dialog.  Do you wish to enter this information now?"
+    IDS_ERR_BAD_BITMAP          "Bad thumbnail. Sorry, can't display"
+    IDS_ERR_CREATING_DIR        "Window Shopper was unable to create the directory %s."
+    IDS_ERR_BACKUP_TO_DIFF      "You must specify a directory other than the one that holds Window Shopper data.  Please select a different directory and try again."
+    IDS_ERR_EXCEEDED_CORP_ACCT  "You have exceeded your corporate account credit limit.  Please contact your purchasing department or Adonis Corporation for assistance."
+    IDS_ERR_SELECT_NEW_COURIER  "Note: your currently selected shipping method is not available for this product.  Please select another carrier option."
+        IDS_ERR_NOHELP                          "Window Shopper was unable to bring up the help window at this time.  Please close some applications and try again."
+        IDS_ERR_WINDOW_IN_USE           "Current View Window in use.\nWould you like to switch to:\n%s?\n"
+
+        IDS_ERR_CREDIT_SECURE           "The following dialog asks you to provide your credit card information for billing purposes.  This information will be securely encrypted only on your own computer.  Adonis will not maintain your credit information elsewhere."
+
+        IDS_ERR_ARE_USER                        "Are you a subscribed Window Shopper user?"
+        IDS_ERR_EXPIRED_ID                      "Your subscription has expired.  The following dialog will give you the opportunity to renew with a one-year subscription.  If you press Cancel you will not be able to Logon this time, but may do so in the future by repeating this pr
+
+    IDS_ERR_CREDIT_NOT_ACCEPT   "Window Shopper was unable to accept your credit.  Please select another billing method and try again."
+        IDS_ERR_CONDITIONAL_ORDER       "We were unable to validate your credit.  Would you like to place an order conditional upon later validation?"
+    IDS_MSG_VALIDATE_CREDIT     "Validating your credit..."
+        IDS_MSG_ORDER_OUTOFSTOCK        "Your order is temporarily out-of-stock.  Do you wish to back order?"
+        IDS_ERR_ORDER_UNAVAILABLE       "Sorry, your order is no longer available."
+        IDS_ERR_UNABLE_TO_ORDER         "We were unable to place your order.  Please try again later."
+        IDS_ERR_UNABLE_TO_ORDER_CLIP "We were unable to complete your clip-art transaction and thus cannot give you a purchase order ID."
+        IDS_ERR_TOO_LATE            "Sorry, too late.  The Adonis Server already terminated your phone connection, due to inactivity."
+        IDS_ERR_SELECTFORMAT    "You must select one or more formats when the \042Selected\042 radio button is checked."
+/* General titles, for windows and message type stuff */
+
+    IDS_APPNAME                 "WShopper"
+    IDS_WININILABEL             "Window Shopper"
+    IDS_TITLE_APPNAME           "Clip-Art Window Shopper"
+    IDS_TITLE_BILLING           " Billing Information "
+    IDS_TITLE_CUSTOMER          " Customer Information "
+    IDS_TITLE_SHIPPING          " Shipping Information "
+    IDS_TITLE_NEW_USER          " New User "
+    IDS_TITLE_CHANGE_PW         " Change Password "
+    IDS_TITLE_PASSWORD_VERIFY   " Password Verification "
+    IDS_FLOPPY_THUMB            "A:\\THUMB"
+    IDS_DATA_DIR                "DATA"
+    IDS_THUMB_DIR               "THUMB"
+    IDS_SELECT_DIR_ALT_THUMBNAIL "Select a thumbnail directory"    
+    IDS_SELECT_DIR_CLIPART      "Select a destination directory for:"
+    IDS_TITLE_ALT_THUMBNAIL     " Thumbnail Directory "         
+        IDS_TITLE_SEARCH        "Search"
+        
+
+/* general messages */
+
+    IDS_MSG_NOSHIPPING          "Shipping charges will be added to the total charge for your order."
+    IDS_MSG_DOWNLOADING         "Downloading thumbnail file.  Please wait a few moments..."
+    IDS_MSG_DOWNLOADING_DB      "Downloading database file.  Please wait a few moments..."      
+    IDS_MSG_NEW_USER_START      "This process culminates by phoning the Adonis Server.  If your version of Window Shopper is out-of-date, you will receive a free upgrade and will need to repeat the New User process.  Do you wish to continue?"
+    IDS_MSG_UPDATE_DATABASE     "Window Shopper is updating your local database.  Thumbnails will be updated as necessary as you view them.  Window Shopper performs optimally when you allow this process to complete."
+    IDS_MSG_UPDATE_SHOPPER_LONG "You are about to receive a free upgrade to Window Shopper.  You will not be able to access the Adonis Server without this upgrade.  To continue, press the OK button.  If you want to abort the update process, press the Canc
+    IDS_MSG_UPDATE_SHOPPER_SHORT "Window Shopper upgrade in progress..."                  
+    IDS_MSG_GETTING_CLIP        "Clip-art download in progress..."      
+    IDS_MSG_HAVE_ID             "Do you have a valid user ID supplied by Adonis?"
+    IDS_MSG_NEW_EXE             "You have successfully received a free Window Shopper upgrade. The version you are running now is about to quit. To complete the upgrade process you must quit Windows and run UPDATE.BAT while you are in %s. You may then res
+    IDS_MSG_WANT_TO_BACKUP      "Window Shopper can add the thumbnails you are about to view to your thumbnail directory (%s).  Would you like to keep a copy for future viewing?"
+    IDS_MSG_CLIPART_DOWN        "Your clip-art file has been successfully downloaded."
+    IDS_MSG_CLIPART_NOT_DOWN    "Window Shopper was unable to download the selected clip-art file.\012\012NOTE: You will not be charged for images you did not receive."
+    IDS_MSG_UPDATE_BY_MAIL      "If you would like to obtain the latest version of Window Shopper by mail, call Adonis' toll-free number, (800) 234-9497.  Otherwise, Logon again to receive the upgrade via modem."
+    IDS_MSG_SHIP_CHARGE_NA      "We are unable to immediately provide you with an accurate shipping rate.  If you need this information, you may call our toll free number:\012 (800) 234-9497 on the next working day."
+    IDS_MSG_QUERY_INTERRUPT     "Interrupt download?"                            
+    IDS_MSG_QUERY_HANGUP        "Logoff from the Adonis Server?"
+    IDS_MSG_DISCONNECTED        "The Adonis Server has terminated your phone connection, either due to inactivity or communications error."
+    IDS_MSG_INIT_CACHE          "Initializing thumbnail cache..."
+        IDS_MSG_SAVE_ACTIVE_USERID  "You have successfully re-activated your Window Shopper account.  Please save your password because you will need it to operate Window Shopper."
+        IDS_MSG_SAVE_USERID                     "Thank you for registering as a Window Shopper user.  Please save your password because you will need it to operate Window Shopper."
+        IDS_MSG_NEW_USERID                      "Thank you for registering as a Window Shopper user. Your new userID is '%s'.  Please save your password because you will need it to operate Window Shopper."
+        IDS_MSG_NEW_PURCHASE_ORDER      "Your order number is %d.  Please save this number in case problems arise."
+        IDS_MSG_ORDER_PLACED            "Your order has been placed.  Your order number is %d.  Please save this number in case problems arise."
+        IDS_MSG_CONNECT_TO_WS           "Would you like to connect via modem to the Adonis Server?"
+        IDS_MSG_ALREADY_VIEWING         "Already Viewing: %s."
+        IDS_MSG_USERID_ASSIGNED         "You have logged on and have been assigned a userID 'FDTY1234' and are advised to write it down and store it in a secure place."
+        IDS_MSG_MINUTE_WARNING      "The Adonis Server will soon terminate your phone connection, due to inactivity.  Stay connected?"
+        IDS_MSG_TOTALING            "Totaling..."
+    IDS_MSG_CONNECTING          "Connecting to the Adonis Server..."
+    IDS_MSG_INITIALIZING        "Initializing..."
+    IDS_MSG_COMPLETE_RENEWAL    "Your subscription has been renewed for a full year.  Thanks for using Clip-Art Window Shopper!"
+    IDS_MSG_MISSING_WHATS_NEW   "The \042What's New\042 information is currently missing from your machine.  You may obtain it by logging onto the Adonis Server."
+    IDS_MSG_CHECK_WHATS_NEW     "New information has been added to Window Shopper.  Choose the \042What's New\042 menu item under the \042Information\042 menu to see what has been added or changed."
+    IDS_MSG_NO_MATCH            "There is no image in the Window Shopper database that has the keyword \042%s\042."
+    IDS_MSG_NO_MORE_MATCHES     "There are no more images in the Window Shopper database that have the keyword \042%s\042."
+    IDS_MSG_MISSING_SRCH_FILE   "Information required by the search engine is missing from your hard disk.  You may obtain it by logging on to the Adonis Server."
+    IDS_MSG_STOP_SEARCH         "Do you really want to cancel this search?"
+    IDS_MSG_SEARCHING_FOR       "Searching for \042%s\042 in %s..."
+    IDS_MSG_NO_RENEWAL_PKG      "A subscription renewal to Window Shopper does not require a new retail package. However, updates and Window Shopper literature may be shipped to you periodically. Please see that the shipping and media information in the f
+    IDS_MSG_CHECKING_DATABASE   "Checking Local Database..."            
+        IDS_MSG_UPDATING_CUST_REC       "Updating Customer Record..."
+#if 0
+        IDS_MSG_LOADING_SEARCH_IMG      "Loading Image from %s..."
+#endif
+        IDS_MSG_WS_FRMT         "Window Shopper Database"
+        IDS_MSG_EXE             "EXE"
+ IDS_CURPUB  "Note: The currently selected publisher is %s"
+
+#ifdef INTERNAL
+        IDS_MSG_SELECT_PHONENUM "Call Retail BBS (YES) or Development BBS (NO)?"
+#endif
+
+#ifdef NO_LOGON
+        IDS_MSG_NO_LOGON        "Sorry, this Window Shopper beta does not support on-line access."
+#endif  
+    IDS_NOT_DOWNLOADABLE        "Images in this library are not available for downloading"
+
+    /* titles */
+    IDS_TITLE_USE_ALT_DIR       "Use "
+    IDS_TITLE_BACKUP_DIR        " Backup Thumbnail Files "
+
+#endif               
+//*** EOF: strtbl.str
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               

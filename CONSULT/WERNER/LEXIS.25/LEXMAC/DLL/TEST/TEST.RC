@@ -1,0 +1,17 @@
+#include "windows.h"
+#include "testd.h"
+#include "..\lexmacd.h"
+
+test ICON "test.ICO"
+
+test MENU
+BEGIN
+    POPUP        "&Macro"
+    BEGIN
+        MENUITEM "&Select...", IDM_MAIN
+    END
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About lexmac...", IDM_ABOUT
+    END
+END

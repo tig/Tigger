@@ -1,0 +1,13 @@
+obj\dbedit.obj+
+obj\bitmap.obj+
+obj\config.obj+
+obj\init.obj+
+obj\fontview.obj+
+obj\mainwnd.obj+
+obj\pubinfo.obj+
+obj\pubsave.obj
+dbedit.exe
+dbedit.map
+..\lib\fcdb ..\lib\conxmem ..\lib\conxlib commdlg mlibcew libw
+dbedit.def
+

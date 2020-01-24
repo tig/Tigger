@@ -1,0 +1,100 @@
+# Makefile for the main executable "APACHE"
+# Written by Bryan A. Woodruff
+# Copyright (c) 1992 Werner Associates
+
+# inference rules
+
+.asm.obj:
+        masm -Zi $*.asm ;
+
+.c.obj:
+        cl $(CFLAGS) $(PCHFLAGS) -NT $* $*.c | tee $*.err
+
+.rc.res:
+        rc $(RCFLAGS) $*.rc
+
+!IFNDEF RELEASE
+CFLAGS = -f -c -AM -Od -G2 -Gsw -W3 -Zipe -nologo -DDEBUG -FpPRECOMP.PCH
+LFLAGS = /CO /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ELSE
+CFLAGS = -c -AM -Ot -G2 -Gsw -W3 -Zpe -nologo -FpPRECOMP.PCH
+LFLAGS = /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ENDIF
+
+RCFLAGS = -r
+
+INCFILES =     precomp.pch apache.h resource.h
+
+OBJECTS =      precomp.obj apache.obj dialog.obj dialhlp.obj dlghelp.obj\
+               dlldesc.obj ini.obj init.obj library.obj misc.obj session.obj\
+               setup.obj size.obj mdi.obj
+
+all:           copyexe
+
+clean:
+               del *.obj
+               del *.map
+
+copyexe:       apache.exe
+!IFNDEF RELEASE
+               copy apache.exe ..\..\debug
+               copy apache.sym ..\..\debug
+!ELSE
+               copy apache.exe ..\..\release
+!ENDIF
+
+version:
+               bumpver version.h
+
+
+#----------------------------------------------------------------------------
+#  PreComp.C is used to create the precompiled information
+#----------------------------------------------------------------------------
+
+precomp.obj precomp.pch:   precomp.c precomp.h
+               cl $(CFLAGS) -YcPRECOMP.H -NT precomp precomp.c | tee $*.err
+
+apache.obj:    apache.c $(INCFILES)
+
+dialog.obj:    dialog.c dialhlp.h session.h $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NT DIALOG $*.c | tee $*.err
+
+dialhlp.obj:   dialhlp.c dialhlp.h session.h $(INCFILES)
+
+dlghelp.obj:   dlghelp.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NT DIALOG $*.c | tee $*.err
+
+dlldesc.obj:   dlldesc.c $(INCFILES)
+
+ini.obj:       ini.c $(INCFILES)
+
+init.obj:      init.c $(INCFILES)
+
+library.obj:   library.c $(INCFILES)
+
+misc.obj:      misc.c $(INCFILES)
+
+session.obj:   session.c $(INCFILES)
+
+setup.obj:     setup.c $(INCFILES)
+
+size.obj:      size.c $(INCFILES)
+
+mdi.obj:       mdi.c $(INCFILES)
+
+apache.res:    apache.rc dialogs.rc menuinit.rc menuterm.rc\
+               strings.rc accel.rc bitmaps.rc binary.rc\
+               apache.ico resource.h
+
+apache.exe:    $(OBJECTS) apache.res apache.def
+               link $(LFLAGS) @<<
+$(OBJECTS),
+apache.exe,
+apache.map
+wdb facelift taskmgr mflhlib commdlg shell libw mlibcew
+apache.def
+<<
+               rc -v apache.res apache.exe
+               mapsym apache

@@ -1,0 +1,51 @@
+//---------------------------------------------------------------------------
+//
+//  Module: binary.rc
+//
+//  Purpose:
+//     This contains the binary resources (RCDATA) type.
+//
+//  Development Team:
+//     Bryan A. Woodruff
+//
+//  History:   Date       Author      Comment
+//              2/22/92   BryanW      Added this comment block.
+//
+//---------------------------------------------------------------------------
+//
+//  *** ***  THIS CODE IS CONFIDENTIAL PROPERTY OF WERNER ASSOCIATES *** *** 
+//  Copyright (c) 1992 Werner Associates.  All Rights Reserved.
+//
+//---------------------------------------------------------------------------
+
+
+RESTABLE_BAUDRATES RCDATA DISCARDABLE
+BEGIN
+   13
+   CBR_110, CBR_300, CBR_600, CBR_1200, CBR_2400
+   CBR_4800, CBR_9600, CBR_14400, CBR_19200
+   CBR_38400, CBR_56000, CBR_128000, CBR_256000
+END
+
+RESTABLE_PARITY RCDATA DISCARDABLE
+BEGIN
+   5
+   NOPARITY, EVENPARITY, ODDPARITY, MARKPARITY, SPACEPARITY
+END
+
+RESTABLE_STOPBITS RCDATA DISCARDABLE
+BEGIN
+   3
+   ONESTOPBIT, ONE5STOPBITS, TWOSTOPBITS
+END
+
+RESTABLE_BREAKLENGTHS RCDATA DISCARDABLE
+BEGIN
+   5
+   100, 250, 500, 750, 1000, 1500
+END
+
+//---------------------------------------------------------------------------
+//  End of File: binary.rc
+//---------------------------------------------------------------------------
+

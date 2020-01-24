@@ -1,0 +1,35 @@
+.\obj.rtl\ksearch + 
+.\obj.rtl\subscr + 
+.\obj.rtl\comm + 
+.\obj.rtl\comm2 + 
+.\obj.rtl\comm3 + 
+.\obj.rtl\modem + 
+.\obj.rtl\xmodem + 
+.\obj.rtl\settings + 
+.\obj.rtl\wsinit + 
+.\obj.rtl\wsres +
+.\obj.rtl\custinfo +
+.\obj.rtl\file +
+.\obj.rtl\file2 +
+.\obj.rtl\file3 +
+.\obj.rtl\help +
+.\obj.rtl\messages +
+.\obj.rtl\misc +
+.\obj.rtl\order +
+.\obj.rtl\download +
+.\obj.rtl\viewbox +
+.\obj.rtl\busy +
+.\obj.rtl\pref +
+.\obj.rtl\info +
+.\obj.rtl\billing +
+.\obj.rtl\libmgr +
+.\obj.rtl\libmgr2 +
+.\obj.rtl\error +
+.\obj.rtl\lmemcpy.obj +
+.\obj.rtl\availdsk.obj +
+.\obj.rtl\dilute /align:16
+shopper.exe
+shopper.map
+libw/noe mlibcaw /nod 
+shopper.def      
+

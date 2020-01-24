@@ -1,0 +1,141 @@
+
+MAINTARGET=CONXUP
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+# if PUTEXE is defined the dll/exe will be copied from the root to
+PUTEXE  = ..\BUILD\
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  = ..\LIB\
+
+# if pubinc is define the include file will be copied there
+PUTINC  = ..\INC\
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+!IFDEF DEBUG
+
+CFLAGS      =   -f -c -nologo -DDEBUG -AM -G2sw -Owd -W3 -Zip -D$(MAINTARGET)
+LINKOPTS    =   /NOLOGO/BATCH/NOD/NOE/A:16/CO/M
+RCOPTS      =   -r -DDEBUG -iSRC;INC;RES
+BUILDTYPE   =   DEBUG
+
+!ELSE
+
+CFLAGS      =   -c -nologo -AM -G2sw -Owt -W3 -Zp -D$(MAINTARGET)
+LINKOPTS    =   /NOLOGO/BATCH/NOD/NOE/A:16/M
+RCOPTS      =   -r -iSRC;INC;RES
+BUILDTYPE   =   RELEASE
+
+!ENDIF
+
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+RESOPTS     =  -v -t
+
+BANNER      = $(MAINTARGET): **** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) ****
+
+
+#
+# Directories
+#
+MYRES = SRC\ 
+MYINC = SRC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = ..\inc\VERSION.H $(MYRES)$(MAINTARGET).RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(VERINCS)\
+          $(MYRES)$(MAINTARGET).rc
+
+# 
+# Library dependencies
+# 
+LMISC   =   MAKEFILE\
+            $(MAINTARGET).DEF
+
+LINCS   =   $(MYINC)GLOBAL.H
+
+LOBJS   =\
+            $(MYOBJ)$(MAINTARGET).OBJ
+
+#
+#   BUILD RULES
+#
+#all : $(MAINTARGET).EXE $(MYHELP)$(MAINTARGET).hlp
+all : $(MAINTARGET).EXE
+
+#
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+
+#   $(MAINTARGET).EXE build rules
+
+$(MAINTARGET).EXE : $(LOBJS) $(LOBJS2) $(MYRES)$(MAINTARGET).res $(MAINTARGET).def
+   @echo *** $(MAINTARGET) *** Linking...
+   link @<<
+$(LOBJS)
+$(MAINTARGET).EXE
+$(MAINTARGET).MAP
+lzexpand mlibcew libw
+$(MAINTARGET).def $(LINKOPTS)
+<<
+                   rc $(RESOPTS) $(MYRES)$(MAINTARGET).res $(MAINTARGET).EXE
+                   @mapsym $(MAINTARGET).map
+                   @copy $(MAINTARGET).EXE ..\build\$(MAINTARGET).MOD
+                   @copy $(MAINTARGET).SYM ..\build
+                   @echo.>$(OUTPUT)
+                   @echo $(BANNER)>$(OUTPUT)
+
+
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS)
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Building $(MYRES)$(MAINTARGET).RES
+    rc $(RCOPTS) $(MYRES)$(MAINTARGET).rc $(MYRES)$(MAINTARGET).RES
+
+$(MYOBJ)$(MAINTARGET).OBJ:  $(MYSRC)$(MAINTARGET).C $(LINCS) $(VERINCS)
+
+
+.ignore : 
+clean       :  
+                !del $(MYOBJ)*.obj
+                !del $(MYOBJ)*.exe
+                !del $(MYOBJ)*.pch
+                !del *.map
+                !del *.sym
+                !del $(MYRES)*.res
+                !del *.EXE
+                !del *.DLL
+                !del *.lib
+                !del $(MYSRC)*.err
+                @echo *** DONE ***
+
+        
+

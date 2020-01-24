@@ -1,0 +1,156 @@
+cp = cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT
+
+lexis.obj: $*.c $*.h
+    $(cp) _TEXT $*.c
+
+pronres.obj: pronres.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT NRES pronres.c
+
+file.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT FILE $*.c
+
+setup.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT SETUP $*.c
+
+formats.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT FORMATS $*.c
+
+citelink.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT CITELINK $*.c
+
+session.obj: $*.c $*.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT SESSION $*.c
+
+buttons.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT BUTTONS $*.c
+
+comm.obj: $*.c $*.h lexis.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT COMM $*.c
+
+aiscan.obj: $*.c $*.h aiscan.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT COMM $*.c
+
+search.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT SEARCH $*.c
+
+connect.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT CONNECT $*.c
+
+report.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT REPORT $*.c
+
+tokens.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT TOKENS $*.c
+
+macro.obj: macro.c lexis.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT MACRO macro.c
+
+font.obj: font.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT FONTS font.c
+
+record.obj: $*.c $*.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT RECORD $*.c
+
+diary.obj: $*.c $*.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT DIARY $*.c
+
+notepad.obj: $*.c $*.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT NOTEPAD $*.c
+
+prodde.obj: prodde.c lexis.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT DDE prodde.c
+
+termhi.obj: termhi.c lexis.h term.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT TERMHI termhi.c
+
+termlo.obj: termlo.c lexis.h term.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT TERMLO termlo.c
+
+copy.obj: copy.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT COPY copy.c
+
+proscrn.obj: proscrn.c lexis.h term.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT SCREEN proscrn.c
+
+promisc.obj: promisc.c lexis.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT MISC promisc.c
+
+data.obj: $*.c $*.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT STORAGE $*.c
+
+print.obj: print.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT PRINT print.c
+
+proinit.obj: proinit.c lexis.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT INIT proinit.c
+
+status.obj: status.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT STATUS status.c
+
+info.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT INFO $*.c
+
+term.obj: $*.c $*.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT TERM $*.c
+
+help.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT HELP $*.c
+
+library.obj: library.c library.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT LIBRY library.c
+
+wspawn.obj: wspawn.asm
+    masm wspawn;
+
+btndraw.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT BTNLB $*.c
+
+btnmain.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT BTNLB $*.c
+
+btnutils.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT BTNLB $*.c
+
+dlgopen.obj: dlgopen.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT OPEN dlgopen.c
+
+dlgsave.obj: dlgsave.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT SAVE dlgsave.c
+
+keydisk.obj: keydisk.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT KEYDISK keydisk.c
+
+module.obj: module.asm
+    masm module;
+
+dosos2.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT DOSOS2 $*.c
+
+robot.obj: $*.c $*.h
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT ROBOT $*.c
+
+device.obj: $*.c
+    cl -d -c -u -AM -FPa -Gcsw -Oxw -W2 -Zpe -NT DEVICE $*.c
+
+lexis.res: lexis.rc lexis.h lexis.ico
+    rc -r lexis.rc
+
+lexis.exe: lexis.def lexis.res lexis.obj session.obj \
+             comm.obj aiscan.obj file.obj diary.obj notepad.obj \
+             termhi.obj  termlo.obj  search.obj \
+             macro.obj citelink.obj buttons.obj \
+             setup.obj formats.obj \
+             font.obj    record.obj \
+             proinit.obj data.obj print.obj \
+             pronres.obj help.obj \
+	     promisc.obj proscrn.obj prodde.obj copy.obj \
+             dlgopen.obj \
+             term.obj module.obj robot.obj \
+             connect.obj report.obj tokens.obj \
+             status.obj info.obj library.obj wspawn.obj \
+             btndraw.obj btnmain.obj btnutils.obj  \
+             dlgopen.obj dlgsave.obj keydisk.obj dosos2.obj device.obj
+    link4 @lexis.lnk
+    rc lexis.res
+    mark memory lexis.exe
+    mapsym lexis

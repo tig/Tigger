@@ -1,0 +1,16 @@
+                cashcomm*        makelist.mak     s.lookio.c
+./               comm.c           makelist.o       s.makefile
+../              comm.new.c       makels           s.makelist.c
+Init             comm.new.o       modem.c          s.makelist.mak
+badhead.c        comm.o           modem.o          s.modem.c
+badhead.mak      commold.c        mvclip.c         s.try.bbs.c
+badhead.o        commold.o        mvclip.mak       s.writebuf.c
+bbs*             cpsrc*           mvclip.o         s.xmodem.c
+bbs.c            dirtree.c        oldcomm.mak      savebbs
+bbs.o            dirtree.o        p.bbs.c          try.bbs.c
+bbs.old*         errlog           rmdata.c         writebuf.c
+bbs.sav          list             rmdata.mak       xmodem.c
+bbs.sav.2        lookio.c         rmdata.o         xmodem.o
+bbs.save         lookio.o         s.bbs.c
+bbs.tst.Z*       makefile         s.comm.c
+bbst.Z*          makelist.c       s.dirtree.c

@@ -1,0 +1,163 @@
+//*************************************************************
+//  File name: panose.h
+//
+//  Description: 
+//      The string table for the panose dialog project.
+//
+//  History:    Date       Author     Comment
+//               3/15/92   MSM        Created
+//
+//*************************************************************
+
+#ifdef RC_INVOKED
+    #define DEFSTR(V,SID,S)   V     S
+    #define ADDSTR(SID,S)     SID   S
+#else
+    #define DEFSTR(V,SID,S)   enum {SID=V};
+    #define ADDSTR(SID,S)     
+#endif
+
+//*** These defines must always start at a 0x??00 and increment by 0x0010
+    #define IDS_FAMILY_BASE   0x5000
+    #define IDS_SERIF_BASE    0x5010
+    #define IDS_WEIGHT_BASE   0x5020
+    #define IDS_PROP_BASE     0x5030
+    #define IDS_CONTRAST_BASE 0x5040
+    #define IDS_STROKE_BASE   0x5050
+    #define IDS_ARMSTYLE_BASE 0x5060
+    #define IDS_LTRFORM_BASE  0x5070
+    #define IDS_MIDLINE_BASE  0x5080
+    #define IDS_XHEIGHT_BASE  0x5090
+
+#ifdef RC_INVOKED
+STRINGTABLE
+BEGIN
+  IDS_FAMILY_BASE+0,     "0:Any"
+  IDS_FAMILY_BASE+1,     "1:No Fit"
+  IDS_FAMILY_BASE+2,     "2:Text and Display"
+  IDS_FAMILY_BASE+3,     "3:Script"
+  IDS_FAMILY_BASE+4,     "4:Decorative"
+  IDS_FAMILY_BASE+5,     "5:Pictoral"
+
+  IDS_SERIF_BASE+0,      "0:Any"
+  IDS_SERIF_BASE+1,      "1:No Fit"
+  IDS_SERIF_BASE+2,      "2:Cove"
+  IDS_SERIF_BASE+3,      "3:Obtuse Cove"
+  IDS_SERIF_BASE+4,      "4:Square Cove"
+  IDS_SERIF_BASE+5,      "5:Obtuse Square Cove"
+  IDS_SERIF_BASE+6,      "6:Square"
+  IDS_SERIF_BASE+7,      "7:Thin"
+  IDS_SERIF_BASE+8,      "8:Bone"
+  IDS_SERIF_BASE+9,      "9:Exaggerated"
+  IDS_SERIF_BASE+10,     "10:Triangle"
+  IDS_SERIF_BASE+11,     "11:Normal Sans"
+  IDS_SERIF_BASE+12,     "12:Obtuse Sans"
+  IDS_SERIF_BASE+13,     "13:Perp Sans"
+  IDS_SERIF_BASE+14,     "14:Flared"
+  IDS_SERIF_BASE+15,     "15:Rounded"
+
+  IDS_WEIGHT_BASE+0,     "0:Any"
+  IDS_WEIGHT_BASE+1,     "1:No Fit"
+  IDS_WEIGHT_BASE+2,     "2:Very Light"
+  IDS_WEIGHT_BASE+3,     "3:Light"
+  IDS_WEIGHT_BASE+4,     "4:Thin"
+  IDS_WEIGHT_BASE+5,     "5:Book"
+  IDS_WEIGHT_BASE+6,     "6:Medium"
+  IDS_WEIGHT_BASE+7,     "7:Demi"
+  IDS_WEIGHT_BASE+8,     "8:Bold"
+  IDS_WEIGHT_BASE+9,     "9:Heavy"
+  IDS_WEIGHT_BASE+10,    "10:Black"
+  IDS_WEIGHT_BASE+11,    "11:Nord"
+
+  IDS_PROP_BASE+0,       "0:Any"
+  IDS_PROP_BASE+1,       "1:No Fit"
+  IDS_PROP_BASE+2,       "2:Old Style"
+  IDS_PROP_BASE+3,       "3:Modern"
+  IDS_PROP_BASE+4,       "4:Even Width"
+  IDS_PROP_BASE+5,       "5:Expanded"
+  IDS_PROP_BASE+6,       "6:Condensed"
+  IDS_PROP_BASE+7,       "7:Very Expanded"
+  IDS_PROP_BASE+8,       "8:Very Condensed"
+  IDS_PROP_BASE+9,       "9:Monospaced"
+
+  IDS_CONTRAST_BASE+0,   "0:Any"
+  IDS_CONTRAST_BASE+1,   "1:No Fit"
+  IDS_CONTRAST_BASE+2,   "2:None"
+  IDS_CONTRAST_BASE+3,   "3:Very Low"
+  IDS_CONTRAST_BASE+4,   "4:Low"
+  IDS_CONTRAST_BASE+5,   "5:Medium Low"
+  IDS_CONTRAST_BASE+6,   "6:Medium"
+  IDS_CONTRAST_BASE+7,   "7:Medium High"
+  IDS_CONTRAST_BASE+8,   "8:High"
+  IDS_CONTRAST_BASE+9,   "9:Very High"
+
+  IDS_STROKE_BASE+0,     "0:Any"
+  IDS_STROKE_BASE+1,     "1:No Fit"
+  IDS_STROKE_BASE+2,     "2:No Variation"
+  IDS_STROKE_BASE+3,     "3:Gradual/Diagonal"
+  IDS_STROKE_BASE+4,     "4:Gradual/Transitional"
+  IDS_STROKE_BASE+5,     "5:Gradual/Vertical"
+  IDS_STROKE_BASE+6,     "6:Gradual/Horizontal"
+  IDS_STROKE_BASE+7,     "7:Rapid/Vertical"
+  IDS_STROKE_BASE+8,     "8:Rapid/Horizontal"
+  IDS_STROKE_BASE+9,     "9:Instant/Vertical"
+
+  IDS_ARMSTYLE_BASE+0,   "0:Any"
+  IDS_ARMSTYLE_BASE+1,   "1:No Fit"
+  IDS_ARMSTYLE_BASE+2,   "2:Straight/Horizontal"
+  IDS_ARMSTYLE_BASE+3,   "3:Straight/Wedge"
+  IDS_ARMSTYLE_BASE+4,   "4:Straight/Vertical"
+  IDS_ARMSTYLE_BASE+5,   "5:Straight/Single Serif"
+  IDS_ARMSTYLE_BASE+6,   "6:Straight/Double Serif"
+  IDS_ARMSTYLE_BASE+7,   "7:Non Straight/Horizontal"
+  IDS_ARMSTYLE_BASE+8,   "8:Non Straight/Wedge"
+  IDS_ARMSTYLE_BASE+9,   "9:Non Straight/Vertical"
+  IDS_ARMSTYLE_BASE+10,  "10:Non Straight/Single Serif"
+  IDS_ARMSTYLE_BASE+11,  "11:Non Straight/Double Serif"
+
+  IDS_LTRFORM_BASE+0,    "0:Any"
+  IDS_LTRFORM_BASE+1,    "1:No Fit"
+  IDS_LTRFORM_BASE+2,    "2:Normal/Contact"
+  IDS_LTRFORM_BASE+3,    "3:Normal/Weighted"
+  IDS_LTRFORM_BASE+4,    "4:Normal/Boxed"
+  IDS_LTRFORM_BASE+5,    "5:Normal/Flattened"
+  IDS_LTRFORM_BASE+6,    "6:Normal/Rounded"
+  IDS_LTRFORM_BASE+7,    "7:Normal/Off Center"
+  IDS_LTRFORM_BASE+8,    "8:Normal/Square"
+  IDS_LTRFORM_BASE+9,    "9:Oblique/Contact"
+  IDS_LTRFORM_BASE+10,   "10:Oblique/Weighted"
+  IDS_LTRFORM_BASE+11,   "11:Oblique/Boxed"
+  IDS_LTRFORM_BASE+12,   "12:Oblique/Flattened"
+  IDS_LTRFORM_BASE+13,   "13:Oblique/Rounded"
+  IDS_LTRFORM_BASE+14,   "14:Oblique/Off Center"
+  IDS_LTRFORM_BASE+15,   "15:Oblique/Square"
+
+  IDS_MIDLINE_BASE+0,    "0:Any"
+  IDS_MIDLINE_BASE+1,    "1:No Fit"
+  IDS_MIDLINE_BASE+2,    "2:Standard/Trimmed"
+  IDS_MIDLINE_BASE+3,    "3:Standard/Pointed"
+  IDS_MIDLINE_BASE+4,    "4:Standard/Serifed"
+  IDS_MIDLINE_BASE+5,    "5:High/Trimmed"
+  IDS_MIDLINE_BASE+6,    "6:High/Pointed"
+  IDS_MIDLINE_BASE+7,    "7:High/Serifed"
+  IDS_MIDLINE_BASE+8,    "8:Constant/Trimmed"
+  IDS_MIDLINE_BASE+9,    "9:Constant/Pointed"
+  IDS_MIDLINE_BASE+10,   "10:Constant/Serifed"
+  IDS_MIDLINE_BASE+11,   "11:Low/Trimmed"
+  IDS_MIDLINE_BASE+12,   "12:Low/Pointed"
+  IDS_MIDLINE_BASE+13,   "13:Low/Serifed"
+
+  IDS_XHEIGHT_BASE+0,    "0:Any"
+  IDS_XHEIGHT_BASE+1,    "1:No Fit"
+  IDS_XHEIGHT_BASE+2,    "2:Constant/Small"
+  IDS_XHEIGHT_BASE+3,    "3:Constant/Standard"
+  IDS_XHEIGHT_BASE+4,    "4:Constant/Large"
+  IDS_XHEIGHT_BASE+5,    "5:Ducking/Small"
+  IDS_XHEIGHT_BASE+6,    "6:Ducking/Standard"
+  IDS_XHEIGHT_BASE+7,    "7:Ducking/Large"
+END
+
+#endif
+
+//*** EOF: panose.str
+

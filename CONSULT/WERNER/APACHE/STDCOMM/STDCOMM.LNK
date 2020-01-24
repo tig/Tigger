@@ -1,0 +1,7 @@
+dialog event handler load libentry+
+libmain precomp save setup stdcomm
+stdcomm.con
+stdcomm
+wdb ..\apache\facelift libw mdllcew
+stdcomm.def
+

@@ -1,0 +1,9 @@
+blink cursor dialog focus keyhook+
+load libentry libmain paint+
+precomp rect save scroll setup size+
+vt220 window write
+decvt220.emu
+decvt220
+wdb ..\apache\facelift libw mdllcew
+vt220.def
+

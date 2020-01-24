@@ -1,0 +1,23 @@
+This screen displays clip-art publishers, clip-art subject categories and libraries available from each publisher or in each category.  Press the button indicating whether you want to view by publisher or category.  Then choose in the upper list box a publisher or category.  The libraries available in your choice are listed in the lower list box.  You may choose a library in the second list box and a brief description of it appears below the list box.
+
+If you press the VIEW button you may view thumbnail sketches of the clip-arts in that library and, when you are logged on to the Adonis Server, you may download clip-arts in the library.
+
+If you press the ORDER button then, if you are logged on to the Adonis Server,  you may order the library.
+
+If the NEW USER button is showing, then you are a new user (or are re-installing Windows and/or Window Shopper) and must press this button the first time you want to logon.  You may not download clip-art, order libraries, or guarantee that your Window Shopper database is up-to-date unless you logon.  After you have completed the NEW USER process, the NEW USER button will be replaced by the LOGON button, and all menu items will be enabled.
+
+The LOGON button instructs Window Shopper to dial up the Adonis Server using your modem and phone line.  You must provide your password to logon.
+
+While you are logged on, Window Shopper makes sure each file in the Window Shopper database is fully up-to-date before you access the file.  If the file is not up-to-date, then Window Shopper downloads it automatically.  
+
+When you are logged on to the Adonis Server, the timer in the upper right hand corner shows the elapsed time since you logged on and the amount of idle time remaining before you are logged off (maximum of ten minutes).  The latter value is reset each time you do something which accesses the Adonis Server.  You are warned if a disconnect is imminent.
+
+The library descriptions contain a list of the Versions that each library comes in.  These are usually abbreviated as follows:
+
+   AI  -- Adobe Illustrator
+   EPS -- Encapsulated Postscript
+   CDR -- CorelDraw
+   DRW -- Micrografx Designer
+   PCX -- MS Paintbrush, MS Windows Paint
+   TBK -- Asymetrix ToolBook
+   TIF -- Bitmap format$

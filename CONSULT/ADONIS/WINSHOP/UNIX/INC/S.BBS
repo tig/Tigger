@@ -1,0 +1,429 @@
+h56400
+s 00001/00001/00085
+d D 1.27 91/02/08 12:46:52 bbs 27 26
+c 
+e
+s 00005/00001/00081
+d D 1.26 91/02/07 17:09:20 bbs 26 25
+c new tele len
+e
+s 00000/00000/00082
+d D 1.25 90/11/07 12:18:43 bbs 25 24
+c 
+e
+s 00006/00006/00076
+d D 1.24 90/10/17 17:23:18 sluggj 24 23
+c 
+e
+s 00000/00000/00082
+d D 1.23 90/10/16 12:24:10 bbs 23 22
+c 
+e
+s 00000/00000/00082
+d D 1.22 90/09/22 21:37:54 bbs 22 21
+c 
+e
+s 00000/00000/00082
+d D 1.21 90/09/21 11:57:56 bbs 21 20
+c 
+e
+s 00010/00003/00072
+d D 1.20 90/09/19 18:27:00 bbs 20 19
+c 
+e
+s 00006/00011/00069
+d D 1.19 90/09/13 15:04:45 bbs 19 18
+c 
+e
+s 00021/00003/00059
+d D 1.18 90/09/13 13:50:50 bbs 18 17
+c 
+e
+s 00031/00051/00031
+d D 1.17 90/08/16 14:41:22 mitchl 17 16
+c 
+e
+s 00003/00003/00079
+d D 1.16 90/08/01 18:45:06 bbs 16 15
+c 
+e
+s 00000/00000/00082
+d D 1.15 90/07/25 18:10:55 bbs 15 14
+c 
+e
+s 00004/00000/00078
+d D 1.14 90/07/11 21:16:41 bbs 14 13
+c 
+e
+s 00002/00000/00076
+d D 1.13 90/07/06 22:45:37 bbs 13 12
+c 
+e
+s 00002/00002/00074
+d D 1.12 90/07/06 17:40:07 bbs 12 11
+c 
+e
+s 00002/00001/00074
+d D 1.11 90/07/06 15:37:52 bbs 11 10
+c 
+e
+s 00002/00002/00073
+d D 1.10 90/07/06 15:24:53 bbs 10 9
+c 
+e
+s 00009/00000/00066
+d D 1.9 90/07/06 15:01:11 bbs 9 8
+c 
+e
+s 00019/00000/00047
+d D 1.8 90/06/27 17:24:53 bbs 8 7
+c 
+e
+s 00003/00003/00044
+d D 1.7 90/06/22 15:14:23 bbs 7 6
+c 
+e
+s 00044/00003/00003
+d D 1.6 90/06/21 08:53:21 bbs 6 5
+c ci stdcomm.h
+e
+s 00000/00000/00006
+d D 1.5 90/05/29 22:04:56 sluggj 5 4
+c 
+e
+s 00000/00000/00006
+d D 1.4 90/05/29 21:58:31 sluggj 4 3
+c 
+e
+s 00005/00000/00001
+d D 1.3 90/05/23 12:58:57 sluggj 3 2
+c cd ../src
+e
+s 00000/00000/00001
+d D 1.2 90/05/23 07:04:09 sluggj 2 1
+c 
+e
+s 00001/00000/00000
+d D 1.1 90/05/21 16:34:01 sluggj 1 0
+c date and time created 90/05/21 16:34:01 by sluggj
+e
+u
+U
+t
+T
+I 17
+D 26
+#ifndef BBSH
+E 26
+I 26
+D 27
+#IFndef BBSH
+E 27
+I 27
+#ifndef BBSH
+E 27
+E 26
+#define BBSH 1
+
+E 17
+I 1
+D 6
+#define STD_WAIT 90 // seconds; for debugging its a large value
+E 6
+I 6
+#define STD_WAIT 5
+E 6
+I 3
+
+I 13
+D 17
+// password and userid maximum sizes
+#define 	PW_SIZE     		8
+E 17
+I 17
+#ifndef SQL
+I 18
+#ifndef ACCTH
+E 18
+#include "acct.h"
+#endif
+I 18
+#endif
+E 18
+E 17
+E 13
+I 6
+
+I 26
+/* Directory to write log files to */
+#define LOG_DIR "/usr/bbs/log"
+
+E 26
+I 20
+/* Window shopper executable types as defined by WS */
+#define EXE_BETA 0
+#define EXE_REGULAR 1
+#define EXE_INTERNAL 2
+
+E 20
+D 17
+#define 	MAX_STR_LEN 		120
+E 17
+I 17
+/* password and userid maximum sizes */
+#define     PW_SIZE    		8
+
+#define     MAX_STR_LEN       120
+E 17
+#define     MAXLEN_AREA         3
+#define     MAXLEN_PHONE        8
+#define     MAXLEN_EXT          4
+I 26
+#define     MAXLEN_TELE        24	/* For combined, formatted number */
+E 26
+#define     MAXLEN_CARDNUM     19
+#define     MAXLEN_EXPIRE       2
+#define     MAXLEN_NAME        30
+D 17
+#define     MAXLEN_ADDRESS     30
+E 17
+I 17
+#define	    MAXLEN_STREET      30
+#define     MAXLEN_ADDRESS     MAXLEN_STREET
+E 17
+#define     MAXLEN_CITY        25
+#define     MAXLEN_STATE        2
+#define     MAXLEN_COUNTRY     20
+#define     MAXLEN_POSTAL      10
+D 17
+#define     MAXLEN_NUMBER      17
+E 17
+I 17
+#define	    MAXLEN_MNTH_DIGITS  2
+#define	    MAXLEN_YEAR_DIGITS  2
+#define     MAXLEN_EXPDATE MAXLEN_MNTH_DIGITS + MAXLEN_YEAR_DIGITS
+#define     MAXLEN_CCNUMBER    16
+#define     MAXLEN_PROVINCE    25
+#define     MAXLEN_TITLE       30
+E 17
+
+I 9
+D 17
+/* courier types */
+D 10
+#define 1_2DAY	232
+#define 2_3DAY  233
+E 10
+I 10
+D 16
+#define DAY12	232
+#define DAY13  233
+E 10
+#define USPS    234
+E 16
+I 16
+#define DAY12	1
+#define DAY13   2
+#define USPS    3
+E 17
+I 17
+/* credit authorization code, batch number, and reference number */
+#define	    MAXLEN_AUTHCODE     6	
+#define	    MAXLEN_BATCHNO      3
+#define     MAXLEN_REFNO	8
+E 17
+E 16
+E 9
+
+I 17
+/* misc. Ingres related definitions */ 
+#define     MAXLEN_DOSFILENAME  12 	/* eight.dot.three */
+#define	    MAXLEN_SHORTCOMMENT 20
+#define	    MAXLEN_VENDORCODE   20	
+#define     INGRES_MONEYLEN	8
+D 18
+#define     INGRES_DATELEN     12
+E 18
+I 18
+#define     INGRES_DATELEN     25
+E 18
+
+E 17
+I 14
+/* order flags (for flags field of order structure) */
+D 18
+#define OF_NO_CASH     		0x1
+#define OF_BACK_ORDER		0x2
+E 18
+I 18
+#define OF_INITIALIZE  		0x1  /* call NormalOrder with this before trying to
+								    capture credit */
+#define OF_CC_RESULT		0x2  /* call NormalOrder with CC_RESULT to record
+									result of credit capture.  Result of
+									capture should be stored in ccReq */
+D 24
+#define OF_PLACED			0x4  /* call NormalOrder with PLACED when order
+E 24
+I 24
+#define OF_COMMITED     	0x4  /* call NormalOrder with COMMITED when order
+E 24
+									has been completed as far as the bbs/WS
+									interaction goes */
+#define OF_SUBMITTED		0x8  /* call NormalOrder with SUBMIT when order
+									has been submitted for delivery (like
+									a clipart is about to be downloaded) */
+D 24
+#define OF_DELIVERED		0x10 /* call NormalOrder with DELIVERED when
+E 24
+I 24
+#define OF_SHIPPED  		0x10 /* call NormalOrder with SHIPPED when
+E 24
+									as far as we can tell, the customer
+									has received his/her purchase (like
+									a clipart has been downloaded) */
+D 20
+#define OF_BACK_ORDERED     0x20
+#define OF_NO_CASH     0x40 // tmp
+E 20
+I 20
+D 24
+#define OF_BACK_ORDERED     0x20 /* same as PLACED, but product was determined
+									to be out-of-stock. */
+#define OF_NO_CASH     		0x40 /* same as PLACED, but conditional upon
+									getting their money. */
+E 24
+I 24
+#define OF_BACK_ORDERED     0x20 /* call NormalOrder with BACK_ORDERED
+                                    to mark order as being out-of-stock.
+                                    Does not imply that order has been 
+                                    commited or anything. */
+E 24
+E 20
+
+E 18
+
+E 14
+I 9
+D 17
+
+E 17
+E 9
+D 19
+/* If any cards are added, the number of cards must be increased */
+D 11
+
+E 11
+I 11
+#if 0
+E 11
+#define     NUMBER_OF_CARDS     5
+#define     VISA                0
+#define     MASTERCARD          1
+#define     DISCOVER            2
+#define     AMERICAN_EXPRESS    3
+#define     CORPORATE_CARD      4
+I 11
+#endif
+E 11
+
+I 9
+D 12
+typedef enum { FLOPPY360, FLOPPY12, DISK720, DISK14 } MEDIATYPE ;
+E 12
+I 12
+D 17
+//typedef enum { FLOPPY360, FLOPPY12, DISK720, DISK14 } MEDIATYPE ;
+E 17
+I 17
+/*typedef enum { FLOPPY360, FLOPPY12, DISK720, DISK14 } MEDIATYPE ;*/
+E 19
+I 19
+/* defined as such in Window Shopper: */
+#define USA 	0
+#define CANADA	1
+#define OTHER	2
+/* our own added touch: */
+D 20
+#define NON_CONTINENTAL_USA	4
+E 20
+I 20
+#define NON_CONTINENTAL_USA	3
+E 20
+E 19
+E 17
+E 12
+
+E 9
+I 8
+D 17
+typedef struct {
+    char    area[MAXLEN_AREA + 1];
+    char    number[MAXLEN_PHONE + 1];
+    char    ext[MAXLEN_EXT + 1];
+} PHONE_STRUCT;
+E 17
+
+D 17
+
+typedef struct {
+    char         customer[MAXLEN_NAME + 1];
+    char         company[MAXLEN_NAME + 1];
+    char         address[MAXLEN_ADDRESS + 1];
+    char         city[MAXLEN_CITY + 1];
+    char         state[MAXLEN_STATE + 1];
+    WORD         whichCountry;
+    char         country[MAXLEN_COUNTRY + 1];
+    char         postal_code[MAXLEN_POSTAL + 1];
+    PHONE_STRUCT phone;
+} ADDRESS_STRUCT;
+
+E 8
+E 6
+typedef struct
+{
+D 6
+  char dummy;
+} ORDER_INFO ;
+E 6
+I 6
+    char libName[MAX_STR_LEN+1];
+    char clipName[MAX_STR_LEN+1];
+    char productID[9];
+    char venderName[MAX_STR_LEN+1];
+    char shipName[MAXLEN_NAME+1];
+    char shipStreet[MAXLEN_ADDRESS+1];
+    char shipCity[MAXLEN_CITY+1];
+    char shipState[MAXLEN_STATE+1];
+    char shipCountry[MAXLEN_COUNTRY+1];
+    char shipPostalCode[MAXLEN_POSTAL+1];
+    char ccName[MAX_STR_LEN+1];
+    char AcctNum[17];
+    char ExpDate[5];
+D 7
+    int Quantity;
+    int priceTotal; // * 100
+    int priceEach; // * 100
+E 7
+I 7
+    WORD Quantity;
+    WORD priceTotal; // * 100
+    WORD priceEach; // * 100
+I 9
+D 12
+	MEDIATYPE MediaType;
+E 12
+I 12
+	WORD MediaType;
+E 12
+	BYTE CourierType;
+E 9
+E 7
+    DWORD flags;
+} ORDER;
+E 17
+I 17
+#endif
+E 17
+E 6
+E 3
+E 1

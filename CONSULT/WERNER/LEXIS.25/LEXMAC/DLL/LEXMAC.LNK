@@ -1,0 +1,12 @@
+obj\lexmac+
+obj\libentry+
+obj\main+
+obj\debug+
+obj\shadow+
+obj\about+
+obj\version
+lexmac.dll /align:16 /NOE /NOD
+lexmac /map
+libw mdllcaw /CO
+lexmac.def
+

@@ -1,0 +1,18 @@
+#include <windows.h>
+#include "dlgs.h"
+
+#define SPLITCURSOR  1
+/*
+ * Version Stamping
+ */
+#include "CONXLIB.rcv"
+
+/*
+ * String table
+ */
+#include "CONXLIB.str"
+
+
+#include "CONXLIB.dlg"
+
+SPLITCURSOR CURSOR "SPLIT.CUR"

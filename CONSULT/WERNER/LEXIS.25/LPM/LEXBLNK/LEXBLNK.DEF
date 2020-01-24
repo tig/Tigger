@@ -1,0 +1,25 @@
+; module-definition file for generic -- used by LINK.EXE
+
+NAME            LEXBLNK
+
+DESCRIPTION     'LEXIS Screen Blanker Copr. (c) 1991 Werner Associates'
+
+EXETYPE         WINDOWS	
+
+STUB	          'WINSTUB.EXE'
+
+CODE            PRELOAD MOVEABLE DISCARDABLE
+
+DATA            PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE        6192
+STACKSIZE       6192
+
+; All functions that will be called by any Windows routine
+; MUST be exported.
+
+EXPORTS
+      	FNMAINWND            @2   ; name of window processing function
+         FNTIMER              @3
+         FNENUMREALLY         @4
+

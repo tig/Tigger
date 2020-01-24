@@ -1,0 +1,182 @@
+
+ WINPRT2
+
+ Start     Length     Name                   Class
+ 0001:0000 0007DH     _TEXT                  CODE
+ 0002:0000 00023H     WEP                    CODE
+ 0003:0000 00032H     INIT_TEXT              CODE
+ 0004:0000 00669H     WINPRINT               CODE
+ 0005:0000 0010BH     ABOUT                  CODE
+ 0006:0000 00000H     PRTCORE                CODE
+ 0006:0000 00000H     PRTFILE                CODE
+ 0006:0000 00010H     NULL                   BEGDATA
+ 0006:0010 001D6H     _DATA                  DATA
+ 0006:01E6 00000H     CDATA                  DATA
+ 0006:01E6 00000H     XIFB                   DATA
+ 0006:01E6 00000H     XIF                    DATA
+ 0006:01E6 00000H     XIFE                   DATA
+ 0006:01E6 00000H     XIB                    DATA
+ 0006:01E6 00000H     XI                     DATA
+ 0006:01E6 00000H     XIE                    DATA
+ 0006:01E6 00000H     XPB                    DATA
+ 0006:01E6 00000H     XP                     DATA
+ 0006:01E6 00000H     XPE                    DATA
+ 0006:01E6 00000H     XCB                    DATA
+ 0006:01E6 00000H     XC                     DATA
+ 0006:01E6 00000H     XCE                    DATA
+ 0006:01E6 00000H     XCFB                   DATA
+ 0006:01E6 00000H     XCF                    DATA
+ 0006:01E6 00000H     XCFE                   DATA
+ 0006:01E6 0000CH     DBDATA                 DATA
+ 0006:01F2 00000H     CONST                  CONST
+ 0006:01F2 00019H     HDR                    MSG
+ 0006:020B 00082H     MSG                    MSG
+ 0006:028D 00002H     PAD                    MSG
+ 0006:028F 00001H     EPAD                   MSG
+ 0006:0290 00010H     _BSS                   BSS
+ 0006:02A0 00000H     XOB                    BSS
+ 0006:02A0 00000H     XO                     BSS
+ 0006:02A0 00000H     XOE                    BSS
+ 0006:02A0 00006H     c_common               BSS
+
+ Origin   Group
+ 0006:0   DGROUP
+
+ Address   Export                  Alias
+
+ 0004:0148 FMExtensionProc         FMExtensionProc
+ 0005:0059 fnAbout                 fnAbout
+ 0004:05EB fnFileMan               fnFileMan
+ 0004:00AC GETWINPRINTHINST        GETWINPRINTHINST
+ 0004:00CD GETWINPRINTVERSION      GETWINPRINTVERSION
+ 0002:0000 WEP                     WEP
+
+  Address         Publics by Name
+
+ 0000:0000  Imp  CALLWINDOWPROC       (USER.122)
+ 0000:0000  Imp  CHECKMENUITEM        (USER.154)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0005:0000       DOABOUTBOX
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0004:0148       FMExtensionProc
+ 0005:0059       fnAbout
+ 0004:05EB       fnFileMan
+ 0000:0000  Imp  FREEPROCINSTANCE     (KERNEL.52)
+ 0000:0000  Imp  GETDLGITEMTEXT       (USER.93)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  GETWINDOWTEXT        (USER.36)
+ 0004:00AC       GETWINPRINTHINST
+ 0004:00CD       GETWINPRINTVERSION
+ 0000:0000  Imp  ISWINDOW             (USER.47)
+ 0003:0000       LibEntry
+ 0004:0000       LibMain
+ 0000:0000  Imp  LOADMENU             (USER.150)
+ 0000:0000  Imp  LocalInit            (KERNEL.4)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  OEMTOANSI            (KEYBOARD.6)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0008  Abs  pAtomTable
+ 0000:0006  Abs  pLocalHeap
+ 0000:0000  Imp  POSTMESSAGE          (USER.110)
+ 0000:000E  Abs  pStackBot
+ 0000:000C  Abs  pStackMin
+ 0000:000A  Abs  pStackTop
+ 0006:0004       rsrvptrs
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  SETWINDOWLONG        (USER.136)
+ 0006:01E0       STKHQQ
+ 0000:0000  Imp  WDBGETOUTPUT         (WDB.23)
+ 0000:0000  Imp  WDBOPENSESSION       (WDB.21)
+ 0000:0000  Imp  WDBSETOUTPUT         (WDB.24)
+ 0002:0000       WEP
+ 0004:003D       WINPRINTINIT
+ 0006:0290       _edata
+ 0006:02A6       _end
+ 0006:02A4       _hmodDLL
+ 0006:02A0       _hWDB
+ 0000:0000  Imp  _wdbPrint            (WDB.80)
+ 0000:0000  Imp  _wdbPrint3           (WDB.83)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtused2
+ 0000:D6D6  Abs  __aDBdoswp
+ 0006:01E2       __adbgmsg
+ 0006:01EA       __aDBrterr
+ 0006:01FA       __caption
+ 0000:9876  Abs  __fptaskdata
+ 0001:0012       __NMSG_TEXT
+ 0001:0049       __NMSG_WRITE
+ 0006:01EC       ___aDBexit
+ 0006:01E8       ___aDBswpchk
+ 0006:01E6       ___aDBswpflg
+ 0006:02A2       ___wEval
+
+  Address         Publics by Value
+
+ 0000:0000  Imp  ENDDIALOG            (USER.88)
+ 0000:0000  Imp  WDBOPENSESSION       (WDB.21)
+ 0000:0000  Imp  SETWINDOWLONG        (USER.136)
+ 0000:0000  Imp  LSTRCPY              (KERNEL.88)
+ 0000:0000  Imp  DIALOGBOX            (USER.87)
+ 0000:0000  Imp  CHECKMENUITEM        (USER.154)
+ 0000:0000  Imp  OUTPUTDEBUGSTRING    (KERNEL.115)
+ 0000:0000  Imp  SETDLGITEMTEXT       (USER.92)
+ 0000:0000  Imp  ISWINDOW             (USER.47)
+ 0000:0000  Imp  _wsprintf            (USER.420)
+ 0000:0000  Imp  CALLWINDOWPROC       (USER.122)
+ 0000:0000  Imp  MESSAGEBOX           (USER.1)
+ 0000:0000  Imp  _wdbPrint            (WDB.80)
+ 0000:0000  Imp  GETDLGITEMTEXT       (USER.93)
+ 0000:0000  Imp  GETWINDOWTEXT        (USER.36)
+ 0000:0000  Imp  MAKEPROCINSTANCE     (KERNEL.51)
+ 0000:0000  Imp  FREEPROCINSTANCE     (KERNEL.52)
+ 0000:0000  Imp  _wdbPrint3           (WDB.83)
+ 0000:0000  Imp  WDBGETOUTPUT         (WDB.23)
+ 0000:0000  Imp  LocalInit            (KERNEL.4)
+ 0000:0000  Imp  WDBSETOUTPUT         (WDB.24)
+ 0000:0000  Imp  SENDMESSAGE          (USER.111)
+ 0000:0000  Imp  LOADMENU             (USER.150)
+ 0000:0000  Imp  GETVERSION           (KERNEL.3)
+ 0000:0000  Imp  POSTMESSAGE          (USER.110)
+ 0000:0000  Imp  OEMTOANSI            (KEYBOARD.6)
+ 0000:0006  Abs  pLocalHeap
+ 0000:0008  Abs  pAtomTable
+ 0000:000A  Abs  pStackTop
+ 0000:000C  Abs  pStackMin
+ 0000:000E  Abs  pStackBot
+ 0000:9876  Abs  __fptaskdata
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused2
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 0001:0012       __NMSG_TEXT
+ 0001:0049       __NMSG_WRITE
+ 0002:0000       WEP
+ 0003:0000       LibEntry
+ 0004:0000       LibMain
+ 0004:003D       WINPRINTINIT
+ 0004:00AC       GETWINPRINTHINST
+ 0004:00CD       GETWINPRINTVERSION
+ 0004:0148       FMExtensionProc
+ 0004:05EB       fnFileMan
+ 0005:0000       DOABOUTBOX
+ 0005:0059       fnAbout
+ 0006:0004       rsrvptrs
+ 0006:01E0       STKHQQ
+ 0006:01E2       __adbgmsg
+ 0006:01E6       ___aDBswpflg
+ 0006:01E8       ___aDBswpchk
+ 0006:01EA       __aDBrterr
+ 0006:01EC       ___aDBexit
+ 0006:01FA       __caption
+ 0006:0290       _edata
+ 0006:02A0       _hWDB
+ 0006:02A2       ___wEval
+ 0006:02A4       _hmodDLL
+ 0006:02A6       _end
+
+Program entry point at 0003:0000

@@ -1,0 +1,94 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "RESOURCE.H\0"
+END
+
+SESSIONDIRDLG DIALOG 12, 20, 360, 202
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_THICKFRAME
+CAPTION "Session Directory"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD, "Static", SS_GRAYFRAME, 4, 4, 312, 194
+    CONTROL         "", 0x101E, "FL_SLIDER", 0x0005, 8, 10, 304, 12
+    LISTBOX         0x101F, 8, 24, 304, 168, LBS_SORT | LBS_MULTIPLESEL | 
+                    LBS_OWNERDRAWFIXED | LBS_DISABLENOSCROLL | NOT WS_BORDER | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Dial", IDB_DIAL, "FL_BMPBTN", WS_TABSTOP, 320, 6, 36, 
+                    22
+    CONTROL         "&Connect", IDB_CONNECT, "FL_BMPBTN", WS_TABSTOP, 320, 
+                    34, 36, 22
+    CONTROL         "&Edit", IDB_EDIT, "FL_BMPBTN", WS_TABSTOP, 320, 62, 36, 
+                    22
+    CONTROL         "&New", 0x0603, "FL_BMPBTN", WS_TABSTOP, 320, 90, 36, 22
+    CONTROL         "De&lete", 0x0604, "FL_BMPBTN", WS_TABSTOP, 320, 118, 36, 
+                    22
+    CONTROL         "&Options", 0x0605, "FL_BMPBTN", WS_TABSTOP, 320, 146, 
+                    36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP, 320, 174, 
+                    36, 22
+END
+
+SESSIONDIRENTRYDLG DIALOG 12, 24, 256, 156
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Session Directory Entry - %s"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD, "Static", SS_GRAYFRAME, 4, 4, 248, 148
+    RTEXT           "&Name:", 0xFFFF, 12, 12, 40, 8
+    EDITTEXT        0x1028, 56, 12, 140, 12, ES_AUTOHSCROLL
+    RTEXT           "N&umber:", 0xFFFF, 12, 28, 40, 8
+    EDITTEXT        0x1029, 56, 28, 140, 12, ES_AUTOHSCROLL
+    RTEXT           "&Connector:", 0xFFFF, 12, 44, 40, 8
+    COMBOBOX        0x102A, 56, 44, 140, 48, CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Setup", 0x102B, 200, 44, 44, 12
+    RTEXT           "&Mode:", 0xFFFF, 12, 60, 40, 8
+    COMBOBOX        0x102C, 56, 60, 140, 48, CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "&Emulator:", 0xFFFF, 12, 76, 40, 8
+    COMBOBOX        0x102D, 56, 76, 140, 48, CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Setup", 0x102E, 200, 76, 44, 12
+    RTEXT           "&Protocol:", 0xFFFF, 12, 92, 40, 8
+    COMBOBOX        0x102F, 56, 92, 140, 48, CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Mo&dem:", 0xFFFF, 12, 108, 40, 8
+    COMBOBOX        0x1030, 56, 108, 140, 48, CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Setup", 0x1031, 200, 108, 44, 12
+    CONTROL         "&Ok", IDOK, "FL_BMPBTN", WS_TABSTOP | 0x2000, 80, 124, 
+                    36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000, 
+                    140, 124, 36, 22
+END
+
+SESSIONDIROPTIONSDLG DIALOG 8, 28, 188, 100
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Session Directory Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD, "Static", SS_GRAYFRAME, 4, 4, 180, 92
+    GROUPBOX        "&Display Options", 0xFFFF, 12, 8, 120, 82
+    CONTROL         "&Name", 0x1032, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    20, 24, 48, 10
+    CONTROL         "N&umber", 0x1033, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 20, 36, 48, 10
+    CONTROL         "&Connection", 0x1034, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 20, 48, 48, 10
+    CONTROL         "&Settings", 0x1035, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 20, 60, 48, 10
+    CONTROL         "Mo&de", 0x1036, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    20, 72, 48, 10
+    CONTROL         "&Last Call", 0x1037, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 76, 24, 48, 10
+    CONTROL         "&Emulation", 0x1038, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 76, 36, 48, 10
+    CONTROL         "&Modem", 0x1039, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 
+                    76, 48, 48, 10
+    CONTROL         "&Protocol", 0x103A, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 76, 60, 48, 10
+    CONTROL         "&Ok", IDOK, "FL_BMPBTN", WS_TABSTOP | 0x2000, 140, 28, 
+                    36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000, 
+                    140, 56, 36, 22
+END

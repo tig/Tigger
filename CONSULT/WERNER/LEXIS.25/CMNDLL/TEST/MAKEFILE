@@ -1,0 +1,18 @@
+MEM      =-AS
+LIBS     =slibcaw
+CLOPTS   =$(MEM) -c -Gsw -Od -Zpei -W3 -FPa -nologo -D DEBUG
+#CLOPTS   =$(MEM) -c -Gsw -Od -Zpe -W3 -FPa -nologo
+LINKOPTS =/NOD/NOE/CO
+#LINKOPTS =/NOD/NOE
+
+all: test2.exe
+
+test2.exe: test2.obj test2.def test2.res
+    link $(LINKOPTS) test2,,,wdb cmndll $(LIBS) libw , test2.def
+    rc -v test2.res
+
+test2.obj: test2.c test2.h test2d.h
+    cl $(CLOPTS) test2.c > test2.err
+    
+test2.res: test2.rc test2.ico 
+    rc -r test2.rc

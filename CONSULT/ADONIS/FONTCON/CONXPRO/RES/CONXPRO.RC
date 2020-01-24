@@ -1,0 +1,27 @@
+//---------------------------------------------------------------------------
+//
+//  Module: CONXPRO.rc
+//
+//  Purpose:
+//     CONXPRO resources
+//
+//  Development Team:
+//     Bryan A. Woodruff
+//
+//  History:   Date       Author      Comment
+//              3/10/92   BryanW      Wrote it.
+//              6/15/92   Ckindel     Moved to CONXPRO
+//
+//---------------------------------------------------------------------------
+
+#include <windows.h>
+#include "..\src\res.h"
+
+#include "CONXPRO.rcv"
+
+#include "CONXPRO.dlg"
+
+//---------------------------------------------------------------------------
+//  End of File: CONXPRO.rc
+//---------------------------------------------------------------------------
+

@@ -1,0 +1,38 @@
+/************************************************************************
+ *
+ *    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  APACHE, Apache For Windows
+ *
+ *      Module:  ibmpc.rc
+ *
+ *   Author(s):  Bryan A. Woodruff (baw)
+ *               Charles E. Kindel, Jr. (cek)
+ *
+ *
+ *     Remarks:  Resource file header
+ *
+ *   Revisions:  
+ *     01.00.000  1/ 7/91 baw   Initial Version
+ *     01.00.001  5/ 5/91 baw   IBMPC resources created
+ *     01.00.002  7/ 4/91 baw   Added SettingsDlgBox and string
+ *                              resources
+ *
+ ************************************************************************/
+
+#include <windows.h>
+
+#include "resource.h"
+
+#include "dialogs.rc"
+
+#include "string.rc"
+
+ICONS ICON IBMPC.ICO
+
+/************************************************************************
+ * End of File: ibmpc.rc
+ ************************************************************************/
+

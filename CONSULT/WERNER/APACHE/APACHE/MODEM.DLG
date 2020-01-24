@@ -1,0 +1,45 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "MODEM.H\0"
+END
+
+MODEMSETTINGSDLG DIALOG 8, 20, 304, 154
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Modem Settings - %s"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME1, "Static", SS_GRAYFRAME, 4, 4, 296, 
+                    120
+    RTEXT           "Dial &Prefix:", 0xFFFF, 8, 12, 64, 8
+    EDITTEXT        IDD_DIALPREFIXEC, 76, 10, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Dial &Suffix:", 0xFFFF, 8, 28, 64, 8
+    EDITTEXT        IDD_DIALSUFFIXEC, 76, 26, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Answer &Mode:", 0xFFFF, 8, 44, 64, 8
+    EDITTEXT        IDD_ANSWERMODEEC, 76, 42, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Modem &Init:", 0xFFFF, 8, 60, 64, 8
+    EDITTEXT        IDD_MODEMINITEC, 76, 58, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&Disconnect:", 0xFFFF, 8, 76, 64, 8
+    EDITTEXT        IDD_DISCONNECTEC, 76, 74, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Command O&K:", 0xFFFF, 8, 92, 64, 8
+    EDITTEXT        IDD_COMMANDOKEC, 76, 90, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Command &ERROR:", 0xFFFF, 8, 108, 64, 8
+    EDITTEXT        IDD_COMMANDERROREC, 76, 106, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&Connect:", 0xFFFF, 152, 12, 64, 8
+    EDITTEXT        IDD_CONNECTEC, 220, 10, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&Baud Connect:", 0xFFFF, 152, 28, 64, 8
+    EDITTEXT        IDD_BAUDCONNECTEC, 220, 26, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "AR&Q Connect:", 0xFFFF, 152, 44, 64, 8
+    EDITTEXT        IDD_ARQCONNECTEC, 220, 42, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&No Carrier:", 0xFFFF, 152, 60, 64, 8
+    EDITTEXT        IDD_NOCARRIEREC, 220, 58, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "No Dial &Tone:", 0xFFFF, 152, 78, 64, 8
+    EDITTEXT        IDD_NODIALTONEEC, 220, 74, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "Bus&y:", 0xFFFF, 152, 92, 64, 8
+    EDITTEXT        IDD_BUSYEC, 220, 90, 72, 12, ES_AUTOHSCROLL
+    RTEXT           "&Ringing:", 0xFFFF, 152, 108, 64, 8
+    EDITTEXT        IDD_RINGINGEC, 220, 106, 72, 12, ES_AUTOHSCROLL
+    CONTROL         "&Ok", IDOK, "FL_BMPBTN", WS_TABSTOP | 0x2000, 220, 128, 
+                    36, 22
+    CONTROL         "C&ancel", IDCANCEL, "FL_BMPBTN", WS_TABSTOP | 0x2000, 
+                    264, 128, 36, 22
+END

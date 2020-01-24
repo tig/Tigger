@@ -1,0 +1,66 @@
+;************************************************************************
+;*
+;*    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+;*
+;*-----------------------------------------------------------------------
+;*
+;*     Project:  APACHE, Apache For Windows
+;*
+;*      Module:  apache.def
+;*
+;*   Author(s):  Bryan A. Woodruff (baw)
+;*               Charles E. Kindel, Jr. (cek)
+;*
+;*
+;*     Remarks:  DEF file
+;*
+;*   Revisions:  
+;*     01.00.000  1/ 7/91 baw   Initial Version
+;*
+;************************************************************************
+
+NAME         APACHE
+
+DESCRIPTION  'Apache for Windows (c) Werner Associates, 1991'
+EXETYPE      WINDOWS
+STUB         'WINSTUB.EXE'
+
+SEGMENTS     _TEXT       PRELOAD MOVEABLE DISCARDABLE
+             INIT_TEXT   PRELOAD MOVEABLE DISCARDABLE
+             INIT        PRELOAD MOVEABLE DISCARDABLE
+             APACHE      PRELOAD MOVEABLE
+             DIALOG      MOVEABLE DISCARDABLE
+             DISPATCH    PRELOAD MOVEABLE
+             DLLDESC     MOVEABLE DISCARDABLE
+             EMUTOP      MOVEABLE DISCARDABLE
+             MISC        MOVEABLE DISCARDABLE
+             INI         MOVEABLE DISCARDABLE
+             LIB         MOVEABLE DISCARDABLE
+             SESSION     MOVEABLE DISCARDABLE
+             SETUP       MOVEABLE DISCARDABLE
+             SIZE        MOVEABLE DISCARDABLE
+             MDI         MOVEABLE DISCARDABLE
+
+CODE         PRELOAD MOVEABLE DISCARDABLE
+DATA         PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE     4096
+STACKSIZE    12288
+
+EXPORTS
+             FrameWndProc             @1
+             CloseEnumProc            @2
+             TerminalWndProc          @3
+             SplashWndProc            @4
+             SessionDirDlgProc        @5
+             EPSCallbackProc          @6
+             SessionDirEntryDlgProc   @7
+             SessionDirOptionsDlgProc @8
+             ModemSettingsDlgProc     @9
+             DialingDlgProc           @10
+
+             TaskProc                 @255
+
+;************************************************************************
+;* End of File: apache.def
+;************************************************************************

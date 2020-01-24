@@ -1,0 +1,29 @@
+APACHEMENUINIT  MENU LOADONCALL MOVEABLE PURE DISCARDABLE 
+BEGIN
+#ifdef DEBUG
+  POPUP "&Task"
+  BEGIN
+    MenuItem "&Create Task",  IDM_CREATETASK
+    MenuItem "&Start Task",   IDM_STARTTASK
+    MenuItem "S&top Task",    IDM_STOPTASK
+    MenuItem "&Destroy Task", IDM_DESTROYTASK
+  END
+#endif
+  POPUP "&Session"
+  BEGIN
+    MenuItem  "&Directory...",   IDM_SESSIONDIR
+    MenuItem  SEPARATOR
+    MenuItem  "E&xit", IDM_EXIT
+  END
+  POPUP "&Help"
+  BEGIN
+    MenuItem  "&Index", IDM_HELPINDEX
+    MenuItem  "&Keyboard", IDM_HELPKEYBOARD
+    MenuItem  "&Commands", IDM_HELPCOMMANDS
+    MenuItem  "&Procedures", IDM_HELPPROCEDURES
+    MenuItem  "&Using Help", IDM_HELPUSINGHELP
+    MenuItem  SEPARATOR
+    MenuItem  "&About...", IDM_ABOUT
+  END
+  #include <wdbmenu.rc>
+END

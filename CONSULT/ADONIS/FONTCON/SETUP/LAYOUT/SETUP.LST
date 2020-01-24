@@ -1,0 +1,23 @@
+[Params]
+	WndTitle   = The Font Connection Setup
+	WndMess    = Initializing Setup...
+	TmpDirSize = 500
+	TmpDirName = ~fcstfqf.t
+	CmdLine    = _mstest fontcon.mst /C "/S %s %s"
+	DrvModName = DSHELL
+
+[Files]
+	fontcon.ms_  = fontcon.mst
+	fontcon.in_  = fontcon.inf
+	setupapi.in_ = setupapi.inc
+	mscomstf.dl_ = mscomstf.dll
+	msinsstf.dl_ = msinsstf.dll
+	msuilstf.dl_ = msuilstf.dll
+	msshlstf.dl_ = msshlstf.dll
+	mscuistf.dl_ = mscuistf.dll
+ 	msdetstf.dl_ = msdetstf.dll
+   	conxlib.dl_  = conxlib.dll
+	conxmem.dl_  = conxmem.dll
+	modem.in_    = modem.ini
+	_mstest.ex_  = _mstest.exe
+

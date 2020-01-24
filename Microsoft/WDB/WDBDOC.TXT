@@ -1,0 +1,1123 @@
+/*    (C) Copyright Microsoft Corp. 1991.  All rights reserved.
+ *
+ *    You have a royalty-free right to use, modify, reproduce and 
+ *    distribute the Sample Files (and/or any modified version) in 
+ *    any way you find useful, provided that you agree that 
+ *    Microsoft has no warranty obligations or liability for any 
+ *    Sample Application Files which are modified. 
+ *
+ *----------------------------------------------------------------------
+ *
+ *    Most of the source in WDB.DLL has been ported to Win32.  For output
+ *    to ODS, it should work if compiled under Win32.  The "WINDOW"
+ *    output stuff has *not* been correctly ported yet.
+ *    To compile for WIN32, remove the hash (#) from the
+ *    WIN32 in the makefile.
+ *
+ *    The first half of the makefile is Win32 specific, the
+ *    second half is for 3.0/3.1.  Look for the !ifdef WIN32 stuff.
+ *
+ *    If you take it upon yourself to port the rest of WDB to Win32
+ *    *please* let me know!
+ *
+ *                             - Charlie Kindel (ckindel) 2/14/92
+ *
+ *----------------------------------------------------------------------
+ *
+ *     VERSION HISTORY:
+ *     1.00  2/17/91  cjp   First Version
+ *     1.01  2/14/92  cek   Ported to Win32 (sort of) and added ODS
+ *                          output option.
+ *     1.02  3/31/92  cek   Added WDBLIB.LIB.  If your app links with 
+ *                          WDBLIB.LIB instead of WDB.LIB you will be able 
+ *                          to run your app on a system without WDB.DLL 
+ *                          present.  You *must* however call 
+ *                          wdbCloseSession() from your app or
+ *                          WDB.DLL will not get freed!  
+ *
+ *----------------------------------------------------------------------
+ */
+
+
+WDB.DLL (Windows DeBugger) V1.02
+================================
+
+INTRODUCTION:
+
+WDB is a 'passive' debugging tool.  Its purpose is to replace the
+following <insert your favorite adjective here> debugging code:
+
+    #ifdef DEBUG
+        OutputDebugString( "WE GOT HERE!  SHOULD WE BE HERE??\r\n" );
+
+        wsprintf( achTemp, "wParam: %.4Xh  lParam: %.8Xh",
+                                                wParam, lParam );
+        MessageBox( hWnd, achTemp, "MyApp", MB_OK );
+    #endif
+
+WDB provides a much more flexible API for this type of debugging.
+And when you compile without DEBUG defined, there is no trace of
+debugging code left.
+
+The biggest difference is that WDB lets you choose the output
+device, debugging level, etc.--on the fly.
+
+
+THE BASICS:
+
+To use WDB, you will _usually_ open a session during the initialization
+of your application, use the macros/API provided by WDB, and then close
+the session down when your application terminates.  So, the following
+code in your WinMain() function could be used:
+
+    #include <wdb.h>            /* enabled if DEBUG defined     */
+
+
+    int WinMain( ... )
+    {
+        hWnd = CreateWindow( ... );
+
+            . . . <code>
+
+        /* open a unique session with WDB */
+        D(  if ( hWDB = wdbOpenSession( hWnd, szAppName, szAppINI,
+                                                    WDB_LIBVERSION ) )
+            {
+                DPS( hWDB, "WDB is active!" );
+            }
+
+            else "incompatible version of WDB.DLL--kill your app!"
+        );
+
+        /* check the hWnd and assert if NULL */
+        DASSERT( hWDB, hWnd );
+
+            . . . <more code>
+
+        /* message dispatcher */
+        while ( GetMessage( &msg, NULL, 0, 0 ) )
+        {
+            TranslateMessage( &msg );
+            DispatchMessage( &msg );
+        }
+
+        /* close the debugging session--if active */
+        D( hWDB = wdbCloseSession( hWDB ) );
+
+        return ( msg.wParam );
+    }
+
+That's about it--and a lot of this is optional.  Now let's look at each
+part of this.
+
+First, when you include WDB.H, a lot of macros are defined for your
+application.  Also, a global WDB handle is define as this:
+
+    HWDB    hWDB;       /* defined in WDB.H--don't redefine!    */
+
+This will become available to all modules that include WDB.H.  You are
+not bound to using this handle alone--it is merely convenient.  As a
+matter of fact, you don't even have to open a session with WDB.  If you
+use NULL as the handle to WDB, it will use the 'default session' config-
+uration--more on this later.
+
+The D() macro that encapsulates the wdbOpenSession() call is an extremely
+useful macro also defined in WDB.H:
+
+    /* as defined in WDB.H */
+    #ifdef DEBUG
+        #define D(x)        {x;}
+    #else
+        #define D(x)
+    #endif
+
+This lets you get away from debugging statements like:
+
+    #ifdef DEBUG
+        OutputDebugString( "We got here!" );
+    #endif
+
+You can now write it like this:
+
+    D( OutputDebugString( "We got here!" ) );
+
+Cleaner.  But that's not all.  Because of the way D() is defined, you
+can do things like this (note the stack frame):
+
+    D(  DWORD   dwFlags = GetWinFlags();
+        char    ach[ 80 ];
+        wsprintf( ach, "GetWinFlags(): %.8Xh", dwFlags );
+        MessageBox( hWnd, ach, szAppName, MB_OK );
+        );
+
+Local variables and all.  But, the above code is still not necessary
+because WDB does that too.  Also note that another macro called ODS()
+is defined as:
+
+    /* as defined in WDB.H */
+    #ifdef DEBUG
+        #define ODS(x)      OutputDebugString(x)
+    #else
+        #define ODS(x)
+    #endif
+
+So the above OutputDebugString() call could have been done like this:
+
+    ODS( "We got here!" );
+
+But again, this is still not flexible enough (but can be useful) because
+OutputDebugString() *always* goes to the AUX port (usually COM1:).  WDB
+provides a much better way of outputing information using the 'DP' macros
+and 'wdbPrint' functions (discussed later).
+
+
+NOTE: Because of the way the D() macro is defined, there is an error that
+will occur if you do the following:
+
+    if ( fGomer )
+        D( OutputDebugString( "Something" ) );
+    else
+        D( OutputDebugString( "Homer" ) );
+
+This will generate code like this:
+
+    if ( fGomer )
+    {
+        OutputDebugString( "Something" );
+    } ;  /** NOTE THIS SEMICOLON!!! BAD!!! **/
+
+    else
+    {
+        OutputDebugString( "Homer" );
+    } ;  /** NOTE THIS SEMICOLON!!! BENIGN... **/
+
+This will generate a compiler error that in short is telling you that you
+can not put 'else' where you did.  The semicolon prevents the compiler
+from understanding what you really mean.  There are two ways around this--
+the first one is preferred.  If you use the second, your left patella
+should be smashed with a Vic Firth 2B American Classic drum stick!
+
+    o   Use curly braces (aka Bob Hope profiles) around the expression
+        following the 'if' so your code will look like this:
+
+        if ( fGomer )
+        {
+            D( OutputDebugString( "Something" ) );
+        }
+
+        else
+            D( OutputDebugString( "Homer" ) );
+
+    o   Don't put a semicolon after the D() statement:
+
+        if ( fGomer )
+            D( OutputDebugString( "Something" ) )  /** NO SEMICOLON **/
+
+        else
+            D( OutputDebugString( "Homer" ) );
+
+        I do NOT suggest this!!!
+
+
+OVERVIEW OF MACROS:
+
+Most of the functions that you call in WDB are called indirectly through
+macros.  This makes it possible to completely yank the debugging code
+from your application.  The macros are meant to be _SHORT_ and yet stand
+out a enough to see where the debugging code is.  All macros are capital
+letters only.
+
+If there is not a macro defined for the function, ALWAYS encapsulate the
+WDB call in the D() macro or use:
+
+    #ifdef DEBUG
+
+        hWDB = wdbOpenSession( ... );
+
+    #endif
+
+or
+
+    D( hWDB = wdbOpenSession( ... ) );
+
+This allows your application to compile cleanly for the final build.
+
+
+So, if you wanted to output a simple message stating that you are executing
+a block of code, you could do the following:
+
+    DPS( hWDB, "We got here, should we be here??" );
+
+DPS() stands for Debug Put String and will in turn call wdbPuts() IFF
+(iff == if and only if) DEBUG is defined.  There are also _levels_ of
+debugging output--this ranges from 0 (disabled) to 5 (maximum resolution).
+This is so you can have more detailed output depending on the current
+debugging level.
+
+DPS() will is assigned to be Level 1.  DPS1() is also Level 1, DPS2() is
+Level 2, ..., DPS5() is Level 5.  So, the following code might be used:
+
+    if ( fMostOfTheTime )
+    {
+        DPS5( hWDB, "This happens all of the time and is annoying!" );
+
+        . . .
+    }
+
+    if ( fVeryRareAndBad )
+    {
+        DPS1( hWDB, "I WANT TO KNOW ABOUT THIS!!!" );
+
+        /* or... (DPS1() and DPS() are the same) */
+        DPS( hWDB, "I WANT TO KNOW ABOUT THIS!!!" );
+
+        . . .
+    }
+
+    if ( fOccasionally )
+    {
+        DPS3( hWDB, "This occasionally happens and is tolerated..." );
+
+        . . .
+    }
+
+This same thing applies to the following:
+
+    DPF()           Debug Print Formatted == wdbPrintf()
+    DVPF()          Debug Vector Print Formatted == wdbVPrintf()
+    DP()            Debug Print w/ LF == wdbPrint()
+
+So you may have some code that looks like this:
+
+    if ( fSomethingBad )
+    {
+        /* if level not 0, then print this! */
+        DP( hWDB, "OOOPS!  wXPos: %d   wYPos: %d", wXPos, wYPos );
+
+        /* print on level 3 or higher */
+        DPF3( hWDB, "Structure Dump: " );
+        DPF3( hWDB, "%s\n    hWnd: %.4Xh\n    hFont: %.4Xh\n",
+                    (LPSTR)szCurrentName, lpZ->hWnd, lpZ->hFont );
+
+        /* only print on maximum debugging level */
+        DP5( hWDB, "%s <-> %s", (LPSTR)szGomer, (LPSTR)szHomer );
+    }
+
+This also brings us to another point.  As with wsprintf(), you MUST cast
+NEAR pointers to FAR or you **WILL** UAE!  This forces the compiler to
+push the DS of the argument in a variable length argument list (which
+can not be prototyped).  Other than moving to a real microprocessor or
+compiling as large model (Uhg!), there is no way to get around this.
+
+
+WDB SECTION CONFIGURATION INFO:
+
+WDB will create a configuration section named [wdb-???], where '???' is
+the name of your application.  Under this section, the following keys can
+be used:
+
+
+[wdb-wdb]
+    wdbEnable = 'YES' or 'NO'
+
+        This is the *master* enable/disable switch for the WDB session.
+        If this is 'NO' then WDB will become benign.  No asserts or
+        debug output will occur.  Example (default):
+
+            wdbEnable = YES
+
+
+    wdbAssert = OFF, SYSMODAL, BEEP, or WINDOW
+
+        Defines how DASSERT()'s will be handled.  OFF specifies that
+        asserts will be ignored.  SYSMODAL is used when memory or 
+        other nasty asserts are expected.  BEEP will do exactly that
+        and WINDOW will just use a standard MessageBox().  Example
+        (default):
+
+            wdbAssert = WINDOW
+
+
+    wdbLevel = 0, 1, 2, 3, 4, or 5
+
+        Specifies the resolution desired for a debugging session.  If
+        this is 0, output will be disabled.  1 will allow DP, DPS, DPF
+        and DVPF to go through along with DP1, etc.  2 will allow both
+        level 1 and 2, ..., 5 will allow all debugging output.  Example
+        (default):
+
+            wdbLevel = 4
+
+
+    wdbOutput = OFF, WINDOW, FILE, AUX, or ODS
+
+        This specifies the output device for WDB session.  OFF of course
+        is a disable.  WINDOW will use a standard scrollable window,
+        FILE will output to the current wdbFile (see below), and
+        AUX will direct output to the AUX device.  ODS stands
+        for OutputDebugString() which is a Windows API that outputs
+        a string to the stdaux device by default, but may be redirected
+        by a debugger.  Example (default):
+
+            wdbOutput = WINDOW
+
+        WARNING:  Because the default is WINDOW, you MUST manually 
+        change the wdbOutput to AUX or FILE for doing output during
+        the LibMain() of a .DLL _OR_ you can do this in LibMain():
+
+            D( hWDB = wdbOpenSession( ... ) );
+
+            /* immediately after wdbOpenSession() */
+            D( wdbSetOutput( hWDB, WDB_OUTPUT_AUX, NULL ) );
+
+            DPS( hWDB, "This will go to AUX..." );
+
+
+            . . . code . . .
+
+
+            /* now _just before leaving LibMain() */
+            D( wdbSetOutput( hWDB, WDB_OUTPUT_WINDOW, NULL ) );
+
+            return ( TRUE );
+
+        This works because the output window is not opened until the
+        FIRST output.
+
+
+    wdbFile = "<filename>"
+
+        Specifies the output file name IFF (iff == if and only if)
+        the current output for the session is FILE (see above).  This
+        can be a fully qualified path and file name.  Example (default):
+
+            wdbFile = "wdb.out"
+
+
+    wdbPrelude = "<prelude>"
+
+        This specifies a prelude to use before each line of output on
+        _shareable_ devices (such as AUX).  You will _not_ get this
+        in a WINDOW (saves space and is unnecessary).  This can be
+        NULL.  Example (default):
+
+            wdbPrelude = "wdb: "
+
+        The default is actually your application's name appended with
+        ": ".
+
+
+    wdbLFtoCRLF = YES or NO
+
+        This tells WDB to convert all Line Feeds (LF's) to Carriage
+        Return (CR) Line Feed's (LF).  This is only relevant to AUX
+        and FILE output.  Example (default):
+
+            wdbLFtoCRLF = YES
+
+
+    wdbMaxLines = 50 to 150
+
+        This specifies the number of lines held in WDB's roll-back
+        for WINDOW output.  The more lines you specify, the more memory
+        it takes (make sense?).  75 seems to work well.  Example
+        (default):
+            
+            wdbMaxLines = 75
+
+
+    wdbFontName = "<facename>"
+
+        This is the face name of the font that you want for WINDOW
+        output.  If you specify a face name that can not be found,
+        then SYSTEM_FONT is used.  Example (default):
+
+            wdbFontName = "System"
+
+
+    wdbFontSize = 2 to 32
+
+        Specifies the point size of the font for WINDOW output.  Example
+        (default):
+
+
+            wdbFontSize = 10
+
+
+    wdbFontBold = YES or NO
+
+        Specifies whether the font for WINDOW output should be bold
+        or not.  Example (default):
+
+            wdbFontBold = NO
+
+
+    wdbWindowX = x offset for WINDOW output window
+    wdbWindowY = y offset for WINDOW output window
+    wdbWindowW = width of WINDOW output window
+    wdbWindowH = height of WINDOW output window
+
+        These are updated automatically by WDB.  The default is the
+        bottom 1/5 of the screen (covering the icons).  This is the
+        _most out of the way location_ for most applications.  To
+        change these values, just move the window and close it down.
+        The x,y and w,h will be stored to the configuration file
+        automatically.
+
+
+    NOTE: IF YOU CHANGE THE SETTINGS IN WDB.INI, THEN THOSE VALUES WILL
+          BECOME THE DEFAULTS FOR ALL SUBSEQUENT NEW WDB SESSIONS.
+
+
+FUNCTIONS:
+
+The following is a list of the API supported by WDB:
+
+    wdbLibVersion       :   Gets library version of WDB.
+
+    wdbReadConfigInfo   :   Reads .INI file for WDB config info.
+
+    wdbWriteConfigInfo  :   Writes WDB config info to .INI file.
+
+    wdbGetInfo          :   Retrieves various information about
+                            a WDB session.
+
+    wdbSetInfo          :   Sets various parameters for a WDB 
+                            session.
+
+    wdbGetOutputFile    :   Gets the output file currently selected
+                            for the WDB session.
+
+    wdbGetOutputPrelude :   Gets the output prelude currently selected
+                            for the WDB session.
+
+    wdbGetFontName      :   Gets the current font name for a WDB
+                            session.
+
+    wdbConfigDlg        :   Opens a configuration dialog box for a
+                            WDB session.
+
+    wdbDumpDebugInfo    :   Dumps statistics about WDB session to the
+                            output device for the session.
+
+    wdbOpenSession      :   Opens a unique debugging session with WDB.
+
+    wdbCloseSession     :   Closes a session with WDB.
+
+    wdbGetOutput        :   Gets the current output device and file
+                            name for a session.
+
+    wdbSetOutput        :   Sets the current output device and file name
+                            for a session.
+
+    wdbAssertBox        :   Performs an assert when the argument is
+                            zero/NULL.  Use the DASSERT() macros to
+                            call this function.
+
+    wdbPuts             :   Writes information to the current output
+                            device for the WDB session.  Use the DPS()
+                            macros to call this function.
+
+    wdbPrintf           :   Writes information to the current output
+                            device for the WDB session.  Use the DPF()
+                            macros to call this function.
+
+    wdbVPrintf          :   Writes information to the current output
+                            device for the WDB session.  Use the DVPF()
+                            macros to call this function.
+
+    wdbPrint            :   Writes information to the current output
+                            device for the WDB session.  Use the DP()
+                            macros to call this function.
+
+
+What follows is the documentation on using this API.
+
+
+/** WORD FAR PASCAL wdbLibVersion( WORD wVersion )
+ *
+ *  DESCRIPTION: 
+ *      This function checks wVersion against the actual version of
+ *      this library.  If this library is compatible with the version
+ *      requested, TRUE is returned.  All functions from wVersion should
+ *      work.  If wVersion is incompatible with this library, then FALSE
+ *      is returned.  If this is the case, the application should NOT
+ *      use this library.
+ *
+ *  ARGUMENTS:
+ *      WORD wVersion   :   Version to check against.  This is defined
+ *                          in wdb.h as WDB_LIBVERSION.  If this argument
+ *                          is NULL, the return is this .DLL's version.
+ *                          HIBYTE() is major version number; LOBYTE()
+ *                          is minor version number.
+ *
+ *  RETURN (WORD):
+ *      If it is ok to use this library, TRUE is returned.  Otherwise,
+ *      FALSE is returned and the calling application should not use
+ *      this library.
+ *
+ *      If wVersion is NULL, then the HIBYTE() of the return value is
+ *      the major version number of this library.  LOBYTE() is the
+ *      minor version number.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** WORD FAR PASCAL wdbGetInfo( HWDB hWDB, WORD wIndex )
+ *
+ *  DESCRIPTION: 
+ *      This function is used to quickly grab the configuration value
+ *      of a session depicted by wIndex.  If hWDB is NULL or can not
+ *      be GlobalLock()'d (ouch!), the value will be extracted from
+ *      gWDBDefSession.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   Handle to WDB session.  If this is NULL, then
+ *                      the gWDBDefSession structure will be used.  This
+ *                      will also be used if hWDB can not be locked.
+ *
+ *      WORD wIndex :   Index depicting the value to retrieve.  For
+ *                      example: WDBI_HWND gets pSession->hWnd.
+ *
+ *  RETURN (WORD):
+ *      Always a WORD.  Should then be cast to whatever wIndex is
+ *      supposed to represent.
+ *
+ *  NOTES:
+ *      This function makes the assumption that all fields in the
+ *      WDBCONFIG and WDBSESSION structures are WORD's.  This is not
+ *      the most memory efficient, but it is quite a bit faster for
+ *      our case.
+ *
+ ** cjp */
+
+
+/** WORD FAR PASCAL wdbSetInfo( HWDB hWDB, WORD wIndex, WORD wValue )
+ *
+ *  DESCRIPTION: 
+ *      This is a DANGEROUS call.  Maybe it should not be exported.  If
+ *      you change something, you better hope you know what you are doing.
+ *
+ *          *** THIS IS NOT HOW YOU CHANGE THE OUTPUT DEVICE ***
+ *
+ *      This function is used to quickly set the configuration value
+ *      of a session depicted by wIndex.  If hWDB is NULL, the value will
+ *      be set in gWDBDefSession.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   Handle to WDB session.  If this is NULL, then
+ *                      the gWDBDefSession structure will be used.
+ *
+ *      WORD wIndex :   Index depicting the value to set.  For example:
+ *                      WDBI_HWND sets pSession->hWnd to wValue.
+ *
+ *      WORD wValue :   Value to set the WDBI_* WORD to.
+ *
+ *  RETURN (WORD):
+ *      The old value of what wIndex represents.  Always a WORD.  Should
+ *      then be cast to whatever wIndex is supposed to represent.
+ *
+ *  NOTES:
+ *      This function makes the assumption that all fields in the
+ *      WDBCONFIG and WDBSESSION structures are WORD's.  This is not
+ *      the most memory efficient, but it is quite a bit faster for
+ *      our case.
+ *
+ ** cjp */
+
+
+/** BOOL FAR PASCAL wdbGetOutputFile( HWDB hWDB, LPSTR lpDest )
+ *
+ *  DESCRIPTION: 
+ *      This function is used to quickly grab the output file name.  It
+ *      will succeed if hWDB is valid.  This does not automatically mean
+ *      that file output is active... use wdbGetInfo() to determine that
+ *      information.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   Handle to WDB session.
+ *
+ *      LPSTR lpDest:   Pointer to buffer to receive the output file name.
+ *                      This buffer must be at least WDBC_MAX_FILELEN (144)
+ *                      chars in length.
+ *
+ *  RETURN (BOOL):
+ *      The return value is TRUE if the function is successful.  FALSE
+ *      if it fails.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** BOOL FAR PASCAL wdbGetOutputPrelude( HWDB hWDB, LPSTR lpDest )
+ *
+ *  DESCRIPTION: 
+ *      This function is used to quickly grab the output prelude string.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   Handle to WDB session.
+ *
+ *      LPSTR lpDest:   Pointer to buffer to receive the prelude string.
+ *                      This buffer must be at least WDBC_MAX_PRELUDE (30)
+ *                      chars in length.
+ *
+ *  RETURN (BOOL):
+ *      The return value is TRUE if there is a prelude string associated
+ *      with hWDB.  It is FALSE if there is no prelude or hWDB is invalid.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** BOOL FAR PASCAL wdbGetFontName( HWDB hWDB, LPSTR lpDest )
+ *
+ *  DESCRIPTION: 
+ *      This function is used to quickly grab the font face name.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   Handle to WDB session.
+ *
+ *      LPSTR lpDest:   Pointer to buffer to receive the font face name.
+ *                      This buffer must be at least LF_FACESIZE (32)
+ *                      chars in length.
+ *
+ *  RETURN (BOOL):
+ *      The return value is TRUE if there is a font face name associated
+ *      with hWDB.  It is FALSE if there is no font or hWDB is invalid.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** void FAR PASCAL wdbDumpDebugInfo( HWDB hWDB )
+ *
+ *  DESCRIPTION: 
+ *      This function will dump the current session information to the
+ *      current session output device.  This has two uses:  1. some people
+ *      have a fetish for stupid statistics  2. it helps me debug WDB!
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   The session handle to dump the information for.
+ *                      If NULL, then the default WDB session is queried.
+ *
+ *  RETURN (void):
+ *      The session information will have been dumped to its current
+ *      output device.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** BOOL FAR PASCAL wdbConfigDlg( HWDB hWDB )
+ *
+ *  DESCRIPTION: 
+ *      This function will display a 'configuration dialog box' for
+ *      the WDB session specified.  If you choose 'Ok,' then the new
+ *      configuration becomes active immediately.  It is also saved to
+ *      the .INI file.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   Session handle to modify ables for.
+ *
+ *  RETURN (BOOL):
+ *      TRUE if successful.  FALSE otherwise.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** BOOL FAR PASCAL wdbAssertBox( HWDB hWDB, LPSTR lpsz, LPSTR lpszFile, WORD wLine )
+ *
+ *  DESCRIPTION: 
+ *      This function displays an assertion message box (usually) to the
+ *      user.  It is called from the DASSERT() debugging macro.  When
+ *      the message box is displayed, the user may choose either to
+ *      ignore the assertion by pressing the "Ignore" button, break into
+ *      the debugger by using the "Retry" button, or exit the application
+ *      with the "Abort" button.
+ *
+ *      Also note that if you press shift-Ignore, then the assert is logged
+ *      to the current WDB output device.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB       :   Handle to WDB session.  If it is NULL, the
+ *                          default assert configuration is used.
+ *
+ *      LPSTR lpsz      :   Optional message to display.
+ *
+ *      LPSTR lpszFile  :   Points to the filename which contains the
+ *                          assertion failure.  This is usually generated
+ *                          by the C preprocessor as the symbol __FILE__.
+ *
+ *      WORD wLine      :   Specifies the line which contains the asser-
+ *                          tion failure.  This is usually generated by
+ *                          the C preprocessor as the symbol __LINE__.
+ *
+ *  RETURN (BOOL):
+ *      If this routine returns, the return value is always FALSE (0).
+ *
+ *  NOTES:
+ *      You should not call this function directly.  Instead, use the
+ *      DASSERT(), DASSERTMSG(), and DASSERTEVAL() macros.
+ *
+ *      The alloc_text #pragma is used to place this assert code in a
+ *      'preload' segment and non-discardable (with the WEP).  In this
+ *      way, bad things can happen and we have a 'better' chance of 
+ *      getting info displayed.  Note that the SYSMODAL assert box
+ *      type is *THE* one to use under nasty memory crunch situations!
+ *
+ *      MB_SYSTEMMODAL | MB_ICONHAND gives you your best chance of getting
+ *      the info displayed.  With this, the message box is literally
+ *      painted DIRECTLY onto the screen!
+ *
+ ** cjp */
+
+
+/** BOOL FAR PASCAL wdbSetOutput( HWDB hWDB, WORD wOutput, LPSTR lpszFile )
+ *
+ *  DESCRIPTION: 
+ *      Changes the output location of the session to be the location
+ *      designated by wOutput, one of the WDB_OUTPUT_* codes.  If this
+ *      specifies a file, lParam points to the filename.
+ * 
+ *      If the new output location cannot be opened/used, the previous
+ *      output location is not altered and FALSE is returned.  Otherwise,
+ *      the previous output location is closed (for files) and TRUE is
+ *      returned.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB       :   Handle to WDB session to change output device.
+ *
+ *      WORD wOutput    :   Output code to change to.  WDB_OUTPUT_*.
+ *
+ *      LPSTR lpszFile  :   For WDB_OUTPUT_FILE.  Optional file name for
+ *                          new output device--NULL if same file name.
+ *
+ *  RETURN (BOOL):
+ *      The return value is TRUE if this function succeeds.  It is FALSE
+ *      if the output device could not be changed.
+ *
+ *  NOTES:
+ *      This function does NOT update the .INI file.  The reason for this
+ *      is this:
+ *
+ *      If you want to debug a special piece of code (say LibMain() in a
+ *      .DLL) that can NOT have output set to a window (because Windows
+ *      is not stable enough for that), you will need to set the output
+ *      device to AUX.  Then, when you are leaving LibMain(), you set the
+ *      output (wdbSetOutput()) location to a window.
+ *
+ *      If this function changed the .INI file, you would have to RESET
+ *      the .INI file BACK to AUX before you ran your program again.  This
+ *      is a pain.  So, if you want WDB to _save_ the new output location
+ *      you can  1. use the wdbConfigDlg() function (but NOT in LibMain!!!)
+ *      or 2. wdbSetOutput() followed by wdbWriteConfigInfo().
+ *
+ ** cjp */
+
+
+/** WORD FAR PASCAL wdbGetOutput( HWDB hWDB, LPSTR lpszFile )
+ *
+ *  DESCRIPTION: 
+ *      Returns the current output location for the WDB session specified.
+ *      This will be one of the following:
+ *      
+ *          WDB_OUTPUT_OFF      0   :   output disabled          
+ *          WDB_OUTPUT_WINDOW   1   :   to a window--of course   
+ *          WDB_OUTPUT_AUX      2   :   output to stdaux         
+ *          WDB_OUTPUT_FILE     3   :   log to a file (or append)
+ *      
+ *      If you supply a destination buffer for the output file name, then
+ *      it will be copied into your buffer.  This is done regardless of
+ *      whether the current output location is WDB_OUTPUT_FILE or not.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB       :   Handle to WDB session.  If NULL, returns the
+ *                          default output location.
+ *
+ *      LPSTR lpszFile  :   Buffer to receive the output file name for the
+ *                          session.  If this is NULL, no file name is 
+ *                          returned.
+ *
+ *  RETURN (WORD):
+ *      One of the WDB_OUTPUT_* values listed above.  Also, the buffer for
+ *      the output file (lpszFile) will contain the output file name--
+ *      regardless of the current output device.
+ *
+ *  NOTES:
+ *      This is not very efficient...
+ *
+ ** cjp */
+
+
+/** HWDB FAR PASCAL wdbOpenSession( HWND, LPSTR, LPSTR, WORD )
+ *
+ *  DESCRIPTION: 
+ *      Establishes a session with WDB.  This includes reading the
+ *      config info from the .INI file--using the defaults if none
+ *      exists.  Opening log files, windows, allocating memory, etc.
+ *
+ *  ARGUMENTS:
+ *      HWND hWndParent     :   Handle to application's window.  Can
+ *                              be NULL.  If it is not, then the output
+ *                              window will be a child of hWndParent.
+ *
+ *      LPSTR lpszAppName   :   Pointer to calling application's name.
+ *
+ *      LPSTR lpszPrivate   :   Pointer to private .INI file for the
+ *                              calling application.  If this is NULL,
+ *                              WIN.INI is used (shy away from this!!!)
+ *
+ *      WORD wVersion       :   WDB.DLL version requirement.  If 0, then
+ *                              *any version*--dangerous.  Should be
+ *                              WDB_LIBVERSION.
+ *
+ *  RETURN (HWDB):
+ *      The return value is NULL if a session could not be established.
+ *      It is a handle to a WDB session if successful.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** HWDB FAR PASCAL wdbCloseSession( HWDB hWDB )
+ *
+ *  DESCRIPTION: 
+ *      This function closes an active session with WDB.  This will
+ *      include closing any open log files, closing windows, freeing
+ *      memory, etc.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   WDB session handle to close.
+ *
+ *  RETURN (HWDB):
+ *      The return value is NULL if WDB was able to close the session.
+ *      If something failed, the return is hWDB.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** int FAR PASCAL wdbPuts( HWDB hWDB, LPSTR lpsz )
+ *
+ *  DESCRIPTION: 
+ *      You should NOT use this function directly.  Instead, use the DPS()
+ *      macros.  This will ensure that when compiling with DEBUG *NOT* 
+ *      defined, then the code will NOT be included--therefore severing
+ *      all links between your application and WDB.
+ *
+ *      This function prints lpsz to the device selected for output
+ *      on hWDB.  As with puts(), a LF is automatically appended.
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB   :   Handle to WDB session.
+ *
+ *      LPSTR lpsz  :   Pointer to string to output.
+ *
+ *  RETURN (int):
+ *      Keeping with the tradition of puts(), this function returns 0
+ *      if it fails.  A non-zero return signifies success.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** int FAR _cdecl wdbPrintf( HWDB hWDB, LPSTR lpszFormat, ... )
+ *
+ *  DESCRIPTION: 
+ *      You should NOT use this function directly.  Instead, use the DPF()
+ *      macros.  This will ensure that when compiling with DEBUG *NOT* 
+ *      defined, then the code will NOT be included--therefore severing
+ *      all links between your application and WDB.
+ *
+ *      This function is used to output printf() style debugging messages
+ *      from an application.  The debugging messages are sent to the output
+ *      device selected for hWDB.  If hWDB is NULL, then the default device
+ *      set for WDB is used.  
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB           :   Handle to WDB session.  If NULL, then the
+ *                              default output device is used.
+ *
+ *      LPSTR lpszFormat    :   Points to the output format string.  This
+ *                              string is identical to that passed to
+ *                              wsprintf.
+ *
+ *      [ arguments, ... ]  :   Specifies optional arguments corresponding
+ *                              to the formatting specification in
+ *                              lpszFormat.  Note that FAR pointers must
+ *                              be used for string arguments.
+ *
+ *  RETURN (int):
+ *      Returns the number of characters printed.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+/** int FAR _cdecl wdbPrint( HWDB hWDB, LPSTR lpszFormat, ... )
+ *
+ *  DESCRIPTION: 
+ *      You should NOT use this function directly.  Instead, use the DP()
+ *      macros.  This will ensure that when compiling with DEBUG *NOT* 
+ *      defined, then the code will NOT be included--therefore severing
+ *      all links between your application and WDB.
+ *
+ *      This function is used to output printf() style debugging messages
+ *      from an application.  The debugging messages are sent to the output
+ *      device selected for hWDB.  If hWDB is NULL, then the default device
+ *      set for WDB is used.
+ *
+ *      The difference between wdbPrint() and wdbPrintf() is that a LF is
+ *      automatically appended--like wdbPuts() with formatting.  Maybe it
+ *      should be called wdbPutsf()?
+ *
+ *  ARGUMENTS:
+ *      HWDB hWDB           :   Handle to WDB session.  If NULL, then the
+ *                              default output device is used.
+ *
+ *      LPSTR lpszFormat    :   Points to the output format string.  This
+ *                              string is identical to that passed to
+ *                              wsprintf().
+ *
+ *      [ arguments, ... ]  :   Specifies optional arguments corresponding
+ *                              to the formatting specification in
+ *                              lpszFormat.  Note that FAR pointers must
+ *                              be used for string arguments.
+ *
+ *  RETURN (int):
+ *      Returns the number of characters printed.
+ *
+ *  NOTES:
+ *      I thought about having another config flag that would force a LF
+ *      at the end of wdbPrintf, if enabled.  But then there would be no
+ *      way to suppress it without making things too complicated...  So,
+ *      I compromised and made this 'print' routine...
+ *
+ ** cjp */
+
+
+/** int FAR _cdecl wdbVPrintf( HWDB hWDB, LPSTR lpszFormat, LPSTR pArgs )
+ *
+ *  DESCRIPTION: 
+ *      You should NOT use this function directly.  Instead, use the DVPF()
+ *      macros.  This will ensure that when compiling with DEBUG *NOT* 
+ *      defined, then the code will NOT be included--therefore severing
+ *      all links between your application and WDB.
+ *
+ *      This function prints a string to a WDB window (or redirected output
+ *      device) using printf style formatting codes.  This function is the
+ *      same as the wdbPrintf function, except that arguments to the format
+ *      string are placed in an array of WORDs or DWORDs.
+ *
+ *  ARGUMENTS:
+ *      HWND hWDB       :   Handle to WDB session.  If NULL, then the default
+ *                          output location is used.
+ *
+ *      LPSTR lpszFormat:   Points to the output string format specification.
+ *                          This string uses the same formatting codes as
+ *                          the Windows wsprintf() function.
+ *
+ *      LPSTR pArgs     :   Points to an array of words, each of which 
+ *                          specifies an argument for the format string
+ *                          lpszFormat.  The number, type, and interpretation
+ *                          of the arguments depend on the corresponding
+ *                          format control sequences in lpszFormat.
+ *
+ *  RETURN (int):
+ *      Returns the number of characters output.  If output to the WDB
+ *      output is disabled, zero is returned.  The returned count of
+ *      characters output does not include the translation of newline
+ *      characters into carriage return newline sequences.
+ *
+ *  NOTES:
+ *
+ ** cjp */
+
+
+
+COMMON PROBLEMS:
+
+    This section describes the most common problems and solutions that
+    you may run into while using WDB.
+
+
+UAE on DPF() and DP():
+
+    Did you cast your NEAR pointers to FAR??  For example:
+
+        char    szStuff[] = "This is stuff!";
+
+        DPF( hWDB, "szStuff: %s\n", szStuff );
+
+    WILL UAE, while:
+
+        char    szStuff[] = "This is stuff!";
+
+        DPF( hWDB, "szStuff: %s\n", (LPSTR)szStuff );
+
+    will work just dandy (Intel, ya gotta love 'em).  This will force
+    the compiler to push your DS for szStuff.
+
+
+WDB and .DLL's:
+
+    You can NOT NOT NOT use a WINDOW to output information during 
+    the LibMain() or WEP() of a .DLL.  You CAN output to AUX or a file.
+    One way to get around this is to wdbOpenSession() in LibMain() with
+    the [wdb-???] section defining the wdbOutput=AUX.  Then, output
+    anything that you want until you are _ready to leave LibMain()_.
+    At this time, wdbSetOutput( hWDB, WDB_OUTPUT_WINDOW, NULL ) but
+    do NOT output to it yet.  The first output will open the window
+    for the rest of the session.  Also, don't bother to call the
+    wdbCloseSession() function in your WEP()--just let it fall through.
+
+    If you do not want to change the wdbOutput key to specify something
+    other than WINDOW, then wdbSetOutput( hWDB, WDB_OUTPUT_AUX, NULL )
+    BEFORE you output anything in the LibMain().
+
+
+mysrc.c(xx) : error C2143: syntax error : missing ';' before 'else'
+
+    You probably did this:
+
+        if ( fSomething )
+            D( DoSomething() );
+        else
+            D( DoSomethingElse() );
+
+    Because of the way D() is defined, you can not do this.  You must do
+    this instead:
+
+        if ( fSomething )
+        {
+            D( DoSomething() );
+        }
+
+        else
+            D( DoSomethingElse() );
+
+    Read THE BASICS section of this documentation file for more information.
+
+
+WDB's WINDOW closes and opens and closes during exit of app:
+
+    You must have a DP() that is getting executed during the WM_DESTROY
+    or in the default: case of your window proc.  This DP() will cause the
+    window to be re-opened and then closed again on termination.  You
+    may only want to use DP5()'s in these cases or don't give your hWnd
+    to WDB when you open the session so WDB's window is not a child
+    of your application's window.
+
+

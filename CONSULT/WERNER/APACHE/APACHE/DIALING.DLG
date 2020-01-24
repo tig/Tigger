@@ -1,0 +1,18 @@
+
+0x0064 DIALOG 16, 24, 292, 188
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "DIaling Directory"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "", 0x006C, "Static", SS_BLACKFRAME, 4, 4, 288, 184
+    CONTROL         "", 0x0065, "FL_SLIDER", SLS_ADJUSTSIZE | SLS_3DLOOK_OUT | 
+                    WS_BORDER, 12, 12, 272, 12
+    LISTBOX         0x0066, 12, 24, 272, 128, LBS_SORT | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "", 0x0067, "FL_BMPBTN", 0x2000, 12, 156, 48, 24
+    CONTROL         "", 0x0068, "FL_BMPBTN", 0x2000, 68, 156, 48, 24
+    CONTROL         "", 0x0069, "FL_BMPBTN", 0x2000, 124, 156, 48, 24
+    CONTROL         "", 0x006A, "FL_BMPBTN", 0x2000, 180, 156, 48, 24
+    CONTROL         "", 0x006B, "FL_BMPBTN", 0x2000, 236, 156, 48, 24
+END

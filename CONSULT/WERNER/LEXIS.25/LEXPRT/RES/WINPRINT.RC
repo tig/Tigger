@@ -1,0 +1,62 @@
+#define WIN31 1
+#include <windows.h>
+#include "inc\dlgs.h"
+#include "inc\menu.h"
+
+
+/*
+ * Version Stamping
+ */
+#include "WINPRINT.rcv"
+
+/*
+ * String table
+ */
+//#include "WINPRINT.str"
+
+
+
+WINPRINT ICON "res\\winprint.ico"
+
+#include "res\winprint.dlg"
+
+
+IDMYMENU MENU PRELOAD MOVEABLE PURE DISCARDABLE 
+BEGIN
+/*
+   MenuItem "Copyright © 1992", IDM_COPYRIGHT
+   MenuItem "Charles E. Kindel, Jr.", IDM_ALLRIGHTSRESERVED
+   MenuItem SEPARATOR
+   MenuItem "Current Config:", IDM_CURRENTCONFIGLBL  GRAYED
+   MenuItem "  Factory Defaults", IDM_CURRENTCONFIG  GRAYED
+   MenuItem SEPARATOR
+*/
+   MenuItem "&Print...", IDM_PRINT
+   MenuItem "P&rinter Setup...", IDM_PRINTERSETUP
+   MenuItem "Page &Layout...", IDM_PAGELAYOUT
+   MenuItem SEPARATOR
+   MenuItem "&Options...", IDM_OPTIONS
+   MenuItem "Ope&n Config...", IDM_OPENCONFIG
+   MenuItem "&Save Config...", IDM_SAVECONFIG
+   MenuItem SEPARATOR
+   MenuItem "Help &Contents", IDM_HELP
+   MenuItem "&How to use Help", IDM_HELPONHELP
+   MenuItem SEPARATOR
+   MenuItem "&About WinPrint...",  IDM_ABOUT
+   /*
+   POPUP "&Test"
+   BEGIN
+    MenuItem "&Get Focus", IDM_GETFOCUS
+    MenuItem "G&et Count", IDM_GETCOUNT
+    MenuItem "Get &File", IDM_GETFILE
+    MenuItem "Get &Drive", IDM_GETDRIVE
+    MenuItem SEPARATOR
+    MenuItem "&LFN", IDM_LFN
+    MenuItem "&Multiple", IDM_MULTIPLE
+    MenuItem SEPARATOR
+    MenuItem "&Refresh", IDM_REFRESH
+    MenuItem "Refre&sh All", IDM_REFRESHALL
+    MenuItem "Rel&oad", IDM_RELOAD
+   END
+   */
+END

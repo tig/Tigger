@@ -1,0 +1,431 @@
+/************************************************************************
+ *
+ *    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+ *
+ *-----------------------------------------------------------------------
+ *
+ *     Project:  LEXIS(R) 2000 Version 2.5 For Windows
+ *
+ *      Module:  lexis.str
+ *
+ *   Author(s):  Charles E. Kindel, Jr. (cek)
+ *
+ *
+ *      System:  Microsoft C 6.00A, Windows 3.00
+ *
+ *     Remarks:  
+ *
+ *   Revisions:  
+ *
+ *
+ ************************************************************************/
+
+
+STRINGTABLE
+BEGIN
+    IDS_APPTITLE_LEGAL,      "LEXIS® 2000 Research Software V 2.5"
+    IDS_APPTITLE_CORP,       "NEXIS® 2000 Research Software V 2.5"
+    IDS_APPTITLE_COMBINED,   "LEXIS®/NEXIS® 2000 Research Software V 2.5"
+    IDS_LONGTITLE,           "LEXIS® 2000 Research Software V2.5"
+    IDS_APPDESC,             "LEXIS®/NEXIS® 2000 Research Software V2.5 For Windows\nMead Data Central, Inc."
+    IDS_APPNAME,             "LEXIS25"
+
+    IDS_IFN,        "%s is not a valid filename."
+    IDS_FNF,        "%s not found - Create new file?"
+    IDS_REF,        "Replace existing %s?"
+    IDS_SCC,        "%s has changed.  Save current changes?"
+    IDS_EOF,        "Error opening %s"
+    IDS_ECF,        "Error creating %s"
+
+    IDS_NOTIMPLEMENTED, "The '%s' feature has not been implemented yet"
+
+    IDS_WNDCLASS_MAIN,          "LexisMain"
+    IDS_WNDCLASS_TERM,          "LexisTerm"
+
+
+    IDS_FILESPEC_RECORD  ,      "*.rec"
+    IDS_FILESPEC_NOTEPAD ,      "*.nts"
+    IDS_FILESPEC_DIARY   ,      "*.hst"
+    IDS_FILESPEC_DOCUMENT,      "*.doc"
+
+    IDS_OPENTITLE_RECORD ,      "Select a Recording File to Open"
+    IDS_OPENTITLE_NOTEPAD,      "Select a Notepad File to Open"
+    IDS_OPENTITLE_DIARY  ,      "Select a Diary File to Open"
+
+    IDS_NEWTITLE_RECORD  ,      "Create a Recording File"
+    IDS_NEWTITLE_NOTEPAD ,      "Create a Notepad File"
+    IDS_NEWTITLE_DIARY   ,      "Create a Diary File"
+
+    IDS_PRINTTITLE_RECORD  ,    "Select a Recording File to Print"
+    IDS_PRINTTITLE_NOTEPAD ,    "Select a Notepad File to Print"
+    IDS_PRINTTITLE_DIARY   ,    "Select a Diary File to Print"
+    IDS_PRINTTITLE_DOCUMENT,    "Select a Document to Print"
+
+    IDS_BUTTON_TRANSMIT,        "Transmit"
+    IDS_BUTTON_CHGLIB,          "Chg Lib"
+    IDS_BUTTON_NEWSEARCH,       "New Search"
+    IDS_BUTTON_QUOTES,          "Quotes"
+    IDS_BUTTON_CITATORS,        "Services"
+    IDS_BUTTON_KWIC,            "KWIC"
+    IDS_BUTTON_NEXTPAGE,        "Next Page"
+    IDS_BUTTON_NEXTDOC,         "Next Doc"
+
+    IDS_BUTTON_PRINTALL,        "Print All"
+    IDS_BUTTON_CHGFILE,         "Chg File"
+    IDS_BUTTON_STOP,            "Stop"
+    IDS_BUTTON_FOCUS,           "FOCUS"
+    IDS_BUTTON_EXITFOCUS,       "Exit FOCUS"
+    IDS_BUTTON_LEXSTAT,         "LEXSTAT"
+    IDS_BUTTON_FULL,            "Full"
+    IDS_BUTTON_PREVPAGE,        "Prev Page"
+    IDS_BUTTON_PREVDOC,         "Prev Doc"
+
+    IDS_BUTTON_PRINTDOC,        "Print Doc"
+    IDS_BUTTON_SIGNON,          "Sign On"
+    IDS_BUTTON_SIGNOFF,         "Sign Off"
+    IDS_BUTTON_RESUME,          "Resume"
+    IDS_BUTTON_LEXDOC,          "LEXDOC"
+    IDS_BUTTON_LEXSEE,          "LEXSEE"
+    IDS_BUTTON_CITE,            "Cite"
+    IDS_BUTTON_FIRSTPAGE,       "First Page"
+    IDS_BUTTON_FIRSTDOC,        "First Doc"
+
+    IDS_BUTTON_SAVE,            "Save"
+    IDS_BUTTON_MODIFY,          "Modify"      
+    IDS_BUTTON_SEGMENTS,        "Segments"
+    IDS_BUTTON_RECALL,          "Recall"      
+
+    IDS_STATBOX_CLIENT_LBL,     "Client:"
+    IDS_STATBOX_CLIENT          "12345678901234567890123456789012"
+    IDS_STATBOX_LIBRARY_LBL,    "Lib/File:"
+    IDS_STATBOX_LIBRARY         "12345678901234567890123456789012"
+    IDS_STATBOX_TIME_LBL,       "XXX"
+
+    IDS_STATBOX_RECORD_STATUS,  "REC"
+    IDS_STATBOX_DIARY_STATUS,   "DIARY"
+    IDS_STATBOX_PRINT_STATUS,   "PRNT"
+    IDS_STATBOX_CAPSLOCK,       "CAPS"   
+    IDS_STATBOX_NUMLOCK,        "NUM"
+    IDS_STATBOX_CD_STATUS,      "CD"  
+
+    IDS_INI_WIN,                "Window Settings"
+    IDS_INI_WIN_XPOS,           "Xpos"
+    IDS_INI_WIN_YPOS,           "Ypos"
+    IDS_INI_WIN_XSIZE,          "Xsize"
+    IDS_INI_WIN_YSIZE,          "Ysize"
+    IDS_INI_WIN_NCMDSHOW,       "nCmdShow"
+
+    IDS_INI_USERPREF,           "User Preferences"
+    IDS_INI_PERSONALITY,        "Personality"
+    IDS_INI_TOPSTAT,            "TopStatus"
+    IDS_INI_BOTSTAT,            "BotStatus"
+    IDS_INI_BUTTONWND,          "ButtonBar"
+    IDS_INI_FASTPRINT,          "FastPrint"
+    IDS_INI_BELL,               "Bell"
+
+    IDS_INI_DIRS         ,      "Directories"
+    IDS_INI_DIRS_RECORD  ,      "Recordings"
+    IDS_INI_DIRS_NOTEPAD ,      "Notepads"
+    IDS_INI_DIRS_DIARY   ,      "Diaries"
+    IDS_INI_DIRS_DOCUMENT,      "Documents"
+
+    IDS_INI_PRINT,              "Printing"
+    IDS_INI_PRINT_HEADER,       "Header"
+    IDS_INI_PRINT_FOOTER,       "Footer"
+
+    IDS_INI_HARDWARE     ,      "Connections"
+    IDS_INI_CONNECTOR    ,      "Connector"
+    IDS_INI_MODEM        ,      "Modem"
+    IDS_INI_L2000KEYBOARD,      "Lexis2000Keyboard"
+    IDS_INI_PARITY       ,      "Parity"
+    IDS_INI_DIALTYPE     ,      "Dialtype"
+
+    IDS_INI_PRIMARY      ,      "Primary Network"
+    IDS_INI_1STALTERNATE ,      "1st Alternate Network"
+    IDS_INI_2NDALTERANTE ,      "2nd Alternate Network"
+                         
+    IDS_INI_NETWORK      ,      "Network"
+    IDS_INI_SPEED        ,      "Speed"
+    IDS_INI_PREFIX       ,      "Prefix"
+    IDS_INI_NUMBER       ,      "Number"
+    IDS_INI_NODE         ,      "Node"
+
+
+    IDS_INI_NORMALFONT   ,      "Normal Font"
+    IDS_INI_HIGHLIGHTFONT,      "Highlight Font"
+    IDS_INI_FACENAME     ,      "FaceName"
+    IDS_INI_FACESIZEX    ,      "FaceWidth"
+    IDS_INI_FACESIZEY    ,      "FaceHeight"
+    IDS_INI_FGCOLOR      ,      "FGcolor"
+    IDS_INI_BGCOLOR      ,      "BGcolor"
+    IDS_INI_BOLD         ,      "Bold"
+    IDS_INI_ITALIC       ,      "Italic"
+    IDS_INI_UNDERLINE    ,      "Underline"
+    IDS_INI_STRIKEOUT    ,      "Strikeout"
+
+    IDS_SYSERROR        ,       "Fatal System Error"
+    IDS_SYSERROR_FMT    ,       "Error occured on line %d of module %s"
+
+    /*----------------------------------------------------------------------*/
+    /* Lexis for Windows Informational Messages (Info Line).		    */
+    /*									    */
+    /*----------------------------------------------------------------------*/
+
+    IDS_STATE_OFFLINE,       "Offline"
+    IDS_STATE_MANUAL,        "Manual logon, please connect to LEXIS®"
+    IDS_STATE_MANUALP,       "Manual logon, please connect to HyperRom®"
+    IDS_STATE_SIGNON,	    "Signing on to LEXIS®, please wait"
+    IDS_STATE_SIGNONP,       "Signing on to HyperRom®, please wait"
+    IDS_STATE_PROCESS,       "Working on '%s'."
+    IDS_STATE_READY,         "Online and waiting for input"
+    IDS_STATE_PRINTING,	    "Downloading LEXIS® document"
+    IDS_STATE_SWITCHING,     "Switching to LEXIS®"
+    IDS_STATE_USERID,	    "Sending LEXIS® account number"
+    IDS_STATE_PASSWORD,	    "Sending LEXIS® account password"
+
+
+    /* Generated by reviewing the menu items */
+
+    IDS_MENU_NEW,               "Creates a new File"
+
+    IDS_MENU_NEW_RECORDING,     "Creates a new Recording File"
+    IDS_MENU_NEW_DIARY,         "Creates a new Diary File"
+    IDS_MENU_NEW_NOTEPAD,       "Creates a new Notepad File"
+
+    IDS_MENU_OPEN,              "Opens an existing file"
+
+    IDS_MENU_OPEN_RECORDING,    "Opens an existing Recording File"
+    IDS_MENU_OPEN_DIARY,        "Opens an existing Diary File"
+    IDS_MENU_OPEN_NOTEPAD,      "Opens an existing Notepad File"
+
+    IDM_MENU_CLOSE_RECORDING,   "Closes the Recording File"
+    IDS_MENU_CLOSE_DIARY,       "Closes the Diary File"
+
+    IDS_MENU_PRINT,             "Prints a file"
+
+    IDS_MENU_PRINT_RECORDING,   "Prints an existing Recording File"
+    IDS_MENU_PRINT_DIARY,       "Prints an existing Diary File"
+    IDS_MENU_PRINT_NOTEPAD,     "Prints an existing Notepad File"
+    IDS_MENU_PRINT_DOCUMENT,    "Prints a Document to Disk File"
+    IDS_MENU_PRINT_SCREEN,      "Prints the current screen"
+
+    IDS_MENU_CLOSE, 	        "Closes window and quit LEXIS®"
+
+    IDS_MENU_RECORDING,         "Toggles Recording on or off"
+    IDS_MENU_DIARY,             "Toggle Diary Recording on or off"
+    IDS_MENU_PRINTING,          "Toggle printer echo on or off"
+
+    IDS_MENU_SETUP,             "Configures LEXIS® 2000"
+    IDS_MENU_SETUP_USERPREF,    "Sets user preferences"
+    IDS_MENU_SETUP_DIRECTORIES, "Specifies file locations"
+    IDS_MENU_SETUP_HARDWARE,    "Configures hardware and connection methods"
+    IDS_MENU_PAGESETUP,	        "Changes page layout"
+    IDS_MENU_PRINTSETUP,	"Changes printer settings or selects a printer"
+
+    IDS_MENU_SIGNON,            "Sign On or Off LEXIS®/NEXIS®"
+    IDS_MENU_EXIT,              "Closes window and quits research software"
+
+    IDS_MENU_COPY,              "Copies current selection or screen to the Clipboard"
+    IDS_MENU_PASTE,             "Inserts Clipboard contents at the insertion point"
+    IDS_MENU_COPYDIARY,         "Inserts current selection or screen to Diary"
+
+    IDS_MENU_NEWSEARCH,         "Specifies a new search request"
+    IDS_MENU_SEARCHMODIFY,      "Modifies the current search request"
+    IDS_MENU_SEARCHLEVEL,       "Changes to a different search Level"
+
+    IDS_MENU_LIBRARY,	        "Changes the current library"
+    IDS_MENU_FILE,              "Changes the current file"
+    IDS_MENU_CLIENT,            "Changes the current client"
+
+    IDS_MENU_ECLIPSE,           "Defines an ECLIPSE search request"
+    IDS_MENU_ECLIPSERECALL,     "Allows modification of ECLIPSE search request"
+
+    IDS_MENU_SEARCHDISPLAY,     "Displayes the current search request"
+
+    IDS_MENU_STOP,              "Stops the current search request"
+
+    IDS_MENU_NEXTPAGE,          "Moves forward <n> pages in the current document"
+    IDS_MENU_PREVPAGE,          "Moves back <n> pages in the current document"
+
+    IDS_MENU_NEXTDOC,           "Moves forward <n> documents"
+    IDS_MENU_PREVDOC,           "Moves back <n> documents"
+
+    IDS_MENU_GOTOPAGE,          "Goes to page <n> in the current document"
+    IDS_MENU_GOTODOC,           "Goes to Document <n>"
+     
+    IDS_MENU_FIRSTPAGE,         "Moves to first page of current document"
+    IDS_MENU_FIRSTDOC,          "Moves to first document"
+
+    IDS_MENU_KWIC,              "Specifies KWIC display format"
+    IDS_MENU_FULL,              "Specifies Full display format"
+    IDS_MENU_CITE,              "Specifies Cite display format"
+    IDS_MENU_VARKWIC,           "Specifies Variable KWIC display format"
+    IDS_MENU_SEGMENTS,          "Displays list of a document's segments"
+    IDS_MENU_SEQUENCE,	        "Sorts the documents found by the search request"
+
+    IDS_MENU_ENTERSTAR,         "Displays the documents with Star formatting"
+    IDS_MENU_EXITSTAR,          "Exits Star Mode and displays with normal formatting"
+
+    IDS_MENU_AUTOCITE,          "Initiates an Auto-Cite® search request"
+    IDS_MENU_SHEPARD,           "Initiates a Shepard's® search request"
+    IDS_MENU_LEXSEE,            "Initiates a LEXSEE search request"
+    IDS_MENU_LEXSTAT,           "Initiates a LEXSTAT search request"
+    IDS_MENU_LEXDOC,            "Initiates a LEXDOC search request"
+    IDS_MENU_BROWSE,            "Activates Browse function"
+    IDS_MENU_RESUME,            "Allows resumption of previous activities"
+
+    IDS_MENU_SELECTSERVICE,     "Selects a MDC service"
+    IDS_MENU_EXITSERVICE,       "Exits from the MDC services"
+
+    IDS_MENU_QUOTES             "Selects the Quotes service"
+
+    IDS_MENU_PRINTSCREEN,       "Sends the current screen to the printer"
+    IDS_MENU_PRINTDOC,          "Sends a document to a printer or disk file"
+    IDS_MENU_PRINTALL,          "Sends a copy of all documents to printer or disk file"
+
+    IDS_MENU_TIME,              "Displays the time you have been connected"
+    IDS_MENU_REQUEST,           "Displays information about your search request"
+    IDS_MENU_PAGES,             "Displays the number of pages in the current document"
+    IDS_MENU_DEBUT,             "Displays information of new and updated MDC services"
+
+    IDS_MENU_INDEX     ,        "Lists Help topics"
+    IDS_MENU_KEYBOARD  ,        "Lists keys and their actions"
+    IDS_MENU_BASIC     ,        "Demonstrates basic skills"
+    IDS_MENU_COMMANDS  ,        "Lists commands and their purpose"
+    IDS_MENU_PROCEDURES,        "Shows procedures"
+    IDS_MENU_HELPONHELP,        "Displays instructions about how to use help"
+
+    IDS_MENU_TUTORIAL,          "Starts the LEXIS®/NEXIS® Tutorial"
+    IDS_MENU_LEXISHELP,         "Displays help about the current screen"
+
+    IDS_MENU_ABOUT,             "Displays the copyright and version number"
+
+    IDS_TOPMENU_FILE,           "File, Print, and Setup operations"
+    IDS_TOPMENU_EDIT,           "Cut, Copy, and Paste operations"
+    IDS_TOPMENU_SEARCH,         "Sets search options and chage library, file, and client"
+    IDS_TOPMENU_VIEW,           "Moves through the documents in a search session"
+    IDS_TOPMENU_FORMATS,        "Specifies display formats for search sessions"
+    IDS_TOPMENU_CITATORS,       "Selects citators and services"
+    IDS_TOPMENU_DELIVERY,       "Specifies the delivery of documents"
+    IDS_TOPMENU_INFO,           "Gets information on online status"
+    IDS_TOPMENU_HELP,           "Gets help on LEXIS®/NEXIS® 2000 Functions"
+
+    IDS_SYSMENU,                " "
+    IDS_SYSMENU_SIZE,           "Sizes the main window"
+    IDS_SYSMENU_MOVE,           "Moves the main window"
+    IDS_SYSMENU_MINIMIZE,       "Minimizes the main window to an icon"
+    IDS_SYSMENU_MAXIMIZE,       "Maximizes the main window to the full screen size"
+    IDS_SYSMENU_CLOSE,          "Closes the window and exits LEXIS®"
+    IDS_SYSMENU_RESTORE,        "Restores main window to previous size and position" 
+    IDS_SYSMENU_TASKLIST,       "Switches applications with the Task Manager"
+
+
+/*
+
+    IDS_HLP_OK,                 "Ok"
+    IDS_HLP_CANCEL,             "Cancel"
+
+    IDS_HLP_SETUP_ID,           "Personal Account ID"
+    IDS_HLP_SETUP_BELL,         "Activate bell sound"
+    IDS_HLP_SETUP_STATUS,       "Display the status bar"
+    IDS_HLP_SETUP_MACRO,        "Display the macro bar"
+    IDS_HLP_SETUP_INFO,         "Display the info bar"
+    IDS_HLP_SETUP_FASTPRINT,    "Perform FAST 'Print Doc' command"
+    IDS_HLP_SETUP_COM1,         "Use your serial communication port 1"
+    IDS_HLP_SETUP_COM2,         "Use your serial communication port 2"
+    IDS_HLP_SETUP_DIRECT,       "Your serial port is hardwired (no modem)"
+    IDS_HLP_SETUP_PBX,          "Dialing through a PBX"
+    IDS_HLP_SETUP_MODEMS,       "List of modems"
+    IDS_HLP_SETUP_EVEN,         "Even Parity"
+    IDS_HLP_SETUP_ODD,          "Odd Parity"
+    IDS_HLP_SETUP_NONE,         "No Parity"
+    IDS_HLP_SETUP_TONE,         "Touch Tone Dial"
+    IDS_HLP_SETUP_PULSE,        "Pulse Dial"
+    IDS_HLP_SETUP_MANUAL,       "You will manually dial the number"
+    IDS_HLP_SETUP_NEWMODEM,     "Define a new modem to LEXIS®"
+    IDS_HLP_SETUP_PRIMARY,      "Primary Network"
+    IDS_HLP_SETUP_1STALT,       "1st Alternate Network"
+    IDS_HLP_SETUP_2NDALT,       "2nd Alternate Network"
+    IDS_HLP_SETUP_NETWORK,      "List of the Networks"
+    IDS_HLP_SETUP_PREFIX,       "Prefix"
+    IDS_HLP_SETUP_NUMBER,       "Number"
+    IDS_HLP_SETUP_SPEED,        "Speed"
+    IDS_HLP_SETUP_NODE,         "Node"
+    IDS_HLP_SETUP_RECORD,	    "Session Recording Directory"
+    IDS_HLP_SETUP_NOTEPAD,      "Notepad Directory"
+    IDS_HLP_SETUP_MAPS,	    "Session Diary Directory"
+    IDS_HLP_SETUP_DOC,	    "Document Delivery to Disk Directory"
+
+    IDS_MODEM_ATT2224,          "AT&T Dataphone 2224"
+    IDS_MODEM_HAYES1200,        "Hayes 1200"
+    IDS_MODEM_HAYES1200B,       "Hayes 1200B"
+    IDS_MODEM_HAYES2400,        "Hayes 2400"
+    IDS_MODEM_HAYES2400B,       "Hayes 2400B"
+    IDS_MODEM_LEADING,          "Leading Edge Model L"
+    IDS_MODEM_MT212AH2,         "Multi-Tech MT212AH2"
+    IDS_MODEM_MT212HC,          "Multi-Tech MT212HC"
+    IDS_MODEM_MT224PC,          "Multi-Tech MT224PC"
+    IDS_MODEM_POPCOM,           "Prentice POPCOM X100"
+    IDS_MODEM_PROMODEM,         "Prometheus 1200"
+    IDS_MODEM_VA3451,           "Racal-Vadic VA3451"
+    IDS_MODEM_RACAL1200,        "Racal-Vadic 1200V"
+    IDS_MODEM_RACAL2400,        "Racal-Vadic 2400V"
+    IDS_MODEM_USR2400,          "US Robotics 1200"
+    IDS_MODEM_USR9600,          "US Robotics 9600"
+
+    IDS_DATA_PROFILE,       "LEXIS25.INI"
+    IDS_DATA_CONFIG,	    "LEXIS.CFG"
+    IDS_DATA_WORKFILE,	    "LEXIS.$$$"
+    IDS_DATA_DATA,          "Data"
+    IDS_DATA_NETWORK,       "Networks"
+    IDS_DATA_MODEMS,        "Modems"
+    IDS_DATA_MENUS,         "Menus"
+    IDS_DATA_SCRIPTS,       "Scripts"
+    IDS_DATA_LOGON,	    "Logon"
+    IDS_DATA_MODEM,	    "Modem"
+    IDS_DATA_NETWORK1,      "PriNetwork"
+    IDS_DATA_NETWORK2,      "1stNetwork"
+    IDS_DATA_NETWORK3,      "2ndNetwork"
+    IDS_DATA_PREFIX1,       "PriPrefix"
+    IDS_DATA_PREFIX2,       "1stPrefix"
+    IDS_DATA_PREFIX3,       "2ndPrefix"
+    IDS_DATA_NUMBER1,       "PriNumber"
+    IDS_DATA_NUMBER2,       "1stNumber"
+    IDS_DATA_NUMBER3,       "2ndNumber"
+    IDS_DATA_NODE1,         "PriNode"
+    IDS_DATA_NODE2,         "1stNode"
+    IDS_DATA_NODE3,         "2ndNode"
+    IDS_DATA_FACE,	    "Face"
+    IDS_DATA_BELL,	    "Bell"
+    IDS_DATA_FASTPRINT,     "FastPrint"
+    IDS_DATA_PORT,	    "Port"
+    IDS_DATA_HARDWIRE,	    "Hardwire"
+    IDS_DATA_PBX,           "PBX"
+    IDS_DATA_DIAL,	    "Dial"
+    IDS_DATA_PARITY,	    "Parity"
+    IDS_DATA_SPEED1,        "PriSpeed"
+    IDS_DATA_SPEED2,        "1stSpeed"
+    IDS_DATA_SPEED3,        "2ndSpeed"
+    IDS_DATA_PITCH,	    "Pitch"
+    IDS_DATA_CHARSET,	    "Charset"
+    IDS_DATA_HEIGHT,	    "Height"
+    IDS_DATA_WIDTH,	    "Width"
+    IDS_DATA_RECORD,        "Record"
+    IDS_DATA_NOTEPAD,       "Notepad"
+    IDS_DATA_MAPS,          "Maps"
+    IDS_DATA_DOC,           "Doc"
+    IDS_DATA_HEADER,        "Header"
+    IDS_DATA_FOOTER,        "Footer"
+    IDS_DATA_STATUS,        "Status"
+    IDS_DATA_MACRO,         "Macro"
+    IDS_DATA_INFO,          "Info"
+
+*/
+
+END
+
+
+/************************************************************************
+ * End of File: lexis.str
+ ************************************************************************/
+

@@ -1,0 +1,38 @@
+NAME         FONTCON
+
+DESCRIPTION  'The Font Connection for Windows'
+
+EXETYPE      WINDOWS
+
+STUB         'OBJ\WINSTUB.EXE'
+
+CODE  MOVEABLE DISCARDABLE
+DATA  PRELOAD MOVEABLE MULTIPLE
+
+SEGMENTS       FONTSHOP     PRELOAD FIXED
+               _TEXT        PRELOAD MOVEABLE DISCARDABLE
+               INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+               INIT         PRELOAD MOVEABLE DISCARDABLE
+               MAINWND      PRELOAD MOVEABLE DISCARDABLE
+
+HEAPSIZE     5120
+STACKSIZE    16192
+
+EXPORTS
+    MainWndProc             @1
+    FVWndProc               @2
+    AboutBoxProc            @3
+    fsddeCallback           @4
+    PanoseDlg             @5
+    SetFilterProc           @6
+    CollectionsProc         @7
+    ELBPaintProc            @8
+    ELBSortProc             @9
+    PurchaseProc            @10
+    fnNewUserDlg            @13
+    ViewTextProc            @15
+    fnOptions               @16
+    fnPostPurchase          @17
+    fnGetUserID             @18
+    fnFileVersionDlg        @19
+    fnRenewDlg            @20

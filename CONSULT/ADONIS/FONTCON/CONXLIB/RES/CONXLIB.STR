@@ -1,0 +1,134 @@
+
+#ifdef RC_INVOKED
+    #define DEFSTR(V,SID,S)   V     S
+    #define DECSTR(SID,S)     SID   S
+#else
+    #define DEFSTR(V,SID,S)   enum {SID=V};
+    #define DECSTR(SID,S)     
+#endif
+
+#ifdef RC_INVOKED
+STRINGTABLE PRELOAD MOVEABLE PURE DISCARDABLE
+BEGIN
+#else
+#define FIRST_IDS    0x0000
+#endif
+
+    DEFSTR( 0x0000, IDS_APPNAME,             "Connection" )
+    DEFSTR( 0x0001, IDS_INIFILE,             "CONXTION.INI")
+    DEFSTR( 0x0002, IDS_INI_CUSTADDRESS,     "Customer Info" )
+    DEFSTR( 0x0003, IDS_INI_SHIPINFO,        "Shipping Info" )
+    DEFSTR( 0x0004, IDS_INI_NAME,            "Name" )
+    DEFSTR( 0x0005, IDS_INI_COMPANY,         "Company" )
+    DEFSTR( 0x0006, IDS_INI_STREET1,         "Street1" )
+    DEFSTR( 0x0007, IDS_INI_STREET2,         "Street2" )
+    DEFSTR( 0x0008, IDS_INI_CITY        ,    "City" )
+    DEFSTR( 0x0009, IDS_INI_STATE       ,    "State" )
+    DEFSTR( 0x000a, IDS_INI_ZIP         ,    "ZIP" )
+    DEFSTR( 0x000b, IDS_INI_COUNTRYCODE ,    "CountryCode" )
+    DEFSTR( 0x000c, IDS_INI_COUNTRY     ,    "Country" )
+    DEFSTR( 0x000d, IDS_INI_AREACODE    ,    "AreaCode" ) 
+    DEFSTR( 0x000e, IDS_INI_NUMBER      ,    "Number" )
+    DEFSTR( 0x000f, IDS_INI_EXT         ,    "Ext" )
+    DEFSTR( 0x0010, IDS_INI_USERID      ,    "UserID" )
+    DEFSTR( 0x0011, IDS_INI_PASSWORD    ,    "Password" )
+    DEFSTR( 0x0012, IDS_INI_WHICHADDRESS ,   "WhichAddress" )
+    DEFSTR( 0x0013, IDS_INI_SHIPMETHOD   ,   "Method" )
+    DEFSTR( 0x0014, IDS_INI_WHICHCARD    ,   "WhichCard" )
+    DEFSTR( 0x0015, IDS_INI_NAMEONCARD   ,   "NameOnCard" )
+    DEFSTR( 0x0016, IDS_INI_CARDNUMBER   ,   "CardNumber" )
+    DEFSTR( 0x0017, IDS_INI_EXPMONTH     ,   "ExpMonth" )
+    DEFSTR( 0x0018, IDS_INI_EXPYEAR      ,   "ExpYear" )
+    DEFSTR( 0x0019, IDS_INI_COMMSETTINGS,    "Comm Settings" ) 
+    DEFSTR( 0x001a, IDS_INI_PORT,            "Port" ) 
+    DEFSTR( 0x001b, IDS_INI_MODEM,           "Modem" ) 
+    DEFSTR( 0x001c, IDS_INI_BAUD,            "Baud" ) 
+    DEFSTR( 0x001d, IDS_INI_LOCATION,        "206" ) 
+    DEFSTR( 0x001e, IDS_INI_PREFIX,          "Prefix" ) 
+    DEFSTR( 0x001f, IDS_INI_SUFFIX,          "Suffix" ) 
+    DEFSTR( 0x0020, IDS_INI_DIALTYPE,        "DialType" ) 
+    DEFSTR( 0x0021, IDS_INI_BILLINGINFO,     "Billing Info" )
+    DEFSTR( 0x0022, IDS_BOLD,                "Bold"  )
+    DEFSTR( 0x0023, IDS_ITALIC,              "Italic" )
+    DEFSTR( 0x0024, IDS_BOLDITALIC,          "Bold Italic" )
+    DEFSTR( 0x0025, IDS_REGULAR,             "Regular" )
+    DEFSTR( 0x0026, IDS_INI_MEDIA,           "Media" )
+    DEFSTR( 0x0027, IDS_INI_NOYIELD,         "NoYield" )
+
+#ifndef RC_INVOKED
+#define LAST_IDS    0x0027
+#endif
+
+   DEFSTR( 0x0101, IDS_MEDIA_12,             "5¼ inch, 1.2MB" )
+   DEFSTR( 0x0102, IDS_MEDIA_144,            "3½ inch, 1.44MB" )
+
+
+   DEFSTR( 0x1000, IDS_ERR_DUMMY,            "%s")
+   DEFSTR( 0x1001, IDS_ERR_NOMEMORY,         "Not enough memory to run" )
+   DEFSTR( 0x1002, IDS_ERR_USERIDTOOSHORT,   "The User ID you entered is not a valid User ID.  Please try again.")
+   DEFSTR( 0x1003, IDS_ERR_INVALIDPASSWORD,  "That password is not correct.  Please try again." )
+   DEFSTR( 0x1004, IDS_ERR_NEWPASSWORDSDIFFER,"You must enter the same password in both new password boxes.")
+
+
+   DEFSTR( 0x2000, IDS_INVALID_EXPMONTH,     "The month of expiration for this card is not valid." )
+   DEFSTR( 0x2001, IDS_INVALID_EXPYEAR,      "The year of expiration for this card is not valid." )
+   DEFSTR( 0x2002, IDS_INVALID_CARDNUMBER,   "The credit card number entered is not valid" )
+
+
+   DEFSTR( 0x1101, IDS_HELP_COMM,            "Comm Settings Dialog")
+   DEFSTR( 0x1102, IDS_HELP_CUSTOMER,        "Customer Address Dialog")
+   DEFSTR( 0x1103, IDS_HELP_SHIPPING,        "Shipping Info Dialog")
+   DEFSTR( 0x1104, IDS_HELP_BILLING,         "Billing Info Dialog")
+   DEFSTR( 0x1105, IDS_HELP_CHANGEPASSWORD,  "Change Password Dialog")
+   DEFSTR( 0x1106, IDS_HELP_USERID,          "User ID Dialog")
+   DEFSTR( 0x1107, IDS_HELP_VERIFYORDER,     "Verify Order Dialog")
+
+
+DEFSTR( 0x3000, IDS_SUNDAY,            "Sunday" )
+DEFSTR( 0x3001, IDS_MONDAY,            "Monday" )
+DEFSTR( 0x3002, IDS_TUESDAY,           "Tuesday" )
+DEFSTR( 0x3003, IDS_WEDNESDAY,         "Wednesday" )
+DEFSTR( 0x3004, IDS_THURSDAY,          "Thursday" )
+DEFSTR( 0x3005, IDS_FRIDAY,            "Friday" )
+DEFSTR( 0x3006, IDS_SATURDAY,          "Saturday" )
+DEFSTR( 0x3007, IDS_SUNDAY_SHORT,      "Sun" )
+DEFSTR( 0x3008, IDS_MONDAY_SHORT,      "Mon" )
+DEFSTR( 0x3009, IDS_TUESDAY_SHORT,     "Tue" )
+DEFSTR( 0x300a, IDS_WEDNESDAY_SHORT,   "Wed" )
+DEFSTR( 0x300b, IDS_THURSDAY_SHORT,    "Thu" )
+DEFSTR( 0x300c, IDS_FRIDAY_SHORT,      "Fri" )
+DEFSTR( 0x300d, IDS_SATURDAY_SHORT,    "Sat" )
+DEFSTR( 0x300e, IDS_JANUARY,           "January" )
+DEFSTR( 0x300f, IDS_FEBRUARY,          "February" )
+DEFSTR( 0x3010, IDS_MARCH,             "March" )
+DEFSTR( 0x3011, IDS_APRIL,             "April" )
+DEFSTR( 0x3012, IDS_MAY,               "May" )
+DEFSTR( 0x3013, IDS_JUNE,              "June" )
+DEFSTR( 0x3014, IDS_JULY,              "July" )
+DEFSTR( 0x3015, IDS_AUGUST,            "August" )
+DEFSTR( 0x3016, IDS_SEPTEMBER,         "September" )
+DEFSTR( 0x3017, IDS_OCTOBER,           "October" )
+DEFSTR( 0x3018, IDS_NOVEMBER,          "November" )
+DEFSTR( 0x3019, IDS_DECEMBER,          "December" )
+DEFSTR( 0x301a, IDS_JANUARY_SHORT,     "Jan" )
+DEFSTR( 0x301b, IDS_FEBRUARY_SHORT,    "Feb" )
+DEFSTR( 0x301c, IDS_MARCH_SHORT,       "Mar" )
+DEFSTR( 0x301d, IDS_APRIL_SHORT,       "Apr" )
+DEFSTR( 0x301e, IDS_MAY_SHORT,         "May" )
+DEFSTR( 0x301f, IDS_JUNE_SHORT,        "Jun" )
+DEFSTR( 0x3020, IDS_JULY_SHORT,        "Jul" )
+DEFSTR( 0x3021, IDS_AUGUST_SHORT,      "Aug" )
+DEFSTR( 0x3022, IDS_SEPTEMBER_SHORT,   "Sep" )
+DEFSTR( 0x3023, IDS_OCTOBER_SHORT	,  "Oct" )
+DEFSTR( 0x3024, IDS_NOVEMBER_SHORT	,  "Nov" )
+DEFSTR( 0x3025, IDS_DECEMBER_SHORT	,  "Dec" )
+DEFSTR( 0x3026, IDS_LONGDATE         , "ddd', 'MMMM' 'dd', 'yyyy" )
+DEFSTR( 0x3027, IDS_SHORTDATE        , "MM/dd/yy" )
+            
+            
+#ifdef RC_INVOKED
+END         
+#endif      
+            
+            
+            

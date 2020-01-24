@@ -1,0 +1,5 @@
+With this screen you specify where you want Window Shopper to backup and retrieve thumbnail information.  
+
+When Window Shopper is unable to locate thumbnails for the currently selected library in your data cache, it next looks for them in the thumbnail directory.  Also, when new thumbnails are downloaded from the Adonis server, you are given the option to back them up to this directory.
+
+Usually you will specify \SHOPPER\THUMB or the \THUMB directory on a floppy drive.$

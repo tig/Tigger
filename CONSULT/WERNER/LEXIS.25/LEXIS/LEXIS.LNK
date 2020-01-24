@@ -1,0 +1,26 @@
+obj\lexis+
+obj\global+
+obj\init+
+obj\menu+
+obj\timer+
+obj\mainwnd+
+obj\topstat+
+obj\botstat+
+obj\button+
+obj\profile+
+obj\state+
+obj\userpref+
+obj\direct+
+obj\filedlgs+
+obj\print+
+obj\hardware+
+obj\help+
+obj\term+
+obj\keyboard+
+obj\command+
+obj\connect
+lexis25.exe /align:16
+lexis /map
+cmndll lexprnt mlibcew libw wdb
+lexis.def
+

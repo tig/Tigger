@@ -1,0 +1,315 @@
+/*************************************************************\
+ ** FILE:  shopper.rc
+ **
+ ** Copyright (c) Adonis Corporation. 1990
+ **
+ ** DESCRIPTION:
+ **  Primary resource file for WS help, messages, dialogs, icons...
+ **
+ ** HISTORY:   
+ **   Doug Kent  July 2, 1990 (created)
+ **
+\*************************************************************/
+//#ifdef WIN30
+#include "windows.h"
+//#else
+//#include "style.h"
+//#endif
+#include "rc_symb.h"
+
+#if 0
+#ifdef WIN30
+shopper     ICON	bag30.ico
+shopper1    ICON	bag30.ico
+/*database    ICON    db30.ico*/
+
+/* for downloading dlg */
+DB_BMP	BITMAP	db.bmp
+WSBAG_BMP	BITMAP	wsbag.bmp
+
+/* for BusyBoxWithIcon() */
+calc	ICON	calc.ico
+thumb	ICON	thumb30.ico
+nothumb	ICON	nothumb.ico
+/*search2	ICON	search2.ico*/
+pencil	ICON	pencil.ico
+credit	ICON	credit.ico
+db	ICON	db30.ico
+connect	ICON	connect.ico
+
+PHONE1_CURSOR	CURSOR phone301.cur
+PHONE2_CURSOR	CURSOR phone302.cur
+PHONE3_CURSOR 	CURSOR phone303.cur
+PHONE4_CURSOR 	CURSOR phone304.cur
+
+/* for opening screen */
+logoovl1    BITMAP  logoovl1.bmp
+logoovl2    BITMAP  logoovl2.bmp
+logoovl3    BITMAP  logoovl3.bmp
+
+SEARCH_CURSOR	CURSOR search1.cur
+
+#else
+shopper     ICON	bag.ico
+shopper1    ICON	bag.ico
+PHONE1	CURSOR phone1.cur
+PHONE2	CURSOR phone2.cur
+PHONE3 	CURSOR phone3.cur
+PHONE4 	CURSOR phone4.cur
+#endif
+
+
+STRINGTABLE LOADONCALL
+/* database file errors */
+BEGIN
+    /* see error.h for codes */
+    IDS_IO_ERR                  "Error %d. Please contact Adonis Technical Support at (800) 234-9497."
+    IDS_FILE_IO_ERR             "I/O error #%d: %s. Please contact Adonis Technical Support at (800) 234-9497."
+
+/* user-friendly database errors */
+
+    IDS_ERR_PLEASE_WAIT         "The Adonis Server is not yet up and running.  Sorry for the inconvenience.  Please contact Adonis for the latest news."
+    IDS_ERR_OLDWINVER           "Window Shopper requires Windows version 2.10 or higher."
+    IDS_ERR_MISSING_VIEW_THUMB   "Window Shopper is unable to display your selection due to a missing thumbnail file from %s.\n\nYou may either cancel this selection, or obtain the thumbnail by changing your Thumb directory or logging on to the Adonis Server and repeating the selection."
+    IDS_ERR_MISSING_SEARCH_THUMB "Window Shopper is unable to display one or more images due to a missing thumbnail file from %s.\n\nYou may either skip the image(s) and continue searching, or obtain the thumbnail by changing your Thumb directory or logging on and repeating the search."
+    IDS_ERR_MISSING_ALT_DRIVE   "Your thumbnail directory (%s) is not accessible.  Please insert the %s thumbnail diskette or Logon to view/search thumbnail images online."
+    IDS_ERR_MISSING_ADMIN_FILES "Window Shopper cannot access a database file.  You may obtain it by logging on to the Adonis Server."
+    IDS_MSG_SUBSCRIBE           "Window Shopper cannot access a database file.  You may obtain it by subscribing to the online service (press the NewUser button in the main Window Shopper window)."
+    IDS_ERR_DIR_DOESNT_EXIST    "Your download directory (%s) does not exist.  Please select another directory."
+    IDS_ERR_LIB_NOTAVAIL        "This library is not available for viewing.  Please select another and try again."
+	IDS_ERR_DISK_FULL		    "Window Shopper was unable retrieve a file because your hard disk is full.  Please make some room and try again!  You might try reducing your cache size until you force deletion of least-recently-used thumbnail files."
+	IDS_ERR_CACHE_FULL		    "Window Shopper was unable to obtain a thumbnail file because the amount allocated for your cache will be exceeded.  Please increase your cache size and try again!"
+    IDS_ERR_UNABLE_TO_DOWNLOAD  "Window Shopper was unable to download %s."
+    IDS_ERR_READING_WININI      "Window Shopper was unable to read your customer information to the win.ini file."
+    IDS_ERR_WRITING_WININI      "Window Shopper was unable to write your customer information to the win.ini file."
+    IDS_ERR_INITIALIZING        "Window Shopper was unable to initialize the win.ini file for a new user."
+	IDS_ERR_DISK_UNAVAIL        "There is not enough disk space on your drive for your requested cache size."
+
+/* memory errors */
+
+	IDS_FATAL_ERR_TITLE		    "Window Shopper - Fatal Error!"
+	IDS_ERR_GMEM_FULL		    "Window Shopper could not allocate Global Memory and must shut down.\012\012Please report this problem to Adonis Corporation."
+    IDS_ERR_NO_MEMORY           "Window Shopper has run out of memory for this operation.  Try shutting down some other applications and try the operation again."
+    IDS_ERR_LMEM_FULL           "Window Shopper could not allocate any local memory.\012\012Please report this problem to Adonis Corporation."
+    IDS_ERR_DELETE_LIBS         "The cache size you selected will cause Window Shopper to delete one or more least-recently-used libraries from your cache.  Proceed?"
+
+/* communication errors */
+
+    IDS_ERR_SETTING_PASSWD      "We're sorry, but Window Shopper was unable to change the password.  Please try again later."
+    IDS_ERR_UNABLE_TO_CONNECT   "Window Shopper was unable to connect to the Adonis Server. Please call Adonis Technical Support at (800) 234-9497 for assistance."
+	IDS_ERR_BUSY                "We're sorry, but the Adonis Server is currently busy.  Please try to Logon again later!"
+    IDS_ERR_BBS_TIMED_OUT       "Window Shopper must log off because the Adonis Server is not responding.  Please try to log on again later!"
+    IDS_ERR_MUST_LOGON          "You must Logon before attempting this operation."
+    IDS_ERR_COMM                "We're sorry, but Window Shopper had to terminate the phone connection due to a communications error.  Please try to Logon again."
+
+/* user info errors */
+
+    IDS_ERR_ADDLRU              "Error in LRU table"
+    IDS_ERR_PASSWD_LEN          "Passwords must be 5-8 characters long."
+    IDS_ERR_BAD_USERID          "We are unable to accept your user ID."
+    IDS_ERR_BAD_NEW_ACCOUNT     "Sorry, we are unable to create a new account for you."
+	IDS_ERR_TITLE 			    "Window Shopper - Error!"
+	IDS_ERR_SECOND_INSTANCE		"A copy of Window Shopper is already running!"
+	IDS_ERR_TOO_MANY_TIMERS 	"The Window Shopper Logon timer could not be started."
+	IDS_ERR_INVALID_USER_NAME 	"You have entered an invalid user name."
+    IDS_ERR_INVALID_CARD_INFO   "You have entered invalid credit card information for this card.  Please check for correct information before saving."
+    IDS_ERR_MISSING_NAME        "You must enter your name as it appears on this credit card.  Please check for correct information before saving."
+    IDS_ERR_INVALID_EXPR        "You must enter a valid expiration date as numbers in the form mm/yy.  Please check for correct information before saving."
+    IDS_ERR_INVALID_CARD        "You have selected a card with invalid information.  Please select another card."
+    IDS_ERR_MUST_HAVE_PASSWORD  "You must enter a password in order to use Window Shopper."
+	IDS_ERR_INVALID_PASSWORD  	"You have entered an invalid password.  Please try again."
+    IDS_ERR_MUST_SELECT         "The billing method you have selected is invalid.  You must select a credit card with valid information before pressing OK."
+    IDS_ERR_NEED_INFO           "The information in this dialog must be filled out before pressing OK."
+    IDS_ERR_INVALID_BILLING     "The information for the credit card you have selected is invalid and must be reentered in order to continue.  Do you wish to continue?"
+    IDS_ERR_INVALID_USERID      "You must enter a valid user id before continuing.  Please try again."
+	IDS_ERR_UNENCRYPTING        "Window Shopper was unable to unencrypt your credit card information.  Please contact Adonis Corporation."
+	IDS_ERR_ENCRYPTING          "Window Shopper was unable to encrypt your credit card information.  Please contact Adonis Corporation."
+    IDS_ERR_NOT_DOWNLOADABLE    "Images in this library are not available for downloading.  You can purchase the complete library by using the Library Order Form dialog box."
+    IDS_ERR_CHECK_MODEM         "Window Shopper was unable to make a modem connection.  Please check that your serial port, modem and phone are connected and turned on, then try this operation again!"
+    IDS_ERR_MISSING_NUMBER      "Window Shopper was unable to determine the phone number to the Adonis Server because your phone number is not correctly entered in the Customer Information Dialog.  Do you wish to enter this information now?"
+    IDS_ERR_BAD_BITMAP          "Bad thumbnail. Sorry, can't display"
+    IDS_ERR_CREATING_DIR        "Window Shopper was unable to create the directory %s."
+    IDS_ERR_BACKUP_TO_DIFF      "You must specify a directory other than the one that holds Window Shopper data.  Please select a different directory and try again."
+    IDS_ERR_EXCEEDED_CORP_ACCT  "You have exceeded your corporate account credit limit.  Please contact your purchasing department or Adonis Corporation for assistance."
+    IDS_ERR_SELECT_NEW_COURIER  "Note: your currently selected shipping method is not available for this product.  Please select another carrier option."
+	IDS_ERR_NOHELP				"Window Shopper was unable to bring up the help window at this time.  Please close some applications and try again."
+	IDS_ERR_WINDOW_IN_USE		"Current View Window in use.\nWould you like to switch to:\n%s?\n"
+
+	IDS_ERR_CREDIT_SECURE		"The following dialog asks you to provide your credit card information for billing purposes.  This information will be securely encrypted only on your own computer.  Adonis will not maintain your credit information elsewhere."
+
+	IDS_ERR_ARE_USER			"Are you a subscribed Window Shopper user?"
+	IDS_ERR_EXPIRED_ID			"Your subscription has expired.  The following dialog will give you the opportunity to renew with a one-year subscription.  If you press Cancel you will not be able to Logon this time, but may do so in the future by repeating this procedure."
+
+    IDS_ERR_CREDIT_NOT_ACCEPT   "Window Shopper was unable to accept your credit.  Please select another billing method and try again."
+	IDS_ERR_CONDITIONAL_ORDER	"We were unable to validate your credit.  Would you like to place an order conditional upon later validation?"
+    IDS_MSG_VALIDATE_CREDIT     "Validating your credit..."
+	IDS_MSG_ORDER_OUTOFSTOCK 	"Your order is temporarily out-of-stock.  Do you wish to back order?"
+	IDS_ERR_ORDER_UNAVAILABLE	"Sorry, your order is no longer available."
+	IDS_ERR_UNABLE_TO_ORDER		"We were unable to place your order.  Please try again later."
+	IDS_ERR_UNABLE_TO_ORDER_CLIP "We were unable to complete your clip-art transaction and thus cannot give you a purchase order ID."
+	IDS_ERR_TOO_LATE            "Sorry, too late.  The Adonis Server already terminated your phone connection, due to inactivity."
+	IDS_ERR_SELECTFORMAT	"You must select one or more formats when the \042Selected\042 radio button is checked."
+/* General titles, for windows and message type stuff */
+
+    IDS_APPNAME                 "WShopper"
+    IDS_WININILABEL             "Window Shopper"
+    IDS_TITLE_APPNAME           "Clip-Art Window Shopper"
+    IDS_TITLE_BILLING           " Billing Information "
+    IDS_TITLE_CUSTOMER          " Customer Information "
+    IDS_TITLE_SHIPPING          " Shipping Information "
+    IDS_TITLE_NEW_USER          " New User "
+    IDS_TITLE_CHANGE_PW         " Change Password "
+    IDS_TITLE_PASSWORD_VERIFY   " Password Verification "
+    IDS_FLOPPY_THUMB            "A:\\THUMB"
+    IDS_DATA_DIR                "DATA"
+    IDS_THUMB_DIR               "THUMB"
+    IDS_SELECT_DIR_ALT_THUMBNAIL "Select a thumbnail directory"    
+    IDS_SELECT_DIR_CLIPART      "Select a destination directory for:"
+    IDS_TITLE_ALT_THUMBNAIL	" Thumbnail Directory "		
+	IDS_TITLE_SEARCH	"Search"
+	
+
+/* general messages */
+
+    IDS_MSG_NOSHIPPING     	"Shipping charges will be added to the total charge for your order."
+    IDS_MSG_DOWNLOADING    	"Downloading thumbnail file.  Please wait a few moments..."
+    IDS_MSG_DOWNLOADING_DB	"Downloading database file.  Please wait a few moments..."	
+    IDS_MSG_NEW_USER_START 	"This process culminates by phoning the Adonis Server.  If your version of Window Shopper is out-of-date, you will receive a free upgrade and will need to repeat the New User process.  Do you wish to continue?"
+    IDS_MSG_UPDATE_DATABASE 	"Window Shopper is updating your local database.  Thumbnails will be updated as necessary as you view them.  Window Shopper performs optimally when you allow this process to complete."
+    IDS_MSG_UPDATE_SHOPPER_LONG "You are about to receive a free upgrade to Window Shopper.  You will not be able to access the Adonis Server without this upgrade.  To continue, press the OK button.  If you want to abort the update process, press the Cancel button."
+    IDS_MSG_UPDATE_SHOPPER_SHORT "Window Shopper upgrade in progress..." 		  
+    IDS_MSG_GETTING_CLIP	"Clip-art download in progress..."	
+    IDS_MSG_HAVE_ID             "Do you have a valid user ID supplied by Adonis?"
+    IDS_MSG_NEW_EXE             "You have successfully received a free Window Shopper upgrade. The version you are running now is about to quit. To complete the upgrade process you must quit Windows and run UPDATE.BAT while you are in %s. You may then restart Window Shopper."
+    IDS_MSG_WANT_TO_BACKUP      "Window Shopper can add the thumbnails you are about to view to your thumbnail directory (%s).  Would you like to keep a copy for future viewing?"
+    IDS_MSG_CLIPART_DOWN        "Your clip-art file has been successfully downloaded."
+    IDS_MSG_CLIPART_NOT_DOWN    "Window Shopper was unable to download the selected clip-art file.\012\012NOTE: You will not be charged for images you did not receive."
+    IDS_MSG_UPDATE_BY_MAIL      "If you would like to obtain the latest version of Window Shopper by mail, call Adonis' toll-free number, (800) 234-9497.  Otherwise, Logon again to receive the upgrade via modem."
+    IDS_MSG_SHIP_CHARGE_NA      "We are unable to immediately provide you with an accurate shipping rate.  If you need this information, you may call our toll free number:\012 (800) 234-9497 on the next working day."
+    IDS_MSG_QUERY_INTERRUPT     "Interrupt download?"                            
+    IDS_MSG_QUERY_HANGUP        "Logoff from the Adonis Server?"
+    IDS_MSG_DISCONNECTED        "The Adonis Server has terminated your phone connection, either due to inactivity or communications error."
+    IDS_MSG_INIT_CACHE          "Initializing thumbnail cache..."
+	IDS_MSG_SAVE_ACTIVE_USERID  "You have successfully re-activated your Window Shopper account.  Please save your password because you will need it to operate Window Shopper."
+	IDS_MSG_SAVE_USERID		  	"Thank you for registering as a Window Shopper user.  Please save your password because you will need it to operate Window Shopper."
+	IDS_MSG_NEW_USERID		  	"Thank you for registering as a Window Shopper user. Your new userID is '%s'.  Please save your password because you will need it to operate Window Shopper."
+	IDS_MSG_NEW_PURCHASE_ORDER	"Your order number is %d.  Please save this number in case problems arise."
+	IDS_MSG_ORDER_PLACED		"Your order has been placed.  Your order number is %d.  Please save this number in case problems arise."
+	IDS_MSG_CONNECT_TO_WS		"Would you like to connect via modem to the Adonis Server?"
+	IDS_MSG_ALREADY_VIEWING		"Already Viewing: %s."
+	IDS_MSG_USERID_ASSIGNED		"You have logged on and have been assigned a userID 'FDTY1234' and are advised to write it down and store it in a secure place."
+	IDS_MSG_MINUTE_WARNING      "The Adonis Server will soon terminate your phone connection, due to inactivity.  Stay connected?"
+	IDS_MSG_TOTALING            "Totaling..."
+    IDS_MSG_CONNECTING          "Connecting to the Adonis Server..."
+    IDS_MSG_INITIALIZING        "Initializing..."
+    IDS_MSG_COMPLETE_RENEWAL    "Your subscription has been renewed for a full year.  Thanks for using Clip-Art Window Shopper!"
+    IDS_MSG_MISSING_WHATS_NEW   "The \042What's New\042 information is currently missing from your machine.  You may obtain it by logging onto the Adonis Server."
+    IDS_MSG_CHECK_WHATS_NEW     "New information has been added to Window Shopper.  Choose the \042What's New\042 menu item under the \042Information\042 menu to see what has been added or changed."
+    IDS_MSG_NO_MATCH            "There is no image in the Window Shopper database that has the keyword \042%s\042."
+    IDS_MSG_NO_MORE_MATCHES     "There are no more images in the Window Shopper database that have the keyword \042%s\042."
+    IDS_MSG_MISSING_SRCH_FILE   "Information required by the search engine is missing from your hard disk.  You may obtain it by logging on to the Adonis Server."
+    IDS_MSG_STOP_SEARCH         "Do you really want to cancel this search?"
+    IDS_MSG_SEARCHING_FOR       "Searching for \042%s\042 in %s..."
+    IDS_MSG_NO_RENEWAL_PKG      "A subscription renewal to Window Shopper does not require a new retail package. However, updates and Window Shopper literature may be shipped to you periodically. Please see that the shipping and media information in the following dialog box is accurate."
+    IDS_MSG_CHECKING_DATABASE	"Checking Local Database..."		
+	IDS_MSG_UPDATING_CUST_REC	"Updating Customer Record..."
+#if 0
+	IDS_MSG_LOADING_SEARCH_IMG	"Loading Image from %s..."
+#endif
+	IDS_MSG_WS_FRMT		"Window Shopper Database"
+	IDS_MSG_EXE		"EXE"
+ IDS_CURPUB  "Note: The currently selected publisher is %s"
+
+#ifdef INTERNAL
+	IDS_MSG_SELECT_PHONENUM	"Call Retail BBS (YES) or Development BBS (NO)?"
+#endif
+
+#ifdef NO_LOGON
+	IDS_MSG_NO_LOGON	"Sorry, this Window Shopper beta does not support on-line access."
+#endif	
+    IDS_NOT_DOWNLOADABLE        "Images in this library are not available for downloading"
+
+    /* titles */
+    IDS_TITLE_USE_ALT_DIR       "Use "
+    IDS_TITLE_BACKUP_DIR        " Backup Thumbnail Files "
+END
+
+IDH_MAIN        HELP    LOADONCALL DISCARDABLE main.hlp
+IDH_NEWUSER     HELP    LOADONCALL DISCARDABLE newuser.hlp
+IDH_CHANGEPW    HELP    LOADONCALL DISCARDABLE changepw.hlp
+IDH_VERIFYPW    HELP    LOADONCALL DISCARDABLE verifypw.hlp
+IDH_CUSTINFO    HELP    LOADONCALL DISCARDABLE custinfo.hlp
+IDH_SHIPINFO    HELP    LOADONCALL DISCARDABLE shipinfo.hlp
+IDH_COMM        HELP    LOADONCALL DISCARDABLE comm.hlp
+IDH_LIBMGR      HELP    LOADONCALL DISCARDABLE libmgr.hlp
+#if 0
+IDH_UPDATEDB    HELP    LOADONCALL DISCARDABLE updatedb.hlp
+#endif
+IDH_VIEW        HELP    LOADONCALL DISCARDABLE view.hlp
+IDH_DLOADCLIP   HELP    LOADONCALL DISCARDABLE dlclip.hlp
+IDH_DLDIR       HELP    LOADONCALL DISCARDABLE dldir.hlp
+IDH_SELECTBILL  HELP    LOADONCALL DISCARDABLE selbill.hlp
+IDH_ORDERLIB    HELP    LOADONCALL DISCARDABLE orderlib.hlp
+IDH_BILLINFO    HELP    LOADONCALL DISCARDABLE billinfo.hlp
+IDH_LIBDRIVE    HELP    LOADONCALL DISCARDABLE libdrive.hlp
+IDH_WELCOME     HELP    LOADONCALL DISCARDABLE welcome.hlp
+IDH_DEMO        HELP    LOADONCALL DISCARDABLE demo.hlp
+IDH_ADONIS      HELP    LOADONCALL DISCARDABLE adonis.hlp
+IDH_ORDERWS     HELP    LOADONCALL DISCARDABLE orderws.hlp
+IDH_SEARCH      HELP    LOADONCALL DISCARDABLE search.hlp
+IDH_DECISION	HELP	LOADONCALL DISCARDABLE decision.hlp
+
+WShopper ACCELERATORS
+BEGIN
+
+    "^c", IDM_CUSTOMER_INFO
+    "^s", IDM_SHIPPING_INFO
+    "^b", IDM_BILLING_INFO
+    "^p", IDM_PASSWORD
+    "^n", IDM_COMM
+    "^d", IDM_LIB_MANAGEMENT
+    "^l", IDM_UPDATE_DB
+    "^t", IDM_UPDATE_THUMB
+#if 0
+    "^u", IDM_UPDATE_LOCAL_DB
+#endif
+    "^g", IDM_UPGRADE_SUBSCRIPTION
+    "^w", IDM_WHATS_NEW
+
+END
+
+WSView ACCELERATORS
+BEGIN
+    "+" , ID_PLUS
+    "-" , ID_MINUS
+END
+
+LIBMENU MENU
+BEGIN
+    POPUP "&Information" 
+        BEGIN
+            MENUITEM "&Customer...\tCtrl+C", IDM_CUSTOMER_INFO
+            MENUITEM "&Shipping...\tCtrl+S", IDM_SHIPPING_INFO
+            MENUITEM "&Billing...\tCtrl+B", IDM_BILLING_INFO
+            MENUITEM "Change &Password...\tCtrl+P", IDM_PASSWORD
+            MENUITEM SEPARATOR
+            MENUITEM "&What's New\tCtrl+W", IDM_WHATS_NEW
+            MENUITEM SEPARATOR
+            MENUITEM "&About...", IDM_ABOUT
+        END
+    POPUP "&Settings"
+        BEGIN
+            MENUITEM "&Communications...\tCtrl+N", IDM_COMM
+            MENUITEM "Cache &Size...\tCtrl+S", IDM_LIB_MANAGEMENT
+            MENUITEM "&Thumbnail Directory...\tCtrl+T", IDM_UPDATE_THUMB
+#if 0
+            MENUITEM SEPARATOR
+	        MENUITEM "WHICH BBS...", IDM_SET_PHONENUM
+#endif
+	END
+END
+
+#endif
+
+rcinclude res\shopper.dlg
+

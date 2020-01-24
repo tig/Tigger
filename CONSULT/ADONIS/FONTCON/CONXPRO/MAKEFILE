@@ -1,0 +1,170 @@
+
+MAINTARGET=CONXPRO
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+
+#
+# Define MEM_MODEL as S to use Small model (fast).
+# Define MEM_MODEL as M to use Medium model (memory friendly).
+#
+MEM_MODEL=S
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+# if PUTEXE is defined the dll/exe will be copied from the root to
+PUTEXE  = ..\BUILD\
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  = ..\LIB\
+
+# if pubinc is define the include file will be copied there
+PUTINC  = ..\INC\
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+!IFDEF DEBUG
+
+CFLAGS      =  -f -c -nologo -A$(MEM_MODEL)w -G2sw -Owd -W3 -Zip -DDEBUG 
+LINKOPTS    =  /NOD/NOE/A:16/CO/MAP/nologo
+RCOPTS      =  -r -DDEBUG -iSRC;RES
+BUILDTYPE   =  DEBUG
+
+!ELSE
+
+CFLAGS      =  -c -nologo -A$(MEM_MODEL)w -G2sw -Owt -W3 -Zp 
+LINKOPTS    =  /NOD/NOE/A:16/MAP/nologo
+RCOPTS      =  -r -iSRC;RES
+BUILDTYPE   =  RELEASE
+
+!ENDIF
+
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+RESOPTS     =  -v -t
+
+BANNER =   $(MAINTARGET) : **** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) ****
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = SRC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = ..\inc\VERSION.H $(MYRES)$(MAINTARGET).RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(MYOBJ)precomp.pch\
+          $(VERINCS)\
+          $(MYRES)$(MAINTARGET).rc\
+          $(MYRES)$(MAINTARGET).rcv
+
+# 
+# Library dependencies
+# 
+LMISC   =   makefile\
+            $(MAINTARGET).def
+
+LINCS   =   $(MYINC)IZMODEM.H  $(MYINC)ZMODEM.H
+
+LOBJS1   =   \
+            $(MYOBJ)LIBENTRY.OBJ\
+            $(MYOBJ)PRECOMP.OBJ\
+            $(MYOBJ)LIBMAIN.obj\
+            $(MYOBJ)ZMODEM.obj\
+            $(MYOBJ)ZMSEND.OBJ\
+            $(MYOBJ)ZMRECV.OBJ
+
+#
+#   BUILD RULES
+#
+all : $(MAINTARGET).DLL
+
+#
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS) $(PCHFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+#   $(MAINTARGET).DLL build rules
+
+$(MAINTARGET).DLL :   $(LOBJS1) $(LOBJS2) $(MYRES)$(MAINTARGET).res $(MAINTARGET).def MAKEFILE
+   @echo *** $(MAINTARGET) *** Linking...
+   link $(LINKOPTS) @<<
+$(LOBJS1)+
+$(LOBJS2)
+$(MAINTARGET).DLL
+$(MAINTARGET).MAP
+..\lib\conxlib ..\lib\wdb libw $(MEM_MODEL)dllcew
+$(MAINTARGET).DEF
+<<
+   rc $(RESOPTS) $(MYRES)$(MAINTARGET).res $(MAINTARGET).DLL
+   @implib /nologo $(MAINTARGET).LIB $(MAINTARGET).DEF
+   @mapsym $(MAINTARGET).map >NUL
+   @copy $(MAINTARGET).lib ..\lib
+   @copy $(MAINTARGET).DLL ..\build
+   @copy $(MAINTARGET).SYM ..\build
+   @copy $(MYSRC)ZMODEM.H ..\inc\$(MAINTARGET).H
+   @echo $(BANNER) >$(OUTPUT)
+
+$(MYOBJ)PRECOMP.OBJ:  $(MYSRC)PRECOMP.H
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Pre-compiling $(@B).C... >$(OUTPUT)
+    @SET CL=$(CFLAGS)
+    $(CC) -YcPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH -Fo$@ $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @SET CL=
+
+$(MYOBJ)LIBENTRY.OBJ: $(MYSRC)LIBENTRY.ASM
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Assembling $(@B).ASM... >$(OUTPUT)
+    @echo Assembling $(MYSRC)LIBENTRY.ASM... >$(OUTPUT)
+    masm -Mx $(MYSRC)LIBENTRY, $(MYOBJ)LIBENTRY;
+
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS)
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Building $(MYRES)$(MAINTARGET).RES
+    rc $(RCOPTS) $(MYRES)$(MAINTARGET).rc $(MYRES)$(MAINTARGET).RES
+
+$(MYOBJ)ZMODEM.OBJ: $(MYSRC)ZMODEM.H $(MYSRC)IZMODEM.H $(MYSRC)PRECOMP.H
+
+$(MYOBJ)ZMSEND.OBJ: $(MYSRC)ZMODEM.H $(MYSRC)IZMODEM.H $(MYSRC)PRECOMP.H
+
+$(MYOBJ)ZMRECV.OBJ: $(MYSRC)ZMODEM.H $(MYSRC)IZMODEM.H $(MYSRC)PRECOMP.H
+
+#   MISC. STUFF
+
+zip         :   clean
+                pkzip -psr $(MAINTARGET).zip *.*
+
+.ignore : 
+clean       :  
+                !del $(MYOBJ)*.obj
+                !del *.map
+                !del *.sym
+                !del $(MYRES)*.res
+                !del *.EXE
+                !del *.DLL
+                !del *.lib
+                !del $(MYSRC)*.err
+                @echo *** DONE ***
+
+        
+

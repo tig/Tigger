@@ -1,0 +1,22 @@
+/* C:\CODE\CEKLIB\CEKLIBD.H 11/13/1990 18:38*/
+#define  IDCANCEL	2
+#define  IDOK	1
+#define  IDD_LIST	100
+#define  IDD_HIDDENLIST	101
+#define  IDD_SETUP	102
+#define  IDD_BOX	103
+#define  IDD_VERSION	104
+#define  IDD_APPNAME	105
+#define  IDD_DESCRIPTION	106
+#define  IDD_ICON	107
+#define  IDD_DLLVERSION	110
+#define  IDD_BOX_0	200
+#define  IDD_BOX_1	201
+#define  IDD_BOX_2	202
+#define  IDD_BOX_3	203
+#define  IDD_BOX_4	204
+#define  IDD_DIRECTORY	205
+#define  IDD_FILELIST	206
+#define  IDD_DIRLIST	207
+#define  IDD_NAME 208
+#define  IDD_NUM  209

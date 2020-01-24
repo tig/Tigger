@@ -1,0 +1,45 @@
+LIBRARY      STDCOMM
+EXETYPE      WINDOWS
+DESCRIPTION  'STDCOMM|Standard Communications (COM ports)'
+STUB         'winstub.exe'
+
+SEGMENTS     _TEXT       PRELOAD MOVEABLE DISCARDABLE
+             INIT_TEXT   PRELOAD MOVEABLE DISCARDABLE
+             DIALOG      LOADONCALL MOVEABLE DISCARDABLE
+             EVENT       PRELOAD MOVEABLE DISCARDABLE
+             HANDLER     PRELOAD FIXED
+             LIBENTRY    PRELOAD MOVEABLE
+             LIBMAIN     PRELOAD FIXED
+             LOAD        LOADONCALL MOVEABLE DISCARDABLE
+             PROFILE     LOADONCALL MOVEABLE DISCARDABLE
+             SAVE        LOADONCALL MOVEABLE DISCARDABLE
+             SETUP       LOADONCALL MOVEABLE DISCARDABLE
+             STDCOMM     LOADONCALL MOVEABLE DISCARDABLE
+
+CODE         LOADONCALL MOVEABLE DISCARDABLE
+DATA         PRELOAD SINGLE FIXED
+
+HEAPSIZE     4096
+
+EXPORTS
+   WEP                     @1 RESIDENTNAME
+   GetConnectorUseCount    @2
+   CreateCCB               @3
+   DestroyCCB              @4
+   LoadConnectorSettings   @5
+   SaveConnectorSettings   @6
+   DoConnectorSetupDlg     @7
+   OpenConnector           @8
+   CloseConnector          @9
+   ReadConnectorBlock      @10
+   WriteConnectorByte      @11
+   WriteConnectorBlock     @12
+   _WriteConnectorFormat   @13
+   EscapeConnectorFunction @14
+   SettingsDlgProc         @15
+   TimerHandler            @16
+
+IMPORTS
+     CreateSystemTimer = System.2
+     KillSystemTimer = System.3
+

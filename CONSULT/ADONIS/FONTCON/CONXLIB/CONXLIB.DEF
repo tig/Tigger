@@ -1,0 +1,174 @@
+;************************************************************************
+;*
+;*
+;************************************************************************
+
+
+LIBRARY     CONXLIB
+
+DESCRIPTION 'Window Shopper Support Library'
+
+EXETYPE     WINDOWS
+
+SEGMENTS        
+            WEP          PRELOAD FIXED 
+            _TEXT        PRELOAD MOVEABLE DISCARDABLE
+            INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+            CONXLIB      PRELOAD MOVEABLE DISCARDABLE
+            STATUS       MOVEABLE DISCARDABLE
+            LED          MOVEABLE DISCARDABLE
+            SHADOW       MOVEABLE DISCARDABLE
+            DLGHELP      MOVEABLE DISCARDABLE
+            FONTUTIL     MOVEABLE DISCARDABLE
+            WSSCANF      MOVEABLE DISCARDABLE
+            DLGS         MOVEABLE DISCARDABLE
+            MISCDLGS     MOVEABLE DISCARDABLE
+            SHIPCUST     MOVEABLE DISCARDABLE
+            BILLING      MOVEABLE DISCARDABLE
+            WINTIME      MOVEABLE DISCARDABLE
+            SLIDER       MOVEABLE DISCARDABLE
+            TOOLBAR      MOVEABLE DISCARDABLE
+
+
+CODE        MOVEABLE DISCARDABLE
+
+DATA        PRELOAD SINGLE
+
+HEAPSIZE    8192
+
+EXPORTS     
+            WEP                     @1 RESIDENTNAME
+            ShopLibInit             @2
+            
+            ;****************************************
+            ; STATUS.C
+            ;****************************************
+            fnStatus                @3
+
+            ;****************************************
+            ; LED.C
+            ;****************************************
+            fnLED                   @4
+
+            ;****************************************
+            ; CONXLIB.C
+            ;****************************************
+            AtoI                    @10
+            AtoL                    @11
+            bmTransBlt              @12
+            bmColorTranslate        @13
+            bmColorTranslateDC      @14
+
+            
+            ;****************************************
+            ; SHADOW.C
+            ;****************************************
+            tdDraw3DRect            @18
+            tdDraw3DLine            @19
+            tdDrawDropShadow        @20
+            tdDraw3DLine1           @22
+            tdGetChildRect          @24
+            tdGetHighlightColor     @28
+            tdGetShadowColor        @29
+
+            ;****************************************
+            ; FONT.C
+            ;****************************************
+            ReallyCreateFontEx      @40
+            GetTextMetricsCorrectly @41
+            GetTextPointSize        @42
+            GetTextStyle            @43
+;            GetTextFullName         @44
+            ReallyCreateFont        @45
+            fnEnumReallyEx          @46
+            GetTextExtentABCPoint   @47
+
+            ;****************************************
+            ; DLGHELP.C
+            ;****************************************
+            DlgWhichRadioButton     @60
+            DlgCenter               @61
+            _ErrorResBox            @62
+
+            ;****************************************
+            ; WSSCANF.C
+            ;****************************************
+            _wsscanf                @80
+
+            ;****************************************
+            ; INI.C
+            ;****************************************
+            ParseOffNumber              @90
+            ParseOffString              @91
+            StripOffWhiteSpace          @92
+            WritePrivateProfileFont     @93
+            WritePrivateProfileWndPos   @94
+            GetPrivateProfileFont       @95
+            GetPrivateProfileWndPos     @96
+            WritePrivateProfileWORD     @97
+            WritePrivateProfileDWORD    @98
+            GetPrivateProfileWORD       @99
+            GetPrivateProfileDWORD      @100
+            GetRCString                 @101
+            ExpandStringToPrintable     @102
+            ShrinkStringFromPrintable   @103
+            GetPrivateProfileSections   @104
+
+            GetCustInfo                 @105
+            SavePassword                @106
+            SaveUserID                  @107
+            ReadCommSettings             @108
+
+
+            ;****************************************
+            ; DLG/SHIPCUST/BILLING.C
+            ;****************************************
+            CustomerInfoDialog         @150
+            fnCustomerInfo             @151
+
+            ShippingInfoDialog         @152
+            fnShippingInfo             @153
+
+            BillingInfoDialog          @154
+            fnBillingInfo              @155
+
+            CommSettingsDialog         @156
+            fnCommSetup                @157
+
+            Mod10Validation            @158
+            StripSpaces                @159
+            StripCardDashes            @160
+
+
+            GetUserIDNewPasswordDlg    @163
+            fnUserIDNewPasswordDlg     @164
+            GetUserIDPasswordDlg       @165
+            fnUserIDPasswordDlg        @166
+            VerifyOrderInfoDlg         @167
+            fnVerifyOrderInfoDlg       @168
+
+            ;****************************************
+            ; WINTIME
+            ;****************************************
+            TimeGetCurDate             @170
+            TimeGetCurTime             @171
+            TimeFormatDate             @172
+            TimeFormatTime             @173
+            TimeResetInternational     @174
+            
+         
+            ;****************************************
+            ; SLIDER
+            ;****************************************
+            fnSlider                   @180
+
+            ;****************************************
+            ; TOOLBAR
+            ;****************************************
+            ToolbarWndProc             @190
+            
+
+;            Print                      @200
+;            fnAbortProc                @201
+;            fnPrintDlg                 @202
+            

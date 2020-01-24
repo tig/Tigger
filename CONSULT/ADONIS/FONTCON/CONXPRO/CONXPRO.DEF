@@ -1,0 +1,28 @@
+
+LIBRARY      CONXPRO
+
+
+EXETYPE      WINDOWS
+
+DESCRIPTION  'ZMODEM transfer protocol'
+
+STUB         'winstub.exe'
+
+CODE        MOVEABLE DISCARDABLE
+
+SEGMENTS     _TEXT       PRELOAD MOVEABLE DISCARDABLE
+             INIT_TEXT   PRELOAD MOVEABLE DISCARDABLE
+             WEP_TEXT    PRELOAD FIXED
+
+DATA         SINGLE MOVEABLE
+
+HEAPSIZE     32768
+
+EXPORTS
+   WEP                     @1 RESIDENTNAME
+;   GetZmodemUseCount       @2
+;   ZmodemReceive           @3
+;   ZmodemSend              @4
+;   ZmodemDlgProc           @5
+
+   Zmodem                  @100

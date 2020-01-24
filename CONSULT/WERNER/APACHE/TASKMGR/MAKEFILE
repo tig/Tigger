@@ -1,0 +1,95 @@
+# Makefile for the TASK MANAGER DLL - Task management library
+# Written by Bryan A. Woodruff
+# Copyright (c) 1992 by Werner Associates
+
+# inference rules
+
+.asm.obj:
+        masm -Zi $*.asm ;
+
+.c.obj:
+        cl $(CFLAGS) $(PCHFLAGS) -NT $* $*.c | tee $*.err
+
+.rc.res:
+        rc $(RCFLAGS) $*.rc
+
+!IFNDEF RELEASE
+CFLAGS = -c -AMw -Od -G2 -Gsw -W3 -Zipe -nologo -DDEBUG
+LFLAGS = /CO /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ELSE
+CFLAGS = -c -AMw -Ot -G2 -Gsw -W3 -Zpe -nologo
+LFLAGS = /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ENDIF
+
+RCFLAGS = -r
+
+INCFILES =     precomp.pch taskpriv.h
+
+OBJECTS =      handler.obj libentry.obj libmain.obj precomp.obj\
+               task.obj taskman.obj
+
+all:           copylib
+
+clean:
+               del *.obj
+               del *.map
+
+copylib:       taskmgr.lib
+               copy taskmgr.lib ..\apache
+               copy taskmgr.h ..\apache
+!IFNDEF RELEASE
+               copy taskmgr.dll ..\..\debug
+!ELSE
+               copy taskmgr.dll ..\..\release
+!ENDIF
+                        
+version:
+               bumpver version.h
+
+taskpriv.h:    version.h taskmgr.h
+
+#----------------------------------------------------------------------------
+#  PreComp.C is used to create the precompiled information
+#----------------------------------------------------------------------------
+
+precomp.pch precomp.obj:   precomp.h
+               cl $(CFLAGS) -YcPRECOMP.H -NT precomp precomp.c | tee $*.err
+
+#----------------------------------------------------------------------------
+#  This is the standard libentry module.  It creates the INIT_TEXT segment.
+#----------------------------------------------------------------------------
+
+libentry.obj:  libentry.asm
+
+#----------------------------------------------------------------------------
+#  This stuff requires that it is present at all times.  libmain.c also
+#  contains the WEP - it needs to be stored in a FIXED code segment.
+#----------------------------------------------------------------------------
+
+handler.obj:   handler.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NT FIXED_CODE $*.c | tee $*.err
+
+libmain.obj:   libmain.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NT FIXED_CODE $*.c | tee $*.err
+
+#----------------------------------------------------------------------------
+#  These modules are included in the COMMON code segment.
+#----------------------------------------------------------------------------
+
+task.obj:      task.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NT COMMON_CODE $*.c | tee $*.err
+
+taskman.obj:   taskman.c $(INCFILES)
+               cl $(CFLAGS) $(PCHFLAGS) -NT COMMON_CODE $*.c | tee $*.err
+
+#----------------------------------------------------------------------------
+
+taskmgr.lib:   taskmgr.dll
+               implib taskmgr.lib taskmgr.def
+               mapsym taskmgr
+
+taskmgr.dll:   $(OBJECTS) taskmgr.def
+               link $(LFLAGS) @taskmgr.lnk
+               rc -v taskmgr.dll

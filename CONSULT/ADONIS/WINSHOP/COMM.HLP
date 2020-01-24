@@ -1,0 +1,13 @@
+This screen instructs Window Shopper how to use your serial port and modem.
+
+The Baud Rate should be the highest rate provided by your modem.  See the owner's manual for your modem to find this number.
+
+The dialing method should be Tone if your phone provides tone dialing.  Select Pulse only if you have a rotary dial phone.
+
+Select the serial (COM) port to which you modem is connected.
+
+The Telephone Dialing Prefix is the series of digits you must dial on your phone to call our Bellevue, WA office.  This might be 1-206 if the call is long distance (the area code for Bellevue, WA is 206), '9' to get an outside line, '10288' or other long-distance carrier selector.  You can find out from your local phone company what key sequence will disable call waiting while connected to the Adonis Service.
+
+The Telephone Dialing Suffix is whatever digit combination your phone system requires to complete the call, if applicable.  This might be a call accounting code or switch control digit.  
+
+You may insert a comma (',') to invoke a 2-second pause, or a 'W' to instruct the modem to wait for a dial tone.$

@@ -1,0 +1,115 @@
+/*    (C) Copyright Microsoft Corp. 1991.  All rights reserved.
+ *
+ *    You have a royalty-free right to use, modify, reproduce and 
+ *    distribute the Sample Files (and/or any modified version) in 
+ *    any way you find useful, provided that you agree that 
+ *    Microsoft has no warranty obligations or liability for any 
+ *    Sample Application Files which are modified. 
+ */
+
+
+/** wdb.rc                                                              **/
+
+
+/* the includes required */
+    #include <windows.h>
+    #include "wdb.h"
+    #include "wdbi.h"
+
+
+/* misc. resources */
+    ICON_WDB    ICON    wdb.ICO
+
+
+/* string table */
+    STRINGTABLE 
+    BEGIN
+    /* misc. string constants */
+        IDS_gszWDB                  "wdb" 
+        IDS_gszDefzYz               "zYz" 
+        IDS_gszDefFile              "wdb.out" 
+        IDS_gszDefFontName          "System" 
+        IDS_gszINI                  "wdb.ini" 
+        IDS_gszSectionPrefix        "wdb-" 
+        IDS_gszAssertTitle          "WDB-ASSERT" 
+        IDS_gszWindowTitle          "WDB-OUTPUT" 
+        IDS_gszWindowClass          "WDBWNDCLASS" 
+
+
+    /* key names for wdb configuration */
+        IDS_gszKeyEnable            "wdbEnable" 
+        IDS_gszKeyLevel             "wdbLevel" 
+        IDS_gszKeyOutput            "wdbOutput" 
+        IDS_gszKeyFile              "wdbFile" 
+        IDS_gszKeyWindow            "wdbWindow" 
+        IDS_gszKeyAssert            "wdbAssert" 
+        IDS_gszKeyPrelude           "wdbPrelude" 
+        IDS_gszKeyLFtoCRLF          "wdbLFtoCRLF" 
+        IDS_gszKeyMaxLines          "wdbMaxLines" 
+        IDS_gszKeyFontName          "wdbFontName" 
+        IDS_gszKeyFontSize          "wdbFontSize"
+        IDS_gszKeyFontBold          "wdbFontBold"
+        IDS_gszKeyWindowX           "wdbWindowX" 
+        IDS_gszKeyWindowY           "wdbWindowY" 
+        IDS_gszKeyWindowW           "wdbWindowW" 
+        IDS_gszKeyWindowH           "wdbWindowH" 
+
+
+    /* argument codes for wdb configuration keys */
+        IDS_gszArgQuery             "QUERY" 
+        IDS_gszArgWindow            "WINDOW" 
+        IDS_gszArgNo                "NO" 
+        IDS_gszArgYes               "YES" 
+        IDS_gszArgAux               "AUX"
+        IDS_gszArgSysModal          "SYSMODAL" 
+        IDS_gszArgOff               "OFF" 
+        IDS_gszArgBeep              "BEEP" 
+        IDS_gszArgSystem            "SYSTEM" 
+        IDS_gszArgFile              "FILE" 
+        IDS_gszArgOds               "ODS"
+        IDS_gszArgMono              "MONO"
+    END
+
+
+
+/* dialog box template for wdbDebugConfigDlg() */
+    DLG_WDB_CONFIG DIALOG DISCARDABLE LOADONCALL PURE MOVEABLE 10, 35, 221, 87
+    STYLE WS_POPUP | WS_CAPTION | WS_SYSMENU | 0x80L
+    CAPTION "WDB Session Configuration..."
+    FONT 8, "Helv"
+    BEGIN
+        CONTROL "O&K" IDOK, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP | 0x1L, 176, 53, 40, 13
+        CONTROL "&Cancel" IDCANCEL, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP, 176, 69, 40, 13
+
+        CONTROL "&Assert:" -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x2L, 4, 7, 26, 10
+        CONTROL "" IDD_WDB_ASSERT, "COMBOBOX", WS_CHILD | WS_VISIBLE | WS_VSCROLL | 0x203L | WS_TABSTOP, 32, 5, 73, 50
+
+        CONTROL "&Output:" -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x2L, 4, 22, 26, 10
+        CONTROL "" IDD_WDB_OUTPUT, "COMBOBOX", WS_CHILD | WS_VISIBLE | WS_VSCROLL | 0x203L | WS_TABSTOP, 32, 20, 73, 50
+
+        CONTROL "Fo&nt:" -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x2L, 4, 39, 26, 10
+        CONTROL "" IDD_WDB_FONTNAME, "COMBOBOX", CBS_SORT | WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_TABSTOP | 0x203L, 32, 37, 73, 50
+
+        CONTROL "&Size:" -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x2L, 4, 55, 26, 10
+        CONTROL "" IDD_WDB_FONTSIZE, "COMBOBOX", WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_GROUP | WS_TABSTOP | 0x2L, 32, 53, 30, 38
+
+        CONTROL "&Bold" IDD_WDB_FONTBOLD, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP | 0x3L, 70, 53, 49, 12
+
+        CONTROL "&Lines:" -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x2L, 4, 71, 26, 10
+        CONTROL "" IDD_WDB_MAXLINES, "EDIT", WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 32, 69, 24, 12
+
+        CONTROL "Le&vel:" -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x2L, 110, 55, 31, 10
+        CONTROL "" IDD_WDB_LEVEL, "COMBOBOX", WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_TABSTOP | 0x203, 143, 53, 24, 38
+
+        CONTROL "LF to C&R/LF" IDD_WDB_LFTOCRLF, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP | 0x3L, 70, 69, 100, 12
+
+        CONTROL "&Enable Session" IDD_WDB_ENABLE, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP | 0x3L, 143, 4, 67, 13
+
+        CONTROL "&Prelude:" -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x2L, 110, 21, 31, 10
+        CONTROL "" IDD_WDB_PRELUDE, "EDIT", ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 143, 19, 73, 13
+
+        CONTROL "&File:" -1, "STATIC", WS_CHILD | WS_VISIBLE | 0x2L, 110, 39, 31, 10
+        CONTROL "" IDD_WDB_FILENAME, "EDIT", ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 143, 37, 73, 13
+    END
+
+/** EOF: wdb.rc **/

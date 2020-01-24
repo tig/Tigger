@@ -1,0 +1,5 @@
+Use the Search command to locate clip-art matching a particular keyword.   For example, if you wish to locate pictures of automobiles, you might try "car" and "auto".
+
+The search is case-insensitive and will match partial words.  For example, a search for "auto" will find images described as "Auto" or "automobile".
+
+If a match is found for a thumbnail which is not in your thumbnail cache or directory, you may obtain the image from the Thumbnail Diskette which matches the publisher name displayed.  You can also Logon and restart the search; the neccessary thumbnails will be downloaded automatically.  You may also choose to skip an image for which the thumbnail file is not available, and search for other images by pressing the "Find Next" button in the search dialog box.$

@@ -1,0 +1,284 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "C:\\_\\CONXLIB\\SRC\\DLGS.H\0"
+END
+
+DLG_CUSTOMERINFO DIALOG -3, 70, 295, 171
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Customer Address"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:", IDD_NAME_LBL, 5, 8, 62, 12
+    EDITTEXT        IDD_NAME, 70, 6, 171, 12, ES_AUTOHSCROLL
+    LTEXT           "&Company Name:", IDD_COMPANYNAME_LBL, 5, 24, 62, 12, 
+                    NOT WS_GROUP
+    EDITTEXT        IDD_COMPANYNAME, 70, 22, 171, 12, ES_AUTOHSCROLL
+    LTEXT           "Street Address &1:", IDD_STREET1_LBL, 5, 40, 62, 12, 
+                    NOT WS_GROUP
+    EDITTEXT        IDD_STREET1, 70, 38, 171, 12, ES_AUTOHSCROLL
+    LTEXT           "Street Address &2:", IDD_STREET2_LBL, 5, 56, 62, 12, 
+                    NOT WS_GROUP
+    EDITTEXT        IDD_STREET2, 70, 54, 171, 12, ES_AUTOHSCROLL
+    LTEXT           "Cit&y:", IDD_CITY_LBL, 5, 72, 62, 12, NOT WS_GROUP
+    EDITTEXT        IDD_CITY, 70, 70, 77, 12, ES_AUTOHSCROLL
+    LTEXT           "&State:", IDD_STATE_LBL, 5, 88, 62, 12, NOT WS_GROUP
+    EDITTEXT        IDD_STATE, 70, 86, 18, 12, ES_UPPERCASE
+    LTEXT           "&Zip/Postal Code:", IDD_ZIP_LBL, 98, 87, 59, 12, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_ZIP, 163, 86, 78, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Co&untry", IDD_COUNTRY_GRP, 5, 104, 236, 41
+    CONTROL         "&United States", IDD_USA, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP, 13, 117, 62, 12
+    CONTROL         "C&anada", IDD_CANADA, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 13, 129, 40, 12
+    CONTROL         "O&ther:", IDD_OTHER, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 86, 117, 34, 12
+    EDITTEXT        IDD_OTHEREDIT, 125, 117, 110, 12, WS_GROUP
+    LTEXT           "Daytime &Phone:", IDD_AREACODE_LBL, 5, 153, 54, 10, NOT 
+                    WS_GROUP
+    LTEXT           "(", IDD_OPEN_PAREN, 61, 153, 6, 8, NOT WS_GROUP
+    EDITTEXT        IDD_AREACODE, 68, 151, 17, 12
+    LTEXT           ")", IDD_CLOSE_PAREN, 86, 153, 5, 9, NOT WS_GROUP
+    EDITTEXT        IDD_PHONENUMBER, 94, 151, 47, 12
+    LTEXT           "E&xtension:", IDD_EXTENSION_LBL, 146, 153, 37, 8, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_EXTENSION, 181, 151, 36, 12
+    DEFPUSHBUTTON   "OK", IDOK, 246, 6, 46, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 246, 23, 46, 14
+    PUSHBUTTON      "Help", IDD_HELP, 246, 40, 46, 14
+    PUSHBUTTON      "&Billing...", DLG_BILLINGINFO, 246, 118, 46, 14
+    PUSHBUTTON      "Co&mm...", DLG_COMMSETTINGS, 246, 135, 46, 14
+    PUSHBUTTON      "S&hipping...", DLG_SHIPPINGINFO, 246, 152, 46, 14
+    LTEXT           "A red star next to a field means that field is mandatory.", 
+                    IDD_TEXT, 249, 65, 42, 44
+END
+
+DLG_SHIPPINGINFO DIALOG 30, 17, 298, 219
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Shipping Information"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "&Shipping Preference", IDD_PRODUCTS, 4, 1, 141, 38, 
+                    WS_GROUP
+    CONTROL         "&1-2 Day", IDD_1TO2DAY, "Button", BS_AUTORADIOBUTTON, 
+                    11, 14, 39, 10
+    CONTROL         "&2-3 Day", IDD_2TO3DAY, "Button", BS_AUTORADIOBUTTON, 
+                    11, 27, 39, 10
+    CONTROL         "&UPS/Postal Service", IDD_UPS, "Button", 
+                    BS_AUTORADIOBUTTON, 61, 14, 81, 10
+    CONTROL         "Use Cust&omer Address", IDD_USECUSTADDRESS, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 5, 42, 119, 10
+    LTEXT           "S&hip To:", IDD_NAME_LBL, 5, 58, 57, 12
+    EDITTEXT        IDD_NAME, 70, 56, 171, 12, ES_AUTOHSCROLL
+    LTEXT           "&Company Name:", IDD_COMPANYNAME_LBL, 5, 74, 59, 12, 
+                    NOT WS_GROUP
+    EDITTEXT        IDD_COMPANYNAME, 70, 72, 171, 12, ES_AUTOHSCROLL
+    LTEXT           "Street Address &1:", IDD_STREET1_LBL, 5, 90, 60, 12, 
+                    NOT WS_GROUP
+    EDITTEXT        IDD_STREET1, 70, 88, 171, 12, ES_AUTOHSCROLL
+    LTEXT           "Street Address &2:", IDD_STREET2_LBL, 5, 106, 59, 12, 
+                    NOT WS_GROUP
+    EDITTEXT        IDD_STREET2, 70, 104, 171, 12, ES_AUTOHSCROLL
+    LTEXT           "Cit&y:", IDD_CITY_LBL, 5, 122, 62, 12, NOT WS_GROUP
+    EDITTEXT        IDD_CITY, 70, 120, 77, 12, ES_AUTOHSCROLL
+    LTEXT           "&State:", IDD_STATE_LBL, 5, 138, 62, 12, NOT WS_GROUP
+    EDITTEXT        IDD_STATE, 70, 136, 18, 12, ES_UPPERCASE
+    LTEXT           "&Zip/Postal Code:", IDD_ZIP_LBL, 98, 138, 59, 12, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_ZIP, 162, 136, 79, 12, ES_AUTOHSCROLL
+    GROUPBOX        "Co&untry", IDD_COUNTRY_GRP, 5, 154, 236, 41, WS_GROUP
+    CONTROL         "&United States", IDD_USA, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 13, 167, 62, 12
+    CONTROL         "C&anada", IDD_CANADA, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 13, 179, 40, 12
+    CONTROL         "O&ther:", IDD_OTHER, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 86, 167, 34, 12
+    EDITTEXT        IDD_OTHEREDIT, 125, 167, 110, 12, WS_GROUP
+    LTEXT           "Daytime &Phone:", IDD_AREACODE_LBL, 5, 203, 54, 10, NOT 
+                    WS_GROUP
+    LTEXT           "(", IDD_OPEN_PAREN, 63, 203, 5, 8, NOT WS_GROUP
+    EDITTEXT        IDD_AREACODE, 70, 201, 17, 12
+    LTEXT           ")", IDD_CLOSE_PAREN, 88, 203, 5, 8, NOT WS_GROUP
+    EDITTEXT        IDD_PHONENUMBER, 97, 201, 45, 12
+    LTEXT           "E&xtension:", IDD_EXTENSION_LBL, 151, 203, 37, 8, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_EXTENSION, 189, 201, 36, 12
+    DEFPUSHBUTTON   "OK", IDOK, 246, 6, 46, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 246, 23, 46, 14
+    PUSHBUTTON      "Help", IDD_HELP, 246, 40, 46, 14
+    PUSHBUTTON      "Cust &Info...", DLG_CUSTOMERINFO, 247, 164, 46, 14
+    PUSHBUTTON      "&Billing...", DLG_BILLINGINFO, 247, 181, 46, 14
+    PUSHBUTTON      "Co&mm...", DLG_COMMSETTINGS, 247, 198, 46, 14
+    LTEXT           "A red star next to a field means that field is mandatory.", 
+                    IDD_TEXT, 249, 89, 40, 43
+    LTEXT           "Preferred &Diskette Size:", IDD_TEXT2, 149, 10, 78, 8
+    COMBOBOX        IDD_MEDIA, 149, 22, 92, 34, CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+DLG_BILLINGINFO DIALOG 8, 18, 254, 176
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Billing Information"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "The information you enter here is used by Connect Software for billing purposes and will be stored on your own computer only; Connect Software will not maintain your credit information elsewhere.", 
+                    IDD_TEXT2, 4, 7, 189, 33, NOT WS_GROUP
+    GROUPBOX        "Billing Method", -1, 3, 40, 190, 133, WS_GROUP
+    CONTROL         "&MasterCard", IDD_MASTERCARD, "Button", 
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP, 13, 80, 52, 
+                    12
+    CONTROL         "&Visa", IDD_VISA, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 13, 93, 28, 12
+    CONTROL         "&Discover", IDD_DISCOVER, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 13, 106, 42, 12
+    CONTROL         "&American Express", IDD_AMEX, "Button", 
+                    BS_AUTORADIOBUTTON | WS_TABSTOP, 90, 80, 74, 12
+    CONTROL         "Co&rporate Account", IDD_CORPACCT, "Button", 
+                    BS_AUTORADIOBUTTON | WS_TABSTOP, 90, 93, 78, 12
+    LTEXT           "&Name on Card:", -1, 8, 128, 54, 8
+    EDITTEXT        IDD_NAMEONCARD, 64, 126, 122, 12
+    LTEXT           "&Card Number :", -1, 8, 143, 53, 9, NOT WS_GROUP
+    EDITTEXT        IDD_CARDNUMBER, 64, 141, 122, 12
+    LTEXT           "Exp. Date:", -1, 8, 157, 42, 9
+    EDITTEXT        IDD_EXPMONTH, 64, 155, 15, 12
+    EDITTEXT        IDD_EXPYEAR, 93, 155, 15, 12
+    LTEXT           "You may enter and save information for 5 different credit cards.  Press OK when you have selected a valid card.", 
+                    IDD_TEXT1, 13, 52, 171, 27, NOT WS_GROUP
+    DEFPUSHBUTTON   "OK", IDOK, 201, 5, 46, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 201, 22, 46, 14
+    PUSHBUTTON      "Help", IDD_HELP, 201, 39, 46, 14
+    PUSHBUTTON      "Co&mm...", DLG_COMMSETTINGS, 201, 125, 46, 14, WS_GROUP
+    PUSHBUTTON      "Cust &Info...", DLG_CUSTOMERINFO, 201, 142, 46, 14
+    PUSHBUTTON      "S&hipping...", DLG_SHIPPINGINFO, 201, 159, 46, 14
+    LTEXT           "/", 1201, 83, 157, 6, 8
+    LTEXT           "A red star next to a field means that field is mandatory.", 
+                    IDD_TEXT, 201, 68, 46, 36
+END
+
+DLG_COMMSETTINGS DIALOG 18, 49, 280, 190
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Communications Settings"
+FONT 8, "Helv"
+BEGIN
+    GROUPBOX        "Phone Number", -1, 4, 2, 216, 100, WS_GROUP
+    LTEXT           "If a phone call from your location to Redmond, Washington, would be long distance, you must enter a 1 (and/or your long distance access code) in the Special Dialing Prefix box.", 
+                    IDD_TEXT, 9, 14, 204, 27, NOT WS_GROUP
+    LTEXT           "&Special Dialing Prefix:", 76, 9, 46, 76, 8, NOT 
+                    WS_GROUP
+    EDITTEXT        IDD_DIALPREFIX, 88, 44, 126, 12, ES_AUTOHSCROLL
+    LTEXT           "Sp&ecial Dialing Suffix:", IDD_BBSNUMBER, 9, 60, 76, 8, 
+                    NOT WS_GROUP
+    EDITTEXT        IDD_DIALSUFFIX, 88, 58, 126, 12, ES_AUTOHSCROLL
+    CONTROL         "&Check if calls to Redmond, WA do not require a (206) prefix.", 
+                    IDD_206, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 9, 74, 
+                    206, 10
+    LTEXT           "Current Dial string:", -1, 9, 89, 63, 8, NOT WS_GROUP
+    LTEXT           "ATDT9,1-206-XXX-XXXX,,w,3239", IDD_DIALSTRING, 73, 89, 
+                    141, 8, NOT WS_GROUP
+    GROUPBOX        "&Modem", -1, 4, 104, 216, 81, WS_GROUP
+    COMBOBOX        IDD_MODEM, 9, 119, 203, 98, CBS_DROPDOWNLIST | CBS_SORT | 
+                    CBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Port:", -1, 9, 137, 24, 10, NOT WS_GROUP
+    COMBOBOX        IDD_PORT, 52, 135, 44, 45, CBS_DROPDOWNLIST | 
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Baud Rate:", -1, 9, 153, 39, 10, NOT WS_GROUP
+    COMBOBOX        IDD_BAUDRATE, 52, 152, 44, 63, CBS_DROPDOWNLIST | 
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Tone Dialing", IDD_TONE, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP, 125, 140, 56, 10
+    CONTROL         "P&ulse Dialing", IDD_PULSE, "Button", 
+                    BS_AUTORADIOBUTTON, 125, 152, 56, 10
+    CONTROL         "Do not &yield to other applications while downloading files.", 
+                    IDD_NOYIELD, "Button", BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP, 9, 168, 201, 10
+    DEFPUSHBUTTON   "OK", IDOK, 228, 6, 46, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 228, 23, 46, 14
+    PUSHBUTTON      "Help", IDD_HELP, 228, 40, 46, 14
+    PUSHBUTTON      "Cust. &Info...", DLG_CUSTOMERINFO, 228, 136, 46, 14
+    PUSHBUTTON      "S&hipping...", DLG_SHIPPINGINFO, 228, 153, 46, 14
+    PUSHBUTTON      "Bi&lling...", DLG_BILLINGINFO, 228, 170, 46, 14
+END
+
+DLG_NEWPASSWORD DIALOG 71, 39, 188, 81
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Change Password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDD_USERID, 75, 4, 60, 12, ES_UPPERCASE | ES_AUTOHSCROLL | 
+                    WS_GROUP
+    LTEXT           "&User ID:", -1, 9, 6, 64, 8, NOT WS_GROUP
+    LTEXT           "&Current Password:", -1, 9, 21, 64, 8
+    EDITTEXT        IDD_CURPASSWORD, 75, 19, 60, 12, ES_UPPERCASE | 
+                    ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "&New Password:", -1, 9, 36, 64, 8
+    EDITTEXT        IDD_NEWPASSWORD1, 75, 34, 60, 12, ES_UPPERCASE | 
+                    ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "N&ew Password:", -1, 9, 51, 64, 8
+    EDITTEXT        IDD_NEWPASSWORD2, 75, 49, 60, 12, ES_UPPERCASE | 
+                    ES_PASSWORD | ES_AUTOHSCROLL
+    CTEXT           "Enter your new password in each of the New Password boxes.", 
+                    IDD_TEXT, 7, 65, 175, 15
+    DEFPUSHBUTTON   "OK", IDOK, 143, 6, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 143, 23, 40, 14
+    PUSHBUTTON      "Help", IDD_HELP, 143, 40, 40, 14
+END
+
+DLG_USERID DIALOG 38, 23, 163, 57
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "User ID and Password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&User ID:", -1, 7, 17, 32, 8
+    EDITTEXT        IDD_USERID, 46, 15, 63, 12, ES_UPPERCASE | 
+                    ES_AUTOHSCROLL
+    LTEXT           "&Password:", -1, 7, 32, 36, 8
+    EDITTEXT        IDD_CURPASSWORD, 46, 30, 63, 12, ES_UPPERCASE | 
+                    ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK", IDOK, 117, 4, 40, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 117, 21, 40, 14
+    PUSHBUTTON      "&Help", IDD_HELP, 117, 38, 40, 14
+END
+
+DLG_ORDERINFO DIALOG 15, 30, 280, 211
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Verify Order Information"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Billing Information", IDD_BILLING_GROUP, 4, 3, 219, 67, 
+                    WS_GROUP
+    LTEXT           "Billing Method:", -1, 9, 16, 54, 8, NOT WS_GROUP
+    LTEXT           "", IDD_BILLINGMETHOD, 73, 16, 135, 8, NOT WS_GROUP
+    LTEXT           "Account Number:", -1, 9, 27, 61, 8, NOT WS_GROUP
+    LTEXT           "", IDD_ACCOUNTNUMBER, 73, 27, 88, 8, NOT WS_GROUP
+    LTEXT           "Credit Card Expiration Date: %02d/%02d", IDD_EXPDATE, 9, 
+                    38, 209, 8, NOT WS_GROUP
+    PUSHBUTTON      "Change &Billing Information...", IDD_BILLINGINFO, 48, 
+                    51, 129, 14
+    GROUPBOX        "Shipping Address", IDD_SHIPPING_GROUP, 4, 74, 219, 132, 
+                    WS_GROUP
+    LTEXT           "Name:", -1, 9, 86, 62, 9, NOT WS_GROUP
+    LTEXT           "", IDD_NAME, 74, 86, 141, 9, NOT WS_GROUP
+    LTEXT           "Company Name:", -1, 9, 98, 62, 9, NOT WS_GROUP
+    LTEXT           "", IDD_COMPANYNAME, 74, 98, 141, 9, NOT WS_GROUP
+    LTEXT           "Street Address 1:", -1, 9, 110, 62, 9, NOT WS_GROUP
+    LTEXT           "", IDD_STREET1, 74, 110, 141, 9, NOT WS_GROUP
+    LTEXT           "Street Address 2:", -1, 9, 122, 62, 9, NOT WS_GROUP
+    LTEXT           "", IDD_STREET2, 74, 122, 141, 9, NOT WS_GROUP
+    LTEXT           "City:", -1, 9, 134, 54, 9, NOT WS_GROUP
+    LTEXT           "", IDD_CITY, 74, 134, 89, 9, NOT WS_GROUP
+    LTEXT           "State:", -1, 171, 135, 24, 9, NOT WS_GROUP
+    LTEXT           "", IDD_STATE, 197, 134, 18, 9, NOT WS_GROUP
+    LTEXT           "Zip/Postal Code:", -1, 9, 146, 59, 9, NOT WS_GROUP
+    LTEXT           "", IDD_ZIP, 74, 146, 46, 9, NOT WS_GROUP
+    LTEXT           "Country:", -1, 127, 146, 31, 9, NOT WS_GROUP
+    LTEXT           "", IDD_COUNTRY, 159, 146, 56, 9, NOT WS_GROUP
+    LTEXT           "Daytime Phone:", -1, 9, 158, 54, 9, NOT WS_GROUP
+    LTEXT           "", IDD_PHONE, 74, 158, 141, 9, NOT WS_GROUP
+    LTEXT           "Shipping Method:", -1, 9, 170, 60, 8, NOT WS_GROUP
+    LTEXT           "", IDD_SHIPPINGMETHOD, 74, 170, 135, 8, NOT WS_GROUP
+    PUSHBUTTON      "Change &Shipping Information...", IDD_CUSTADDRESS, 48, 
+                    186, 129, 14
+    DEFPUSHBUTTON   "OK", IDOK, 228, 6, 46, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 228, 23, 46, 14
+    PUSHBUTTON      "Help", IDD_HELP, 228, 40, 46, 14
+END

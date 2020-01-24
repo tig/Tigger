@@ -1,0 +1,102 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "TEST2D.H\0"
+END
+
+LEDBOX DIALOG 7, 41, 260, 120
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "LED Demo"
+FONT 8, "Helv"
+BEGIN
+    CONTROL         "", IDM_HELPABOUT, "CMNDLLled", 0x0400 | WS_GROUP, 58, 7, 
+                    7, 14
+    CONTROL         "", IDM_FILEOPEN, "CMNDLLled", 0x0400 | WS_GROUP, 66, 7, 
+                    7, 14
+    CONTROL         "", IDM_FILEEXIT, "CMNDLLled", 0x0400 | WS_GROUP, 74, 7, 
+                    7, 14
+    CONTROL         "", IDM_MSGBOTTOM, "CMNDLLled", 0x0400 | WS_GROUP, 82, 7, 
+                    7, 14
+    CONTROL         "", IDM_MSGVISIBLE, "CMNDLLled", 0x0400 | WS_GROUP, 90, 
+                    7, 7, 14
+    CONTROL         "", IDM_NEXTMSG, "CMNDLLled", 0x0400 | WS_GROUP, 98, 7, 
+                    7, 14
+    CONTROL         "", IDM_SELPRN, "CMNDLLled", 0x0400 | WS_GROUP, 106, 7, 
+                    7, 14
+    CONTROL         "", IDM_SELFONT, "CMNDLLled", 0x0400 | WS_GROUP, 114, 7, 
+                    7, 14
+    CONTROL         "", 108, "CMNDLLled", 0x0400 | WS_GROUP, 122, 7, 7, 14
+    CONTROL         "", 109, "CMNDLLled", 0x0400 | WS_GROUP, 130, 7, 7, 14
+    CONTROL         "", 110, "CMNDLLled", 0x0400 | WS_GROUP, 138, 7, 7, 14
+    CONTROL         "", 111, "CMNDLLled", 0x0400 | WS_GROUP, 146, 7, 7, 14
+    CONTROL         "", 112, "CMNDLLled", 0x0400 | WS_GROUP, 154, 7, 7, 14
+    CONTROL         "", 113, "CMNDLLled", 0x0400 | WS_GROUP, 162, 7, 7, 14
+    CONTROL         "", 114, "CMNDLLled", 0x0400 | WS_GROUP, 170, 7, 7, 14
+    CONTROL         "", 115, "CMNDLLled", 0x0400 | WS_GROUP, 178, 7, 7, 14
+    CONTROL         "", IDD_BOX0, "CMNDLLled", 0x0200 | WS_GROUP, 10, 30, 12, 
+                    8
+    CONTROL         "", IDD_BOX1, "CMNDLLled", 0x0200 | WS_GROUP, 25, 30, 12, 
+                    8
+    CONTROL         "", 202, "CMNDLLled", 0x0200 | WS_GROUP, 40, 30, 12, 8
+    CONTROL         "", 203, "CMNDLLled", 0x0200 | WS_GROUP, 55, 30, 12, 8
+    CONTROL         "", 204, "CMNDLLled", 0x0200 | WS_GROUP, 70, 30, 12, 8
+    CONTROL         "", 205, "CMNDLLled", 0x0200 | WS_GROUP, 85, 30, 12, 8
+    CONTROL         "", 206, "CMNDLLled", 0x0200 | WS_GROUP, 100, 30, 12, 8
+    CONTROL         "", 207, "CMNDLLled", 0x0200 | WS_GROUP, 115, 30, 12, 8
+    CONTROL         "", 208, "CMNDLLled", 0x0200 | WS_GROUP, 130, 30, 12, 8
+    CONTROL         "", 209, "CMNDLLled", 0x0200 | WS_GROUP, 145, 30, 12, 8
+    CONTROL         "", 210, "CMNDLLled", 0x0200 | WS_GROUP, 160, 30, 12, 8
+    CONTROL         "", 211, "CMNDLLled", 0x0200 | WS_GROUP, 175, 30, 12, 8
+    CONTROL         "", 212, "CMNDLLled", 0x0200 | WS_GROUP, 190, 30, 12, 8
+    CONTROL         "", 213, "CMNDLLled", 0x0200 | WS_GROUP, 205, 30, 12, 8
+    CONTROL         "", 214, "CMNDLLled", 0x0200 | WS_GROUP, 220, 30, 12, 8
+    CONTROL         "", 215, "CMNDLLled", 0x0200 | WS_GROUP, 235, 30, 12, 8
+    CONTROL         "", IDM_PRINT, "CMNDLLled", 0x0100 | WS_GROUP, 40, 51, 7, 
+                    8
+    CONTROL         "", IDM_LED, "CMNDLLled", 0x0100 | WS_GROUP, 50, 51, 7, 
+                    8
+    CONTROL         "", IDM_TEST, "CMNDLLled", 0x0100 | WS_GROUP, 60, 51, 7, 
+                    8
+    CONTROL         "", 303, "CMNDLLled", 0x0100 | WS_GROUP, 70, 51, 7, 8
+    CONTROL         "", 304, "CMNDLLled", 0x0100 | WS_GROUP, 80, 51, 7, 8
+    CONTROL         "", 305, "CMNDLLled", 0x0100 | WS_GROUP, 90, 51, 7, 8
+    CONTROL         "", 306, "CMNDLLled", 0x0100 | WS_GROUP, 100, 51, 7, 8
+    CONTROL         "", 307, "CMNDLLled", 0x0100 | WS_GROUP, 110, 51, 7, 8
+    CONTROL         "", 308, "CMNDLLled", 0x0100 | WS_GROUP, 120, 51, 7, 8
+    CONTROL         "", 309, "CMNDLLled", 0x0100 | WS_GROUP, 130, 51, 7, 8
+    CONTROL         "", 310, "CMNDLLled", 0x0100 | WS_GROUP, 140, 51, 7, 8
+    CONTROL         "", 311, "CMNDLLled", 0x0100 | WS_GROUP, 150, 51, 7, 8
+    CONTROL         "", 312, "CMNDLLled", 0x0100 | WS_GROUP, 160, 51, 7, 8
+    CONTROL         "", 313, "CMNDLLled", 0x0100 | WS_GROUP, 170, 51, 7, 8
+    CONTROL         "", 314, "CMNDLLled", 0x0100 | WS_GROUP, 180, 51, 7, 8
+    CONTROL         "", 315, "CMNDLLled", 0x0100 | WS_GROUP, 190, 51, 7, 8
+    CONTROL         "", IDD_TOP, "CMNDLLled", 0x0100 | WS_GROUP, 100, 78, 10, 
+                    10
+    CONTROL         "", IDD_BOTTOM, "CMNDLLled", 0x0000 | WS_GROUP, 120, 70, 
+                    12, 25
+    CONTROL         "~stop1|stop2|Stop!", IDB_2, "bmpbtn", 0x0000 | WS_GROUP | 
+                    WS_TABSTOP, 216, 76, 40, 40
+END
+
+TESTBOX DIALOG DISCARDABLE LOADONCALL PURE MOVEABLE 6, 45, 252, 166
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 0xC0L
+CAPTION "Test 3D routines"
+FONT 8, "Helv"
+BEGIN
+  CONTROL "" 200, "STATIC", WS_CHILD | WS_VISIBLE | 0x9L, 4, 4, 243, 156
+  CONTROL "" 201, "STATIC", WS_CHILD | WS_VISIBLE | 0x8L, 8, 8, 236, 149
+  CONTROL "TEST2" 104, "STATIC", WS_CHILD | WS_VISIBLE | 0x3L, 15, 17, 20, 18
+  CONTROL "FOOBAR Demo" 250, "STATIC", WS_CHILD | WS_VISIBLE, 39, 18, 64, 8
+  CONTROL "For Windows 3.0" 102, "STATIC", WS_CHILD | WS_VISIBLE, 39, 28, 64, 8
+  CONTROL "This is a mutliline edit control" 251, "EDIT", WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP | 0x4L, 10, 48, 96, 50
+  CONTROL "Radio Button" 252, "BUTTON", WS_CHILD | WS_VISIBLE | 0x4L, 118, 16, 64, 12
+  CONTROL "Checkbox" 253, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP | 0x2L, 118, 28, 64, 12
+  CONTROL "Group" 254, "BUTTON", WS_CHILD | WS_VISIBLE | 0x7L, 117, 43, 50, 56
+  CONTROL "COMBOBOX" 255, "COMBOBOX", WS_CHILD | WS_VISIBLE | WS_VSCROLL | CBS_DROPDOWNLIST, 179, 46, 36, 55
+  CONTROL "" 256, "SCROLLBAR", WS_CHILD | WS_VISIBLE | 0x3L, 223, 46, 15, 53
+  CONTROL "" 257, "SCROLLBAR", WS_CHILD | WS_VISIBLE, 19, 108, 56, 13
+  CONTROL "Centered" 203, "STATIC", WS_CHILD | WS_VISIBLE | 0x7L, 28, 131, 197, 21
+  CONTROL "EDIT" 259, "EDIT", WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 87, 108, 114, 13
+  CONTROL "OK" 1, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP | 0x1L, 107, 135, 34, 14
+END
+
+

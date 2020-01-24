@@ -1,0 +1,4 @@
+cd..
+nmk
+cd src
+

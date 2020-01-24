@@ -1,9 +1,0 @@
-[MSVC Status File]
-Version=1.00
-ProjectType=10
-ArgsOrCaller=..\winprint\winprint.exe
-External=0
-BrkptCount=0
-WatchCount=2
-WatchExpr1=(0x1e0f:0x41f6)
-WatchExpr2=entry

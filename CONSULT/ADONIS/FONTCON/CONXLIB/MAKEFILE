@@ -1,0 +1,180 @@
+
+MAINTARGET=CONXLIB
+
+# by commenting out the following line you can turn off silent mode
+!CMDSWITCHES +s
+
+
+# set these macros to control where stuff is placed/redirected
+
+!IFNDEF OUTPUT
+OUTPUT  =   con
+!ENDIF
+
+# if PUTEXE is defined the dll/exe will be copied from the root to
+PUTEXE  = ..\BUILD\
+
+# if putlib is defined the lib will be copied from the root to putlib
+PUTLIB  = ..\LIB\
+
+# if pubinc is define the include file will be copied there
+PUTINC  = ..\INC\
+
+#
+#  Build tool macros.  These control how the tools build files.
+#
+!IFDEF DEBUG
+
+CFLAGS      =  -f -c -nologo -AMw -G2sw -Owd -W3 -Zip -DDEBUG 
+LINKOPTS    =  /NOD/NOE/A:16/CO/MAP/nologo
+RCOPTS      =  -r -DDEBUG -iSRC;RES
+BUILDTYPE   =  DEBUG
+
+!ELSE
+
+CFLAGS      =  -c -nologo -AMw -G2sw -Owt -W3 -Zp 
+LINKOPTS    =  /NOD/NOE/A:16/MAP/nologo
+RCOPTS      =  -r -iSRC;RES
+BUILDTYPE   =  RELEASE
+
+!ENDIF
+
+PCHFLAGS    =  -YuPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH
+RESOPTS     =  -v -t
+
+BANNER =   $(MAINTARGET) : **** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) *** $(BUILDTYPE) ****
+
+#
+# Directories
+#
+MYRES = RES\ 
+MYINC = SRC\ 
+MYOBJ = OBJ\  
+MYSRC = SRC\ 
+MYHELP = HELP\ 
+
+#
+# Version stamping stuff
+#
+VERINCS = ..\inc\VERSION.H $(MYRES)$(MAINTARGET).RCV
+
+#
+# Resources
+#
+
+LRCINCS = $(MYOBJ)precomp.pch\
+          $(VERINCS)\
+          $(MYINC)isz.h\
+          $(MYINC)dlgs.h\
+          $(MYRES)$(MAINTARGET).rc\
+          $(MYRES)$(MAINTARGET).rcv\
+          $(MYRES)$(MAINTARGET).dlg\
+          $(MYRES)$(MAINTARGET).str\
+          $(MYRES)$(MAINTARGET).ico
+
+# 
+# Library dependencies
+# 
+LMISC   =   makefile\
+            $(MAINTARGET).lnk\
+            $(MAINTARGET).def
+
+LINCS   =   $(MYINC)$(MAINTARGET)I.H 
+
+LOBJS1   =   \
+            $(MYOBJ)LIBENTRY.OBJ\
+            $(MYOBJ)PRECOMP.OBJ\
+            $(MYOBJ)WEP.obj\
+            $(MYOBJ)$(MAINTARGET).obj\
+            $(MYOBJ)STATUS.OBJ\
+            $(MYOBJ)LED.OBJ\
+            $(MYOBJ)SHADOW.OBJ\
+            $(MYOBJ)WSSCANF.OBJ\
+            $(MYOBJ)FONTUTIL.OBJ
+
+LOBJS2   =   \
+            $(MYOBJ)INI.OBJ\
+            $(MYOBJ)DLGS.OBJ\
+            $(MYOBJ)MISCDLGS.OBJ\
+            $(MYOBJ)SHIPCUST.OBJ\
+            $(MYOBJ)BILLING.OBJ\
+            $(MYOBJ)WINTIME.OBJ\
+            $(MYOBJ)DLGHELP.OBJ\
+            $(MYOBJ)SLIDER.OBJ\
+            $(MYOBJ)TOOLBAR.OBJ
+
+#
+#   BUILD RULES
+#
+all : $(MAINTARGET).DLL
+
+#
+# Main inference rule for .C files.  Looks a bit silly but gets
+# around the 128 char command line restriction for CL
+#
+# Note that if the compile fails the CL environment varaible will
+# be set...
+#
+{$(MYSRC)}.c{$(MYOBJ)}.obj: 
+   @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Compiling $(@B).C... >$(OUTPUT)
+   @SET CL=$(CFLAGS) $(PCHFLAGS)
+   $(CC) -Fo$@ $(MYSRC)$(@B).C >$(MYSRC)$(@B).ERR
+   @TYPE $(MYSRC)$(@B).ERR
+   @SET CL=
+
+#   $(MAINTARGET).DLL build rules
+
+$(MAINTARGET).DLL :   $(LOBJS1) $(LOBJS2) $(MYRES)$(MAINTARGET).res $(MAINTARGET).def MAKEFILE
+   @echo *** $(MAINTARGET) *** Linking...
+   link $(LINKOPTS) @<<
+$(LOBJS1)+
+$(LOBJS2)
+$(MAINTARGET).DLL
+$(MAINTARGET).MAP
+..\lib\conxmem ..\lib\wdb libw mdllcew
+$(MAINTARGET).DEF
+<<
+   rc $(RESOPTS) $(MYRES)$(MAINTARGET).res $(MAINTARGET).DLL
+   @implib /nologo $(MAINTARGET).LIB $(MAINTARGET).DEF
+   @mapsym $(MAINTARGET).map >NUL
+   @copy $(MAINTARGET).lib ..\lib
+   @copy $(MAINTARGET).DLL ..\build
+   @copy $(MAINTARGET).SYM ..\build
+   @copy $(MYSRC)$(MAINTARGET).h ..\inc
+   @copy $(MYSRC)struct.h ..\inc
+   @echo $(BANNER) >$(OUTPUT)
+
+$(MYOBJ)PRECOMP.OBJ:  $(MYSRC)PRECOMP.H
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Pre-compiling $(@B).C... >$(OUTPUT)
+    @SET CL=$(CFLAGS)
+    $(CC) -YcPRECOMP.H -Fp$(MYOBJ)PRECOMP.PCH -Fo$@ $(MYSRC)$(@B).C > $(MYSRC)$(@B).ERR
+    @SET CL=
+
+$(MYOBJ)LIBENTRY.OBJ: $(MYSRC)LIBENTRY.ASM
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Assembling $(@B).ASM... >$(OUTPUT)
+    masm -Mx $(MYSRC)LIBENTRY, $(MYOBJ)LIBENTRY;
+
+$(MYRES)$(MAINTARGET).res:  $(LINCS) $(LRCINCS)
+    @echo *** $(MAINTARGET) *** $(BUILDTYPE) *** Building $(@B).RES... >$(OUTPUT)
+    rc $(RCOPTS) $(MYRES)$(MAINTARGET).rc $(MYRES)$(MAINTARGET).RES
+
+
+#   MISC. STUFF
+
+zip         :   clean
+                pkzip -psr $(MAINTARGET).zip *.*
+
+.ignore : 
+clean       :  
+                !del $(MYOBJ)*.obj
+                !del *.map
+                !del *.sym
+                !del $(MYRES)*.res
+                !del *.EXE
+                !del *.DLL
+                !del *.lib
+                !del $(MYSRC)*.err
+                @echo *** DONE ***
+
+
+        

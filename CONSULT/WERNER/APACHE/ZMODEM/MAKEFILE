@@ -1,0 +1,70 @@
+# Makefile for the ZMODEM DLL - ZMODEM protocol support
+# Written by Bryan A. Woodruff
+# Copyright (c) 1992 Werner Associates
+
+# inference rules
+
+.asm.obj:
+        masm -Zi $*.asm ;
+
+.c.obj:
+        cl $(CFLAGS) $(PCHFLAGS) -NT $* $*.c | tee $*.err
+
+.rc.res:
+        rc $(RCFLAGS) $*.rc
+
+!IFNDEF RELEASE
+CFLAGS = -c -f -AMw -Od -G2 -Gsw -W3 -Zipe -nologo -DDEBUG
+LFLAGS = /CO /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ELSE
+CFLAGS = -c -AMw -Ot -G2 -Gsw -W3 -Zpe -nologo
+LFLAGS = /NOD /align:16 /m
+PCHFLAGS = -YuPRECOMP.H
+!ENDIF
+
+RCFLAGS = -r
+
+INCFILES =     precomp.pch zmodem.h
+
+OBJECTS =      precomp.obj libentry.obj libmain.obj zmodem.obj
+
+all:           zmodem.xfr
+!IFNDEF RELEASE
+               copy zmodem.xfr ..\..\debug
+!ELSE
+               copy zmodem.xfr ..\..\release
+!ENDIF
+
+clean:
+               del *.obj
+               del *.map
+
+version:
+               bumpver version.h
+
+#----------------------------------------------------------------------------
+#  PreComp.C is used to create the precompiled information
+#----------------------------------------------------------------------------
+
+precomp.obj precomp.pch:   precomp.h
+               cl $(CFLAGS) -YcPRECOMP.H -NT precomp precomp.c | tee $*.err
+
+libentry.obj:  libentry.asm
+
+libmain.obj:   libmain.c $(INCFILES)
+
+zmodem.obj:    zmodem.c $(INCFILES)
+
+zmodem.res:    zmodem.rc dialogs.rc resource.h
+
+zmodem.xfr:    $(OBJECTS) ..\apache\facelift.lib zmodem.res zmodem.def
+               link $(LFLAGS) @<<
+$(OBJECTS),
+zmodem.xfr,
+zmodem.map,
+wdb ..\apache\facelift libw mdllcew,
+zmodem.def
+<<
+               rc -v zmodem.res zmodem.xfr
+               mapsym zmodem

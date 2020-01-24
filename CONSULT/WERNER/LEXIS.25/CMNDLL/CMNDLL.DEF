@@ -1,0 +1,144 @@
+;************************************************************************
+;*
+;*    Copyright (C) 1990 Werner Associates.  All Rights Reserved.
+;*
+;*-----------------------------------------------------------------------
+;*
+;*     Project:  APACHE, Apache For Windows
+;*
+;*      Module:  cmndll.def
+;*
+;*   Author(s):  Bryan A. Woodruff (baw)
+;*               Charles E. Kindel, Jr. (cek)
+;*
+;*
+;*     Remarks:  
+;*
+;*   Revisions:  
+;*
+;*
+;************************************************************************
+
+
+LIBRARY         CMNDLL
+
+DESCRIPTION     'CMNDLL.DLL Copr. 1990 Werner Associates'
+
+EXETYPE         WINDOWS
+
+SEGMENTS        _TEXT        PRELOAD MOVEABLE DISCARDABLE
+                WEP          PRELOAD FIXED
+                INIT_TEXT    PRELOAD MOVEABLE DISCARDABLE
+                CMNDLL       PRELOAD MOVEABLE DISCARDABLE
+                DEBUG        LOADONCALL MOVEABLE DISCARDABLE
+                SHADOW       LOADONCALL MOVEABLE DISCARDABLE
+                SELPRN       LOADONCALL MOVEABLE DISCARDABLE
+                FILEOPEN     LOADONCALL MOVEABLE DISCARDABLE
+                ABOUT        LOADONCALL MOVEABLE DISCARDABLE
+                VERSION      LOADONCALL MOVEABLE DISCARDABLE
+                STATUS       LOADONCALL MOVEABLE DISCARDABLE
+                MSGLINE      LOADONCALL MOVEABLE DISCARDABLE
+                BMPBTN       LOADONCALL MOVEABLE DISCARDABLE
+                STRING       LOADONCALL MOVEABLE DISCARDABLE
+                TIME         LOADONCALL MOVEABLE DISCARDABLE
+                DLGHELP      LOADONCALL MOVEABLE DISCARDABLE
+                FONT         LOADONCALL MOVEABLE DISCARDABLE
+                COLOR        LOADONCALL MOVEABLE DISCARDABLE
+                LED          LOADONCALL MOVEABLE DISCARDABLE
+
+CODE            MOVEABLE DISCARDABLE
+
+DATA            PRELOAD SINGLE
+
+HEAPSIZE        8192
+
+EXPORTS         WEP                     @2 RESIDENTNAME
+
+                GETCMNDLLHINST          @8
+                SETHOURGLASS            @9
+                RESETHOURGLASS          @10
+
+                PRINTSELPRNDIALOG       @16
+                PRINTGETDEFAULTPRN      @17
+                SELPRINTERDLGPROC       @18
+                GETDEFAULTPRNDC         @19
+
+                DRAWFACEFRAME           @27
+
+                EXTTEXTOUT3D            @28
+                TEXTOUT3D               @29
+
+                DRAWDROPSHADOW          @32
+                DRAW3DRECT              @33
+                DRAW3DLINE              @34
+
+                ABOUTDIALOG             @35
+                ABOUTDLGPROC            @36
+
+                VERGETCMNDLLVERSION     @48   
+                VERMAKEVERSIONNUMBER    @49
+
+                FILEOPENDIALOG          @64
+                FILEOPENDLGPROC         @65
+
+                FNBMPBTN                @66
+                FNFASTTEXT              @67
+                BMPBTNINIT              @68
+
+                ATOI                    @72
+                ATOL                    @73
+                                        
+                STATUSINIT              @96
+                fnStatus                 @97
+                STATUSGETWIDTH          @98
+
+                TIMEGETCURDATE          @112
+                TIMEGETCURTIME          @113
+                TIMERESETINTERNATIONAL  @114
+
+                DLGWHICHRADIOBUTTON     @128
+                DLGSETITEMLENGTH        @129
+                _ERRORRESBOX            @130
+                DLGCENTER               @131
+                LBGETCURSEL             @132
+                LBGETTEXT               @133
+                LBADDSTRING             @134
+                LBFINDSTRING            @135
+                LBSELECTSTRING          @136
+
+                FNENUMFACES             @144
+                FNENUMSIZES             @145
+                FONTSELECTINDIRECT      @146
+                FONTSELECTDIALOG        @147
+                FONTFILLFACELB          @148
+                FONTFILLSIZELB          @149
+                FNFONTSELECT            @150
+                FONTINITLOGFONT         @151
+
+                FNENUMREALLY            @153
+                REALLYCREATEFONT        @154
+                GETTEXTMETRICSCORRECTLY @155
+
+                COLORCBOWNERDRAW        @160
+                COLORCBSETUP            @161
+                COLORCBGET              @162
+                COLORCBSETCURSEL        @163
+                GETHIGHLIGHTCOLOR       @164
+                GETSHADOWCOLOR          @165
+                MAPTEXTCOLOR            @166
+
+                FNLED                   @170
+
+                SHADOWCONTROL           @200
+                GETCHILDRECT            @201
+                DRAWCHILD3DRECT         @202
+                DRAWCHILDREN3D          @203
+                FNENUMCHILDREN3D        @204
+                FNENUMCHILDRENHIDE      @205
+
+
+                
+;/***********************************************************************
+;* End of File: cmndll.def
+;************************************************************************
+

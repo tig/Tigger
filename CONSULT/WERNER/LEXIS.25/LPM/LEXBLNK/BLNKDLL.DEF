@@ -1,0 +1,28 @@
+; module-definition file for generic -- used by LINK.EXE
+
+LIBRARY            BLNKDLL
+
+DESCRIPTION     'LEXIS Screen Blanker Copr. (c) 1991 Werner Associates'
+
+EXETYPE         WINDOWS	
+
+STUB	          'WINSTUB.EXE'
+
+CODE            PRELOAD FIXED
+
+DATA            PRELOAD SINGLE
+
+HEAPSIZE        6192
+STACKSIZE       6192
+
+; All functions that will be called by any Windows routine
+; MUST be exported.
+
+EXPORTS
+         WEP                  @1   RESIDENTNAME
+         FNKBDFILTER          @2
+         blnkIncTime          @3
+         blnkResetTime        @4
+         blnkSetHook          @5
+         blnkUnhookHook       @6
+

@@ -1,0 +1,8000 @@
+h51908
+s 00000/00000/01924
+d D 1.85 91/12/03 10:20:31 bbs 85 84
+c 
+e
+s 00075/00069/01849
+d D 1.84 91/12/02 16:25:16 bbs 84 83
+c base sub length on subtype (added subtype 4), clips dir is \shopper
+e
+s 00085/00060/01833
+d D 1.83 91/11/04 10:47:28 bbs 83 82
+c biggerbuf, longer wait for modem connection
+e
+s 00004/00001/01889
+d D 1.82 91/10/21 16:13:48 bbs 82 81
+c fix for online orders
+e
+s 00358/00167/01532
+d D 1.81 91/09/16 13:55:37 bbs 81 80
+c changed clips dir
+e
+s 00006/00006/01693
+d D 1.80 91/06/19 15:06:57 bbs 80 79
+c modified Order struct - beng
+e
+s 00158/00048/01541
+d D 1.79 91/06/17 15:32:47 bbs 79 78
+c 
+e
+s 00075/00033/01514
+d D 1.78 91/01/23 10:49:22 bbs 78 77
+c 
+e
+s 00002/00002/01545
+d D 1.77 90/11/27 16:03:48 bbs 77 76
+c 
+e
+s 00051/00018/01496
+d D 1.76 90/11/27 15:32:25 bbs 76 75
+c 
+e
+s 00109/00034/01405
+d D 1.75 90/11/16 12:07:09 bbs 75 74
+c 
+e
+s 00176/00150/01263
+d D 1.74 90/11/07 12:17:28 bbs 74 73
+c 
+e
+s 00071/00020/01342
+d D 1.73 90/10/20 23:16:50 bbs 73 72
+c 
+e
+s 00064/00029/01298
+d D 1.72 90/10/17 17:22:50 sluggj 72 71
+c 
+e
+s 00071/00065/01256
+d D 1.71 90/10/17 17:21:03 bbs 71 70
+c 
+e
+s 00000/00001/01321
+d D 1.70 90/10/17 12:33:59 sluggj 70 69
+c 
+e
+s 00069/00074/01253
+d D 1.69 90/10/17 12:18:45 bbs 69 68
+c 
+e
+s 00008/00007/01319
+d D 1.68 90/10/17 09:16:17 sluggj 68 67
+c 
+e
+s 00003/00009/01323
+d D 1.67 90/10/16 13:06:48 sluggj 67 66
+c 
+e
+s 00048/00042/01284
+d D 1.66 90/10/16 09:31:46 bbs 66 65
+c 
+e
+s 00001/00002/01325
+d D 1.65 90/10/11 15:49:00 bbs 65 64
+c Checkpoint
+e
+s 00009/00000/01318
+d D 1.64 90/10/10 05:18:36 bbs 64 63
+c Checkpoint - jf
+e
+s 00154/00124/01164
+d D 1.63 90/10/09 10:16:32 bbs 63 62
+c Checkpoint
+e
+s 00046/00008/01242
+d D 1.62 90/09/26 18:18:20 fletcher 62 61
+c Added back order
+c Added credit conditional order
+c Added srand initialization
+e
+s 00001/00001/01249
+d D 1.61 90/09/26 13:01:20 bbs 61 60
+c Checkpoint - jf
+e
+s 00005/00001/01245
+d D 1.60 90/09/24 19:59:40 bbs 60 59
+c Add debug messages
+c Make userID and session ID global for DB error log file use
+e
+s 00054/00030/01192
+d D 1.59 90/09/24 18:52:10 bbs 59 58
+c Checkpoint - jf
+e
+s 00011/00002/01211
+d D 1.58 90/09/22 21:36:52 bbs 58 57
+c 
+e
+s 00046/00056/01167
+d D 1.57 90/09/22 17:10:47 bbs 57 56
+c Checkpoint
+e
+s 00054/00040/01169
+d D 1.56 90/09/19 18:31:38 bbs 56 55
+c 
+e
+s 00044/00008/01165
+d D 1.55 90/09/13 13:42:23 bbs 55 54
+c 
+e
+s 00071/00040/01102
+d D 1.54 90/08/28 12:50:20 bbs 54 53
+c 
+e
+s 00040/00071/01102
+d D 1.53 90/08/28 12:48:05 bbs 53 52
+c 
+e
+s 00000/00000/01173
+d D 1.52 90/08/27 14:01:39 bbs 52 51
+c 
+e
+s 00197/00089/00976
+d D 1.51 90/08/26 13:02:23 bbs 51 50
+c new NormalOrder stuff
+e
+s 00003/00000/01062
+d D 1.50 90/08/21 16:41:54 bbs 50 49
+c 
+e
+s 00064/00045/00998
+d D 1.49 90/08/21 15:26:52 bbs 49 48
+c 
+e
+s 00006/00002/01037
+d D 1.48 90/08/16 16:57:49 bbs 48 47
+c 
+e
+s 00118/00139/00921
+d D 1.47 90/08/16 14:36:12 sluggj 47 46
+c new acct stuff
+e
+s 00025/00026/01035
+d D 1.46 90/08/16 11:29:09 bbs 46 45
+c 
+e
+s 00815/00582/00246
+d D 1.45 90/08/08 12:43:41 bbs 45 44
+c setpgrp
+e
+s 00140/00048/00688
+d D 1.44 90/07/11 21:16:40 bbs 44 43
+c 
+e
+s 00000/00000/00736
+d D 1.43 90/07/10 21:24:51 lanter 43 42
+c 
+e
+s 00144/00041/00592
+d D 1.42 90/07/07 00:19:38 bbs 42 41
+c 
+e
+s 00007/00009/00626
+d D 1.41 90/07/06 20:11:10 lanter 41 40
+c 
+e
+s 00002/00000/00633
+d D 1.40 90/07/06 17:50:53 lanter 40 39
+c 
+e
+s 00001/00003/00632
+d D 1.39 90/07/06 17:38:00 bbs 39 38
+c co comm.c
+e
+s 00004/00004/00631
+d D 1.38 90/07/06 17:34:46 lanter 38 37
+c 
+e
+s 00035/00019/00600
+d D 1.37 90/07/06 14:41:25 lanter 37 36
+c 
+e
+s 00010/00004/00609
+d D 1.36 90/06/28 13:37:09 bbs 36 35
+c 
+e
+s 00008/00002/00605
+d D 1.35 90/06/27 20:11:22 lanter 35 34
+c 
+e
+s 00015/00001/00592
+d D 1.34 90/06/27 17:17:10 bbs 34 33
+c 
+e
+s 00000/00000/00593
+d D 1.33 90/06/26 13:26:45 beng 33 32
+c 
+e
+s 00011/00010/00582
+d D 1.32 90/06/26 12:51:47 bbs 32 31
+c 
+e
+s 00007/00005/00585
+d D 1.31 90/06/26 12:34:41 bbs 31 30
+c ls p.*
+e
+s 00009/00000/00581
+d D 1.30 90/06/24 18:05:11 bbs 30 29
+c co comm.c
+e
+s 00099/00022/00482
+d D 1.29 90/06/22 15:13:39 bbs 29 28
+c 
+e
+s 00001/00001/00503
+d D 1.28 90/06/19 17:06:07 bbs 28 27
+c 
+e
+s 00014/00006/00490
+d D 1.27 90/06/19 17:03:54 sluggj 27 26
+c 
+e
+s 00001/00001/00495
+d D 1.26 90/06/19 16:40:25 sluggj 26 25
+c 
+e
+s 00020/00006/00476
+d D 1.25 90/06/18 21:00:12 sluggj 25 24
+c 
+e
+s 00001/00001/00481
+d D 1.24 90/06/18 10:47:46 bbs 24 23
+c 
+e
+s 00001/00001/00481
+d D 1.23 90/06/06 15:52:58 bbs 23 22
+c 
+e
+s 00006/00001/00476
+d D 1.22 90/06/06 14:23:08 sluggj 22 21
+c 
+e
+s 00028/00016/00449
+d D 1.21 90/06/06 13:35:20 sluggj 21 20
+c 
+e
+s 00094/00022/00371
+d D 1.20 90/06/04 22:45:00 sluggj 20 19
+c 
+e
+s 00000/00000/00393
+d D 1.19 90/05/31 15:34:49 sluggj 19 18
+c 
+e
+s 00040/00014/00353
+d D 1.18 90/05/31 10:48:00 sluggj 18 17
+c 
+e
+s 00000/00000/00367
+d D 1.17 90/05/29 14:33:25 sluggj 17 16
+c 
+e
+s 00001/00001/00366
+d D 1.16 90/05/26 10:54:17 sluggj 16 15
+c 
+e
+s 00026/00011/00341
+d D 1.15 90/05/26 10:53:16 sluggj 15 14
+c 
+e
+s 00003/00003/00349
+d D 1.14 90/05/24 22:08:47 sluggj 14 13
+c 
+e
+s 00016/00000/00336
+d D 1.13 90/05/23 13:02:50 sluggj 13 12
+c 
+e
+s 00000/00003/00336
+d D 1.12 90/05/23 12:00:48 sluggj 12 11
+c 
+e
+s 00003/00003/00336
+d D 1.11 90/05/23 11:16:02 sluggj 11 10
+c 
+e
+s 00003/00000/00336
+d D 1.10 90/05/23 11:13:54 sluggj 10 9
+c 
+e
+s 00024/00003/00312
+d D 1.9 90/05/23 11:12:06 sluggj 9 8
+c 
+e
+s 00003/00001/00312
+d D 1.8 90/05/23 08:00:45 sluggj 8 7
+c 
+e
+s 00000/00000/00313
+d D 1.7 90/05/23 07:41:46 sluggj 7 6
+c 
+e
+s 00005/00004/00308
+d D 1.6 90/05/23 07:00:46 sluggj 6 5
+c 
+e
+s 00017/00001/00295
+d D 1.5 90/05/23 06:45:39 sluggj 5 4
+c 
+e
+s 00000/00000/00296
+d D 1.4 90/05/22 20:33:54 sluggj 4 3
+c sluggj
+e
+s 00028/00008/00268
+d D 1.3 90/05/22 17:02:28 sluggj 3 2
+c none
+e
+s 00000/00000/00276
+d D 1.2 90/05/21 17:29:45 sluggj 2 1
+c 
+e
+s 00276/00000/00000
+d D 1.1 90/05/21 16:22:19 sluggj 1 0
+c date and time created 90/05/21 16:22:19 by sluggj
+e
+u
+U
+t
+T
+I 1
+/* 
+ Date: 3-23-1990              
+D 81
+ Raleigh Bellas               
+E 81
+ Doug Kent                    
+ Creation Date:   3/23/90     
+*/
+I 45
+D 47
+#define INGRES
+E 47
+
+E 45
+#include "stdinc.h"
+#include "stdcomm.h" 
+#include "messages.h" 
+#include <stdio.h>
+#include "bbs.h"
+I 48
+#include "bbstruct.h"
+E 48
+#include "comm.h"
+#include "xmodem.h"
+#include <sys/types.h>
+I 74
+#include <sys/wait.h>
+E 74
+#include <sys/stat.h>
+I 29
+#include <sys/ioctl.h>
+#include <termio.h>
+E 29
+#include <fcntl.h>
+I 29
+#include <prototypes.h>
+E 29
+#include "signal.h"
+I 20
+#include <string.h>
+I 25
+D 48
+#include <cctypes.h>
+E 48
+I 29
+#include <id.h>
+I 31
+#include <tymnet.h>
+#include <netcomm.h>
+I 75
+#include "strparse.h"
+E 75
+I 45
+#include <setjmp.h>
+I 73
+#include "dirtree.h"
+I 81
+#include <ctype.h>
+#include "modem.h"
+E 81
+E 73
+E 45
+E 31
+E 29
+E 25
+E 20
+
+I 48
+D 81
+
+E 81
+#ifndef ACCTH
+E 48
+I 36
+D 47
+#ifdef INGRES
+E 47
+E 36
+I 35
+#include  "acct.h"
+I 48
+#endif
+#include  "acct_pro.h"
+E 48
+I 36
+D 47
+#endif
+E 47
+E 36
+
+E 35
+extern int errno;
+
+I 45
+// which port to read from
+#define WS_PORT GlobalhCom
+E 45
+D 29
+/** this is the official executable version number used to check
+	against version of incalling exe's **/
+E 29
+D 23
+WORD CurVersion = 2;
+E 23
+I 23
+D 24
+WORD CurVersion = 3;
+E 24
+I 24
+D 27
+WORD CurVersion = 4;
+E 27
+E 24
+E 23
+
+I 45
+D 83
+void setnewuser(void);
+E 83
+I 83
+//which directory are the clipart files:
+D 84
+#if 1
+E 84
+I 84
+#if 0
+E 84
+#define CLIPSDIR "/usr/bbs/master.bin/clips"
+#else
+#define CLIPSDIR "/shopper/clips"
+#endif
+
+I 84
+//This BOOL determines whether we ship a renewal package or not
+static BOOL bRenewPkg = FALSE;
+//This BOOL is set when child process is terminated because of INGRES failure
+static BOOL bIngresAbort = FALSE;
+
+E 84
+int setnewuser(void);
+E 83
+E 45
+I 42
+int GetPaddedBuf(HANDLE hCom, WORD nNumChars, char *szBuf,BOOL upperize);
+E 42
+int GetFileName(HANDLE hCom, WORD nNumChars, char *szFileName);
+int GetExt(char *szFileName);
+I 42
+D 44
+void GetThatMoola(ORDER *Order);
+E 44
+I 44
+D 47
+BOOL GetThatMoola(ORDER *Order);
+E 47
+I 47
+D 49
+BOOL GetThatMoola(ORDER *Order, CCReq *ccreq);
+D 48
+int ReceiveThatOrder(ORDER *Order)
+E 48
+I 48
+int ReceiveThatOrder(ORDER *Order);
+E 49
+I 49
+D 74
+BOOL GetThatMoola(ORDER_STRUCT *Order, CCReq *ccreq);
+E 74
+I 74
+BOOL GetThatMoola(ORDER_STRUCT *Order, CCReq *ccreq, BOOL bCheckLocalCredit);
+E 74
+D 79
+int ReceiveThatOrder(ORDER_STRUCT *Order);
+E 79
+I 79
+void ReceiveThatOrder(ORDER_STRUCT *Order);
+E 79
+I 74
+static void Cleanup(int CondCode);
+I 79
+WORD CheckPassWord ( DWORD userID, char* szCheckPassWord) ;
+E 79
+E 74
+E 49
+E 48
+E 47
+E 44
+E 42
+
+#define BADSIG (int (*)())-1
+D 6
+void LostTransmission();
+I 5
+static void ShutDown();
+E 6
+I 6
+D 44
+void LostTransmission(int sig);
+E 44
+D 74
+static void ShutDown(int sig);
+E 74
+I 74
+static void HandleSig(int sig);
+E 74
+I 59
+static int nTimeout;
+E 59
+I 15
+D 74
+static int catchsigs(void);
+E 74
+I 74
+static int SetSigHandler(void);
+E 74
+E 15
+E 6
+E 5
+D 20
+static HANDLE GlobalhCom=(HANDLE)NULL;
+E 20
+I 20
+static HANDLE GlobalhCom=(HANDLE)NULL,
+D 45
+			  hOrigCom;
+E 20
+D 44
+static char *savetty;
+E 44
+I 44
+char *savetty;
+E 45
+I 45
+              hOrigCom=(HANDLE)NULL;
+/* char *savetty;  moved declaration to comm.c so I could compile-Ben*/
+I 78
+
+static char logfile[30];   /* For redirecting stderr and stdout */
+static FILE* plogfile;
+
+E 78
+E 45
+E 44
+I 18
+D 74
+HANDLE cc_server;
+E 74
+I 74
+//HANDLE cc_server;
+E 74
+I 60
+DWORD lCurUserID=0L,lSessionID=0L;
+E 60
+E 18
+
+I 79
+long inbytes = 0;     /* To track data traffic */
+long outbytes = 0;
+
+E 79
+I 45
+D 63
+static    BYTE CurFileName[STD_FILENAME_SIZE+1]; // standard file name buffer
+E 63
+I 63
+static    BYTE RequestedFileName[STD_FILENAME_SIZE+1];
+static    BYTE UptodateFileName[STD_FILENAME_SIZE+1];
+E 63
+static    HANDLE CurFilePtr = -1;
+D 49
+static    ORDER CurOrder;
+E 49
+I 49
+static    ORDER_STRUCT CurOrder;
+E 49
+I 47
+static    CCReq CurCCReq;
+E 47
+static    ADDRESS_STRUCT CurCustInfo;
+static    char CurPassword[PW_SIZE+1],CurUserID[PW_SIZE+1];
+D 47
+static    WORD WinVer;
+static    DWORD lCurUserID=0L;
+static    BOOL bUserOpened=FALSE;
+E 47
+I 47
+static    WORD WinVer,ExeType;
+D 60
+static    DWORD lCurUserID=0L,lSessionID=0L;
+E 60
+E 47
+D 74
+static	  jmp_buf jmpenv;
+I 51
+static	  int pID;
+E 74
+I 74
+static	  int parentPID,childPID=0;
+E 74
+I 73
+static    FILENODE *FileTree=NULL;
+I 78
+static    char* p;
+I 79
+static    time_t clock;
+E 79
+E 78
+E 73
+E 51
+
+I 79
+//to calc the LRC sum (see util.c in cash) for all database filenames to
+// compare against the local database
+DWORD dwDataFileSum = 0;
+WORD wDataFileCount = 0;
+
+E 79
+E 45
+main(int argc, char *argv[])
+{
+
+D 45
+	MSGTYPE msg;
+	BYTE CurFileName[STD_FILENAME_SIZE+1]; // standard file name buffer
+D 3
+	HANDLE CurFilePtr = -1;
+E 3
+I 3
+D 20
+	HANDLE CurFilePtr = -1,hCom1;
+E 20
+I 20
+	HANDLE CurFilePtr = -1;
+I 25
+D 29
+	CCReq CurCCReq;
+E 29
+I 29
+	ORDER CurOrder;
+I 34
+	ADDRESS_STRUCT CurCustInfo;
+I 42
+	char CurPassword[PW_SIZE+1],CurUserID[PW_SIZE+1];
+I 44
+	WORD WinVer;
+	DWORD lCurUserID;
+E 45
+I 45
+    MSGTYPE msg;
+I 75
+D 81
+	BOOL USRobotics;
+E 81
+I 81
+	BOOL PP9600;
+E 81
+E 75
+I 64
+D 74
+	BOOL bAuthorized;
+E 74
+I 74
+	BOOL bAuthorized; // depends on kind of newuser
+	BOOL bWSSaidHi, // kludge fix for 1.0 sync bug,
+		 bWSSyncFix;// so we'll only respond to SAY_HI once on startup
+E 74
+E 64
+E 45
+E 44
+E 42
+E 34
+E 29
+E 25
+E 20
+E 3
+
+I 78
+	char sztemp[5];
+D 79
+	time_t clock;
+E 79
+
+	time(&clock);
+
+	/* Redirect stdout (printf's) and stderr to a logfile */
+	if (sscanf(argv[1], "/dev/tty%s", sztemp) != 1)
+		printf("Unable to redirect logfile\n");
+	else
+	{
+		sprintf(logfile, "%s/bbslog.%s", LOG_DIR, sztemp);
+		printf("Logging to %s,\nto view output use 'tail -f %s'\n", 
+				logfile, logfile);
+		plogfile = freopen(logfile, "w", stdout);
+		freopen(logfile, "a+", stderr);
+	}
+
+    /* set unbuffered output */
+    setbuf(stdout,NULL);
+    setbuf(stderr,NULL);
+
+E 78
+D 45
+	if(argc != 2)
+	{
+	   printf("Usage: %s [tty device]\n\
+E 45
+I 45
+D 75
+    if(argc != 2)
+E 75
+I 75
+    if(argc != 3)
+E 75
+    {
+D 75
+       printf("Usage: %s [tty device]\n\
+E 45
+(example: %s /dev/tty1a)\n",argv[0],argv[0]);
+E 75
+I 75
+D 81
+       printf("Usage: %s [tty device] [USRobotics ? 1 : 0]\n\
+E 81
+I 81
+       printf("Usage: %s [tty device] [PP9600 ? 1 : 0]\n\
+E 81
+(example: %s /dev/ttyi1A 1)\n",argv[0],argv[0]);
+E 75
+D 45
+	   exit(1);
+	}
+E 45
+I 45
+       exit(1);
+    }
+E 45
+D 75
+
+E 75
+I 55
+D 56
+#if 0
+E 56
+E 55
+I 36
+D 47
+#ifdef INGRES
+E 36
+I 35
+D 37
+printf ( "\n\n...here goes!" );
+Accounting();
+printf (   "\n...all done.\n" );
+E 37
+I 37
+Acct_Initialize();
+I 40
+D 41
+/*!*
+E 40
+D 38
+printf ( "\nreturn value from Acct_NormalOrder() = %d",
+         Acct_NormalOrder ( &CurOrder ) );
+E 38
+I 38
+printf ( "\nreturn value from Acct_NormalOrder() = %d\n",
+         (int) Acct_NormalOrder ( &CurOrder ) );
+E 38
+Acct_Finalize();
+exit ( 0 );
+I 40
+*!*/
+E 41
+E 40
+E 37
+I 36
+#endif
+E 47
+I 47
+D 51
+    Acct_Initialize();
+E 51
+I 51
+D 63
+    if (Acct_Initialize() == FAIL)
+	{	
+		printf("Can't CONNECT to database, exiting\n");
+		exit(1);
+	}
+	else
+	{
+		printf("Connected to database OK\n");
+	}
+E 63
+I 55
+D 56
+#endif
+E 56
+E 55
+D 74
+
+E 74
+E 51
+I 49
+D 56
+	InitCCReq(&CurCCReq);
+E 56
+I 56
+D 59
+	//InitCCReq(&CurCCReq);
+E 56
+E 49
+E 47
+E 36
+
+E 59
+E 35
+D 3
+#if 0
+E 3
+D 20
+	if ((hCom1 = open(argv[1],O_RDWR|O_NDELAY)) == -1)
+E 20
+I 20
+D 45
+	savetty = argv[1];
+E 45
+I 45
+    savetty = argv[1];
+I 75
+D 81
+    USRobotics = (argv[2][0] == '1');
+	if (USRobotics) printf("USRobotics modem\n");
+E 81
+I 81
+    PP9600 = (argv[2][0] == '1');
+E 81
+E 75
+I 74
+	parentPID = getpid();
+E 74
+I 59
+D 61
+	nTimeout = 120;
+E 61
+E 59
+E 45
+D 21
+
+	if ((hOrigCom = open(argv[1],O_RDWR|O_NDELAY)) == -1)
+E 20
+	{
+		printf("Error opening %s\n",argv[1]);
+		exit(1);
+	}
+I 5
+D 20
+	save_tty(hCom1); // for restore_tty()
+E 5
+	setraw(hCom1);
+D 3
+#endif
+E 3
+
+I 3
+    /* we open twice so that setraw call is done.  Otherwise setraw
+	   might cause loss of incoming data */
+E 3
+	if((GlobalhCom = open(argv[1],O_RDWR)) == -1)
+	{
+		printf("Error opening again\n");
+		exit(1);
+	}
+	else
+		printf("%s opened\n",argv[1]);
+
+D 3
+	//close(hCom1); 
+E 3
+I 3
+	close(hCom1); 
+I 15
+D 16
+	set_tty_xclude(hCom,TRUE);
+E 16
+I 16
+	set_tty_xclude(GlobalhCom,TRUE);
+E 20
+I 20
+	save_tty(hOrigCom); // for restore_tty()
+	setraw(hOrigCom);
+E 21
+E 20
+E 16
+D 51
+	catchsigs();
+E 51
+E 15
+E 3
+
+I 78
+	printf("Starting bbs on %s, at %s\n", savetty, ctime(&clock)); 
+I 81
+	if (PP9600) printf("BBS configured for Practical Peripherals 9600SA\n");
+E 81
+
+E 78
+I 73
+	/* construct directory binary search tree */
+D 81
+	printf("Calling MakeFileTree\n");
+E 81
+I 81
+	//printf("Calling MakeFileTree\n");
+E 81
+	if ((FileTree = MakeFileTree("./")) == NULL)
+	{
+		printf("Error constructing directory tree.\n");
+		exit(1);
+	}
+
+I 79
+D 81
+#if 0
+	printf("Highest database extension is %03X\n", wHighExt);
+	printf("Files with that extension = %d\n", wNumHighExt);
+#endif
+E 81
+	printf("LRC sum for database is %ld, based on %d database files\n", 
+				dwDataFileSum, wDataFileCount);
+
+E 79
+E 73
+D 3
+	setraw(GlobalhCom);
+E 3
+D 20
+	savetty = argv[1];
+E 20
+I 20
+D 21
+	GlobalhCom = NULL;
+E 21
+D 45
+    reopen();
+E 45
+I 45
+D 81
+    #ifdef TEST_SERVER
+    if ((cc_server = connect_to_server("adonis1","cc_server","udp")) == FAIL)
+        perror("bbs");
+    #endif
+E 45
+E 20
+D 15
+	if (signal(SIGHUP,LostTransmission) == BADSIG)
+		printf("Bad SIGHUP signal call\n");
+E 15
+
+E 81
+I 81
+#if 0
+	// for continuous database connection
+E 81
+I 79
+    if (Acct_Initialize() == FAIL)
+	{	
+		printf("Can't CONNECT to database, exiting\n");
+		exit(1);
+	}
+	else
+	{
+		//printf("Connected to database OK\n");
+	}
+I 81
+#endif
+
+E 81
+E 79
+I 18
+D 45
+	#ifdef TEST_SERVER
+	if ((cc_server = connect_to_server("adonis1","cc_server","udp")) == FAIL)
+		perror("bbs");
+	#endif
+
+E 18
+I 5
+D 15
+	if (signal(SIGINT,ShutDown) == BADSIG)
+		printf("Bad SIGINT signal call\n");
+
+	if (signal(SIGTERM,ShutDown) == BADSIG)
+		printf("Bad SIGTERM signal call\n");
+
+	if (signal(SIGQUIT,ShutDown) == BADSIG)
+		printf("Bad SIGQUIT signal call\n");
+
+E 15
+E 5
+D 3
+//    WriteModemCOmmand(GlobahCom,"~~+~~+~~+);
+E 3
+	while(1)
+E 45
+I 45
+    while(1)
+    {
+D 51
+	switch(fork()) 
+E 51
+I 51
+D 74
+	catchsigs(); // child may have captured one.  Signals will be 
+E 74
+I 74
+	SetSigHandler(); // child may have captured one.  Signals will be 
+E 74
+				 // inherited by child
+D 74
+	switch(pID = fork()) 
+E 74
+I 74
+
+	bWSSyncFix = TRUE;
+	bWSSaidHi = FALSE;
+
+	switch(childPID = fork()) 
+E 74
+E 51
+	/* The fork necessary to get setpgrp() to work properly.  
+       setpgrp() sets the group id to the value of the process id.  
+	   Thus setpgrp() will only work once for a given process.  
+	   Each child, however, has a unique process id, and 
+	   thus each child's call to setpgrp() is effective. */
+E 45
+	{
+I 74
+		int statusp;
+E 74
+D 45
+		if (Receive_Message(GlobalhCom,&msg) != OK)
+		{
+D 21
+			printf("Error receiving message\n");
+E 21
+I 21
+			printf("Window Shopper timed out\n");
+E 21
+			//SendByte(GlobalhCom,MSG_BAD_MESSAGE);
+I 21
+			reopen();
+E 45
+I 45
+		case 0: // child
+D 51
+			catchsigs();
+E 51
+I 51
+D 81
+			printf("child forked\n");
+E 51
+D 63
+			setnewuser(); // just in case
+E 63
+D 51
+			openWSPort();
+E 51
+I 51
+D 74
+			openWSPort(); // only the child opens the port
+I 64
+			bAuthorized=TRUE;
+E 74
+I 74
+D 75
+			if (openWSPort() != OK) // only the child opens the port
+E 75
+I 75
+			if (openWSPort(USRobotics) != OK) // only the child opens the port
+E 81
+I 81
+			//printf("child forked\n");
+			if (openWSPort(PP9600) != OK) // only the child opens the port
+E 81
+E 75
+				ExitChild(-3);
+D 78
+			bAuthorized=TRUE; // assume is new user with ID
+E 78
+I 78
+			ExeType = EXE_REGULAR;
+I 79
+			WinVer = 0x300;
+			inbytes = outbytes = 0;
+I 81
+			//respond to MSG_SAID_HI
+			if (!bWSSaidHi)
+			{
+				if (SendByte(WS_PORT,ACK) != OK)
+					printf("Got HI, Error sending ACK\n");
+				else
+				{
+					printf("Said Hi to Window Shopper\n");
+					if (bWSSyncFix)
+						bWSSaidHi = TRUE;
+				}
+			 }
+
+E 81
+E 79
+E 78
+E 74
+E 64
+E 51
+			break; // into message loop
+
+		case -1:
+			printf("bbs: can't create new child process\n");
+D 51
+			exit(1);
+E 51
+I 51
+D 63
+			Acct_Finalize();
+E 63
+			ExitParent(1); // exit bbs
+E 51
+
+D 51
+		default: // parent
+E 51
+I 51
+D 74
+		default: // parent receives process id of child
+E 51
+			if (wait(NULL) == -1)
+E 74
+I 74
+		default: // parent receives process id of child that died
+D 84
+			if (wait(&statusp) == -1)
+E 84
+I 84
+			if (wait(&statusp) == -1)	//Wait here for child to die
+E 84
+E 74
+				perror("bbs");
+D 74
+			printf("child returned\n");
+E 74
+I 74
+D 84
+			//printf("child returned status = %x\n",statusp);
+E 84
+I 84
+			printf("child returned status: 0x%X\n",statusp);
+E 84
+			if (WIFSIGNALED(statusp)) // then child died ignominiously
+			{
+				printf("CHILD was killed!!\n");
+				ExitParent(-4);
+			}
+			else if (WIFEXITED(statusp))
+			{
+D 84
+				//printf("WEXITSTATUS(status)  = %x\n",WEXITSTATUS(statusp));
+E 84
+I 84
+				printf("WEXITSTATUS(status)  = 0x%X\n",WEXITSTATUS(statusp));
+E 84
+				if (WEXITSTATUS(statusp) == 0xff)
+				{
+					/* assume -1 is INGRES exit status */
+					printf("CHILD exited by INGRES?\n");
+D 84
+					ExitParent(-4);
+E 84
+I 84
+					bIngresAbort = TRUE;
+					Cleanup(-4);
+E 84
+				}
+				else
+					printf("CHILD exited normally.\n");
+			}
+D 84
+
+E 84
+E 74
+E 45
+E 21
+D 51
+			continue;
+E 51
+I 51
+			continue; // to fork again
+E 51
+D 45
+		}
+E 45
+D 81
+
+E 81
+D 45
+		switch(msg)
+		{
+I 21
+			case MSG_HANGING_UP:
+I 25
+				printf("Window Shopper hanging up\n");
+I 44
+#ifdef INGRES
+				if (Acct_CustEndSession(lCurUserID) != OK)
+					printf("Unable to close user's session (%lx)\n",lCurUserID);
+				else
+					printf("Closed user's session (%lx)\n",lCurUserID);
+#endif
+E 44
+E 25
+				reopen();
+I 44
+				CurUserID[0] = '\0';
+				CurPassword[0] = '\0';
+				lCurUserID = 0L;
+E 44
+			break;
+E 45
+I 45
+	}
+E 45
+
+I 51
+    /* we get here only if child */
+I 62
+
+	/* Seed random number generator with process ID for rare
+	   instance of new user and Window Shopper not in stock */
+
+	srand(getpid());
+
+E 62
+E 51
+I 45
+	while (1)
+	{
+        if (Receive_Message(WS_PORT,&msg) != OK)
+        {
+D 46
+			printf("Window Shopper timed out without saying goodbye\n");
+E 46
+I 46
+			printf("Window Shopper timed out.\n");
+E 46
+D 51
+			CloseUserSession(0);
+			HangUp(GlobalhCom);
+			close(GlobalhCom);
+			GlobalhCom = NULL;
+			exit(1);
+E 51
+I 51
+D 74
+			ExitChild(0);
+E 74
+I 74
+			ExitChild(-2);
+E 74
+E 51
+        }
+
+        switch(msg)
+        {
+            case MSG_HANGING_UP:
+                printf("Window Shopper hanging up\n");
+D 51
+				CloseUserSession(0);
+				HangUp(GlobalhCom);
+				close(GlobalhCom);
+				GlobalhCom = NULL;
+				exit(0);
+E 51
+I 51
+				ExitChild(0);
+E 51
+            break;
+
+I 47
+            case MSG_SEND_EXETYPE:
+                if (ReceiveBuf(WS_PORT,(BYTE *)&ExeType,
+                     sizeof(ExeType),STD_WAIT) != OK)
+                {
+                    printf("Error getting ExeType:   %x\n",ExeType);
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+                    printf("Received ExeType:  %x\n",ExeType);
+D 66
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+E 66
+I 59
+					switch(ExeType)
+					{
+						case EXE_BETA:
+I 74
+						default:
+E 74
+							nTimeout = 120; // 2 minutes
+I 74
+							if (SendByte(WS_PORT,NAK) != OK)
+								;
+E 74
+I 66
+D 67
+							if (SendByte(WS_PORT,ACK) != OK)
+								;
+E 67
+E 66
+						break;
+D 67
+						case EXE_REGULAR:
+D 66
+#if 1
+E 66
+						// until release date, don't let anyone logon!!!
+						if (SendByte(WS_PORT,NAK) != OK)
+							;
+						break;
+E 67
+D 66
+#endif
+E 66
+I 66
+
+I 67
+						case EXE_REGULAR:
+I 74
+							nTimeout = 600; // ten minutes
+							if (SendByte(WS_PORT,ACK) != OK)
+								;
+						break;
+
+E 74
+E 67
+E 66
+						case EXE_INTERNAL:
+I 66
+D 67
+							if (SendByte(WS_PORT,ACK) != OK)
+								;
+E 67
+E 66
+							nTimeout = 600; // ten minutes
+I 74
+D 76
+							if (SendByte(WS_PORT,NAK) != OK)
+E 76
+I 76
+							if (SendByte(WS_PORT,ACK) != OK)
+E 76
+								;
+E 74
+						break;
+I 71
+D 73
+					    if (SendByte(WS_PORT,ACK) != OK)
+						    ;
+E 73
+E 71
+					}
+I 67
+D 71
+					if (SendByte(WS_PORT,ACK) != OK)
+						;
+E 71
+E 67
+I 63
+D 74
+                    //printf("Timeout:  %d seconds\n",nTimeout);
+I 73
+					if (SendByte(WS_PORT,ACK) != OK)
+						;
+E 74
+E 73
+E 63
+E 59
+                }
+			break;
+
+E 47
+E 45
+I 44
+            case MSG_SEND_WINVER:
+D 45
+				if (ReceiveBuf(GlobalhCom,(BYTE *)&WinVer,
+					 sizeof(WinVer),STD_WAIT) != OK)
+				{
+					printf("Error getting WinVer:   %x\n",WinVer);
+					SendByte(GlobalhCom,NAK);
+				}
+				else
+				{
+					printf("Received WinVer:  %x\n",WinVer);
+					SendByte(GlobalhCom,ACK);
+				}
+			break;
+E 45
+I 45
+                if (ReceiveBuf(WS_PORT,(BYTE *)&WinVer,
+                     sizeof(WinVer),STD_WAIT) != OK)
+                {
+                    printf("Error getting WinVer:   %x\n",WinVer);
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+D 79
+                    printf("Received WinVer:  %x\n",WinVer);
+E 79
+I 79
+                    //printf("Received WinVer:  %x\n",WinVer);
+E 79
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                }
+            break;
+E 45
+
+E 44
+I 34
+            case MSG_SET_CUST_INFO:
+D 45
+				if (ReceiveCRC(GlobalhCom,(BYTE *)&CurCustInfo, 
+						  sizeof(CurCustInfo)) != OK)
+			    {
+					printf("Current CustInfo not received\n");
+I 37
+D 42
+#ifdef INGRES
+                    Acct_Customer();
+#endif
+E 42
+E 37
+					SendByte(GlobalhCom,NAK);
+				}
+				else
+				{
+E 45
+I 45
+                if (ReceiveCRC(WS_PORT,(BYTE *)&CurCustInfo, 
+                          sizeof(CurCustInfo)) != OK)
+                {
+                    printf("Current CustInfo not received\n");
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+E 45
+I 42
+D 47
+#ifdef INGRES
+E 47
+D 45
+					   /*
+					   At this point we don't yet know whether this is a
+					   new user.
+					   Nor do we know the userID or password.
+E 45
+I 45
+                       /*
+                       At this point we don't yet know whether this is a
+                       new user.
+                       Nor do we know the userID or password.
+E 45
+
+D 45
+					   The sequence is (roughly):
+D 44
+					   1) get this customer info
+					   2) get userID or generate a new one
+					   3) get password
+					   4) if new user: 
+E 44
+I 44
+					   1) receive this customer info
+					   2) receive userID or generate a new one
+					   3) if new user: 
+E 44
+							  a)  check whether new userID is OK
+D 44
+							  a)  try to capture credit
+							  b)  commit new user to INGRES
+E 44
+I 44
+							  b)  receive password
+							  c)  try to capture credit
+							  d)  commit new user to INGRES
+E 44
+						  else not a new user:
+D 44
+							  a) check that password jibes
+					    5) record that user's session has begun
+E 44
+I 44
+							  a) obtain existing password
+					    4) record that user's session has begun
+E 44
+						*/
+                    Acct_Customer();
+E 45
+I 45
+                       The sequence is (roughly):
+                       1) receive this customer info
+                       2) receive userID or generate a new one
+                       3) if new user: 
+                              a)  check whether new userID is OK
+                              b)  receive password
+                              c)  try to capture credit
+                              d)  commit new user to INGRES
+                          else not a new user:
+                              a) obtain existing password
+                        4) record that user's session has begun
+                        */
+E 45
+D 47
+#endif
+E 47
+E 42
+D 45
+					printf("Current CustInfo received\n");
+					SendByte(GlobalhCom,ACK);
+				}
+			break;
+E 45
+I 45
+D 63
+                    printf("Current CustInfo received\n");
+E 63
+I 63
+                    //printf("Current CustInfo received\n");
+E 63
+                    ShowCust(&CurCustInfo);
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                }
+            break;
+E 45
+
+I 56
+D 78
+            case MSG_QUERY_USERID_OK:
+E 78
+I 57
+            case MSG_QUERY_NEW_USERID_OK:
+I 79
+			{
+E 79
+I 78
+				bAuthorized=TRUE; // yes, fall through
+I 79
+			}
+E 79
+            case MSG_QUERY_USERID_OK:
+E 78
+E 57
+			{
+                WORD Active;
+D 63
+                if (Acct_CustIsActiveUserID(lCurUserID,&Active) != OK)
+E 63
+I 63
+D 84
+                if (Acct_CustIsActiveUserID(lCurUserID,&Active,NULL) != OK)
+E 84
+I 84
+                if (Acct_CustIsActiveUserID(lCurUserID,&Active,NULL,NULL) != OK)
+E 84
+E 63
+					Active = -1;
+I 79
+
+E 79
+I 60
+D 63
+/* DEBUG */
+				printf("MSG_QUERY_NEW_USERID_OK Active %d &Active %d sizeof Active %d\n",
+					Active,&Active,sizeof(Active));
+
+E 63
+I 63
+D 65
+					printf("Query UserID returning: %d\n",Active);
+E 65
+I 65
+				printf("Query UserID returning: %d\n",Active);
+E 65
+E 63
+E 60
+				if (SendBuf(WS_PORT,(BYTE *)&Active,sizeof(Active)) != OK)
+D 79
+					;
+E 79
+I 79
+					printf("Error sending user Status\n");
+E 79
+			}
+			break;
+
+I 79
+            case MSG_QUERY_SUBTYPE:
+			{
+                WORD nSubType;
+                if (Acct_CustSubType(lCurUserID,&nSubType) != OK)
+					nSubType = -1;
+
+				printf("QUERY SubType returning %d\n", nSubType); 
+				if (SendBuf(WS_PORT,(BYTE *)&nSubType,sizeof(nSubType)) != OK)
+					printf("Error sending user subtype\n");
+			}
+			break;
+
+			// WS is asking wether or not we ship a package for a renewal
+            case MSG_QUERY_SHIP_RENEWAL:
+D 84
+			{	// Say NO!!
+				BOOL bRenewPkg = FALSE;
+E 84
+I 84
+			{
+E 84
+				if (SendBuf(WS_PORT,(BYTE *)&bRenewPkg,sizeof(BOOL)) != OK)
+					printf("Error replying query ship renewal\n");
+			}
+			break;
+
+D 81
+#if 0
+            case MSG_QUERY_HIGH_EXT:
+			{	
+				// The format for lHighExt is 
+				// LOWORD = highest file extension, 
+				// HIWORD = num of files with that extension.
+
+				long lHighExt = (wNumHighExt << 16) + wHighExt;
+				printf("tmpExt = %08lX\n", lHighExt);
+				if (SendBuf(WS_PORT,(BYTE *)&lHighExt, sizeof(long)) != OK)
+					printf("Error replying query high ext\n");
+			}
+			break;
+#endif
+
+E 81
+            case MSG_QUERY_DATA_LRC:
+			{	
+				if (SendBuf(WS_PORT,(BYTE *)&dwDataFileSum, 
+										sizeof(DWORD)) != OK)
+					printf("Error replying data LRC\n");
+			}
+			break;
+
+E 79
+E 56
+E 34
+E 21
+I 13
+D 25
+			case MSG_PLACE_ORDER:
+E 25
+I 25
+D 29
+			case MSG_SET_CUR_LIB_ORDER:
+E 29
+I 29
+D 42
+            case MSG_QUERY_CLIP_DLD_OK:
+            case MSG_QUERY_LIB_ORDER_OK:
+I 41
+			SendByte(GlobalhCom,ACK);
+E 42
+I 42
+            case MSG_BEGIN_SESSION:
+D 45
+				/* record with INGRES that our user's session has begun.
+				   It ends (gracefully) when we receive a HANGING_UP message. */
+E 45
+I 45
+                /* record with INGRES that our user's session has begun.
+                   It ends (gracefully) when we receive a HANGING_UP message. */
+D 47
+                if (Acct_CustBeginSession(lCurUserID) == OK)
+                {
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                    printf("Opened user's session (%lx)\n",lCurUserID);
+					bUserOpened = TRUE;
+                }
+                else
+                {
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                    printf("Unable to open user's session (%lx)\n",lCurUserID);
+				}
+E 47
+I 47
+D 79
+                if (Acct_NewID(&lSessionID,ACCT_ID_SESSION) != OK)
+E 79
+I 79
+                if (Acct_NewID(&lSessionID,ACCT_ID_SESSION, NULL) != OK)
+E 79
+                    SendByte(WS_PORT,NAK);
+D 76
+                else if (Acct_CustBeginSession(lCurUserID, lSessionID) != OK)
+E 76
+I 76
+                else if (Acct_CustBeginSession(lCurUserID,lSessionID, \
+												ExeType,WinVer) != OK)
+E 76
+                    SendByte(WS_PORT,NAK);
+                else if (SendByte(WS_PORT,ACK) == OK)
+D 49
+                    {
+			    printf("Opened user (%lx) session (%lx)\n",
+						lCurUserID,lSessionID);
+                        break;
+                    }
+E 49
+I 49
+				{
+D 51
+					printf("Opened user (%lx) session (%lx)\n",
+E 51
+I 51
+D 63
+					printf("Opened user (%lx) session (%ld)\n",
+E 51
+								lCurUserID,lSessionID);
+E 63
+I 63
+D 78
+					printf("Opened user (%lx) session (%ld) password (%s)\n",
+								lCurUserID,lSessionID,CurPassword);
+E 78
+I 78
+D 79
+					printf("Opened user (%lx) session (%ld)\n",
+								lCurUserID,lSessionID);
+E 79
+I 79
+					printf("Opened user (x%lx)(%ld) session (%ld)\n",
+								lCurUserID,lCurUserID,lSessionID);
+E 79
+E 78
+E 63
+					break;
+				}
+E 49
+
+D 51
+                printf("Unable to open user (%lx) session (%lx)\n",
+E 51
+I 51
+D 79
+                printf("Unable to open user (%lx) session (%ld)\n",
+E 51
+					lCurUserID,lSessionID);
+E 79
+I 79
+				printf("Unable to open user (x%lx)(%ld) session (%ld)\n",
+							lCurUserID,lCurUserID,lSessionID);
+E 79
+E 47
+            break;
+E 45
+I 44
+
+E 44
+D 45
+				SendByte(GlobalhCom,ACK);
+I 44
+				break;
+E 45
+I 45
+            case MSG_QUERY_SHIPPING_COSTS:
+I 56
+			#if 0
+			{
+                Shipcost_Ary CostMatrix = {};
+			}
+			#else
+E 56
+            {
+E 45
+D 55
+
+E 55
+I 55
+D 56
+#if 0
+E 56
+E 55
+D 45
+#ifdef INGRES
+			    //if (Acct_CustBeginSession(lUserID) == OK)
+				{
+					SendByte(GlobalhCom,ACK);
+					printf("Opened user's session (%lx)\n",lCurUserID);
+				}
+				//else
+				{
+					SendByte(GlobalhCom,NAK);
+					printf("Unable to open user's session (%lx)\n",lCurUserID);
+				}
+#endif
+E 44
+E 42
+			break;
+E 45
+I 45
+                /** assumes that CurOrder is set.  Query to INGRES
+                     and send the info on to WS. */
+D 55
+ #if 0
+                WORD CostMatrix[3][2][2];
+                     if (Acct_Query_Shipping_Costs(CurOrder.productID,
+                                                      CostMatrix) != OK)
+E 55
+I 55
+                Shipcost_Ary CostMatrix;
+D 56
+				WORD RegionID;
+				if (CurOrder.Address.whichCountry == COUNTRY_OTHER)
+				{
+					
+                     if (Acct_ShippingCost(CurOrder.productID,
+                                           CurOrder.Quantity,
+                                           CostMatrix) != OK)
+E 55
+                     {
+                        printf("unable to obtain shipping costs\n");
+                        if (SendByte(WS_PORT,NAK) != OK)
+							;
+                        break;
+                     }
+                     else
+ #else
+                static WORD CostMatrix[3][2][2]  = {
+                    0,0,0xff,0,0,0,0xff,0,0,0,0,0 };
+                    
+ #endif
+                     {
+                        printf("sending shipping costs\n");
+                        if (SendByte(WS_PORT,ACK) != OK)
+							;
+                        if (SendCRC(WS_PORT,(BYTE *)CostMatrix,sizeof(CostMatrix)) != OK)
+							;
+                     }
+            }
+E 56
+I 56
+				 if (Acct_ShippingCost(&CurOrder,CostMatrix) != OK)
+				 {
+					printf("unable to obtain shipping costs\n");
+					if (SendByte(WS_PORT,NAK) != OK)
+						;
+					break;
+				 }
+				 else
+				 {
+D 63
+					printf("shipping costs:\n");
+					ShowShip(CostMatrix);
+E 63
+I 63
+					//printf("shipping costs:\n");
+					//ShowShip(CostMatrix);
+E 63
+					if (SendByte(WS_PORT,ACK) != OK)
+						;
+					if (SendCRC(WS_PORT,(BYTE *)CostMatrix,
+							sizeof(CostMatrix)) != OK)
+						;
+				 }
+			}
+			#endif
+E 56
+            break;
+E 45
+E 41
+E 29
+E 25
+D 42
+			{
+D 29
+				ORDER_INFO order_info;
+D 25
+				if (ReceiveCRC(GlobalhCom,&order_info, 
+E 25
+I 25
+				if (ReceiveCRC(GlobalhCom,(BYTE *)&order_info, 
+E 25
+						  sizeof(order_info)) != OK)
+D 25
+				{
+E 25
+					printf("Order not received\n");
+D 25
+				}
+E 25
+				else
+					printf("Order received\n");
+E 29
+I 29
+				CCReq ccreq;
+				strcpy(ccreq.AcctNum,CurOrder.AcctNum);
+				strcpy(ccreq.ExpDate,CurOrder.ExpDate);
+				ccreq.Amount = CurOrder.priceTotal / 100;
+				ccreq.MsgCode = SALE;
+				if (CaptureCredit(&ccreq) != OK)
+					SendByte(GlobalhCom,EOT);
+				else 
+E 42
+I 42
+
+D 45
+			case MSG_QUERY_NEW_USERID_OK:
+				/* see whether userid is in proper range */
+				/* see whether userid has already been used.  Don't
+				   record it as used, however. */
+				SendByte(GlobalhCom,ACK);
+			break;
+E 45
+I 45
+D 57
+            case MSG_QUERY_NEW_USERID_OK:
+            {
+                WORD Active;
+                /* see whether userid is in proper range */
+                /* see whether userid has already been used.  Don't
+                   record it as used, however. */
+                if (Acct_CustIsActiveUserID(lCurUserID,&Active) != OK)
+                {
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                    break;
+                }
+                else
+                {
+D 47
+                    if (SendByte(WS_PORT,Active ? NAK : ACK) != OK)
+						;
+E 47
+I 47
+                    /* either ACTIVE, NO_EXIST, PREESTABLISHED, EXPIRED */
+D 51
+			switch(Active)
+			{
+			    case ACTIVE: case EXPIRED:
+			       if (SendByte(WS_PORT, NAK) != OK)
+				     ;
+			    break;
+			    default:
+			       if (SendByte(WS_PORT, ACK) != OK)
+				     ;
+			    break;
+			}
+E 51
+I 51
+D 53
+					switch(Active)
+					{
+						case ACTIVE: case EXPIRED:
+						   if (SendByte(WS_PORT, NAK) != OK)
+							 ;
+						break;
+						default:
+						   if (SendByte(WS_PORT, ACK) != OK)
+							 ;
+						break;
+					}
+E 53
+I 53
+D 54
+			switch(Active)
+			{
+			    case ACTIVE: case EXPIRED:
+			       if (SendByte(WS_PORT, NAK) != OK)
+				     ;
+			    break;
+			    default:
+			       if (SendByte(WS_PORT, ACK) != OK)
+				     ;
+			    break;
+			}
+E 54
+I 54
+					switch(Active)
+					{
+						case ACTIVE: case EXPIRED:
+						   if (SendByte(WS_PORT, NAK) != OK)
+							 ;
+						break;
+						default:
+						   if (SendByte(WS_PORT, ACK) != OK)
+							 ;
+						break;
+					}
+E 54
+E 53
+E 51
+E 47
+                }
+            }
+            break;
+E 45
+
+E 57
+D 45
+			case MSG_SET_USER_ID:
+D 44
+				/* receive new user's userID */
+				if (ReceiveCRC(GlobalhCom,CurUserID,PW_SIZE) != OK)
+E 44
+I 44
+			{
+				char szTmp[PW_SIZE+1];
+				/* receive userID */
+				if (ReceiveCRC(GlobalhCom,szTmp,PW_SIZE) != OK)
+E 44
+					SendByte(GlobalhCom,NAK);
+				else
+E 45
+I 45
+            case MSG_SET_USER_ID:
+            {
+                char szTmp[PW_SIZE+1];
+                /* receive userID */
+D 63
+				CloseUserSession(0);
+
+E 63
+                if (ReceiveCRC(WS_PORT,szTmp,PW_SIZE) != OK)
+E 45
+E 42
+				{
+D 42
+					switch (ccreq.Result)
+					{
+						case nCAPTURE:
+						case nAUTH:
+							SendByte(GlobalhCom,ACK);
+						break;
+E 42
+I 42
+D 45
+					SendByte(GlobalhCom,ACK);
+D 44
+					printf("UserID: %s\n",CurUserID);
+E 44
+I 44
+					strcpy(CurUserID,szTmp);
+					lCurUserID = strtol(szTmp,NULL,16);
+					printf("UserID: %s (%lx)\n",CurUserID,lCurUserID);
+E 45
+I 45
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+E 45
+E 44
+				}
+I 44
+D 45
+			}
+E 44
+			break;
+E 45
+I 45
+                else
+                {
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                    szTmp[PW_SIZE] = '\0';
+                    strcpy(CurUserID,szTmp);
+                    lCurUserID = strtol(szTmp,NULL,16);
+D 63
+                    printf("UserID: %s (%lx)\n",CurUserID,lCurUserID);
+E 63
+I 63
+                    //printf("UserID: %s (%lx)\n",CurUserID,lCurUserID);
+E 63
+                }
+            }
+            break;
+E 45
+E 42
+
+D 42
+						case nDUPLICATE:
+							SendByte(GlobalhCom,EOT);
+						break;
+E 42
+I 42
+D 45
+			case MSG_GET_NEW_USER_ID:
+I 44
+			{
+				DWORD NewUserID;
+E 44
+				/* get a new unused userID from INGRES (don't record
+				   it as used yet, however).  Send it to Window Shopper. */
+E 45
+I 45
+            case MSG_GET_NEW_USER_ID:
+            {
+                DWORD NewUserID;
+                /* get a new unused userID from INGRES (don't record
+                   it as used yet, however).  Send it to Window Shopper. */
+D 63
+                printf("getting New userID\n");
+E 63
+I 63
+                //printf("getting New userID\n");
+E 63
+E 45
+D 44
+				strcpy(CurUserID,"70000001");
+E 44
+I 44
+D 47
+#ifdef INGRES
+D 45
+			    // NewUserID = Acct_CustNewID(); // error condition?
+E 45
+I 45
+                if(Acct_CustNewID(&NewUserID)  != OK)
+E 47
+I 47
+D 79
+                if(Acct_NewID(&NewUserID,ACCT_ID_USER)  != OK)
+E 79
+I 79
+                if(Acct_NewID(&NewUserID,ACCT_ID_USER, NULL)  != OK)
+E 79
+E 47
+                {
+D 63
+                    printf("error getting password");
+E 63
+I 63
+                    printf("error getting new userid");
+E 63
+                    break;
+                }
+E 45
+D 47
+#else
+D 45
+				NewUserID = 0xF0000001L;
+E 45
+I 45
+                NewUserID = 0xF0000001L;
+E 45
+#endif
+E 47
+D 45
+				sprintf(CurUserID,"%ul",NewUserID);
+E 44
+				printf("New userID: %s\n",CurUserID);
+				SendCRC(GlobalhCom,CurUserID,PW_SIZE);
+I 44
+			}
+E 44
+			break;
+E 45
+I 45
+                lCurUserID = NewUserID;
+I 64
+D 74
+				bAuthorized = FALSE;
+E 74
+I 74
+D 78
+				bAuthorized = FALSE;  // new user without ID
+E 78
+E 74
+E 64
+                sprintf(CurUserID,"%08lx",NewUserID);
+D 63
+                printf("New userID: %s\n",CurUserID);
+E 63
+I 63
+                //printf("New userID: %s\n",CurUserID);
+E 63
+                if (SendCRC(WS_PORT,CurUserID,PW_SIZE) != OK)
+D 47
+					;
+E 47
+I 47
+D 57
+		    setnewuser();
+E 47
+            }
+E 57
+I 57
+D 63
+				setnewuser();
+E 63
+I 63
+					;
+E 63
+			}
+E 57
+            break;
+E 45
+E 42
+
+D 42
+						case nVOICE_AUTH:
+						case nDECLINED:
+						default:
+							SendByte(GlobalhCom,NAK);
+						break;
+					}
+E 42
+I 42
+D 45
+			case MSG_COMMIT_PASSWD:
+				/* send password to INGRES */
+				SendByte(GlobalhCom,ACK);
+I 44
+                break;
+E 45
+I 45
+            case MSG_COMMIT_PASSWD:
+                /* send password to INGRES */
+I 79
+				printf("Setting Password in Customer table\n");
+E 79
+E 45
+
+D 47
+#ifdef INGRES
+E 47
+D 45
+				//if (Acct_CustSetPassword(lCurUserID, CurPassword) == OK)
+					SendByte(GlobalhCom,ACK);
+				//else
+					SendByte(GlobalhCom,NAK);
+E 45
+I 45
+                if (Acct_CustSetPassword(lCurUserID, CurPassword) == OK)
+				{
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+				}
+                else
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+E 45
+D 47
+#else
+D 45
+					SendByte(GlobalhCom,ACK);
+E 45
+I 45
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+E 45
+#endif
+E 47
+E 44
+D 45
+			break;
+E 45
+I 45
+            break;
+E 45
+
+I 44
+D 45
+			case MSG_COMMIT_CUST_INFO:
+				/* send CurCustInfo to INGRES */
+				SendByte(GlobalhCom,ACK);
+			break;
+
+E 44
+			case MSG_SET_PASSWD:
+				/* receive password */
+				if (GetPaddedBuf(GlobalhCom,PW_SIZE,
+								 CurPassword,FALSE) != OK)
+E 45
+I 45
+            case MSG_COMMIT_CUST_INFO:
+                if (Acct_CustSetAddress(lCurUserID, &CurCustInfo) == OK)
+E 45
+				{
+D 45
+					printf("Error getting password:   %s\n",CurPassword);
+					SendByte(GlobalhCom,NAK);
+E 45
+I 45
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+E 45
+E 42
+				}
+E 29
+I 25
+D 42
+			}
+E 42
+I 42
+D 45
+				else
+				{
+					SendByte(GlobalhCom,ACK);
+					printf("password:   %s\n",CurPassword);
+				}
+E 42
+			break;
+E 45
+I 45
+                else
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+            break;
+E 45
+E 25
+
+I 42
+D 44
+			case MSG_CHECK_PASSWD:
+				/* check with INGRES whether this user's password
+				   matches her userID.  CurPassword */
+				SendByte(GlobalhCom,ACK);
+E 44
+I 44
+D 45
+			case MSG_QUERY_PASSWD:
+			{
+				int len;
+				char szTmp[PW_SIZE+1];
+E 45
+I 45
+            case MSG_SET_PASSWD:
+                /* receive password */
+                if (GetPaddedBuf(WS_PORT,PW_SIZE,
+                                 CurPassword,FALSE) != OK)
+                {
+                    printf("Error getting password:   %s\n",CurPassword);
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+D 63
+                    printf("password:   %s\n",CurPassword);
+E 63
+I 63
+D 78
+                    //printf("password:   %s\n",CurPassword);
+E 78
+I 78
+                    printf("password:   %s\n",CurPassword);
+E 78
+E 63
+                }
+            break;
+E 45
+
+D 45
+				/** put password obtained from INGRES into CurPassword **/
+E 45
+I 45
+            case MSG_QUERY_PASSWD:
+            {
+                int len;
+                char szTmp[PW_SIZE+1];
+
+                /** put password obtained from INGRES into CurPassword **/
+D 63
+				printf("Query password\n");
+E 63
+I 63
+D 79
+				//printf("Query password\n");
+E 79
+E 63
+E 45
+D 47
+#ifdef INGRES
+E 47
+D 45
+				//if (Acct_CustGetPassword(lCurUserID,CurPassword) == OK)
+E 45
+I 45
+                if (Acct_CustGetPassword(lCurUserID,CurPassword) == OK)
+E 45
+D 47
+#endif
+E 47
+D 45
+				{
+					strcpy(szTmp,CurPassword);
+					len = strlen(szTmp);
+					memset(szTmp+len,PADCHAR,PW_SIZE-len);
+					if (SendCRC(GlobalhCom,(BYTE *)szTmp,PW_SIZE) != OK)
+						printf("Error sending password\n");
+				}
+			}
+E 44
+			break;
+E 45
+I 45
+                {
+                    strcpy(szTmp,CurPassword);
+                    len = strlen(szTmp);
+                    memset(szTmp+len,PADCHAR,PW_SIZE-len);
+                    if (SendCRC(WS_PORT,(BYTE *)szTmp,PW_SIZE) != OK)
+                        printf("Error sending password\n");
+					else
+D 63
+						printf("password = %s\n",CurPassword);
+E 63
+I 63
+D 81
+						//printf("password = %s\n",CurPassword)
+						;
+E 81
+I 81
+						printf("password = %s\n",CurPassword);
+E 81
+E 63
+                }
+				else
+					printf("Error obtaining password (got %s)\n",CurPassword);
+I 79
+				break;
+E 79
+            }
+D 79
+            break;
+E 79
+E 45
+
+D 45
+			case MSG_QUERY_NEWUSER_OK:
+D 44
+				//GetThatMoola(&CurOrder);
+				/* we've got the money from this chap.  If we don't 
+				   receive a COMMIT message, then we've gotta give them 
+				   a refund!!! */
+				SendByte(GlobalhCom,ACK);
+E 44
+I 44
+				//if (!GetThatMoola(&CurOrder))
+				//{
+					// CurOrder.flags |= OF_NO_CASH;
+				    // SendByte(GlobalhCom,NAK);
+			     //}
+				//else
+E 45
+I 45
+D 47
+            case MSG_QUERY_NEWUSER_OK:
+                if (!GetThatMoola(&CurOrder))
+                {
+                    CurOrder.flags |= OF_NO_CASH;
+                }
+                else
+                {
+                    /* we've got the money from this chap.  If we don't 
+                       receive a COMMIT message, then we've gotta give them 
+                       a refund!!! */
+                }
+            break;
+E 47
+D 81
+
+E 81
+I 74
+            case MSG_QUERY_NEWUSER_OK: 
+I 79
+			{
+E 79
+				/* purchasing online */
+I 78
+				bAuthorized = FALSE;
+I 79
+				//ShowOrder(&CurOrder);
+E 79
+E 78
+                GetThatMoola(&CurOrder, &CurCCReq, FALSE);
+				/* WS will send a COMMIT message if all else completes OK */
+D 79
+			break;
+E 79
+I 79
+				break;
+			}
+E 79
+E 74
+D 47
+            case MSG_COMMIT_NEWUSER:
+                /* register this here new user with INGRES */
+D 46
+                if (Acct_CustNewUser(lCurUserID, CurPassword, &CurCustInfo) == OK)
+E 46
+I 46
+                if (Acct_CustNewUser(lCurUserID,CurPassword,&CurCustInfo) != OK)
+E 46
+E 45
+				{
+D 45
+					/* we've got the money from this chap.  If we don't 
+					   receive a COMMIT message, then we've gotta give them 
+					   a refund!!! */
+					SendByte(GlobalhCom,ACK);
+E 45
+I 45
+D 46
+                    if (SendByte(WS_PORT,ACK) != OK)
+E 46
+I 46
+                    if (SendByte(WS_PORT,NAK) != OK)
+E 46
+						;
+E 45
+				}
+E 44
+D 45
+			break;
+E 45
+I 45
+D 46
+                else
+E 46
+I 46
+				/*
+                else if (Acct_NormalOrder ( &CurOrder , &acct_orderNum) != OK)
+                {
+E 46
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+I 46
+                    break;
+                }
+				*/
+                else
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+E 46
+            break;
+E 47
+E 45
+
+I 74
+D 79
+
+E 79
+I 75
+D 78
+#if 0
+E 78
+            case MSG_QUERY_RENEWAL_OK: 
+I 79
+			{
+E 79
+				/* purchasing online */
+I 78
+				bAuthorized = FALSE;
+E 78
+                GetThatMoola(&CurOrder, &CurCCReq, TRUE);
+				/* WS will send a COMMIT message if all else completes OK */
+D 79
+			break;
+E 79
+I 79
+				break;
+			}
+E 79
+D 78
+#endif
+E 78
+
+E 75
+E 74
+D 45
+            case MSG_COMMIT_NEWUSER:
+				/* register this here new user with INGRES */
+				SendByte(GlobalhCom,ACK);
+			break;
+E 45
+D 47
+
+E 47
+I 47
+D 51
+            case MSG_QUERY_NEWUSER_OK:
+E 47
+D 45
+
+E 45
+            case MSG_QUERY_CLIP_DLD_OK:
+E 51
+D 53
+            case MSG_QUERY_LIB_ORDER_OK:
+E 53
+I 51
+D 54
+            case MSG_QUERY_NEWUSER_OK:
+I 53
+            case MSG_QUERY_CLIP_DLD_OK:
+E 54
+            case MSG_QUERY_LIB_ORDER_OK:
+I 54
+D 74
+            case MSG_QUERY_NEWUSER_OK:
+E 54
+E 53
+E 51
+D 44
+				//GetThatMoola(&CurOrder);
+				/* we've got the money from this chap.  If we don't 
+				   receive a COMMIT message, then we've gotta give them 
+				   a refund!!! */
+				SendByte(GlobalhCom,ACK);
+E 44
+I 44
+D 45
+				 /* if LIB_ORDER we should check here whether lib is in stock
+					and return a value (as yet undefined) accordingly if 
+					it is out-of-stock. */
+				//if (!GetThatMoola(&CurOrder))
+				//{
+					// CurOrder.flags |= OF_NO_CASH;
+				    // SendByte(GlobalhCom,NAK);
+				//}
+				//else
+				{
+					/* we've got the money from this chap.  If we don't 
+					   receive a COMMIT message, then we've gotta give them 
+					   a refund!!! */
+					SendByte(GlobalhCom,ACK);
+				}
+E 44
+			break;
+E 45
+I 45
+D 47
+                 /* if LIB_ORDER we should check here whether lib is in stock
+                    and return a value (as yet undefined) accordingly if 
+E 47
+I 47
+D 68
+                 /* if LIB_ORDER we should first check here whether lib is in 
+D 51
+ 	            stock and return a value (as yet undefined) accordingly if 
+E 51
+I 51
+D 53
+ 	                stock and return a value (as yet undefined) accordingly if 
+E 53
+I 53
+D 54
+ 	            stock and return a value (as yet undefined) accordingly if 
+E 54
+I 54
+ 	                stock and return a value (as yet undefined) accordingly if 
+E 54
+E 53
+E 51
+E 47
+                    it is out-of-stock. */
+E 68
+I 68
+                /* Assume is in stock. */
+E 68
+D 47
+                if (!GetThatMoola(&CurOrder))
+                {
+                    CurOrder.flags |= OF_NO_CASH;
+                }
+                else
+                {
+                    /* we've got the money from this chap.  If we don't 
+                       receive a COMMIT message, then we've gotta give them 
+                       a refund!!! */
+                }
+E 47
+I 47
+                GetThatMoola(&CurOrder, &CurCCReq);
+E 74
+I 74
+                GetThatMoola(&CurOrder, &CurCCReq, TRUE);
+E 74
+I 54
+				/* WS will send a COMMIT message if all else completes OK */
+			break;
+
+            case MSG_QUERY_CLIP_DLD_OK:
+D 74
+                if (GetThatMoola(&CurOrder, &CurCCReq))
+E 74
+I 74
+                if (GetThatMoola(&CurOrder, &CurCCReq, TRUE))
+E 74
+				{
+					/* record submission of order for delivery.  Assume 
+					   this is tantamount to beginning the clipart download. 
+					   (Makes sense since we've got their money now) */
+D 63
+					CurOrder.flags = OF_SUBMITTED;
+E 63
+I 63
+					CurOrder.flags |= OF_SUBMITTED;
+E 63
+					Acct_NormalOrder ( &CurOrder, &CurCCReq ) ;
+				}
+				/* WS will send a COMMIT message if download completes OK */
+E 54
+I 51
+D 53
+				/* WS will send a COMMIT message if all else completes OK */
+			break;
+
+            case MSG_QUERY_CLIP_DLD_OK:
+                if (GetThatMoola(&CurOrder, &CurCCReq))
+				{
+					/* record submission of order for delivery.  Assume 
+					   this is tantamount to beginning the clipart download. 
+					   (Makes sense since we've got their money now) */
+					CurOrder.flags = OF_SUBMITTED;
+					Acct_NormalOrder ( &CurOrder, &CurCCReq ) ;
+				}
+				/* WS will send a COMMIT message if download completes OK */
+E 53
+E 51
+E 47
+            break;
+E 45
+
+E 42
+D 25
+				// return result of placement
+				SendByte(GlobalhCom,ACK);
+E 25
+I 25
+D 29
+			case MSG_COMMIT_LIB_ORDER:
+E 29
+I 29
+D 45
+			case MSG_SET_CUR_CLIP_DLD:
+I 42
+			case MSG_SET_NEW_USER_ORDER:
+E 42
+			case MSG_SET_CUR_LIB_ORDER:
+D 34
+				printf("sizeof(ORDER) == %d\n",sizeof(ORDER));
+E 34
+				if (ReceiveCRC(GlobalhCom,(BYTE *)&CurOrder, 
+						  sizeof(CurOrder)) != OK)
+			    {
+					printf("Current order not received\n");
+					SendByte(GlobalhCom,NAK);
+				}
+				else
+				{
+					printf("Current order received\n");
+					SendByte(GlobalhCom,ACK);
+D 42
+					ShowOrder(&CurOrder);
+E 42
+I 42
+//					ShowOrder(&CurOrder);
+E 42
+				}
+E 29
+			break;
+E 45
+I 45
+            case MSG_SET_CUR_CLIP_DLD:
+I 47
+D 49
+                ReceiveThatOrder(&CurOrder);
+		CurOrder.prodType = CLIP;
+            break;
+
+E 49
+E 47
+            case MSG_SET_NEW_USER_ORDER:
+I 47
+D 49
+                ReceiveThatOrder(&CurOrder);
+		CurOrder.prodType = EXE;
+            break;
+
+E 49
+E 47
+            case MSG_SET_CUR_LIB_ORDER:
+D 47
+                if (ReceiveCRC(WS_PORT,(BYTE *)&CurOrder, 
+                          sizeof(CurOrder)) != OK)
+                {
+                    printf("Current order not received\n");
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+E 47
+I 47
+                ReceiveThatOrder(&CurOrder);
+D 49
+		CurOrder.prodType = LIB;
+E 49
+I 49
+D 76
+				if (msg == MSG_SET_NEW_USER_ORDER)
+		            WriteBuf("ORDER.TXT",&CurOrder,sizeof(ORDER_STRUCT));
+E 76
+I 76
+				//if (msg == MSG_SET_NEW_USER_ORDER)
+		            //WriteBuf("ORDER.TXT",&CurOrder,sizeof(ORDER_STRUCT));
+E 76
+E 49
+            break;
+
+            case MSG_COMMIT_NEWUSER:
+I 78
+            case MSG_COMMIT_RENEWAL:
+E 78
+D 57
+                /* register this here new user with INGRES */
+                if (Acct_CustNewUser(lCurUserID,CurPassword,&CurCustInfo) != OK)
+                    SendByte(WS_PORT,NAK);
+                else if (Acct_NewID(&CurOrder.orderID,ACCT_ID_ORDER)  != OK)
+                    SendByte(WS_PORT,NAK);
+D 56
+                else if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) != OK)
+                    SendByte(WS_PORT,NAK);
+E 56
+E 47
+D 51
+                else
+D 47
+                {
+                    printf("Current order received\n");
+                    if (SendByte(WS_PORT,ACK) != OK)
+						;
+                    ShowOrder(&CurOrder);
+                }
+E 47
+I 47
+                    if (SendByte(WS_PORT,ACK) == OK)
+						break;
+	        printf("error committing new user ");
+E 51
+I 51
+D 53
+                else if (SendByte(WS_PORT,ACK) == OK)
+				{
+					/* record completion of order */
+					CurOrder.flags = OF_PLACED;
+					if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) == OK)
+							break;
+				}
+				printf("error committing new user ");
+E 53
+I 53
+D 54
+                else
+                    if (SendByte(WS_PORT,ACK) == OK)
+						break;
+	        printf("error committing new user ");
+E 54
+I 54
+                else if (SendByte(WS_PORT,ACK) == OK)
+E 57
+I 57
+D 84
+                /* record the customer info */
+E 84
+I 84
+            //case MSG_COMMIT_DEMO: /* record the customer info */
+
+E 84
+D 78
+                if (Acct_CustNewUser(lCurUserID,CurPassword,&CurCustInfo) == OK)
+I 64
+D 74
+				if (!bAuthorized)
+E 74
+I 74
+				if (!bAuthorized) // new user without ID
+E 78
+I 78
+D 82
+				if (!bAuthorized) // we got $ from them, commit transaction
+E 82
+I 82
+				//WS is fucked and never sends the message that sets 
+				//bAuthorized to true so the next line is commented out
+				//if (!bAuthorized) // we got $ from them, commit transaction
+D 84
+				if (CurOrder.libID == WS_LIBID_NEW)	//OnLine order
+E 84
+I 84
+
+				if (CurOrder.libID == WS_LIBID_NEW OR
+					(CurOrder.libID == WS_LIBID_RENEWAL AND bRenewPkg))
+					CurOrder.flags |= OF_COMMITED;	//order needs shipping
+				else			//No package, order considered shipped
+					CurOrder.flags |= OF_SHIPPED;
+
+				if (msg == MSG_COMMIT_RENEWAL)
+E 84
+E 82
+E 78
+E 74
+E 64
+E 57
+				{
+D 84
+					/* record completion of order */
+D 63
+					CurOrder.flags = OF_PLACED;
+E 63
+I 63
+D 72
+					CurOrder.flags |= OF_PLACED;
+E 72
+I 72
+					CurOrder.flags |= OF_COMMITED;
+E 72
+E 63
+					if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) == OK)
+I 78
+					if (Acct_CustNewUser(lCurUserID,
+										CurPassword,&CurCustInfo) == OK)
+E 84
+I 84
+					if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) != OK)
+E 84
+E 78
+D 57
+							break;
+E 57
+I 57
+					{
+D 84
+						SendByte(WS_PORT,ACK);
+E 84
+I 84
+						SendByte(WS_PORT,NAK);
+						printf("error committing new user\n");
+E 84
+						break;
+					}
+I 84
+				}	
+				if (Acct_CustNewUser(lCurUserID,CurPassword,&CurCustInfo)==OK)
+				{
+					SendByte(WS_PORT,ACK);
+					break;
+E 84
+I 64
+				}
+D 78
+				else
+E 78
+I 78
+D 79
+				else if (Acct_CustNewUser(lCurUserID,
+										CurPassword,&CurCustInfo) == OK)
+E 78
+				{
+					SendByte(WS_PORT,ACK);
+					break;
+E 79
+I 79
+D 84
+				else 
+				{	
+					if (Acct_CustNewUser(lCurUserID,
+									CurPassword,&CurCustInfo) == OK)
+					{
+						SendByte(WS_PORT,ACK);
+						break;
+					}
+E 79
+E 64
+E 57
+				}
+E 84
+I 57
+
+				SendByte(WS_PORT,NAK);
+E 57
+D 79
+				printf("error committing new user ");
+E 79
+I 79
+				printf("error committing new user\n");
+E 79
+E 54
+E 53
+E 51
+E 47
+            break;
+E 45
+
+I 75
+D 78
+#if 0
+            case MSG_COMMIT_RENEWAL:
+                /* record the customer info */
+                if (Acct_CustRenewingUser(lCurUserID) == OK)
+				{
+					/* record completion of order */
+					CurOrder.flags |= OF_COMMITED;
+					if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) == OK)
+					{
+						SendByte(WS_PORT,ACK);
+						break;
+					}
+				}
+
+				SendByte(WS_PORT,NAK);
+				printf("error committing new user ");
+            break;
+#endif
+
+E 78
+E 75
+D 29
+			case MSG_SET_CUR_CLIP_DLD:
+E 29
+I 29
+D 45
+			case MSG_COMMIT_CLIP_DLD:
+E 29
+			{
+E 45
+I 45
+            case MSG_COMMIT_CLIP_DLD:
+D 46
+            {
+E 45
+D 29
+				if (ReceiveCRC(GlobalhCom,(BYTE *)&CurCCReq, 
+						  sizeof(CurCCReq)) != OK)
+					printf("Current clip download not received\n");
+				else
+					printf("Current clip download received\n");
+E 29
+I 29
+D 37
+				WORD OrderNum;
+D 36
+				/* put Ingres code here */
+D 35
+
+E 35
+I 35
+                                Accounting();
+E 36
+I 36
+				#ifdef INGRES
+                Accounting();
+				#endif
+E 36
+E 35
+				SendByte(GlobalhCom,ACK);
+				OrderNum = 1234;
+				SendBuf(GlobalhCom,&OrderNum,sizeof(OrderNum));
+E 37
+I 37
+                WORD acct_orderNum;
+#ifdef INGRES
+D 38
+                orderNum = (WORD) Acct_NormalOrder ( &CurOrder );
+E 38
+I 38
+D 45
+                acct_orderNum = (WORD) Acct_NormalOrder ( &CurOrder );
+E 45
+I 45
+                if (Acct_NormalOrder ( &CurOrder , &acct_orderNum) != OK)
+                {
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                    break;
+                }
+E 45
+E 38
+#endif
+D 45
+                SendByte(GlobalhCom,ACK);
+                SendBuf(GlobalhCom,&acct_orderNum,sizeof(acct_orderNum));
+E 37
+E 29
+E 25
+			}
+I 25
+			break;
+E 45
+I 45
+                if (SendByte(WS_PORT,ACK) != OK)
+					;
+                if (SendBuf(WS_PORT,&acct_orderNum,sizeof(acct_orderNum)) != OK)
+					;
+            }
+            break;
+E 45
+
+E 46
+D 29
+			case MSG_COMMIT_CLIP_DLD:
+E 29
+I 29
+D 45
+			case MSG_COMMIT_LIB_ORDER:
+			{
+E 45
+I 45
+            case MSG_COMMIT_LIB_ORDER:
+D 47
+            {
+E 45
+D 37
+				WORD OrderNum;
+D 36
+				/* put Ingres code here */
+D 35
+
+E 35
+I 35
+                                Accounting();
+E 36
+I 36
+				#ifdef INGRES
+                Accounting();
+				#endif
+E 36
+E 35
+				SendByte(GlobalhCom,ACK);
+				OrderNum = 1234;
+				SendBuf(GlobalhCom,&OrderNum,sizeof(OrderNum));
+E 37
+I 37
+                WORD acct_orderNum;
+D 46
+#ifdef INGRES
+E 46
+D 38
+                orderNum = (WORD) Acct_NormalOrder ( &CurOrder );
+E 38
+I 38
+D 45
+                acct_orderNum = (WORD) Acct_NormalOrder ( &CurOrder );
+E 45
+I 45
+                if (Acct_NormalOrder ( &CurOrder , &acct_orderNum) != OK)
+                {
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                    break;
+                }
+E 45
+E 38
+D 46
+#endif
+E 46
+D 45
+                SendByte(GlobalhCom,ACK);
+D 41
+                SendBuf(GlobalhCom,acct_orderNum,sizeof(acct_orderNum));
+E 41
+I 41
+                SendBuf(GlobalhCom,&acct_orderNum,sizeof(acct_orderNum));
+E 41
+E 37
+			}
+E 29
+E 25
+			break;
+E 45
+I 45
+                if (SendByte(WS_PORT,ACK) != OK)
+					;
+                if (SendBuf(WS_PORT,&acct_orderNum,sizeof(acct_orderNum)) != OK)
+					;
+            }
+E 47
+I 47
+D 57
+                if (Acct_NewID(&CurOrder.orderID,ACCT_ID_ORDER)  != OK)
+                    SendByte(WS_PORT,NAK);
+D 56
+                else if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) != OK)
+                    SendByte(WS_PORT,NAK);
+E 56
+                else if (SendByte(WS_PORT,ACK) == OK)
+                if (SendBuf(WS_PORT,&CurOrder.orderID,
+                            sizeof(CurOrder.orderID)) == OK)
+E 57
+I 57
+				if (msg == MSG_COMMIT_CLIP_DLD) // download succeeded
+I 84
+				{
+					printf("Clipart downloaded OK\n");
+E 84
+					/* record delivery of clipart */
+D 63
+					CurOrder.flags = OF_DELIVERED;
+E 63
+I 63
+D 72
+					CurOrder.flags |= OF_DELIVERED;
+E 72
+I 72
+					CurOrder.flags |= OF_SHIPPED;
+I 84
+				}
+E 84
+E 72
+E 63
+				else   // all go on lib order
+I 84
+				{
+E 84
+					/* record placement of order */
+D 63
+					CurOrder.flags = OF_PLACED;
+E 63
+I 63
+D 72
+					CurOrder.flags |= OF_PLACED;
+E 72
+I 72
+					CurOrder.flags |= OF_COMMITED;
+I 84
+					printf("Library order placed\n");
+				}	
+
+E 84
+E 72
+E 63
+				if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) == OK)
+E 57
+D 51
+					break;
+	        printf("error placing order");
+E 51
+I 51
+D 53
+				{
+					if (msg == MSG_COMMIT_CLIP_DLD) // download succeeded
+						/* record delivery of clipart */
+						CurOrder.flags = OF_DELIVERED;
+					else   // all go on lib order
+						/* record placement of order */
+						CurOrder.flags = OF_PLACED;
+
+					if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) == OK)
+						break;
+				}
+
+				printf("error placing order\n");
+E 53
+I 53
+D 54
+					break;
+	        printf("error placing order");
+E 54
+I 54
+				{
+D 57
+					if (msg == MSG_COMMIT_CLIP_DLD) // download succeeded
+						/* record delivery of clipart */
+						CurOrder.flags = OF_DELIVERED;
+					else   // all go on lib order
+						/* record placement of order */
+						CurOrder.flags = OF_PLACED;
+
+					if (Acct_NormalOrder ( &CurOrder, &CurCCReq ) == OK)
+						break;
+E 57
+I 57
+					SendByte(WS_PORT,ACK);
+					SendBuf(WS_PORT,&CurOrder.orderID,sizeof(CurOrder.orderID));
+					break;
+E 57
+				}
+
+I 57
+				SendByte(WS_PORT,NAK);
+E 57
+				printf("error placing order\n");
+E 54
+E 53
+E 51
+E 47
+            break;
+E 45
+
+I 46
+D 81
+
+E 81
+E 46
+E 13
+D 45
+			case MSG_SAY_HI:
+				if (SendByte(GlobalhCom,ACK) != OK)
+					printf("Error sending ACK\n");
+				else
+					printf("Said Hi\n");
+			break;
+E 45
+I 45
+            case MSG_SAY_HI:
+D 74
+                if (SendByte(WS_PORT,ACK) != OK)
+                    printf("Error sending ACK\n");
+                else
+                    printf("Said Hi\n");
+E 74
+I 74
+				if (!bWSSaidHi)
+				{
+					if (SendByte(WS_PORT,ACK) != OK)
+						printf("Error sending ACK\n");
+					else
+					{
+						printf("Said Hi\n");
+						if (bWSSyncFix)
+							bWSSaidHi = TRUE;
+					}
+				 }
+E 74
+            break;
+E 45
+
+D 29
+			case MSG_SET_CUR_FILENAME:
+E 29
+I 29
+D 44
+			case MSG_SET_CUR_FILENAME: case 4:
+E 44
+I 44
+D 45
+			case MSG_SET_CUR_FILENAME: 
+E 44
+E 29
+				if (CurFilePtr != -1)
+					close(CurFilePtr);
+E 45
+I 45
+            case MSG_SET_CUR_FILENAME: 
+                if (CurFilePtr != -1)
+I 73
+				{
+E 73
+                    close(CurFilePtr);
+I 73
+					CurFilePtr = -1;
+				}
+E 73
+E 45
+
+D 42
+				if (GetFileName(GlobalhCom,STD_FILENAME_SIZE,CurFileName) != OK)
+E 42
+I 42
+D 45
+				if (GetPaddedBuf(GlobalhCom,STD_FILENAME_SIZE,
+								 CurFileName,TRUE) != OK)
+E 42
+I 37
+				{
+E 37
+					printf("Error getting CurFileName:   %s\n",CurFileName);
+I 37
+					SendByte(GlobalhCom,NAK);
+				}
+E 45
+I 45
+                if (GetPaddedBuf(WS_PORT,STD_FILENAME_SIZE,
+D 63
+                                 CurFileName,TRUE) != OK)
+E 63
+I 63
+                                 RequestedFileName,TRUE) != OK)
+E 63
+                {
+D 63
+                    printf("Error getting CurFileName:   %s\n",CurFileName);
+E 63
+I 63
+					printf("Error getting RequestedFileName:   %s\n",
+								  RequestedFileName);
+E 63
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+E 45
+E 37
+
+D 45
+				else 
+				{
+					printf("Received CurFileName: %s\n",CurFileName);
+					if (GetExt(CurFileName) == OK)
+					{
+D 37
+						/* O_CREAT just for now until we get the whole 
+						   database on disk **/
+E 37
+D 26
+						if ((CurFilePtr = open(CurFileName,O_RDWR|O_CREAT,
+E 26
+I 26
+						if ((CurFilePtr = open(CurFileName,O_RDWR,
+E 26
+											   S_IREAD|S_IWRITE)) == -1)
+I 37
+					    {
+E 37
+							printf("Unable to open %s\n",CurFileName);
+I 37
+D 39
+							SendByte(GlobalhCom,NAK);
+E 39
+						}
+E 37
+						else
+I 37
+						{
+E 37
+							printf("Opened %s\n",CurFileName);
+I 37
+D 39
+							SendByte(GlobalhCom,ACK);
+E 39
+						}
+E 37
+					}
+					else
+I 37
+					{
+E 37
+						printf("No such file (%s)\n",CurFileName);
+I 37
+D 39
+						SendByte(GlobalhCom,NAK);
+E 39
+					}
+I 39
+					SendByte(GlobalhCom,ACK);
+E 39
+E 37
+				}
+			break;
+E 45
+I 45
+                else 
+                {
+D 63
+                    printf("Received CurFileName: %s\n",CurFileName);
+E 63
+I 63
+					char TmpFileName[STD_FILENAME_SIZE+10+1];
+					if (SendByte(WS_PORT,ACK) != OK)
+						;
+D 84
+					/*
+                    printf("Received RequestedFileName: %s\n",
+								  RequestedFileName);
+					*/
+E 84
+I 84
+                    //printf("Received RequestedFileName: %s\n", 
+						//RequestedFileName);
+E 84
+E 63
+I 46
+					/* the idea here is that we try to open any file that
+D 63
+					   has the same basename as CurFileName.  If no such 
+					   file exists, then we return NAK.  We ignore the 
+					   extension in CurFileName if one was sent by WS */
+E 46
+                    if (GetExt(CurFileName) == OK)
+E 63
+I 63
+					   has the same basename as RequestedFileName.  */
+				    strcpy(UptodateFileName,RequestedFileName);
+                    if (GetExt(UptodateFileName) == OK)
+E 63
+                    {
+D 63
+                        if ((CurFilePtr = open(CurFileName,O_RDWR,
+                                               S_IREAD|S_IWRITE)) == -1)
+E 63
+I 63
+						if ((UptodateFileName[0] == '0') AND 
+							(UptodateFileName[1] == '1'))
+D 81
+							 sprintf(TmpFileName,"%s%s","./clips/",
+E 81
+I 81
+D 83
+							 sprintf(TmpFileName,"%s%s","/shopper/clips/",
+E 83
+I 83
+							 sprintf(TmpFileName,"%s/%s", CLIPSDIR,
+E 83
+E 81
+									  UptodateFileName);
+						else
+							strcpy(TmpFileName,UptodateFileName);
+                        if ((CurFilePtr = open(TmpFileName,O_RDONLY)) == -1)
+E 63
+                        {
+D 63
+							if (SendByte(WS_PORT,NAK) != OK)
+								;
+                            printf("Unable to open %s\n",CurFileName);
+E 63
+I 63
+D 76
+                            printf("Unable to open %s\n",TmpFileName);
+E 76
+I 76
+                            printf("(1)Unable to open %s\n",TmpFileName);
+E 76
+E 63
+							break;
+                        }
+                        else
+                        {
+D 63
+							if (SendByte(WS_PORT,ACK) != OK)
+								;
+                            printf("Opened %s\n",CurFileName);
+E 63
+I 63
+                            //printf("Opened %s\n",UptodateFileName);
+E 63
+							break;
+                        }
+                    }
+D 63
+                    else
+                    {
+						if (SendByte(WS_PORT,NAK) != OK)
+							;
+                        printf("No such file (%s)\n",CurFileName);
+E 63
+I 63
+					else
+					{
+D 76
+						printf("Unable to open %s\n",UptodateFileName);
+E 76
+I 76
+						printf("(5)Unable to open %s\n",UptodateFileName);
+E 76
+E 63
+						break;
+D 63
+                    }
+E 63
+I 63
+					}
+E 63
+                }
+            break;
+E 45
+
+D 45
+			case MSG_RECEIVE_FILE:
+				printf("Sending %s...\n",CurFileName);
+				if (XMSend(GlobalhCom,CurFilePtr) != OK)
+					printf("Error sending file %s\n",CurFileName);
+E 45
+I 45
+            case MSG_RECEIVE_FILE:
+D 63
+                printf("Sending %s...\n",CurFileName);
+E 63
+I 63
+            case MSG_DOWNLOAD_EXE:
+                printf("Sending %s...\n",UptodateFileName);
+E 63
+                if (XMSend(WS_PORT,CurFilePtr) != OK)
+D 63
+                    printf("Error sending file %s\n",CurFileName);
+E 63
+I 63
+                    printf("Error sending file %s\n",UptodateFileName);
+E 63
+E 45
+                break;
+
+I 47
+
+E 47
+D 45
+			case MSG_LATEST_VERSION:
+I 18
+				{
+				char buf[9];
+				memset(buf,0,sizeof(buf));
+	#ifdef TEST_SERVER
+				if (send_to_server(cc_server,
+								   "Hi to cc",8) == FAIL)
+					perror("cc_server");
+				if (recv_from_server(cc_server,
+									buf,8) == FAIL)
+					perror("cc_server");
+					printf("cc_server returns: %s\n",buf);
+	#endif
+E 45
+I 45
+            case MSG_LATEST_VERSION:
+                {
+I 63
+    #ifdef TEST_SERVER
+E 63
+                char buf[9];
+                memset(buf,0,sizeof(buf));
+D 63
+    #ifdef TEST_SERVER
+E 63
+                if (send_to_server(cc_server,
+                                   "Hi to cc",8) == FAIL)
+                    perror("cc_server");
+                if (recv_from_server(cc_server,
+                                    buf,8) == FAIL)
+                    perror("cc_server");
+                    printf("cc_server returns: %s\n",buf);
+    #endif
+E 45
+                }
+
+E 18
+D 45
+				printf("Query file up-to-date: ");
+				if (access(CurFileName,00))
+				{
+					/* file is not up-to-date */
+					SendByte(GlobalhCom,NAK);
+					printf("no\n");
+				}
+				else
+				{
+					SendByte(GlobalhCom,ACK);
+					printf("yes\n");
+				}
+E 45
+I 45
+D 63
+                printf("Query file up-to-date: ");
+                if (access(CurFileName,00))
+E 63
+I 63
+                //printf("Query file up-to-date (%s) (%s): ",
+							  //UptodateFileName,RequestedFileName);
+
+				if (strcmp(UptodateFileName,RequestedFileName))
+E 63
+                {
+                    /* file is not up-to-date */
+D 63
+                    printf("no\n");
+E 63
+I 63
+                    //printf("no\n");
+E 63
+                    if (SendByte(WS_PORT,NAK) != OK)
+						;
+                }
+                else
+                {
+D 63
+                    printf("yes\n");
+E 63
+I 63
+                    //printf("yes\n");
+E 63
+                    if (SendByte(WS_PORT,ACK) != OK)
+                    	;
+                }
+E 45
+                break;
+
+            case MSG_QUERY_DEST_FILENAME:
+D 45
+			{
+				char szDestName[STD_FILENAME_SIZE+1];
+				int len;
+E 45
+I 45
+            {
+                char szDestName[STD_FILENAME_SIZE+1];
+                int len;
+E 45
+
+D 45
+				printf("Query dest filename:");
+				lseek(CurFilePtr,3L,SEEK_SET);
+				if (read(CurFilePtr,szDestName,STD_FILENAME_SIZE) 
+								   < STD_FILENAME_SIZE)
+					printf("  Unable to obtain.\n");
+				else
+I 8
+				{
+				    szDestName[STD_FILENAME_SIZE] = '\0';
+E 8
+					printf("  %s.\n",szDestName);
+I 8
+				}
+E 8
+				/* pad */
+D 8
+				szDestName[STD_FILENAME_SIZE] = '\0';
+E 8
+				len = strlen(szDestName);
+				memset(szDestName+len,PADCHAR,STD_FILENAME_SIZE-len);
+				if (SendCRC(GlobalhCom,(BYTE *)szDestName,STD_FILENAME_SIZE) != OK)
+					printf("Error sending dest filename\n");
+			}
+			break;
+E 45
+I 45
+D 63
+                printf("Query dest filename:");
+E 63
+I 63
+                //printf("Query dest filename:");
+I 73
+				if (CurFilePtr == -1)
+				{
+					memset(szDestName,PADCHAR,STD_FILENAME_SIZE);
+					if (SendCRC(WS_PORT,(BYTE *)szDestName,STD_FILENAME_SIZE) 
+						   != OK)
+						printf("Error sending dest filename\n");
+					break;
+				}
+
+E 73
+E 63
+                lseek(CurFilePtr,3L,SEEK_SET);
+                if (read(CurFilePtr,szDestName,STD_FILENAME_SIZE) 
+                                   < STD_FILENAME_SIZE)
+D 63
+                    printf("  Unable to obtain.\n");
+E 63
+I 63
+                    //printf("  Unable to obtain.\n")
+					;
+E 63
+                else
+                {
+                    szDestName[STD_FILENAME_SIZE] = '\0';
+D 63
+                    printf("  %s.\n",szDestName);
+E 63
+I 63
+                    //printf("  %s.\n",szDestName);
+E 63
+                }
+                /* pad */
+                len = strlen(szDestName);
+                memset(szDestName+len,PADCHAR,STD_FILENAME_SIZE-len);
+                if (SendCRC(WS_PORT,(BYTE *)szDestName,STD_FILENAME_SIZE) != OK)
+                    printf("Error sending dest filename\n");
+I 78
+				/* add name to order struct */
+D 80
+				if (p = strchr(szDestName,PADCHAR))
+					*p = '\0';
+				strcpy(CurOrder.clipFileName, szDestName);
+E 80
+I 80
+				//if (p = strchr(szDestName,PADCHAR))
+					//*p = '\0';
+				//strcpy(CurOrder.clipFileName, szDestName);
+E 80
+E 78
+            }
+            break;
+E 45
+
+D 66
+            case MSG_QUERY_CUR_FILESIZE:
+D 45
+			{
+				WORD size;
+				printf("Query blocks:");
+				lseek(CurFilePtr,3L + TOTALBLOCKNUM_INDEX,SEEK_SET);
+				if (read(CurFilePtr,&size,sizeof(size)) < sizeof(size))
+					printf("  Unable to obtain.\n");
+				else
+					printf("  %d.\n",size-1);
+				--size;
+				if (SendBuf(GlobalhCom,(BYTE *)&size,sizeof(size)) != OK)
+					printf("Error sending size\n");
+			}
+			break;
+E 45
+I 45
+            {
+                WORD size;
+D 63
+                printf("Query blocks:");
+E 63
+I 63
+                //printf("Query blocks:");
+E 63
+                lseek(CurFilePtr,3L + TOTALBLOCKNUM_INDEX,SEEK_SET);
+                if (read(CurFilePtr,&size,sizeof(size)) < sizeof(size))
+D 63
+                    printf("  Unable to obtain.\n");
+E 63
+I 63
+                    //printf("  Unable to obtain.\n")
+					;
+E 63
+                else
+D 63
+                    printf("  %d.\n",size-1);
+E 63
+I 63
+                    //printf("  %d.\n",size-1)
+					;
+E 63
+                --size;
+                if (SendBuf(WS_PORT,(BYTE *)&size,sizeof(size)) != OK)
+                    printf("Error sending size\n");
+            }
+            break;
+E 66
+I 66
+            case MSG_QUERY_INSTOCK:
+				{
+					 WORD pstatus=ACK;
+I 74
+
+E 74
+					/* Get product availability if library or Window Shopper */
+I 74
+					if (Acct_CheckProdAvail ( &CurOrder, &pstatus ) != OK)
+						pstatus = FAIL;
+					switch(pstatus)
+					{
+						case CTRLX:
+							printf("Product out of stock\n");
+							CurOrder.flags |= OF_BACK_ORDERED;
+						break;
+						case SOH:
+							printf("Product not available\n");
+						break;
+					}
+E 74
+E 66
+E 45
+
+I 66
+D 74
+					#if 0
+						if (Acct_CheckProdAvail ( &CurOrder, &pstatus ) != OK)
+							pstatus = FAIL;
+D 68
+						switch()
+E 68
+I 68
+						switch(pstatus)
+E 68
+						{
+							case CTRLX:
+D 68
+									printf("Out of stock\n");
+E 68
+I 68
+									printf("Product out of stock\n");
+E 68
+D 72
+									Order->flags |= OF_BACKORDER;
+I 68
+                                    /* note it is imperative here that the
+                                       ORDER structure not be sent again
+                                       by WS, else it will wipe out this
+                                       flags setting!! */
+E 72
+I 72
+									Order->flags |= OF_BACK_ORDERED;
+					                if (Acct_NormalOrder ( &CurOrder, &CurCCReq )  != OK)
+                                        pstatus = FAIL;
+                                    /** the backorder flag is reused, so don't let it be
+                                        cleared */
+E 72
+E 68
+							break;
+D 68
+							default:
+E 68
+I 68
+							case SOH:
+E 68
+									printf("Product not available\n");
+D 68
+									END(pstatus)
+E 68
+							break;
+							}
+						}
+					#endif
+
+					 if (SendBuf(WS_PORT,(BYTE *)&pstatus,sizeof(pstatus)) != OK)
+E 74
+I 74
+					 if (SendBuf(WS_PORT,(BYTE *)&pstatus,sizeof(pstatus))!= OK)
+E 74
+						  printf("Error sending In Stock info\n");
+				}
+				break;
+
+					case MSG_QUERY_CUR_FILESIZE:
+					{
+						 WORD size;
+						 //printf("Query blocks:");
+I 73
+						 if (CurFilePtr == -1)
+						 {
+							 size = 0;
+							 if (SendBuf(WS_PORT,(BYTE *)&size,
+									  sizeof(size)) != OK)
+								  printf("Error sending size\n");
+							 break;
+						 }
+
+E 73
+						 lseek(CurFilePtr,3L + TOTALBLOCKNUM_INDEX,SEEK_SET);
+						 if (read(CurFilePtr,&size,sizeof(size)) < sizeof(size))
+							  //printf("  Unable to obtain.\n")
+						;
+						 else
+							  //printf("  %d.\n",size-1)
+						;
+						 --size;
+						 if (SendBuf(WS_PORT,(BYTE *)&size,sizeof(size)) != OK)
+							  printf("Error sending size\n");
+					}
+					break;
+
+E 66
+I 57
+			case MSG_QUERY_SUBSCRIPTION_PRICE:
+			{
+                DWORD price;
+                FILE *fp,*fopen();
+D 63
+                printf("Query window shopper price:");
+E 63
+I 63
+                //printf("Query window shopper price:");
+E 63
+                if ((fp = fopen("WSINFO","rt")) == NULL)
+                    printf("Unable to open WSINFO\n");
+                else
+                {
+                    fscanf(fp,"%*d %ld",&price);
+                    fclose(fp);
+					if (SendBuf(WS_PORT,(BYTE *)&price,sizeof(price)) != OK)
+						printf("Error sending price\n");
+                }
+			}
+			break;
+
+I 76
+D 78
+#if 0
+E 78
+			case MSG_QUERY_RENEWAL_PRICE:
+			{
+D 79
+				WORD status,subscrType;
+E 79
+				char ctrlStr[80];
+				DWORD price;
+				FILE *fp,*fopen();
+
+				//printf("Query window shopper price:");
+
+D 79
+				/* is subscription type a demo or what? */
+				if (Acct_CustIsActiveUserID(lCurUserID,
+						&status,&subscrType) != OK)
+				{
+					printf("Error sending price\n"); // WS will time out!!!???
+					break;
+				}
+
+				if (subscrType == DEMO) 
+D 77
+					strcpy(ctrlStr,"%*d %*ld %ld");
+E 77
+I 77
+					strcpy(ctrlStr,"%*d %ld"); // read regular WS package price
+E 77
+				else
+D 77
+					strcpy(ctrlStr,"%*d %ld");
+E 77
+I 77
+					strcpy(ctrlStr,"%*d %*ld %ld");
+E 77
+
+E 79
+				if ((fp = fopen("WSINFO","rt")) == NULL)
+					printf("Unable to open WSINFO\n");
+				else
+				{
+D 79
+					fscanf(fp,ctrlStr,&price);
+E 79
+I 79
+					fscanf(fp,"%*d %*ld %ld",&price);
+E 79
+					fclose(fp);
+					if (SendBuf(WS_PORT,(BYTE *)&price,sizeof(price)) != OK)
+						printf("Error sending price\n");
+				}
+			}
+			break;
+D 78
+#endif
+E 78
+
+E 76
+E 57
+I 18
+            case MSG_QUERY_UNCOMPRESSED_FILESIZE:
+D 45
+			{
+				DWORD size;
+				printf("Query uncompressed filesize:");
+				lseek(CurFilePtr,3L + UNCOMPR_INDEX,SEEK_SET);
+				if (read(CurFilePtr,&size,sizeof(size)) < sizeof(size))
+					printf("  Unable to obtain.\n");
+				else
+					printf("  %ld.\n",size);
+				if (SendBuf(GlobalhCom,(BYTE *)&size,sizeof(size)) != OK)
+					printf("Error sending size\n");
+			}
+			break;
+E 45
+I 45
+            {
+                DWORD size;
+D 63
+                printf("Query uncompressed filesize:");
+E 63
+I 63
+                //printf("Query uncompressed filesize:");
+I 73
+				if (CurFilePtr == -1)
+				{
+					size = 0L;
+					if (SendBuf(WS_PORT,(BYTE *)&size,sizeof(size)) != OK)
+						printf("Error sending size\n");
+					break;
+				}
+
+E 73
+E 63
+                lseek(CurFilePtr,3L + UNCOMPR_INDEX,SEEK_SET);
+                if (read(CurFilePtr,&size,sizeof(size)) < sizeof(size))
+D 63
+                    printf("  Unable to obtain.\n");
+E 63
+I 63
+                    //printf("  Unable to obtain.\n")
+					;
+E 63
+                else
+D 63
+                    printf("  %ld.\n",size);
+E 63
+I 63
+                    //printf("  %ld.\n",size)
+					;
+E 63
+                if (SendBuf(WS_PORT,(BYTE *)&size,sizeof(size)) != OK)
+                    printf("Error sending size\n");
+            }
+            break;
+E 45
+
+E 18
+D 45
+			case MSG_LATEST_EXE:
+			{
+D 27
+				WORD Version;
+E 27
+I 27
+				WORD Version,CurVersion;
+				FILE *fp,*fopen();
+E 27
+				if (ReceiveBuf(GlobalhCom,(BYTE *)&Version,
+					 sizeof(Version),STD_WAIT) != OK)
+I 44
+				{
+E 44
+					printf("Error getting Version:   %d\n",Version);
+I 44
+					break;
+				}
+E 44
+				else
+					printf("Received Version:  %d\n",Version);
+E 45
+I 45
+            case MSG_LATEST_EXE:
+            {
+                WORD Version,CurVersion;
+                FILE *fp,*fopen();
+I 74
+
+				bWSSyncFix = FALSE;
+				bWSSaidHi = FALSE;
+
+E 74
+                if (ReceiveBuf(WS_PORT,(BYTE *)&Version,
+                     sizeof(Version),STD_WAIT) != OK)
+                {
+                    printf("Error getting Version:   %d\n",Version);
+                    break;
+                }
+                else
+D 63
+                    printf("Received Version:  %d\n",Version);
+E 63
+I 63
+D 81
+                    //printf("Received Version:  %d\n",Version)
+					;
+E 81
+I 81
+                    printf("Received Version:  %d\n",Version);
+E 81
+E 63
+E 45
+D 27
+				if (Version < CurVersion)
+					/* exe is not up-to-date */
+					SendByte(GlobalhCom,NAK);
+E 27
+I 27
+
+I 78
+#if 0
+1/22/91
+Have to exclude this for now: The older versions of WS (previous to 1.10) query
+the EXE version before sending the WinVer, therefore WinVer is a random number,
+users with old shoppers will probably not get new shoppers.  We have to take
+this out and, unfortunatly, screw the Win21 user again.
+
+				/*	1/18/91 
+					For Win21 users we will ignore their shopper version so that
+					we don't have to maintain Win21 versions of shopper
+					we do this by telling versions of shopper running under 
+					Win21 that they are update irregardless. If the customer 
+					updates to Win30 they will be updated as always  */
+				if (WinVer < 0x300)
+				{
+						printf("Win21 user, ignoring Shopper Version\n");
+                        if (SendByte(WS_PORT,ACK) != OK)
+							;
+						break;
+				}
+#endif
+					
+E 78
+D 28
+				if (fp = fopen("VER","rt") == NULL)
+E 28
+I 28
+D 29
+				if (fp = fopen("WSINFO","rt") == NULL)
+E 28
+					printf("Unable to open VER\n");
+E 29
+I 29
+D 45
+				if ((fp = fopen("WSINFO","rt")) == NULL)
+					printf("Unable to open WSINFO\n");
+E 29
+E 27
+				else
+D 27
+					SendByte(GlobalhCom,ACK);
+E 27
+I 27
+				{
+					fscanf(fp,"%d",&CurVersion);
+					fclose(fp);
+					if (Version < CurVersion)
+						/* exe is not up-to-date */
+						SendByte(GlobalhCom,NAK);
+					else
+						SendByte(GlobalhCom,ACK);
+				}
+E 27
+			}
+			break;
+E 45
+I 45
+                if ((fp = fopen("WSINFO","rt")) == NULL)
+                    printf("Unable to open WSINFO\n");
+                else
+                {
+                    fscanf(fp,"%d",&CurVersion);
+                    fclose(fp);
+                    if (Version < CurVersion)
+					{
+                        /* exe is not up-to-date */
+I 75
+						printf("out-of-date executable\n");
+E 75
+                        if (SendByte(WS_PORT,NAK) != OK)
+							;
+					}
+                    else
+                        if (SendByte(WS_PORT,ACK) != OK)
+							;
+                }
+            }
+            break;
+E 45
+
+D 45
+			default:
+			//	printf("Received unknown message %x\n",msg);
+			break;
+		}
+E 45
+I 45
+            default:
+D 81
+            //    printf("Received unknown message %x\n",msg);
+E 81
+I 81
+D 84
+                printf("Received unknown message %x\n",msg);
+E 84
+I 84
+                printf("Received unknown message 0x%X\n",msg);
+E 84
+E 81
+            break;
+        }
+    }
+E 45
+	}
+}
+
+D 18
+
+
+E 18
+int
+Receive_Message(HANDLE hCom, MSGTYPE *msgP)
+{
+I 30
+D 45
+	MSGTYPE msg2;
+E 45
+I 45
+    MSGTYPE msg2;
+E 45
+
+E 30
+D 21
+    if (ReceiveBuf(hCom,msgP,sizeof(MSGTYPE),0) != OK)
+E 21
+I 21
+D 31
+	/* wait 5 minutes before timing out */
+D 29
+    if (ReceiveBuf(hCom,msgP,sizeof(MSGTYPE),300) != OK)
+E 29
+I 29
+    if (ReceiveBuf(hCom,msgP,sizeof(MSGTYPE),600) != OK)
+E 31
+I 31
+D 32
+	/* wait 30 minutes before timing out */
+    if (ReceiveBuf(hCom,msgP,sizeof(MSGTYPE),1800) != OK)
+E 31
+E 29
+E 21
+	   return FAIL;
+E 32
+I 32
+D 45
+	while(1)
+	{
+		/* wait 30 minutes before timing out */
+		if (ReceiveBuf(hCom,msgP,sizeof(MSGTYPE),1800) != OK)
+		   return FAIL;
+E 45
+I 45
+    while(1)
+    {
+D 59
+        /* wait 2 minutes before timing out  (10 for retail) */
+E 59
+I 59
+        /* wait nTimeout seconds before timing out */
+E 59
+D 63
+        if (ReceiveBuf(hCom,msgP,sizeof(MSGTYPE),120) != OK)
+E 63
+I 63
+        if (ReceiveBuf(hCom,msgP,sizeof(MSGTYPE),nTimeout) != OK)
+E 63
+D 84
+           return FAIL;
+E 84
+I 84
+		{
+			printf("Timed out waiting to recieve 1st msg\n");
+			return FAIL;
+		}
+E 84
+E 45
+E 32
+I 30
+
+D 31
+    if (ReceiveBuf(hCom,&msg2,sizeof(MSGTYPE),0) != OK)
+	   return FAIL;
+E 31
+I 31
+D 32
+    if (ReceiveBuf(hCom,&msg2,sizeof(MSGTYPE),1) != OK)
+	   return OK;
+E 32
+I 32
+D 45
+		if (ReceiveBuf(hCom,&msg2,sizeof(MSGTYPE),0) != OK)
+		   continue;
+E 45
+I 45
+        if (ReceiveBuf(hCom,&msg2,sizeof(MSGTYPE),0) != OK)
+           continue;
+E 45
+E 32
+E 31
+
+D 32
+    /* redundancy for error checking */
+    if (*msgP != msg2)
+D 31
+		return FAIL;
+E 31
+I 31
+		return OK;
+E 31
+E 30
+
+    return OK;
+E 32
+I 32
+D 45
+		/* redundancy for error checking */
+		if (*msgP == msg2)
+			return OK;
+	}
+E 45
+I 45
+        /* redundancy for error checking */
+        if (*msgP == msg2)
+            return OK;
+I 81
+		else
+D 84
+			printf("Recieved unequal msg's: M1: %d, M2: %d\n", *msgP, msg2);
+E 84
+I 84
+			printf("Recieved unequal msg's: M1: 0x%X, M2: 0x%X\n", *msgP, msg2);
+E 84
+E 81
+    }
+E 45
+E 32
+}
+
+D 83
+
+I 3
+D 47
+#if 0
+E 3
+int
+I 3
+/* Send_Message(HANDLE hCom, MSGTYPE Msg, ...) */ 
+Send_Message(HANDLE hCom, MSGTYPE Msg) 
+{
+    int nRetval;
+    switch(Msg)
+    {
+D 45
+	#if 0
+E 45
+I 45
+    #if 0
+E 45
+        case RESPOND:
+                return(SendBuf(hCom,&Msg,sizeof(MSGTYPE)));
+        break;
+D 45
+	#endif
+	default:
+E 45
+I 45
+    #endif
+    default:
+E 45
+            nRetval = SendBuf(hCom,&Msg,sizeof(MSGTYPE));
+            if (nRetval != sizeof(MSGTYPE))
+D 45
+		return FAIL;
+	break;
+E 45
+I 45
+        return FAIL;
+    break;
+E 45
+    }
+}
+#endif
+E 47
+
+E 83
+int
+E 3
+D 42
+GetFileName(HANDLE hCom, WORD nNumChars, char *szFilename)
+E 42
+I 42
+GetPaddedBuf(HANDLE hCom, WORD nNumChars, char *szBuf, BOOL upperize)
+E 42
+{
+D 45
+	char *p;
+E 45
+I 45
+    char *p;
+E 45
+D 20
+	#include <string.h>
+E 20
+
+D 42
+	/* get filename to send */
+	if (ReceiveCRC(hCom,szFilename,nNumChars) != OK)
+E 42
+I 42
+D 45
+	/* get buf */
+	if (ReceiveCRC(hCom,szBuf,nNumChars) != OK)
+E 42
+	{
+D 42
+		printf("Error receiving filename\n");
+E 42
+I 42
+		printf("Error receiving padded buffer\n");
+E 42
+		return FAIL;
+	}
+	else
+	{
+D 42
+		szFilename[nNumChars] ='\0';
+		if (p = strchr(szFilename,PADCHAR))
+E 42
+I 42
+		szBuf[nNumChars] ='\0';
+		if (p = strchr(szBuf,PADCHAR))
+E 42
+			*p ='\0';
+I 37
+D 42
+		for(p=szFilename; *p; ++p)
+			*p = toupper(*p);
+E 42
+I 42
+		if (upperize)
+			for(p=szBuf; *p; ++p)
+				*p = toupper(*p);
+E 42
+E 37
+		return OK;
+	}
+E 45
+I 45
+    /* get buf */
+    if (ReceiveCRC(hCom,szBuf,nNumChars) != OK)
+    {
+        printf("Error receiving padded buffer\n");
+        return FAIL;
+    }
+    else
+    {
+        szBuf[nNumChars] ='\0';
+        if (p = strchr(szBuf,PADCHAR))
+            *p ='\0';
+        if (upperize)
+            for(p=szBuf; *p; ++p)
+                *p = toupper(*p);
+        return OK;
+    }
+E 45
+}
+
+D 75
+
+E 75
+#include <sys/dir.h>
+int
+GetExt(char *szFileName)
+I 47
+D 74
+/** this function could sure use some speeding up!!!  Could we put inode
+    list in memory?  Can we do a faster (binary) search on it? **/
+E 74
+E 47
+{
+I 46
+D 75
+    char *p;
+E 75
+I 75
+	extern 	BOOL IsRightFormat(char *szFileName);
+I 76
+	char *p;
+E 76
+E 75
+
+I 76
+	// remove extension if there is one
+    if (p = strchr(szFileName,'.'))
+        *p = '\0';
+E 76
+I 75
+
+    if ((szFileName[0] == '0') AND (szFileName[1] == '1'))
+	// look in clips directory (clips separated for speed on others)
+D 81
+		return OldGetExt(szFileName,"./clips/");
+E 81
+I 81
+D 83
+		return OldGetExt(szFileName,"/shopper/clips/");
+E 83
+I 83
+		return OldGetExt(szFileName, CLIPSDIR);
+E 83
+E 81
+    else
+	{
+D 76
+		char *p;
+		// remove extension if there is one
+		if (p = strchr(szFileName,'.'))
+			*p = '\0';
+E 76
+		if (GetExtFromTree(FileTree,szFileName) != OK)
+		{
+			if (!IsRightFormat(szFileName))
+				return OldGetExt(szFileName,"./");
+			return(FAIL);
+		}
+		return OK;
+	}
+}
+
+
+int
+OldGetExt(char *szFileName,char *dir)
+{
+E 75
+E 46
+D 45
+	struct directx
+	{
+		ino_t d_ino;
+		char d_name[DIRSIZ+1];
+	} dlink;
+	int fd, nread;
+	char *dname;
+E 45
+I 45
+    struct directx
+    {
+        ino_t d_ino;
+        char d_name[DIRSIZ+1];
+    } dlink;
+    int fd, nread;
+I 75
+D 76
+    char *p;
+E 76
+E 75
+    char *dname;
+E 45
+
+D 46
+    if (strchr(szFileName,'.'))
+D 45
+		return OK; // already has an extension
+E 45
+I 45
+        return OK; // already has an extension
+E 46
+I 46
+D 76
+	// remove extension if there is one
+    if (p = strchr(szFileName,'.'))
+        *p = '\0';
+E 76
+E 46
+E 45
+
+D 63
+    if ((fd = open("./",0)) == -1)
+D 45
+	{
+		printf("Error opening ./\n");
+		return FAIL;
+	}
+E 45
+I 45
+    {
+        printf("Error opening ./\n");
+        return FAIL;
+    }
+E 63
+I 63
+D 75
+    if ((szFileName[0] == '0') AND (szFileName[1] == '1'))
+	// look in clips directory (clips separated for speed on others)
+	{
+		if ((fd = open("./clips/",0)) == -1)
+E 75
+I 75
+		if ((fd = open(dir,0)) == -1)
+E 75
+		{
+D 75
+			printf("Error opening ./clips/\n");
+E 75
+I 75
+D 76
+			printf("Error opening %s\n",dir);
+E 76
+I 76
+			printf("(2)Error opening %s\n",dir);
+E 76
+E 75
+			return FAIL;
+		}
+D 73
+	}
+	else
+E 73
+I 73
+
+E 73
+D 74
+		if ((fd = open("./",0)) == -1)
+		{
+			printf("Error opening ./\n");
+			return FAIL;
+		}
+E 63
+E 45
+    
+E 74
+D 45
+	dlink.d_name[DIRSIZ] = '\0';
+	while ((nread = read(fd, &dlink, sizeof(struct direct))) == 
+							   (sizeof(struct direct)))
+	{
+		if (dlink.d_ino)
+E 45
+I 45
+D 73
+    dlink.d_name[DIRSIZ] = '\0';
+    while ((nread = read(fd, &dlink, sizeof(struct direct))) == 
+                               (sizeof(struct direct)))
+    {
+        if (dlink.d_ino)
+E 45
+            if (dname = strstr(dlink.d_name,szFileName))
+D 45
+			{
+				strcpy(szFileName,dlink.d_name);
+				return OK;
+			}
+	}
+I 37
+	close(fd);
+E 37
+	return FAIL;
+E 45
+I 45
+            {
+                strcpy(szFileName,dlink.d_name);
+				close(fd);
+                return OK;
+E 73
+I 73
+		dlink.d_name[DIRSIZ] = '\0';
+		while ((nread = read(fd, &dlink, sizeof(struct direct))) == 
+								   (sizeof(struct direct)))
+		{
+			if (dlink.d_ino)
+				if (dname = strstr(dlink.d_name,szFileName))
+				{
+					strcpy(szFileName,dlink.d_name);
+					close(fd);
+					return OK;
+E 73
+            }
+I 74
+			dlink.d_name[DIRSIZ] = '\0';
+E 74
+D 73
+    }
+    close(fd);
+    return FAIL;
+E 73
+I 73
+		}
+		close(fd);
+		return FAIL;
+D 75
+	}
+	else
+D 74
+	{
+		if (GetExtFromTree(FileTree,szFileName) != OK)
+			return (FAIL);
+		return(OK);
+	}
+E 74
+I 74
+		return GetExtFromTree(FileTree,szFileName);
+E 75
+E 74
+E 73
+E 45
+}
+
+D 44
+
+
+void
+D 6
+LostTransmission()
+E 6
+I 6
+LostTransmission(int sig)
+E 6
+{
+D 3
+	printf("loast transmission, reopening %s\n",savetty);
+	restore_tty(GlobalhCom);
+E 3
+I 3
+	printf("lost carrier, reopening %s\n",savetty);
+I 9
+	fflush(stdout);
+E 9
+	//restore_tty(GlobalhCom);
+E 3
+	close(GlobalhCom);
+	if ((GlobalhCom = open(savetty,O_RDWR)) == -1)
+		printf("error reopening %s\n",savetty);
+I 9
+	else
+		printf("reopened %s\n",savetty);
+E 9
+}
+
+E 44
+D 5
+
+E 5
+I 5
+static void
+D 6
+ShutDown()
+E 6
+I 6
+D 74
+ShutDown(int sig)
+E 74
+I 74
+HandleSig(int sig)
+E 74
+E 6
+{
+I 29
+D 45
+	extern HANDLE Port;
+E 45
+I 45
+    extern HANDLE Port;
+I 51
+
+D 74
+	printf("%s: ", pID ? "PARENT" : "CHILD");
+E 74
+I 74
+	printf("%s got signal: ", childPID ? "PARENT" : "CHILD");
+
+E 74
+E 51
+E 45
+E 29
+I 10
+D 12
+	printf("Shutdown\n");
+	fflush(stdout);
+
+E 12
+E 10
+D 9
+	printf("shutting down...\n");
+I 6
+	fflush(stdout);
+E 6
+	restore_tty(GlobalhCom);
+E 9
+I 9
+    switch(sig)
+I 45
+    {
+        case SIGHUP:
+D 51
+            printf("Window Shopper hung up without saying goodbye\n");
+			CloseUserSession(0);
+			close(GlobalhCom);
+			GlobalhCom = NULL;
+			exit(1); // longjmp(jmpenv,1); // go back to message loop
+
+E 51
+I 51
+			printf("HangUp\n");
+I 74
+			/* for some reason doesn't go to default, goes into infinate loop */
+			if (signal(SIGHUP,SIG_IGN) == BADSIG)
+				printf("Bad SIGHUP signal call\n");
+E 74
+		break;
+E 51
+        case SIGINT:
+            printf("Interrupt\n");
+        break;
+I 55
+D 74
+		case SIGCLD:
+		/* then we're the parent and the child just died.  If it died
+		   because we killed it and we're ready to die, then now we can
+		   die to. */
+            printf("Child died\n");
+		break;
+E 74
+E 55
+        case SIGQUIT:
+            printf("Quit\n");
+        break;
+        case SIGTERM:
+            printf("Terminate\n");
+        break;
+    }
+
+D 51
+	/* get to here if killing bbs */
+	CloseUserSession(0);
+    HangUp(GlobalhCom);
+	close(GlobalhCom);
+	GlobalhCom = NULL;
+
+	/* from credit card: */
+    if (Port)
+    {
+        HangUp(Port);
+I 46
+		restore_tty(Port);
+E 46
+        close(Port);
+        Port = NULL;
+    }
+
+	if (hOrigCom)
+E 51
+I 51
+D 74
+	if (pID == 0) // then child
+E 74
+I 74
+	if (childPID == 0) // then child
+E 74
+E 51
+E 45
+	{
+I 15
+D 45
+		case SIGHUP:
+			printf("Controlling Hang Up\n");
+D 18
+			fflush(stdout);
+			restore_tty(GlobalhCom);
+			exit(sig);
+E 18
+		break;
+E 15
+		case SIGINT:
+			printf("Interrupt\n");
+D 18
+			fflush(stdout);
+			restore_tty(GlobalhCom);
+D 11
+			exit(sig);
+E 11
+I 11
+D 14
+			//exit(sig);
+E 14
+I 14
+			exit(sig);
+E 18
+E 14
+E 11
+		break;
+		case SIGQUIT:
+			printf("Quit\n");
+D 18
+			fflush(stdout);
+			restore_tty(GlobalhCom);
+D 11
+			exit(sig);
+E 11
+I 11
+D 14
+			//exit(sig);
+E 14
+I 14
+			exit(sig);
+E 18
+E 14
+E 11
+		break;
+		case SIGTERM:
+			printf("Terminate\n");
+D 18
+			fflush(stdout);
+			restore_tty(GlobalhCom);
+D 11
+			exit(sig);
+E 11
+I 11
+D 14
+			//exit(sig);
+E 14
+I 14
+			exit(sig);
+E 18
+E 14
+E 11
+		break;
+E 45
+I 45
+D 51
+		restore_tty(hOrigCom);
+		close(hOrigCom);
+		hOrigCom=NULL;
+E 51
+I 51
+		if (sig == SIGHUP)
+			printf("WS hung up without saying goodbye\n");
+		ExitChild(sig);
+E 51
+E 45
+	}
+I 51
+    else /* killing bbs */
+		ExitParent(sig);
+E 51
+I 18
+D 20
+	fflush(stdout);
+	restore_tty(GlobalhCom);
+E 20
+I 20
+D 45
+	HangUp(GlobalhCom);
+I 29
+	if (Port)
+	{
+		HangUp(Port);
+		close(Port);
+		Port = NULL;
+	}
+E 29
+I 21
+	GlobalhCom=NULL;
+E 21
+	restore_tty(hOrigCom);
+	close(hOrigCom);
+E 45
+D 84
+
+E 84
+E 20
+D 51
+#ifdef TEST_SERVER
+D 45
+	disconnect_from_server(cc_server);
+E 45
+I 45
+    disconnect_from_server(cc_server);
+E 45
+#endif
+I 20
+D 45
+	fflush(stdout);
+E 20
+	exit(sig);
+E 45
+I 45
+    fflush(stdout);
+
+    exit(sig);
+E 51
+E 45
+E 18
+I 15
+}
+
+static int
+D 74
+catchsigs(void)
+E 74
+I 74
+SetSigHandler(void)
+E 74
+{
+D 45
+	if (signal(SIGHUP,ShutDown) == BADSIG)
+		printf("Bad SIGHUP signal call\n");
+E 45
+I 45
+D 74
+    if (signal(SIGHUP,ShutDown) == BADSIG)
+E 74
+I 74
+    if (signal(SIGHUP,HandleSig) == BADSIG)
+E 74
+        printf("Bad SIGHUP signal call\n");
+E 45
+
+D 45
+	if (signal(SIGINT,ShutDown) == BADSIG)
+		printf("Bad SIGINT signal call\n");
+E 45
+I 45
+D 74
+    if (signal(SIGINT,ShutDown) == BADSIG)
+E 74
+I 74
+D 78
+    if (signal(SIGINT,HandleSig) == BADSIG)
+E 78
+I 78
+    if (signal(SIGINT,SIG_IGN) == BADSIG) // ignore to disable del key
+E 78
+E 74
+        printf("Bad SIGINT signal call\n");
+E 45
+
+D 45
+	if (signal(SIGTERM,ShutDown) == BADSIG)
+		printf("Bad SIGTERM signal call\n");
+E 45
+I 45
+D 74
+    if (signal(SIGTERM,ShutDown) == BADSIG)
+E 74
+I 74
+    if (signal(SIGTERM,HandleSig) == BADSIG)
+E 74
+        printf("Bad SIGTERM signal call\n");
+E 45
+
+D 45
+	if (signal(SIGQUIT,ShutDown) == BADSIG)
+		printf("Bad SIGQUIT signal call\n");
+E 45
+I 45
+D 74
+    if (signal(SIGQUIT,ShutDown) == BADSIG)
+E 74
+I 74
+    if (signal(SIGQUIT,HandleSig) == BADSIG)
+E 74
+        printf("Bad SIGQUIT signal call\n");
+E 45
+D 81
+
+E 81
+I 20
+}
+
+D 45
+reopen()
+E 45
+I 45
+D 75
+openWSPort()
+E 75
+I 75
+D 81
+openWSPort(BOOL UsRobot)
+E 81
+I 81
+openWSPort(BOOL bHiSpeed)
+E 81
+E 75
+E 45
+{
+D 45
+	int nRetval = OK;
+	char buf;
+I 22
+	static int cur_baud=2400;
+E 45
+I 45
+    int nRetval = OK;
+I 71
+    char buf;
+E 71
+D 69
+    char buf;
+E 69
+D 75
+    static int cur_baud=2400;
+E 75
+I 75
+D 81
+    int cur_baud = (UsRobot ? 19200 : 2400);
+E 81
+I 81
+	//use high DTE speed for pp9600 cause its buffered
+D 83
+    int tmpbaud = (bHiSpeed ? 19200 : 2400);
+	char *psz, szResultBuf[80];
+E 83
+I 83
+    int tmpbaud = (bHiSpeed ? 9600 : 2400);
+	char *psz, szResultBuf[255];
+E 83
+	BOOL bSaidHi, bTerminate = FALSE;
+E 81
+E 75
+E 45
+E 22
+
+D 45
+	while (1)
+	{
+		if (GlobalhCom)
+E 45
+I 45
+D 74
+    while (1)
+    {
+E 74
+D 81
+        if (GlobalhCom)
+        {
+D 63
+            HangUp(GlobalhCom);
+            //restore_tty(GlobalhCom);
+E 63
+I 63
+            HangUp(GlobalhCom,savetty);
+E 63
+            close(GlobalhCom);
+            GlobalhCom = NULL;
+        }
+E 81
+I 81
+	if (GlobalhCom)
+	{
+		HangUp(GlobalhCom,savetty);
+		close(GlobalhCom);
+		GlobalhCom = NULL;
+	}
+E 81
+
+D 81
+        if (hOrigCom)
+E 81
+I 81
+	if (hOrigCom)
+	{
+		restore_tty(hOrigCom);
+		close(hOrigCom);
+	}
+
+	if ((hOrigCom = open(savetty,O_RDWR|O_NDELAY)) < 0)
+	{
+		printf("(3)Error opening %s\n",savetty);
+		END(FAIL)
+	}
+	save_tty(hOrigCom); // for restore_tty()
+
+	/* in case these need resetting: */
+	setraw(hOrigCom);
+	set_tty_baud(hOrigCom,tmpbaud);
+	set_tty_local(hOrigCom,TRUE);
+
+	/* this'll guarantee return values below */
+	WriteModemCommand(hOrigCom,"+~+~+~~~ATE0V0Q0S0=1X4\r~~~");
+
+	/* clear return values */
+	flush(hOrigCom,2);
+
+	// MNP modem, kill compression: -????? - beng
+	// \Q3  or K3 sets CTS and RTS hardware flow control (factory default)
+	// 9600 modem, kill compression:
+	if (bHiSpeed)
+	{
+		FILE*	fpInit9600;
+		char	szInit9600[255];
+		int		nInitLen;
+
+		if ((fpInit9600 = fopen("/usr/bbs/master.bin/init9600", "r")) == NULL)
+E 81
+E 45
+I 21
+		{
+D 45
+			HangUp(GlobalhCom);
+D 22
+			restore_tty(GlobalhCom);
+E 22
+I 22
+			//restore_tty(GlobalhCom);
+E 22
+E 21
+			close(GlobalhCom);
+I 21
+			GlobalhCom = NULL;
+E 45
+I 45
+D 81
+			restore_tty(hOrigCom);
+			close(hOrigCom);
+E 81
+I 81
+			printf("Can't open Modem init file\n");
+			END(FAIL)
+E 81
+E 45
+		}
+I 81
+		if (fgets(szInit9600, 255, fpInit9600) == NULL)
+		{
+			printf("Can't read Modem init string\n");
+			END(FAIL)
+		}
+		if (fclose(fpInit9600) != 0)
+		{
+			printf("Can't close Modem init file\n");
+			END(FAIL)
+		}
+E 81
+E 21
+
+D 21
+		/* reset */
+        setraw(hOrigCom);
+E 21
+I 21
+D 45
+		if ((hOrigCom = open(savetty,O_RDWR|O_NDELAY)) == -1)
+E 45
+I 45
+D 63
+        //if (hOrigCom == NULL) // only ever open once
+
+E 63
+I 63
+D 69
+		if ((hOrigCom = open(savetty,O_RDWR|O_NDELAY)) == -1)
+E 69
+I 69
+D 81
+		if ((hOrigCom = open(savetty,O_RDWR|O_NDELAY)) < 0)
+E 81
+I 81
+		if ((nInitLen = strlen(szInit9600)) == 255)
+E 81
+E 69
+E 63
+E 45
+		{
+D 45
+			printf("Error opening %s\n",savetty);
+			exit(1);
+E 45
+I 45
+D 63
+			if ((hOrigCom = open(savetty,O_RDWR|O_NDELAY)) == -1)
+			{
+				printf("Error opening %s\n",savetty);
+D 51
+				exit(1);
+E 51
+I 51
+				ExitChild(1); // child
+E 51
+			}
+			save_tty(hOrigCom); // for restore_tty()
+E 63
+I 63
+D 76
+			printf("Error opening %s\n",savetty);
+E 76
+I 76
+D 81
+			printf("(3)Error opening %s\n",savetty);
+E 81
+I 81
+			printf("9600 modem init string exceeds buffer\n");
+E 81
+E 76
+D 74
+			ExitChild(1); // child
+E 74
+I 74
+			END(FAIL)
+E 74
+E 63
+E 45
+		}
+I 63
+D 81
+		save_tty(hOrigCom); // for restore_tty()
+E 81
+I 81
+		//modem wants carridge return instead of linefeed
+		szInit9600[nInitLen-1] = '\r';	
+		WriteModemCommand(hOrigCom, szInit9600);
+		/* clear return values */
+        //flush(hOrigCom,2);
+		printf("Modem initialized: %s\n", szInit9600);
+E 81
+E 63
+D 45
+		save_tty(hOrigCom); // for restore_tty()
+		setraw(hOrigCom);
+I 22
+		set_tty_baud(hOrigCom,cur_baud);
+E 45
+E 22
+E 21
+
+I 45
+D 81
+		/* in case these need resetting: */
+        setraw(hOrigCom);
+		set_tty_baud(hOrigCom,cur_baud);
+E 45
+		set_tty_local(hOrigCom,TRUE);
+E 81
+I 81
+#if 0
+		printf("PP9600 responded:\n");
+		while (nRetval = read(hOrigCom,&buf,1))
+		{
+			if (buf != '\r')
+				printf("%c", buf);
+		}
+		printf("\n");
+#endif
+	}
+E 81
+D 21
+		/* this'll hangup and guarantee return values below */
+		WriteModemCommand(hOrigCom,"+~+~+~~~ATZ V0 Q0\r");
+E 21
+I 21
+D 45
+		/* this'll guarantee return values below */
+D 44
+		WriteModemCommand(hOrigCom,"+~+~+~~~ATV0 Q0\r");
+E 44
+I 44
+		WriteModemCommand(hOrigCom,"+~+~+~~~ATV0 Q0 S0=1\r");
+E 44
+E 21
+		/* so open will block: */
+		set_tty_local(hOrigCom,FALSE);
+E 45
+
+D 45
+		/* clear return values */
+		flush(hOrigCom,2);
+E 45
+I 45
+D 81
+        /* this'll guarantee return values below */
+D 46
+        WriteModemCommand(hOrigCom,"+~+~+~~~ATV0 Q0 S0=1\r");
+E 46
+I 46
+D 55
+        WriteModemCommand(hOrigCom,"+~+~+~~~ATE0V0Q0S0=1X4\\Q3\r~");
+        //WriteModemCommand(hOrigCom,"+~+~+~~~ATE0V0Q0S0=1X4S23=54\\Q3\r");
+E 55
+I 55
+        WriteModemCommand(hOrigCom,"+~+~+~~~ATE0V0Q0S0=1X4\r~");
+I 63
+		// MNP modem, kill compression:
+E 63
+        WriteModemCommand(hOrigCom,"AT\\Q3\r~");
+D 63
+        WriteModemCommand(hOrigCom,"AT&K0\r~");
+E 63
+I 63
+D 69
+		// 9600 modem, kill compression, error handling:
+E 69
+I 69
+		// 9600 modem, kill compression:
+E 69
+D 75
+        WriteModemCommand(hOrigCom,"AT&M4&H1&R2&K0\r~");
+E 75
+I 75
+		if (UsRobot)
+			WriteModemCommand(hOrigCom,"AT&B1&M4&H1&R2&K0\r~");
+E 75
+E 63
+E 55
+E 46
+        /* clear return values */
+        flush(hOrigCom,2);
+E 81
+I 81
+#if 0
+	printf("Current modem profile:\n");
+	WriteModemCommand(hOrigCom,"+~+~+~~~AT&V\r~~~~~~~~~");
+	while (nRetval = read(hOrigCom,&buf,1))
+	{
+		if (buf != '\r')
+			printf("%c", buf);
+	}
+	printf("\n");
+#endif
+E 81
+E 45
+
+D 45
+		if((GlobalhCom = open(savetty,O_RDWR)) != -1)
+		{
+			printf("%s opened\n",savetty);
+D 21
+			set_tty_xclude(GlobalhCom,TRUE);
+E 21
+I 21
+D 44
+			close(hOrigCom);
+E 44
+I 44
+			//close(hOrigCom);
+E 44
+E 21
+			set_tty_local(GlobalhCom,TRUE);
+			while (1)
+			{
+				if (ReceiveBuf(GlobalhCom,&buf,1,3) != OK)
+					END(FAIL)
+E 45
+I 45
+D 81
+        /* so open will block: */
+        set_tty_local(hOrigCom,FALSE);
+E 81
+I 81
+	/* clear return values */
+	flush(hOrigCom,2);
+E 81
+E 45
+
+D 45
+				switch (buf)
+				{
+					default:
+					break;
+					case '1': 
+						{
+							if (nRetval = read(GlobalhCom,&buf,1))
+							switch(buf)
+							{
+							 case '0':
+								printf("Connect at 2400!\n");
+I 22
+								cur_baud = 2400;
+E 22
+								set_tty_baud(GlobalhCom,2400);
+								END(OK)
+							 break;
+							 case '\r':
+								printf("Connect at 300!\n");
+I 22
+								cur_baud = 300;
+E 22
+								set_tty_baud(GlobalhCom,300);
+								END(OK)
+							 break;
+							}
+						}
+					break;
+E 45
+I 45
+D 81
+		setpgrp(); // this causes the next opened tty to issue a
+				   // SIGHUP when the device closes (the next opened
+				   // device becomes the 'controlling' tty.
+E 81
+I 81
+	/* so open will block: */
+	set_tty_local(hOrigCom,FALSE);
+E 81
+E 45
+D 69
+
+I 51
+        printf("Waiting at the phone...\n");
+E 51
+I 45
+        if((GlobalhCom = open(savetty,O_RDWR)) != -1)
+E 69
+I 69
+D 71
+	    printf("Waiting at the phone...\n");
+E 71
+I 71
+
+D 81
+        printf("Waiting at the phone...\n");
+E 71
+        if((GlobalhCom = open(savetty,O_RDWR)) < 0)
+            END(FAIL)
+        else
+E 69
+        {
+I 69
+D 71
+			char buf[3];
+			int len;
+E 71
+E 69
+            printf("%s opened\n",savetty);
+D 69
+            set_tty_local(WS_PORT,TRUE);
+E 69
+I 69
+D 71
+            set_tty_local(GlobalhCom,TRUE);
+E 71
+I 71
+            set_tty_local(WS_PORT,TRUE);
+E 81
+I 81
+#if 0
+	if (bHiSpeed)	//Set hardware flow control
+	{
+		printf("Setting flow control\n");
+		set_tty_flow(hOrigCom);
+	}
+#endif
+E 81
+E 71
+E 69
+
+D 81
+			setblock(GlobalhCom,OFF);
+E 81
+I 81
+	setpgrp(); // this causes the next opened tty to issue a
+			   // SIGHUP when the device closes (the next opened
+			   // device becomes the 'controlling' tty.
+E 81
+I 69
+D 71
+			memset(buf,0,sizeof(buf));
+E 71
+E 69
+
+D 69
+            while (1)
+            {
+				/* we're gonna read from WS_PORT henceforth */
+                if (ReceiveBuf(WS_PORT,&buf,1,3) != OK)
+                    END(FAIL)
+E 69
+I 69
+D 71
+			printf("Answered the phone!\n");
+			if (ReceiveVarBuf(GlobalhCom,buf,sizeof(buf),3,'\r',&len) != OK)
+			{
+				printf("VarBuf failed\n");
+				printf("buf (%d): %c%c\n",len,buf[0],buf[1]);
+				END(FAIL)
+			}
+E 71
+I 71
+D 81
+            while (1)
+            {
+				/* we're gonna read from WS_PORT henceforth */
+                if (ReceiveBuf(WS_PORT,&buf,1,3) != OK)
+                    END(FAIL)
+E 81
+I 81
+	printf("Waiting at the phone...\n");
+I 83
+
+	//This open call blocks until the carrier detect flag is raised
+E 83
+	if((GlobalhCom = open(savetty,O_RDWR)) < 0)
+	{
+		printf("Open %s failed\n", savetty);
+		END(FAIL)
+	}
+E 81
+E 71
+E 69
+
+D 49
+				printf("got to 1\n");
+E 49
+D 69
+                switch (buf)
+                {
+                    default:
+                    break;
+                    case '1': 
+                        {
+							errno = 0;
+                            if (nRetval = read(WS_PORT,&buf,1))
+                            switch(buf)
+                            {
+I 55
+							case '5': 
+								printf("Connect at 1200!\n");
+								cur_baud = 1200;
+								set_tty_baud(WS_PORT,1200);
+								END(OK)
+							break;
+							 case '8':
+							 case '9':
+								printf("Connect at 4800!\n");
+                                cur_baud = 4800;
+                                set_tty_baud(WS_PORT,4800);
+								END(OK)
+							 break;
+							 case '3':
+							 case '7':
+								printf("Connect at 9600!\n");
+                                cur_baud = 9600;
+                                set_tty_baud(WS_PORT,9600);
+								END(OK)
+							 break;
+E 55
+                             case '0':
+I 55
+                             case '6':
+E 55
+                                printf("Connect at 2400!\n");
+                                cur_baud = 2400;
+                                set_tty_baud(WS_PORT,2400);
+                                END(OK)
+                             break;
+                             case '\r':
+                                printf("Connect at 300!\n");
+                                cur_baud = 300;
+                                set_tty_baud(WS_PORT,300);
+                                END(OK)
+                             break;
+                            }
+							else 
+								if (errno)
+									perror("waiting for connect");
+						} 
+					break; 
+E 45
+					case '5': 
+D 45
+						printf("Connect at 1200!\n");
+I 22
+						cur_baud = 1200;
+E 22
+						set_tty_baud(GlobalhCom,1200);
+						END(OK)
+					break;
+				}
+			}
+		}
+		else
+			END(FAIL)
+E 45
+I 45
+                        printf("Connect at 1200!\n");
+                        cur_baud = 1200;
+                        set_tty_baud(WS_PORT,1200);
+                        END(OK)
+                    break;
+                }
+E 69
+I 69
+D 71
+			switch (buf[0])
+			{
+				default:
+					END(FAIL)
+				break;
+				case '1': 
+					{
+						errno = 0;
+						switch(buf[1])
+						{
+						case '5': 
+							printf("Connect at 1200!\n");
+							cur_baud = 1200;
+						break;
+						 case '8':
+						 case '9':
+							printf("Connect at 4800!\n");
+							cur_baud = 4800;
+						 break;
+						 case '3':
+						 case '7':
+							printf("Connect at 9600!\n");
+							cur_baud = 9600;
+						 break;
+						 case '0':
+						 case '6':
+							printf("Connect at 2400!\n");
+							cur_baud = 2400;
+						 break;
+						 case 0:
+							printf("Connect at 300!\n");
+							cur_baud = 300;
+						 break;
+						}
+							#if 0
+							if (errno)
+								perror("waiting for connect");
+							#endif
+					} 
+				break; 
+				case '5': 
+					printf("Connect at 1200!\n");
+					cur_baud = 1200;
+				break;
+E 71
+I 71
+D 81
+                switch (buf)
+                {
+                    default:
+                    break;
+                    case '1': 
+                        {
+							errno = 0;
+                            if (nRetval = read(WS_PORT,&buf,1))
+                            switch(buf)
+                            {
+							case '5': 
+D 75
+								printf("Connect at 1200!\n");
+								cur_baud = 1200;
+								set_tty_baud(WS_PORT,1200);
+E 75
+I 75
+								printf("Connect at 1200 (ARQ)!\n");
+								if (!UsRobot)
+									cur_baud = 1200;
+E 75
+								END(OK)
+							break;
+							 case '8':
+D 75
+							 case '9':
+E 75
+								printf("Connect at 4800!\n");
+D 75
+                                cur_baud = 4800;
+                                set_tty_baud(WS_PORT,4800);
+E 75
+I 75
+								if (!UsRobot)
+									cur_baud = 4800;
+E 75
+								END(OK)
+I 75
+							 case '9':
+								printf("Connect at 4800 (ARQ)!\n");
+								if (!UsRobot)
+									cur_baud = 4800;
+								END(OK)
+E 75
+							 break;
+							 case '3':
+D 75
+							 case '7':
+E 75
+								printf("Connect at 9600!\n");
+D 75
+                                cur_baud = 9600;
+                                set_tty_baud(WS_PORT,9600);
+E 75
+I 75
+								if (!UsRobot)
+									cur_baud = 9600;
+E 75
+								END(OK)
+I 75
+							 case '7':
+								printf("Connect at 9600 (ARQ)!\n");
+								if (!UsRobot)
+									cur_baud = 9600;
+								END(OK)
+E 75
+							 break;
+                             case '0':
+D 75
+                             case '6':
+E 75
+                                printf("Connect at 2400!\n");
+D 75
+                                cur_baud = 2400;
+                                set_tty_baud(WS_PORT,2400);
+E 75
+I 75
+								if (!UsRobot)
+									cur_baud = 2400;
+E 75
+                                END(OK)
+I 75
+                             case '6':
+                                printf("Connect at 2400 (ARQ)!\n");
+								if (!UsRobot)
+									cur_baud = 2400;
+                                END(OK)
+E 75
+                             break;
+                             case '\r':
+                                printf("Connect at 300!\n");
+D 75
+                                cur_baud = 300;
+                                set_tty_baud(WS_PORT,300);
+E 75
+I 75
+								if (!UsRobot)
+									cur_baud = 300;
+E 75
+                                END(OK)
+                             break;
+                            }
+							else 
+								if (errno)
+									perror("waiting for connect");
+						} 
+					break; 
+					case '5': 
+                        printf("Connect at 1200!\n");
+D 75
+                        cur_baud = 1200;
+                        set_tty_baud(WS_PORT,1200);
+E 75
+I 75
+						if (!UsRobot)
+							cur_baud = 1200;
+E 75
+                        END(OK)
+                    break;
+                }
+E 71
+E 69
+            }
+I 69
+D 71
+
+            set_tty_local(GlobalhCom,FALSE);
+D 70
+			setblock(GlobalhCom,OFF);
+E 70
+			set_tty_baud(GlobalhCom,cur_baud);
+			set_tty_xclude(GlobalhCom,TRUE);
+			END(OK)
+E 71
+E 69
+        }
+E 81
+I 81
+D 83
+	printf("%s opened\n",savetty);
+E 83
+I 83
+	time(&clock);
+	printf("Connected at %s\n", ctime(&clock));
+
+E 83
+	set_tty_local(WS_PORT,TRUE);
+E 81
+D 69
+        else
+            END(FAIL)
+E 69
+E 45
+
+I 81
+D 83
+	//Read from the modem until the SAY_HI msg is recieved, everything
+	//preceding it is result codes from the modem
+E 83
+I 83
+/*********** E S T A B L I S H   C O N N E C T I O N  ********************
+	Read from the modem (WS_PORT) until the SAY_HI msg is recieved, everything
+	preceding it is result codes from the modem or negotiation garbage.
+	TimeToWait = 120 secs cause 9600 feature negotiation can take a while.
+	Result codes from the modem are terminated with a CR.
+	We fill up the result buffer until a CR is recieved, than we 
+	try and interperate it and set the appropriate flags.
+	We keep doing this until we get two consecutive SAY_HI msg's from Window
+	Shopper or we fill up the buffer or timeout waiting for the next character.
+******************************************************************************/
+E 83
+	bSaidHi = FALSE;
+I 83
+	tmpbaud = 0;
+E 83
+	while (1)
+	{
+D 83
+		/* we're gonna read from WS_PORT henceforth */
+		//TimeToWait =30 cause 9600 feature negotiation can take a while
+		//each result code from the modem is terminated with a CR
+		//we fill up the result buffer ntil the CR is recieved, than we 
+		//try and interperate it and set the appropriate flags
+		//keep doing this until we get two consecutive SAY_HI msg's
+E 83
+I 83
+		if (tmpbaud)	//tmpbaud got set via result code
+		{
+			set_tty_baud(WS_PORT, tmpbaud);
+			set_tty_local(WS_PORT,FALSE);
+			set_tty_xclude(WS_PORT,TRUE);
+		}
+
+E 83
+		psz = szResultBuf;
+		bTerminate = FALSE;
+D 83
+		while ((psz-szResultBuf < sizeof(szResultBuf)) AND 
+				(ReceiveBuf(WS_PORT, psz, 1, 60) == OK))
+E 83
+I 83
+		while (psz-szResultBuf < sizeof(szResultBuf)) 
+E 83
+		{
+I 83
+			if (ReceiveBuf(WS_PORT, psz, 1, 120) != OK)
+			{
+				printf("Timed out reading from %s\n", WS_PORT);
+				END (FAIL)
+			}
+E 83
+			if (*psz == '\r')
+			{
+				bTerminate = TRUE;
+				break;
+			}
+			else if (*psz == MSG_SAY_HI)
+			{
+				if (bSaidHi)
+					END(OK)
+				else
+					bSaidHi = TRUE;
+			}
+			else
+			{
+				bSaidHi = FALSE;
+				psz++;
+			}
+		}
+		*psz = '\0';	//trim \r
+
+		if (NOT (szResultBuf[0] AND bTerminate))
+		{
+D 83
+			printf("Empty result buf or no terminate char\n");
+E 83
+I 83
+			psz = szResultBuf;
+			printf("Empty result buf or no terminate char:\n");
+			while (*psz)
+			{
+				if (isalnum(*psz))
+					printf("%c", *psz);
+				else
+					printf("(#%d)", *psz);
+				++psz;
+			}
+			printf("\n");
+E 83
+			END (FAIL)
+		}
+			
+		//Now interperate
+		if (strcmp(szResultBuf, RC_OK) == 0)
+		{
+			printf("Modem sez OK\n");
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_ERROR) == 0)
+		{
+			printf("Modem sez ERROR\n");
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_RING) == 0)
+		{
+			printf("DING-A-LING-A-LING!!!!\n");
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CONNECT_300) == 0)
+		{
+D 83
+			printf("Connect at 300!\n");
+			if (bHiSpeed)
+				printf("(Port to Modem)\n");
+E 83
+I 83
+			printf("Connect at 300 %s\n", bHiSpeed ? "(DTE to DCE)" : "");
+E 83
+			tmpbaud = 300;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CONNECT_1200) == 0)
+		{
+D 83
+			printf("Connect at 1200!\n");
+			if (bHiSpeed)
+				printf("(Port to Modem)\n");
+E 83
+I 83
+			printf("Connect at 1200 %s\n", bHiSpeed ? "(DTE to DCE)" : "");
+E 83
+			tmpbaud = 1200;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CONNECT_2400) == 0)
+		{
+D 83
+			printf("Connect at 2400!\n");
+			if (bHiSpeed)
+				printf("(Port to Modem)\n");
+E 83
+I 83
+			printf("Connect at 2400 %s\n", bHiSpeed ? "(DTE to DCE)" : "");
+E 83
+			tmpbaud = 2400;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CONNECT_4800) == 0)
+		{
+D 83
+			printf("Connect at 4800!\n");
+			if (bHiSpeed)
+				printf("(Port to Modem)\n");
+E 83
+I 83
+			printf("Connect at 4800 %s\n", bHiSpeed ? "(DTE to DCE)" : "");
+E 83
+			tmpbaud = 4800;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CONNECT_9600) == 0)
+		{
+D 83
+			printf("Connect at 9600!\n");
+			if (bHiSpeed)
+				printf("(Port to Modem)\n");
+E 83
+I 83
+			printf("Connect at 9600 %s\n", bHiSpeed ? "(DTE to DCE)" : "");
+E 83
+			tmpbaud = 9600;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CONNECT_19200) == 0)
+		{
+D 83
+			printf("Connect at 19200!\n");
+			if (bHiSpeed)
+				printf("(Port to Modem)\n");
+E 83
+I 83
+			printf("Connect at 19200 %s\n", bHiSpeed ? "(DTE to DCE)" : "");
+E 83
+			tmpbaud = 19200;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CONNECT_38400) == 0)
+		{
+D 83
+			printf("Connect at 38400!\n");
+			if (bHiSpeed)
+				printf("(Port to Modem)\n");
+E 83
+I 83
+			printf("Connect at 38400 %s\n", bHiSpeed ? "(DTE to DCE)" : "");
+E 83
+			tmpbaud = 38400;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CARRIER_300) == 0)
+		{
+			printf("Carrier at 300!\n");
+			tmpbaud = 300;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CARRIER_1200) == 0)
+		{
+			printf("Carrier at 1200!\n");
+			tmpbaud = 1200;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CARRIER_2400) == 0)
+		{
+			printf("Carrier at 2400!\n");
+			tmpbaud = 2400;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CARRIER_4800) == 0)
+		{
+			printf("Carrier at 4800!\n");
+			tmpbaud = 4800;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_CARRIER_9600) == 0)
+		{
+			printf("Carrier at 9600!\n");
+			tmpbaud = 9600;
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_COMPRESSION_MNP5) == 0)
+		{
+			printf("MNP/5 Data Compression enabled!\n");
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_COMPRESSION_V42BIS) == 0)
+		{
+			printf("V.42bis Data Compression enabled!\n");
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_COMPRESSION_NONE) == 0)
+		{
+			printf("Data Compression disabled!\n");
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_PROTOCOL_NONE) == 0)
+		{
+			printf("Modem in standard async mode\n");
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_PROTOCOL_V42LAPM) == 0)
+		{
+			printf("Modem in V.42 LAPM Error Control mode\n");
+			continue;
+		} else	
+		if (strcmp(szResultBuf, RC_PROTOCOL_MNP) == 0)
+		{
+			printf("Modem in MNP Error Control mode\n");
+			continue;
+		} 
+		else	//BIG TROUBLE!!
+		{
+			char* cp = szResultBuf;
+D 83
+			printf("Got non standard result:\n");
+E 83
+I 83
+			printf("Got non-standard result code:\n");
+E 83
+			while (*cp)
+			{
+				if (NOT isalnum(*cp))
+					printf("#%d ", *cp);
+				else
+					printf("%c", *cp);
+D 83
+
+E 83
+				cp++;
+			}
+			printf("\n");
+D 83
+			END(FAIL)
+E 83
+I 83
+			continue;	//got garbage, keep reading
+E 83
+		}
+	}
+
+E 81
+D 45
+	end:
+	if (nRetval == FAIL)
+I 21
+	{
+E 21
+		printf("Error opening %s\n",savetty);
+I 21
+		set_tty_local(GlobalhCom,FALSE);
+	}
+E 21
+	else
+	{
+		flush(GlobalhCom,2);
+		set_tty_local(GlobalhCom,FALSE);
+I 21
+		set_tty_xclude(GlobalhCom,TRUE);
+E 21
+		return OK;
+	}
+E 45
+I 45
+    end:
+I 81
+	setblock(GlobalhCom,OFF);
+E 81
+    if (nRetval == FAIL)
+    {
+D 76
+        printf("Error opening %s\n",savetty);
+E 76
+I 76
+        printf("(4)Error opening %s\n",savetty);
+I 81
+		if (bHiSpeed)
+		{
+			printf("Trying to decipher hangup reason:\n");
+			WriteModemCommand(WS_PORT,"+~+~+~~~AT&S86?\r~~~");
+			while (nRetval = read(WS_PORT,&buf,1))
+			{
+				printf("Recieved (#%d)\n", buf);
+			}
+		}
+E 81
+E 76
+D 69
+        set_tty_local(WS_PORT,FALSE);
+E 69
+I 69
+D 71
+    //    set_tty_local(WS_PORT,FALSE);
+E 71
+I 71
+D 74
+        set_tty_local(WS_PORT,FALSE);
+E 74
+I 74
+D 83
+        //set_tty_local(WS_PORT,FALSE);
+E 83
+I 83
+		else
+			flush(WS_PORT,2);
+        set_tty_local(WS_PORT,FALSE);
+E 83
+E 74
+E 71
+E 69
+E 45
+    }
+I 45
+    else
+    {
+D 63
+        /** in case WS hangs up we won't answer again until we time 
+            out on this session: */
+E 63
+D 69
+        flush(WS_PORT,2);
+        set_tty_local(WS_PORT,FALSE);
+        set_tty_xclude(WS_PORT,TRUE);
+E 69
+I 69
+D 71
+        flush(GlobalhCom,2);
+E 71
+I 71
+D 81
+        flush(WS_PORT,2);
+I 75
+		set_tty_baud(WS_PORT,cur_baud);
+E 81
+I 81
+        //flush(WS_PORT,2);
+
+D 83
+		if (NOT bHiSpeed)
+			set_tty_baud(WS_PORT, tmpbaud);
+E 83
+I 83
+		//if (NOT bHiSpeed)
+			//set_tty_baud(WS_PORT, tmpbaud);
+E 83
+
+E 81
+E 75
+D 83
+        set_tty_local(WS_PORT,FALSE);
+        set_tty_xclude(WS_PORT,TRUE);
+E 83
+I 83
+        //set_tty_local(WS_PORT,FALSE);
+        //set_tty_xclude(WS_PORT,TRUE);
+E 83
+I 81
+
+E 81
+I 78
+D 83
+		time(&clock);
+		printf("Connected at %s\n", ctime(&clock));
+I 81
+
+E 81
+E 78
+E 71
+E 69
+I 63
+		setnewuser(); 
+E 83
+I 83
+		nRetval = setnewuser(); 
+E 83
+E 63
+D 74
+        return OK;
+E 74
+    }
+D 74
+    }
+E 74
+I 74
+	return nRetval;
+E 74
+E 45
+I 29
+}
+
+D 81
+
+E 81
+I 45
+ShowCust(ADDRESS_STRUCT *CustInfo)
+{
+    printf("CustInfo:\n");
+D 49
+    printf("   %s\n",CustInfo->customer);
+E 49
+I 49
+    printf("   %s\n",CustInfo->name);
+E 49
+    printf("   %s\n",CustInfo->company);
+D 49
+    printf("   %s\n",CustInfo->address);
+E 49
+I 49
+    printf("   %s\n",CustInfo->street);
+I 78
+    printf("   %s\n",CustInfo->street2);
+E 78
+E 49
+D 63
+    printf("   %s\n",CustInfo->city);
+    printf("   %s\n",CustInfo->state);
+    printf("   %d\n",CustInfo->whichCountry);
+    printf("   %s\n",CustInfo->country);
+E 63
+I 63
+    printf("   %s, ",CustInfo->city);
+    printf("   %s  ",CustInfo->state);
+E 63
+    printf("   %s\n",CustInfo->postal_code);
+I 78
+    printf("   %s  \n",CustInfo->province);
+E 78
+D 63
+    printf("   %s\n",CustInfo->phone.area);
+    printf("   %s\n",CustInfo->phone.number);
+E 63
+I 63
+    printf("   %d: ",CustInfo->whichCountry);
+    printf("   %s\n",CustInfo->country);
+    printf("   (%s)",CustInfo->phone.area);
+    printf("   %s - ",CustInfo->phone.number);
+E 63
+    printf("   %s\n",CustInfo->phone.ext);
+}
+E 45
+D 49
+ShowOrder(ORDER *CurOrder)
+E 49
+I 49
+ShowOrder(ORDER_STRUCT *CurOrder)
+E 49
+{
+    printf("CurOrder:\n");
+D 80
+    printf("   %s\n",CurOrder->libName);
+E 80
+I 80
+    //printf("   %s\n",CurOrder->libName);
+E 80
+D 49
+    printf("   %s\n",CurOrder->clipName);
+    printf("   %s\n",CurOrder->productID);
+    printf("   %s\n",CurOrder->venderName);
+    printf("   %s\n",CurOrder->shipName);
+    printf("   %s\n",CurOrder->shipStreet);
+    printf("   %s\n",CurOrder->shipCity);
+    printf("   %s\n",CurOrder->shipState);
+    printf("   %s\n",CurOrder->shipCountry);
+    printf("   %s\n",CurOrder->shipPostalCode);
+E 49
+I 49
+D 79
+    printf("   %lx\n",CurOrder->libID);
+E 79
+I 79
+    printf("   %ld\n",CurOrder->libID);
+E 79
+D 80
+    printf("   %s\n",CurOrder->clipDesc);
+E 80
+I 80
+    //printf("   %s\n",CurOrder->clipDesc);
+E 80
+    printf("   %lx\n",CurOrder->clipID);
+D 80
+    printf("   %s\n",CurOrder->vendorName);
+E 80
+I 80
+    //printf("   %s\n",CurOrder->vendorName);
+E 80
+    printf("   %lx\n",CurOrder->vendorID);
+    printf("   %s\n",CurOrder->ShipAddress.name);
+    printf("   %s\n",CurOrder->ShipAddress.street);
+I 78
+    printf("   %s\n",CurOrder->ShipAddress.street2);
+E 78
+    printf("   %s\n",CurOrder->ShipAddress.city);
+    printf("   %s\n",CurOrder->ShipAddress.state);
+I 78
+    printf("   %s\n",CurOrder->ShipAddress.province);
+E 78
+    printf("   %s\n",CurOrder->ShipAddress.country);
+    printf("   %s\n",CurOrder->ShipAddress.postal_code);
+E 49
+    printf("   %s\n",CurOrder->ccName);
+D 49
+    printf("   %s\n",CurOrder->AcctNum);
+    printf("   %s\n",CurOrder->ExpDate);
+E 49
+I 49
+    printf("   %s\n",CurOrder->ccNum);
+    printf("   %s\n",CurOrder->ccExpDate);
+    printf("   %d\n",CurOrder->ccType);
+E 49
+    printf("   %d\n",CurOrder->Quantity);
+D 41
+    printf("   %d\n",CurOrder->priceTotal);
+    printf("   %d\n",CurOrder->priceEach);
+E 41
+I 41
+D 45
+    printf("   %u\n",CurOrder->priceTotal);
+    printf("   %u\n",CurOrder->priceEach);
+E 45
+I 45
+    printf("   %u\n",(WORD)CurOrder->priceTotal);
+    printf("   %u\n",(WORD)CurOrder->priceEach);
+E 45
+D 49
+    printf("   %d\n",CurOrder->MediaType);
+E 49
+I 49
+    printf("   %d\n",CurOrder->mediaType);
+E 49
+    printf("   %d\n",CurOrder->CourierType);
+E 41
+    printf("   %lx\n",CurOrder->flags);
+I 42
+}
+
+D 84
+
+
+E 84
+D 44
+void
+E 44
+I 44
+BOOL
+E 44
+D 47
+GetThatMoola(ORDER *Order)
+E 47
+I 47
+D 49
+GetThatMoola(ORDER *Order, CCReq *ccreq)
+E 49
+I 49
+D 74
+GetThatMoola(ORDER_STRUCT *Order, CCReq *ccreq)
+E 74
+I 74
+GetThatMoola(ORDER_STRUCT *Order, CCReq *ccreq, BOOL bCheckLocalCredit)
+E 74
+E 49
+E 47
+I 44
+/* returns whether credit captured */
+E 44
+{
+I 54
+D 55
+    int nRetval = TRUE;
+E 55
+I 55
+    int nRetval = EOT;
+I 62
+	BYTE pstatus;				/* Product availability */
+E 62
+E 55
+
+E 54
+I 51
+D 53
+    int nRetval = TRUE;
+
+E 53
+E 51
+D 45
+	CCReq ccreq;
+	strcpy(ccreq.AcctNum,Order->AcctNum);
+	strcpy(ccreq.ExpDate,Order->ExpDate);
+	ccreq.Amount = Order->priceTotal / 100;
+	ccreq.MsgCode = SALE;
+	if (CaptureCredit(&ccreq) != OK)
+I 44
+	{
+E 44
+		SendByte(GlobalhCom,EOT);
+I 44
+		return FALSE;
+	}
+E 44
+	else 
+	{
+		switch (ccreq.Result)
+		{
+			case nCAPTURE:
+			case nAUTH:
+				SendByte(GlobalhCom,ACK);
+I 44
+				return TRUE;
+E 44
+			break;
+E 45
+I 45
+D 47
+    CCReq ccreq;
+E 47
+D 49
+    strcpy(ccreq.AcctNum,Order->AcctNum);
+    strcpy(ccreq.ExpDate,Order->ExpDate);
+    ccreq.Amount = (float)Order->priceTotal / 100.0;
+    ccreq.MsgCode = SALE;
+    ccreq.Force = NO_FORCE;
+    ccreq.ReSend = NO_RESEND;
+E 49
+I 49
+    strcpy(ccreq->AcctNum,Order->ccNum);
+    strcpy(ccreq->ExpDate,Order->ccExpDate);
+I 59
+	ccreq->CCType = Order->ccType;
+E 59
+    ccreq->Amount = (float)Order->priceTotal / 100.0;
+    ccreq->MsgCode = SALE;
+D 56
+    ccreq->Force = NO_FORCE;
+E 56
+I 56
+    ccreq->Force = FORCE;
+E 56
+    ccreq->ReSend = NO_RESEND;
+I 62
+D 73
+    ccreq->Result = 0; // gotta clear this at least for freebee case
+E 73
+I 73
+    ccreq->Result = 0;
+    ccreq->Route = LOCAL;
+E 73
+E 62
+E 49
+E 45
+
+I 54
+    /* set up order */
+I 56
+D 79
+	if (Acct_NewID(&Order->orderID,ACCT_ID_ORDER) != OK)
+E 79
+I 79
+	if (Acct_NewID(&Order->orderID,ACCT_ID_ORDER, NULL) != OK)
+E 79
+    {
+D 72
+		printf("didn't get any money\n");
+I 62
+D 63
+		Order->flags = OF_NO_CASH;
+E 63
+I 63
+		Order->flags |= OF_NO_CASH;
+E 63
+E 62
+		END(EOT)
+E 72
+I 72
+		printf("didn't even get an order id!\n");
+        /* note at this point we haven't created an order record */
+	    if (SendByte(WS_PORT,(BYTE)EOT) != OK)
+		    ;
+	    return(FALSE);
+E 72
+	}
+
+I 72
+    /* create a new order record */
+E 72
+I 57
+    Order->userID = lCurUserID;
+	Order->sessionID = lSessionID;
+D 72
+
+E 72
+D 63
+    printf("New orderID: %x\n",Order->orderID);
+E 57
+E 56
+	Order->flags = OF_INITIALIZE;
+E 63
+I 63
+D 65
+    //printf("New orderID: %x\n",Order->orderID);
+E 65
+	Order->flags |= OF_INITIALIZE;
+E 63
+	if (Acct_NormalOrder ( Order, ccreq ) != OK)
+	{
+D 62
+		printf("didn't get any money\n");
+E 62
+I 62
+D 72
+		printf("didn't get any money 2\n");
+D 63
+		Order->flags = OF_NO_CASH;
+E 63
+I 63
+		Order->flags |= OF_NO_CASH;
+E 63
+E 62
+		END(EOT)
+E 72
+I 72
+		printf("didn't get an order record\n");
+        /* note at this point we haven't created an order record */
+	    if (SendByte(WS_PORT,(BYTE)EOT) != OK)
+		    ;
+	    return(FALSE);
+E 72
+	}
+E 54
+I 51
+D 53
+    /* set up order */
+	Order->flags = OF_INITIALIZE;
+	if (Acct_NormalOrder ( Order, ccreq ) != OK)
+	{
+		printf("didn't get any money\n");
+		END(EOT)
+	}
+E 53
+E 51
+I 50
+
+I 62
+D 66
+	/* Get product availability if library or Window Shopper */
+
+D 63
+    if (Order->prodType == LIB || Order->prodType == WS)
+E 63
+I 63
+    /* if (Order->prodType == LIB || Order->prodType == WS) */
+	if (0)
+E 63
+		{
+			if (Acct_CheckProdAvail ( Order, &pstatus ) != OK)
+			{
+				printf("didn't get any money 3\n");
+D 63
+				Order->flags = OF_NO_CASH;
+E 63
+I 63
+				Order->flags |= OF_NO_CASH;
+E 63
+				END(EOT)
+			}
+			else
+			{
+				if (pstatus != ACK)				/* If product not available */
+				{
+					if (pstatus == CTRLX)
+						printf("Out of stock\n");
+					else printf("Product not available\n");
+					END(pstatus)
+				}
+			}
+		}
+E 66
+D 72
+
+E 72
+E 62
+D 58
+    printf("CCReq fields from GetThatMoola pre CaptureCredit:\n");
+D 51
+	PrintCCReq(&ccreq);
+E 50
+D 45
+			case nDUPLICATE:
+				SendByte(GlobalhCom,EOT);
+I 44
+				return FALSE;
+E 44
+			break;
+E 45
+I 45
+    if (CaptureCredit(&ccreq) != OK)
+E 51
+I 51
+	PrintCCReq(ccreq);
+E 58
+I 58
+    //printf("CCReq fields from GetThatMoola pre CaptureCredit:\n");
+	//PrintCCReq(ccreq);
+
+    if (Order->priceTotal == 0L)
+		if (Order->prodType == CLIP)
+		{
+D 84
+			printf("freebee\n");
+E 84
+I 84
+			printf("Free ClipArt\n");
+E 84
+I 72
+		    ccreq->Result = nCAPTURE;
+E 72
+			END(ACK)
+		}
+		else // no price???
+I 62
+		{
+D 63
+			Order->flags = OF_NO_CASH;
+E 63
+I 63
+D 72
+			Order->flags |= OF_NO_CASH;
+E 72
+I 72
+			printf("Error: no price on product!!!\n");
+		    ccreq->Result = nAMOUNT_ERR;
+E 72
+E 63
+E 62
+			END(EOT)
+I 62
+		}
+E 62
+E 58
+I 54
+
+E 54
+D 53
+
+E 53
+D 56
+	#if 0
+    if (CaptureCredit(ccreq) != OK)
+E 56
+I 56
+D 57
+	#if 1
+E 57
+I 57
+D 59
+#if 1
+E 57
+    if (CaptureCredit(ccreq, ExeType) != OK)
+E 56
+E 51
+    {
+I 53
+D 54
+        if (SendByte(WS_PORT,EOT) != OK)
+			;
+E 54
+E 53
+D 51
+        if (SendByte(WS_PORT,EOT) != OK)
+			;
+E 51
+		printf("didn't get any money\n");
+I 47
+D 51
+        Order->flags |= OF_NO_CASH;
+E 47
+        return FALSE;
+E 51
+I 51
+D 53
+        END(EOT)
+E 53
+I 53
+D 54
+        Order->flags |= OF_NO_CASH;
+        return FALSE;
+E 54
+I 54
+        END(EOT)
+E 54
+E 53
+E 51
+    }
+    else 
+I 51
+D 57
+	#else
+E 57
+I 57
+#else
+E 57
+		memset(ccreq,0,sizeof(CCReq));
+		ccreq->Result = nCAPTURE;
+D 57
+	#endif
+E 57
+I 57
+#endif
+E 57
+E 51
+    {
+D 49
+        switch (ccreq.Result)
+E 49
+I 49
+        switch (ccreq->Result)
+E 49
+        {
+            case nCAPTURE:
+            case nAUTH:
+I 53
+D 54
+                if (SendByte(WS_PORT,ACK) != OK)
+					;
+E 54
+E 53
+D 51
+                if (SendByte(WS_PORT,ACK) != OK)
+					;
+E 51
+				printf("got their money\n");
+D 51
+                return TRUE;
+E 51
+I 51
+D 53
+				END(ACK)
+E 53
+I 53
+D 54
+                return TRUE;
+E 54
+I 54
+				END(ACK)
+E 54
+E 53
+E 51
+            break;
+E 59
+I 59
+	if (Order->ccType == CORP)
+	{
+D 74
+		DWORD corpID;
+D 72
+/***  ASSUMES corpID in ccNum field is decimal, otherwise use scanf ***/
+E 72
+I 72
+        /***  ASSUMES corpID in ccNum field is decimal, otherwise use 
+              scanf ***/
+E 72
+		corpID = atol(Order->ccNum);
+	    if (Acct_CorpAcctApproval(Order->userID, corpID, Order->priceTotal, \
+									&ccreq->Result) != OK)
+E 74
+I 74
+	    if (Acct_CorpAcctApproval(Order->userID, 
+			Order->ccNum, 
+			Order->priceTotal, 
+			&ccreq->Result) != OK)
+E 74
+		{
+D 62
+			printf("didn't get any money\n");
+E 62
+I 62
+D 72
+			printf("didn't get any money 4\n");
+D 63
+			Order->flags = OF_NO_CASH;
+E 63
+I 63
+			Order->flags |= OF_NO_CASH;
+E 72
+I 72
+			printf("didn't get corporate money\n");
+E 72
+E 63
+E 62
+			END(EOT)
+		}
+	}
+	else
+	{
+I 72
+        int Blocked;
+I 75
+
+        if (ExpDateCheck(ccreq) != OK)
+		{
+			printf("credit date check failed\n");
+			ccreq->Result = -1;
+			END(EOT)
+		}
+		else if (ccreq->Result == nDATE_ERR)
+		{
+			printf("credit expired locally\n");
+			END(NAK)
+		}
+E 75
+I 74
+
+E 74
+        /* see whether their credit is blocked */
+D 74
+        if (Acct_CustCredit(lCurUserID,&Blocked) != OK)
+E 74
+I 74
+	    if (bCheckLocalCredit)
+E 74
+		{
+I 74
+D 84
+		if (Acct_CustCredit(lCurUserID,&Blocked) != OK)
+		{
+E 74
+D 73
+			printf("didn't capture credit\n");
+E 73
+I 73
+			printf("credit blocked failed\n");
+D 74
+			ccreq->Result = FAIL;
+E 74
+I 74
+			ccreq->Result = -1;
+E 74
+E 73
+			END(EOT)
+		}
+E 84
+I 84
+			if (Acct_CustCredit(lCurUserID,&Blocked) != OK)
+			{
+				printf("credit blocked failed\n");
+				ccreq->Result = -1;
+				END(EOT)
+			}
+E 84
+
+D 74
+        switch(Blocked)
+        {
+            case TRUE:
+			    printf("credit denied locally\n");
+I 73
+				ccreq->Result = -2; 
+E 73
+			    END(NAK)
+            break;
+E 74
+I 74
+D 84
+		if (Blocked >= 2)
+		{
+			printf("credit denied locally\n");
+			ccreq->Result = -2; 
+			END(NAK)
+		}
+		else if (Blocked < 0)
+		{
+			printf("unable to check credit locally\n");
+			ccreq->Result = -1;
+			END(EOT)
+		}
+		// else not blocked ....
+		}
+E 84
+I 84
+			if (Blocked >= 2)
+			{
+				printf("credit denied locally\n");
+				ccreq->Result = -2; 
+				END(NAK)
+			}
+			else if (Blocked < 0)
+			{
+				printf("unable to check credit locally\n");
+				ccreq->Result = -1;
+				END(EOT)
+			}
+		} // else not blocked ....
+E 84
+E 74
+
+D 74
+            case FALSE:
+                // fall through
+            break;
+
+            case FAIL:
+D 73
+			    printf("didn't capture credit\n");
+E 73
+I 73
+			    printf("didn't capture credit locally\n");
+				ccreq->Result = FAIL;
+E 73
+			    END(EOT)
+            break;
+        }
+
+E 74
+E 72
+I 63
+D 84
+	#if 0
+E 84
+I 84
+#if 0
+E 84
+E 63
+		if (CaptureCredit(ccreq, ExeType) != OK)
+		{
+D 62
+			printf("didn't get any money\n");
+E 62
+I 62
+D 72
+			printf("didn't get any money 5\n");
+D 63
+			Order->flags = OF_NO_CASH;
+E 63
+I 63
+			Order->flags |= OF_NO_CASH;
+E 72
+I 72
+			printf("didn't capture credit\n");
+E 72
+E 63
+E 62
+			END(EOT)
+		}
+I 63
+D 84
+	#else
+E 84
+I 84
+#else
+E 84
+D 72
+		ccreq->Result = nCAPTURE;
+E 72
+I 72
+D 74
+		ccreq->Result = 0; /* punt for now to post processing */
+E 74
+I 74
+		ccreq->Result = PUNT;
+E 74
+E 72
+D 84
+	#endif
+E 84
+I 84
+#endif
+E 84
+E 63
+	}
+		switch (ccreq->Result)
+		{
+I 72
+D 74
+            case 0:
+E 74
+I 74
+            case PUNT:
+E 74
+				printf("Punting on credit capture.\n");
+				END(ACK)
+            break;
+
+E 72
+			case nCAPTURE:
+D 72
+			case nAUTH:
+D 62
+			printf("got their money\n");
+			END(ACK)
+E 62
+I 62
+				printf("got their money 6\n");
+E 72
+I 72
+				printf("Captured or authorized.\n");
+E 72
+				END(ACK)
+E 62
+			break;
+E 59
+E 45
+
+D 45
+			case nVOICE_AUTH:
+			case nDECLINED:
+			default:
+				SendByte(GlobalhCom,NAK);
+I 44
+				return FALSE;
+E 44
+			break;
+		}
+E 45
+I 45
+D 59
+            case nDUPLICATE: /* means got duplicate but was unable to force */
+            default: /* unable to communicate for some reason */
+E 59
+I 59
+			case nDUPLICATE: /* means got dup but was unable to force */
+I 72
+			case nVOICE_AUTH:
+			case nAUTH:
+E 72
+			default: /* unable to communicate for some reason */
+E 59
+I 53
+D 54
+                if (SendByte(WS_PORT,EOT) != OK)
+					;
+E 54
+E 53
+D 51
+                if (SendByte(WS_PORT,EOT) != OK)
+					;
+E 51
+D 62
+				printf("didn't get any money\n");
+E 62
+I 62
+D 72
+				printf("didn't get any money 7\n");
+D 63
+				Order->flags = OF_NO_CASH;
+E 63
+I 63
+				Order->flags |= OF_NO_CASH;
+E 72
+I 72
+				printf("No capture (unable).\n");
+E 72
+E 63
+E 62
+I 47
+D 51
+		Order->flags |= OF_NO_CASH;
+E 47
+                return FALSE;
+E 51
+I 51
+D 53
+				END(EOT)
+E 53
+I 53
+D 54
+		Order->flags |= OF_NO_CASH;
+                return FALSE;
+E 54
+I 54
+				END(EOT)
+E 54
+E 53
+E 51
+D 59
+            break;
+E 59
+I 59
+D 62
+				break;
+E 62
+I 62
+			break;
+E 62
+E 59
+
+D 59
+            case nVOICE_AUTH:
+            case nDECLINED:
+E 59
+I 59
+D 72
+			case nVOICE_AUTH:
+E 72
+			case nDECLINED:
+E 59
+I 53
+D 54
+                if (SendByte(WS_PORT,NAK) != OK)
+					;
+E 54
+E 53
+D 51
+                if (SendByte(WS_PORT,NAK) != OK)
+					;
+E 51
+D 62
+				printf("didn't get any money\n");
+E 62
+I 62
+D 72
+				printf("didn't get any money 8\n");
+E 72
+I 72
+				printf("No capture (rejected).\n");
+E 72
+E 62
+I 47
+D 51
+		Order->flags |= OF_NO_CASH;
+E 47
+                return FALSE;
+E 51
+I 51
+D 53
+				END(NAK)
+E 53
+I 53
+D 54
+		Order->flags |= OF_NO_CASH;
+                return FALSE;
+E 54
+I 54
+				END(NAK)
+E 54
+E 53
+E 51
+D 59
+            break;
+        }
+    }
+E 59
+I 59
+			break;
+		}
+E 59
+I 54
+
+	end:
+	if (SendByte(WS_PORT,(BYTE)nRetval) != OK)
+		;
+
+I 72
+#if 0
+E 72
+I 63
+    if (Port)
+	/* hang up credit card line now that we've responded to WS. */
+	{
+		HangUp(Port,NULL);
+		//restore_tty(Port);
+		close(Port);
+		Port = NULL;
+	}
+I 72
+#endif
+E 72
+
+E 63
+	/* record result of transaction */
+D 63
+	Order->flags = OF_CC_RESULT;
+E 63
+I 63
+	Order->flags |= OF_CC_RESULT;
+E 63
+	Acct_NormalOrder ( Order, ccreq ) ;
+
+I 81
+D 84
+	if (nRetval == ACK)
+		printf("A %s order has been initiated and/or completed\n", 
+					(Order->prodType == CLIP) ? "Clip-art" : 
+					(Order->prodType == LIB) ? "Library" : 
+					(Order->prodType == WS) ? "Window Shopper" : "unknown"); 
+
+E 84
+E 81
+	return(nRetval == ACK ? TRUE : FALSE);
+E 54
+I 51
+D 53
+
+	end:
+	if (SendByte(WS_PORT,(BYTE)nRetval) != OK)
+		;
+
+	/* record result of transaction */
+	Order->flags = OF_CC_RESULT;
+	Acct_NormalOrder ( Order, ccreq ) ;
+
+	return(nRetval == ACK ? TRUE : FALSE);
+E 53
+E 51
+}
+
+D 83
+void
+E 83
+I 83
+int
+E 83
+setnewuser(void)
+{
+I 83
+	int nRetval;
+
+	printf("Connecting to database server...\n");
+E 83
+I 79
+D 81
+	/*
+E 81
+E 79
+I 63
+    if (Acct_Initialize() == FAIL)
+	{	
+		printf("Can't CONNECT to database, exiting\n");
+D 83
+		exit(1);
+E 83
+I 83
+		END(FAIL)
+E 83
+	}
+	else
+	{
+I 83
+		END(OK)
+E 83
+		//printf("Connected to database OK\n");
+	}
+I 79
+D 81
+	*/
+E 81
+E 79
+E 63
+D 83
+	CurUserID[0] = '\0';
+D 47
+	lCurUserID=0L;
+E 47
+I 47
+	lCurUserID=lSessionID=0L;
+E 47
+	CurPassword[0] = '\0';
+I 61
+	nTimeout = 120;
+E 61
+D 47
+	bUserOpened = FALSE;
+E 47
+}
+E 83
+
+D 83
+
+E 83
+I 83
+	end:
+	if (nRetval == OK)
+	{
+		CurUserID[0] = '\0';
+		lCurUserID=lSessionID=0L;
+		CurPassword[0] = '\0';
+		nTimeout = 120;
+	}
+	return nRetval;
+}
+E 83
+
+int
+CloseUserSession(int ConditionCode)
+{
+D 47
+	if (bUserOpened)
+E 47
+I 47
+	if (lSessionID)
+E 47
+	{
+D 47
+		if (Acct_CustEndSession(lCurUserID) != OK)
+			printf("Unable to close user's session (%lx)\n",lCurUserID);
+E 47
+I 47
+D 76
+		if (Acct_CustEndSession(lSessionID) != OK)
+E 76
+I 76
+		if (Acct_CustEndSession(lSessionID, ConditionCode) != OK)
+E 76
+D 79
+			printf("Unable to close user (%lx) session (%lx)\n",
+				lCurUserID,lSessionID);
+E 79
+I 79
+			printf("Unable to close user (x%lx)(%ld) session (%ld)\n",
+					lCurUserID,lCurUserID,lSessionID);
+E 79
+E 47
+		else
+D 47
+			printf("Closed user's session (%lx)\n",lCurUserID);
+E 47
+I 47
+D 63
+			printf("Closed user (%lx) session (%lx)\n",
+                                lCurUserID,lSessionID);
+E 47
+		setnewuser();
+E 63
+I 63
+D 79
+			printf("Closed user (%s) session (%lx)\n",
+                                CurUserID,lSessionID);
+		Acct_Finalize();
+E 79
+I 79
+			printf("Closed user (x%s)(%ld) session (%ld)\n",
+					CurUserID,lCurUserID,lSessionID);
+D 81
+		//Acct_Finalize();
+E 81
+I 81
+		Acct_Finalize();
+E 81
+E 79
+		lSessionID = 0L;
+E 63
+I 47
+	}
+I 53
+D 54
+	else
+		printf("No user session\n");
+E 54
+E 53
+}
+
+D 79
+int
+E 79
+I 79
+void
+E 79
+D 49
+ReceiveThatOrder(ORDER *Order)
+E 49
+I 49
+ReceiveThatOrder(ORDER_STRUCT *Order)
+E 49
+{
+D 49
+	if (ReceiveCRC(WS_PORT,(BYTE *)Order, 
+		  sizeof(CurOrder)) != OK)
+E 49
+I 49
+	if (ReceiveCRC(WS_PORT,(BYTE *)Order,sizeof(ORDER_STRUCT)) != OK)
+E 49
+	{
+D 49
+	    printf("Current order not received\n");
+E 49
+I 49
+	    printf("Current order not received (%x)\n",sizeof(ORDER_STRUCT));
+D 79
+		//ShowOrder(Order);
+E 79
+I 79
+		// ShowOrder(Order);
+E 79
+E 49
+	    if (SendByte(WS_PORT,NAK) != OK)
+					;
+	}
+	else
+	{
+D 63
+	    printf("Current order received\n");
+E 63
+I 63
+D 79
+	    //printf("Current order received\n");
+E 79
+I 79
+D 81
+	    printf("Current order received\n");
+E 81
+I 81
+	    //printf("Current order received\n");
+E 81
+E 79
+E 63
+	    if (SendByte(WS_PORT,ACK) != OK)
+D 79
+					;
+D 63
+	    ShowOrder(Order);
+E 63
+I 63
+	    //ShowOrder(Order);
+E 79
+I 79
+			printf("Error ACK'ing Order\n");
+D 81
+	    ShowOrder(Order);
+E 81
+I 81
+	    //ShowOrder(Order);
+E 81
+E 79
+E 63
+E 47
+E 45
+	}
+E 42
+E 29
+E 20
+E 15
+E 9
+}
+I 49
+
+D 84
+
+
+E 84
+#ifdef DEBUG
+int
+WriteBuf(char *szFileName, char *buf, int NumBytes)
+{
+    int fp= -1;
+    int nRetval=OK;
+
+    if ((fp = open(szFileName,O_WRONLY|O_CREAT|O_APPEND|O_SYNC,
+									S_IREAD|S_IWRITE)) == -1)
+        END(FAIL)
+
+    if (write(fp,buf,NumBytes) != NumBytes)
+        END(FAIL)
+
+    end:
+    if (fp != -1)
+        close(fp);
+    return nRetval;
+}
+#endif
+I 51
+
+
+ExitChild(int CondCode)
+{
+    printf("Exiting child...\n");
+D 74
+	CloseUserSession(CondCode);
+I 53
+D 54
+    printf("Hanging up GlobalhCom...\n");
+E 54
+E 53
+	if (GlobalhCom)
+	{
+D 63
+		HangUp(GlobalhCom);
+E 63
+I 63
+		HangUp(GlobalhCom,savetty);
+E 63
+		close(GlobalhCom);
+		GlobalhCom = NULL;
+	}
+E 74
+
+I 53
+D 54
+    printf("Hanging up hOrigCom...\n");
+E 54
+E 53
+D 74
+	if (hOrigCom)
+	{
+		//so won't answer phone...
+		set_tty_local(hOrigCom,TRUE);
+		WriteModemCommand(hOrigCom,"+~+~+~~~ATS0=0\r"); 
+		restore_tty(hOrigCom);
+		close(hOrigCom);
+		hOrigCom = NULL;
+	}
+E 74
+I 74
+    Cleanup(CondCode);
+E 74
+
+D 74
+	/* from credit card: */
+I 53
+D 54
+    printf("Hanging up Port...\n");
+E 54
+E 53
+	if (Port)
+	{
+D 63
+		HangUp(Port);
+		restore_tty(Port);
+E 63
+I 63
+		HangUp(Port,NULL);
+		//restore_tty(Port);
+E 63
+		close(Port);
+		Port = NULL;
+	}
+E 74
+D 63
+	printf("\nBye from child\n\n");
+E 63
+I 63
+	printf("Bye from child\n");
+E 63
+	fflush(stdout);
+	exit(CondCode);
+}
+
+ExitParent(int CondCode)
+{
+    printf("Exiting parent...\n");
+
+D 74
+	/* kill the child process */
+    printf("killing child...\n");
+	kill(pID,SIGTERM);
+E 74
+I 74
+	if (childPID)
+	{
+		/* kill the child process */
+		printf("killing child...\n");
+		if (kill(childPID,SIGTERM) == -1)
+			/* child couldn't hangup... */
+			Cleanup(CondCode);
+	}
+	else /* we *are* the child process */
+		Cleanup(CondCode);
+E 74
+
+I 74
+	if (FileTree)
+		free(FileTree);
+
+	printf("Bye from parent\n");
+	fflush(stdout);
+	exit(CondCode);
+}
+
+static void
+Cleanup(int CondCode)
+{
+    printf("cleaning up...\n");
+ 
+E 74
+    /* in case child was gone already */
+D 84
+	CloseUserSession(CondCode);
+E 84
+I 84
+	if (NOT bIngresAbort)
+		CloseUserSession(CondCode);
+	bIngresAbort = FALSE;
+
+E 84
+I 79
+	printf("Total outgoing traffic: %ld bytes\n", outbytes); 
+	printf("Total incoming traffic: %ld bytes\n", inbytes); 
+E 79
+
+D 74
+	if (GlobalhCom)
+E 74
+I 74
+    if (childPID) // then we're the parent, and GlobalhCom doesn't work
+E 74
+	{
+D 63
+		HangUp(GlobalhCom);
+E 63
+I 63
+D 74
+		HangUp(GlobalhCom,savetty);
+E 63
+		close(GlobalhCom);
+		GlobalhCom = NULL;
+E 74
+I 74
+		HangUp(NULL,savetty); // force hangup
+		if (GlobalhCom)
+		{
+			close(GlobalhCom);
+			GlobalhCom = NULL;
+		}
+I 84
+		//Give modem a chance to drop the line
+		sleep(5);
+E 84
+E 74
+	}
+I 74
+	else // we're the child
+	{
+		if (GlobalhCom)
+		{
+			HangUp(GlobalhCom,savetty);
+			close(GlobalhCom);
+			GlobalhCom = NULL;
+		}
+	}
+E 74
+
+	if (hOrigCom)
+	{
+		//so won't answer phone...
+		set_tty_local(hOrigCom,TRUE);
+D 74
+		WriteModemCommand(hOrigCom,"+~+~+~~~ATS0=0\r"); 
+E 74
+I 74
+		//see hangup() WriteModemCommand(hOrigCom,"ATS0=0\r"); 
+E 74
+		restore_tty(hOrigCom);
+		close(hOrigCom);
+		hOrigCom=NULL;
+	}
+
+	/* from credit card: */
+	if (Port)
+	{
+D 63
+		HangUp(Port);
+		restore_tty(Port);
+E 63
+I 63
+		HangUp(Port,NULL);
+		//restore_tty(Port);
+E 63
+		close(Port);
+		Port = NULL;
+	}
+
+#ifdef TEST_SERVER
+	disconnect_from_server(cc_server);
+#endif
+D 74
+
+I 73
+	if (FileTree)
+		free(FileTree);
+E 73
+I 55
+D 56
+	#if 0
+E 56
+E 55
+D 63
+	Acct_Finalize();
+E 63
+I 55
+D 56
+	#endif
+E 56
+E 55
+	printf("\nBye from parent\n\n");
+	fflush(stdout);
+	exit(CondCode);
+E 74
+I 56
+}
+
+ShowShip(Shipcost_Ary CostMatrix)
+{
+	printf("sm\[0\]:.valid %d .cost %d\n",CostMatrix[0].valid,
+										 CostMatrix[0].cost);
+	printf("sm\[1\]:.valid %d .cost %d\n",CostMatrix[1].valid,
+										 CostMatrix[1].cost);
+	printf("sm\[2\]:.valid %d .cost %d\n",CostMatrix[2].valid,
+										 CostMatrix[2].cost);
+E 56
+}
+I 79
+
+
+/* CheckPassword()
+//
+// DESCRIPTION:
+//	Get password via Acct_CustGetPassword. Check against password parameter.
+//	Return OK if they match, FAIL if they don't.
+//
+// HISTORY:
+//	3/13/91 - beng
+*/
+
+WORD CheckPassWord ( DWORD userID, char* szCheckPassWord) 
+{
+	char* cp;
+	char szPassWord[PW_SIZE+1];
+
+	if (Acct_CustGetPassword(userID, szPassWord) != OK) 
+		return FAIL;
+
+	cp = szPassWord;
+	while (*cp)
+	{
+		*cp = (char)toupper(*cp);
+		cp++;
+	}
+
+	cp = szCheckPassWord;
+	while (*cp)
+	{
+		*cp = (char)toupper(*cp);
+		cp++;
+	}
+
+	if (strcmp(szPassWord, szCheckPassWord) == 0)
+		return OK;
+	return FAIL;
+}
+
+E 79
+E 51
+E 49
+E 5
+E 1

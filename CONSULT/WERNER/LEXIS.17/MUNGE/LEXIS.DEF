@@ -1,0 +1,98 @@
+NAME	LEXIS
+
+DESCRIPTION 'LEXIS 2000® Research Software V 1.7'
+
+EXETYPE WINDOWS
+CODE	MOVEABLE
+DATA	MOVEABLE MULTIPLE
+
+HEAPSIZE   4096
+STACKSIZE 16192
+
+SEGMENTS
+    _TEXT     PRELOAD MOVEABLE
+    INIT      PRELOAD MOVEABLE DISCARDABLE
+    NRES      PRELOAD MOVEABLE DISCARDABLE
+    FILE      MOVEABLE DISCARDABLE
+    SETUP     MOVEABLE DISCARDABLE
+    FORMATS   MOVEABLE DISCARDABLE
+    CITELINK  MOVEABLE DISCARDABLE
+    SESSION   MOVEABLE DISCARDABLE
+    BUTTONS   MOVEABLE DISCARDABLE
+    COMM      MOVEABLE DISCARDABLE
+    SEARCH    MOVEABLE DISCARDABLE
+    CONNECT   MOVEABLE DISCARDABLE
+    REPORT    MOVEABLE DISCARDABLE
+    TOKENS    MOVEABLE DISCARDABLE
+    MACRO     MOVEABLE DISCARDABLE
+    FONTS     MOVEABLE DISCARDABLE
+    RECORD    MOVEABLE DISCARDABLE
+    DIARY     MOVEABLE DISCARDABLE
+    NOTEPAD   MOVEABLE DISCARDABLE
+    DDE       MOVEABLE DISCARDABLE
+    TERMHI    MOVEABLE DISCARDABLE
+    TERMLO    MOVEABLE DISCARDABLE
+    COPY      MOVEABLE DISCARDABLE
+    SCREEN    MOVEABLE DISCARDABLE
+    MISC      MOVEABLE DISCARDABLE
+    STORAGE   MOVEABLE DISCARDABLE
+    PRINT     MOVEABLE DISCARDABLE
+    STATUS    MOVEABLE DISCARDABLE
+    INFO      MOVEABLE DISCARDABLE
+    TERM      MOVEABLE DISCARDABLE
+    LIBRY     MOVEABLE DISCARDABLE
+    BTNLB     MOVEABLE DISCARDABLE
+    OPEN      MOVEABLE DISCARDABLE
+    SAVE      MOVEABLE DISCARDABLE
+    KEYDISK   MOVEABLE DISCARDABLE
+    DOSOS2    MOVEABLE DISCARDABLE
+    ROBOT     MOVEABLE DISCARDABLE
+    DEVICE    MOVEABLE DISCARDABLE
+
+EXPORTS
+    MainWndProc          @1
+    StatusWndProc        @2
+    InfoWndProc          @3
+    MacroWndProc         @4
+    TermWndProc          @5
+    DlgAbout             @6
+    DlgFileNew           @7
+    DlgFnOpen            @8
+    DlgFnSaveAs          @9
+    FontEnumFonts        @10
+    DlgFonts             @12
+    DlgRecord            @13
+    DlgDiary             @14
+    DlgNotepad           @15
+    DlgPageSetup         @16
+    DlgPrintSetup        @17
+    DlgHelp1             @18
+    DlgHelp2             @19
+    DlgSetup             @20
+    DlgVarKwic           @21
+    DlgResume            @22
+    DlgCitator           @23
+    DlgLexsee            @24
+    DlgLexstat           @25
+    DlgNextPage          @26
+    DlgNextDoc           @27
+    DlgPrevPage          @28
+    DlgPrevDoc           @29
+    DlgPrintAll          @30
+    DlgAutoCite          @31
+    DlgShepard           @32
+    DlgFileOpen          @33
+    DlgPrintDoc          @34
+    DlgConnect           @35
+    DlgReport            @36
+    BtnWndProc           @37
+    GraySubText          @40
+    DlgPrint             @41
+    DlgSearchLevel       @42
+    DlgSearchModify      @43
+    DlgGotoPage          @44
+    DlgGotoDoc           @45
+    AbortDlg             @46
+    AbortProc            @47
+    DlgDisconnect	 @48
+    DlgFileClose         @49

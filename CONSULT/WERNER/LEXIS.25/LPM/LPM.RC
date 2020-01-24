@@ -1,0 +1,26 @@
+#include "windows.h"
+#include "resource.h"
+
+LPM ICON "LPM.ICO"
+
+BTN0 BITMAP "LFW.BMP"
+BTN1 BITMAP "LFD.BMP"
+BTN2 BITMAP "HOME.BMP"
+BTN3 BITMAP "CHECK.BMP"
+BTN4 BITMAP "LEXFRM.BMP"
+BTN5 BITMAP "UTIL.BMP"
+
+HELP BITMAP "HELP.BMP"
+BLANK BITMAP "BLANK.BMP"
+
+LPM MENU
+BEGIN
+
+   POPUP          "&Help"
+   BEGIN
+      MENUITEM    "&About",            IDM_ABOUT
+   END
+END
+
+#include "about.dlg"
+#include "exit.dlg"

@@ -1,0 +1,31 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "OPTIONS.H\0"
+END
+
+DIALDIROPTIONSDLG DIALOG 8, 28, 188, 86
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Dialing Directory Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "", IDD_DLGFRAME, "Static", SS_GRAYFRAME, 4, 4, 180, 80
+    CONTROL         "&Name", IDD_OPTION_NAME, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 20, 24, 48, 10
+    GROUPBOX        "&Display Options", 0x0065, 12, 8, 120, 70
+    CONTROL         "N&umber", IDD_OPTION_NUMBER, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 20, 36, 48, 10
+    CONTROL         "&Connector", IDD_OPTION_CONNECTOR, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 20, 48, 48, 10
+    CONTROL         "&Settings", IDD_OPTION_SETTINGS, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 20, 60, 48, 10
+    CONTROL         "&Mode", IDD_OPTION_MODE, "Button", BS_AUTOCHECKBOX | 
+                    WS_TABSTOP, 76, 24, 48, 10
+    CONTROL         "&Last Call", IDD_OPTION_LASTCALL, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 76, 36, 48, 10
+    CONTROL         "&Emulator", IDD_OPTION_EMULATOR, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 76, 48, 48, 10
+    CONTROL         "&Protocol", IDD_OPTION_PROTOCOL, "Button", 
+                    BS_AUTOCHECKBOX | WS_TABSTOP, 76, 62, 48, 10
+    CONTROL         "&Ok", IDB_OK, "FL_BMPBTN", 0x2000, 140, 22, 36, 20
+    CONTROL         "C&ancel", 0x00CD, "FL_BMPBTN", 0x2000, 140, 50, 36, 20
+END

@@ -1,0 +1,53 @@
+LIBRARY WDB32
+
+
+CODE	  PRELOAD MOVEABLE DISCARDABLE
+DATA	  PRELOAD SINGLE
+
+EXPORTS     
+    DllEntryPoint           @2
+    wdbLibVersion           @3
+    wdbReadConfigInfo       @4
+    wdbWriteConfigInfo      @5
+    wdbGetInfo              @6
+    wdbSetInfo              @7
+    wdbGetOutputFile        @8
+    wdbGetOutputPrelude     @9
+    wdbGetFontName          @10
+    wdbConfigDlg            @11
+    wdbConfigDlgProc        @12
+    wdbFontEnumCallback     @13
+    wdbSizeEnumCallback     @14
+    wdbDumpDebugInfo        @15
+    wdbOpenSession          @16
+    wdbCloseSession         @17
+    wdbGetOutput            @18
+    wdbSetOutput            @19
+    wdbAssertBox            @20
+    wdbWndProc              @21
+    fnEnumReally            @22
+    wdbPuts                 @23
+    wdbPuts2                @24
+    wdbPuts3                @25
+    wdbPuts4                @26
+    wdbPuts5                @27
+    wdbPrintf               @28
+    wdbPrintf2              @29
+    wdbPrintf3              @30
+    wdbPrintf4              @31
+    wdbPrintf5              @32
+    wdbVPrintf              @33
+    wdbVPrintf2             @34
+    wdbVPrintf3             @35
+    wdbVPrintf4             @36
+    wdbVPrintf5             @37
+    wdbPrint                @38
+    wdbPrint2               @39
+    wdbPrint3               @40
+    wdbPrint4               @41
+    wdbPrint5               @42
+    wdbMonoQuery            @90
+    wdbMonoOpen             @91
+    wdbMonoClose            @92
+    wdbMonoOut              @93
+

@@ -1,0 +1,117 @@
+//*************************************************************
+//  File name: dbedit.rc
+//
+//  Description: 
+//      Resources for the dbedit
+//
+//  History:    Date       Author     Comment
+//               2/11/92   MSM        Created
+//
+//*************************************************************
+
+#include "global.h"
+#include "dbedit.rcv"
+
+IDI_FSICON  ICON    "dbedit.ico"
+
+DBMENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MenuItem "&Import Pub Info..."          IDM_FILE_IMPORT
+        MenuItem "&Save DataBase",              IDM_FILE_SAVE
+        MenuItem SEPARATOR
+        MenuItem "&Font...",                    IDM_FILE_FONT
+        MenuItem SEPARATOR
+        MenuItem "&About...",                   IDM_FILE_ABOUT
+        MenuItem SEPARATOR
+        MenuItem "E&xit",                       IDM_FILE_EXIT
+    END
+END
+
+STRINGTABLE
+BEGIN
+    IDS_APPNAME         "DBEdit"
+    IDS_MAINCLASS       "DBEDITCLASS"
+    IDS_MAINMENU        "DBMENU"
+    IDS_INIFILE         "DBEDIT.INI"
+    IDS_WNDPOS          "Window"
+    IDS_FONT            "Font"
+    IDS_CONFIG          "Configuration"
+    IDS_SLIDER          "Slider"
+    IDS_SLDRNAME        "Name"
+    IDS_SLDRPRICE       "Price"
+    IDS_SLDRSIZE        "Size"
+    IDS_SLDRPUBLISHER   "Publisher"
+    IDS_STAT_READY      "DBEdit Copyright © 1992 Adonis Corporation."
+    IDS_PANOSE_STRING   "PANOSE abegmoqstfy"
+
+    IDS_MEMDENIED       "Memory Allocation Error"
+    IDS_OPENFAILED      "Error opening file: %s"
+    IDS_READFAILED      "Error reading file: %s"
+    IDS_WRITEFAILED     "Error writing file: %s"
+    IDS_ININOTFOUND     "Section:\t[%s]\nKey:\t[%s]\n\n'%s' not found!"
+    IDS_FILENOTFOUND2   "Section:\t[%s]\nKey:\t[%s]\n\nFile '%s' not found!"
+    IDS_NOFAMILIESFOUND "No families for publisher found!"
+    IDS_FAMILYNOTFOUND  "Section:\t[%s]\nKey:\t[%s]\n\nFamily not found!"
+    IDS_FACENOTFOUND    "Section:\t[%s]\nKey:\t[%s]\n\nFace not found!"
+    IDS_STYLENOTFOUND   "Section:\t[%s]\nKey:\t[%s]\n\nStyle not found!"
+    IDS_TTFNOTFOUND     "Section:\t[%s]\nKey:\t[%s]\n\nTTF File not found!"
+    IDS_INVALIDPRICE    "Section:\t[%s]\nKey:\t[%s]\n\nInvalid Price! [%s]"
+    IDS_INVALIDFONT     "Section:\t[%s]\nKey:\t[%s]\n\nFont not on system! [%s %s]"
+    IDS_SAVEFAILED      "Error saving database!\n%s"
+    IDS_INVALIDID       "Section:\t[%s]\nKey:\t[%s]\n\nInvalid Publisher ID! [%s]"
+    IDS_GETTMFAILED     "GetOutlineTextMetrics failed for font '%s %s'!"
+
+    IDS_PUBLISHER       "Publisher"     
+    IDS_NAME            "Name"
+    IDS_ID              "ID"
+    IDS_SHORTCOPYRIGHT  "ShortCopyright"
+    IDS_LONGCOPYRIGHT   "LongCopyright"
+    IDS_FAMILY_F        "Family%d"
+    IDS_FACE_F          "Face%d"
+    IDS_STYLE_F         "Style%d"
+    IDS_PRICE           "Price"
+    IDS_COLLECTIONS     "Collections"
+    IDS_COLLECTION_F    "Collection%d"
+    IDS_FACES           "Faces"
+    IDS_INGRESID        "IngresID"
+    IDS_INVALIDIID      "Section:\t[%s]\nKey:\t[%s]\n\nInvalid Ingres ID: [%s]"
+    IDS_INVALIDSHIPPINGRATES "Section:\t[%s]\nKey:\t[%s]\n\nInvalid Shipping Rates: [%s]"
+
+    IDS_NOBMPPRESENT    "No thumb nail installed on system"
+    IDS_BIGBMPPRESENT   "A large thumb nail is present on the system"
+    IDS_ERRCREATEBMP    "Error Creating bitmap for %s"
+    IDS_ERRSAVEBMP      "Error Saving bitmap for %s"
+    IDS_COLLNOTFOUND    "Section:\t[%s]\nKey:\t[%s]\n\nCollection name not found!"
+    IDS_COLLFILENOTFOUND "Section:\t[%s]\nKey:\t[%s]\n\nCollection filename not found!"
+    IDS_FACESNOTFOUND   "Only %d of %d faces were found!  Check .pub file."
+
+    IDS_MAKEALL_ASM     "if exist ..\\makefont\\fontlib.obj goto make_dlls\r\nmasm -Mx ..\\makefont\\fontlib.asm, ..\\makefont\\fontlib.obj;\r\n:make_dlls\r\n\r\n"
+    IDS_MAKEALL_RCR     "rc -r fs%03X.rc\r\n"
+    IDS_MAKEALL_LINK    "link /NOD/NOE/A:32 ..\\makefont\\fontlib.obj, fs%03X%03X.001,NUL.MAP,libw mdllcew,fs%03X.def\r\n"
+    IDS_MAKEALL_RCV     "rc -v fs%03X.res fs%03X%03X.001\r\n\r\n"
+    IDS_MAKEALL_DONE    "\r\nif .%1==.noclean goto done\r\ndel *.rc\r\ndel *.def\r\ndel *.res\r\ndel *.bmp\r\n:done\r\n"
+    IDS_DEF_LIBRARY     "LIBRARY     FS%03X%03X\r\n"
+    IDS_DEF_DESC        "DESCRIPTION 'Font Shopper Support Library'\r\n"
+    IDS_DEF_EXECODEDATA "EXETYPE     WINDOWS\r\nCODE        PRELOAD FIXED\r\nDATA        NONE\r\n"
+
+    IDS_SMNU            " "
+    IDS_SMNU_SIZE       "Sizes the main window"
+    IDS_SMNU_MOVE       "Moves the main window"
+    IDS_SMNU_MINIMIZE   "Minimizes the main window to an icon"
+    IDS_SMNU_MAXIMIZE   "Maximizes the main window to the full screen size"
+    IDS_SMNU_CLOSE      "Closes the window and exits DBEdit"
+    IDS_SMNU_RESTORE    "Restores main window to previous size and position"
+    IDS_SMNU_TASKLIST   "Switches applications with the Task Manager"
+
+    IDS_FILEMENU        "File operations"
+
+    IDM_FILE_IMPORT     "Import a .PUB template and convert into a database"
+    IDM_FILE_SAVE       "Save dataBase and all family/bitmap files"
+    IDM_FILE_FONT       "Change the font"
+    IDM_FILE_ABOUT      "About DBEdit and copyright information"
+    IDM_FILE_EXIT       "Quits DBEdit"
+END
+
+//*** EOF: dbedit.rc

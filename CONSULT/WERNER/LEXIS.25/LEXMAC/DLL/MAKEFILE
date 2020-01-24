@@ -1,0 +1,77 @@
+#----------------------------------------------------------------------------
+#
+# Makefile for lexmac.DLL
+#
+# Copyright (c) Charles E. Kindel, Jr.
+#----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+# 10-28-90 CEK
+#----------------------------------------------------------------------------
+#all: lexmac.dll
+
+#DEBUG=TRUE
+
+# macros
+!IFDEF DEBUG
+CLOPTS=-AMw -c -Gsw -Oad -W3 -Zpei -DDEBUG
+LINKOPTS=/NOE/NOD/CO
+!ELSE
+CLOPTS=-AMw -c -Gw -Oad -W3 -Zpe -Os -DRELEASE
+LINKOPTS=/NOE/NOD
+!ENDIF
+
+OBJ = OBJ\ 
+RES = RES\ 
+
+# Update resources
+lexmac.dll: $(OBJ)lexmac.obj\
+            $(OBJ)libentry.obj\
+            $(OBJ)debug.obj\
+            $(OBJ)shadow.obj\
+            $(OBJ)about.obj\
+            $(OBJ)version.obj\
+            $(OBJ)main.obj\
+            lexmac.def $(RES)lexmac.res
+    @echo Linkng... >aux
+    link @lexmac.lnk
+    rc -v $(RES)lexmac.res lexmac.dll
+    implib lexmac.lib lexmac.def
+    bumpver lexmac.ver
+    copy lexmac.dll test
+
+$(OBJ)libentry.obj: libentry.asm
+    @echo Assembling $*.asm... >aux
+    masm -Mx libentry, $(OBJ)libentry;
+
+$(OBJ)lexmac.obj:       lexmac.h lexmac.c
+    @echo Compiling lexmac.c... >aux
+    cl $(CLOPTS) -Fo$(OBJ)lexmac.obj -NT lexmac lexmac.c > lexmac.err
+    @type lexmac.err > aux
+
+$(OBJ)debug.obj:   debug\debug.c
+    @echo Compiling debug.c... >aux
+    $(CC) -Fo$*.obj $(CLOPTS) -NT DEBUG debug\debug.c > debug\debug.err
+    @type debug\debug.err > aux
+
+$(OBJ)shadow.obj:   shadow\shadow.c
+    @echo Compiling shadow.c... >aux
+    $(CC) -Fo$*.obj $(CLOPTS) -NT SHADOW shadow\shadow.c > shadow\shadow.err
+    @type shadow\shadow.err > aux
+
+$(OBJ)about.obj:   about\about.c
+    @echo Compiling about.c... >aux
+    $(CC) -Fo$*.obj $(CLOPTS) -NT ABOUT about\about.c > about\about.err
+    @type about\about.err > aux
+
+$(OBJ)version.obj:   version\version.c lexmac.ver
+    @echo Compiling version.c... >aux
+    $(CC) -Fo$*.obj $(CLOPTS) -NT VERSION version\version.c > version\version.err
+    @type version\version.err > aux
+
+$(OBJ)main.obj:   main\main.c lexmac.ver
+    @echo Compiling main.c... >aux
+    $(CC) -Fo$*.obj $(CLOPTS) -NTMAIN main\main.c > main\main.err
+    @type main\main.err > aux
+
+ 

@@ -1,0 +1,639 @@
+h14467
+s 00038/00038/00197
+d D 1.19 91/10/08 12:50:37 bbs 19 18
+c added pause before resending block
+e
+s 00006/00001/00229
+d D 1.18 90/11/16 09:54:20 bbs 18 17
+c 
+e
+s 00000/00000/00230
+d D 1.17 90/11/07 12:17:48 bbs 17 16
+c 
+e
+s 00004/00000/00226
+d D 1.16 90/10/19 13:03:57 bbs 16 15
+c 
+e
+s 00001/00001/00225
+d D 1.15 90/10/18 14:28:46 bbs 15 14
+c make
+e
+s 00003/00000/00223
+d D 1.14 90/10/18 14:28:14 bbs 14 13
+c 
+e
+s 00001/00001/00222
+d D 1.13 90/09/28 13:16:09 bbs 13 12
+c 
+e
+s 00003/00003/00220
+d D 1.12 90/09/28 00:45:33 bbs 12 11
+c 
+e
+s 00035/00024/00188
+d D 1.11 90/09/26 18:23:43 bbs 11 10
+c Checkpoint - jf
+e
+s 00034/00033/00178
+d D 1.10 90/09/13 13:42:45 bbs 10 9
+c 
+e
+s 00032/00013/00179
+d D 1.9 90/08/24 18:01:52 bbs 9 8
+c 
+e
+s 00001/00000/00191
+d D 1.8 90/08/08 12:45:23 bbs 8 7
+c 
+e
+s 00002/00000/00189
+d D 1.7 90/07/11 21:22:41 bbs 7 6
+c 
+e
+s 00000/00000/00189
+d D 1.6 90/07/07 00:19:30 bbs 6 5
+c 
+e
+s 00008/00006/00181
+d D 1.5 90/07/03 16:26:48 bbs 5 4
+c ACK/NAK
+e
+s 00008/00000/00179
+d D 1.4 90/06/22 15:14:06 bbs 4 3
+c 
+e
+s 00006/00000/00173
+d D 1.3 90/05/29 14:33:23 sluggj 3 2
+c 
+e
+s 00001/00001/00172
+d D 1.2 90/05/23 07:43:01 sluggj 2 1
+c 
+e
+s 00173/00000/00000
+d D 1.1 90/05/21 16:22:21 sluggj 1 0
+c date and time created 90/05/21 16:22:21 by sluggj
+e
+u
+U
+t
+T
+I 1
+
+#include "stdinc.h"
+#include "stdcomm.h" 
+#include <stdio.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include "comm.h"
+#include "xmodem.h"
+#include "bbs.h"
+
+int
+XMSend(HANDLE hCom, HANDLE iFilePtr)
+{
+    int nBytesRead;
+    int nNumberOfBlocks;
+D 11
+    BYTE c;
+E 11
+I 11
+    BYTE c[2];
+E 11
+	XMBLOCK XMBlock;
+I 11
+	BOOL bGotResponse,bResend;
+E 11
+
+    /** wait for first nak **/
+I 9
+D 13
+	printf("downloading ...\n");
+E 13
+I 13
+	// printf("downloading ...\n");
+E 13
+E 9
+D 12
+	printf("waiting for NAK...\n");
+E 12
+I 12
+	//printf("waiting for NAK...\n");
+E 12
+I 11
+
+E 11
+    while(1)
+	{
+D 11
+		if (ReceiveBuf(hCom,&c,1,STD_WAIT) != OK)
+E 11
+I 11
+		if (ReceiveBuf(hCom,c,2,STD_WAIT) != OK)
+E 11
+I 4
+		{
+E 4
+			printf("Timeout receiving ACK\n");
+I 4
+			return FAIL;
+		}
+E 4
+D 11
+		if (c == NAK) 
+E 11
+I 11
+		if ((c[0] == NAK) AND (c[1] == NAK))
+E 11
+		{
+D 12
+			printf("Received NAK\n");
+E 12
+I 12
+			//printf("Received NAK\n");
+E 12
+			break;
+I 4
+		}
+D 5
+		else if (c == CTRLX)
+E 5
+I 5
+		else
+E 5
+		{
+D 5
+			printf("CTRLX received instead of ACK\n");
+E 5
+I 5
+D 11
+			printf("Received %x instead of NAK\n",c);
+E 11
+I 11
+			flush(hCom,2);
+			printf("Received %x%x instead of NAK\n",c[0],c[1]);
+E 11
+E 5
+			return FAIL;
+E 4
+		}
+D 5
+		else
+			printf("Received %x instead of NAK\n",c);
+E 5
+	}
+
+I 14
+D 15
+    if (CurFilePtr == -1)
+E 15
+I 15
+    if (iFilePtr == -1)
+I 16
+	{
+		SendByte(hCom,EOT);	
+		SendByte(hCom,EOT);	
+E 16
+E 15
+		return FAIL;
+I 16
+	}
+E 16
+
+E 14
+    lseek(iFilePtr,0L,SEEK_SET);
+
+    /** read header block (we're not going to send that one) **/
+    if((nBytesRead = read(iFilePtr,&XMBlock,sizeof(XMBLOCK))) < sizeof(XMBLOCK))
+    {
+		printf("Error Reading File %d \n",nBytesRead);
+        return(FAIL);
+    }
+
+    /** header contains number of blocks **/
+	for (nNumberOfBlocks = (*(WORD *)&(XMBlock.Data[TOTALBLOCKNUM_INDEX]))-1;
+	     nNumberOfBlocks--;
+		 )
+	{
+        /** read one block **/
+	   if((nBytesRead = read(iFilePtr,&XMBlock,sizeof(XMBLOCK))) 
+		   != sizeof(XMBLOCK))
+		{
+		    printf("Error Reading File %d \n",nBytesRead);
+            return(FAIL);
+		}
+
+        /** send block until receive a ACK **/
+D 11
+		do
+E 11
+I 11
+		bResend = TRUE;
+		do // send the current block
+E 11
+		{
+D 9
+				printf("Sending Block %d\n",nNumberOfBlocks);
+E 9
+I 9
+D 10
+				//printf("Sending Block %d\n",nNumberOfBlocks);
+E 9
+				//sleep(1);
+			    if (SendBuf(hCom, (BYTE *)&XMBlock, sizeof(XMBLOCK)) != OK)
+				    printf("Error writing block");
+E 10
+I 10
+			//printf("Sending Block %d\n",nNumberOfBlocks);
+D 11
+			//sleep(1);
+E 11
+I 11
+
+E 11
+			if (SendBuf(hCom, (BYTE *)&XMBlock, sizeof(XMBLOCK)) != OK)
+				printf("Error writing block");
+E 10
+
+I 9
+D 10
+				flush(hCom,2); // to clear garbage
+E 10
+I 10
+D 11
+			if (ReceiveBuf(hCom,&c,1,300) != OK)
+E 11
+I 11
+			bGotResponse = FALSE;
+			do // wait for a valid response from WS
+			{
+D 19
+			if (ReceiveBuf(hCom,c,2,300) != OK) // get two ACK/NAKs
+E 11
+				printf("Timeout receiving ACK\n");
+D 18
+							 ;
+E 18
+I 18
+				;
+				 /* note that this can get in an infinite loop if
+				 Window Shopper has disappeared for some reason. 
+				 But I want to wait indefinitely in case the user
+				 is grabbing the processor innocently computing
+				 a spreadsheet or something.  -dug */
+E 18
+D 11
+			switch(c)
+E 11
+I 11
+			switch(c[0])
+E 11
+			{
+				case CTRLX:
+I 11
+				if (c[1] == CTRLX)
+E 19
+I 19
+				if (ReceiveBuf(hCom,c,2,300) != OK) // get two ACK/NAKs
+					printf("Timeout receiving ACK\n");
+					;
+					 /* note that this can get in an infinite loop if
+					 Window Shopper has disappeared for some reason. 
+					 But I want to wait indefinitely in case the user
+					 is grabbing the processor innocently computing
+					 a spreadsheet or something.  -dug */
+				switch(c[0])
+E 19
+				{
+E 11
+D 19
+					printf("XSend aborted by CRTL-X\n");
+					flush(hCom,2);
+					return FAIL;
+I 11
+				}
+E 11
+				break;
+E 10
+
+E 9
+D 2
+				if (ReceiveBuf(hCom,&c,1,STD_WAIT) != OK)
+E 2
+I 2
+D 10
+				if (ReceiveBuf(hCom,&c,1,300) != OK)
+E 2
+					printf("Timeout receiving ACK\n");
+								 ;
+I 3
+D 9
+				if (c == CTRLX)
+E 9
+I 9
+				switch(c)
+E 9
+				{
+D 9
+					printf("XSend aborted by CRTL-X\n");
+I 7
+					flush(hCom,2);
+E 7
+					return OK;
+E 9
+I 9
+					case CTRLX:
+						printf("XSend aborted by CRTL-X\n");
+						flush(hCom,2);
+						return FAIL;
+					break;
+E 10
+I 10
+				case ACK:
+I 11
+					if (c[1] == ACK)
+E 19
+I 19
+					case CTRLX:
+					if (c[1] == CTRLX)
+E 19
+					{
+D 19
+						bGotResponse = TRUE;
+						bResend = FALSE;
+E 19
+I 19
+						printf("XSend aborted by CRTL-X\n");
+						flush(hCom,2);
+						return FAIL;
+E 19
+					}
+E 11
+D 19
+				break;  // to next block
+E 19
+I 19
+					break;
+E 19
+E 10
+
+D 10
+					case ACK:
+					break;  // to next block
+E 10
+I 10
+D 19
+				case NAK:
+D 11
+					continue; // resend
+				break;
+E 10
+
+D 10
+					case NAK:
+						continue; // resend
+					break;
+
+					default:
+						do
+E 10
+I 10
+				default:
+					do
+E 11
+I 11
+					if (c[1] == NAK)
+E 11
+					{
+D 11
+						/* wade through garbage to an ACK or NAK.  What if
+						   garbage itself contains an ACK or a NAK???? */
+						if (ReceiveBuf(hCom,&c,1,300) != OK)
+E 10
+						{
+D 10
+							/* wade through garbage to an ACK or NAK */
+							if (ReceiveBuf(hCom,&c,1,300) != OK)
+							{
+								printf("xmodem:  timeout getting ACK or NAK\n");
+								flush(hCom,2);
+								return FAIL;
+							}
+E 10
+I 10
+							printf("xmodem:  timeout getting ACK or NAK\n");
+							flush(hCom,2);
+							return FAIL;
+E 10
+						}
+E 11
+I 11
+						bGotResponse = TRUE;
+						bResend = TRUE;
+E 11
+D 10
+						while ((c != ACK) AND (c != NAK));
+					break;
+E 9
+				}
+E 10
+I 10
+					}
+D 11
+					while ((c != ACK) AND (c != NAK));
+E 11
+				break;
+E 19
+I 19
+					case ACK:
+						if (c[1] == ACK)
+						{
+							bGotResponse = TRUE;
+							bResend = FALSE;
+						}
+					break;  // to next block
+
+					case NAK:
+						if (c[1] == NAK)
+						{
+							bGotResponse = TRUE;
+							bResend = TRUE;
+							//pause to allow cause of error to pass?
+							wait(500L);
+							printf("xmodem:  resending block\n");
+						}
+					break;
+				}
+				if (bGotResponse == FALSE)
+				{
+					flush(hCom,2); // flush garbage
+				}
+E 19
+			}
+D 11
+			if (c == NAK)
+E 11
+I 11
+D 19
+			if (bGotResponse == FALSE)
+			{
+				flush(hCom,2); // flush garbage
+			}
+			}
+E 19
+			while (bGotResponse == FALSE);
+D 19
+
+			if (bResend)
+E 11
+				printf("xmodem:  resending block\n");
+E 19
+E 10
+D 5
+
+E 5
+I 5
+D 9
+				else if (c != ACK)
+				{
+					printf("XSend aborted by %x\n",c);
+I 7
+					flush(hCom,2);
+E 7
+					return FAIL;
+				}
+I 8
+				else break;
+E 9
+E 8
+E 5
+E 3
+		}
+D 5
+        while (c == NAK);
+E 5
+I 5
+D 9
+        while (1);
+E 9
+I 9
+D 11
+        while (c == NAK);
+E 11
+I 11
+		while (bResend);
+E 11
+E 9
+E 5
+    }
+D 12
+    printf("Sending EOT's...\n");
+E 12
+I 12
+    //printf("Sending EOT's...\n");
+E 12
+    SendByte(hCom,EOT);	
+    SendByte(hCom,EOT);	
+    return(OK);
+}
+
+
+#if 0
+static int
+XMReceive(char *szFileName)
+{
+    int fp= -1;
+    BYTE cTemp[2]; /* a place to save the CRC's */
+    BYTE *pBuf;
+    XMBLOCK BlockBuf;
+    BYTE BlockNum;
+    int nRetval=OK,nRetry;
+    HANDLE hCom;
+
+//    AddFullPath(szFileName);
+
+    if(SendByte(hCom,NAK,1) != OK)
+        END(FAIL)
+
+    if ((fp = open(szFileName,O_RDWR|O_CREAT)) == -1) 
+        END(FAIL)
+
+    BlockNum=1;
+    nRetry=0;
+
+    while(1)
+    /** read blocks **/
+    {
+        int nNumRead,nNumLeft;
+
+        Elapsed_Time(TRUE);
+
+        /** read a block **/
+        for (pBuf = (BYTE *)&BlockBuf, nNumLeft = sizeof(XMBLOCK); 
+                nNumLeft; 
+                nNumLeft -= nNumRead, pBuf += nNumRead)
+        {
+            while ((nNumRead= read(hCom,pBuf,nNumLeft)) <= 0) ;
+
+            if (nNumRead == 2)
+                if ((((char *)&BlockBuf)[0] == EOT) AND (((char *)&BlockBuf)[1] == EOT))
+                    END(OK) // All Done
+        }
+
+        /** see if all done **/
+        if (BlockBuf.SOH != soh)
+                printf("Error receiving block\n");
+
+        /** see if block number jibes **/
+        else if ((BlockBuf.BlockNum == BlockNum) AND 
+                 (BlockBuf.BlockNumCom != (~BlockNum)))
+        {
+            /* thanks to Intel we must swap the two crc bytes */
+            cTemp[1]  = BlockBuf.CRC1;
+            cTemp[0]  = BlockBuf.CRC2;
+
+            /* make CRC is correct */
+            if (* (WORD *)cTemp == CalcCRC((BYTE *)BlockBuf.Data,sizeof(BlockBuf.Data)))
+            /* OK so write data to file */
+            { 
+                if(write(fp,BlockBuf.Data,sizeof(BlockBuf.Data)) != sizeof(BlockBuf.Data))
+                    END(FAIL)
+
+                if (SendBuf(hCom,szACK,sizeof(szACK)-1) != OK)
+                    END(FAIL)
+
+                ++BlockNum;
+                nRetry=0;
+                continue; // back up to top of read block loop
+            }
+        }
+
+        /** if we get to here then we gotta retry **/
+        if(nRetry == MAXRETRIES) // tried long enuf
+        {
+	        SendBuf(hCom,szCTRLX,sizeof(szCTRLX)-1);
+            END(FAIL)
+        }
+        else
+        {
+            SendBuf(hCom,szNAK,sizeof(szNAK)-1);
+            ++nRetry;
+        }
+
+    } /* end of read block loop */
+
+    end:
+    if (fp != -1)
+        close(fp);
+
+    if (nRetval == FAIL)
+	    SendBuf(hCom,szCTRLX,strlen(szCTRLX));
+        
+    return (nRetval);
+}
+#endif
+
+
+
+E 1
