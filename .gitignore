@@ -4,14 +4,14 @@
 ###################
 *.com
 *.class
-*.dll
-*.exe
+# *.dll
+# *.exe
 *.pdb
 *.dll.config
 *.cache
 *.suo
 *.obj
-*.ocx
+# *.ocx
 *.tlb
 *.mdb
 *.vcw
@@ -34,7 +34,7 @@ build/
 *.jar
 *.rar
 *.tar
-*.arc
+# *.arc
 
 ######################
 # Logs and databases #
